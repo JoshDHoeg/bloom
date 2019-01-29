@@ -1,15 +1,18 @@
+// BLOOMTIME DESIGN 2019
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import './index.css';
 import * as serviceWorker from './serviceWorker';
+import AuthRouter from './AuthRouter.jsx';
 
-import App from './components/App';
-import Firebase, { FirebaseContext } from './components/Firebase';
+//IMPORT STYLES
+import './index.css';
+
+//IMPORT UTILITIES
+import Firebase, { FirebaseContext } from './utilities/Firebase';
 
 ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
-    <App />
+    <AuthRouter />
   </FirebaseContext.Provider>,
   document.getElementById('root'),
 );

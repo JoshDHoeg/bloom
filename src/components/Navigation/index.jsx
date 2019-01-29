@@ -1,10 +1,13 @@
+// BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SignOutButton from '../SignOut';
-import * as ROUTES from '../../constants/routes';
+//IMPORT CONTAINERS
+import SignOutButton from '../../containers/Users/SignOut';
 
-import { AuthUserContext } from '../Session';
+//IMPORT UTILITIES
+import * as ROUTES from '../../utilities/constants/routes';
+import { AuthUserContext } from '../../utilities/Session';
 
 const Navigation = () => (
   <div>
@@ -19,16 +22,13 @@ const Navigation = () => (
 const NavigationAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.HOME}>Home</Link>
+      <Link to={ROUTES.PROJECT}>Project</Link>
     </li>
     <li>
       <Link to={ROUTES.ACCOUNT}>Account</Link>
     </li>
     <li>
-      <Link to={ROUTES.ADMIN}>Admin</Link>
+      <Link to={ROUTES.DESIGNER}>Designer</Link>
     </li>
     <li>
       <SignOutButton />
@@ -39,10 +39,10 @@ const NavigationAuth = () => (
 const NavigationNonAuth = () => (
   <ul>
     <li>
-      <Link to={ROUTES.LANDING}>Landing</Link>
+      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
     </li>
     <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+      <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
     </li>
   </ul>
 );
