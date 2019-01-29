@@ -3,21 +3,21 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const prodConfig = {
-  apiKey: process.env.API_KEY,
-  authDomain: process.env.AUTH_DOMAIN,
-  databaseURL: process.env.DATABASE_URL,
-  projectId: process.env.PROJECT_ID,
-  storageBucket: process.env.STORAGE_BUCKET,
-  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  apiKey: "AIzaSyC-ebwUdI1SzTeXbYF4ZCmroIDjdLQdmKo",
+  authDomain: "bloomprod-112b6.firebaseapp.com",
+  databaseURL: "https://bloomprod-112b6.firebaseio.com",
+  projectId: "bloomprod-112b6",
+  storageBucket: "bloomprod-112b6.appspot.com",
+  messagingSenderId: "1004815344143",
 };
 
 const devConfig = {
-  apiKey: process.env.REACT_APP_DEV_API_KEY,
-  authDomain: process.env.REACT_APP_DEV_AUTH_DOMAIN,
-  databaseURL: process.env.REACT_APP_DEV_DATABASE_URL,
-  projectId: process.env.REACT_APP_DEV_PROJECT_ID,
-  storageBucket: process.env.REACT_APP_DEV_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_DEV_MESSAGING_SENDER_ID,
+  apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
+  authDomain: "bloomdash-aca9f.firebaseapp.com",
+  databaseURL: "https://bloomdash-aca9f.firebaseio.com",
+  projectId: "bloomdash-aca9f",
+  storageBucket: "bloomdash-aca9f.appspot.com",
+  messagingSenderId: "327651474050",
 };
 
 const config =
