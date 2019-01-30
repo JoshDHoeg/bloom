@@ -1,6 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { compose } from 'recompose';
 
 //IMPORT CONTAINERS
@@ -12,11 +13,26 @@ import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignInPage = () => (
-  <div>
-    <h1>SignIn</h1>
-    <SignInForm />
-    <PasswordForgetLink />
-    <SignUpLink />
+<div className='login-form'>
+  <style>{`
+    body > div,
+    body > div > div,
+    body > div > div > div.login-form {
+      height: 100%;
+    }
+  `}</style>
+    <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' color='teal' textAlign='center'>
+          <Image src='/logo.png' /> Log-in to your account
+        </Header>
+        <SignInForm />
+        <Message>
+          <PasswordForgetLink />
+          <SignUpLink />
+        </Message>
+      </Grid.Column>
+    </Grid>
   </div>
 );
 
@@ -59,27 +75,35 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
-          name="email"
-          value={email}
-          onChange={this.onChange}
-          type="text"
-          placeholder="Email Address"
-        />
-        <input
-          name="password"
-          value={password}
-          onChange={this.onChange}
-          type="password"
-          placeholder="Password"
-        />
-        <button disabled={isInvalid} type="submit">
-          Sign In
-        </button>
 
-        {error && <p>{error.message}</p>}
-      </form>
+        <Form size='large' onSubmit={this.onSubmit}>
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+              name='email'
+              value={email}
+              onChange={this.onChange}
+              type='text'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+              name='password'
+              value={password}
+              onChange={this.onChange}
+            />
+            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+              Login
+            </Button>
+            {error && <p>{error.message}</p>}
+          </Segment>
+        </Form>
     );
   }
 }

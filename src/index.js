@@ -6,6 +6,7 @@ import AuthRouter from './AuthRouter.jsx';
 
 //IMPORT STYLES
 import './index.css';
+import 'semantic-ui-css/semantic.min.css'
 
 //IMPORT UTILITIES
 import Firebase, { FirebaseContext } from './utilities/Firebase';
