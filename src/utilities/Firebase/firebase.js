@@ -2,6 +2,7 @@
 import app from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/firestore';
 
 const prodConfig = {
   apiKey: "AIzaSyC-ebwUdI1SzTeXbYF4ZCmroIDjdLQdmKo",
@@ -29,7 +30,9 @@ class Firebase {
     app.initializeApp(config);
 
     this.auth = app.auth();
-    this.db = app.database();
+    this.db = app.firestore();
+    this.usersRef = this.db.collection('users');
+    this.projectsRef = this.db.collection('projects');
   }
 
   // *** Auth API ***
@@ -49,9 +52,16 @@ class Firebase {
 
     // *** User API ***
 
-  user = uid => this.db.ref(`users/${uid}`);
+  user = uid => this.usersRef.doc(uid);
+  users = (client = false) => this.usersRef;
 
-  users = () => this.db.ref('users');
+    // ** Project API **
+  projects = (client = false) => this.projectsRef;
+  project = (id, isUID = false) => {
+    if (isUID)
+      return this.user(id).get().then(userData => userData.data().projects[0].get());
+    else return this.projectsRef.doc(id).get();
+  }
 }
 
 export default Firebase;

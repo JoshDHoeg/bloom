@@ -7,6 +7,7 @@ import { withAuthorization } from '../../utilities/Session';
 import { format } from 'path';
 
 class AdminPage extends Component {
+  unSub;
   constructor(props) {
     super(props);
 
@@ -19,14 +20,12 @@ class AdminPage extends Component {
   componentDidMount() {
     this.setState({ loading: true });
 
-    this.props.firebase.users().on('value', snapshot => {
-      const usersObject = snapshot.val();
-
-      const usersList = Object.keys(usersObject).map(key => ({
-        ...usersObject[key],
-        uid: key,
+    // TODO: we might be able to move this to the firebaes but idk if thats possible without observables
+    this.unSub = this.props.firebase.users().onSnapshot(userQuery => {
+      const usersList = userQuery.docs.map(user => ({
+        ...user.data(),
+        uid: user.ref.id,
       }));
-
       this.setState({
         users: usersList,
         loading: false,
@@ -35,7 +34,7 @@ class AdminPage extends Component {
   }
 
   componentWillUnmount() {
-    this.props.firebase.users().off();
+    this.unSub();
   }
 
   render() {
@@ -65,7 +64,7 @@ const UserList = ({ users }) => (
           <strong>E-Mail:</strong> {user.email}
         </span>
         <span>
-          <strong>Username:</strong> {user.username}
+          <strong>Username:</strong> {user.name}
         </span>
       </li>
     ))}
