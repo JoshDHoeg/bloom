@@ -2,12 +2,12 @@
 import React, { Component } from 'react';
 
 //IMPORT UTILITIES
-import { withFirebase } from '../../utilities/Firebase';
+// import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../utilities/Session';
-import { format } from 'path';
+// import { format } from 'path';
 
 class AdminPage extends Component {
-  unSub;
+  userSub;
   constructor(props) {
     super(props);
 
@@ -19,22 +19,16 @@ class AdminPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true });
-
-    // TODO: we might be able to move this to the firebaes but idk if thats possible without observables
-    this.unSub = this.props.firebase.users().onSnapshot(userQuery => {
-      const usersList = userQuery.docs.map(user => ({
-        ...user.data(),
-        uid: user.ref.id,
-      }));
+    this.userSub = this.props.firebase.onUser().subscribe(users => {
       this.setState({
-        users: usersList,
-        loading: false,
+        users: users,
+        loading: false
       });
     });
   }
 
   componentWillUnmount() {
-    this.unSub();
+    this.props.firebase.onUser(this.userSub);
   }
 
   render() {
@@ -55,8 +49,8 @@ class AdminPage extends Component {
 
 const UserList = ({ users }) => (
   <ul>
-    {users.map(user => (
-      <li key={user.uid}>
+    {users.map((user, i) => (
+      <li key={i}>
         <span>
           <strong>ID:</strong> {user.uid}
         </span>
