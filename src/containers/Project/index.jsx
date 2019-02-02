@@ -1,6 +1,9 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 
+//React Router Import
+import { BrowserRouter, Route, Link } from 'react-router-dom';
+import * as ROUTES from '../../utilities/constants/routes';
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
@@ -18,51 +21,64 @@ const HomePage = () => (
     <div>
         <h1>Home Page</h1>
         <p>The Home Page is accessible by every signed in user.</p>
-        <div style={{ width: '800px' }}>
-            <div style={{ float: 'right', paddingRight: 100 }}>
-                <img src={tempLogo} />
+        <BrowserRouter>
+            <div>
+                <li>
+                    <Link to={ROUTES.CLIENT_CONCEPT}>Client Concept</Link>
+                </li>
+                <li>
+                    <Link to={ROUTES.CLIENT_REVISIONS}>Client Revisions</Link>
+                </li>
+                <li>
+                    <Link to={ROUTES.CLIENT_BRIEF}>Client Design Brief</Link>
+                </li>
+                <li>
+                    <Link to={ROUTES.CLIENT_FINAL}>Client Final</Link>
+
+                </li>
+                <Route path={ROUTES.CLIENT_CONCEPT} component={ClientConcept} />
+                <Route path={ROUTES.CLIENT_REVISIONS} component={ClientRevisions} />
+                <Route path={ROUTES.CLIENT_BRIEF} component={ClientDesignBrief} />
+                <Route path={ROUTES.CLIENT_FINAL} component={ClientFinal} />
             </div>
-            <h3>Design Brief:</h3>
-        </div>
-        <ClientDesignBrief />
-        {/*
-        ----Commented so so they dont need to be reloaded each time while working on the design brief----
-        <h3>Concept:</h3>
-        <ClientConcept />
-        <h3>Final</h3>
-        <ClientFinal />
-        <h3>Revisions</h3>
-        <ClientRevisions/> */}
+        </BrowserRouter>
     </div>
 );
 const ClientDesignBrief = ({ }) => (
-    <div style={{ height: '600px', paddingLeft: '100px' }}>
-        <ProjectHeader />
-        <h1>Bloomtime Design Brief</h1>
-        <div style={{ width: '600px' }}>
-            <div style={{ float: 'left' }}>
-                <h3>Goals</h3>
-                <GoalList />
-            </div>
-            <div style={{ float: 'right' }}>
-                <h3>Details</h3>
-                <DetailList />
-                <h3>Media</h3>
-                <MediaList />
-            </div>
+    <div style={{ width: '800px' }}>
+        <div style={{ float: 'right', paddingRight: 100 }}>
+            <img src={tempLogo} />
         </div>
-        <div style={{ float: 'left', width: '600px' }}>
-            <ColoredLine />
+        <h3>Design Brief:</h3>
+
+        <div style={{ height: '600px', paddingLeft: '100px' }}>
+            <ProjectHeader />
+            <h1>Bloomtime Design Brief</h1>
             <div style={{ width: '600px' }}>
                 <div style={{ float: 'left' }}>
-                    <h3>Narrative</h3>
-                    <Narrative />
+                    <h3>Goals</h3>
+                    <GoalList />
                 </div>
                 <div style={{ float: 'right' }}>
-                    <h3>Taste Profile</h3>
-                    <TasteProfile />
-                    <div style={{ paddingTop: 200 }}>
-                        <h3>Comments? Click <MailFunction /></h3>
+                    <h3>Details</h3>
+                    <DetailList />
+                    <h3>Media</h3>
+                    <MediaList />
+                </div>
+            </div>
+            <div style={{ float: 'left', width: '600px' }}>
+                <ColoredLine />
+                <div style={{ width: '600px' }}>
+                    <div style={{ float: 'left' }}>
+                        <h3>Narrative</h3>
+                        <Narrative />
+                    </div>
+                    <div style={{ float: 'right' }}>
+                        <h3>Taste Profile</h3>
+                        <TasteProfile />
+                        <div style={{ paddingTop: 200 }}>
+                            <h3>Comments? Click <MailFunction /></h3>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -209,9 +225,9 @@ const ClientConcept = ({ }) => (
     <ul>
         <YoutubeEmbedVideo videoId="ygggcqKmUts" suggestions={false} />
         <button type="button"><a href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "black" }}>Google Drive Folder</a></button>
-        <div>
+        <div style={{height: 300}}>
             {/*Typeform is wonky and overlapping other elements, put it at a fixed position for now*/}
-            <ReactTypeformEmbed style={{ height: 250, paddingLeft: 660, marginTop: 250 }} popup={false} url="https://demo.typeform.com/to/njdbt5" />
+            <ReactTypeformEmbed style={{ height: 550, marginLeft: 660, paddingTop: 300}} popup={false} url="https://demo.typeform.com/to/njdbt5" />
         </div>
     </ul>
 );
@@ -224,7 +240,7 @@ const ClientFinal = ({ }) => (
         <button type="button"><a href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "black" }}>Google Drive Folder</a></button>
         {/*Typeform is wonky and overlapping other elements, put it at a fixed position for now*/}
         <div style={{ height: 400 }}>
-            <ReactTypeformEmbed style={{ height: 250, marginTop: 1200 }} popup={false} url="https://demo.typeform.com/to/njdbt5" />
+            <ReactTypeformEmbed style={{ height: 250, marginTop: 800 }} popup={false} url="https://demo.typeform.com/to/njdbt5" />
         </div>
     </ul>
 );
