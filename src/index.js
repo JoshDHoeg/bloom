@@ -15,7 +15,7 @@ ReactDOM.render(
   <FirebaseContext.Provider value={new Firebase()}>
     <AuthRouter />
   </FirebaseContext.Provider>,
-  document.getElementById('root'),
+  document.getElementById('root')
 );
 
 serviceWorker.unregister();

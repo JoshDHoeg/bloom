@@ -5,6 +5,9 @@ import React, { Component } from 'react';
 import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../utilities/Session';
 import { format } from 'path';
+import {Link} from "react-router-dom";
+import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import * as ROUTES from "../../utilities/constants/routes";
 
 class AdminPage extends Component {
   constructor(props) {
@@ -42,14 +45,24 @@ class AdminPage extends Component {
     const { users, loading } = this.state;
 
     return (
-      <div>
-        <h1>Admin</h1>
+        <Sidebar.Pushable as={Segment}>
+            <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+                <Menu.Item as={Link} to={ROUTES.CLIENTS}>
+                    <Icon name='address book' />
+                    Clients
+                </Menu.Item>
+            </Sidebar>
 
-          {loading && <div>Loading ...</div>}
-
-          <UserList users={users} />
-
-      </div>
+            <Sidebar.Pusher>
+                <Segment basic>
+                    <div>
+                        <h1>Admin</h1>
+                        {loading && <div>Loading ...</div>}
+                        <UserList users={users} />
+                    </div>
+                </Segment>
+            </Sidebar.Pusher>
+        </Sidebar.Pushable>
     );
   }
 }
