@@ -5,14 +5,12 @@ import React from 'react';
 import { withAuthorization } from '../../../utilities/Session';
 
 import tempLogo from '../../../Images/TempLogo.JPG';
-{/*
-import ClientRevisions from '/ClientRevisions';
-import ClientDesignBrief from '/ClientDesignBrief';
-import ClientFinal from '/ClientFinal';
-*/}
+
+import ProjectSteps from '../../../components/ProjectNav';
 
 const ClientDesignBrief = ({ }) => (
     <div style={{ width: '800px' }}>
+  
         <div style={{ float: 'right', paddingRight: 100 }}>
             <img src={tempLogo} />
         </div>
