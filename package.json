@@ -2,6 +2,9 @@
   "name": "bloom",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "10.4.1"
+  },
   "dependencies": {
     "create-react-class": "^15.6.3",
     "firebase": "^5.8.1",
