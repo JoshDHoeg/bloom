@@ -12,10 +12,15 @@ import PasswordForgetPage from './containers/Users/PasswordForget';
 import ProjectPage from './containers/Project';
 import AccountPage from './containers/Account';
 import DesignerPage from './containers/Designer';
+import ProjectConceptPage from './containers/Project/Concept';
+import ProjectBriefPage from './containers/Project/Brief';
+import ProjectFinalPage from './containers/Project/Final';
+import ProjectRevisionsPage from './containers/Project/Revisions';
 
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes';
 import { withAuthentication } from './utilities/Session';
+import Project from './containers/Project';
 
 const App = () => (
   <Router>
@@ -32,6 +37,11 @@ const App = () => (
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route exact path={ROUTES.PROJECT} component={ProjectPage} />
       <Route path={ROUTES.DESIGNER} component={DesignerPage} />
+
+      <Route path={ROUTES.CLIENT_CONCEPT} component={ProjectConceptPage}/>
+      <Route path={ROUTES.CLIENT_BRIEF} component={ProjectBriefPage}/>
+      <Route path={ROUTES.CLIENT_REVISIONS} component={ProjectRevisionsPage}/>
+      <Route path={ROUTES.CLIENT_FINAL} component={ProjectFinalPage}/>
     </div>
   </Router>
 );
