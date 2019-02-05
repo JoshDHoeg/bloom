@@ -11,11 +11,9 @@ import FigmaEmbed from 'react-figma-embed';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
-import ProjectSteps from '../../../components/ProjectNav';
-
 const ClientFinal = ({ }) => (
     <div>
-     
+
     <ul>
         <FigmaEmbed
             url="https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File" />
@@ -33,4 +31,3 @@ const ClientFinal = ({ }) => (
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(ClientFinal);
-

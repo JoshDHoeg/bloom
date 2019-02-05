@@ -6,11 +6,10 @@ import { withAuthorization } from '../../../utilities/Session';
 
 import tempLogo from '../../../Images/TempLogo.JPG';
 
-import ProjectSteps from '../../../components/ProjectNav';
 
 const ClientDesignBrief = ({ }) => (
     <div style={{ width: '800px' }}>
-  
+
         <div style={{ float: 'right', paddingRight: 100 }}>
             <img src={tempLogo} />
         </div>
@@ -188,4 +187,3 @@ var TasteProfile = createReactClass({
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(ClientDesignBrief);
-
