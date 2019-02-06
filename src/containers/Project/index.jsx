@@ -15,38 +15,44 @@ import RevisionsPage from './Revisions';
 
 const HomePageWithSideBar = () => (
     <Sidebar.Pushable as={Segment}>
-        <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
-            <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>
-                <Icon name='clipboard' />
-                DBrief
+        <Router>
+            <div>
+                <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+                    <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>
+                        <Icon name='clipboard' />
+                        DBrief
             </Menu.Item>
-            <Menu.Item as={Link} to={ROUTES.CLIENT_CONCEPT}>
-                <Icon name='bullseye' />
-                Concept
+                    <Menu.Item as={Link} to={ROUTES.CLIENT_CONCEPT}>
+                        <Icon name='bullseye' />
+                        Concept
             </Menu.Item>
-            <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
-                <Icon name='file' />
-                Final
+                    <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
+                        <Icon name='file' />
+                        Final
             </Menu.Item>
-            <Menu.Item as={Link} to={ROUTES.CLIENT_REVISIONS}>
-                <Icon name='folder' />
-                Revisions
+                    <Menu.Item as={Link} to={ROUTES.CLIENT_REVISIONS}>
+                        <Icon name='folder' />
+                        Revisions
             </Menu.Item>
-        </Sidebar>
+                </Sidebar>
 
-        <Sidebar.Pusher>
-            <Segment basic>
-              <Router>
-                <div>
-                  <Route path={ROUTES.CLIENT_CONCEPT} component={ConceptPage}/>
-                  <Route path={ROUTES.CLIENT_BRIEF} component={BriefPage}/>
-                  <Route path={ROUTES.CLIENT_REVISIONS} component={RevisionsPage}/>
-                  <Route path={ROUTES.CLIENT_FINAL} component={FinalPage}/>
-                </div>
-              </Router>
-            </Segment>
-        </Sidebar.Pusher>
+                <Sidebar.Pusher>
+                    <Segment basic>
+
+                        <div>
+                            <Route path={ROUTES.CLIENT_CONCEPT} component={ConceptPage} />
+                            <Route path={ROUTES.CLIENT_BRIEF} component={BriefPage} />
+                            <Route path={ROUTES.CLIENT_REVISIONS} component={RevisionsPage} />
+                            <Route path={ROUTES.CLIENT_FINAL} component={FinalPage} />
+                        </div>
+
+                    </Segment>
+                </Sidebar.Pusher>
+            </div>
+        </Router>
+
     </Sidebar.Pushable>
+
 )
 
 const condition = authUser => !!authUser;

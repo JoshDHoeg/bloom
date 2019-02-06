@@ -10,41 +10,41 @@ import * as ROUTES from '../../utilities/constants/routes';
 import { AuthUserContext } from '../../utilities/Session';
 
 const Navigation = () => (
-  <div>
-    <AuthUserContext.Consumer>
-      {authUser =>
-        authUser ? <NavigationAuth /> : <NavigationNonAuth />
-      }
-    </AuthUserContext.Consumer>
-  </div>
+    <div>
+        <AuthUserContext.Consumer>
+            {authUser =>
+                authUser ? <NavigationAuth /> : <NavigationNonAuth />
+            }
+        </AuthUserContext.Consumer>
+    </div>
 );
 
 const NavigationAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.PROJECT}>Project</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.ACCOUNT}>Account</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.DESIGNER}>Designer</Link>
-    </li>
-    <li>
-      <SignOutButton />
-    </li>
-  </ul>
+    <div class="ui stackable menu">
+        <div class="item">
+            <Link to={ROUTES.CLIENT_CONCEPT}>Project</Link>
+        </div>
+        <div class="item">
+            <Link to={ROUTES.ACCOUNT}>Account</Link>
+        </div>
+        <div class="item">
+            <Link to={ROUTES.DESIGNER}>Designer</Link>
+        </div>
+        <div class="item">
+            <SignOutButton />
+        </div>
+    </div>
 );
 
 const NavigationNonAuth = () => (
-  <ul>
-    <li>
-      <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-    </li>
-    <li>
-      <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-    </li>
-  </ul>
+    <ul>
+        <li>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        </li>
+        <li>
+            <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+        </li>
+    </ul>
 );
 
 export default Navigation;
