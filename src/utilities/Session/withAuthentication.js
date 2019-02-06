@@ -9,9 +9,8 @@ const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
       super(props);
-
       this.state = {
-        authUser: null,
+        authUser: null
       };
     }
 
@@ -21,7 +20,7 @@ const withAuthentication = Component => {
           authUser
             ? this.setState({ authUser })
             : this.setState({ authUser: null });
-        },
+        }
       );
     }
 
@@ -37,7 +36,6 @@ const withAuthentication = Component => {
       );
     }
   }
-
   return withFirebase(WithAuthentication);
 };
 
