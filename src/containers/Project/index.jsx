@@ -14,7 +14,7 @@ import FinalPage from './Final';
 import RevisionsPage from './Revisions';
 
 const HomePageWithSideBar = () => (
-        <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', height: "290px" }}>
+        <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>
             <Router>
                 <div>
                     <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
