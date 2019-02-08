@@ -43,8 +43,8 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-    <div class="ui inverted top menu">
-        <div class="ui inverted top menu fixed">
+    <div class="ui grey inverted  top menu">
+        <div class="ui grey inverted  top menu fixed">
             <div class="item">
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </div>
