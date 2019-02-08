@@ -8,15 +8,12 @@ import tempLogo from '../../../Images/TempLogo.JPG';
 
 
 const ClientDesignBrief = ({ }) => (
-    <div style={{ width: '800px' }}>
-
-        <div style={{ float: 'right', paddingRight: 100 }}>
-            <img src={tempLogo} />
-        </div>
-        <h3>Design Brief:</h3>
-
-        <div style={{ height: '600px', paddingLeft: '100px' }}>
+    <div class="ui stackable grid container" style={{ paddingTop: "40px", float: 'left', height: "100vh" }}>
+        <div style={{ paddingLeft: '40px' }}>
             <ProjectHeader />
+            <div style={{ float: 'right' }}>
+                <img src={tempLogo} />
+            </div>
             <h1>Bloomtime Design Brief</h1>
             <div style={{ width: '600px' }}>
                 <div style={{ float: 'left' }}>

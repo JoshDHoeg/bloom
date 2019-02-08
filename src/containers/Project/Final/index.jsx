@@ -12,19 +12,22 @@ import FigmaEmbed from 'react-figma-embed';
 import { withAuthorization } from '../../../utilities/Session';
 
 const ClientFinal = ({ }) => (
-    <div>
+    <div class="ui stackable grid container" >
+        <div class="row">
 
-    <ul>
-        <FigmaEmbed
-            url="https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File" />
-        <YoutubeEmbedVideo videoId="3YG4h5GbTqU" suggestions={false} />
-        <button type="button"><a href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "black" }}>Google Drive Folder</a></button>
-        {/*Typeform is wonky and overlapping other elements, put it at a fixed position for now*/}
-        <div style={{ height: 400 }}>
-            <ReactTypeformEmbed style={{ height: 250, marginTop: 800 }} popup={false} url="https://demo.typeform.com/to/njdbt5" />
+            <FigmaEmbed url="https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File" />
         </div>
-    </ul>
-    </div>
+        <div class="row">
+            <YoutubeEmbedVideo videoId="3YG4h5GbTqU" suggestions={false} />
+        </div>
+        <div class="row">
+            <button type="button"><a href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "black" }}>Google Drive Folder</a></button>
+        </div>
+        <div class="row" style={{ height: 400 }}>
+            <ReactTypeformEmbed popup={false} url="https://demo.typeform.com/to/njdbt5" />
+        </div>
+    </div >
+
 );
 
 

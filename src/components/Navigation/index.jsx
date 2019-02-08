@@ -21,8 +21,8 @@ const Navigation = () => (
 
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
-    <div class="ui inverted top menu">
-        <div class="ui inverted top menu fixed">
+    <div class="ui grey inverted top menu">
+        <div class="ui grey inverted top menu fixed">
             <div class="item">
                 <Link to={ROUTES.CLIENT_CONCEPT}>Project</Link>
             </div>

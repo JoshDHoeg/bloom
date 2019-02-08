@@ -14,7 +14,7 @@ import FinalPage from './Final';
 import RevisionsPage from './Revisions';
 
 const HomePageWithSideBar = () => (
-    <Sidebar.Pushable as={Segment}>
+    <Sidebar.Pushable as={Segment} style={{marginTop: "-9px", marginLeft: '-3px'}}>
         <Router>
             <div>
                 <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
@@ -52,7 +52,7 @@ const HomePageWithSideBar = () => (
         </Router>
 
     </Sidebar.Pushable>
-
+   
 )
 
 const condition = authUser => !!authUser;
