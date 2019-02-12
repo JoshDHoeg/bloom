@@ -1,20 +1,47 @@
 export class User {
+  _client = false;
+  get client() { return this._client; }
+  set client(isClient) {
+    this.ref.set({ client: isClient });
+  }
+  _email = '';
+  get email() { return this._email; }
+  set email(email) {
+    this.ref.set({ email: email });
+  }
+  _name = '';
+  get name() { return this._name; }
+  set name(name) {
+    this.ref.set({ name: name });
+  }
+  _phone = '';
+  get phone() { return this._phone; }
+  set phone(phone) {
+    this.ref.set({ phone: phone });
+  }
+  _projects = [];
+  get projects() { return this._projects; }
+  set projects(projs) {
+    this.ref.set({ projects: projs });
+  }
   constructor(dbQuery) {
-      const data = dbQuery.data();
-      this.client = data['client']; // boolean
-      this.email = data['email']; // string
-      this.name = data['name']; // string
-      this.phone = data['phone']; // string
-      this.projects = data['projects']; // DocumentReference[]
-      this.id = dbQuery.ref.id; // string
+    const data = dbQuery.data();
+    this._client = data['client'];
+    this._email = data['email'];
+    this._name = data['name'];
+    this._phone = data['phone'];
+    this._projects = data['projects']; // DocumentReference[]
+    this.ref = dbQuery.ref;
+    this.id = this.ref.id; // string
   }
 }
 
 export class Project {
+  name = '';  // the only nonPromise type
   constructor(documentRef) {
     this.cols = documentRef.ref;
     const data = documentRef.data();
-    this.name = data['name']; // String (the only nonPromise type)
+    this.name = data['name']; 
     this.clientRef = data['client'];
     this.designerRef = data['designer'];
   }
@@ -27,9 +54,14 @@ export class Project {
     }, { name: this.name });
   }
   get client() { return this.clientRef.get().then(userSnap => new User(userSnap)); }
+  set client(userClass) { this.cols.set({ client: userClass.ref }, { merge: true }); }
   get designer() { return this.designerRef.get().then(userSnap => new User(userSnap)); }
+  set designer(userClass) { this.cols.set({ designer: userClass.ref }, { merge: true }); }
 
   get briefs() { return this.getDatabasePromise(ProjectData.Brief); }
+  // set brief(briefClass) {
+  //   this.setDatabasePromise(ProjectData.Brief, briefClass)
+  // }
   get concepts() { return this.getDatabasePromise(ProjectData.Concept); }
   get finals() { return this.getDatabasePromise(ProjectData.Final); }
   get revisions() { return this.getDatabasePromise(ProjectData.Revision); }
@@ -37,43 +69,43 @@ export class Project {
     this.cols.collection(projectData.colRef).get().then(colSnap => {
       return colSnap.docs.map(doc => new projectData.type(doc));
     });
+  // TODO: for setting by class (could be useful in the future)
+  // setDatabasePromise = (projectData, newData) =>
+  //   this.cols.collection(projectData.colRef).set(
+  //     newData._getAll(), { merge: true });
+}
+
+class ProjectDataBase {
+  _init = false;
+  get init() {
+    return this._init;
+  };
+  set init(i) {
+    this.ref.set({ init: i }, { merge: true });
+  }
+  constructor(dbQuery) {
+    this.ref = dbQuery.ref;
+    this.data = dbQuery.data();
+    this._init = this.data['init'];
+  }
+  _getAll = () => { return { init: this.init } };
 }
 
 export class ProjectData {
   static Brief = {
-    colRef: 'brief',
-    type: class Brief {
-      constructor(dbQuery) {
-        const data = dbQuery.data();
-        this.info = data['info'];
-      }
-    }
+    colRef: 'briefs',
+    type: class Brief extends ProjectDataBase { }
   };
   static Concept = {
-    colRef: 'concept',
-    type: class Concept {
-      constructor(dbQuery) {
-        const data = dbQuery.data();
-        this.info = data['info'];
-      }
-    }
+    colRef: 'concepts',
+    type: class Concept extends ProjectDataBase { }
   };
   static Final = {
-    colRef: 'final',
-    type: class Final {
-      constructor(dbQuery) {
-        const data = dbQuery.data();
-        this.info = data['info'];
-      }
-    }
+    colRef: 'finals',
+    type: class Final extends ProjectDataBase { }
   };
   static Revision = {
     colRef: 'revisions',
-    type: class Revision {
-      constructor(dbQuery) {
-        const data = dbQuery.data();
-        this.info = data['info'];
-      }
-    }
+    type: class Revision extends ProjectDataBase { }
   }
 }
