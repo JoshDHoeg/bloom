@@ -8,6 +8,7 @@ import { format } from 'path';
 import {Link} from "react-router-dom";
 import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import * as ROUTES from "../../utilities/constants/routes";
+import { Designer } from "./designer"
 
 class AdminPage extends Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class AdminPage extends Component {
 
     this.state = {
       loading: false,
-      users: [],
+      users: []
     };
   }
 
@@ -44,25 +45,45 @@ class AdminPage extends Component {
   render() {
     const { users, loading } = this.state;
 
-    return (
-        <Sidebar.Pushable as={Segment}>
-            <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
-                <Menu.Item as={Link} to={ROUTES.CLIENTS}>
-                    <Icon name='address book' />
-                    Clients
-                </Menu.Item>
-            </Sidebar>
+    //temp dummy data
+    var temp = [
+            {pic: 'https://react.semantic-ui.com/images/avatar/large/matthew.png',
+            name: "Jack",
+            loc: "Denver",
+            status: "Ongoing"},
 
-            <Sidebar.Pusher>
-                <Segment basic>
-                    <div>
-                        <h1>Admin</h1>
-                        {loading && <div>Loading ...</div>}
-                        <UserList users={users} />
-                    </div>
-                </Segment>
-            </Sidebar.Pusher>
-        </Sidebar.Pushable>
+            {pic: 'https://react.semantic-ui.com/images/avatar/large/daniel.jpg',
+            name: "Jim",
+            loc: "Denver",
+            status: "Ongoing"},
+
+            {pic: 'https://react.semantic-ui.com/images/avatar/large/molly.png',
+            name: "Molly",
+            loc: "Greeley",
+            status: "Completed"}]
+      
+    return (
+        <div>
+            <Sidebar.Pushable as={Segment}>
+                <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+                    <Menu.Item as={Link} to={ROUTES.CLIENTS}>
+                        <Icon name='address book' />
+                        Clients
+                    </Menu.Item>
+                </Sidebar>
+
+                <Sidebar.Pusher>
+                    <Segment basic>
+                        <div>
+                            <h1>Clients</h1>
+                            {loading && <div>Loading ...</div>}
+                            <UserList users={users} />
+                            <Designer props={temp}/>
+                        </div>
+                    </Segment>
+                </Sidebar.Pusher>
+            </Sidebar.Pushable>
+        </div>
     );
   }
 }
