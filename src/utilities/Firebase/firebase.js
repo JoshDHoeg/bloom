@@ -32,8 +32,8 @@ const config =
  * * ** IF INSUFFICIENT PERMISIONS **
  * * run the function setRuleAllowAll(true)
  *    this.props.firebase.setRuleAllowAll(true)
- * 
- * 
+ *
+ *
  * * ** User **
  * * user = (<uid>) => Promise<User>
  *    this.props.user(uid).then(user => <yourFunction>)
@@ -42,7 +42,7 @@ const config =
  * * onUser = (<Subscription<User[]>) => void
  *    this.props.firebase.onUser(this.userSub)
  * * setUser = ()
- * 
+ *
  * * ** Project **
  * * project = (<id>|<uid, true>) => Promise<Project>
  *    this.props.firebase.project(id).then(project => {
@@ -117,7 +117,7 @@ class Firebase {
 
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
-  
+
   setUser = (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['',['',false]]) => {
     const projects = projectUid.map(p => {
       if (Array.isArray(p))
@@ -132,7 +132,7 @@ class Firebase {
       projects: projects
     });
   }
-  
+
   _getProjectTemplate = async (name, clientUid, designerUid) => {
     const clientData = await this.usersRef.doc(clientUid).get();
     const designerData = await this.usersRef.doc(designerUid).get();
@@ -157,7 +157,7 @@ class Firebase {
     if (projectRef && returnProject)
       return this.project(projectRef.id);
     else return projectRef;
-      
+
   }
   // TODO: this batch write can actually be removed
   updateProject = async (projectId, name, clientUid, designerUid, returnProject = true) => {

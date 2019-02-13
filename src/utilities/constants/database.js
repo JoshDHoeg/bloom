@@ -41,7 +41,7 @@ export class Project {
   constructor(documentRef) {
     this.cols = documentRef.ref;
     const data = documentRef.data();
-    this.name = data['name']; 
+    this.name = data['name'];
     this.clientRef = data['client'];
     this.designerRef = data['designer'];
   }
