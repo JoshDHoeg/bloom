@@ -1,52 +1,60 @@
 // BLOOMTIME DESIGN 2019
-import React from 'react';
+import React, { Component } from 'react';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
 import tempLogo from '../../../Images/TempLogo.JPG';
 
+class ClientDesignBrief extends Component {
+    componentDidMount() {
 
-const ClientDesignBrief = ({ }) => (
-    <div class="ui stackable grid container" style={{ paddingTop: "40px", float: 'left', height: "100vh" }}>
-        <div style={{ paddingLeft: '40px' }}>
-            <ProjectHeader />
-            <div style={{ float: 'right' }}>
-                <img src={tempLogo} />
-            </div>
-            <h1>Bloomtime Design Brief</h1>
-            <div style={{ width: '600px' }}>
-                <div style={{ float: 'left' }}>
-                    <h3>Goals</h3>
-                    <GoalList />
-                </div>
-                <div style={{ float: 'right' }}>
-                    <h3>Details</h3>
-                    <DetailList />
-                    <h3>Media</h3>
-                    <MediaList />
-                </div>
-            </div>
-            <div style={{ float: 'left', width: '600px' }}>
-                <ColoredLine />
-                <div style={{ width: '600px' }}>
-                    <div style={{ float: 'left' }}>
-                        <h3>Narrative</h3>
-                        <Narrative />
-                    </div>
+    }
+
+    render() {
+        return (
+            <div class="ui stackable grid container" style={{ paddingTop: "40px", float: 'left', height: "100vh" }}>
+                <div style={{ paddingLeft: '40px' }}>
+                    <ProjectHeader />
                     <div style={{ float: 'right' }}>
-                        <h3>Taste Profile</h3>
-                        <TasteProfile />
-                        <div style={{ paddingTop: 200 }}>
-                            <h3>Comments? Click <MailFunction /></h3>
+                        <img src={tempLogo} />
+                    </div>
+                    <h1>Bloomtime Design Brief</h1>
+                    <div style={{ width: '600px' }}>
+                        <div style={{ float: 'left' }}>
+                            <h3>Goals</h3>
+                            <GoalList />
+                        </div>
+                        <div style={{ float: 'right' }}>
+                            <h3>Details</h3>
+                            <DetailList />
+                            <h3>Media</h3>
+                            <MediaList />
+                        </div>
+                    </div>
+                    <div style={{ float: 'left', width: '600px' }}>
+                        <ColoredLine />
+                        <div style={{ width: '600px' }}>
+                            <div style={{ float: 'left' }}>
+                                <h3>Narrative</h3>
+                                <Narrative />
+                            </div>
+                            <div style={{ float: 'right' }}>
+                                <h3>Taste Profile</h3>
+                                <TasteProfile />
+                                <div style={{ paddingTop: 200 }}>
+                                    <h3>Comments? Click <MailFunction /></h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-);
-const ColoredLine = ({ }) => (
+        )
+    }
+}
+
+const ColoredLine = () => (
     <hr
         style={{
             color: 'black',
@@ -59,7 +67,7 @@ const ColoredLine = ({ }) => (
 //Creates the variables to use for the
 var createReactClass = require('create-react-class');
 var ProjectHeader = createReactClass({
-    render: function () {
+    render: () => {
         var ClientName = "[Client Name]";
         var Address = "[Client Address]";
         return <h3>{ClientName} Project at {Address}</h3>;
@@ -68,7 +76,7 @@ var ProjectHeader = createReactClass({
 });
 
 var MailFunction = createReactClass({
-    render: function () {
+    render: () => {
         var ClientName = "[Client Name]";
         var Address = "[Client Address]";
         var email = "mailto:info@bloomtimedesign.co?subject=" + { ClientName } + '\'s Design Brief at ' + { Address };
@@ -79,7 +87,7 @@ var MailFunction = createReactClass({
 
 
 var GoalList = createReactClass({
-    render: function () {
+    render: () => {
         var goalOne = "Goal 1";
         var goalTwo = "Goal 2";
         var goalThree = "Goal 3";
@@ -95,7 +103,7 @@ var GoalList = createReactClass({
 });
 
 var DetailList = createReactClass({
-    render: function () {
+    render: () => {
         var PropertyLocation = "[Location on property]";
         var BudgetRange = "[budget range]";
         var GoogleMapsURL = "https://www.google.com/maps";
@@ -111,7 +119,7 @@ var DetailList = createReactClass({
 });
 
 var MediaList = createReactClass({
-    render: function () {
+    render: () => {
         var GoogleDocsURL = "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing";
         return (
             <a href={GoogleDocsURL}>Click here for site plan, sun map, photos, etc.</a>
@@ -121,7 +129,7 @@ var MediaList = createReactClass({
 });
 
 var Narrative = createReactClass({
-    render: function () {
+    render: () => {
         var NarrativeText = "[Narrative Text]";
         return (
             <p>{NarrativeText}</p>
@@ -131,7 +139,7 @@ var Narrative = createReactClass({
 });
 
 var TasteProfile = createReactClass({
-    render: function () {
+    render: () => {
 
         return (
             <div style={{ width: 270, fontSize: 10 }}>
