@@ -11,7 +11,7 @@ import FigmaEmbed from 'react-figma-embed';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
-const ClientFinal = ({ }) => (
+const ClientFinal = () => (
     <div class="ui stackable grid container" >
         <div class="row">
 

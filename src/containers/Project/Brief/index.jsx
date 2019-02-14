@@ -30,7 +30,7 @@ class ClientDesignBrief extends Component {
         const { user } = this.state;
         const ClientName = user.name;
     
-        const ColoredLine = ({}) => (
+        const ColoredLine = () => (
             <hr
                     style={{
                         color: 'black',
@@ -149,7 +149,7 @@ class ClientDesignBrief extends Component {
                     <div style={{ paddingLeft: '40px' }}>
                         <ProjectHeader />
                         <div style={{ float: 'right' }}>
-                            <img src={tempLogo} />
+                            <img src={tempLogo} alt ="logo"/>
                         </div>
                         <h1>Bloomtime Design Brief</h1>
                         <div style={{ width: '600px' }}>

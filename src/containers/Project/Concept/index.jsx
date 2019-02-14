@@ -9,7 +9,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
-const ClientConcept = ({ }) => (
+const ClientConcept = () => (
     <div class="ui stackable grid container" >
         <div class="row">
             <YoutubeEmbedVideo videoId="ygggcqKmUts" suggestions={false} />

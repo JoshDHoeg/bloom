@@ -18,7 +18,6 @@ import DesignerPage from './containers/Designer';
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes';
 import { withAuthentication } from './utilities/Session';
-import Project from './containers/Project';
 
 const App = () => (
   <Router>

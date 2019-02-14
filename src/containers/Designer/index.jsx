@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../utilities/Session';
 // import { format } from 'path';
 import {Link} from "react-router-dom";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import * as ROUTES from "../../utilities/constants/routes";
 
 class AdminPage extends Component {

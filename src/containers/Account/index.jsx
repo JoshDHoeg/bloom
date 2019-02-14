@@ -8,7 +8,7 @@ import PasswordChangeForm from '../Users/PasswordChange';
 //IMPORT UTILITIES
 import { AuthUserContext, withAuthorization } from '../../utilities/Session';
 import {Link} from "react-router-dom";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import * as ROUTES from "../../utilities/constants/routes";
 
 const AccountPage = () => (

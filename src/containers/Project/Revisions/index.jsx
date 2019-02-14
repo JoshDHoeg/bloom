@@ -7,7 +7,7 @@ import FigmaEmbed from 'react-figma-embed';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
-const ClientRevisions = ({ }) => (
+const ClientRevisions = () => (
     <div class="ui stackable grid container" >
         <div class="row">
             <FigmaEmbed url="https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File" />
