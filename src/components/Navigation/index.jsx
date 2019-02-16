@@ -36,7 +36,7 @@ const NavigationAuth = () => (
                 <SignOutButton />
             </div>
             <div class="right menu item">
-                <text>Bloomtime </text>
+                <h3>Bloomtime </h3>
             </div>
         </div>
     </div>
@@ -52,7 +52,7 @@ const NavigationNonAuth = () => (
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
             <div class="right menu item">
-                <text>Bloomtime </text>
+                <h3>Bloomtime </h3>
             </div>
         </div>
     </div>
