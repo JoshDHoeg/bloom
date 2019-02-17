@@ -35,31 +35,35 @@ class ClientDesignBrief extends Component {
 
         const DesignerButton = () => (
             <div>
-            <input id='ClientButton' type="button" value="Client" onClick={ClientView}/>
-            <input id='DesignerButton' type="button" value="Designer" onClick={DesignerView}/>
+                <input id='ClientButton' type="button" value="Client" onClick={ClientView} />
+                <input id='DesignerButton' style={{display: 'none'}} type="button" value="Designer" onClick={DesignerView} />
             </div>
         )
 
         const ClientView = () => {
             if (!isDesigner) {
-                document.getElementById('GoalEdit').style.visibility = "hidden";
-                document.getElementById('NarrativeEdit').style.visibility = "hidden";
-                document.getElementById('DetailEdit').style.visibility = "hidden";
-                document.getElementById('TasteEdit').style.visibility = "hidden";
+                document.getElementById('GoalEdit').style.display = "none";
+                document.getElementById('NarrativeEdit').style.display = "none";
+                document.getElementById('DetailEdit').style.display = "none";
+                document.getElementById('TasteEdit').style.display = "none";
+                document.getElementById('ClientButton').style.display = "none"
+                document.getElementById('DesignerButton').style.display = "inherit"
             }
             //Make sure the narrative isnt editable when client
             if (document.getElementById('NarrativeTxt').style.visibility === "hidden") {
-            NarrativeViewFunc();
+                NarrativeViewFunc();
             }
 
         }
 
         const DesignerView = () => {
             if (!isDesigner) {
-                document.getElementById('GoalEdit').style.visibility = "visible";
-                document.getElementById('NarrativeEdit').style.visibility = "visible";
-                document.getElementById('DetailEdit').style.visibility = "visible";
-                document.getElementById('TasteEdit').style.visibility = "visible";
+                document.getElementById('GoalEdit').style.display = "inherit";
+                document.getElementById('NarrativeEdit').style.display = "inherit";
+                document.getElementById('DetailEdit').style.display = "inherit";
+                document.getElementById('TasteEdit').style.display = "inherit";
+                document.getElementById('ClientButton').style.display = "inherit"
+                document.getElementById('DesignerButton').style.display = "none"
             }
 
         }
@@ -94,16 +98,32 @@ class ClientDesignBrief extends Component {
             var goalThree = "Goal 3";
             return (
                 <div>
-                    <ul>
-                        <li>{goalOne}</li>
-                        <li>{goalTwo}</li>
-                        <li>{goalThree}</li>
-                    </ul>
-                    <input id='GoalEdit' type="button" value="Edit" style={{ visibility: 'visible' }} />
+                    <div id='goals' style={{visibility: 'visible'}}>
+                        <ul>
+                            <li id="goal1">{goalOne}</li>
+                            <li id="goal2">{goalTwo}</li>
+                            <li id="goal3">{goalThree}</li>
+                        </ul>
+                        <input id='GoalEdit' type="button" value="Edit" style={{ visibility: 'visible' }} onClick={GoalViewFunc} />
+                        <input id='GoalSubmit' type="button" value="Submit" style={{ visibility: 'hidden' }} onClick={GoalViewFunc} />
+                    </div>
                 </div>
             )
         };
+        //note from Taylor to Taylor: Change all from visibility to display
+        const GoalViewFunc = () => {
+            if (document.getElementById('goals').style.visibility === "visible") {
+                document.getElementById('goals').style.visibility = "hidden";
+                document.getElementById('GoalSubmit').style.visibility = "visible";
+                document.getElementById('GoalEdit').style.display = "none";
+            } else {
+                document.getElementById('goals').style.visibility = "visible";
+                document.getElementById('GoalSubmit').style.visibility = "hidden";
+                document.getElementById('GoalEdit').style.display = "inherit";
 
+            }
+
+        }
 
         const DetailList = () => {
             var PropertyLocation = "[Location on property]";
@@ -215,7 +235,7 @@ class ClientDesignBrief extends Component {
 
             <div class="ui stackable grid container" style={{ paddingTop: "40px", float: 'left', height: "100vh" }}>
                 <div style={{ paddingLeft: '40px' }}>
-                <DesignerButton/>
+                    <DesignerButton />
                     <ProjectHeader />
                     <div style={{ float: 'right' }}>
                         <img src={tempLogo} alt="logo" />
