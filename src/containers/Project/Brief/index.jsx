@@ -5,7 +5,6 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../../utilities/Session';
 
 import tempLogo from '../../../Images/TempLogo.JPG';
-import { Button, Visibility } from 'semantic-ui-react';
 
 class ClientDesignBrief extends Component {
     constructor(props) {
@@ -36,29 +35,38 @@ class ClientDesignBrief extends Component {
         const DesignerButton = () => (
             <div>
                 <input id='ClientButton' type="button" value="Client" onClick={ClientView} />
-                <input id='DesignerButton' style={{display: 'none'}} type="button" value="Designer" onClick={DesignerView} />
+                <input id='DesignerButton' style={{ display: 'none' }} type="button" value="Designer" onClick={DesignerView} />
             </div>
         )
 
         const ClientView = () => {
+            
+            //Make sure the page isnt editable when client
+            if (document.getElementById('NarrativeTxt').style.visibility === "hidden") {
+                NarrativeViewFunc();
+            }
+            if (document.getElementById('goals').style.display === "none") {
+                GoalViewFunc();
+            }
+
+            if (document.getElementById('DetailEdit').style.display === "none") {
+                DetailViewFunc();
+            }
+
             if (!isDesigner) {
-                document.getElementById('GoalEdit').style.display = "none";
+                document.getElementById('GoalEditBtn').style.display = "none";
                 document.getElementById('NarrativeEdit').style.display = "none";
                 document.getElementById('DetailEdit').style.display = "none";
                 document.getElementById('TasteEdit').style.display = "none";
                 document.getElementById('ClientButton').style.display = "none"
                 document.getElementById('DesignerButton').style.display = "inherit"
             }
-            //Make sure the narrative isnt editable when client
-            if (document.getElementById('NarrativeTxt').style.visibility === "hidden") {
-                NarrativeViewFunc();
-            }
 
         }
 
         const DesignerView = () => {
             if (!isDesigner) {
-                document.getElementById('GoalEdit').style.display = "inherit";
+                document.getElementById('GoalEditBtn').style.display = "inherit";
                 document.getElementById('NarrativeEdit').style.display = "inherit";
                 document.getElementById('DetailEdit').style.display = "inherit";
                 document.getElementById('TasteEdit').style.display = "inherit";
@@ -98,29 +106,35 @@ class ClientDesignBrief extends Component {
             var goalThree = "Goal 3";
             return (
                 <div>
-                    <div id='goals' style={{visibility: 'visible'}}>
-                        <ul>
+                    <div >
+                        <ul id='goals'>
                             <li id="goal1">{goalOne}</li>
                             <li id="goal2">{goalTwo}</li>
                             <li id="goal3">{goalThree}</li>
                         </ul>
-                        <input id='GoalEdit' type="button" value="Edit" style={{ visibility: 'visible' }} onClick={GoalViewFunc} />
-                        <input id='GoalSubmit' type="button" value="Submit" style={{ visibility: 'hidden' }} onClick={GoalViewFunc} />
+                        <div id='GoalsEdit' style={{ display: 'none', listStyleType: 'none', paddingBottom: "15px" }}>
+                            <li><input type="text" id="Goal1Text" placeholder={goalOne} style={{}} /></li>
+                            <li><input type="text" id="Goal2Text" placeholder={goalTwo} style={{}} /></li>
+                            <li><input type="text" id="Goal3Text" placeholder={goalThree} style={{}} /></li>
+                        </div>
+                        <input id='GoalEditBtn' type="button" value="Edit" style={{ visibility: 'visible' }} onClick={GoalViewFunc} />
+                        <input id='GoalSubmit' type="button" value="Submit" style={{ display: "none" }} onClick={GoalViewFunc} />
                     </div>
                 </div>
             )
         };
         //note from Taylor to Taylor: Change all from visibility to display
         const GoalViewFunc = () => {
-            if (document.getElementById('goals').style.visibility === "visible") {
-                document.getElementById('goals').style.visibility = "hidden";
-                document.getElementById('GoalSubmit').style.visibility = "visible";
-                document.getElementById('GoalEdit').style.display = "none";
+            if (document.getElementById('goals').style.display === "none") {
+                document.getElementById('goals').style.display = "inherit";
+                document.getElementById('GoalSubmit').style.display = "none";
+                document.getElementById('GoalEditBtn').style.display = "initial";
+                document.getElementById('GoalsEdit').style.display = "none";
             } else {
-                document.getElementById('goals').style.visibility = "visible";
-                document.getElementById('GoalSubmit').style.visibility = "hidden";
-                document.getElementById('GoalEdit').style.display = "inherit";
-
+                document.getElementById('goals').style.display = "none";
+                document.getElementById('GoalSubmit').style.display = "inherit";
+                document.getElementById('GoalEditBtn').style.display = "none";
+                document.getElementById('GoalsEdit').style.display = "inherit";
             }
 
         }
@@ -132,13 +146,34 @@ class ClientDesignBrief extends Component {
             return (
                 <div>
                     <ul>
-                        <li>Located on the {PropertyLocation}<br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationDisplay">Located on the {PropertyLocation}<br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" placeholder={PropertyLocation} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
-                        <li>Budget: {BudgetRange}</li>
+                        <li id='BudgetDisplay'>Budget: {BudgetRange}</li>
+                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" placeholder={BudgetRange} style={{ width: '140px' }} ></input></li>
                     </ul>
-                    <input id="DetailEdit" type="button" value="Edit" />
+                    <input id="DetailEdit" type="button" value="Edit" onClick={DetailViewFunc} />
+                    <input id="DetailSubmit" type="button" value="Submit" onClick={DetailViewFunc} style={{ display: 'none' }} />
                 </div>
             )
+        }
+
+        const DetailViewFunc = () => {
+            if (document.getElementById('LocationEdit').style.display === "none") {
+                document.getElementById('LocationEdit').style.display = "inherit";
+                document.getElementById('BudgetEdit').style.display = "inherit";
+                document.getElementById('LocationDisplay').style.display = "none";
+                document.getElementById('BudgetDisplay').style.display = "none";
+                document.getElementById('DetailEdit').style.display = "none";
+                document.getElementById('DetailSubmit').style.display = "inherit";
+            } else {
+                document.getElementById('LocationEdit').style.display = "none";
+                document.getElementById('BudgetEdit').style.display = "none";
+                document.getElementById('LocationDisplay').style.display = "inherit";
+                document.getElementById('BudgetDisplay').style.display = "inherit";
+                document.getElementById('DetailEdit').style.display = "inherit";
+                document.getElementById('DetailSubmit').style.display = "none";
+            }
         }
 
         var MediaList = () => {
@@ -165,8 +200,10 @@ class ClientDesignBrief extends Component {
                 document.getElementById('NarrativeTxt').style.visibility = "visible";
                 document.getElementById('EditNarrativeTxt').style.visibility = "hidden";
                 document.getElementById('NarrativeTxtSubmit').style.visibility = "hidden";
+                document.getElementById('NarrativeEdit').style.visibility = "visible";
             } else {
                 document.getElementById('NarrativeTxt').style.visibility = "hidden";
+                document.getElementById('NarrativeEdit').style.visibility = "hidden";
                 document.getElementById('EditNarrativeTxt').style.visibility = "visible";
                 document.getElementById('NarrativeTxtSubmit').style.visibility = "visible";
             }
@@ -183,47 +220,48 @@ class ClientDesignBrief extends Component {
         var TasteProfile = () => {
 
             return (
-
-                <div style={{ width: 270, fontSize: 10 }}>
-                    <li style={{ fontSize: 13, listStyle: 'none' }}>
-                        <h5>Spacing</h5>
-                        <p>Wide &nbsp; | &nbsp; Medium &nbsp; | &nbsp; Full &nbsp; | &nbsp; Lush
+                <div>
+                    <div style={{ width: 270, fontSize: 10 }}>
+                        <li style={{ fontSize: 13, listStyle: 'none' }}>
+                            <h5>Spacing</h5>
+                            <p>Wide &nbsp; | &nbsp; Medium &nbsp; | &nbsp; Full &nbsp; | &nbsp; Lush
                     </p>
 
-                        <h5>Spacing</h5>
-                        <p>Repetitive &nbsp; | &nbsp; Massings &nbsp; | &nbsp; Groups &nbsp; | &nbsp; Mixed
+                            <h5>Spacing</h5>
+                            <p>Repetitive &nbsp; | &nbsp; Massings &nbsp; | &nbsp; Groups &nbsp; | &nbsp; Mixed
                     </p>
 
-                        <h5>Spacing</h5>
-                        <p>V. Straight &nbsp; | &nbsp; Straight &nbsp; | &nbsp; Curious &nbsp; | &nbsp; V. Curved
+                            <h5>Spacing</h5>
+                            <p>V. Straight &nbsp; | &nbsp; Straight &nbsp; | &nbsp; Curious &nbsp; | &nbsp; V. Curved
                     </p>
-                    </li>
-                    <li style={{ paddingTop: 20, float: 'left', listStyle: 'none' }}>
-                        <h5>Ground Cover</h5>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Rocks &amp; Stone</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Mulch</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Spreading</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Mix</label>
-                    </li>
+                        </li>
+                        <li style={{ paddingTop: 20, float: 'left', listStyle: 'none' }}>
+                            <h5>Ground Cover</h5>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Rocks &amp; Stone</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Mulch</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Spreading</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Mix</label>
+                        </li>
 
-                    <li style={{ paddingTop: 20, flexWrap: 'wrap', float: 'left', listStyle: 'none' }}>
-                        <h5>Plant Form</h5>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Flat &amp; Spreading</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Small</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Medium/Upright</label>
-                        <br /> {/*Temp break until styling*/}
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Shrubs &amp; Hedges</label>
-                        <input type="checkbox"></input>
-                        <label style={{ paddingRight: "10px" }}> Climbing</label>
-                    </li>
+                        <li style={{ paddingTop: 20, flexWrap: 'wrap', float: 'left', listStyle: 'none' }}>
+                            <h5>Plant Form</h5>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Flat &amp; Spreading</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Small</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Medium/Upright</label>
+                            <br /> {/*Temp break until styling*/}
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Shrubs &amp; Hedges</label>
+                            <input type="checkbox"></input>
+                            <label style={{ paddingRight: "10px" }}> Climbing</label>
+                        </li>
+                    </div>
                     {/*Does nothing yet*/}
                     <input id="TasteEdit" type="button" value="Edit" />
                 </div>
