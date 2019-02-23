@@ -8,10 +8,13 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 
+import backgroundTemp from '../../../Images/TempBackground.PNG';
+
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
 const ClientFinal = () => (
+    <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
     <div class="ui stackable grid container" >
         <div class="row">
 
@@ -27,7 +30,7 @@ const ClientFinal = () => (
             <ReactTypeformEmbed popup={false} url="https://demo.typeform.com/to/njdbt5" />
         </div>
     </div >
-
+</div>
 );
 
 

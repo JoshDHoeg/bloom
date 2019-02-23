@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../../utilities/Session';
 
 import tempLogo from '../../../Images/TempLogo.JPG';
+import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 class ClientDesignBrief extends Component {
     constructor(props) {
@@ -40,7 +41,7 @@ class ClientDesignBrief extends Component {
         )
 
         const ClientView = () => {
-            
+
             //Make sure the page isnt editable when client
             if (document.getElementById('NarrativeTxt').style.visibility === "hidden") {
                 NarrativeViewFunc();
@@ -270,8 +271,7 @@ class ClientDesignBrief extends Component {
         }
 
         return (
-
-            <div class="ui stackable grid container" style={{ paddingTop: "40px", float: 'left', height: "100vh" }}>
+            <div style={{ paddingTop: "40px", float: 'left', height: "100vh", width: "100vw", backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
                 <div style={{ paddingLeft: '40px' }}>
                     <DesignerButton />
                     <ProjectHeader />
@@ -301,7 +301,7 @@ class ClientDesignBrief extends Component {
                             <div style={{ float: 'right' }}>
                                 <h3>Taste Profile</h3>
                                 <TasteProfile />
-                                <div style={{ paddingTop: 85 }}>
+                                <div style={{ paddingTop: 40 }}>
                                     <h3>Comments? Click <MailFunction /></h3>
                                 </div>
                             </div>
@@ -309,7 +309,6 @@ class ClientDesignBrief extends Component {
                     </div>
                 </div>
             </div>
-
         )
     }
 }

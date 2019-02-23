@@ -7,6 +7,8 @@ import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import { withAuthorization } from '../../utilities/Session';
 import * as ROUTES from "../../utilities/constants/routes";
 
+import backgroundTemp from '../../Images/TempBackground.PNG';
+
 //IMPORT CONTAINERS
 import ConceptPage from './Concept';
 import BriefPage from './Brief';
@@ -14,25 +16,34 @@ import FinalPage from './Final';
 import RevisionsPage from './Revisions';
 
 const HomePageWithSideBar = () => (
+    <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
         <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>
             <Router>
                 <div>
-                    <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+                    <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>
-                            <Icon name='clipboard' />
-                            DBrief
-            </Menu.Item>
+                            <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
+                                <Icon name='clipboard' />
+                                DBrief
+                            </div>
+                        </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_CONCEPT}>
+                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
                             <Icon name='bullseye' />
                             Concept
+                            </div>
             </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
+                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
                             <Icon name='file' />
                             Final
+                            </div>
             </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_REVISIONS}>
+                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
                             <Icon name='folder' />
                             Revisions
+                            </div>
             </Menu.Item>
                     </Sidebar>
 
@@ -52,6 +63,7 @@ const HomePageWithSideBar = () => (
             </Router>
 
         </Sidebar.Pushable>
+    </div>
 )
 
 const condition = authUser => !!authUser;

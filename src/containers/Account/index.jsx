@@ -29,7 +29,7 @@ const AccountPage = () => (
 
 const AccountPageWithSidebar = () => (
     <Sidebar.Pushable as={Segment}>
-        <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+        <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
             <Menu.Item as={Link} to={ROUTES.CHANGE_PASS}>
                 <Icon name='unlock' />
                 Change Password

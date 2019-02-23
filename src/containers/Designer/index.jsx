@@ -39,7 +39,7 @@ class AdminPage extends Component {
 
     return (
         <Sidebar.Pushable as={Segment}>
-            <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+            <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
                 <Menu.Item as={Link} to={ROUTES.CLIENTS}>
                     <Icon name='address book' />
                     Clients
