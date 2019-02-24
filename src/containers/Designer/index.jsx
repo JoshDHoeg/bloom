@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../utilities/Session';
 // import { format } from 'path';
 import {Link} from "react-router-dom";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import * as ROUTES from "../../utilities/constants/routes";
 import { Designer } from "./designer"
 
@@ -54,16 +54,15 @@ class AdminPage extends Component {
             name: "Molly",
             loc: "Greeley",
             status: "Completed"}]
-      
+
     return (
-        <div>
-            <Sidebar.Pushable as={Segment}>
-                <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
-                    <Menu.Item as={Link} to={ROUTES.CLIENTS}>
-                        <Icon name='address book' />
-                        Clients
-                    </Menu.Item>
-                </Sidebar>
+        <Sidebar.Pushable as={Segment}>
+            <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
+                <Menu.Item as={Link} to={ROUTES.CLIENTS}>
+                    <Icon name='address book' />
+                    Clients
+                </Menu.Item>
+            </Sidebar>
 
                 <Sidebar.Pusher>
                     <Segment basic>
@@ -76,7 +75,6 @@ class AdminPage extends Component {
                     </Segment>
                 </Sidebar.Pusher>
             </Sidebar.Pushable>
-        </div>
     );
   }
 }

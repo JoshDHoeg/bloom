@@ -8,7 +8,7 @@ import PasswordChangeForm from '../Users/PasswordChange';
 //IMPORT UTILITIES
 import { AuthUserContext, withAuthorization } from '../../utilities/Session';
 import {Link} from "react-router-dom";
-import { Header, Icon, Image, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import * as ROUTES from "../../utilities/constants/routes";
 
 const AccountPage = () => (
@@ -29,7 +29,7 @@ const AccountPage = () => (
 
 const AccountPageWithSidebar = () => (
     <Sidebar.Pushable as={Segment}>
-        <Sidebar as={Menu} icon='labeled' inverted vertical visible width='thin'>
+        <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
             <Menu.Item as={Link} to={ROUTES.CHANGE_PASS}>
                 <Icon name='unlock' />
                 Change Password
