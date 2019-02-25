@@ -77,28 +77,11 @@ class ClientDesignBrief extends Component {
 
         }
 
-        const ColoredLine = () => (
-            <hr
-                style={{
-                    color: 'black',
-                    backgroundColor: 'black',
-                    height: 1,
-                    bottom: 0,
-                }}
-
-            />
-        );
-
         const MailFunction = () => {
             var Address = "[Client Address]";
             var email = "mailto:info@bloomtimedesign.co?subject=" + ClientName + '\'s Design Brief at ' + Address;
             return <a href={email}> Here</a>
 
-        }
-
-        const ProjectHeader = () => {
-            var Address = "[Client Address]";
-            return <h3>{ClientName}'s Project at {Address}</h3>;
         }
 
         const GoalList = () => {
@@ -273,37 +256,46 @@ class ClientDesignBrief extends Component {
         return (
             <div style={{ paddingTop: "40px", float: 'left', height: "100vh", width: "100vw", backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
                 <div style={{ paddingLeft: '40px' }}>
+                <div class="row" style={{ paddingTop: "40px" }}>
+                <h1>Design Brief</h1>
+                <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "242px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+            </div>
                     <DesignerButton />
-                    <ProjectHeader />
                     <div style={{ float: 'right' }}>
                         <img src={tempLogo} alt="logo" />
                     </div>
-                    <h1>Bloomtime Design Brief</h1>
                     <div style={{ width: '600px' }}>
-                        <div style={{ float: 'left' }}>
-                            <h3>Goals</h3>
-                            <GoalList />
+                        <div style={{ float: 'left', backgroundColor: "white" }}>
+                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
+                                <GoalList />
+                            </span>
                         </div>
-                        <div style={{ float: 'right' }}>
-                            <h3>Details</h3>
-                            <DetailList />
+                        <div style={{ float: 'right', backgroundColor: "white" }}>
+                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
+                                <DetailList />
+                            </span>
                             <h3>Media</h3>
                             <MediaList />
                         </div>
                     </div>
-                    <div style={{ float: 'left', width: '600px' }}>
-                        <ColoredLine />
+                    <div style={{ float: 'left'}}>
                         <div style={{ width: '600px' }}>
-                            <div style={{ float: 'left' }}>
-                                <h3>Narrative</h3>
-                                <Narrative />
+                            <div style={{ float: 'left', backgroundColor: "white" }}>
+                                <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                    <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
+                                    <Narrative />
+                                </span>
                             </div>
-                            <div style={{ float: 'right' }}>
-                                <h3>Taste Profile</h3>
-                                <TasteProfile />
-                                <div style={{ paddingTop: 40 }}>
-                                    <h3>Comments? Click <MailFunction /></h3>
-                                </div>
+                            <div style={{ float: 'right', backgroundColor: "white" }}>
+                                <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                    <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
+                                    <TasteProfile />
+                                    <div style={{ paddingTop: 40 }}>
+                                        <h3>Comments? Click <MailFunction /></h3>
+                                    </div>
+                                </span>
                             </div>
                         </div>
                     </div>
