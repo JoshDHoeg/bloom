@@ -1,13 +1,13 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 //IMPORT CONTAINERS
 import SignOutButton from '../../containers/Users/SignOut';
-
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 import { AuthUserContext } from '../../utilities/Session';
+
+
 
 const Navigation = () => (
     <div>
