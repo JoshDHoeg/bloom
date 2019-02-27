@@ -1,13 +1,13 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
-
 //IMPORT CONTAINERS
 import SignOutButton from '../../containers/Users/SignOut';
-
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 import { AuthUserContext } from '../../utilities/Session';
+
+
 
 const Navigation = () => (
     <div>
@@ -20,17 +20,17 @@ const Navigation = () => (
 );
 
 const NavigationAuth = () => (
-    <div class="ui stackable menu">
-        <div class="item">
+    <div className="ui stackable menu">
+        <div className="item">
             <Link to={ROUTES.CLIENT_CONCEPT}>Project</Link>
         </div>
-        <div class="item">
+        <div className="item">
             <Link to={ROUTES.ACCOUNT}>Account</Link>
         </div>
-        <div class="item">
+        <div className="item">
             <Link to={ROUTES.DESIGNER}>Designer</Link>
         </div>
-        <div class="item">
+        <div className="item">
             <SignOutButton />
         </div>
     </div>

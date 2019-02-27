@@ -15,17 +15,13 @@ const withAuthentication = Component => {
     }
 
     componentDidMount() {
-      this.listener = this.props.firebase.auth.onAuthStateChanged(
+      this.listener = this.props.firebase.isAuthenticated.subscribe(
         authUser => {
           authUser
             ? this.setState({ authUser })
             : this.setState({ authUser: null });
         }
       );
-    }
-
-    componentWillUnmount() {
-      this.listener();
     }
 
     render() {
