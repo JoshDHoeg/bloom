@@ -21,30 +21,35 @@ const HomePageWithSideBar = () => (
             <Router>
                 <div>
                     <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
+                        {/*Gotta center this*/}
+                        <div style={{ paddingLeft: "50px", paddingTop: "25px", paddingBottom: "30px" }}>
+                            <img class="ui small circular image" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" style={{ height: "55px", width: "55px" }} />
+                        </div>
+
                         <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>
-                            <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
+                            <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                                 <Icon name='clipboard' />
                                 DBrief
                             </div>
                         </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_CONCEPT}>
-                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
-                            <Icon name='bullseye' />
-                            Concept
+                            <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                                <Icon name='bullseye' />
+                                Concept
                             </div>
-            </Menu.Item>
+                        </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
-                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
-                            <Icon name='file' />
-                            Final
+                            <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                                <Icon name='file' />
+                                Final
                             </div>
-            </Menu.Item>
+                        </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_REVISIONS}>
-                        <div style={{paddingTop: "10px", paddingBottom: "10px"}}>
-                            <Icon name='folder' />
-                            Revisions
+                            <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                                <Icon name='folder' />
+                                Revisions
                             </div>
-            </Menu.Item>
+                        </Menu.Item>
                     </Sidebar>
 
                     <Sidebar.Pusher>
