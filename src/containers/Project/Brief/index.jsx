@@ -19,7 +19,7 @@ class ClientDesignBrief extends Component {
 
     componentDidMount() {
         this.setState({ loading: true });
-        this.props.firebase.project('randomkey').then(project => {
+        this.props.firebase.doGetProject('randomkey').then(project => {
             this.setState({
                 project: project,
             });
