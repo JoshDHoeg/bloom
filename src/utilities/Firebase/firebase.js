@@ -13,6 +13,9 @@ import FirebaseProjects from './helpers/projects';
  * 
  * `setRuleAllowAll(true)`
  * 
+ * ### IF *project is missing from database*
+ * 
+ * `this.props.firebase.doUpdateProject('randomkey', 'Name', 'userAuthID', 'l9d1ECyWoJb4tpqCAz2SnXIyHH52');`
  * 
  * ## User
  * ***
@@ -64,12 +67,16 @@ class Firebase extends FirebaseProjects {
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
   
-  clearProjects = () => {
-    this.projectsRef.set();
+  clearProjects = () => { // not working
+    return this.projectsRef.delete().then(() => {
+      return this.props.firebase.doUpdateProject('randomkey', 'Name', 'userAuthID', 'l9d1ECyWoJb4tpqCAz2SnXIyHH52');
+    });
   }
-  clearUsers = () => {
+  clearUsers = () => { // not working
     this.usersRef.set();
   }
+
+  getUserFailSafe = true;
 
 
 }

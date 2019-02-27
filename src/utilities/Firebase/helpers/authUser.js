@@ -112,8 +112,9 @@ class FirebaseAuthUser extends FirebaseBase {
     });
   }
   
-  doGetUser = uid =>
-    this.usersRef.doc(uid).get().then(userData => {
+  doGetUser = uid => {
+    const uuid = this.getUserFailSafe ? 'userAuthID' : uid;
+    return this.usersRef.doc(uuid).get().then(userData => {
       if (userData.exists)
         return new User(userData);
       else
@@ -122,6 +123,8 @@ class FirebaseAuthUser extends FirebaseBase {
     }).catch(error => {
       console.warn(error);
     })
+  }
+    
 
   _userSub; _users = new BehaviorSubject([]); // private
   get users() { return this._users.getValue() };
