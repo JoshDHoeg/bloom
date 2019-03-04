@@ -23,7 +23,7 @@ const HomePageWithSideBar = () => (
                     <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
                         {/*Gotta center this*/}
                         <div style={{ paddingLeft: "50px", paddingTop: "25px", paddingBottom: "30px" }}>
-                            <img class="ui small circular image" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" style={{ height: "55px", width: "55px" }} />
+                            <img className="ui small circular image" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" style={{ height: "55px", width: "55px" }} />
                         </div>
 
                         <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>

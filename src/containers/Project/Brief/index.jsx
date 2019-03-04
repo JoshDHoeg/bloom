@@ -4,7 +4,6 @@ import React, { Component } from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
-import tempLogo from '../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 class ClientDesignBrief extends Component {
@@ -13,25 +12,44 @@ class ClientDesignBrief extends Component {
 
         this.state = {
             loading: false,
-            project: "",
+            project: null,
+            brief: {
+                goals: [],
+                location: '',
+                budget: ['', ''],
+                narrative: ''
+            },
+            client: {
+                name: '',
+                client: false
+            }
         }
     }
 
     componentDidMount() {
         this.setState({ loading: true });
-        this.props.firebase.doGetProject('randomkey').then(project => {
-            this.setState({
-                project: project,
-            });
-        });
-
+        this.getProjectState();
+        // this.setState(this.getProjectState());
     }
+
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject('userAuthID', true);
+        const briefs = await project.briefs;
+        const client = await project.client;
+        const state = await {
+            project: project,
+            brief: briefs[0],
+            client: client,
+            loading: false
+        }
+        this.setState(state);
+        return state;
+    } 
 
 
     render() {
         var NarrativeText = "[Narrative Text]";
-        const ClientName = "[Client Name]";
-        const isDesigner = false;
+        const isDesigner = true ? this.state.client.client : false;
 
         const DesignerButton = () => (
             <div>
@@ -79,50 +97,49 @@ class ClientDesignBrief extends Component {
 
         const MailFunction = () => {
             var Address = "[Client Address]";
-            var email = "mailto:info@bloomtimedesign.co?subject=" + ClientName + '\'s Design Brief at ' + Address;
+            var email = "mailto:info@bloomtimedesign.co?subject=" + this.state.client.name + '\'s Design Brief at ' + Address;
             return <a href={email}> Here</a>
 
         }
 
         const GoalList = () => {
-            var goalOne = "Goal 1";
-            var goalTwo = "Goal 2";
-            var goalThree = "Goal 3";
             return (
                 <div>
-                    <div >
-                        <ul id='goals'>
-                            <li id="goal1">{goalOne}</li>
-                            <li id="goal2">{goalTwo}</li>
-                            <li id="goal3">{goalThree}</li>
+                    <div>
+                        <ul id="goals">
+                            {this.state.brief.goals.map((g, i) => (
+                                <li key={i} id={`goal${i}`}>{g}</li>
+                            ))}
                         </ul>
                         <div id='GoalsEdit' style={{ display: 'none', listStyleType: 'none', paddingBottom: "15px" }}>
-                            <li><input type="text" id="Goal1Text" placeholder={goalOne} style={{}} /></li>
-                            <li><input type="text" id="Goal2Text" placeholder={goalTwo} style={{}} /></li>
-                            <li><input type="text" id="Goal3Text" placeholder={goalThree} style={{}} /></li>
+                            {this.state.brief.goals.map((g, i) => (
+                                <li key={i}>
+                                    <input type="text" id={`Goal${i}Text`} placeholder={g} style={{}} />
+                                </li>
+                            ))}
                         </div>
                         <div style={{ textAlign: "center" }}>
-                            <input id='GoalEditBtn' type="button" value="Edit" style={{ visibility: 'visible' }} onClick={GoalViewFunc} />
-                            <input id='GoalSubmit' type="button" value="Submit" style={{ display: "none" }} onClick={GoalViewFunc} />
+                            <input id='GoalEditBtn' type="button" value="Edit" style={{ visibility: 'visible' }} onClick={GoalViewFunc.bind(this, false)} />
+                            <input id='GoalSubmit' type="button" value="Submit" style={{ display: "none" }} onClick={GoalViewFunc.bind(this, true)} />
                         </div>
                     </div>
                 </div>
             )
         };
         //note from Taylor to Taylor: Change all from visibility to display
-        const GoalViewFunc = () => {
-            if (document.getElementById('goals').style.display === "none") {
+        const GoalViewFunc = (submit = false, ) => {
+            if (submit) {
                 document.getElementById('goals').style.display = "inherit";
                 document.getElementById('GoalSubmit').style.display = "none";
                 document.getElementById('GoalEditBtn').style.display = "initial";
                 document.getElementById('GoalsEdit').style.display = "none";
+                
             } else {
                 document.getElementById('goals').style.display = "none";
                 document.getElementById('GoalSubmit').style.display = "inherit";
                 document.getElementById('GoalEditBtn').style.display = "none";
                 document.getElementById('GoalsEdit').style.display = "inherit";
             }
-
         }
 
         const DetailList = () => {
@@ -132,10 +149,10 @@ class ClientDesignBrief extends Component {
             return (
                 <div>
                     <ul>
-                        <li id="LocationDisplay">Located on the {PropertyLocation}<br />See it on <a target="_blank" href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" href={GoogleMapsURL}>Google Maps</a></li>
                         <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" placeholder={PropertyLocation} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
-                        <li id='BudgetDisplay'>Budget: {BudgetRange}</li>
+                        <li id='BudgetDisplay'>Budget: {`${this.state.brief.budget[0]} - ${this.state.brief.budget[1]}`}</li>
                         <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" placeholder={BudgetRange} style={{ width: '140px' }} ></input></li>
                     </ul>
                     <div style={{ textAlign: "center" }}>
@@ -167,8 +184,8 @@ class ClientDesignBrief extends Component {
         var Narrative = () => {
             return (
                 <div >
-                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{NarrativeText}</p>
-                    <input type="text" id="EditNarrativeTxt" placeholder={NarrativeText} style={{ display: "none" }} />
+                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.brief.narrative}</p>
+                    <input type="text" id="EditNarrativeTxt" placeholder={this.state.brief.narrative} style={{ display: "none" }} />
                     <br />
                     <input id="NarrativeEdit" type="button" value="Edit" onClick={NarrativeViewFunc} />
                     <input type="button" id="NarrativeTxtSubmit" value="Submit" style={{ display: "none" }} onClick={NarrativeEditFunc} />
@@ -260,25 +277,25 @@ class ClientDesignBrief extends Component {
                     </div>
                     <div class="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
+                            <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
                             <GoalList />
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                            <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
                             <DetailList />
                         </span>
                     </div>
                     <div class="row">
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                            <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
                             <Narrative />
                         </span>
                     </div>
                     <div class="row" >
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                            <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
                             <TasteProfile />
                         </span>
                     </div>
