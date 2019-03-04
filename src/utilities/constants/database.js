@@ -94,7 +94,36 @@ class ProjectDataBase {
 export class ProjectData {
   static Brief = {
     colRef: 'briefs',
-    type: class Brief extends ProjectDataBase { }
+    type: class Brief extends ProjectDataBase {
+      _goals = ['fake1', 'fake2', 'fake3'];
+      get goals() {
+        return this._goals;
+      };
+      set goals(g) {
+        this._goals = g;
+      }
+      _location = 'Western Side of House';
+      get location() {
+        return this._location;
+      };
+      set location(l) {
+        this._location = l;
+      }
+      _budget = ['$500', '$1000'];
+      get budget() {
+        return this._budget;
+      };
+      set budget(b) {
+        this._budget = b;
+      }
+      _narrative = 'It\'s gonna look pretty:)';
+      get narrative() {
+        return this._narrative;
+      };
+      set narrative(n) {
+        this._narrative = n;
+      }
+    }
   };
   static Concept = {
     colRef: 'concepts',
