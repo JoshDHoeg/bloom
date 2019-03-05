@@ -1,7 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link, withRouter } from 'react-router-dom';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { compose } from 'recompose';
 
 //IMPORT CONTAINERS
@@ -110,6 +110,11 @@ class SignInFormBase extends Component {
     );
   }
 }
+const SignInLink = () => (
+  <p>
+    Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+  </p>
+);
 
 const SignInForm = compose(
   withRouter,
@@ -118,4 +123,4 @@ const SignInForm = compose(
 
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInLink };
