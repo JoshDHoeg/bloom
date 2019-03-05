@@ -6,6 +6,7 @@ import { compose } from 'recompose';
 
 //IMPORT CONTAINERS
 import { SignInLink } from '../SignIn';
+import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
@@ -97,6 +98,7 @@ class SignUpFormBase extends Component {
       name === '';
 
     return (
+<<<<<<< HEAD
       <Form size='large' onSubmit={this.onSubmit}>
         <Segment stacked>
           <Form.Input
@@ -145,6 +147,65 @@ class SignUpFormBase extends Component {
           {error && <p>{error.message}</p>}
         </Segment>
       </Form>
+=======
+      <div class="signup-form" style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat'}}>
+        <style>{`
+          body > div,
+          body > div > div,
+          body > div > div > div.signup-form {
+            height: 100%;
+          }
+        `}</style>
+        <Form size='large' onSubmit={this.onSubmit}>
+          <Segment stacked>
+            <Form.Input
+              fluid
+              icon='user'
+              iconPosition='left'
+              placeholder='E-mail address'
+              name='username'
+              value={username}
+              onChange={this.onChange}
+              type='text'
+            />
+            <Form.Input
+              fluid
+              icon='email'
+              iconPosition='left'
+              placeholder='E-mail address'
+              name='email'
+              value={email}
+              onChange={this.onChange}
+              type='text'
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='passwordTwo'
+              name='password'
+              value={passwordTwo}
+              onChange={this.onChange}
+            />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Confirm Password'
+              type='password'
+              name='passwordOne'
+              value={passwordOne}
+              onChange={this.onChange}
+            />
+            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+              Sign Up
+            </Button>
+            {error && <p>{error.message}</p>}
+          </Segment>
+        </Form>
+      </div>
+>>>>>>> taytay
     );
   }
 }

@@ -21,21 +21,21 @@ const Navigation = () => (
 
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
-    <div class="ui purple inverted top menu">
-        <div class="ui purple inverted top menu fixed">
-            <div class="item">
+    <div className="ui purple inverted top menu">
+        <div className="ui purple inverted top menu fixed">
+            <div className="item">
                 <Link to={ROUTES.CLIENT_CONCEPT}>Project</Link>
             </div>
-            <div class="item">
+            <div className="item">
                 <Link to={ROUTES.ACCOUNT}>Account</Link>
             </div>
-            <div class="item">
+            <div className="item">
                 <Link to={ROUTES.DESIGNER}>Designer</Link>
             </div>
-            <div class="item">
+            <div className="item">
                 <SignOutButton />
             </div>
-            <div class="right menu item">
+            <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>
         </div>
@@ -43,15 +43,15 @@ const NavigationAuth = () => (
 );
 
 const NavigationNonAuth = () => (
-    <div class="ui purple inverted  top menu">
-        <div class="ui purple inverted  top menu fixed">
-            <div class="item">
+    <div className="ui purple inverted  top menu">
+        <div className="ui purple inverted  top menu fixed">
+            <div className="item">
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </div>
-            <div class="item">
+            <div className="item">
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
-            <div class="right menu item">
+            <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>
         </div>
