@@ -6,7 +6,6 @@ import { compose } from 'recompose';
 
 //IMPORT CONTAINERS
 import { SignInLink } from '../SignIn';
-import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';

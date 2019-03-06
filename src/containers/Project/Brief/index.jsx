@@ -44,11 +44,11 @@ class ClientDesignBrief extends Component {
         }
         this.setState(state);
         return state;
-    } 
+    }
 
 
     render() {
-        var NarrativeText = "[Narrative Text]";
+
         const isDesigner = true ? this.state.client.client : false;
 
         const DesignerButton = () => (
@@ -94,14 +94,15 @@ class ClientDesignBrief extends Component {
             }
 
         }
-
-        const MailFunction = () => {
-            var Address = "[Client Address]";
-            var email = "mailto:info@bloomtimedesign.co?subject=" + this.state.client.name + '\'s Design Brief at ' + Address;
-            return <a href={email}> Here</a>
-
-        }
-
+        //dont need this yet
+        /*
+                const MailFunction = () => {
+                    var Address = "[Client Address]";
+                    var email = "mailto:info@bloomtimedesign.co?subject=" + this.state.client.name + '\'s Design Brief at ' + Address;
+                    return <a href={email}> Here</a>
+        
+                }
+        */
         const GoalList = () => {
             return (
                 <div>
@@ -133,7 +134,7 @@ class ClientDesignBrief extends Component {
                 document.getElementById('GoalSubmit').style.display = "none";
                 document.getElementById('GoalEditBtn').style.display = "initial";
                 document.getElementById('GoalsEdit').style.display = "none";
-                
+
             } else {
                 document.getElementById('goals').style.display = "none";
                 document.getElementById('GoalSubmit').style.display = "inherit";
@@ -149,7 +150,7 @@ class ClientDesignBrief extends Component {
             return (
                 <div>
                     <ul>
-                        <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
                         <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" placeholder={PropertyLocation} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
                         <li id='BudgetDisplay'>Budget: {`${this.state.brief.budget[0]} - ${this.state.brief.budget[1]}`}</li>
@@ -212,13 +213,12 @@ class ClientDesignBrief extends Component {
         //Not exactly Working Yet
         const NarrativeEditFunc = () => {
             NarrativeViewFunc();
-            NarrativeText = document.getElementById('NarrativeTxt').value;
         }
 
         var TasteProfile = () => {
 
             return (
-                <div style={{textAlign: "center"}}>
+                <div style={{ textAlign: "center" }}>
                     <div style={{ fontSize: 10 }}>
                         <li style={{ fontSize: 13, listStyle: 'none' }}>
                             <h5>Spacing</h5>
@@ -258,11 +258,11 @@ class ClientDesignBrief extends Component {
                             <label style={{ paddingRight: "10px" }}> Shrubs &amp; Hedges</label>
                             <input type="checkbox"></input>
                             <label style={{ paddingRight: "10px" }}> Climbing</label>
-                        </li>  
+                        </li>
                     </div>
-                    <div style={{textAlign: "center"}}>
-                    <input id="TasteEdit" type="button" value="Edit" />
-                </div>
+                    <div style={{ textAlign: "center" }}>
+                        <input id="TasteEdit" type="button" value="Edit" />
+                    </div>
                 </div>
             );
 
@@ -273,8 +273,12 @@ class ClientDesignBrief extends Component {
                 <div class="ui stackable grid container">
                     <div class="row" style={{ paddingTop: "40px" }}>
                         <h1>Design Brief</h1>
-                        <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "346px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                        <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "346px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                     </div>
+
+                    {/*designer button not being used yet*/}
+                    <DesignerButton style={{ display: 'none' }} />
+
                     <div class="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>

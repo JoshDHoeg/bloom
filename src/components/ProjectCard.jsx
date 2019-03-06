@@ -1,5 +1,5 @@
 import {Link} from "react-router-dom";
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Icon, Image} from 'semantic-ui-react'
 import * as ROUTES from "../utilities/constants/routes";
 
@@ -15,7 +15,7 @@ const ProjCard = ({props})  => (
             <Card.Description> {props.status} </Card.Description>
         </Card.Content>
         <Card.Content extra>
-            <a>
+            <a href=" ">
                 <Icon name='user' />
                 {props.status}
             </a>
