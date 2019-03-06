@@ -1,23 +1,31 @@
 import { BehaviorSubject } from 'rxjs';
 import { User } from '../../constants/database';
 import FirebaseBase from './firebaseBase';
+import Firebase from '..';
 
 class FirebaseAuthUser extends FirebaseBase {
   _userCred;
   user;
   _userProvider;
+  _isAuthent = new BehaviorSubject(null);
   _isAuth = new BehaviorSubject(null);
   get isAuth() {
     return this._isAuth.getValue();
   }
   set isAuth(authStatus) {
-    if (authStatus && this.user)
+    if (authStatus && this.user) {
       this._isAuth.next(authStatus);
-    else if (!authStatus) this._isAuth.next(authStatus);
+      this._isAuthent.next(!this.user.client);
+    } else if (!authStatus) this._isAuth.next(authStatus);
     // console.log(authStatus, this.user);
   }
-  get isAuthenticated() {
+  get isAuthorized() {
     return this._isAuth.asObservable();
+  }
+  get isAuthenticated() {
+    if (Firebase.isDesignerOverride)
+      return this._isAuth.asObservable();
+    return this._isAuthent.asObservable();
   }
   constructor() {
     super();
@@ -46,9 +54,32 @@ class FirebaseAuthUser extends FirebaseBase {
     })
   }
 
-  doCreateUserWithEmailAndPassword = (email, password) =>
-    this.auth.createUserWithEmailAndPassword(email, password);
-  //TODO: add create new project
+  doCreateUserWithEmailAndPassword = (email, password, client = true, name = 'name', phone = '1231231234', project = 'randomkey') => {
+    return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
+      console.warn(error);
+      return false;
+    })
+      .then(usr => {
+        if (!usr)
+          return false;
+        return usr.user.updateProfile({
+          displayName: name,
+          photoURL: ''
+        })
+          .then(val => {
+            console.log(val);
+            return this.doSetUser(usr.user.uid, name, email, phone, client, [project])
+          }).catch(error => {
+            console.error(error);
+            return false;
+          });
+      });
+  }
+
+  doRemoveUser = () => {
+    this.usersRef.doc(this.auth.currentUser.uid).delete()
+      .then(() => this.auth.currentUser.delete());
+  }
 
   doSignInWithEmailAndPassword = (email, password) => {
     return this.auth.signInWithEmailAndPassword(email, password).then(result => {
@@ -97,23 +128,24 @@ class FirebaseAuthUser extends FirebaseBase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
   
-  doSetUser = (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['', ['', false]]) => {
-    const projects = projectUid.map(p => {
+  doSetUser = async (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['', ['', false]]) => {
+    console.log(uid, name, email, phone, client, projectUid);
+    const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p))
-        return this.doGetProject(p[0], p[1]);
-      return this.doGetProject(p);
-    });
-    this.usersRef.doc(uid).set({
+        return this.doGetProject(p[0], p[1]).then(p => p.uid);
+      return this.doGetProject(p).then(p => p.pid);
+    }));
+    return this.usersRef.doc(uid).set({
       client: client,
       email: email,
       name: name,
       phone: phone,
       projects: projects
-    });
+    }).then(() => uid).then(this.doGetUser.bind(this, uid, false));
   }
   
-  doGetUser = uid => {
-    const uuid = this.getUserFailSafe ? 'userAuthID' : uid;
+  doGetUser = (uid, failSafe = Firebase.getUserFailSafe)  => {
+    const uuid = failSafe ? 'userAuthID' : uid;
     return this.usersRef.doc(uuid).get().then(userData => {
       if (userData.exists)
         return new User(userData);
