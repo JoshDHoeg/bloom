@@ -53,7 +53,7 @@ class FirebaseAuthUser extends FirebaseBase {
   doSignInWithEmailAndPassword = (email, password) => {
     return this.auth.signInWithEmailAndPassword(email, password).then(result => {
       this._userCred = result.credential;
-      console.log(result);
+      //console.log(result);
       return true;
     }, error => {
       console.warn(error);
@@ -96,7 +96,7 @@ class FirebaseAuthUser extends FirebaseBase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
-  
+
   doSetUser = (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['', ['', false]]) => {
     const projects = projectUid.map(p => {
       if (Array.isArray(p))
@@ -111,7 +111,7 @@ class FirebaseAuthUser extends FirebaseBase {
       projects: projects
     });
   }
-  
+
   doGetUser = uid => {
     const uuid = this.getUserFailSafe ? 'userAuthID' : uid;
     return this.usersRef.doc(uuid).get().then(userData => {
@@ -124,10 +124,10 @@ class FirebaseAuthUser extends FirebaseBase {
       console.warn(error);
     })
   }
-    
 
   _userSub; _users = new BehaviorSubject([]); // private
   get users() { return this._users.getValue() };
+
   onUser = (unsub = null) => {
     if (this._userSub) this.offfUser(unsub);
     if (!unsub) {

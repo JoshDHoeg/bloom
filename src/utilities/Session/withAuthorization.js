@@ -13,7 +13,7 @@ const withAuthorization = condition => Component => {
     constructor(props) {
       super(props);
       this.state = {
-        currentPage: this.props.location.pathname 
+        currentPage: this.props.location.pathname
       };
     }
     componentDidMount() {
