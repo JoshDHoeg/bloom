@@ -1,8 +1,10 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
-import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Link, withRouter } from 'react-router-dom';
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { compose } from 'recompose';
+
+import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 //IMPORT CONTAINERS
 import { SignUpLink } from '../SignUp';
@@ -13,8 +15,8 @@ import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignInPage = () => (
-<div className='login-form'>
-  <style>{`
+  <div className='login-form' style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat'}}>
+    <style>{`
     body > div,
     body > div > div,
     body > div > div > div.login-form {
@@ -78,7 +80,6 @@ class SignInFormBase extends Component {
     const isInvalid = password === '' || email === '';
 
     return (
-
         <Form size='large' onSubmit={this.onSubmit}>
           <Segment stacked>
             <Form.Input
@@ -107,9 +108,15 @@ class SignInFormBase extends Component {
             {error && <p>{error.message}</p>}
           </Segment>
         </Form>
+
     );
   }
 }
+const SignInLink = () => (
+  <p>
+    Already have an account? <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+  </p>
+);
 
 const SignInForm = compose(
   withRouter,
@@ -118,4 +125,4 @@ const SignInForm = compose(
 
 export default SignInPage;
 
-export { SignInForm };
+export { SignInForm, SignInLink };

@@ -1,22 +1,43 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react';
 import { compose } from 'recompose';
+
+//IMPORT CONTAINERS
+import { SignInLink } from '../SignIn';
+import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignUpPage = () => (
-  <div>
-    <h1>SignUp</h1>
-    <SignUpForm />
-  </div>
+  <div className='signup-form'>
+    <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.signup-form {
+        height: 100%;
+      }
+    `}</style>
+
+      <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+        <Grid.Column style={{ maxWidth: 450 }}>
+          <Header as='h2' color='teal' textAlign='center'>
+            <Image src='/logo.png' /> Sign-Up to your account
+          </Header>
+          <SignUpForm />
+          <Message>
+            <SignInLink />
+          </Message>
+        </Grid.Column>
+      </Grid>
+    </div>
 );
 
 const INITIAL_STATE = {
-  username: '',
+  name: '',
   email: '',
   passwordOne: '',
   passwordTwo: '',
@@ -31,17 +52,18 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { username, email, passwordOne } = this.state;
+    const { name, email, passwordOne } = this.state;
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
         // Create a user in your Firebase realtime database
+        // console.log({authUser.user.uid});
         return this.props.firebase
-          .user(authUser.user.uid)
+          .doSetUser(authUser.user.uid)
           .set({
-            username,
-            email,
+            name,
+            email
           });
       })
       .then(() => {
@@ -49,6 +71,7 @@ class SignUpFormBase extends Component {
         this.props.history.push(ROUTES.PROJECT);
       })
       .catch(error => {
+        console.log({ error });
         this.setState({ error });
       });
 
@@ -61,7 +84,7 @@ class SignUpFormBase extends Component {
 
   render() {
     const {
-      username,
+      name,
       email,
       passwordOne,
       passwordTwo,
@@ -72,66 +95,57 @@ class SignUpFormBase extends Component {
       passwordOne !== passwordTwo ||
       passwordOne === '' ||
       email === '' ||
-      username === '';
+      name === '';
 
     return (
-      <div class="signup-form">
-        <style>{`
-          body > div,
-          body > div > div,
-          body > div > div > div.signup-form {
-            height: 100%;
-          }
-        `}</style>
-        <Form size='large' onSubmit={this.onSubmit}>
-          <Segment stacked>
-            <Form.Input
-              fluid
-              icon='user'
-              iconPosition='left'
-              placeholder='E-mail address'
-              name='username'
-              value={username}
-              onChange={this.onChange}
-              type='text'
-            />
-            <Form.Input
-              fluid
-              icon='email'
-              iconPosition='left'
-              placeholder='E-mail address'
-              name='email'
-              value={email}
-              onChange={this.onChange}
-              type='text'
-            />
-            <Form.Input
-              fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Password'
-              type='passwordTwo'
-              name='password'
-              value={passwordTwo}
-              onChange={this.onChange}
-            />
-            <Form.Input
-              fluid
-              icon='lock'
-              iconPosition='left'
-              placeholder='Confirm Password'
-              type='password'
-              name='passwordOne'
-              value={passwordOne}
-              onChange={this.onChange}
-            />
-            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
-              Sign Up
-            </Button>
-            {error && <p>{error.message}</p>}
-          </Segment>
-        </Form>
-      </div>
+      <Form size='large' onSubmit={this.onSubmit}>
+        <Segment stacked>
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='Name'
+            name='name'
+            value={name}
+            onChange={this.onChange}
+            type='text'
+          />
+          <Form.Input
+            fluid
+            icon='user'
+            iconPosition='left'
+            placeholder='E-mail address'
+            name='email'
+            value={email}
+            onChange={this.onChange}
+            type='text'
+          />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Password'
+            type='password'
+            name='passwordOne'
+            value={passwordOne}
+            onChange={this.onChange}
+          />
+          <Form.Input
+            fluid
+            icon='lock'
+            iconPosition='left'
+            placeholder='Confirm Password'
+            type='password'
+            name='passwordTwo'
+            value={passwordTwo}
+            onChange={this.onChange}
+          />
+          <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+            Login
+          </Button>
+          {error && <p>{error.message}</p>}
+        </Segment>
+      </Form>
     );
   }
 }
