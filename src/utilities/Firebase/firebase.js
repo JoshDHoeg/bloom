@@ -84,7 +84,7 @@ class Firebase extends FirebaseProjects {
     }
   }
 
-  static preventBreakingChanges = false; // for personal testing with db changes (keep false)
+  static preventBreakingChanges = true; // for personal testing with db changes (keep false)
   static useDefaultProjectValues = false; // for creating projects
   static getUserFailSafe = false; // gets the db testing user
   static isDesignerOverride = true; // spoof the current user to designer status

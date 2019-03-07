@@ -7,13 +7,13 @@ import { compose } from 'recompose';
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../constants/routes';
-
+//is it a user
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
-        currentPage: this.props.location.pathname 
+        currentPage: this.props.location.pathname
       };
     }
     componentDidMount() {
