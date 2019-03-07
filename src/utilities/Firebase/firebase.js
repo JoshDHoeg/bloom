@@ -67,16 +67,28 @@ class Firebase extends FirebaseProjects {
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
 
-  clearProjects = () => { // not working
-    return this.projectsRef.delete().then(() => {
-      return this.props.firebase.doUpdateProject('randomkey', 'Name', 'userAuthID', 'l9d1ECyWoJb4tpqCAz2SnXIyHH52');
-    });
+  clearProjects = () => { // I promise this won't break anything. If this fails for some reason, call an empty createProject() and then try this again
+    this._deleteAll(this.projectsRef, true, true);
+    setTimeout(() => {
+      this.doUpdateProject('Name', 'userAuthID', 'l9d1ECyWoJb4tpqCAz2SnXIyHH52', 'randomkey');
+    }, 1500);
   }
-  clearUsers = () => { // not working
-    this.usersRef.set();
+  clearUsers = () => { // DO NOT CALL
+    if (false) {
+      const listener = this.usersRef.onSnapshot(users => {
+        users.forEach(u => u.set());
+      });
+      setTimeout(() => {
+        listener();
+      }, 1000);
+    }
   }
 
-  getUserFailSafe = true;
+  static preventBreakingChanges = false; // for personal testing with db changes (keep false)
+  static useDefaultProjectValues = false; // for creating projects
+  static getUserFailSafe = false; // gets the db testing user
+  static isDesignerOverride = true; // spoof the current user to designer status
+  static isClientOverride = false; // spoof current user to client status
 
 
 }
