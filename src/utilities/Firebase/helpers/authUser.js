@@ -54,7 +54,7 @@ class FirebaseAuthUser extends FirebaseBase {
     })
   }
 
-  doCreateUserWithEmailAndPassword = (email, password, client = true, name = 'name', phone = '1231231234', project = 'randomkey') => {
+  doCreateUserWithEmailAndPassword = (email, password, client = true, name = 'username', phone = '1231231234', project = 'randomkey') => {
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
       return false;
