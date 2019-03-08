@@ -210,7 +210,7 @@ export class ProjectData {
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
         } else {
-          this._goals = ['goal 1', 'goal 2', 'goal 2'];
+          this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._location = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';

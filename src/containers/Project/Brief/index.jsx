@@ -53,8 +53,8 @@ class ClientDesignBrief extends Component {
 
         const DesignerButton = () => (
             <div>
-                <input id='ClientButton' type="button" value="Client" onClick={ClientView} />
-                <input id='DesignerButton' style={{ display: 'none' }} type="button" value="Designer" onClick={DesignerView} />
+                <input id='ClientButton' type="button" value="View Client" onClick={ClientView} />
+                <input id='DesignerButton' style={{ display: 'none' }} type="button" value="View Designer" onClick={DesignerView} />
             </div>
         )
 
@@ -111,11 +111,13 @@ class ClientDesignBrief extends Component {
                             {this.state.brief.goals.map((g, i) => (
                                 <li key={i} id={`goal${i}`}>{g}</li>
                             ))}
+                            
                         </ul>
+                        
                         <div id='GoalsEdit' style={{ display: 'none', listStyleType: 'none', paddingBottom: "15px" }}>
                             {this.state.brief.goals.map((g, i) => (
                                 <li key={i}>
-                                    <input type="text" id={`Goal${i}Text`} placeholder={g} style={{}} />
+                                    <input type="text" id={`Goal${i}Text`} defaultValue={g} style={{}} />
                                 </li>
                             ))}
                         </div>
@@ -134,6 +136,9 @@ class ClientDesignBrief extends Component {
                 document.getElementById('GoalSubmit').style.display = "none";
                 document.getElementById('GoalEditBtn').style.display = "initial";
                 document.getElementById('GoalsEdit').style.display = "none";
+                console.log(document.getElementById('Goal0Text').value);
+                updateGoals();
+                
 
             } else {
                 document.getElementById('goals').style.display = "none";
@@ -143,18 +148,20 @@ class ClientDesignBrief extends Component {
             }
         }
 
+        const updateGoals = () => {
+                this.state.brief.goals = [document.getElementById('Goal0Text').value, document.getElementById('Goal1Text').value, document.getElementById('Goal2Text').value]
+        }
+
         const DetailList = () => {
-            var PropertyLocation = "[Location on property]";
-            var BudgetRange = "[budget range]";
             var GoogleMapsURL = "https://www.google.com/maps";
             return (
                 <div>
                     <ul>
                         <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
-                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" placeholder={PropertyLocation} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" id="LocationEditTxt" defaultValue={this.state.brief.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
-                        <li id='BudgetDisplay'>Budget: {`${this.state.brief.budget[0]} - ${this.state.brief.budget[1]}`}</li>
-                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" placeholder={BudgetRange} style={{ width: '140px' }} ></input></li>
+                        <li id='BudgetDisplay'>Budget: {this.state.brief.budget}</li>
+                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.state.brief.budget} style={{ width: '140px' }} ></input></li>
                     </ul>
                     <div style={{ textAlign: "center" }}>
                         <input id="DetailEdit" type="button" value="Edit" onClick={DetailViewFunc} />
@@ -172,6 +179,7 @@ class ClientDesignBrief extends Component {
                 document.getElementById('BudgetDisplay').style.display = "none";
                 document.getElementById('DetailEdit').style.display = "none";
                 document.getElementById('DetailSubmit').style.display = "inherit";
+                
             } else {
                 document.getElementById('LocationEdit').style.display = "none";
                 document.getElementById('BudgetEdit').style.display = "none";
@@ -179,14 +187,20 @@ class ClientDesignBrief extends Component {
                 document.getElementById('BudgetDisplay').style.display = "inherit";
                 document.getElementById('DetailEdit').style.display = "inherit";
                 document.getElementById('DetailSubmit').style.display = "none";
+                updateDetails()
             }
         }
+
+        const updateDetails = () => {
+            this.state.brief.location = document.getElementById('LocationEditTxt').value   
+            this.state.brief.budget = document.getElementById('BudgetEditTxt').value           
+    }
 
         var Narrative = () => {
             return (
                 <div >
                     <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.brief.narrative}</p>
-                    <input type="text" id="EditNarrativeTxt" placeholder={this.state.brief.narrative} style={{ display: "none" }} />
+                    <input type="text" id="EditNarrativeTxt" defaultValue={this.state.brief.narrative} style={{ display: "none" }} />
                     <br />
                     <input id="NarrativeEdit" type="button" value="Edit" onClick={NarrativeViewFunc} />
                     <input type="button" id="NarrativeTxtSubmit" value="Submit" style={{ display: "none" }} onClick={NarrativeEditFunc} />
@@ -200,6 +214,7 @@ class ClientDesignBrief extends Component {
                 document.getElementById('EditNarrativeTxt').style.display = "none";
                 document.getElementById('NarrativeTxtSubmit').style.display = "none";
                 document.getElementById('NarrativeEdit').style.display = "inherit";
+                updateNarrative();
             } else {
                 document.getElementById('NarrativeTxt').style.display = "none";
                 document.getElementById('NarrativeEdit').style.display = "none";
@@ -207,6 +222,10 @@ class ClientDesignBrief extends Component {
                 document.getElementById('NarrativeTxtSubmit').style.display = "inherit";
             }
 
+        }
+
+        const updateNarrative = () => {
+                this.state.brief.narrative = document.getElementById('EditNarrativeTxt').value         
         }
 
 
@@ -270,8 +289,8 @@ class ClientDesignBrief extends Component {
 
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
-                <div class="ui stackable grid container">
-                    <div class="row" style={{ paddingTop: "40px" }}>
+                <div className="ui stackable grid container">
+                    <div className="row" style={{ paddingTop: "40px" }}>
                         <h1>Design Brief</h1>
                         <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "346px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                     </div>
@@ -279,7 +298,7 @@ class ClientDesignBrief extends Component {
                     {/*designer button not being used yet*/}
                     <DesignerButton style={{ display: 'none' }} />
 
-                    <div class="row">
+                    <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
                             <GoalList />
@@ -289,14 +308,14 @@ class ClientDesignBrief extends Component {
                             <DetailList />
                         </span>
                     </div>
-                    <div class="row">
+                    <div className="row">
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
                             <Narrative />
                         </span>
                     </div>
-                    <div class="row" >
+                    <div className="row" >
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
