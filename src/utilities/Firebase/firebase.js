@@ -63,7 +63,7 @@ import FirebaseProjects from './helpers/projects';
  *    });
  * ```
  */
-class Firebase extends FirebaseProjects {
+ class Firebase extends FirebaseProjects {
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
 
