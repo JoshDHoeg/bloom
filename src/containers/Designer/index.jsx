@@ -12,13 +12,20 @@ import { Designer } from "./designer"
 
 class AdminPage extends Component {
   userSub;
+  projKeyArr;
+  userProjs = [];
+
   constructor(props) {
     super(props);
-
     this.state = {
       loading: false,
       users: []
+
     };
+    //assuming that user will always have _objects property...
+    this.projKeyArr = this.props.firebase.user._projects.map(x => x.id);
+    this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => this.userProjs.push(res)));
+    //extract other relevant projec data here?
   }
 
   componentDidMount() {
@@ -37,23 +44,7 @@ class AdminPage extends Component {
 
   render() {
     const { users, loading } = this.state;
-
-    //temp dummy data
-    var temp = [
-            {pic: 'https://react.semantic-ui.com/images/avatar/large/matthew.png',
-            name: "Jack",
-            loc: "Denver",
-            status: "Ongoing"},
-
-            {pic: 'https://react.semantic-ui.com/images/avatar/large/daniel.jpg',
-            name: "Jim",
-            loc: "Denver",
-            status: "Ongoing"},
-
-            {pic: 'https://react.semantic-ui.com/images/avatar/large/molly.png',
-            name: "Molly",
-            loc: "Greeley",
-            status: "Completed"}]
+    console.log(this.userProjs[0]);
 
     return (
         <Sidebar.Pushable as={Segment}>
@@ -70,7 +61,7 @@ class AdminPage extends Component {
                             <h1>Clients</h1>
                             {loading && <div>Loading ...</div>}
                             <UserList users={users} />
-                            <Designer props={temp}/>
+                            <Designer props={this.userProjs}/>
                         </div>
                     </Segment>
                 </Sidebar.Pusher>
