@@ -137,7 +137,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    this.ref.set(setObj, { merge: true }).catch(error => {
+    return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }

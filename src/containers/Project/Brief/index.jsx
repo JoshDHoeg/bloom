@@ -7,18 +7,16 @@ import { withAuthorization } from '../../../utilities/Session';
 import backgroundTemp from '../../../Images/TempBackground.PNG';
 
 class ClientDesignBrief extends Component {
+    brief;
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            project: null,
-            brief: {
-                goals: [],
-                location: '',
-                budget: ['', ''],
-                narrative: ''
-            },
+            goals: [],
+            location: '',
+            budget: '',
+            narrative: '',
             client: {
                 name: '',
                 client: false
@@ -33,15 +31,14 @@ class ClientDesignBrief extends Component {
     }
 
     getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject('userAuthID', true);
-        const briefs = await project.briefs;
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+        this.brief = await project.brief;
         const client = await project.client;
         const state = await {
-            project: project,
-            brief: briefs[0],
             client: client,
-            loading: false
-        }
+            loading: false,
+            ...this.brief.getAll()
+        };
         this.setState(state);
         return state;
     }
@@ -108,14 +105,14 @@ class ClientDesignBrief extends Component {
                 <div>
                     <div>
                         <ul id="goals">
-                            {this.state.brief.goals.map((g, i) => (
+                            {this.state.goals.map((g, i) => (
                                 <li key={i} id={`goal${i}`}>{g}</li>
                             ))}
-                            
+
                         </ul>
-                        
+
                         <div id='GoalsEdit' style={{ display: 'none', listStyleType: 'none', paddingBottom: "15px" }}>
-                            {this.state.brief.goals.map((g, i) => (
+                            {this.state.goals.map((g, i) => (
                                 <li key={i}>
                                     <input type="text" id={`Goal${i}Text`} defaultValue={g} style={{}} />
                                 </li>
@@ -138,7 +135,7 @@ class ClientDesignBrief extends Component {
                 document.getElementById('GoalsEdit').style.display = "none";
                 console.log(document.getElementById('Goal0Text').value);
                 updateGoals();
-                
+
 
             } else {
                 document.getElementById('goals').style.display = "none";
@@ -149,7 +146,11 @@ class ClientDesignBrief extends Component {
         }
 
         const updateGoals = () => {
-                this.state.brief.goals = [document.getElementById('Goal0Text').value, document.getElementById('Goal1Text').value, document.getElementById('Goal2Text').value]
+            const goals = [document.getElementById('Goal0Text').value, document.getElementById('Goal1Text').value, document.getElementById('Goal2Text').value]
+            this.brief.goals = goals;
+            this.setState({
+                goals: goals
+            });
         }
 
         const DetailList = () => {
@@ -157,11 +158,11 @@ class ClientDesignBrief extends Component {
             return (
                 <div>
                     <ul>
-                        <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
-                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" id="LocationEditTxt" defaultValue={this.state.brief.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationDisplay">Located on the {this.state.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" id="LocationEditTxt" defaultValue={this.state.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
-                        <li id='BudgetDisplay'>Budget: {this.state.brief.budget}</li>
-                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.state.brief.budget} style={{ width: '140px' }} ></input></li>
+                        <li id='BudgetDisplay'>Budget: {this.state.budget}</li>
+                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.state.budget} style={{ width: '140px' }} ></input></li>
                     </ul>
                     <div style={{ textAlign: "center" }}>
                         <input id="DetailEdit" type="button" value="Edit" onClick={DetailViewFunc} />
@@ -179,7 +180,7 @@ class ClientDesignBrief extends Component {
                 document.getElementById('BudgetDisplay').style.display = "none";
                 document.getElementById('DetailEdit').style.display = "none";
                 document.getElementById('DetailSubmit').style.display = "inherit";
-                
+
             } else {
                 document.getElementById('LocationEdit').style.display = "none";
                 document.getElementById('BudgetEdit').style.display = "none";
@@ -192,15 +193,21 @@ class ClientDesignBrief extends Component {
         }
 
         const updateDetails = () => {
-            this.state.brief.location = document.getElementById('LocationEditTxt').value   
-            this.state.brief.budget = document.getElementById('BudgetEditTxt').value           
-    }
+            const location = document.getElementById('LocationEditTxt').value
+            const budget = document.getElementById('BudgetEditTxt').value
+            this.brief.location = location;
+            this.brief.budget = budget;
+            this.setState({
+                budget: budget,
+                location: location
+            })
+        }
 
         var Narrative = () => {
             return (
                 <div >
-                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.brief.narrative}</p>
-                    <input type="text" id="EditNarrativeTxt" defaultValue={this.state.brief.narrative} style={{ display: "none" }} />
+                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.narrative}</p>
+                    <input type="text" id="EditNarrativeTxt" defaultValue={this.state.narrative} style={{ display: "none" }} />
                     <br />
                     <input id="NarrativeEdit" type="button" value="Edit" onClick={NarrativeViewFunc} />
                     <input type="button" id="NarrativeTxtSubmit" value="Submit" style={{ display: "none" }} onClick={NarrativeEditFunc} />
@@ -225,7 +232,11 @@ class ClientDesignBrief extends Component {
         }
 
         const updateNarrative = () => {
-                this.state.brief.narrative = document.getElementById('EditNarrativeTxt').value         
+            const narrative = document.getElementById('EditNarrativeTxt').value;
+            this.brief.narrative = narrative;
+            this.setState({
+                narrative: narrative
+            });
         }
 
 
