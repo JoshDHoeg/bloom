@@ -7,7 +7,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 import backgroundTemp from '../../../Images/TempBackground.PNG';
 
-//IMPROT UTILITIES
+//IMPORT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 
 const ClientConcept = () => (
