@@ -23,13 +23,10 @@ const NavigationAuth = () => (
     <div className="ui purple inverted top menu">
         <div className="ui purple inverted top menu fixed">
             <div className="item">
-                <Link to={ROUTES.CLIENT_BRIEF}>Project</Link>
+                <Link to={ROUTES.PROJECT_LIST}>Projects</Link>
             </div>
             <div className="item">
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
-            </div>
-            <div className="item">
-                <Link to={ROUTES.DESIGNER}>Designer</Link>
             </div>
             <div className="right menu item">
                 <h3>Bloomtime </h3>
