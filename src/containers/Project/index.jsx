@@ -14,7 +14,6 @@ import BriefPage from './Brief';
 import ConceptPage from './Concept';
 import FinalPage from './Final';
 import RevisionsPage from './Revisions';
-import BriefEditPage from './Brief/BriefEdit';
 import ConceptEditPage from './Concept/ConceptEdit';
 import FinalEditPage from './Final/FinalEdit';
 import RevisionsEditPage from './Revisions/RevisionsEdit';

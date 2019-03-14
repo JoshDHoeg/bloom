@@ -4,22 +4,35 @@ import React from 'react';
 const GoalList = (props) => (
     <div>
         {props.edit ? (
-        <GoalListEdit />
+        <GoalListEdit goals={props.brief.goals} />
         ) : (
-        <GoalListView />
+        <GoalListView goals={props.brief.goals} />
         )}
     </div>
 );
 
-const GoalListView = () => {
+const GoalListView = (props) => {
+    const goals = props.goals;
     return (
-        <div>this is the goal view </div>
+            <ul id="goals">
+                {goals.map((g, i) => (
+                    <li key={i} id={`goal${i}`}>{g}</li>
+                ))}
+                
+            </ul>
     )
 }
 
-const GoalListEdit = () => {
+const GoalListEdit = (props) => {
+    const goals = props.goals;
     return (
-        <div>this is the goal Edit </div>
+        <div id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
+            {goals.map((g, i) => (
+                <li key={i}>
+                    <input type="text" id={`Goal${i}Text`} defaultValue={g} style={{}} />
+                </li>
+            ))}
+        </div>
     )
 }
 
