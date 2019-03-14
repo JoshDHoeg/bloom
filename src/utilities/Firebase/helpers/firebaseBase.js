@@ -28,6 +28,7 @@ class FirebaseBase {
     this.usersRef = this.db.collection('users');
     this.projectsRef = this.db.collection('projects');
   }
+  
 
   // For all class objects like User and Project, console.log them to see vars.
   // For all classes, pls do not use the _varName. the only varName will update the database
@@ -47,6 +48,7 @@ class FirebaseBase {
   // PLEASE set the returned subscription to variable and use a described below
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
+
 
 
   projects; // Promise<Project[]> // this is a single call for all projects

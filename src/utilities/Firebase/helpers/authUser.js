@@ -54,7 +54,7 @@ class FirebaseAuthUser extends FirebaseBase {
     })
   }
 
-  doCreateUserWithEmailAndPassword = (email, password, client = true, name = 'username', phone = '1231231234', project = 'randomkey') => {
+  doCreateUserWithEmailAndPassword = (email, password, isDesigner = false, name = 'username', phone = '1231231234', project = 'randomkey') => {
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
       return false;
@@ -68,7 +68,7 @@ class FirebaseAuthUser extends FirebaseBase {
         })
           .then(val => {
             console.log(val);
-            return this.doSetUser(usr.user.uid, name, email, phone, client, [project])
+            return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, [project])
           }).catch(error => {
             console.error(error);
             return false;
@@ -128,15 +128,15 @@ class FirebaseAuthUser extends FirebaseBase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
-  doSetUser = async (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['', ['', false]]) => {
-    console.log(uid, name, email, phone, client, projectUid);
+  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, projectUid = ['', ['', false]]) => {
+    console.log(uid, name, email, phone, isDesigner, projectUid);
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p))
         return this.doGetProject(p[0], p[1]).then(p => p.uid);
       return this.doGetProject(p).then(p => p.pid);
     }));
     return this.usersRef.doc(uid).set({
-      client: client,
+      isDesigner: isDesigner,
       email: email,
       name: name,
       phone: phone,
@@ -175,5 +175,6 @@ class FirebaseAuthUser extends FirebaseBase {
     this._userSub();
     this._users.next([]);
   }
+
 }
 export default FirebaseAuthUser;

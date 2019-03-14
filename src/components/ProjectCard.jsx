@@ -6,7 +6,7 @@ import * as ROUTES from "../utilities/constants/routes";
 //pic, name, loc, status
 const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
 const ProjCard = ({props})  => (
-    <Card as={Link} to={ROUTES.CLIENTS}>
+    <Card as={Link} to={ROUTES.PROJECT}>
         <Image src='https://react.semantic-ui.com/images/avatar/large/molly.png' />
         <Card.Content>
             <Card.Header>{props.clientRef.id}</Card.Header>
@@ -16,10 +16,7 @@ const ProjCard = ({props})  => (
             <Card.Description> {props.name} </Card.Description>
         </Card.Content>
         <Card.Content extra>
-            <a href=" ">
-                <Icon name='user' />
-                {props.name}
-            </a>
+            <Link to={ROUTES.PROJECT}>Project</Link>
         </Card.Content>
     </Card>
 );

@@ -11,7 +11,7 @@ import SignInPage from './containers/Users/SignIn';
 import PasswordForgetPage from './containers/Users/PasswordForget';
 import ProjectPage from './containers/Project';
 import AccountPage from './containers/Account';
-import DesignerPage from './containers/Designer';
+import ProjectListPage from './containers/ProjectList';
 
 
 
@@ -27,9 +27,11 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
-      <Route exact path={ROUTES.ACCOUNT} component={AccountPage} />
+
+      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.PROJECT} component={ProjectPage} />
-      <Route path={ROUTES.DESIGNER} component={DesignerPage} />
+
+      <Route path={ROUTES.PROJECT_LIST} exact component={ProjectListPage} />
     </div>
   </Router>
 );

@@ -56,8 +56,9 @@ const HomePageWithSideBar = () => (
                         <Segment basic>
 
                             <div>
-                                <Route path={ROUTES.CLIENT_CONCEPT} component={ConceptPage} />
+                                <Route exact path={ROUTES.PROJECT} component={BriefPage} />
                                 <Route path={ROUTES.CLIENT_BRIEF} component={BriefPage} />
+                                <Route path={ROUTES.CLIENT_CONCEPT} component={ConceptPage} />
                                 <Route path={ROUTES.CLIENT_REVISIONS} component={RevisionsPage} />
                                 <Route path={ROUTES.CLIENT_FINAL} component={FinalPage} />
                             </div>

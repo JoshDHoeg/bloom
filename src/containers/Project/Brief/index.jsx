@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../../utilities/Session';
 
 import backgroundTemp from '../../../Images/TempBackground.PNG';
+import AuthButton from '../../../components/AuthButton';
 
 class ClientDesignBrief extends Component {
     brief;
@@ -46,7 +47,7 @@ class ClientDesignBrief extends Component {
 
     render() {
 
-        const isDesigner = true ? this.state.client.client : false;
+        const isDesigner = true ? this.state.client.isDesigner : false;
 
         const DesignerButton = () => (
             <div>
