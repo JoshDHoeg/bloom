@@ -15,6 +15,10 @@ export const CLIENT_BRIEF = '/project/brief';
 export const CLIENT_CONCEPT = '/project/concept';
 export const CLIENT_FINAL = '/project/final';
 export const CLIENT_REVISIONS = '/project/revisions';
+export const CLIENT_BRIEF_EDIT = '/project/brief/edit';
+export const CLIENT_CONCEPT_EDIT = '/project/concept/edit';
+export const CLIENT_FINAL_EDIT = '/project/final/edit';
+export const CLIENT_REVISIONS_EDIT = '/project/revisions/edit';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';

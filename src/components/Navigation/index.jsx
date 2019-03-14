@@ -31,9 +31,6 @@ const NavigationAuth = () => (
             <div className="item">
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
-            <div className="item">
-                <SignOutButton />
-            </div>
             <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>

@@ -6,11 +6,12 @@ import { Link } from 'react-router-dom';
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 
-import backgroundTemp from '../../../Images/TempBackground.PNG';
+
+import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
 //IMPORT UTILITIES
-import { withAuthorization } from '../../../utilities/Session';
-import * as ROUTES from "../../../utilities/constants/routes";
+import { withAuthorization } from '../../../../utilities/Session';
+import * as ROUTES from "../../../../utilities/constants/routes";
 
 const ClientConcept = () => (
     <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
