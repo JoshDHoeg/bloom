@@ -112,13 +112,6 @@ class SignUpFormBase extends Component {
     return (
       <Form size='large' onSubmit={this.onSubmit}>
         <Segment stacked>
-          <Form.Checkbox
-            label="Designer?"
-            name="isDesigner"
-            toggle
-            checked={isDesigner}
-            onChange={this.onChangeCheckbox}
-          />
           <Form.Input
             fluid
             icon='user'
@@ -158,6 +151,13 @@ class SignUpFormBase extends Component {
             name='passwordTwo'
             value={passwordTwo}
             onChange={this.onChange}
+          />
+          <Form.Checkbox
+            label="Designer?"
+            name="isDesigner"
+            toggle
+            checked={isDesigner}
+            onChange={this.onChangeCheckbox}
           />
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
             Login

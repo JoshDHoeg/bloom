@@ -9,6 +9,7 @@ import AccountInfo from './AccountInfo';
 import AccountPreferences from './AccountPreferences';
 import PaymentOptions from './PaymentOptions';
 import SignOutButton from '../../containers/Users/SignOut';
+
 //import AccountPreferences from './AccountPreferences';
 import PasswordForgetForm from '../Users/PasswordForget';
 import PasswordChangeForm from '../Users/PasswordChange';
@@ -16,7 +17,6 @@ import PasswordChangeForm from '../Users/PasswordChange';
 //IMPORT UTILITIES
 import { AuthUserContext, withAuthorization } from '../../utilities/Session';
 import { withFirebase } from '../../utilities/Firebase';
-import * as ROLES from '../../utilities/constants/roles';
 import * as ROUTES from "../../utilities/constants/routes";
 
 import backgroundTemp from '../../Images/TempBackground.PNG';
@@ -85,8 +85,7 @@ const AccountPageWithSidebar = () => (
   </div>
 )
 
-const condition = authUser =>
-  authUser && authUser.roles.includes(ROLES.DESIGNER);
+const condition = authUser => !!authUser;
 
 export default compose(
   withAuthorization(condition),
