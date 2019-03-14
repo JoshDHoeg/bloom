@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom';
 
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
+import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
+
+import SignOutButton from '../../containers/Users/SignOut';
 
 
 
@@ -28,6 +31,9 @@ const NavigationAuth = () => (
             <div className="item">
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
+            <div className="item">
+                <SignOutButton />
+            </div>
             <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>
@@ -44,6 +50,7 @@ const NavigationNonAuth = () => (
             <div className="item">
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
+
             <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>

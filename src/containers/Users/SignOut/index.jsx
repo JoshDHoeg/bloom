@@ -3,10 +3,10 @@ import React from 'react';
 
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
-import { Icon, Menu, Segment, Sidebar} from 'semantic-ui-react';
+import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignOutButton = ({ firebase }) => (
-  <div class= 'ui animated button' type="button" onClick={firebase.doSignOut}>
+  <div class='ui animated button' type="button" onClick={firebase.doSignOut}>
     <div class= 'visible content'>
     Sign Out
     </div>

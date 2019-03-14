@@ -7,27 +7,24 @@ import { compose } from 'recompose';
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 import * as ROUTES from '../constants/routes';
+
 //is it a user
+
 const withAuthorization = condition => Component => {
   class WithAuthorization extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        currentPage: this.props.location.pathname
-      };
-    }
     componentDidMount() {
-      // console.log(this.props.location.pathname);
-      this.setState({ currentPage: this.props.location.pathname });
-      this.listener = this.props.firebase.isAuthorized.subscribe(
+      this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
-          if (authUser !== null && !condition(authUser)) {
+          if (!condition(authUser)) {
             this.props.history.push(ROUTES.SIGN_IN);
-          } else if (this.state.currentPage !== this.props.location) {
-            this.props.history.push(this.state.currentPage);
           }
         },
+        () => this.props.history.push(ROUTES.SIGN_IN),
       );
+    }
+
+    componentWillUnmount() {
+      this.listener();
     }
 
     render() {

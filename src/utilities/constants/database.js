@@ -1,10 +1,10 @@
 import Firebase from '../Firebase';
 
 export class User {
-  _client = false;
-  get client() { return this._client; }
-  set client(isClient) {
-    this.ref.set({ client: isClient });
+  _isDesigner = false;
+  get isDesigner() { return this._isDesignert; }
+  set isDesigner(designer) {
+    this.ref.set({ isDesigner: designer });
   }
   _email = '';
   get email() { return this._email; }
@@ -29,7 +29,7 @@ export class User {
   get uid() { return this.id };
   constructor(dbQuery) {
     const data = dbQuery.data();
-    this._client = data['client'];
+    this._isDesigner = data['isDesigner'];
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];

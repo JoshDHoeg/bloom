@@ -10,6 +10,7 @@ import { SignInLink } from '../SignIn';
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
+import * as ROLES from '../../../utilities/constants/roles';
 
 const SignUpPage = () => (
   <div className='signup-form'>
@@ -40,6 +41,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  isDesigner: false,
   error: null,
 };
 
@@ -51,7 +53,12 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { name, email, passwordOne } = this.state;
+    const { name, email, passwordOne, isDesigner } = this.state;
+    const roles = [];
+
+    if (isDesigner) {
+      roles.push(ROLES.DESIGNER);
+    }
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -62,12 +69,13 @@ class SignUpFormBase extends Component {
           .doSetUser(authUser.user.uid)
           .set({
             name,
-            email
+            email,
+            roles
           });
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.PROJECT);
+        this.props.history.push(ROUTES.PROJECT_LIST);
       })
       .catch(error => {
         console.log({ error });
@@ -75,6 +83,10 @@ class SignUpFormBase extends Component {
       });
 
     event.preventDefault();
+  };
+
+  onChangeCheckbox = event => {
+    this.setState({ isDesigner: !this.state.isDesigner })
   };
 
   onChange = event => {
@@ -87,6 +99,7 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
+      isDesigner,
       error,
     } = this.state;
 
@@ -99,6 +112,13 @@ class SignUpFormBase extends Component {
     return (
       <Form size='large' onSubmit={this.onSubmit}>
         <Segment stacked>
+          <Form.Checkbox
+            label="Designer?"
+            name="isDesigner"
+            toggle
+            checked={isDesigner}
+            onChange={this.onChangeCheckbox}
+          />
           <Form.Input
             fluid
             icon='user'

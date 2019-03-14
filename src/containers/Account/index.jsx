@@ -1,5 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { compose } from 'recompose';
+
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { Icon, Menu, Segment, Sidebar} from 'semantic-ui-react';
 //IMPORT CONTAINERS
@@ -13,6 +15,8 @@ import PasswordChangeForm from '../Users/PasswordChange';
 
 //IMPORT UTILITIES
 import { AuthUserContext, withAuthorization } from '../../utilities/Session';
+import { withFirebase } from '../../utilities/Firebase';
+import * as ROLES from '../../utilities/constants/roles';
 import * as ROUTES from "../../utilities/constants/routes";
 
 import backgroundTemp from '../../Images/TempBackground.PNG';
@@ -81,6 +85,10 @@ const AccountPageWithSidebar = () => (
   </div>
 )
 
-const condition = authUser => !!authUser;
+const condition = authUser =>
+  authUser && authUser.roles.includes(ROLES.DESIGNER);
 
-export default withAuthorization(condition)(AccountPageWithSidebar);
+export default compose(
+  withAuthorization(condition),
+  withFirebase,
+)(AccountPageWithSidebar);
