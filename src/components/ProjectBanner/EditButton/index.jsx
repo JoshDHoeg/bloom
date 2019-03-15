@@ -13,11 +13,11 @@ const EditButton = (props) => (
 );
 
 //this way gets the button to dissappear
-const condition = authUser =>
-  authUser && authUser._isDesigner;
+// const condition = authUser =>
+//   authUser && authUser._isDesigner;
 
 //button is visible
-// const condition = authUser =>
-//     (authUser || authUser._isDesigner);
+const condition = authUser =>
+    (authUser || authUser._isDesigner);
 
 export default withAuthorization(condition)(EditButton);
