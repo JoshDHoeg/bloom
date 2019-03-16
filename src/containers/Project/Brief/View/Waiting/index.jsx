@@ -22,8 +22,8 @@ class BriefPageWaiting extends Component {
     
     render() {
         return (
-            <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
-               <h1> The Design Brief Is not ready yet. You will recieve a ntification when it is ready.</h1>
+            <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+               <h1>The Design Brief Is not ready yet. You will recieve a ntification when it is ready.</h1>
                <EditButton />
             </div>
         );
