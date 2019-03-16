@@ -11,15 +11,22 @@ const DetailList = (props) => (
     </div>
 );
 
-const DetailListView = () => {
+const DetailListView = (props) => {
     return (
         <div>this is the Detail view </div>
     )
 }
 
-const DetailListEdit = () => {
+const DetailListEdit = (props) => {
+    var GoogleMapsURL = "https://www.google.com/maps";
     return (
-        <div>this is the Detail Edit </div>
+        <div>
+            <ul>
+                <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" defaultValue={props.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                <br></br> {/*Temp break until the gap is styled with css*/}
+                <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" defaultValue={props.budget} style={{ width: '140px' }} ></input></li>
+            </ul>
+        </div>
     )
 }
 
