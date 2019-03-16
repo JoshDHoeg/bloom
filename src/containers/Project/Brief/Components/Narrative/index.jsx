@@ -4,22 +4,30 @@ import React from 'react';
 const Narrative = (props) => (
     <div>
         {props.edit ? (
-        <NarrativeEdit />
+            <NarrativeEdit narrative={props.brief.narrative} />
         ) : (
-        <NarrativeView />
-        )}
+                <NarrativeView narrative={props.brief.narrative} />
+            )}
     </div>
 );
 
-const NarrativeView = () => {
+const NarrativeView = (props) => {
+    const narrative = props.narrative;
     return (
-        <div>this is the goal view </div>
+        <div>
+            <p id="NarrativeTxt">{narrative}</p>
+        </div>
     )
 }
 
-const NarrativeEdit = () => {
+const NarrativeEdit = (props) => {
+    
+    const narrative = props.narrative;
+    console.log("UHHHH" + narrative);
     return (
-        <div>this is the goal Edit </div>
+        <div >
+            <input type="text" id="EditNarrativeTxt" defaultValue={narrative} />
+        </div>
     )
 }
 

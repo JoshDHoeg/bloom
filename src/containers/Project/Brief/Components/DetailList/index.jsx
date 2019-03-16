@@ -4,22 +4,37 @@ import React from 'react';
 const DetailList = (props) => (
     <div>
         {props.edit ? (
-        <DetailListEdit />
+            <DetailListEdit budget={props.brief.budget} location={props.brief.location}/>
         ) : (
-        <DetailListView />
-        )}
+                <DetailListView location={props.brief.location} budget={props.brief.budget}/>
+            )}
     </div>
 );
 
-const DetailListView = () => {
+const DetailListView = (props) => {
+    var GoogleMapsURL = "https://www.google.com/maps";
+    const location = props.location;
+    const budget = props.budget;
     return (
-        <div>this is the Detail view </div>
+        <div>
+            <li id="LocationDisplay">Located on the {location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
+            <li id='BudgetDisplay'>Budget: {budget}</li>
+        </div>
     )
 }
 
-const DetailListEdit = () => {
+const DetailListEdit = (props) => {
+    var GoogleMapsURL = "https://www.google.com/maps";
+    const location = props.location;
+    const budget = props.budget;
     return (
-        <div>this is the Detail Edit </div>
+        <div>
+            <ul>
+                <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" defaultValue={location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                <br></br> {/*Temp break until the gap is styled with css*/}
+                <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" defaultValue={budget} style={{ width: '140px' }} ></input></li>
+            </ul>
+        </div>
     )
 }
 

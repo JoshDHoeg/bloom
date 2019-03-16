@@ -5,16 +5,21 @@ import React, { Component } from 'react';
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../../utilities/Session';
 
+import BriefView from './View';
+import BriefEdit from './Edit';
+
+{/*
 import ProjectBanner from '../../../components/ProjectBanner';
 
 import GoalList from './Components/GoalList';
 import DetailList from './Components/DetailList';
 import Narrative from './Components/Narrative';
 import TasteProfile from './Components/TasteProfile';
-import BriefView from './View';
-import BriefEdit from './Edit';
-
 import backgroundTemp from '../../../Images/TempBackground.PNG';
+*/}
+
+
+
 
 // import { format } from 'path';
 // import {Link} from "react-router-dom";
@@ -31,7 +36,7 @@ class BriefPage extends Component {
         brief: {
             goals: [],
             location: '',
-            budget: ['', ''],
+            budget: '',
             narrative: ''
         },
     };
