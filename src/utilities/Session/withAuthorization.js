@@ -22,11 +22,15 @@ const withAuthorization = condition => Component => {
                 // console.log("is user a designer: " + authUser._isDesigner);
 
                 if (!condition(authUser)) {
+                  console.log(authUser);
                   console.log("not a designer");
-                  this.props.history.push(ROUTES.SIGN_IN);
+                }else{
+                  this.setState({ authUser });
+                  console.log("im confused");
                 }
               })
           } else {
+            console.log("not a user");
             this.props.history.push(ROUTES.SIGN_IN);
           }
       });
