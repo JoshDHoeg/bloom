@@ -4,13 +4,14 @@ import React, { Component } from 'react';
 //IMPORT UTILITIES
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../utilities/Session';
+
 // import { format } from 'path';
 import {Link} from "react-router-dom";
-import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar, Card } from 'semantic-ui-react'
+import ProjCard from "./../../components/ProjectCard.jsx"
 import * as ROUTES from "../../utilities/constants/routes";
-import { Designer } from "./designer"
 
-class AdminPage extends Component {
+class ProjectList extends Component {
   userSub;
   projKeyArr;
   userProjs = [];
@@ -49,46 +50,31 @@ class AdminPage extends Component {
     return (
         <Sidebar.Pushable as={Segment}>
             <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
-                <Menu.Item as={Link} to={ROUTES.CLIENTS}>
+                <Menu.Item as={Link} to={ROUTES.PROJECT}>
                     <Icon name='address book' />
-                    Clients
+                    Current Projects
                 </Menu.Item>
             </Sidebar>
 
-                <Sidebar.Pusher>
-                    <Segment basic>
-                        <div>
-                            <h1>Clients</h1>
-                            {loading && <div>Loading ...</div>}
-                            <UserList users={users} />
-                            <Designer props={this.userProjs}/>
-                        </div>
-                    </Segment>
-                </Sidebar.Pusher>
-            </Sidebar.Pushable>
+            <Sidebar.Pusher>
+                <Segment basic>
+                    <div>
+                        <h1>Current Projects</h1>
+                        {loading && <div>Loading ...</div>}
+                        <Card.Group itemsPerRow={4}>
+                            {this.userProjs.map(proj => (
+                                <ProjCard props={proj} key={proj.name}/>
+                            ))}
+                        </Card.Group>
+                    </div>
+                </Segment>
+            </Sidebar.Pusher>
+        </Sidebar.Pushable>
     );
   }
 }
 
-const UserList = ({ users }) => (
-  <ul>
-    {users.map((user, i) => (
-      <li key={i}>
-        <span>
-          <strong>ID:</strong> {user.uid}
-        </span>
-        <span>
-          <strong>E-Mail:</strong> {user.email}
-        </span>
-        <span>
-          <strong>Username:</strong> {user.name}
-        </span>
-      </li>
-    ))}
-  </ul>
-);
-
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(AdminPage);
+export default withAuthorization(condition)(ProjectList);

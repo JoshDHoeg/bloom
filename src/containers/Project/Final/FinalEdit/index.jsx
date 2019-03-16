@@ -9,11 +9,11 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 
-import backgroundTemp from '../../../Images/TempBackground.PNG';
+import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
 //IMPROT UTILITIES
-import { withAuthorization } from '../../../utilities/Session';
-import * as ROUTES from "../../../utilities/constants/routes";
+import { withAuthorization } from '../../../../utilities/Session';
+import * as ROUTES from "../../../../utilities/constants/routes";
 
 const ClientFinal = () => (
     <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>

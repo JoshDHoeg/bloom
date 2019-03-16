@@ -54,7 +54,7 @@ class FirebaseAuthUser extends FirebaseBase {
     })
   }
 
-  doCreateUserWithEmailAndPassword = (email, password, client = true, name = 'username', phone = '1231231234', project = 'randomkey') => {
+  doCreateUserWithEmailAndPassword = (email, password, isDesigner = false, name = 'username', phone = '1231231234', project = 'randomkey') => {
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
       return false;
@@ -68,7 +68,7 @@ class FirebaseAuthUser extends FirebaseBase {
         })
           .then(val => {
             console.log(val);
-            return this.doSetUser(usr.user.uid, name, email, phone, client, [project])
+            return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, [project])
           }).catch(error => {
             console.error(error);
             return false;
@@ -84,7 +84,7 @@ class FirebaseAuthUser extends FirebaseBase {
   doSignInWithEmailAndPassword = (email, password) => {
     return this.auth.signInWithEmailAndPassword(email, password).then(result => {
       this._userCred = result.credential;
-      console.log(result);
+      //console.log(result);
       return true;
     }, error => {
       console.warn(error);
@@ -127,23 +127,23 @@ class FirebaseAuthUser extends FirebaseBase {
 
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
-  
-  doSetUser = async (uid = '', name = '', email = '', phone = '', client = false, projectUid = ['', ['', false]]) => {
-    console.log(uid, name, email, phone, client, projectUid);
+
+  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, projectUid = ['', ['', false]]) => {
+    console.log(uid, name, email, phone, isDesigner, projectUid);
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p))
         return this.doGetProject(p[0], p[1]).then(p => p.uid);
       return this.doGetProject(p).then(p => p.pid);
     }));
     return this.usersRef.doc(uid).set({
-      client: client,
+      isDesigner: isDesigner,
       email: email,
       name: name,
       phone: phone,
       projects: projects
     }).then(() => uid).then(this.doGetUser.bind(this, uid, false));
   }
-  
+
   doGetUser = (uid, failSafe = Firebase.getUserFailSafe)  => {
     const uuid = failSafe ? 'userAuthID' : uid;
     return this.usersRef.doc(uuid).get().then(userData => {
@@ -156,10 +156,10 @@ class FirebaseAuthUser extends FirebaseBase {
       console.warn(error);
     })
   }
-    
 
   _userSub; _users = new BehaviorSubject([]); // private
   get users() { return this._users.getValue() };
+
   onUser = (unsub = null) => {
     if (this._userSub) this.offfUser(unsub);
     if (!unsub) {
@@ -175,5 +175,6 @@ class FirebaseAuthUser extends FirebaseBase {
     this._userSub();
     this._users.next([]);
   }
+
 }
 export default FirebaseAuthUser;

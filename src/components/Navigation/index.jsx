@@ -1,11 +1,13 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
-//IMPORT CONTAINERS
-import SignOutButton from '../../containers/Users/SignOut';
+
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
+import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
+
+import SignOutButton from '../../containers/Users/SignOut';
 
 
 
@@ -24,16 +26,10 @@ const NavigationAuth = () => (
     <div className="ui purple inverted top menu">
         <div className="ui purple inverted top menu fixed">
             <div className="item">
-                <Link to={ROUTES.CLIENT_CONCEPT}>Project</Link>
+                <Link to={ROUTES.PROJECT_LIST}>Projects</Link>
             </div>
             <div className="item">
-                <Link to={ROUTES.ACCOUNT}>Account</Link>
-            </div>
-            <div className="item">
-                <Link to={ROUTES.DESIGNER}>Designer</Link>
-            </div>
-            <div className="item">
-                <SignOutButton />
+                <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
             <div className="right menu item">
                 <h3>Bloomtime </h3>
@@ -51,6 +47,7 @@ const NavigationNonAuth = () => (
             <div className="item">
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
+
             <div className="right menu item">
                 <h3>Bloomtime </h3>
             </div>

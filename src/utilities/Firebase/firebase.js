@@ -5,8 +5,6 @@ import 'firebase/firestore';
 import FirebaseProjects from './helpers/projects';
 
 
-
-
 /**
  *
  * ### IF *INSUFFICIENT PERMISIONS*
@@ -63,6 +61,7 @@ import FirebaseProjects from './helpers/projects';
  *    });
  * ```
  */
+
 class Firebase extends FirebaseProjects {
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
@@ -83,6 +82,7 @@ class Firebase extends FirebaseProjects {
       }, 1000);
     }
   }
+
 
   static preventBreakingChanges = false; // for personal testing with db changes (keep false)
   static useDefaultProjectValues = false; // for creating projects

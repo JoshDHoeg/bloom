@@ -10,6 +10,7 @@ import { SignInLink } from '../SignIn';
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
+import * as ROLES from '../../../utilities/constants/roles';
 
 const SignUpPage = () => (
   <div className='signup-form'>
@@ -40,6 +41,7 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+  isDesigner: false,
   error: null,
 };
 
@@ -51,23 +53,21 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { name, email, passwordOne } = this.state;
+    const { name, email, passwordOne, isDesigner } = this.state;
+    const roles = [];
+
+    if (isDesigner) {
+      roles.push(ROLES.DESIGNER);
+    }
 
     this.props.firebase
       .doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        // Create a user in your Firebase realtime database
-        // console.log({authUser.user.uid});
-        return this.props.firebase
-          .doSetUser(authUser.user.uid)
-          .set({
-            name,
-            email
-          });
+        // Add a new project ???
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
-        this.props.history.push(ROUTES.PROJECT);
+        this.props.history.push(ROUTES.PROJECT_LIST);
       })
       .catch(error => {
         console.log({ error });
@@ -75,6 +75,10 @@ class SignUpFormBase extends Component {
       });
 
     event.preventDefault();
+  };
+
+  onChangeCheckbox = event => {
+    this.setState({ isDesigner: !this.state.isDesigner })
   };
 
   onChange = event => {
@@ -87,6 +91,7 @@ class SignUpFormBase extends Component {
       email,
       passwordOne,
       passwordTwo,
+      isDesigner,
       error,
     } = this.state;
 
@@ -138,6 +143,13 @@ class SignUpFormBase extends Component {
             name='passwordTwo'
             value={passwordTwo}
             onChange={this.onChange}
+          />
+          <Form.Checkbox
+            label="Designer?"
+            name="isDesigner"
+            toggle
+            checked={isDesigner}
+            onChange={this.onChangeCheckbox}
           />
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
             Login

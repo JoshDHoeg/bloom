@@ -1,24 +1,26 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-//IMPORT UTILITIES
-// import { withFirebase } from '../../utilities/Firebase';
+//IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
+import * as ROUTES from "../../../utilities/constants/routes";
 
-<<<<<<< HEAD
 import backgroundTemp from '../../../Images/TempBackground.PNG';
 
-class ClientDesignBrief extends Component {
-    brief;
+class BriefPageView extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
             loading: false,
-            goals: [],
-            location: '',
-            budget: '',
-            narrative: '',
+            project: null,
+            brief: {
+                goals: [],
+                location: '',
+                budget: ['', ''],
+                narrative: ''
+            },
             client: {
                 name: '',
                 client: false
@@ -29,18 +31,20 @@ class ClientDesignBrief extends Component {
     componentDidMount() {
         this.setState({ loading: true });
         this.getProjectState();
+        console.log(this.props.edit);
         // this.setState(this.getProjectState());
     }
 
     getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
-        this.brief = await project.brief;
+        const project = await this.props.firebase.doGetProject('userAuthID', true);
+        const briefs = await project.briefs;
         const client = await project.client;
         const state = await {
+            project: project,
+            brief: briefs[0],
             client: client,
-            loading: false,
-            ...this.brief.getAll()
-        };
+            loading: false
+        }
         this.setState(state);
         return state;
     }
@@ -48,19 +52,15 @@ class ClientDesignBrief extends Component {
 
     render() {
 
-        const isDesigner = true ? this.state.client.client : false;
-=======
-import ProjectBanner from '../../../components/ProjectBanner';
->>>>>>> development
+        const isDesigner = true ? this.state.client.isDesigner : false;
 
-import GoalList from './Components/GoalList';
-import DetailList from './Components/DetailList';
-import Narrative from './Components/Narrative';
-import TasteProfile from './Components/TasteProfile';
-import BriefView from './View';
-import BriefEdit from './Edit';
+        const DesignerButton = () => (
+            <div>
+                <input id='ClientButton' type="button" value="View Client" onClick={ClientView} />
+                <input id='DesignerButton' style={{ display: 'none' }} type="button" value="View Designer" onClick={DesignerView} />
+            </div>
+        )
 
-<<<<<<< HEAD
         const ClientView = () => {
 
             //Make sure the page isnt editable when client
@@ -111,14 +111,14 @@ import BriefEdit from './Edit';
                 <div>
                     <div>
                         <ul id="goals">
-                            {this.state.goals.map((g, i) => (
+                            {this.state.brief.goals.map((g, i) => (
                                 <li key={i} id={`goal${i}`}>{g}</li>
                             ))}
-
+                            
                         </ul>
-
+                        
                         <div id='GoalsEdit' style={{ display: 'none', listStyleType: 'none', paddingBottom: "15px" }}>
-                            {this.state.goals.map((g, i) => (
+                            {this.state.brief.goals.map((g, i) => (
                                 <li key={i}>
                                     <input type="text" id={`Goal${i}Text`} defaultValue={g} style={{}} />
                                 </li>
@@ -141,7 +141,7 @@ import BriefEdit from './Edit';
                 document.getElementById('GoalsEdit').style.display = "none";
                 console.log(document.getElementById('Goal0Text').value);
                 updateGoals();
-
+                
 
             } else {
                 document.getElementById('goals').style.display = "none";
@@ -152,11 +152,7 @@ import BriefEdit from './Edit';
         }
 
         const updateGoals = () => {
-            const goals = [document.getElementById('Goal0Text').value, document.getElementById('Goal1Text').value, document.getElementById('Goal2Text').value]
-            this.brief.goals = goals;
-            this.setState({
-                goals: goals
-            });
+                this.state.brief.goals = [document.getElementById('Goal0Text').value, document.getElementById('Goal1Text').value, document.getElementById('Goal2Text').value]
         }
 
         const DetailList = () => {
@@ -164,11 +160,11 @@ import BriefEdit from './Edit';
             return (
                 <div>
                     <ul>
-                        <li id="LocationDisplay">Located on the {this.state.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
-                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" id="LocationEditTxt" defaultValue={this.state.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationDisplay">Located on the {this.state.brief.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={GoogleMapsURL}>Google Maps</a></li>
+                        <li id="LocationEdit" style={{ display: 'none' }}>Located on the <input type="text" id="LocationEditTxt" defaultValue={this.state.brief.location} style={{ width: '140px' }}></input><br />See it on <a href={GoogleMapsURL}>Google Maps</a></li>
                         <br></br> {/*Temp break until the gap is styled with css*/}
-                        <li id='BudgetDisplay'>Budget: {this.state.budget}</li>
-                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.state.budget} style={{ width: '140px' }} ></input></li>
+                        <li id='BudgetDisplay'>Budget: {this.state.brief.budget}</li>
+                        <li id="BudgetEdit" style={{ display: 'none' }}>Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.state.brief.budget} style={{ width: '140px' }} ></input></li>
                     </ul>
                     <div style={{ textAlign: "center" }}>
                         <input id="DetailEdit" type="button" value="Edit" onClick={DetailViewFunc} />
@@ -186,7 +182,7 @@ import BriefEdit from './Edit';
                 document.getElementById('BudgetDisplay').style.display = "none";
                 document.getElementById('DetailEdit').style.display = "none";
                 document.getElementById('DetailSubmit').style.display = "inherit";
-
+                
             } else {
                 document.getElementById('LocationEdit').style.display = "none";
                 document.getElementById('BudgetEdit').style.display = "none";
@@ -199,21 +195,15 @@ import BriefEdit from './Edit';
         }
 
         const updateDetails = () => {
-            const location = document.getElementById('LocationEditTxt').value
-            const budget = document.getElementById('BudgetEditTxt').value
-            this.brief.location = location;
-            this.brief.budget = budget;
-            this.setState({
-                budget: budget,
-                location: location
-            })
-        }
+            this.state.brief.location = document.getElementById('LocationEditTxt').value   
+            this.state.brief.budget = document.getElementById('BudgetEditTxt').value           
+    }
 
         var Narrative = () => {
             return (
                 <div >
-                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.narrative}</p>
-                    <input type="text" id="EditNarrativeTxt" defaultValue={this.state.narrative} style={{ display: "none" }} />
+                    <p id="NarrativeTxt" style={{ visibility: 'visible' }}>{this.state.brief.narrative}</p>
+                    <input type="text" id="EditNarrativeTxt" defaultValue={this.state.brief.narrative} style={{ display: "none" }} />
                     <br />
                     <input id="NarrativeEdit" type="button" value="Edit" onClick={NarrativeViewFunc} />
                     <input type="button" id="NarrativeTxtSubmit" value="Submit" style={{ display: "none" }} onClick={NarrativeEditFunc} />
@@ -238,11 +228,7 @@ import BriefEdit from './Edit';
         }
 
         const updateNarrative = () => {
-            const narrative = document.getElementById('EditNarrativeTxt').value;
-            this.brief.narrative = narrative;
-            this.setState({
-                narrative: narrative
-            });
+                this.state.brief.narrative = document.getElementById('EditNarrativeTxt').value         
         }
 
 
@@ -304,97 +290,46 @@ import BriefEdit from './Edit';
 
         }
 
-=======
-import backgroundTemp from '../../../Images/TempBackground.PNG';
-
-// import { format } from 'path';
-// import {Link} from "react-router-dom";
-// import { Icon, Menu, Segment, Sidebar, Card } from 'semantic-ui-react'
-// import ProjCard from "./../../components/ProjectCard.jsx"
-// import * as ROUTES from "../../utilities/constants/routes";
-
-class BriefPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-        loading: false,
-        edit: false,
-        brief: {
-            goals: [],
-            location: '',
-            budget: ['', ''],
-            narrative: ''
-        },
-    };
-  }
-
-  componentDidMount() {
-    this.setState({ loading: true, edit: this.props.edit });
-    this.getProjectState();
-  }
-
-  getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const briefs = await project.briefs;
-    const client = await project.client;
-    const state = await {
-        project: project,
-        brief: briefs[0],
-        client: client,
-        loading: false
-    }
-    this.setState(state);
-    return state;
-}
-
-  render() {
-//     return(
-//         <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
-//             <div className="ui stackable grid container">
-//                     <ProjectBanner edit={this.state.edit} brief={this.state.brief}/>
-
-//                 <div className="row">
-//                     <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-//                         <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
-//                         <GoalList edit={this.state.edit} brief={this.state.brief}/>
-//                     </span>
-//                     <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-//                         <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
-//                         <DetailList edit={this.state.edit} brief={this.state.brief}/>
-//                     </span>
-//                 </div>
-//                 <div className="row">
-
-//                     <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-//                         <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
-//                         <Narrative edit={this.state.edit} brief={this.state.brief}/>
-//                     </span>
-//                 </div>
-//                 <div className="row" >
-
-//                     <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-//                         <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
-//                         <TasteProfile edit={this.state.edit} brief={this.state.brief}/>
-//                     </span>
-//                 </div>
-//             </div>
-//         </div>
-//     );
-    if(this.state.edit){
->>>>>>> development
         return (
-            <BriefEdit brief={this.state.brief} />      
+            <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
+                <div className="ui stackable grid container">
+                    <div className="row" style={{ paddingTop: "40px" }}>
+                        <h1>Design Brief</h1>
+                        <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_BRIEF_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
+                        <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href="https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing" style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                    </div>
+
+                    <div className="row">
+                        <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
+                            <GoalList />
+                        </span>
+                        <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
+                            <DetailList />
+                        </span>
+                    </div>
+                    <div className="row">
+
+                        <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
+                            <Narrative />
+                        </span>
+                    </div>
+                    <div className="row" >
+
+                        <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
+                            <TasteProfile />
+                        </span>
+                    </div>
+                </div>
+            </div>
         );
-    }else{
-        return (
-            <BriefView brief={this.state.brief} />      
-        );
+
     }
-
-  }
 }
-
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(BriefPage);
+export default withAuthorization(condition)(BriefPageView);

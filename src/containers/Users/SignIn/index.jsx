@@ -59,6 +59,7 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(result => {
         if (result) {
+          console.log("we logged in");
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.PROJECT);
         } else {
