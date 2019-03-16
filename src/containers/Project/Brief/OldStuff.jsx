@@ -8,7 +8,7 @@ import * as ROUTES from "../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../Images/TempBackground.PNG';
 
-class BriefPageView extends Component {
+class ClientDesignBrief extends Component {
     constructor(props) {
         super(props);
 
@@ -54,12 +54,6 @@ class BriefPageView extends Component {
 
         const isDesigner = true ? this.state.client.isDesigner : false;
 
-        const DesignerButton = () => (
-            <div>
-                <input id='ClientButton' type="button" value="View Client" onClick={ClientView} />
-                <input id='DesignerButton' style={{ display: 'none' }} type="button" value="View Designer" onClick={DesignerView} />
-            </div>
-        )
 
         const ClientView = () => {
 
@@ -332,4 +326,4 @@ class BriefPageView extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(BriefPageView);
+export default withAuthorization(condition)(ClientDesignBrief);
