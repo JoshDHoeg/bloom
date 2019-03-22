@@ -31,7 +31,7 @@ const BudgetEdit = (props) => {
     return (
         <table class="ui definition table">
         <tbody>
-            <h3>Budget:</h3>
+            <h3>Edit Budget:</h3>
             <tr>
                 <td>Budget:</td>
                 <td id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" defaultValue={budget} style={{ width: '140px' }} ></input></td>
