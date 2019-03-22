@@ -1,41 +1,21 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
-import { compose } from 'recompose';
-
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { Icon, Menu, Segment, Sidebar} from 'semantic-ui-react';
 //IMPORT CONTAINERS
-import AccountInfo from './AccountInfo';
-import AccountPreferences from './AccountPreferences';
-import PaymentOptions from './PaymentOptions';
 import SignOutButton from '../../containers/Users/SignOut';
-
+import PaymentInfoPage from './PaymentOptions';
+import AccountInfoPage from './AccountInfo';
+import PreferencesPage from './AccountPreferences'
 //import AccountPreferences from './AccountPreferences';
 import PasswordForgetForm from '../Users/PasswordForget';
 import PasswordChangeForm from '../Users/PasswordChange';
 
 //IMPORT UTILITIES
-import { AuthUserContext, withAuthorization } from '../../utilities/Session';
-import { withFirebase } from '../../utilities/Firebase';
+import { withAuthorization } from '../../utilities/Session';
 import * as ROUTES from "../../utilities/constants/routes";
-
 import backgroundTemp from '../../Images/TempBackground.PNG';
 
-const AccountPage = () => (
-  <AuthUserContext.Consumer>
-    {authUser => (
-        <div>
-          <div>
-            <h1>Account: {authUser.email}</h1>
-            <PasswordForgetForm />
-            <PasswordChangeForm />
-          </div>
-          <br/>
-          <br/>
-        </div>
-    )}
-  </AuthUserContext.Consumer>
-);
 
 const AccountPageWithSidebar = () => (
   <div style={{ backgroundImage: "url("+ backgroundTemp + ")", backgroundRepeat: 'repeat'}}>
@@ -48,19 +28,19 @@ const AccountPageWithSidebar = () => (
               </div>
               <Menu.Item as={Link} to={ROUTES.ACCOUNT_INFO}>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px"}}>
-                  <Icon name='info circle' />
+                  <Icon className='info circle' />
                   Account Info
                 </div>
               </Menu.Item>
               <Menu.Item as={Link} to={ROUTES.ACCOUNT_PREFERENCES}>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px"}}>
-                 <Icon name='cog' />
+                 <Icon className='cog' />
                  Preferences
                 </div>
               </Menu.Item>
               <Menu.Item as= {Link} to={ROUTES.PAYMENT_OPTIONS}>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px"}}>
-                  <Icon name='money bill alternate outline' />
+                  <Icon className='money bill alternate outline' />
                   Payment Options
                 </div>
              </Menu.Item>
@@ -73,9 +53,30 @@ const AccountPageWithSidebar = () => (
             <Sidebar.Pusher>
                 <Segment basic>
                 <div>
-                  <Route path={ROUTES.ACCOUNT_INFO} component={AccountInfo} />
-                  <Route path={ROUTES.ACCOUNT_PREFERENCES} component={AccountPreferences} />
-                  <Route path={ROUTES.PAYMENT_OPTIONS} component ={PaymentOptions} />
+                  <Route exact
+                    path={ROUTES.ACCOUNT_INFO}
+                    render={(props) => <AccountInfoPage {...props} edit={false} /> }
+                    />
+                  <Route 
+                    path={ROUTES.ACCOUNT_INFO_EDIT}
+                    render={(props) => <AccountInfoPage {...props} edit={true} /> }
+                  />
+                  <Route exact
+                    path={ROUTES.ACCOUNT_PREFERENCES} 
+                    render={(props) => <PreferencesPage {...props} edit={false} /> }
+                  />
+                  <Route 
+                    path={ROUTES.ACCOUNT_PREFERENCES_EDIT} 
+                    render={(props) => <PreferencesPage {...props} edit={true} /> }
+                  />
+                  <Route exact
+                  path={ROUTES.PAYMENT_OPTIONS} 
+                  render={(props) => <PaymentInfoPage {...props} edit={false} /> }
+                  />
+                  <Route 
+                  path={ROUTES.PAYMENT_OPTIONS_EDIT}
+                  render={(props) => <PaymentInfoPage {...props} edit={true} /> }
+                  /> 
                 </div>
                 </Segment>
             </Sidebar.Pusher>
@@ -87,7 +88,4 @@ const AccountPageWithSidebar = () => (
 
 const condition = authUser => !!authUser;
 
-export default compose(
-  withAuthorization(condition),
-  withFirebase,
-)(AccountPageWithSidebar);
+export default withAuthorization(condition)(AccountPageWithSidebar);
