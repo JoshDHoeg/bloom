@@ -26,13 +26,13 @@ class BriefPageView extends Component {
 
     render() {
         // const Available = this.props.brief.available;
-        const Available = false;
+        const Available = true;
         
         if (Available){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                     <div className="ui stackable grid container">
-                            <ProjectBanner edit={this.state.edit} brief={this.props.brief}/>
+                            <ProjectBanner name="brief" edit={this.state.edit} brief={this.props.brief}/>
 
                         <div className="row">
                             <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
