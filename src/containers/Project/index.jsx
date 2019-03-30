@@ -14,9 +14,7 @@ import BriefPage from './Brief';
 import ConceptPage from './Concept';
 import FinalPage from './Final';
 import RevisionsPage from './Revisions';
-import ConceptEditPage from './Concept/ConceptEdit';
-import FinalEditPage from './Final/FinalEdit';
-import RevisionsEditPage from './Revisions/RevisionsEdit';
+
 
 const HomePageWithSideBar = () => (
     <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
@@ -64,16 +62,35 @@ const HomePageWithSideBar = () => (
                                     path={ROUTES.CLIENT_BRIEF} 
                                     render={(props) => <BriefPage {...props} edit={false} /> }
                                     />
-                                <Route exact path={ROUTES.CLIENT_CONCEPT} component={ConceptPage} />
-                                <Route exact path={ROUTES.CLIENT_REVISIONS} component={RevisionsPage} />
-                                <Route exact path={ROUTES.CLIENT_FINAL} component={FinalPage} />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_CONCEPT} 
+                                    render={(props) => <ConceptPage {...props} edit={false} /> }
+                                    />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_FINAL} 
+                                    render={(props) => <FinalPage {...props} edit={false} /> }
+                                    />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_REVISIONS} 
+                                    render={(props) => <RevisionsPage {...props} edit={false} /> }
+                                    />
+
                                 <Route 
                                     path={ROUTES.CLIENT_BRIEF_EDIT} 
                                     render={(props) => <BriefPage {...props} edit={true} /> }
                                     /> 
-                                <Route path={ROUTES.CLIENT_CONCEPT_EDIT} component={ConceptEditPage} />
-                                <Route path={ROUTES.CLIENT_REVISIONS_EDIT} component={RevisionsEditPage} />
-                                <Route path={ROUTES.CLIENT_FINAL_EDIT} component={FinalEditPage} />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_CONCEPT_EDIT} 
+                                    render={(props) => <ConceptPage {...props} edit={true} /> }
+                                    />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_FINAL_EDIT} 
+                                    render={(props) => <FinalPage {...props} edit={true} /> }
+                                    />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_REVISIONS_EDIT} 
+                                    render={(props) => <RevisionsPage {...props} edit={true} /> }
+                                    />
                             </div>
 
                         </Segment>
