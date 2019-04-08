@@ -37,7 +37,7 @@ const UserInfoView = (props) => {
         </table>
     )
 }
-
+//try value for placeholder
 const UserInfoEdit = (props) => {
     const name = props.name;
     const email = props.email;
@@ -48,7 +48,7 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Name:</td>
                 <td> </td>
-                <td id ='EditNameTxt'> <input type='text' id='NameEditTxt' View ={name} style={{ width: '140px' }} ></input></td>
+                <td id ='EditNameTxt'> <input type='text' id='NameEditTxt' value ={name} style={{ width: '140px' }} ></input></td> 
             </tr>
             <tr>
                 <td>Email:</td>

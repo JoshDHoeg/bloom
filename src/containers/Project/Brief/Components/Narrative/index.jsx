@@ -1,4 +1,4 @@
-// BLOOMTIME DESIGN 2019
+//BLOOMTIME DESIGN 2019
 import React from 'react';
 
 const Narrative = (props) => (
