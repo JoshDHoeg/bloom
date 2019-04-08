@@ -33,7 +33,6 @@ class RevisionsPage extends Component {
     const client = await project.client;
     const state = await {
         project: project,
-        concept: concepts[0],
         client: client,
         loading: false
     }
@@ -44,11 +43,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit concept={this.state.concept} />      
+            <RevisionsPageEdit  />      
         );
     }else{
         return (
-            <RevisionsPageView concept={this.state.concept} />      
+            <RevisionsPageView  />      
         );
     }
 
