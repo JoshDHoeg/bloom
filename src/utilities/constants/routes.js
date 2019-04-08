@@ -22,7 +22,8 @@ export const CLIENT_REVISIONS_EDIT = '/project/revisions/edit';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';
-export const ACCOUNT_INFO_EDIT ='/account/info/edit'
+
+export const ACCOUNT_INFO_EDIT = '/account/info/edit';
 export const PAYMENT_OPTIONS = '/account/payment-options';
 export const PAYMENT_OPTIONS_EDIT = '/account/payment-options/edit';
 export const ACCOUNT_PREFERENCES = '/account/preferences';

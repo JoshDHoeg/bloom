@@ -19,8 +19,12 @@ class BriefPageEdit extends Component {
         super(props);
 
         this.state = {
-            edit: true
+            edit: true,
         }
+    }
+
+    onchange(){
+        
     }
 
     render() {
