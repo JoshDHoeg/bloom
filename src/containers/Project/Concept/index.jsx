@@ -15,9 +15,11 @@ class ConceptPage extends Component {
         loading: false,
         edit: false,
         concept: {},
-        videoId: ''
+        videoId: '',
+        mediaURL: ''
     };
 
+  this.updateMedia = this.updateMedia.bind(this);
   this.updateVideo = this.updateVideo.bind(this);
 }
   componentDidMount() {
@@ -26,6 +28,10 @@ class ConceptPage extends Component {
     
   }
 
+  updateMedia(event){
+    event.preventDefault();
+    this.setState({ mediaURL: event.target.value });
+  }
   updateVideo(event){
     event.preventDefault();
     this.setState({ videoId: event.target.value });
@@ -37,9 +43,10 @@ class ConceptPage extends Component {
     const client = await project.client;
     const state = await {
         project: project,
-        videoId: concept.data.videoId,
         client: client,
-        loading: false
+        loading: false,
+        videoId: concept.data.videoId,
+        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
     this.setState(state);
     return state;
@@ -49,11 +56,11 @@ class ConceptPage extends Component {
     console.log(this.state.concept);
     if(this.state.edit){
         return (
-            <ConceptPageEdit videoId={this.state.videoId} updateVideo={this.updateVideo}/>      
+            <ConceptPageEdit mediaURL={this.state.mediaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateVideo={this.updateVideo} />      
         );
     }else{
         return (
-            <ConceptPageView videoId={this.state.videoId} />      
+            <ConceptPageView mediaURL={this.state.mediaURL} videoId={this.state.videoId} />      
         );
     }
 

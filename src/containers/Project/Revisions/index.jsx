@@ -14,14 +14,12 @@ class RevisionsPage extends Component {
     this.state = {
         loading: false,
         edit: false,
-        concept: {
-            goals: [],
-            location: '',
-            budget: ''
-        },
+        figmaURL: '',
+        mediaURL: '',
     };
 
     this.updateFigma = this.updateFigma.bind(this);
+    this.updateMedia = this.updateMedia.bind(this);
   }
 
   componentDidMount() {
@@ -32,7 +30,12 @@ class RevisionsPage extends Component {
 
   updateFigma(event){
     event.preventDefault();
-    this.setState({ videoId: event.target.value });
+    this.setState({ figmaURL: event.target.value });
+  }
+
+  updateMedia(event){
+    event.preventDefault();
+    this.setState({ mediaURL: event.target.value });
   }
 
   getProjectState = async () => {
@@ -44,6 +47,7 @@ class RevisionsPage extends Component {
         client: client,
         loading: false,
         figmaURL: revision.data.figmaURL,
+        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
     this.setState(state);
     return state;
@@ -52,11 +56,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}/>      
+            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>      
         );
     }else{
         return (
-            <RevisionsPageView  figmaURL={this.state.figmaURL} />      
+            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />      
         );
     }
 

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
-// import * as ROUTES from "../../../utilities/constants/routes";
+import * as ROUTES from "../../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
@@ -18,51 +18,23 @@ class BriefPageEdit extends Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            edit: true,
-            goals:[]
-        }
-
-        this.onUpdateGoals = this.onUpdateGoals.bind(this);
     }
-
-    handleChange(event) {
-        console.log(event);
-        console.log("somehting was updated");
-        console.log(this.props.brief.goals);
-        console.log(this.props.brief.goals[event.target.id]);
-        // let tempBrief = Object.assign({}, this.state.brief);
-        // console.log(tempBrief);
-        // tempBrief.goals[event.target.id] = event.target.value;
-        // this.setState({brief: tempBrief});
-        // this.setState({...this.state.goals, goals[event.target.id]: event.target.value});
-    }
-
-    onUpdateGoals = (event) => {
-        this.setState(state => {
-          const goals = state.goals.map(item => item = event.target.value);
-            
-          return {
-            goals,
-          };
-        });
-      };
-
-    componentDidMount() {
-        this.setState({ 
-            loading: true, 
-            goals: this.props.brief.goals 
-        });
-        console.log("fuck");
-        console.log(this.props.brief.goals);
-      }
 
     render() {
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
-                        <ProjectBanner edit={this.state.edit} brief={this.props.brief} updateBrief={this.props.updateBrief}/>
-
+                    <div className="row" style={{ paddingTop: "40px" }}>
+                        <h1>Design Brief</h1>
+                        <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_BRIEF} style={{ textDecoration: 'none', color: "white" }} >Done</Link></button>
+                        <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.mediaURL} style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                    </div>
+                    <div className="row">
+                        <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h2 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h2>
+                            <input type="text" onChange={this.props.updateMedia} value={this.props.mediaURL}/>   
+                        </span>
+                    </div>
                     <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
@@ -76,7 +48,13 @@ class BriefPageEdit extends Component {
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
-                            <DetailList edit={this.state.edit} brief={this.props.brief}/>
+                            <div>
+                                <ul>
+                                    <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" defaultValue={this.props.location} style={{ width: '140px' }}></input><br />See it on <a href={this.props.googleMaps}>Google Maps</a></li>
+                                    <br></br> {/*Temp break until the gap is styled with css*/}
+                                    <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.props.budget} style={{ width: '140px' }} ></input></li>
+                                </ul>
+                            </div>
                         </span>
                     </div>
                     <div className="row">

@@ -4,9 +4,9 @@ import React from 'react';
 const DetailList = (props) => (
     <div>
         {props.edit ? (
-            <DetailListEdit budget={props.brief.budget} location={props.brief.location}/>
+            <DetailListEdit budget={props.brief.budget} location={props.location}/>
         ) : (
-                <DetailListView location={props.brief.location} budget={props.brief.budget}/>
+                <DetailListView location={props.location} budget={props.brief.budget}/>
             )}
     </div>
 );

@@ -14,10 +14,13 @@ class FinalPage extends Component {
     this.state = {
         loading: false,
         edit: false,
-        videoId: ''
+        videoId: '',
+        figmaURL: '',
+        mediaURL: '',
     };
 
     this.updateVideo = this.updateVideo.bind(this);
+    this.updateMedia = this.updateMedia.bind(this);
     this.updateFigma = this.updateFigma.bind(this);
   }
 
@@ -31,9 +34,14 @@ class FinalPage extends Component {
     this.setState({ videoId: event.target.value });
   }
 
+  updateMedia(event){
+    event.preventDefault();
+    this.setState({ mediaURL: event.target.value });
+  }
+
   updateFigma(event){
     event.preventDefault();
-    this.setState({ videoId: event.target.value });
+    this.setState({ figmaURL: event.target.value });
   }
 
   getProjectState = async () => {
@@ -42,10 +50,11 @@ class FinalPage extends Component {
     const client = await project.client;
     const state = await {
         project: project,
+        client: client,
+        loading: false,
         videoId: final.data.videoId,
         figmaURL: final.data.figmaURL,
-        client: client,
-        loading: false
+        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
     this.setState(state);
     return state;
@@ -54,11 +63,11 @@ class FinalPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <FinalPageEdit figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />      
+            <FinalPageEdit mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />      
         );
     }else{
         return (
-            <FinalPageView figmaURL={this.state.figmaURL} videoId={this.state.videoId} />      
+            <FinalPageView mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} />      
         );
     }
 

@@ -20,9 +20,17 @@ class BriefPage extends Component {
             budget: '',
             narrative: ''
         },
+        mediaURL:'',
+        location: '',
+        budget: 0,
+        googleMaps: '',
     };
 
     this.updateBrief = this.updateBrief.bind(this);
+    this.updateMedia = this.updateMedia.bind(this);
+    this.updateLocation = this.updateLocation.bind(this);
+    this.updateBudget = this.updateBudget.bind(this);
+    this.updateGoogleMaps = this.updateGoogleMaps.bind(this);
   }
 
   updateBrief(){
@@ -34,15 +42,36 @@ class BriefPage extends Component {
     this.getProjectState();
   }
 
+  updateMedia(event){
+    event.preventDefault();
+    this.setState({ mediaURL: event.target.value });
+  }
+  updateLocation(event){
+    event.preventDefault();
+    this.setState({ location: event.target.value });
+  }
+  updateBudget(event){
+    event.preventDefault();
+    this.setState({ budget: event.target.value });
+  }
+  updateGoogleMaps(event){
+    event.preventDefault();
+    this.setState({ googleMaps: event.target.value });
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const briefs = await project.briefs;
+    const brief = await project.brief;
     const client = await project.client;
     const state = await {
         project: project,
-        brief: briefs[0],
         client: client,
-        loading: false
+        loading: false,
+        brief: brief,
+        location: brief.data.location,
+        budget: brief.data.budget,
+        googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
     this.setState(state);
     return state;
@@ -51,11 +80,26 @@ class BriefPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <BriefEdit brief={this.state.brief} updateBrief={this.updateBrief} />      
+            <BriefEdit 
+              mediaURL={this.state.mediaURL} 
+              location={this.state.location} 
+              brief={this.state.brief} 
+              budget={this.state.budget} 
+              googleMaps={this.state.googleMaps} 
+              updateMedia={this.updateMedia} 
+              updateLocation={this.updateLocation} 
+              updateBrief={this.updateBrief}
+              updateBudget={this.updateBudget} 
+              updateGoogleMaps={this.updateGoogleMaps} />      
         );
     }else{
         return (
-            <BriefView brief={this.state.brief}/>      
+            <BriefView 
+            mediaURL={this.state.mediaURL} 
+            location={this.state.location} 
+            brief={this.state.brief}
+            budget={this.state.budget} 
+            googleMaps={this.state.googleMaps}/>      
         );
     }
 
