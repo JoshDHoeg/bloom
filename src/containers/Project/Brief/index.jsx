@@ -21,6 +21,12 @@ class BriefPage extends Component {
             narrative: ''
         },
     };
+
+    this.updateBrief = this.updateBrief.bind(this);
+  }
+
+  updateBrief(){
+    console.log("newBrief");
   }
 
   componentDidMount() {
@@ -45,11 +51,11 @@ class BriefPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <BriefEdit brief={this.state.brief} />      
+            <BriefEdit brief={this.state.brief} updateBrief={this.updateBrief} />      
         );
     }else{
         return (
-            <BriefView brief={this.state.brief} />      
+            <BriefView brief={this.state.brief}/>      
         );
     }
 

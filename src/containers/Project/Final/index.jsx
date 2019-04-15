@@ -14,12 +14,11 @@ class FinalPage extends Component {
     this.state = {
         loading: false,
         edit: false,
-        concept: {
-            goals: [],
-            location: '',
-            budget: ''
-        },
+        videoId: ''
     };
+
+    this.updateVideo = this.updateVideo.bind(this);
+    this.updateFigma = this.updateFigma.bind(this);
   }
 
   componentDidMount() {
@@ -27,13 +26,24 @@ class FinalPage extends Component {
     this.getProjectState();
   }
 
+  updateVideo(event){
+    event.preventDefault();
+    this.setState({ videoId: event.target.value });
+  }
+
+  updateFigma(event){
+    event.preventDefault();
+    this.setState({ videoId: event.target.value });
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const concepts = await project.concept;
+    const final = await project.final;
     const client = await project.client;
     const state = await {
         project: project,
-        concept: concepts[0],
+        videoId: final.data.videoId,
+        figmaURL: final.data.figmaURL,
         client: client,
         loading: false
     }
@@ -44,11 +54,11 @@ class FinalPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <FinalPageEdit concept={this.state.concept} />      
+            <FinalPageEdit figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />      
         );
     }else{
         return (
-            <FinalPageView concept={this.state.concept} />      
+            <FinalPageView figmaURL={this.state.figmaURL} videoId={this.state.videoId} />      
         );
     }
 

@@ -39,7 +39,7 @@ class ConceptPageView extends Component {
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
-                                <YoutubeEmbedVideo videoId="ygggcqKmUts" suggestions={false} style={{ width: "600px", padding: "30px" }} />
+                                <YoutubeEmbedVideo videoId={this.props.videoId} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                             </span>
                         </div>
                         <div className="row">

@@ -14,26 +14,30 @@ class ConceptPage extends Component {
     this.state = {
         loading: false,
         edit: false,
-        concept: {
-            goals: [],
-            location: '',
-            budget: ''
-        },
+        concept: {},
+        videoId: ''
     };
-  }
 
+  this.updateVideo = this.updateVideo.bind(this);
+}
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
     this.getProjectState();
+    
+  }
+
+  updateVideo(event){
+    event.preventDefault();
+    this.setState({ videoId: event.target.value });
   }
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const concepts = await project.concept;
+    const concept = await project.concept;
     const client = await project.client;
     const state = await {
         project: project,
-        concept: concepts[0],
+        videoId: concept.data.videoId,
         client: client,
         loading: false
     }
@@ -42,13 +46,14 @@ class ConceptPage extends Component {
 }
 
   render() {
+    console.log(this.state.concept);
     if(this.state.edit){
         return (
-            <ConceptPageEdit concept={this.state.concept} />      
+            <ConceptPageEdit videoId={this.state.videoId} updateVideo={this.updateVideo}/>      
         );
     }else{
         return (
-            <ConceptPageView concept={this.state.concept} />      
+            <ConceptPageView videoId={this.state.videoId} />      
         );
     }
 

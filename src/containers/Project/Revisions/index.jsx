@@ -20,6 +20,8 @@ class RevisionsPage extends Component {
             budget: ''
         },
     };
+
+    this.updateFigma = this.updateFigma.bind(this);
   }
 
   componentDidMount() {
@@ -27,14 +29,21 @@ class RevisionsPage extends Component {
     this.getProjectState();
   }
 
+
+  updateFigma(event){
+    event.preventDefault();
+    this.setState({ videoId: event.target.value });
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const concepts = await project.concept;
+    const revision = await project.revision;
     const client = await project.client;
     const state = await {
         project: project,
         client: client,
-        loading: false
+        loading: false,
+        figmaURL: revision.data.figmaURL,
     }
     this.setState(state);
     return state;
@@ -43,11 +52,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit  />      
+            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}/>      
         );
     }else{
         return (
-            <RevisionsPageView  />      
+            <RevisionsPageView  figmaURL={this.state.figmaURL} />      
         );
     }
 
