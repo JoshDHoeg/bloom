@@ -18,13 +18,34 @@ class BriefPageEdit extends Component {
     constructor(props) {
         super(props);
         this.state={
-            edit: true
+            edit: true,
+            list: ['1', '2', '3'],
+            goals:[{goal:1, value:""}]
         }
 
+        this.addGoal = this.addGoal.bind(this);
     }
 
+    addGoal = (e) => {
+        this.setState((prevState) => ({
+          goals: [...prevState.goals, {goal:"", value:""}],
+        }));
+      }
+
+      handleChange = (e) => {
+        if (["goal", "value"].includes(e.target.className) ) {
+          let goals = [...this.state.goals]   
+          goals[e.target.dataset.id][e.target.className] = e.target.value
+          this.setState({ goals }, () => console.log(this.state.goals))
+        } else {
+          this.setState({ [e.target.name]: e.target.value })
+        }
+        console.log(this.state.goals);
+      }
+
+      handleSubmit = (e) => { e.preventDefault() }
+
     render() {
-        console.log(this.props);
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
@@ -42,7 +63,36 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
-                            <GoalList edit={this.state.edit} goals={this.props.goals} updateGoals={this.props.updateGoals}/>
+                            <div>
+
+                            {this.state.goals.map((val, idx)=> {
+                                let goalId = `goal-${idx}`, valueId = `value-${idx}`
+                                return (
+                                <div key={idx}>
+                                    <label htmlFor={goalId}>{`Goal #${idx + 1}`}</label>
+                                    <input
+                                    type="text"
+                                    name={goalId}
+                                    data-id={idx}
+                                    id={goalId}
+                                    className="name"
+                                    onChange={this.handleChange}
+                                    />
+                                    <label htmlFor={valueId}>Value</label>
+                                    <input
+                                    type="text"
+                                    name={valueId}
+                                    data-id={idx}
+                                    id={valueId}
+                                    className="age"
+                                    onChange={this.handleChange}
+                                    />
+                                </div>
+                                )
+                            })
+                            }
+                            </div>
+                            <button onClick={this.addGoal}>Add new goal</button>
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>

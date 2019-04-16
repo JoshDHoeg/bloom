@@ -4,9 +4,9 @@ import React from 'react';
 const DetailList = (props) => (
     <div>
         {props.edit ? (
-            <DetailListEdit budget={props.budget} location={props.location} googleMaps={props.googleMaps} updateBudget={props.updateBudget} updateAddress={props.updateAddress} updateGoogleMaps={props.updateGoogleMaps}/>
+            <DetailListEdit budget={props.budget} address={props.address} googleMaps={props.googleMaps} updateBudget={props.updateBudget} updateAddress={props.updateAddress} updateGoogleMaps={props.updateGoogleMaps}/>
         ) : (
-                <DetailListView budget={props.budget} location={props.location} googleMaps={props.googleMaps}/>
+                <DetailListView budget={props.budget} address={props.address} googleMaps={props.googleMaps}/>
             )}
     </div>
 );
@@ -14,7 +14,7 @@ const DetailList = (props) => (
 const DetailListView = (props) => {
     return (
         <div>
-            <li id="LocationDisplay">Located on the {props.location}<br />See it on <a target="_blank" rel="noopener noreferrer" href={props.GoogleMapsURL}>Google Maps</a></li>
+            <li id="LocationDisplay">Located on the {props.address}<br />See it on <a target="_blank" rel="noopener noreferrer" href={props.googleMaps}>Google Maps</a></li>
             <li id='BudgetDisplay'>Budget: {props.budget}</li>
         </div>
     )
