@@ -4,9 +4,9 @@ import React from 'react';
 const GoalList = (props) => (
     <div>
         {props.edit ? (
-        <GoalListEdit goals={props.brief.goals} handleChange={props.handleChange}/>
+        <GoalListEdit goals={props.goals} handleChange={props.updateGoals}/>
         ) : (
-        <GoalListView goals={props.brief.goals} />
+        <GoalListView goals={props.goals} />
         )}
     </div>
 );
@@ -29,7 +29,7 @@ const GoalListEdit = (props) => {
         <div id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
             {goals.map((g, i) => (
                 <li key={i}>
-                    <input type="text" id={`Goal${i}Text`} value={g} style={{}} onchange={props.handleChange()}/>
+                    <input type="text" id={`Goal${i}Text`} value={g} style={{}} onchange={props.handleChange}/>
                 </li>
             ))}
         </div>

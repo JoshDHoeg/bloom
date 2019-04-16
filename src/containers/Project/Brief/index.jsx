@@ -14,28 +14,22 @@ class BriefPage extends Component {
     this.state = {
         loading: false,
         edit: false,
-        brief: {
-            goals: [],
-            location: '',
-            budget: '',
-            narrative: ''
-        },
+        goals: [],
         mediaURL:'',
-        location: '',
-        budget: 0,
+        address: '',
+        budget: '',
         googleMaps: '',
+        narrative: '',
     };
 
-    this.updateBrief = this.updateBrief.bind(this);
+    this.updateGoals = this.updateGoals.bind(this);
     this.updateMedia = this.updateMedia.bind(this);
-    this.updateLocation = this.updateLocation.bind(this);
+    this.updateAddress = this.updateAddress.bind(this);
     this.updateBudget = this.updateBudget.bind(this);
     this.updateGoogleMaps = this.updateGoogleMaps.bind(this);
+    this.updateNarrative = this.updateNarrative.bind(this);
   }
 
-  updateBrief(){
-    console.log("newBrief");
-  }
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
@@ -46,9 +40,13 @@ class BriefPage extends Component {
     event.preventDefault();
     this.setState({ mediaURL: event.target.value });
   }
-  updateLocation(event){
+  updateGoals(event){
     event.preventDefault();
-    this.setState({ location: event.target.value });
+    this.setState({ goals: event.target.value });
+  }
+  updateAddress(event){
+    event.preventDefault();
+    this.setState({ address: event.target.value });
   }
   updateBudget(event){
     event.preventDefault();
@@ -58,18 +56,25 @@ class BriefPage extends Component {
     event.preventDefault();
     this.setState({ googleMaps: event.target.value });
   }
+  updateNarrative(event){
+    event.preventDefault();
+    this.setState({ narrative: event.target.value });
+  }
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject('userAuthID', true);
     const brief = await project.brief;
+    console.log(brief);
     const client = await project.client;
     const state = await {
         project: project,
         client: client,
         loading: false,
         brief: brief,
-        location: brief.data.location,
+        address: brief.data.location,
         budget: brief.data.budget,
+        narrative: brief.data.narrative,
+        goals: brief.data.goals,
         googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
         mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
@@ -82,24 +87,27 @@ class BriefPage extends Component {
         return (
             <BriefEdit 
               mediaURL={this.state.mediaURL} 
-              location={this.state.location} 
-              brief={this.state.brief} 
+              address={this.state.address} 
+              goals={this.state.goals} 
               budget={this.state.budget} 
               googleMaps={this.state.googleMaps} 
+              narrative={this.state.narrative} 
               updateMedia={this.updateMedia} 
-              updateLocation={this.updateLocation} 
-              updateBrief={this.updateBrief}
+              updateAddress={this.updateAddress} 
+              updateGoals={this.updateGoals}
               updateBudget={this.updateBudget} 
-              updateGoogleMaps={this.updateGoogleMaps} />      
+              updateGoogleMaps={this.updateGoogleMaps}
+              updateNarrative={this.updateNarrative} />      
         );
     }else{
         return (
             <BriefView 
             mediaURL={this.state.mediaURL} 
-            location={this.state.location} 
-            brief={this.state.brief}
+            address={this.state.address} 
+            goals={this.state.goals}
             budget={this.state.budget} 
-            googleMaps={this.state.googleMaps}/>      
+            googleMaps={this.state.googleMaps}
+            narrative={this.state.narrative} />      
         );
     }
 

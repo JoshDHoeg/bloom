@@ -17,10 +17,14 @@ import ProjectBanner from '../../../../components/ProjectBanner';
 class BriefPageEdit extends Component {
     constructor(props) {
         super(props);
+        this.state={
+            edit: true
+        }
 
     }
 
     render() {
+        console.log(this.props);
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
@@ -38,30 +42,18 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
-                            <div id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
-                                {this.props.brief.goals.map((g, i) => (
-                                    <li key={i}>
-                                        <input type="text" id={`${i}`} value={g} onChange={this.onUpdateGoals}/>
-                                    </li>
-                                ))}
-                            </div>
+                            <GoalList edit={this.state.edit} goals={this.props.goals} updateGoals={this.props.updateGoals}/>
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
-                            <div>
-                                <ul>
-                                    <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" defaultValue={this.props.location} style={{ width: '140px' }}></input><br />See it on <a href={this.props.googleMaps}>Google Maps</a></li>
-                                    <br></br> {/*Temp break until the gap is styled with css*/}
-                                    <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" defaultValue={this.props.budget} style={{ width: '140px' }} ></input></li>
-                                </ul>
-                            </div>
+                            <DetailList edit={this.state.edit} address={this.props.address} budget={this.props.budget} googleMaps={this.props.googleMaps}  updateBudget={this.props.updateBudget} updateAddress={this.props.updateAddress} updateGoogleMaps={this.props.updateGoogleMaps}/>
                         </span>
                     </div>
                     <div className="row">
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
-                            <Narrative edit={this.state.edit} brief={this.props.brief}/>
+                            <Narrative edit={this.state.edit} brief={this.props.brief} narrative={this.props.narrative} updateNarrative={this.props.updateNarrative}/>
                         </span>
                     </div>
                     <div className="row" >

@@ -4,9 +4,9 @@ import React from 'react';
 const Narrative = (props) => (
     <div>
         {props.edit ? (
-            <NarrativeEdit narrative={props.brief.narrative} />
+            <NarrativeEdit narrative={props.narrative} updateNarrative={props.updateNarrative}/>
         ) : (
-                <NarrativeView narrative={props.brief.narrative} />
+                <NarrativeView narrative={props.narrative} />
             )}
     </div>
 );
