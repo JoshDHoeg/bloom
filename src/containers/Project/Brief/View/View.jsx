@@ -12,7 +12,6 @@ import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
 import TasteProfile from '../Components/TasteProfile/TasteProfile';
-import ProjectBanner from '../../../../components/ProjectBanner/ProjectBanner';
 import BriefWaiting from './Waiting/Waiting';
 
 class BriefPageView extends Component {
@@ -44,10 +43,7 @@ class BriefPageView extends Component {
                             </span>
                             <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
-                                <div>
-                                    <li id="LocationDisplay">Located on the {this.props.address}<br />See it on <a target="_blank" rel="noopener noreferrer" href={this.props.googleMaps}>Google Maps</a></li>
-                                    <li id='BudgetDisplay'>Budget: {this.props.budget}</li>
-                                </div>
+                                <DetailList edit={this.state.edit} budget={this.props.budget} address={this.props.address} googleMaps={this.props.googleMaps}/>
                             </span>
                         </div>
                         <div className="row">

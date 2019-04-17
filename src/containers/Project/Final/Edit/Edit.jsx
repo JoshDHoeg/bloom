@@ -11,7 +11,7 @@ import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 //Figma Embed import
-import FigmaEmbed from 'react-figma-embed';
+// import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 

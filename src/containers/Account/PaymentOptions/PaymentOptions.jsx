@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react'
-import backgroundTemp from '../../../Images/TempBackground.PNG';
+// import backgroundTemp from '../../../Images/TempBackground.PNG';
 //IMPORT UTILITIESimport { getMaxListeners } from 'cluster';
 import { withAuthorization } from '../../../utilities/Session';
 import PaymentPageView from './View/View';
@@ -45,7 +45,8 @@ class PaymentInfoPage extends Component {
     //    this.setState(state);
     //    return state;
     //}
-constructor(props) { {/*temperary props until firebase is setup*/}
+    /*temperary props until firebase is setup*/
+    constructor(props) { 
         super(props);
         this.state = {
             loading: false,

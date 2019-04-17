@@ -3,7 +3,7 @@ import React from 'react';
 
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
-import * as ROUTES from '../../../utilities/constants/routes';
+// import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignOutButton = ({ firebase }) => (
   <div class='ui animated button' type="button" onClick={firebase.doSignOut}>

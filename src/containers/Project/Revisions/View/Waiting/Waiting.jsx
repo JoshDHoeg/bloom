@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session';

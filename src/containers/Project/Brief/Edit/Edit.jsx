@@ -8,11 +8,11 @@ import * as ROUTES from "../../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
-import GoalList from '../Components/GoalList/GoalList';
+// import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
 import TasteProfile from '../Components/TasteProfile/TasteProfile';
-import ProjectBanner from '../../../../components/ProjectBanner/ProjectBanner';
+
 
 class BriefPageEdit extends Component {
     constructor(props) {

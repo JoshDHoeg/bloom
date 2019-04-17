@@ -1,10 +1,10 @@
 import {Link} from "react-router-dom";
 import React from 'react';
-import { Card, Icon, Image} from 'semantic-ui-react'
+import { Card, Image} from 'semantic-ui-react'
 import * as ROUTES from "../utilities/constants/routes";
 
 //pic, name, loc, status
-const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
+// const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
 const ProjCard = ({props})  => (
     <Card as={Link} to={ROUTES.PROJECT}>
         <Image src='https://react.semantic-ui.com/images/avatar/large/molly.png' />

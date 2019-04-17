@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react'
-import backgroundTemp from '../../../Images/TempBackground.PNG';
+// import backgroundTemp from '../../../Images/TempBackground.PNG';
 //IMPORT UTILITIESimport { getMaxListeners } from 'cluster';
 import { withAuthorization } from '../../../utilities/Session';
 import AccountInfoView from './View/View';

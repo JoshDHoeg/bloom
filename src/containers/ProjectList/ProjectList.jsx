@@ -44,7 +44,7 @@ class ProjectList extends Component {
   }
 
   render() {
-    const { users, loading } = this.state;
+    const { loading } = this.state;
     console.log(this.userProjs[0]);
 
     return (
