@@ -3,15 +3,15 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //IMPORT COMPONENTS
-import Navigation from './components/Navigation';
+import Navigation from './components/Navigation/Navigation';
 
 //IMPORT CONTAINERS
-import SignUpPage from './containers/Users/SignUp';
-import SignInPage from './containers/Users/SignIn';
-import PasswordForgetPage from './containers/Users/PasswordForget';
-import ProjectPage from './containers/Project';
-import AccountPage from './containers/Account';
-import ProjectListPage from './containers/ProjectList';
+import SignUpPage from './containers/Users/SignUp/SignUp';
+import SignInPage from './containers/Users/SignIn/SignIn';
+import PasswordForgetPage from './containers/Users/PasswordForget/PasswordForget';
+import ProjectPage from './containers/Project/Project';
+import AccountPage from './containers/Account/Account';
+import ProjectListPage from './containers/ProjectList/ProjectList';
 
 
 
