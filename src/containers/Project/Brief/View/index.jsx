@@ -18,7 +18,7 @@ import BriefWaiting from './Waiting';
 class BriefPageView extends Component {
     constructor(props) {
         super(props);
-
+        
         this.state = {
             edit: false
         }
