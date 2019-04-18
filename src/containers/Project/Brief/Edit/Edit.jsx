@@ -20,6 +20,7 @@ class BriefPageEdit extends Component {
         this.state={
             edit: true,
             list: ['1', '2', '3'],
+            editId: '',
             goals:[
                 {id: 1, content: "buy some milk"},
                 {id: 2, content: "play mario cart"},
@@ -34,6 +35,31 @@ class BriefPageEdit extends Component {
         })
 
         this.setState({"goals": Goals})
+    }
+
+    editGoal = (id) => {
+        this.setState({editId: id});
+        console.log(id);
+    }
+
+    editGoalSubmit = (goal) =>{
+        console.log(goal);
+        this.setState(state => {
+            const goals = state.goals.map(goalCurrent => {
+                if(goalCurrent.id === goal.id){
+                    // console.log(goal.content);
+                    return goal;
+                }else{
+                    // console.log(goalCurrent.content);
+                    return goalCurrent;
+                }
+            });
+            console.log(goals);
+            return {
+                goals: goals,
+                editId: ''
+            };
+        });
     }
 
     addGoal = (goal) => {
@@ -59,7 +85,7 @@ class BriefPageEdit extends Component {
                 return item;
               }
             });
-      
+            console.log(list)
             return {
               list,
             };
@@ -85,7 +111,7 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
-                            <GoalList edit={this.state.edit} goals={this.state.goals} deleteGoal={this.deleteGoal} addGoal={this.addGoal}/>
+                            <GoalList edit={this.state.edit} editGoal={this.editGoal} editId={this.state.editId} goals={this.state.goals} deleteGoal={this.deleteGoal} addGoal={this.addGoal} editGoalSubmit={this.editGoalSubmit}/>
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>

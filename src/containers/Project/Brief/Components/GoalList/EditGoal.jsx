@@ -1,9 +1,10 @@
 import React from 'react';
 
-class NewGoal extends React.Component{
+class EditGoal extends React.Component{
     constructor(props) {
         super(props);
         this.state={
+            id:'',
             content:''
         }
     }
@@ -14,19 +15,20 @@ class NewGoal extends React.Component{
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.addGoal(this.state);
-        
+        this.props.editGoalSubmit(this.state);
         this.setState({
             content: ''
         });
-        console.log("reset");
+    }
+
+    componentDidMount(){
+        this.setState({id: this.props.goal.id, content: this.props.goal.content});
     }
 
     render(){
         return(
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label>Add New Goal</label>
                     <input  type="text"  value={this.state.content} onChange={this.handleChange} />
                 </form>
             </div>
@@ -34,4 +36,4 @@ class NewGoal extends React.Component{
     }
 }
 
-export default NewGoal;
+export default EditGoal;
