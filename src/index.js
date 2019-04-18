@@ -1,12 +1,21 @@
+// BLOOMTIME DESIGN 2019
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import AuthRouter from './AuthRouter.jsx';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+//IMPORT STYLES
+import './index.css';
+import 'semantic-ui-css/semantic.min.css'
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+//IMPORT UTILITIES
+import Firebase, { FirebaseContext } from './utilities/Firebase';
+
+ReactDOM.render(
+  <FirebaseContext.Provider value={new Firebase()}>
+    <AuthRouter />
+  </FirebaseContext.Provider>,
+  document.getElementById('root')
+);
+
 serviceWorker.unregister();

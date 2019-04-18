@@ -1,0 +1,2 @@
+// BLOOMTIME DESIGN 2019
+export const DESIGNER = 'DESIGNER';
