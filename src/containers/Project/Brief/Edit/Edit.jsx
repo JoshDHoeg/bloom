@@ -8,7 +8,7 @@ import * as ROUTES from "../../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
-// import GoalList from '../Components/GoalList/GoalList';
+import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
 import TasteProfile from '../Components/TasteProfile/TasteProfile';
@@ -20,8 +20,29 @@ class BriefPageEdit extends Component {
         this.state={
             edit: true,
             list: ['1', '2', '3'],
+            goals:[
+                {id: 1, content: "buy some milk"},
+                {id: 2, content: "play mario cart"},
+            ]
         }
 
+    }
+
+    deleteGoal = (id) => {
+        const Goals = this.state.goals.filter(goal => {
+            return goal.id !== id;
+        })
+
+        this.setState({"goals": Goals})
+    }
+
+    addGoal = (goal) => {
+        console.log(goal);
+        goal.id= Math.random();
+        let goals = [...this.state.goals, goal];
+        this.setState({
+            goals: goals
+        });
     }
 
     onUpdateItems = (event) => {
@@ -64,11 +85,7 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ marginRight: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Goals</h1>
-                            <div>
-                                {this.state.list.map((item, index) => (
-                                    <input key={item} value={item} id={index} onChange={this.onUpdateItems} />
-                                ))}
-                            </div>
+                            <GoalList edit={this.state.edit} goals={this.state.goals} deleteGoal={this.deleteGoal} addGoal={this.addGoal}/>
                         </span>
                         <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>

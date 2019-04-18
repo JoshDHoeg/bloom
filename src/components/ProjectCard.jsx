@@ -37,7 +37,9 @@ const ProjCard = ({props})  => (
                         </Grid.Column>
 
                         <Grid.Column width="4">
-                            <Link to={ROUTES.PROJECT}><Button>Project</Button></Link>
+                            <Link to={ROUTES.PROJECT}>
+                                <Button>Project</Button>
+                            </Link>
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
