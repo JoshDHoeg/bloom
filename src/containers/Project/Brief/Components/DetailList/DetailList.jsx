@@ -1,5 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Input, Form } from 'semantic-ui-react'
 
 const DetailList = (props) => (
     <div>
@@ -22,13 +23,15 @@ const DetailListView = (props) => {
 
 const DetailListEdit = (props) => {
     return (
-        <div>
-            <ul>
-                <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" value={props.address} style={{ width: '140px' }} onChange={props.updateAddress}/><br />See it on <a href={props.googleMaps}>Google Maps</a></li>
-                <br></br> {/*Temp break until the gap is styled with css*/}
-                <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" value={props.budget} style={{ width: '140px' }} onChange={props.updateBudget}/></li>
-            </ul>
-        </div>
+        <Form>
+            <label id="LocationEdit">Address </label>
+            <Input value={props.address} onChange={props.updateAddress}/>
+            <br />See it on 
+            <a href={props.googleMaps}>Google Maps</a>
+            <br></br> {/*Temp break until the gap is styled with css*/}
+            <label id="BudgetEdit">Budget </label>
+            <Input value={props.budget} onChange={props.updateBudget}/>
+        </Form>
     )
 }
 

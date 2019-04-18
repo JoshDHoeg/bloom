@@ -1,5 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Form, TextArea } from 'semantic-ui-react'
 
 const Narrative = (props) => (
     <div>
@@ -21,13 +22,11 @@ const NarrativeView = (props) => {
 }
 
 const NarrativeEdit = (props) => {
-    
     const narrative = props.narrative;
-    console.log("UHHHH" + narrative);
     return (
-        <div >
-            <input type="text" id="EditNarrativeTxt" defaultValue={narrative} />
-        </div>
+        <Form >
+            <TextArea placeholder={narrative} id="EditNarrativeTxt" />
+        </Form>
     )
 }
 

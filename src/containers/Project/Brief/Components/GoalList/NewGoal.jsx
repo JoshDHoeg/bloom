@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, Input } from 'semantic-ui-react';
 
 class NewGoal extends React.Component{
     constructor(props) {
@@ -24,12 +25,9 @@ class NewGoal extends React.Component{
 
     render(){
         return(
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label>Add New Goal</label>
-                    <input  type="text"  value={this.state.content} onChange={this.handleChange} />
-                </form>
-            </div>
+            <Form onSubmit={this.handleSubmit}>
+                <Input value={this.state.content} onChange={this.handleChange} placeholder="Add New Goal"/>
+            </Form>
         )
     }
 }

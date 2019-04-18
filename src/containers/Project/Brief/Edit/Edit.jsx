@@ -19,7 +19,6 @@ class BriefPageEdit extends Component {
         super(props);
         this.state={
             edit: true,
-            list: ['1', '2', '3'],
             editId: '',
             goals:[
                 {id: 1, content: "buy some milk"},
@@ -70,27 +69,6 @@ class BriefPageEdit extends Component {
             goals: goals
         });
     }
-
-    onUpdateItems = (event) => {
-        
-        let index = parseInt(event.target.id);
-        let value = event.target.value;
-        console.log(value);
-        console.log(index);
-        this.setState(state => {
-            const list = state.list.map((item, j) => {
-              if (j === index) {
-                return value;
-              } else {
-                return item;
-              }
-            });
-            console.log(list)
-            return {
-              list,
-            };
-          });
-      };
 
     render() {
         console.log(this.props);
