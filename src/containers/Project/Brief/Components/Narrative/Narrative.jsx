@@ -24,7 +24,7 @@ const NarrativeView = (props) => {
 const NarrativeEdit = (props) => {
     const narrative = props.narrative;
     return (
-        <Form >
+        <Form onSubmit={props.updateNarrative}>
             <TextArea placeholder={narrative} id="EditNarrativeTxt" />
         </Form>
     )

@@ -2,7 +2,7 @@ import Firebase from '../Firebase';
 
 export class User {
   _isDesigner = false;
-  get isDesigner() { return this._isDesignert; }
+  get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
     this.ref.set({ isDesigner: designer });
   }
@@ -137,7 +137,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    this.ref.set(setObj, { merge: true }).catch(error => {
+    return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }
@@ -146,11 +146,11 @@ class ProjectDataBase {
  * # To add testing vars (without changing the database)
  * 1. Set useDefaults to true in Firebase
  * 2. Create empty value:
- * `_location = '';`
+ * `_address = '';`
  * 3. create getter
- * `get location() { return this._location; };`
+ * `get address() { return this._address; };`
  * 4. add your default value to constructor (the defaults are the `else` section)
- * `this._location =  'Western Side of House'`
+ * `this._address =  'Western Side of House'`
  * 5. getAll(), _setter(), and data[] will affect the database
  */
 
@@ -161,16 +161,16 @@ class ProjectDataBase {
  * copy my examples from below, I have left empty examples in the unused Classes
  * ...here's my best explination, you should be able to see where it all came from below
  * 1. Create empty value:
- * `_location = '';`
+ * `_address = '';`
  * 2. create getter and setter
- * `get location() { return this._location; };`
- * `set location(l) { this._setter({ location: l }).then(() => this._location = l); }`
+ * `get address() { return this._address; };`
+ * `set address(l) { this._setter({ address: l }).then(() => this._address = l); }`
  * 3. add your default value to constructor
- * `this._location =  'Western Side of House'`
+ * `this._address =  'Western Side of House'`
  * 4. add the database call to the constructor
- * `this._location = this.data['location'];`
+ * `this._address = this.data['address'];`
  * 5. add the field to the getAll
- * `location: this.location`
+ * `address: this.address`
  * 6. call `this.props.firebase.clearProjects();` anywhere and it will reset the database to include your updates
  * 7. if there's a problem, just remove or comment what was changed and call another clearProjects.
  */
@@ -192,9 +192,9 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _location = '';
-      get location() { return this._location; };
-      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
       _budget = ['', ''];
       get budget() { return this._budget; };
       set budget(b) { this._setter({ budget: b }).then(() => this._budget = b) }
@@ -206,13 +206,13 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._location = this.data['location'];
+          this._address = this.data['address'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
-          this._location = 'Western Side of House';
-          this._budget = ['$500', '$1000'];
+          this._address = 'Western Side of House';
+          this._budget = '$1000';
           this._narrative = 'It\'s gonna look pretty:)';
         }
       }
@@ -220,7 +220,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           goals: this.goals,
-          location: this.location,
+          address: this.address,
           budget: this.budget,
           narrative: this.narrative
         });

@@ -23,10 +23,10 @@ const withAuthorization = condition => Component => {
 
                 if (!condition(authUser)) {
                   console.log(authUser);
-                  console.log("not a designer");
+                  // console.log("not a designer");
                 }else{
                   this.setState({ authUser });
-                  console.log("im confused");
+                  // console.log("im confused");
                 }
               })
           } else {

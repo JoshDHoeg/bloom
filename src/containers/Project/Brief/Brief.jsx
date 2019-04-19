@@ -9,17 +9,23 @@ import BriefView from './View/View';
 import BriefEdit from './Edit/Edit';
 
 class BriefPage extends Component {
+  brief;
+
   constructor(props) {
     super(props);
     this.state = {
-        loading: false,
         edit: false,
+        loading: false,
         goals: [],
-        mediaURL:'',
         address: '',
         budget: '',
-        googleMaps: '',
         narrative: '',
+        client: {
+            name: '',
+            client: false
+        },
+        googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        narrative: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     };
 
     this.updateGoals = this.updateGoals.bind(this);
@@ -28,8 +34,19 @@ class BriefPage extends Component {
     this.updateBudget = this.updateBudget.bind(this);
     this.updateGoogleMaps = this.updateGoogleMaps.bind(this);
     this.updateNarrative = this.updateNarrative.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
+  formSubmit = () => {
+    this.brief.budget = this.state.budget;
+    this.brief.address = this.state.address;
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    this.setState({ [event.target.name]: event.target.value});
+  }
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
@@ -44,45 +61,26 @@ class BriefPage extends Component {
     event.preventDefault();
     this.setState({ goals: event.target.value });
   }
-  updateAddress(event){
-    event.preventDefault();
-    this.setState({ address: event.target.value });
-  }
-  updateBudget(event){
-    event.preventDefault();
-    this.setState({ budget: event.target.value });
-  }
-  updateGoogleMaps(event){
-    event.preventDefault();
-    this.setState({ googleMaps: event.target.value });
-  }
   updateNarrative(event){
     event.preventDefault();
     this.setState({ narrative: event.target.value });
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const brief = await project.brief;
-    console.log(brief);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    this.brief = await project.brief;
     const client = await project.client;
     const state = await {
-        project: project,
         client: client,
         loading: false,
-        brief: brief,
-        address: brief.data.location,
-        budget: brief.data.budget,
-        narrative: brief.data.narrative,
-        goals: brief.data.goals,
-        googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
-        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        ...this.brief.getAll()
     }
     this.setState(state);
     return state;
 }
 
   render() {
+
     if(this.state.edit){
         return (
             <BriefEdit 
@@ -93,11 +91,9 @@ class BriefPage extends Component {
               googleMaps={this.state.googleMaps} 
               narrative={this.state.narrative} 
               updateMedia={this.updateMedia} 
-              updateAddress={this.updateAddress} 
               updateGoals={this.updateGoals}
-              updateBudget={this.updateBudget} 
-              updateGoogleMaps={this.updateGoogleMaps}
-              updateNarrative={this.updateNarrative} />      
+              handleChange = {this.handleChange}
+              formSubmit = {this.formSubmit} />      
         );
     }else{
         return (
