@@ -29,3 +29,4 @@ export const PAYMENT_OPTIONS_EDIT = '/account/payment-options/edit';
 export const ACCOUNT_PREFERENCES = '/account/preferences';
 export const ACCOUNT_PREFERENCES_EDIT = '/account/preferences/edit';
 export const CHANGE_PASS = '/account/change-pass';
+

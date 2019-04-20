@@ -14,7 +14,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-
+import Button from '../../../../components/PaymentStripe/frontend/Button'
 import FinalWaiting from './Waiting/Waiting';
 
 class FinalPageView extends Component {
@@ -40,6 +40,7 @@ class FinalPageView extends Component {
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.mediaURL}  style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                         </div>
                         <div className="row">
+                            <Button />
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                 <FigmaEmbed url={this.props.figmaURL} style={{ width: "540px", margin: "30px" }}/>
