@@ -15,34 +15,46 @@ class BriefPage extends Component {
     super(props);
     this.state = {
         edit: false,
+        editId: '',
         loading: false,
-        goals: [],
-        address: '',
-        budget: '',
-        narrative: '',
-        media: '',
+        brief:{
+          goals: [],
+          address: '',
+          budget: '',
+          narrative: '',
+          media: '',
+        },
         client: {
             name: '',
             client: false
         },
-        googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     };
 
-    this.updateGoals = this.updateGoals.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.deleteGoal = this.deleteGoal.bind(this);
+    this.editGoalSubmit = this.editGoalSubmit.bind(this);
+    this.editGoal = this.editGoal.bind(this);
+    this.addGoal = this.addGoal.bind(this);
   }
 
   formSubmit = () => {
-    this.brief.budget = this.state.budget;
-    this.brief.address = this.state.address;
-    this.brief.narrative = this.state.narrative;
+    this.brief.media = this.state.brief.media;
+    this.brief.goals = this.state.brief.goals;
+    this.brief.address = this.state.brief.address;
+    this.brief.budget = this.state.brief.budget; 
+    this.brief.narrative = this.state.brief.narrative;
   }
 
   handleChange(event) {
     event.preventDefault();
     console.log(event.target.name);
-    this.setState({ [event.target.name]: event.target.value});
+    this.setState({
+      brief: {
+        ...this.state.brief,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
   componentDidMount() {
@@ -50,26 +62,22 @@ class BriefPage extends Component {
     this.getProjectState();
   }
 
-  updateGoals(event){
-    event.preventDefault();
-    this.setState({ goals: event.target.value });
-  }
-
   deleteGoal = (id) => {
-    const Goals = this.state.goals.filter(goal => {
+    const Goals = this.state.brief.goals.filter(goal => {
         return goal.id !== id;
     })
-    this.setState({"goals": Goals})
-}
+    this.setState({"goals": Goals});
+  }
 
-editGoal = (id) => {
-    this.setState({editId: id});
-}
+  editGoal(id){
+    console.log("edit goal");
+      this.setState({editId: id});
+  }
 
-editGoalSubmit = (goal) =>{
+  editGoalSubmit = (goal) =>{
     console.log(goal);
     this.setState(state => {
-        const goals = state.goals.map(goalCurrent => {
+        const goals = state.brief.goals.map(goalCurrent => {
             if(goalCurrent.id === goal.id){
                 // console.log(goal.content);
                 return goal;
@@ -84,16 +92,16 @@ editGoalSubmit = (goal) =>{
             editId: ''
         };
     });
-}
+  }
 
-addGoal = (goal) => {
-    console.log(goal);
-    goal.id= Math.random();
-    let goals = [...this.state.goals, goal];
-    this.setState({
-        goals: goals
-    });
-}
+  addGoal = (goal) => {
+      console.log(goal);
+      goal.id= Math.random();
+      let goals = [...this.state.brief.goals, goal];
+      this.setState({
+          goals: goals
+      });
+  }
 
 
   getProjectState = async () => {
@@ -103,7 +111,9 @@ addGoal = (goal) => {
     const state = await {
         client: client,
         loading: false,
-        ...this.brief.getAll()
+        brief: {
+          ...this.brief.getAll()
+        }
     }
     console.log(state);
     this.setState(state);
@@ -115,25 +125,20 @@ addGoal = (goal) => {
     if(this.state.edit){
         return (
             <BriefEdit 
-              media={this.state.media} 
-              address={this.state.address} 
-              goals={this.state.goals} 
-              budget={this.state.budget} 
-              googleMaps={this.state.googleMaps} 
-              narrative={this.state.narrative} 
-              updateGoals={this.updateGoals}
+              brief = {this.state.brief}
+              editId={this.state.editId}
+              
+              addGoal={this.addGoal}
+              editGoal={this.editGoal}
+              editGoalSubmit={this.editGoalSubmit}
+              deleteGoal={this.deleteGoal}
+
               handleChange = {this.handleChange}
               formSubmit = {this.formSubmit} />      
         );
     }else{
         return (
-            <BriefView 
-            mediaURL={this.state.mediaURL} 
-            address={this.state.address} 
-            goals={this.state.goals}
-            budget={this.state.budget} 
-            googleMaps={this.state.googleMaps}
-            narrative={this.state.narrative} />      
+            <BriefView brief = {this.state.brief} />      
         );
     }
 

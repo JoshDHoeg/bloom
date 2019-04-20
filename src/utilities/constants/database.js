@@ -204,7 +204,9 @@ export class ProjectData {
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
-
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -213,12 +215,14 @@ export class ProjectData {
           this._media = this.data['media'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
+          this._completed = this.data['completed'];
         } else {
-          this._goals = ['goal 11', 'goal 2', 'goal 2'];
+          this._goals = [{id: 1, content: "buy some milk"}, {id: 2, content: "play mario cart"}];
           this._address = 'Western Side of House';
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._budget = '$1000';
           this._narrative = 'It\'s gonna look pretty:)';
+          this._completed = false;
         }
       }
 
@@ -228,7 +232,8 @@ export class ProjectData {
           address: this.address,
           media: this.media,
           budget: this.budget,
-          narrative: this.narrative
+          narrative: this.narrative,
+          completed: this.completed
         });
       }
     }
@@ -236,29 +241,38 @@ export class ProjectData {
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
-      /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
@@ -266,29 +280,44 @@ export class ProjectData {
   static Final = {
     colRef: 'finals',
     type: class Final extends ProjectDataBase {
-       /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          figma: this.figma,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
