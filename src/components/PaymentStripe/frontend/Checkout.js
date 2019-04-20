@@ -1,6 +1,4 @@
 //BLOOMTIME DESIGN 2019
-import React from 'react';
-
 import axios from 'axios'; //Add this dependency
 import React from 'react';
 
