@@ -43,7 +43,7 @@ class BriefPageView extends Component {
                             </span>
                             <span style={{ marginLeft: "25px", width: "275px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#F2C94C", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Details</h1>
-                                <DetailList edit={this.state.edit} budget={this.props.budget} location={this.props.location} googleMaps={this.props.googleMaps}/>
+                                <DetailList edit={this.state.edit} budget={this.props.budget} address={this.props.address} googleMaps={this.props.googleMaps}/>
                             </span>
                         </div>
                         <div className="row">

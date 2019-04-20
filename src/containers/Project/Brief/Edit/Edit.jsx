@@ -1,6 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Input } from 'semantic-ui-react'
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
@@ -32,13 +33,11 @@ class BriefPageEdit extends Component {
         const Goals = this.state.goals.filter(goal => {
             return goal.id !== id;
         })
-
         this.setState({"goals": Goals})
     }
 
     editGoal = (id) => {
         this.setState({editId: id});
-        console.log(id);
     }
 
     editGoalSubmit = (goal) =>{
@@ -83,7 +82,7 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h2 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h2>
-                            <input type="text" onChange={this.props.updateMedia} value={this.props.mediaURL}/>   
+                            <Input name="mediaURL" value={this.props.mediaURL} onChange={this.props.handleChange}/>
                         </span>
                     </div>
                     <div className="row">
@@ -100,7 +99,7 @@ class BriefPageEdit extends Component {
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
-                            <Narrative edit={this.state.edit} brief={this.props.brief} narrative={this.props.narrative} updateNarrative={this.props.updateNarrative}/>
+                            <Narrative edit={this.state.edit} brief={this.props.brief} narrative={this.props.narrative} handleChange={this.props.handleChange}/>
                         </span>
                     </div>
                     <div className="row" >
