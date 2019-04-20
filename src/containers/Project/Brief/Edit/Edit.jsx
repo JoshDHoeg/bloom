@@ -82,7 +82,7 @@ class BriefPageEdit extends Component {
                     <div className="row">
                         <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h2 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h2>
-                            <Input name="mediaURL" value={this.props.mediaURL} onChange={this.props.handleChange}/>
+                            <Input name="media" value={this.props.media} onChange={this.props.handleChange}/>
                         </span>
                     </div>
                     <div className="row">

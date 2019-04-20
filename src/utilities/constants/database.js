@@ -195,9 +195,9 @@ export class ProjectData {
       _address = '';
       get address() { return this._address; };
       set address(l) { this._setter({ address: l }).then(() => this._address = l); }
-      _mediaURL = '';
-      get mediaURL() { return this._mediaURL; };
-      set mediaURL(l) { this._setter({ mediaURL: l }).then(() => this._mediaURL = l); }
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
       _budget = ['', ''];
       get budget() { return this._budget; };
       set budget(b) { this._setter({ budget: b }).then(() => this._budget = b) }
@@ -210,13 +210,13 @@ export class ProjectData {
         if (!useDefault) {
           this._goals = this.data['goals'];
           this._address = this.data['address'];
-          this._mediaURL = this.data['mediaURL'];
+          this._media = this.data['media'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._address = 'Western Side of House';
-          this._mediaURL = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._budget = '$1000';
           this._narrative = 'It\'s gonna look pretty:)';
         }
@@ -226,6 +226,7 @@ export class ProjectData {
         return this._getAll({
           goals: this.goals,
           address: this.address,
+          media: this.media,
           budget: this.budget,
           narrative: this.narrative
         });

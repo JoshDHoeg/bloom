@@ -20,12 +20,12 @@ class BriefPage extends Component {
         address: '',
         budget: '',
         narrative: '',
+        media: '',
         client: {
             name: '',
             client: false
         },
         googleMaps: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
-        mediaURL: 'fuck?',
     };
 
     this.updateGoals = this.updateGoals.bind(this);
@@ -105,6 +105,7 @@ addGoal = (goal) => {
         loading: false,
         ...this.brief.getAll()
     }
+    console.log(state);
     this.setState(state);
     return state;
 }
@@ -114,7 +115,7 @@ addGoal = (goal) => {
     if(this.state.edit){
         return (
             <BriefEdit 
-              mediaURL={this.state.mediaURL} 
+              media={this.state.media} 
               address={this.state.address} 
               goals={this.state.goals} 
               budget={this.state.budget} 
