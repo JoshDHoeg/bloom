@@ -8,8 +8,9 @@ class Button extends Component {
   render() {
     return (
       <Checkout //initiate Checkout.js and configure
-      name={'Unlock Final Design'}
-      description={'Purchase Your Final Design'}
+      label={'Purchase Final Design'}
+      name={'Purchase Your Final Design'}
+      description={'$599 per area up to 1,000 sq. feet'}
       amount={599.00}
       image ={logo}
       />      

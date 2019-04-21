@@ -13,8 +13,10 @@ const CURRENCY = 'USD'; //Set currency
 const fromUSDToCent = amount => amount * 100; //Set to $$
 
 const successPayment = data => {
+  alert('Payment Success')
 //put logic for completed payment
 };
+
 
 const errorPayment = data => { //Ideally want to use this to redirect back to FinalView
   alert('Payment Error');
@@ -31,8 +33,9 @@ const onToken = (amount, description) => token => //Once Stripe Checkout token i
     .then(successPayment)
     .catch(errorPayment);
 
-const Checkout = ({ name, description, amount, image }) => //Create User token for checkout
+const Checkout = ({ name, description, amount, image, label }) => //Create User token for checkout
   <StripeCheckout
+    label={label}
     name={name}
     image={image}
     description={description}
