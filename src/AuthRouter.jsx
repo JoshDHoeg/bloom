@@ -13,8 +13,6 @@ import ProjectPage from './containers/Project/Project';
 import AccountPage from './containers/Account/Account';
 import ProjectListPage from './containers/ProjectList/ProjectList';
 
-
-
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes';
 import { withAuthentication } from './utilities/Session';
