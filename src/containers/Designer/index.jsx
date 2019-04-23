@@ -23,7 +23,6 @@ class AdminPage extends Component {
 
     };
 
-    //assuming that user will always have _objects property...
     this.projKeyArr = this.props.firebase.user._projects.map(x => x.id);
     this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => this.userProjs.push(res)));
   }

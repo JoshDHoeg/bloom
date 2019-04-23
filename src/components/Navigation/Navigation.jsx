@@ -7,8 +7,6 @@ import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
 
-
-
 const Navigation = () => (
     <div>
         <AuthUserContext.Consumer>
@@ -28,6 +26,9 @@ const NavigationAuth = () => (
             </div>
             <div className="item">
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
+            </div>
+            <div className="item">
+                <Link to={ROUTES.MESSAGING}>Messages</Link>
             </div>
             <div className="right menu item">
                 <h3>Bloomtime </h3>

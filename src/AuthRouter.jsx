@@ -12,8 +12,7 @@ import PasswordForgetPage from './containers/Users/PasswordForget/PasswordForget
 import ProjectPage from './containers/Project/Project';
 import AccountPage from './containers/Account/Account';
 import ProjectListPage from './containers/ProjectList/ProjectList';
-//Imported messaging from containers
-import Messaging from './containers/Messaging';
+import Messaging from './containers/Messaging/Messaging';
 
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes';
@@ -27,14 +26,10 @@ const App = () => (
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
-
       <Route path={ROUTES.ACCOUNT} component={AccountPage} />
       <Route path={ROUTES.PROJECT} component={ProjectPage} />
-      //Added Messaging Route 
-      <Route path={ROUTES.MESSAGING} component = {Messaging} />
-
+      <Route path={ROUTES.MESSAGING} component={Messaging} />
       <Route path={ROUTES.PROJECT_LIST} exact component={ProjectListPage} />
-      
     </div>
   </Router>
 );
