@@ -25,7 +25,7 @@ class BriefPageView extends Component {
 
     render() {
         // const Available = this.props.brief.available;
-        const Available = true;
+        const Available = this.props.brief.completed;
         
         if (Available){
             return (

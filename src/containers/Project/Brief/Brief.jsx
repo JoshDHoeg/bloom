@@ -32,6 +32,7 @@ class BriefPage extends Component {
 
     this.formSubmit = this.formSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.setLive = this.setLive.bind(this);
     this.deleteGoal = this.deleteGoal.bind(this);
     this.editGoalSubmit = this.editGoalSubmit.bind(this);
     this.editGoal = this.editGoal.bind(this);
@@ -57,6 +58,11 @@ class BriefPage extends Component {
     });
   }
 
+  setLive(){
+    this.brief.completed = true;
+    this.formSubmit();
+  }
+
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
     this.getProjectState();
@@ -66,7 +72,7 @@ class BriefPage extends Component {
     const Goals = this.state.brief.goals.filter(goal => {
         return goal.id !== id;
     })
-    this.setState({"goals": Goals});
+    this.setState({[this.state.brief.goals]: Goals});
   }
 
   editGoal(id){
@@ -132,7 +138,7 @@ class BriefPage extends Component {
               editGoal={this.editGoal}
               editGoalSubmit={this.editGoalSubmit}
               deleteGoal={this.deleteGoal}
-
+              setLive = {this.setLive}
               handleChange = {this.handleChange}
               formSubmit = {this.formSubmit} />      
         );
