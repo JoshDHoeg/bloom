@@ -9,18 +9,22 @@ import ConceptPageView from './View/View';
 import ConceptPageEdit from './Edit/Edit';
 
 class ConceptPage extends Component {
+  concept;
   constructor(props) {
     super(props);
     this.state = {
         loading: false,
         edit: false,
-        concept: {},
-        videoId: '',
-        mediaURL: ''
+        concept: {
+          media: '',
+          video: '',
+          feedback: '',
+        },
     };
 
-  this.updateMedia = this.updateMedia.bind(this);
-  this.updateVideo = this.updateVideo.bind(this);
+  this.handleChange = this.handleChange.bind(this);
+  this.completed = this.completed.bind(this);
+  this.formSubmit = this.formSubmit.bind(this);
 }
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
@@ -28,25 +32,40 @@ class ConceptPage extends Component {
     
   }
 
-  updateMedia(event){
-    event.preventDefault();
-    this.setState({ mediaURL: event.target.value });
+  formSubmit(){
+    console.log("we updated?");
+    this.concept.media = this.state.concept.media;
+    this.concept.video = this.state.concept.video;
+    this.concept.feedback = this.state.concept.feedback;
   }
-  updateVideo(event){
+
+  completed(){
+    this.concept.completed = true;
+  }
+  
+  handleChange(event) {
     event.preventDefault();
-    this.setState({ videoId: event.target.value });
+    console.log(event.target.name);
+    this.setState({
+      concept: {
+        ...this.state.concept,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const concept = await project.concept;
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    console.log(project);
+    this.concept = await project.concept;
+    console.log(this.concept);
     const client = await project.client;
     const state = await {
-        project: project,
         client: client,
         loading: false,
-        videoId: concept.data.videoId,
-        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        concept: {
+          ...this.concept.getAll()
+        }
     }
     this.setState(state);
     return state;
@@ -56,11 +75,11 @@ class ConceptPage extends Component {
     console.log(this.state.concept);
     if(this.state.edit){
         return (
-            <ConceptPageEdit mediaURL={this.state.mediaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateVideo={this.updateVideo} />      
+            <ConceptPageEdit concept={this.state.concept} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <ConceptPageView mediaURL={this.state.mediaURL} videoId={this.state.videoId} />      
+            <ConceptPageView concept={this.state.concept} />      
         );
     }
 

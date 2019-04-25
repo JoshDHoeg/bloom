@@ -49,7 +49,7 @@ class BriefPage extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
+    // console.log(event.target.name);
     this.setState({
       brief: {
         ...this.state.brief,
@@ -72,18 +72,19 @@ class BriefPage extends Component {
     const Goals = this.state.brief.goals.filter(goal => {
         return goal.id !== id;
     })
-    this.setState({[this.state.brief.goals]: Goals});
+    this.setState({brief:{...this.state.brief, goals: Goals}});
+    console.log(Goals);
   }
 
   editGoal(id){
-    console.log("edit goal");
+    // console.log("edit goal");
       this.setState({editId: id});
   }
 
   editGoalSubmit = (goal) =>{
-    console.log(goal);
+    // console.log(goal);
     this.setState(state => {
-        const goals = state.brief.goals.map(goalCurrent => {
+        const Goals = state.brief.goals.map(goalCurrent => {
             if(goalCurrent.id === goal.id){
                 // console.log(goal.content);
                 return goal;
@@ -92,27 +93,27 @@ class BriefPage extends Component {
                 return goalCurrent;
             }
         });
-        console.log(goals);
+        console.log(Goals);
         return {
-            goals: goals,
+            brief:{...this.state.brief, goals: Goals},
             editId: ''
         };
     });
   }
 
   addGoal = (goal) => {
-      console.log(goal);
+      // console.log(goal);
       goal.id= Math.random();
-      let goals = [...this.state.brief.goals, goal];
-      this.setState({
-          goals: goals
-      });
+      let Goals = [...this.state.brief.goals, goal];
+      this.setState({brief:{...this.state.brief, goals: Goals}});
   }
 
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    console.log(project);
     this.brief = await project.brief;
+    console.log(this.brief);
     const client = await project.client;
     const state = await {
         client: client,
@@ -121,7 +122,7 @@ class BriefPage extends Component {
           ...this.brief.getAll()
         }
     }
-    console.log(state);
+    // console.log(state);
     this.setState(state);
     return state;
 }
