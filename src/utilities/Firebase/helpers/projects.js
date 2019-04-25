@@ -7,7 +7,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
     super();
     console.log('projects');
   }
-  getprojects() {
+  get projects() {
     return this.projectsRef.get().then(projs => projs.docs.map(proj => new Project(proj)));
   }
 

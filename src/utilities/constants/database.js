@@ -2,7 +2,7 @@ import Firebase from '../Firebase';
 
 export class User {
   _isDesigner = false;
-  get isDesigner() { return this._isDesignert; }
+  get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
     this.ref.set({ isDesigner: designer });
   }
@@ -137,7 +137,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    this.ref.set(setObj, { merge: true }).catch(error => {
+    return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }
@@ -146,11 +146,11 @@ class ProjectDataBase {
  * # To add testing vars (without changing the database)
  * 1. Set useDefaults to true in Firebase
  * 2. Create empty value:
- * `_location = '';`
+ * `_address = '';`
  * 3. create getter
- * `get location() { return this._location; };`
+ * `get address() { return this._address; };`
  * 4. add your default value to constructor (the defaults are the `else` section)
- * `this._location =  'Western Side of House'`
+ * `this._address =  'Western Side of House'`
  * 5. getAll(), _setter(), and data[] will affect the database
  */
 
@@ -161,16 +161,16 @@ class ProjectDataBase {
  * copy my examples from below, I have left empty examples in the unused Classes
  * ...here's my best explination, you should be able to see where it all came from below
  * 1. Create empty value:
- * `_location = '';`
+ * `_address = '';`
  * 2. create getter and setter
- * `get location() { return this._location; };`
- * `set location(l) { this._setter({ location: l }).then(() => this._location = l); }`
+ * `get address() { return this._address; };`
+ * `set address(l) { this._setter({ address: l }).then(() => this._address = l); }`
  * 3. add your default value to constructor
- * `this._location =  'Western Side of House'`
+ * `this._address =  'Western Side of House'`
  * 4. add the database call to the constructor
- * `this._location = this.data['location'];`
+ * `this._address = this.data['address'];`
  * 5. add the field to the getAll
- * `location: this.location`
+ * `address: this.address`
  * 6. call `this.props.firebase.clearProjects();` anywhere and it will reset the database to include your updates
  * 7. if there's a problem, just remove or comment what was changed and call another clearProjects.
  */
@@ -192,37 +192,48 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _location = '';
-      get location() { return this._location; };
-      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
       _budget = ['', ''];
       get budget() { return this._budget; };
       set budget(b) { this._setter({ budget: b }).then(() => this._budget = b) }
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
-
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._location = this.data['location'];
+          this._address = this.data['address'];
+          this._media = this.data['media'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
+          this._completed = this.data['completed'];
         } else {
-          this._goals = ['goal 11', 'goal 2', 'goal 2'];
-          this._location = 'Western Side of House';
-          this._budget = ['$500', '$1000'];
+          this._goals = [{id: 1, content: "buy some milk"}, {id: 2, content: "play mario cart"}];
+          this._address = 'Western Side of House';
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._budget = '$1000';
           this._narrative = 'It\'s gonna look pretty:)';
+          this._completed = false;
         }
       }
 
       getAll() {
         return this._getAll({
           goals: this.goals,
-          location: this.location,
+          address: this.address,
+          media: this.media,
           budget: this.budget,
-          narrative: this.narrative
+          narrative: this.narrative,
+          completed: this.completed
         });
       }
     }
@@ -230,29 +241,38 @@ export class ProjectData {
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
-      /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
@@ -260,29 +280,44 @@ export class ProjectData {
   static Final = {
     colRef: 'finals',
     type: class Final extends ProjectDataBase {
-       /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          figma: this.figma,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
