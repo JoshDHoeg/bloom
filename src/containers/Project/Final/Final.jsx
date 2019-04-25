@@ -9,19 +9,23 @@ import FinalPageView from './View/View';
 import FinalPageEdit from './Edit/Edit';
 
 class FinalPage extends Component {
+  final;
   constructor(props) {
     super(props);
     this.state = {
         loading: false,
         edit: false,
-        videoId: '',
-        figmaURL: '',
-        mediaURL: '',
+        final: {
+          media:'',
+          video: '',
+          figma: '',
+          feedback: ''
+        }
     };
 
-    this.updateVideo = this.updateVideo.bind(this);
-    this.updateMedia = this.updateMedia.bind(this);
-    this.updateFigma = this.updateFigma.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+    this.completed = this.completed.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -29,32 +33,40 @@ class FinalPage extends Component {
     this.getProjectState();
   }
 
-  updateVideo(event){
-    event.preventDefault();
-    this.setState({ videoId: event.target.value });
+  formSubmit(){
+    console.log("we updated?");
+    this.final.media = this.state.final.media;
+    this.final.video = this.state.final.video;
+    this.final.figma = this.state.final.figma;
+    this.final.feedback = this.state.final.feedback;
   }
 
-  updateMedia(event){
-    event.preventDefault();
-    this.setState({ mediaURL: event.target.value });
+  completed(){
+    this.final.completed = true;
+    this.formSubmit();
   }
-
-  updateFigma(event){
+  
+  handleChange(event) {
     event.preventDefault();
-    this.setState({ figmaURL: event.target.value });
+    console.log(event.target.name);
+    this.setState({
+      final: {
+        ...this.state.final,
+        [event.target.name]: event.target.value
+      }
+    });
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const final = await project.final;
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    this.final = await project.final;
     const client = await project.client;
     const state = await {
-        project: project,
         client: client,
         loading: false,
-        videoId: final.data.videoId,
-        figmaURL: final.data.figmaURL,
-        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        final: {
+          ...this.final.getAll()
+        }
     }
     this.setState(state);
     return state;
@@ -63,11 +75,11 @@ class FinalPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <FinalPageEdit mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />      
+            <FinalPageEdit final={this.state.final} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <FinalPageView mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} />      
+            <FinalPageView final={this.state.final} />      
         );
     }
 

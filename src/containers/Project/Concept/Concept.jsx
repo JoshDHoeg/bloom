@@ -41,6 +41,7 @@ class ConceptPage extends Component {
 
   completed(){
     this.concept.completed = true;
+    this.formSubmit();
   }
   
   handleChange(event) {
