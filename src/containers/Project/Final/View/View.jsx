@@ -28,13 +28,8 @@ class FinalPageView extends Component {
     render() {
         // const Available = this.props.brief.available;
         const Available = true;
-<<<<<<< HEAD
-
-        if (Available){
-=======
         
         if (this.props.final.completed){
->>>>>>> development
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
                     <div className="ui stackable grid container" >
