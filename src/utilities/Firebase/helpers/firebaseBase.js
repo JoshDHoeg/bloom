@@ -8,13 +8,22 @@ const prodConfig = {
   messagingSenderId: "1004815344143",
 };
 
-const devConfig = {
-  apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
-  authDomain: "bloomdash-aca9f.firebaseapp.com",
-  databaseURL: "https://bloomdash-aca9f.firebaseio.com",
-  projectId: "bloomdash-aca9f",
-  storageBucket: "bloomdash-aca9f.appspot.com",
-  messagingSenderId: "327651474050",
+// const devConfig = {
+//   apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
+//   authDomain: "bloomdash-aca9f.firebaseapp.com",
+//   databaseURL: "https://bloomdash-aca9f.firebaseio.com",
+//   projectId: "bloomdash-aca9f",
+//   storageBucket: "bloomdash-aca9f.appspot.com",
+//   messagingSenderId: "327651474050",
+// };
+
+var devConfig = {
+    apiKey: "AIzaSyBccXEAqEbvDPL346t_Jv39xSZn4VfzLis",
+    authDomain: "testing-8e700.firebaseapp.com",
+    databaseURL: "https://testing-8e700.firebaseio.com",
+    projectId: "testing-8e700",
+    storageBucket: "testing-8e700.appspot.com",
+    messagingSenderId: "708240096333"
 };
 
 const config =
@@ -27,8 +36,9 @@ class FirebaseBase {
     this.db = app.firestore();
     this.usersRef = this.db.collection('users');
     this.projectsRef = this.db.collection('projects');
+    this.messagesRef = this.db.collection('messages');
+    this.channelsRef = this.db.collection('channels');
   }
-  
 
   // For all class objects like User and Project, console.log them to see vars.
   // For all classes, pls do not use the _varName. the only varName will update the database
@@ -48,7 +58,6 @@ class FirebaseBase {
   // PLEASE set the returned subscription to variable and use a described below
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
-
 
 
   projects; // Promise<Project[]> // this is a single call for all projects

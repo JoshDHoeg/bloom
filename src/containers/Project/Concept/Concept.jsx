@@ -25,7 +25,7 @@ class ConceptPage extends Component {
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
     this.getProjectState();
-    
+
   }
 
   updateMedia(event){
@@ -38,7 +38,7 @@ class ConceptPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     const concept = await project.concept;
     const client = await project.client;
     const state = await {
@@ -56,11 +56,11 @@ class ConceptPage extends Component {
     console.log(this.state.concept);
     if(this.state.edit){
         return (
-            <ConceptPageEdit mediaURL={this.state.mediaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateVideo={this.updateVideo} />      
+            <ConceptPageEdit mediaURL={this.state.mediaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateVideo={this.updateVideo} />
         );
     }else{
         return (
-            <ConceptPageView mediaURL={this.state.mediaURL} videoId={this.state.videoId} />      
+            <ConceptPageView mediaURL={this.state.mediaURL} videoId={this.state.videoId} />
         );
     }
 

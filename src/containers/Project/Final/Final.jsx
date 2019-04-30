@@ -45,7 +45,7 @@ class FinalPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     const final = await project.final;
     const client = await project.client;
     const state = await {
@@ -63,11 +63,11 @@ class FinalPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <FinalPageEdit mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />      
+            <FinalPageEdit mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} updateMedia={this.updateMedia} updateFigma={this.updateFigma} updateVideo={this.updateVideo} />
         );
     }else{
         return (
-            <FinalPageView mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} />      
+            <FinalPageView mediaURL={this.state.mediaURL} figmaURL={this.state.figmaURL} videoId={this.state.videoId} />
         );
     }
 

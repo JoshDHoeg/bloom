@@ -21,9 +21,10 @@ class ProjectList extends Component {
     this.state = {
       loading: false,
       users: []
-
     };
+
     //assuming that user will always have _objects property...
+      console.log(this.props.firebase.user._projects);
     this.projKeyArr = this.props.firebase.user._projects.map(x => x.id);
     this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => this.userProjs.push(res)));
     //extract other relevant projec data here?
@@ -45,7 +46,7 @@ class ProjectList extends Component {
 
   render() {
     const { loading } = this.state;
-    console.log(this.userProjs[0]);
+    //console.log(this.userProjs[0]);
 
     return (
         <Sidebar.Pushable as={Segment}>

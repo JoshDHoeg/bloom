@@ -13,7 +13,7 @@ const GoalList = (props) => (
 
 const GoalListView = (props) => {
     const goals = props.goals;
-    console.log(goals);
+    //console.log(goals);
     return (
             <ul id="goals">
                 {goals.map((g, i) => (

@@ -62,7 +62,7 @@ class BriefPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     const brief = await project.brief;
     console.log(brief);
     const client = await project.client;
@@ -85,29 +85,29 @@ class BriefPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <BriefEdit 
-              mediaURL={this.state.mediaURL} 
-              address={this.state.address} 
-              goals={this.state.goals} 
-              budget={this.state.budget} 
-              googleMaps={this.state.googleMaps} 
-              narrative={this.state.narrative} 
-              updateMedia={this.updateMedia} 
-              updateAddress={this.updateAddress} 
+            <BriefEdit
+              mediaURL={this.state.mediaURL}
+              address={this.state.address}
+              goals={this.state.goals}
+              budget={this.state.budget}
+              googleMaps={this.state.googleMaps}
+              narrative={this.state.narrative}
+              updateMedia={this.updateMedia}
+              updateAddress={this.updateAddress}
               updateGoals={this.updateGoals}
-              updateBudget={this.updateBudget} 
+              updateBudget={this.updateBudget}
               updateGoogleMaps={this.updateGoogleMaps}
-              updateNarrative={this.updateNarrative} />      
+              updateNarrative={this.updateNarrative} />
         );
     }else{
         return (
-            <BriefView 
-            mediaURL={this.state.mediaURL} 
-            address={this.state.address} 
+            <BriefView
+            mediaURL={this.state.mediaURL}
+            address={this.state.address}
             goals={this.state.goals}
-            budget={this.state.budget} 
+            budget={this.state.budget}
             googleMaps={this.state.googleMaps}
-            narrative={this.state.narrative} />      
+            narrative={this.state.narrative} />
         );
     }
 

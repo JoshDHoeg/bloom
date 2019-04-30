@@ -9,18 +9,20 @@ import { withFirebase } from '../Firebase';
 import * as ROUTES from '../constants/routes';
 
 //is it the right user
-
 const withAuthorization = condition => Component => {
+
   class WithAuthorization extends React.Component {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
+            console.log(authUser);
         if (authUser) {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
                 // console.log("is user a designer: " + authUser._isDesigner);
-
+                console.log(authUser);
+                console.log(condition);
                 if (!condition(authUser)) {
                   console.log(authUser);
                   console.log("not a designer");
@@ -29,13 +31,12 @@ const withAuthorization = condition => Component => {
                   console.log("im confused");
                 }
               })
-          } else {
+        } else {
             console.log("not a user");
             this.props.history.push(ROUTES.SIGN_IN);
-          }
+        }
       });
     }
-
     componentWillUnmount() {
       this.listener();
     }

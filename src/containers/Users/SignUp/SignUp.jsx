@@ -48,7 +48,6 @@ const INITIAL_STATE = {
 class SignUpFormBase extends Component {
   constructor(props) {
     super(props);
-
     this.state = { ...INITIAL_STATE };
   }
 
@@ -59,11 +58,12 @@ class SignUpFormBase extends Component {
     if (isDesigner) {
       roles.push(ROLES.DESIGNER);
     }
-
+    console.log("here");
     this.props.firebase
-      .doCreateUserWithEmailAndPassword(email, passwordOne)
+        .doInitNewUser(email, passwordOne)
+      //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-        // Add a new project ???
+        console.log(authUser);
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });

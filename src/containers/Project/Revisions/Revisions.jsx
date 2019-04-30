@@ -39,7 +39,7 @@ class RevisionsPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     const revision = await project.revision;
     const client = await project.client;
     const state = await {
@@ -56,11 +56,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>      
+            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
         );
     }else{
         return (
-            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />      
+            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
         );
     }
 

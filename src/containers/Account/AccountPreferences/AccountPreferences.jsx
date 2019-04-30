@@ -23,7 +23,7 @@ class AccountPreferencesPage extends Component {
       }
 
       getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject('userAuthID', true);
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
         const briefs = await project.briefs;
         const state = await {
             project: project,
@@ -33,7 +33,7 @@ class AccountPreferencesPage extends Component {
         this.setState(state);
         return state;
       }
-    
+
     render() {
         if(this.state.edit){
             return(
