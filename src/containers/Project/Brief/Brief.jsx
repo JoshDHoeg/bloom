@@ -157,11 +157,7 @@ class BriefPage extends Component {
             <BriefEdit
               brief = {this.state.brief}
               editId={this.state.editId}
-<<<<<<< HEAD
-
-=======
               handleChangeProfile={this.handleChangeProfile}
->>>>>>> testing
               addGoal={this.addGoal}
               editGoal={this.editGoal}
               editGoalSubmit={this.editGoalSubmit}

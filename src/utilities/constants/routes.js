@@ -32,8 +32,5 @@ export const ACCOUNT_PREFERENCES = '/account/preferences';
 export const ACCOUNT_PREFERENCES_EDIT = '/account/preferences/edit';
 export const CHANGE_PASS = '/account/change-pass';
 
-<<<<<<< HEAD
 //messaging
 export const MESSAGING = "/messaging";
-=======
->>>>>>> testing
