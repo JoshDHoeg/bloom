@@ -2,20 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ea32f9-014f-4b98-82fc-496bec3acab1" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Components/GoalList/EditGoal.jsx" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Components/GoalList/NewGoal.jsx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.jsx" afterPath="$PROJECT_DIR$/src/components/ProjectCard.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Components/DetailList/DetailList.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Components/DetailList/DetailList.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Components/GoalList/GoalList.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Components/GoalList/GoalList.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Components/Narrative/Narrative.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Components/Narrative/Narrative.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" afterPath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" afterPath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,10 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="projects.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="projects.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="-56">
               <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -39,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Brief.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Brief.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="363">
@@ -384,7 +371,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="159940000" />
+    <option name="totallyTimeSpent" value="159995000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="8" y="23" width="1280" height="737" extended-state="6" />
@@ -866,21 +853,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="363">
           <caret line="147" column="52" lean-forward="false" selection-start-line="147" selection-start-column="52" selection-end-line="147" selection-end-column="52" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-56">
+          <caret line="8" column="3" lean-forward="false" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
