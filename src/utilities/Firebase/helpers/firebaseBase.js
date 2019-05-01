@@ -17,6 +17,17 @@ const devConfig = {
   messagingSenderId: "327651474050",
 };
 
+//jesses test database:
+
+// var devConfig = {
+//     apiKey: "AIzaSyBccXEAqEbvDPL346t_Jv39xSZn4VfzLis",
+//     authDomain: "testing-8e700.firebaseapp.com",
+//     databaseURL: "https://testing-8e700.firebaseio.com",
+//     projectId: "testing-8e700",
+//     storageBucket: "testing-8e700.appspot.com",
+//     messagingSenderId: "708240096333"
+// };
+
 const config =
   process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
