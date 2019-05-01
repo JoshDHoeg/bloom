@@ -99,7 +99,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -137,7 +137,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();

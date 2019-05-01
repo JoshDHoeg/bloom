@@ -25,7 +25,7 @@ class BriefPageEdit extends Component {
     }
 
     render() {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
@@ -61,7 +61,7 @@ class BriefPageEdit extends Component {
 
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
-                            <TasteProfile edit={this.state.edit} brief={this.props.brief}/>
+                            <TasteProfile edit={this.state.edit} brief={this.props.brief} handleChangeProfile={this.props.handleChangeProfile}/>
                         </span>
                     </div>
                 </div>

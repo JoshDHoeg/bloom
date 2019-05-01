@@ -12,6 +12,7 @@ import backgroundTemp from '../../Images/TempBackground.PNG';
 //IMPORT CONTAINERS
 import BriefPage from './Brief/Brief';
 import ConceptPage from './Concept/Concept';
+import DraftPage from './Draft/Draft';
 import FinalPage from './Final/Final';
 import RevisionsPage from './Revisions/Revisions';
 
@@ -37,6 +38,12 @@ const HomePageWithSideBar = () => (
                             <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                                 <Icon name='bullseye' />
                                 Concept
+                            </div>
+                        </Menu.Item>
+                        <Menu.Item as={Link} to={ROUTES.CLIENT_DRAFT}>
+                            <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
+                                <Icon name='file' />
+                                Draft
                             </div>
                         </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
@@ -67,6 +74,10 @@ const HomePageWithSideBar = () => (
                                     render={(props) => <ConceptPage {...props} edit={false} /> }
                                     />
                                 <Route exact 
+                                    path={ROUTES.CLIENT_DRAFT} 
+                                    render={(props) => <DraftPage {...props} edit={false} /> }
+                                    />
+                                <Route exact 
                                     path={ROUTES.CLIENT_FINAL} 
                                     render={(props) => <FinalPage {...props} edit={false} /> }
                                     />
@@ -82,6 +93,10 @@ const HomePageWithSideBar = () => (
                                 <Route exact 
                                     path={ROUTES.CLIENT_CONCEPT_EDIT} 
                                     render={(props) => <ConceptPage {...props} edit={true} /> }
+                                    />
+                                <Route exact 
+                                    path={ROUTES.CLIENT_DRAFT_EDIT} 
+                                    render={(props) => <DraftPage {...props} edit={true} /> }
                                     />
                                 <Route exact 
                                     path={ROUTES.CLIENT_FINAL_EDIT} 

@@ -1,5 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+//IMPORT UTILITIES
 import { withAuthorization } from '../../utilities/Session';
 import EditButton from "./EditButton/EditButton";
 

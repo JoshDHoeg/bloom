@@ -49,7 +49,7 @@ const BillingInfoEdit = (props) => {
     return(
         <table class="ui definition table">
         <tbody>
-            <h3>Billing Address:</h3>
+            <h3>Edit Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
                 <td id ='BillAddEdit'> <input type='text' id='BillAddEditTxt' View ={billadd} style={{ width: '140px' }} ></input></td>

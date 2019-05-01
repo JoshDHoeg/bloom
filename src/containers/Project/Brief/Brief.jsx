@@ -23,6 +23,13 @@ class BriefPage extends Component {
           budget: '',
           narrative: '',
           media: '',
+          profile: {
+            spacing: '',
+            variety: '',
+            edging: '',
+            ground: '',
+            form: ''
+          }
         },
         client: {
             name: '',
@@ -37,6 +44,7 @@ class BriefPage extends Component {
     this.editGoalSubmit = this.editGoalSubmit.bind(this);
     this.editGoal = this.editGoal.bind(this);
     this.addGoal = this.addGoal.bind(this);
+    this.handleChangeProfile = this.handleChangeProfile.bind(this);
   }
 
   formSubmit = () => {
@@ -45,6 +53,7 @@ class BriefPage extends Component {
     this.brief.address = this.state.brief.address;
     this.brief.budget = this.state.brief.budget;
     this.brief.narrative = this.state.brief.narrative;
+    this.brief.profile = this.state.brief.profile;
   }
 
   handleChange(event) {
@@ -54,6 +63,19 @@ class BriefPage extends Component {
       brief: {
         ...this.state.brief,
         [event.target.name]: event.target.value
+      }
+    });
+  }
+  handleChangeProfile(event) {
+    event.preventDefault();
+    // console.log(this.state);
+    this.setState({
+      brief: {
+        ...this.state.brief,
+        profile: {
+          ...this.state.brief.profile,
+          [event.target.name]: event.target.value
+        }
       }
     });
   }
@@ -73,7 +95,7 @@ class BriefPage extends Component {
         return goal.id !== id;
     })
     this.setState({brief:{...this.state.brief, goals: Goals}});
-    console.log(Goals);
+    // console.log(Goals);
   }
 
   editGoal(id){
@@ -115,6 +137,7 @@ class BriefPage extends Component {
     this.brief = await project.brief;
     console.log(this.brief);
     const client = await project.client;
+    const profile = await project.brief.profile;
     const state = await {
         client: client,
         loading: false,
@@ -122,19 +145,23 @@ class BriefPage extends Component {
           ...this.brief.getAll()
         }
     }
-    // console.log(state);
+    console.log(profile);
     this.setState(state);
     return state;
 }
 
   render() {
-
+    // console.log(this.state);
     if(this.state.edit){
         return (
             <BriefEdit
               brief = {this.state.brief}
               editId={this.state.editId}
+<<<<<<< HEAD
 
+=======
+              handleChangeProfile={this.handleChangeProfile}
+>>>>>>> testing
               addGoal={this.addGoal}
               editGoal={this.editGoal}
               editGoalSubmit={this.editGoalSubmit}
