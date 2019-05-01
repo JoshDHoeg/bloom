@@ -32,6 +32,8 @@ class AccountInfoPage extends Component {
             email: user.email,
             phone: user.phone
         }
+        this.setState(state);
+        return state;
     }
 
     render() {
