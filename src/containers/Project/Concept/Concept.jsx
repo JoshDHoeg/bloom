@@ -29,7 +29,7 @@ class ConceptPage extends Component {
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
     this.getProjectState();
-    
+
   }
 
   formSubmit(){

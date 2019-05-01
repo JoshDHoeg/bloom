@@ -27,6 +27,7 @@ export class User {
     this.ref.set({ projects: projs });
   }
   get uid() { return this.id };
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -56,6 +57,7 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
+
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
     const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.finals, this.revisions]);
@@ -70,7 +72,12 @@ export class ProjectBase {
       return colSnap.docs.map(doc => new projectData.type(doc, Firebase.useDefaultProjectValues));
     });
   }
-  _getUser = (userRef) => userRef.get().then(userSnap => new User(userSnap));
+  _getUser = (userRef) => {
+    console.log(userRef);
+    userRef.get().then(res => console.log(res));
+    userRef.get().then(userSnap => new User(userSnap));
+  }
+
   get clients() {
     return Promise.all(this.clientsRef.map(c => this._getUser));
   }
@@ -95,14 +102,14 @@ export class Project extends ProjectBase {
     this.name = data['name'];
   }
 
-  get client() { return this._getUser(this.clientRef) };
+  get client() { console.log("here"); return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-  get designer() { return this._getUser(this.designerRef) };
+  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -142,6 +149,7 @@ class ProjectDataBase {
     });
   }
 }
+
 /**
  * # To add testing vars (without changing the database)
  * 1. Set useDefaults to true in Firebase
@@ -238,6 +246,7 @@ export class ProjectData {
       }
     }
   };
+
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {

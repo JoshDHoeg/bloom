@@ -43,7 +43,7 @@ class BriefPage extends Component {
     this.brief.media = this.state.brief.media;
     this.brief.goals = this.state.brief.goals;
     this.brief.address = this.state.brief.address;
-    this.brief.budget = this.state.brief.budget; 
+    this.brief.budget = this.state.brief.budget;
     this.brief.narrative = this.state.brief.narrative;
   }
 
@@ -131,21 +131,22 @@ class BriefPage extends Component {
 
     if(this.state.edit){
         return (
-            <BriefEdit 
+            <BriefEdit
               brief = {this.state.brief}
               editId={this.state.editId}
-              
+
               addGoal={this.addGoal}
               editGoal={this.editGoal}
               editGoalSubmit={this.editGoalSubmit}
               deleteGoal={this.deleteGoal}
               setLive = {this.setLive}
               handleChange = {this.handleChange}
-              formSubmit = {this.formSubmit} />      
+              formSubmit = {this.formSubmit}
+             />
         );
     }else{
         return (
-            <BriefView brief = {this.state.brief} />      
+            <BriefView brief = {this.state.brief} />
         );
     }
 
