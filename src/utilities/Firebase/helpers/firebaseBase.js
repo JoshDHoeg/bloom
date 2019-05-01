@@ -8,22 +8,13 @@ const prodConfig = {
   messagingSenderId: "1004815344143",
 };
 
-// const devConfig = {
-//   apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
-//   authDomain: "bloomdash-aca9f.firebaseapp.com",
-//   databaseURL: "https://bloomdash-aca9f.firebaseio.com",
-//   projectId: "bloomdash-aca9f",
-//   storageBucket: "bloomdash-aca9f.appspot.com",
-//   messagingSenderId: "327651474050",
-// };
-
-var devConfig = {
-    apiKey: "AIzaSyBccXEAqEbvDPL346t_Jv39xSZn4VfzLis",
-    authDomain: "testing-8e700.firebaseapp.com",
-    databaseURL: "https://testing-8e700.firebaseio.com",
-    projectId: "testing-8e700",
-    storageBucket: "testing-8e700.appspot.com",
-    messagingSenderId: "708240096333"
+const devConfig = {
+  apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
+  authDomain: "bloomdash-aca9f.firebaseapp.com",
+  databaseURL: "https://bloomdash-aca9f.firebaseio.com",
+  projectId: "bloomdash-aca9f",
+  storageBucket: "bloomdash-aca9f.appspot.com",
+  messagingSenderId: "327651474050",
 };
 
 const config =

@@ -15,8 +15,6 @@ class AccountInfoPage extends Component {
             loading: false,
             edit: false,
             name: '',
-            email: '',
-            phone: ''
         };
     }
 
@@ -34,8 +32,6 @@ class AccountInfoPage extends Component {
             email: user.email,
             phone: user.phone
         }
-        this.setState(state);
-        return state;
     }
 
     render() {
