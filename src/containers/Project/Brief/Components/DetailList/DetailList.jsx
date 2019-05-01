@@ -1,34 +1,35 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Input, Container } from 'semantic-ui-react'
 
 const DetailList = (props) => (
     <div>
         {props.edit ? (
-            <DetailListEdit budget={props.budget} address={props.address} googleMaps={props.googleMaps} updateBudget={props.updateBudget} updateAddress={props.updateAddress} updateGoogleMaps={props.updateGoogleMaps}/>
+                <DetailListEdit budget={props.budget} address={props.address} handleChange={props.handleChange}/>
         ) : (
-                <DetailListView budget={props.budget} address={props.address} googleMaps={props.googleMaps}/>
+                <DetailListView budget={props.budget} address={props.address} />
             )}
     </div>
 );
 
 const DetailListView = (props) => {
     return (
-        <div>
-            <li id="LocationDisplay">Located on the {props.address}<br />See it on <a target="_blank" rel="noopener noreferrer" href={props.googleMaps}>Google Maps</a></li>
-            <li id='BudgetDisplay'>Budget: {props.budget}</li>
-        </div>
+        <Container>
+            <div id="AddressDisplay">Located on the {props.address}<br /></div>
+            <div id='BudgetDisplay'>Budget: {props.budget}</div>
+        </Container>
     )
 }
 
 const DetailListEdit = (props) => {
     return (
-        <div>
-            <ul>
-                <li id="LocationEdit">Located on the <input type="text" id="LocationEditTxt" value={props.address} style={{ width: '140px' }} onChange={props.updateAddress}/><br />See it on <a href={props.googleMaps}>Google Maps</a></li>
-                <br></br> {/*Temp break until the gap is styled with css*/}
-                <li id="BudgetEdit" >Budget: <input type="text" id="BudgetEditTxt" value={props.budget} style={{ width: '140px' }} onChange={props.updateBudget}/></li>
-            </ul>
-        </div>
+        <Container>
+            <label id="AddressEdit">Address </label>
+            <Input name="address" value={props.address} onChange={props.handleChange}/>
+            <br></br> {/*Temp break until the gap is styled with css*/}
+            <label id="BudgetEdit">Budget </label>
+            <Input name="budget" value={props.budget} onChange={props.handleChange}/>
+        </Container>
     )
 }
 

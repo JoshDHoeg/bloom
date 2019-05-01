@@ -6,8 +6,8 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../utilities/Session';
 
 // import { format } from 'path';
-import {Link} from "react-router-dom";
-import { Icon, Menu, Segment, Sidebar, Card } from 'semantic-ui-react'
+// import {Link} from "react-router-dom";
+import { Grid } from 'semantic-ui-react'
 import ProjCard from "../../components/ProjectCard.jsx"
 import * as ROUTES from "../../utilities/constants/routes";
 
@@ -49,28 +49,15 @@ class ProjectList extends Component {
     //console.log(this.userProjs[0]);
 
     return (
-        <Sidebar.Pushable as={Segment}>
-            <Sidebar as={Menu} icon='labeled' vertical visible width='thin'>
-                <Menu.Item as={Link} to={ROUTES.PROJECT}>
-                    <Icon name='address book' />
-                    Current Projects
-                </Menu.Item>
-            </Sidebar>
-
-            <Sidebar.Pusher>
-                <Segment basic>
-                    <div>
-                        <h1>Current Projects</h1>
-                        {loading && <div>Loading ...</div>}
-                        <Card.Group itemsPerRow={4}>
-                            {this.userProjs.map(proj => (
-                                <ProjCard props={proj} key={proj.name}/>
-                            ))}
-                        </Card.Group>
-                    </div>
-                </Segment>
-            </Sidebar.Pusher>
-        </Sidebar.Pushable>
+      <Grid container >
+        <Grid.Row>
+          <h1>Current Projects</h1>
+        </Grid.Row>
+        {loading && <div>Loading ...</div>}
+        {this.userProjs.map(proj => (
+            <ProjCard props={proj} key={proj.name}/>
+        ))}
+    </Grid>
     );
   }
 }

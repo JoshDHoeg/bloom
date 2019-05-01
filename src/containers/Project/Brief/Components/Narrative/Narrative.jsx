@@ -1,10 +1,11 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Form, TextArea } from 'semantic-ui-react';
 
 const Narrative = (props) => (
     <div>
         {props.edit ? (
-            <NarrativeEdit narrative={props.narrative} updateNarrative={props.updateNarrative}/>
+            <NarrativeEdit narrative={props.narrative} handleChange={props.handleChange}/>
         ) : (
                 <NarrativeView narrative={props.narrative} />
             )}
@@ -21,13 +22,10 @@ const NarrativeView = (props) => {
 }
 
 const NarrativeEdit = (props) => {
-    
-    const narrative = props.narrative;
-    console.log("UHHHH" + narrative);
     return (
-        <div >
-            <input type="text" id="EditNarrativeTxt" defaultValue={narrative} />
-        </div>
+        <Form >
+            <TextArea value={props.narrative} name="narrative" id="EditNarrativeTxt" onChange={props.handleChange} />
+        </Form>
     )
 }
 
