@@ -63,7 +63,7 @@ class FirebaseBase {
 
 
   projects; // Promise<Project[]> // this is a single call for all projects
-  doGetProject = (pid, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
+  doGetProject = (pid, index, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
   // * optimal usage example: this.props.firebase.doGetProject(this.props.firebase.user.uid, true)
   // calling with isUID = true will find a user's project
   // User can have multiple projects -- isUID will return the first project

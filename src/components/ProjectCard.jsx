@@ -5,7 +5,7 @@ import * as ROUTES from "../utilities/constants/routes";
 
 //pic, name, loc, status
 // const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
-const ProjCard = ({props})  => (
+const ProjCard = (props)  => (
     <Grid.Row>
         <Grid.Column>
             <Segment attached='top'>
@@ -13,7 +13,7 @@ const ProjCard = ({props})  => (
                     <Grid.Row>
                         <Grid.Column width="12">
                             <Header>
-                                {props.name}
+                                {props.proj.name}
                             </Header>
                         </Grid.Column>
 
@@ -37,7 +37,7 @@ const ProjCard = ({props})  => (
                         </Grid.Column>
 
                         <Grid.Column width="4">
-                            <Link to={ROUTES.PROJECT}>
+                            <Link to={{ pathname: ROUTES.PROJECT, state: {projectIndex: props.projectIndex}}} >
                                 <Button>Project</Button>
                             </Link>
                         </Grid.Column>

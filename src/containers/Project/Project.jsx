@@ -17,8 +17,10 @@ import FinalPage from './Final/Final';
 import RevisionsPage from './Revisions/Revisions';
 
 
-const HomePageWithSideBar = () => (
-    <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
+const HomePageWithSideBar = (props) => {
+    console.log(props);
+    return(
+        <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
         <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>
             <Router>
                 <div>
@@ -43,7 +45,7 @@ const HomePageWithSideBar = () => (
                         <Menu.Item as={Link} to={ROUTES.CLIENT_DRAFT}>
                             <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                                 <Icon name='file' />
-                                Draft
+                                Draft 
                             </div>
                         </Menu.Item>
                         <Menu.Item as={Link} to={ROUTES.CLIENT_FINAL}>
@@ -67,7 +69,7 @@ const HomePageWithSideBar = () => (
                                 <Route exact path={ROUTES.PROJECT} component={BriefPage} />
                                 <Route exact 
                                     path={ROUTES.CLIENT_BRIEF} 
-                                    render={(props) => <BriefPage {...props} edit={false} /> }
+                                    render={(props) => <BriefPage {...props} edit={false} index={props.location.state} /> }
                                     />
                                 <Route exact 
                                     path={ROUTES.CLIENT_CONCEPT} 
@@ -88,7 +90,7 @@ const HomePageWithSideBar = () => (
 
                                 <Route 
                                     path={ROUTES.CLIENT_BRIEF_EDIT} 
-                                    render={(props) => <BriefPage {...props} edit={true} /> }
+                                    render={(props) => <BriefPage {...props} edit={true} index={props.location.state}/> }
                                     /> 
                                 <Route exact 
                                     path={ROUTES.CLIENT_CONCEPT_EDIT} 
@@ -115,7 +117,8 @@ const HomePageWithSideBar = () => (
 
         </Sidebar.Pushable>
     </div>
-)
+    )
+}
 
 const condition = authUser => !!authUser;
 

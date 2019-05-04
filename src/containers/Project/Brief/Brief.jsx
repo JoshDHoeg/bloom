@@ -17,6 +17,7 @@ class BriefPage extends Component {
         edit: false,
         editId: '',
         loading: false,
+        projectIndex: 0,
         brief:{
           goals: [],
           address: '',
@@ -87,7 +88,13 @@ class BriefPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    this.getProjectState();
+    if(this.props.location.state){
+      this.setState({projectIndex: this.props.location.state.projectIndex});
+      this.getProjectState(this.props.location.state.projectIndex);
+    }else{
+      this.setState({projectIndex: 0});
+      this.getProjectState(0);
+    }
   }
 
   deleteGoal = (id) => {
@@ -131,8 +138,8 @@ class BriefPage extends Component {
   }
 
 
-  getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+  getProjectState = async (index) => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, index, true);
     console.log(project);
     this.brief = await project.brief;
     console.log(this.brief);
@@ -169,7 +176,9 @@ class BriefPage extends Component {
         );
     }else{
         return (
-            <BriefView brief = {this.state.brief} />
+            <BriefView 
+              brief = {this.state.brief} 
+              projectIndex = {this.state.projectIndex}/>
         );
     }
 
