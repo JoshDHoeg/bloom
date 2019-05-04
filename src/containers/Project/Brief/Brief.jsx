@@ -158,7 +158,7 @@ class BriefPage extends Component {
 }
 
   render() {
-    // console.log(this.state);
+    console.log(this.state.projectIndex);
     if(this.state.edit){
         return (
             <BriefEdit
@@ -172,6 +172,7 @@ class BriefPage extends Component {
               setLive = {this.setLive}
               handleChange = {this.handleChange}
               formSubmit = {this.formSubmit}
+              projectIndex = {this.state.projectIndex}
              />
         );
     }else{
