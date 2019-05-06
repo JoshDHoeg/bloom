@@ -27,12 +27,14 @@ export class User {
     this.ref.set({ projects: projs });
   }
   get uid() { return this.id };
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
+    this._isPaid = data['isPaid'];
     this._projects = data['projects']; // DocumentReference[]
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
@@ -56,9 +58,10 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
+  
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
-    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.finals, this.revisions]);
+    const data = await Promise.all([this.client, this.designer, this.briefs,  this.concepts, this.drafts, this.finals, this.revisions]);
     return data.reduce((d, item, i) => {
       d[Array.isArray(item) ? item[0].constructor.name : item.constructor.name] = item;
       return d;
@@ -70,7 +73,12 @@ export class ProjectBase {
       return colSnap.docs.map(doc => new projectData.type(doc, Firebase.useDefaultProjectValues));
     });
   }
-  _getUser = (userRef) => userRef.get().then(userSnap => new User(userSnap));
+  _getUser = (userRef) => {
+    console.log(userRef);
+    userRef.get().then(res => console.log(res));
+    userRef.get().then(userSnap => new User(userSnap));
+  }
+  
   get clients() {
     return Promise.all(this.clientsRef.map(c => this._getUser));
   }
@@ -83,6 +91,7 @@ export class ProjectBase {
 
   get briefs() { return this._getDatabasePromise(ProjectData.Brief); }
   get concepts() { return this._getDatabasePromise(ProjectData.Concept); }
+  get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
   get finals() { return this._getDatabasePromise(ProjectData.Final); }
   get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
 }
@@ -95,22 +104,14 @@ export class Project extends ProjectBase {
     this.name = data['name'];
   }
 
-  get client() { return this._getUser(this.clientRef) };
+  get client() { console.log("here"); return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-<<<<<<< HEAD
   get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
-=======
-   get isPaid() {return this.isPaid; }
-   set isPaid(isPaid) {
-     this.ref.set({ isPaid: isPaid});
-   }
-  get designer() { return this._getUser(this.designerRef) };
->>>>>>> parent of abc6e6c... merge conflict fixes
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -119,6 +120,7 @@ export class Project extends ProjectBase {
   };
   get brief() { return this.briefs.then(b => b[0]); }
   get concept() { return this.concepts.then(c => c[0]); }
+  get draft() {return this.drafts.then(c => c[0]);}
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
 }
@@ -145,7 +147,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    this.ref.set(setObj, { merge: true }).catch(error => {
+    return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }

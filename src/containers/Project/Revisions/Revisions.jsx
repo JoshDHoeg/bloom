@@ -48,13 +48,8 @@ class RevisionsPage extends Component {
     }
 
   getProjectState = async () => {
-<<<<<<< HEAD
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     this.revision = await project.revision;
-=======
-    const project = await this.props.firebase.doGetProject('userAuthID', true);
-    const revision = await project.revision;
->>>>>>> parent of abc6e6c... merge conflict fixes
     const client = await project.client;
     const state = await {
         project: project,
