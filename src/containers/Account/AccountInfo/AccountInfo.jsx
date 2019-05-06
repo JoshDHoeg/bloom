@@ -11,44 +11,46 @@ import AccountInfoEdit from './Edit/Edit';
 class AccountInfoPage extends Component {
     constructor(props) {
         super(props);
-        this.state = { 
+        this.state = {
             loading: false,
             edit: false,
             name: '',
             email: '',
-            phone: ''
+            phone: '',
         };
     }
 
-    componentDidMount() {
+    componentWillMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getUserState();
     }
 
     getUserState = async () => {
         const user = this.props.firebase.user;
+        console.log(user);
         const state = {
             loading: false,
             name: user.name,
             email: user.email,
-            phone: user.phone,
+            phone: user.phone
         }
         this.setState(state);
         return state;
     }
+
     render() {
         if(this.state.edit){
             return(
-                <AccountInfoEdit user={this.state.user} />
+                <AccountInfoEdit user={this.state} />
             );
         }else{
             return (
-                <AccountInfoView user={this.state.user}/>
+                <AccountInfoView user={this.state}/>
             );
         }
     }
 }
-    
+
 const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(AccountInfoPage);

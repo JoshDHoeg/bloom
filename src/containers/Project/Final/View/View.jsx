@@ -16,6 +16,7 @@ import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import Button from '../../../../components/PaymentStripe/frontend/Button'
 import FinalWaiting from './Waiting/Waiting';
 
+
 class FinalPageView extends Component {
     constructor(props) {
         super(props);

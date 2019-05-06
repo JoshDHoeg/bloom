@@ -18,6 +18,7 @@ import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import RevisionsWaiting from './Waiting/Waiting';
 
 class RevisionsPageView extends Component {
+
     constructor(props) {
         super(props);
         this.state = {

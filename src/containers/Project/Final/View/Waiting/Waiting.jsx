@@ -7,8 +7,8 @@ import { withAuthorization } from '../../../../../utilities/Session';
 // import * as ROUTES from "../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
-
-import EditButton from '../../../../../components/ProjectBanner/EditButton/EditButton';
+import {Link} from "react-router-dom";
+import * as ROUTES from "../../../../../utilities/constants/routes";
 
 
 class ConceptPageWaiting extends Component {

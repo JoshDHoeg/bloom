@@ -26,6 +26,7 @@ export class User {
   set projects(projs) {
     this.ref.set({ projects: projs });
   }
+  
   get uid() { return this.id };
   constructor(dbQuery) {
     const data = dbQuery.data();
@@ -57,10 +58,9 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
-  
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
-    const data = await Promise.all([this.client, this.designer, this.briefs,  this.concepts, this.drafts, this.finals, this.revisions]);
+    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.finals, this.revisions]);
     return data.reduce((d, item, i) => {
       d[Array.isArray(item) ? item[0].constructor.name : item.constructor.name] = item;
       return d;
@@ -72,12 +72,7 @@ export class ProjectBase {
       return colSnap.docs.map(doc => new projectData.type(doc, Firebase.useDefaultProjectValues));
     });
   }
-  _getUser = (userRef) => {
-    console.log(userRef);
-    userRef.get().then(res => console.log(res));
-    userRef.get().then(userSnap => new User(userSnap));
-  }
-  
+  _getUser = (userRef) => userRef.get().then(userSnap => new User(userSnap));
   get clients() {
     return Promise.all(this.clientsRef.map(c => this._getUser));
   }
@@ -90,7 +85,6 @@ export class ProjectBase {
 
   get briefs() { return this._getDatabasePromise(ProjectData.Brief); }
   get concepts() { return this._getDatabasePromise(ProjectData.Concept); }
-  get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
   get finals() { return this._getDatabasePromise(ProjectData.Final); }
   get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
 }
@@ -103,14 +97,14 @@ export class Project extends ProjectBase {
     this.name = data['name'];
   }
 
-  get client() { console.log("here"); return this._getUser(this.clientRef) };
+  get client() { return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
+  get designer() { return this._getUser(this.designerRef) };
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -119,7 +113,6 @@ export class Project extends ProjectBase {
   };
   get brief() { return this.briefs.then(b => b[0]); }
   get concept() { return this.concepts.then(c => c[0]); }
-  get draft() {return this.drafts.then(c => c[0]);}
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
 }
@@ -146,7 +139,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    return this.ref.set(setObj, { merge: true }).catch(error => {
+    this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }
@@ -210,6 +203,7 @@ export class ProjectData {
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -220,7 +214,17 @@ export class ProjectData {
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._location = 'Western Side of House';
+          this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
+        }
+      }
+
+      getAll() {
+        return this._getAll({
+          goals: this.goals,
+          location: this.location,
+          budget: this.budget,
+          narrative: this.narrative
         });
       }
     }
