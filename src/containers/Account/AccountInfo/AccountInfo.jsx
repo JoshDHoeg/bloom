@@ -16,7 +16,11 @@ class AccountInfoPage extends Component {
             edit: false,
             name: '',
             email: '',
+<<<<<<< HEAD
             phone: '',
+=======
+            phone: ''
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
         };
     }
 

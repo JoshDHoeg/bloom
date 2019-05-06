@@ -10,6 +10,10 @@ import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 
 import EditButton from '../../../../../components/ProjectBanner/EditButton/EditButton';
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
 class RevisionsPageWaiting extends Component {
     constructor(props) {
         super(props);

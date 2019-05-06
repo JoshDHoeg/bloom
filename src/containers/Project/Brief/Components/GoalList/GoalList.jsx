@@ -18,12 +18,21 @@ const GoalList = (props) => (
 const GoalListView = (props) => {
     const goals = props.goals;
     return (
+<<<<<<< HEAD
             <ul id="goals">
                 {goals.map((g, i) => (
                     <li key={i} id={`goal${i}`}>{g}</li>
                 ))}
                 
             </ul>
+=======
+            <Container id="goals">
+                {goals.map(goal => (
+                    <div key={goal.id} id={`goal${goal.id}`}>{goal.content}</div>
+                ))}
+                
+            </Container>
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
     )
 }
 
@@ -31,6 +40,10 @@ const GoalListView = (props) => {
 
 const GoalListEdit = (props) => {
     const goals = props.goals;
+<<<<<<< HEAD
+=======
+    console.log(goals);
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
     return (
         <Container id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
             {goals.map(goal => {

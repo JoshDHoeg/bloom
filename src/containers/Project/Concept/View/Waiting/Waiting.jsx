@@ -8,7 +8,12 @@ import { withAuthorization } from '../../../../../utilities/Session';
 
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 
+<<<<<<< HEAD
 import EditButton from '../../../../../components/ProjectBanner/EditButton/EditButton';
+=======
+import {Link} from "react-router-dom";
+import * as ROUTES from "../../../../../utilities/constants/routes";
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
 
 
 class ConceptPageWaiting extends Component {
@@ -24,7 +29,11 @@ class ConceptPageWaiting extends Component {
         return (
             <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                <h1>The Design Concept Is not ready yet. You will recieve a ntification when it is ready.</h1>
+<<<<<<< HEAD
                <EditButton />
+=======
+               <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_CONCEPT_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
+>>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
             </div>
         );
 
