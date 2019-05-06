@@ -27,11 +27,7 @@ class ConceptPageView extends Component {
         // const Available = this.props.brief.available;
         const Available = true;
         
-<<<<<<< HEAD
         if (Available){
-=======
-        if (this.props.concept.completed){
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                     <div className="ui stackable grid container">
@@ -43,11 +39,7 @@ class ConceptPageView extends Component {
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
-<<<<<<< HEAD
                                 <YoutubeEmbedVideo videoId={this.props.videoId} suggestions={false} style={{ width: "600px", padding: "30px" }} />
-=======
-                                <YoutubeEmbedVideo videoId={this.props.concept.videoId} suggestions={false} style={{ width: "600px", padding: "30px" }} />
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
                             </span>
                         </div>
                         <div className="row">

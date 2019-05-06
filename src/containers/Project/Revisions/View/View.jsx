@@ -12,11 +12,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
-<<<<<<< HEAD
 import Button from '../../../../components/PaymentStripe/frontend/Button'
-=======
-
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
 import RevisionsWaiting from './Waiting/Waiting';
@@ -24,7 +20,6 @@ import RevisionsWaiting from './Waiting/Waiting';
 class RevisionsPageView extends Component {
     constructor(props) {
         super(props);
-<<<<<<< HEAD
         this.state = {
             edit: false,
         };
@@ -34,18 +29,6 @@ class RevisionsPageView extends Component {
         // const Available = this.props.brief.available;
         console.log(this.props);
         const Available = true;
-=======
-
-        this.state = {
-            edit: false
-        }
-    }
-
-    render() {
-        // const Available = this.props.brief.available;
-        const Available = true;
-        
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
         if (Available){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
@@ -55,14 +38,11 @@ class RevisionsPageView extends Component {
                             <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_REVISIONS_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.mediaURL} style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                         </div>
-<<<<<<< HEAD
                         <div className='row'>
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <Button SuccessPayment={this.props.SuccessPayment} />
                             </span>
                         </div>
-=======
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>

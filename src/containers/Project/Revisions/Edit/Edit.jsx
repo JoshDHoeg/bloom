@@ -29,10 +29,7 @@ class RevisionsPageEdit extends Component {
     }
 
     render() {
-<<<<<<< HEAD
 console.log(this.props);
-=======
->>>>>>> 56a5ed899c5775f76634bc9d54ec44514c16956c
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container" >
