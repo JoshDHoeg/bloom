@@ -47,16 +47,17 @@ class ProjectList extends Component {
   render() {
     const { loading } = this.state;
     //console.log(this.userProjs[0]);
-
+    let m = 0;
     return (
       <Grid container >
         <Grid.Row>
           <h1>Current Projects</h1>
         </Grid.Row>
         {loading && <div>Loading ...</div>}
-        {this.userProjs.map(proj => (
-            <ProjCard props={proj} key={proj.name}/>
-        ))}
+        {this.userProjs.map((proj, index) => {
+          console.log(index);
+          return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
+        })}
     </Grid>
     );
   }

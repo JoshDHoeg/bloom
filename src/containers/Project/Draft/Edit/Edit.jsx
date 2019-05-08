@@ -16,7 +16,7 @@ import * as ROUTES from "../../../../utilities/constants/routes";
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
-class ConceptPageEdit extends Component {
+class DraftPageEdit extends Component {
     constructor(props) {
         super(props);
 
@@ -31,8 +31,8 @@ class ConceptPageEdit extends Component {
                 <div className="ui stackable grid container" >
                 <div className="row" style={{ paddingTop: "40px" }}>
                         <h1>Rough Draft</h1>
-                        <button onClick={this.props.completed} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "227px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_FINAL} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
-                        <button onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20pX", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_FINAL} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
+                        <button onClick={this.props.completed} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "227px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
+                        <button onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20pX", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
                     </div>
                     <div className="row">
                         <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -68,4 +68,4 @@ class ConceptPageEdit extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(ConceptPageEdit);
+export default withAuthorization(condition)(DraftPageEdit);

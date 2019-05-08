@@ -17,12 +17,20 @@ class BriefPage extends Component {
         edit: false,
         editId: '',
         loading: false,
+        projectIndex: 0,
         brief:{
           goals: [],
           address: '',
           budget: '',
           narrative: '',
           media: '',
+          profile: {
+            spacing: '',
+            variety: '',
+            edging: '',
+            ground: '',
+            form: ''
+          }
         },
         client: {
             name: '',
@@ -37,6 +45,7 @@ class BriefPage extends Component {
     this.editGoalSubmit = this.editGoalSubmit.bind(this);
     this.editGoal = this.editGoal.bind(this);
     this.addGoal = this.addGoal.bind(this);
+    this.handleChangeProfile = this.handleChangeProfile.bind(this);
   }
 
   formSubmit = () => {
@@ -45,15 +54,29 @@ class BriefPage extends Component {
     this.brief.address = this.state.brief.address;
     this.brief.budget = this.state.brief.budget;
     this.brief.narrative = this.state.brief.narrative;
+    this.brief.profile = this.state.brief.profile;
   }
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
+    // console.log(event.target.name);
     this.setState({
       brief: {
         ...this.state.brief,
         [event.target.name]: event.target.value
+      }
+    });
+  }
+  handleChangeProfile(event) {
+    event.preventDefault();
+    // console.log(this.state);
+    this.setState({
+      brief: {
+        ...this.state.brief,
+        profile: {
+          ...this.state.brief.profile,
+          [event.target.name]: event.target.value
+        }
       }
     });
   }
@@ -65,77 +88,65 @@ class BriefPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    this.getProjectState();
+    if(this.props.location.state){
+      this.setState({projectIndex: this.props.location.state.projectIndex});
+      this.getProjectState(this.props.location.state.projectIndex);
+    }else{
+      this.setState({projectIndex: 0});
+      this.getProjectState(0);
+    }
   }
 
   deleteGoal = (id) => {
     const Goals = this.state.brief.goals.filter(goal => {
         return goal.id !== id;
     })
-    this.setState({[this.state.brief.goals]: Goals});
+    this.setState({brief:{...this.state.brief, goals: Goals}});
+    // console.log(Goals);
   }
 
   editGoal(id){
-    console.log("edit goal");
+    // console.log("edit goal");
       this.setState({editId: id});
   }
 
-  // editGoalSubmit = (goal) =>{
-  //   console.log(goal);
-  //   this.setState(state => {
-  //       const goals = state.brief.goals.map(goalCurrent => {
-  //           if(goalCurrent.id === goal.id){
-  //               //console.log(goal.content);
-  //               return goal;
-  //           }else{
-  //               // console.log(goalCurrent.content);
-  //               return goalCurrent;
-  //           }
-  //       });
-  //       console.log(goals);
-  //       return {
-  //           goals: goals,
-  //           editId: 'bugger'
-  //       };
-  //   });
-  //   console.log(this.state);
-  // }
-    editGoalSubmit = (goal) =>{
-        console.log(goal);
-        //this.setState(state => {
-            const goals = this.state.brief.goals.map(goalCurrent => {
-                if(goalCurrent.id === goal.id){
-                    //console.log(goal.content);
-                    return goal;
-                }else{
-                    // console.log(goalCurrent.content);
-                    return goalCurrent;
-                }
-            });
-            console.log(goals);
-            this.setState({goals: goals, editId: ''});
-            // return {
-            //     goals: goals,
-            //     editId: 'bugger'
-            // };
-       // });
-        console.log(this.state);
-    }
+  editGoalSubmit = (goal) =>{
+    // console.log(goal);
+    this.setState(state => {
+        const Goals = state.brief.goals.map(goalCurrent => {
+            if(goalCurrent.id === goal.id){
+                // console.log(goal.content);
+                return goal;
+            }else{
+                // console.log(goalCurrent.content);
+                return goalCurrent;
+            }
+        });
+        console.log(Goals);
+        return {
+            brief:{...this.state.brief, goals: Goals},
+            editId: ''
+        };
+    });
+  }
 
   addGoal = (goal) => {
-      console.log(goal);
+      // console.log(goal);
       goal.id= Math.random();
-      let goals = [...this.state.brief.goals, goal];
-      this.setState({
-          goals: goals
-      });
+      let Goals = [...this.state.brief.goals, goal];
+      this.setState({brief:{...this.state.brief, goals: Goals}});
   }
 
 
-  getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+  getProjectState = async (id) => {
+    const index = this.props.firebase.activeProject;
+    console.log(index);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, index, true);
+    console.log(project);
     this.brief = await project.brief;
+    console.log(this.brief);
     const client = await project.client;
+    const profile = await project.brief.profile;
     const state = await {
         client: client,
         loading: false,
@@ -143,19 +154,19 @@ class BriefPage extends Component {
           ...this.brief.getAll()
         }
     }
-    console.log(state);
+    console.log(profile);
     this.setState(state);
     return state;
 }
 
   render() {
-
+    console.log(this.state.projectIndex);
     if(this.state.edit){
         return (
             <BriefEdit
               brief = {this.state.brief}
               editId={this.state.editId}
-
+              handleChangeProfile={this.handleChangeProfile}
               addGoal={this.addGoal}
               editGoal={this.editGoal}
               editGoalSubmit={this.editGoalSubmit}
@@ -163,11 +174,14 @@ class BriefPage extends Component {
               setLive = {this.setLive}
               handleChange = {this.handleChange}
               formSubmit = {this.formSubmit}
+              projectIndex = {this.state.projectIndex}
              />
         );
     }else{
         return (
-            <BriefView brief = {this.state.brief} />
+            <BriefView
+              brief = {this.state.brief}
+              projectIndex = {this.state.projectIndex}/>
         );
     }
 

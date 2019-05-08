@@ -43,7 +43,7 @@ const PaymentInfoEdit = (props) => {
     return(
         <table class="ui definition table">
         <tbody>
-            <h3>Card Information:</h3>
+            <h3>Edit Card Information:</h3>
             <tr>
                 <td>Card Number:</td>
                 <td id ='CardEdit'> <input type='text' id='CardEditTxt' View ={card} style={{ width: '140px' }} ></input></td>

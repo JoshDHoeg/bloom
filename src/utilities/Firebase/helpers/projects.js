@@ -59,9 +59,17 @@ class FirebaseProjects extends FirebaseAuthUser  {
     })
   }
 
-  doGetProject = (id, isUID = false) => { // return Promise<Project>
+  //old one:
+  // doGetProject = (id, isUID = false) => { // return Promise<Project>
+  //   if (isUID) {
+  //       return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[0].id));
+  //
+
+  doGetProject = (id, index, isUID = false) => { // return Promise<Project>
+    console.log("inside doGetProject");
     if (isUID) {
-        return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[0].id));
+        //this.doGetUser(id).then(userData => console.log(userData));
+        return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
     } else{
       return this.projectsRef.doc(id).get().then(data => {
           return new Project(data);
@@ -102,7 +110,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -141,7 +149,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();

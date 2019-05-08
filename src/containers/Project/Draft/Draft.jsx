@@ -5,10 +5,10 @@ import React, { Component } from 'react';
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../../utilities/Session';
 
-import FinalPageView from './View/View';
-import FinalPageEdit from './Edit/Edit';
+import DraftPageView from './View/View';
+import DraftPageEdit from './Edit/Edit';
 
-class FinalPage extends Component {
+class DraftPage extends Component {
   final;
   constructor(props) {
     super(props);
@@ -58,7 +58,7 @@ class FinalPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0,  true);
     this.final = await project.final;
     const client = await project.client;
     const state = await {
@@ -75,11 +75,11 @@ class FinalPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <FinalPageEdit final={this.state.final} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
+            <DraftPageEdit final={this.state.final} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <FinalPageView final={this.state.final} />      
+            <DraftPageView final={this.state.final} />      
         );
     }
 
@@ -88,4 +88,4 @@ class FinalPage extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(FinalPage);
+export default withAuthorization(condition)(DraftPage);
