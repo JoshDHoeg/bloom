@@ -207,16 +207,12 @@ export class ProjectData {
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
-<<<<<<< HEAD
-
-=======
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _profile = {};
       get profile() { return this._profile; };
       set profile(p) { this._setter({ profile: p }).then(() => this._profile = p); }
->>>>>>> development
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -224,21 +220,15 @@ export class ProjectData {
           this._location = this.data['location'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
-<<<<<<< HEAD
-=======
           this._completed = this.data['completed'];
           this._profile = this.data['profile'];
->>>>>>> development
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._location = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
-<<<<<<< HEAD
-=======
           this._completed = false;
           this._profile = { spacing: "full", variety: "mixed", edges: "curved", ground: "mulch", form: "climbing" };
->>>>>>> development
         }
       }
 
@@ -247,13 +237,9 @@ export class ProjectData {
           goals: this.goals,
           location: this.location,
           budget: this.budget,
-<<<<<<< HEAD
-          narrative: this.narrative
-=======
           narrative: this.narrative,
           completed: this.completed,
           profile: this.profile
->>>>>>> development
         });
       }
     }
@@ -262,29 +248,38 @@ export class ProjectData {
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
-      /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
@@ -331,29 +326,44 @@ export class ProjectData {
   static Final = {
     colRef: 'finals',
     type: class Final extends ProjectDataBase {
-       /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          figma: this.figma,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }
@@ -363,24 +373,34 @@ export class ProjectData {
     type: class Revision extends ProjectDataBase {
       _isPaid = false;
       get isPaid() {return this._isPaid; }
-      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); } 
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
+      _media;
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); } 
       constructor(dbQuery, useDefault = false) {
 
         super(dbQuery, useDefault);
         if (!useDefault) {
- 
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
           this._isPaid = this.data["isPaid"];
 
         } else {
-
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._isPaid = [false];
         }
       }
       getAll() {
         return this._getAll({
-          isPaid: this.isPaid
+          isPaid: this.isPaid,
+          media: this.media,
+          figma: this.figma,
         });
       }
     }
-  }
+  };
 }

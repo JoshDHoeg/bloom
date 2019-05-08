@@ -17,14 +17,11 @@ class RevisionsPage extends Component {
         edit: false,
         figmaURL: '',
         mediaURL: '',
-<<<<<<< HEAD
-        isPaid: false,
-=======
         revision: {
           media:'',
           figma: '',
+          isPaid: false,
         }
->>>>>>> development
     };
     this.SuccessPayment = this.SuccessPayment.bind(this);
     this.updateFigma = this.updateFigma.bind(this);
@@ -33,7 +30,13 @@ class RevisionsPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    this.getProjectState();
+    if(this.props.location.state){
+      this.setState({projectIndex: this.props.location.state.projectIndex});
+      this.getProjectState(this.props.location.state.projectIndex);
+    } else{
+      this.setState({projectIndex: 0});
+      this.getProjectState(0);
+    }
   }
 
 
@@ -54,25 +57,20 @@ class RevisionsPage extends Component {
 
     }
 
-  getProjectState = async () => {
-<<<<<<< HEAD
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
-    const revision = await project.revision;
-=======
+  getProjectState = async (id) => {
+    const index = this.props.firebase.activeProject;
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
->>>>>>> development
+    console.log(project);
     this.revision = await project.revision;
+    console.log(this.revision);
     const client = await project.client;
     const state = await {
-        project: project,
         client: client,
         loading: false,
+//        isPaid: this.revision.isPaid,
         revision: {
           ...this.revision.getAll()
         },
-        figmaURL: this.revision.data.figmaURL,
-        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
-        isPaid: this.revision.isPaid,
     }
 
     this.setState(state);
@@ -84,19 +82,11 @@ class RevisionsPage extends Component {
     console.log('isPaid:', this.isPaid)
     if(this.state.edit){
         return (
-<<<<<<< HEAD
-            <RevisionsPageEdit  SuccessPayment={this.SuccessPayment} figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>      
-        );
-    }else{
-        return (
-            <RevisionsPageView SuccessPayment={this.SuccessPayment} figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />      
-=======
             <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
         );
     }else{
         return (
             <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
->>>>>>> development
         );
     }
 

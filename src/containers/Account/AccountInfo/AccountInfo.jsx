@@ -15,11 +15,6 @@ class AccountInfoPage extends Component {
             loading: false,
             edit: false,
             name: '',
-<<<<<<< HEAD
-            email: '',
-            phone: '',
-=======
->>>>>>> development
         };
     }
 
