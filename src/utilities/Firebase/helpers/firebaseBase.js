@@ -17,6 +17,17 @@ const devConfig = {
   messagingSenderId: "327651474050",
 };
 
+//jesses test database:
+
+// var devConfig = {
+//     apiKey: "AIzaSyBccXEAqEbvDPL346t_Jv39xSZn4VfzLis",
+//     authDomain: "testing-8e700.firebaseapp.com",
+//     databaseURL: "https://testing-8e700.firebaseio.com",
+//     projectId: "testing-8e700",
+//     storageBucket: "testing-8e700.appspot.com",
+//     messagingSenderId: "708240096333"
+// };
+
 const config =
   process.env.NODE_ENV === 'production' ? prodConfig : devConfig;
 
@@ -27,8 +38,9 @@ class FirebaseBase {
     this.db = app.firestore();
     this.usersRef = this.db.collection('users');
     this.projectsRef = this.db.collection('projects');
+    this.messagesRef = this.db.collection('messages');
+    this.channelsRef = this.db.collection('channels');
   }
-  
 
   // For all class objects like User and Project, console.log them to see vars.
   // For all classes, pls do not use the _varName. the only varName will update the database
@@ -48,11 +60,11 @@ class FirebaseBase {
   // PLEASE set the returned subscription to variable and use a described below
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
-
+  setActiveProject = (index) => null;
 
 
   projects; // Promise<Project[]> // this is a single call for all projects
-  doGetProject = (pid, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
+  doGetProject = (pid, index, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
   // * optimal usage example: this.props.firebase.doGetProject(this.props.firebase.user.uid, true)
   // calling with isUID = true will find a user's project
   // User can have multiple projects -- isUID will return the first project

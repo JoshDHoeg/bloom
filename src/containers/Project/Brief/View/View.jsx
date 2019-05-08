@@ -26,6 +26,7 @@ class BriefPageView extends Component {
     render() {
         // const Available = this.props.brief.available;
         const Available = this.props.brief.completed;
+        console.log(this.props.projectIndex);
         
         if (Available){
             return (
@@ -33,7 +34,7 @@ class BriefPageView extends Component {
                     <div className="ui stackable grid container">
                         <div className="row" style={{ paddingTop: "40px" }}>
                             <h1>Design Brief</h1>
-                            <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_BRIEF_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
+                            <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.media} style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                         </div>
                         <div className="row">
@@ -57,7 +58,7 @@ class BriefPageView extends Component {
 
                             <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
-                                <TasteProfile edit={this.state.edit}/>
+                                <TasteProfile edit={this.state.edit} brief={this.props.brief}/>
                             </span>
                         </div>
                     </div>

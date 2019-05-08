@@ -17,7 +17,14 @@ class RevisionsPage extends Component {
         edit: false,
         figmaURL: '',
         mediaURL: '',
+<<<<<<< HEAD
         isPaid: false,
+=======
+        revision: {
+          media:'',
+          figma: '',
+        }
+>>>>>>> development
     };
     this.SuccessPayment = this.SuccessPayment.bind(this);
     this.updateFigma = this.updateFigma.bind(this);
@@ -48,15 +55,22 @@ class RevisionsPage extends Component {
     }
 
   getProjectState = async () => {
+<<<<<<< HEAD
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
     const revision = await project.revision;
+=======
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+>>>>>>> development
     this.revision = await project.revision;
     const client = await project.client;
     const state = await {
         project: project,
         client: client,
         loading: false,
-        figmaURL: revision.data.figmaURL,
+        revision: {
+          ...this.revision.getAll()
+        },
+        figmaURL: this.revision.data.figmaURL,
         mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
         isPaid: this.revision.isPaid,
     }
@@ -70,11 +84,19 @@ class RevisionsPage extends Component {
     console.log('isPaid:', this.isPaid)
     if(this.state.edit){
         return (
+<<<<<<< HEAD
             <RevisionsPageEdit  SuccessPayment={this.SuccessPayment} figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>      
         );
     }else{
         return (
             <RevisionsPageView SuccessPayment={this.SuccessPayment} figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />      
+=======
+            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
+        );
+    }else{
+        return (
+            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
+>>>>>>> development
         );
     }
 

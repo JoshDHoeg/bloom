@@ -28,6 +28,7 @@ export class User {
   }
   
   get uid() { return this.id };
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -57,9 +58,10 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
+
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
-    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.finals, this.revisions]);
+    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.drafts, this.finals, this.revisions]);
     return data.reduce((d, item, i) => {
       d[Array.isArray(item) ? item[0].constructor.name : item.constructor.name] = item;
       return d;
@@ -71,7 +73,12 @@ export class ProjectBase {
       return colSnap.docs.map(doc => new projectData.type(doc, Firebase.useDefaultProjectValues));
     });
   }
-  _getUser = (userRef) => userRef.get().then(userSnap => new User(userSnap));
+  _getUser = (userRef) => {
+    console.log(userRef);
+    userRef.get().then(res => console.log(res));
+    userRef.get().then(userSnap => new User(userSnap));
+  }
+
   get clients() {
     return Promise.all(this.clientsRef.map(c => this._getUser));
   }
@@ -84,26 +91,22 @@ export class ProjectBase {
 
   get briefs() { return this._getDatabasePromise(ProjectData.Brief); }
   get concepts() { return this._getDatabasePromise(ProjectData.Concept); }
+  get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
   get finals() { return this._getDatabasePromise(ProjectData.Final); }
   get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
 }
 
 export class Project extends ProjectBase {
   name = '';  // the only nonPromise type
-  constructor(documentRef) {
-    super(documentRef);
-    const data = documentRef.data();
-    this.name = data['name'];
-  }
 
-  get client() { return this._getUser(this.clientRef) };
+  get client() { console.log("here"); return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-  get designer() { return this._getUser(this.designerRef) };
+  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -112,6 +115,7 @@ export class Project extends ProjectBase {
   };
   get brief() { return this.briefs.then(b => b[0]); }
   get concept() { return this.concepts.then(c => c[0]); }
+  get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
 }
@@ -143,6 +147,7 @@ class ProjectDataBase {
     });
   }
 }
+
 /**
  * # To add testing vars (without changing the database)
  * 1. Set useDefaults to true in Firebase
@@ -202,7 +207,16 @@ export class ProjectData {
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
+<<<<<<< HEAD
 
+=======
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      _profile = {};
+      get profile() { return this._profile; };
+      set profile(p) { this._setter({ profile: p }).then(() => this._profile = p); }
+>>>>>>> development
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -210,11 +224,21 @@ export class ProjectData {
           this._location = this.data['location'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
+<<<<<<< HEAD
+=======
+          this._completed = this.data['completed'];
+          this._profile = this.data['profile'];
+>>>>>>> development
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._location = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
+<<<<<<< HEAD
+=======
+          this._completed = false;
+          this._profile = { spacing: "full", variety: "mixed", edges: "curved", ground: "mulch", form: "climbing" };
+>>>>>>> development
         }
       }
 
@@ -223,11 +247,18 @@ export class ProjectData {
           goals: this.goals,
           location: this.location,
           budget: this.budget,
+<<<<<<< HEAD
           narrative: this.narrative
+=======
+          narrative: this.narrative,
+          completed: this.completed,
+          profile: this.profile
+>>>>>>> development
         });
       }
     }
   };
+
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
@@ -254,6 +285,45 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           // yourVar: this.yourVar
+        });
+      }
+    }
+  };
+  static Draft = {
+    colRef: 'drafts',
+    type: class Draft extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._media = this.data['media'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
+        } else {
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
+        }
+      }
+      getAll() {
+        return this._getAll({
+          media: this.media,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
         });
       }
     }

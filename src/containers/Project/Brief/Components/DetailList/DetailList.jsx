@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
-import { Input, Container } from 'semantic-ui-react'
+import { Input, Container } from 'semantic-ui-react';
 
 const DetailList = (props) => (
     <div>

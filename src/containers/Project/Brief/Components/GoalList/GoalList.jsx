@@ -17,6 +17,7 @@ const GoalList = (props) => (
 
 const GoalListView = (props) => {
     const goals = props.goals;
+    //console.log(goals);
     return (
             <Container id="goals">
                 {goals.map(goal => (

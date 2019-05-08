@@ -5,7 +5,7 @@ import * as serviceWorker from './serviceWorker';
 import AuthRouter from './AuthRouter.jsx';
 
 //IMPORT STYLES
-import './index.css';
+import './index.scss';
 import 'semantic-ui-css/semantic.min.css'
 
 //IMPORT UTILITIES
