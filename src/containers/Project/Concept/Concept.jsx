@@ -56,7 +56,7 @@ class ConceptPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0,  true);
     console.log(project);
     this.concept = await project.concept;
     console.log(this.concept);

@@ -138,7 +138,9 @@ class BriefPage extends Component {
   }
 
 
-  getProjectState = async (index) => {
+  getProjectState = async (id) => {
+    const index = this.props.firebase.activeProject;
+    console.log(index);
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, index, true);
     console.log(project);
     this.brief = await project.brief;

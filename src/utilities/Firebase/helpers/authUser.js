@@ -6,6 +6,7 @@ import Firebase from '..';
 class FirebaseAuthUser extends FirebaseBase {
   _userCred;
   user;
+  activeProject = 0;
   _userProvider;
   _isAuthent = new BehaviorSubject(null);
   _isAuth = new BehaviorSubject(null);
@@ -36,6 +37,10 @@ class FirebaseAuthUser extends FirebaseBase {
         this.isAuth = false;
       }
     })
+  }
+
+  setActiveProject = index => {
+    this.activeProject = index;
   }
 
   //most of old onAuthStateChanged logic (from the constructor) was moved to this function. Called by doCreateUser... and doSignInUser...

@@ -16,6 +16,10 @@ class RevisionsPage extends Component {
         edit: false,
         figmaURL: '',
         mediaURL: '',
+        revision: {
+          media:'',
+          figma: '',
+        }
     };
 
     this.updateFigma = this.updateFigma.bind(this);
@@ -39,14 +43,17 @@ class RevisionsPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
-    const revision = await project.revision;
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+    this.revision = await project.revision;
     const client = await project.client;
     const state = await {
         project: project,
         client: client,
         loading: false,
-        figmaURL: revision.data.figmaURL,
+        revision: {
+          ...this.revision.getAll()
+        },
+        figmaURL: this.revision.data.figmaURL,
         mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
     this.setState(state);

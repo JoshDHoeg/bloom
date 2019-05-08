@@ -58,7 +58,7 @@ class DraftPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0,  true);
     this.final = await project.final;
     const client = await project.client;
     const state = await {

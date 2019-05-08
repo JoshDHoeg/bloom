@@ -60,6 +60,7 @@ class FirebaseBase {
   // PLEASE set the returned subscription to variable and use a described below
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
+  setActiveProject = (index) => null;
 
 
   projects; // Promise<Project[]> // this is a single call for all projects

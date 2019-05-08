@@ -97,11 +97,6 @@ export class ProjectBase {
 
 export class Project extends ProjectBase {
   name = '';  // the only nonPromise type
-  constructor(documentRef) {
-    super(documentRef);
-    const data = documentRef.data();
-    this.name = data['name'];
-  }
 
   get client() { console.log("here"); return this._getUser(this.clientRef) };
   set client(userClass) {
