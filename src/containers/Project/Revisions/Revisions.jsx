@@ -51,10 +51,10 @@ class RevisionsPage extends Component {
   }
   
   SuccessPayment(){
-//      this.setState({user:{...this.state.revisions, isPaid: true}});
     console.log('database:');      
     this.revision.isPaid = true;
     }
+
 
   getProjectState = async (id) => {
     const index = this.props.firebase.activeProject;

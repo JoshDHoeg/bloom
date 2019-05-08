@@ -19,6 +19,7 @@ const fromUSDToCent = amount => amount * 100; //Set to $$
 
 const errorPayment = data => { //Ideally want to use this to redirect back to FinalView 
   alert('Payment Error');
+  console.log(data)
 };
 
 const onToken = (amount, description, SuccessPayment) => token => //Once Stripe Checkout token is created - post it using axios
@@ -29,10 +30,8 @@ const onToken = (amount, description, SuccessPayment) => token => //Once Stripe 
       currency: CURRENCY,
       amount: fromUSDToCent(amount)
     })
-    .then(
-      SuccessPayment
-    )
-    .catch(errorPayment);
+    .then(SuccessPayment)
+    .catch(errorPayment)
 
 
 const Checkout = (props) => //Create User token for checkout

@@ -2,7 +2,7 @@ import Firebase from '../Firebase';
 
 export class User {
   _isDesigner = false;
-  get isDesigner() { return this._isDesignert; }
+  get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
     this.ref.set({ isDesigner: designer });
   }
@@ -142,7 +142,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    this.ref.set(setObj, { merge: true }).catch(error => {
+      return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }
@@ -371,8 +371,8 @@ export class ProjectData {
   static Revision = {
     colRef: 'revisions',
     type: class Revision extends ProjectDataBase {
-      _isPaid = false;
-      get isPaid() {return this._isPaid; }
+      _isPaid = '';
+      get isPaid() {return this._isPaid; };
       set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
       _media;
       get media() { return this._media; };
