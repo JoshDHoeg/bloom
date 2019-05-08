@@ -15,16 +15,16 @@ const withAuthorization = condition => Component => {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
-            console.log(authUser);
+            //console.log(authUser);
         if (authUser) {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
                 // console.log("is user a designer: " + authUser._isDesigner);
-                console.log(authUser);
-                console.log(condition);
+                // console.log(authUser);
+                // console.log(condition);
                 if (!condition(authUser)) {
-                  console.log(authUser);
+                  //console.log(authUser);
                   // console.log("not a designer");
                 }else{
                   this.setState({ authUser });

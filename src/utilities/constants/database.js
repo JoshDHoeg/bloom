@@ -28,6 +28,14 @@ export class User {
   }
   get uid() { return this.id };
 
+  _helpChannel = null;
+  get helpChannel(){return this._helpChannel; }
+  set helpChannel(chanRef){
+    this.ref.set({ helpChannel: chanRef});
+    this._helpChannel = chanRef;
+  }
+
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -35,9 +43,41 @@ export class User {
     this._name = data['name'];
     this._phone = data['phone'];
     this._projects = data['projects']; // DocumentReference[]
+    this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
   }
+}
+
+export class Channel {
+  _p1 = null;
+  get p1() { return this._p1; }
+  set p1(p1Ref){
+    this.ref.set({p1: p1Ref});
+    this._p1 = p1Ref;
+  }
+  _p2 = null;
+  get p2() { return this._p2; }
+  set p2(p2Ref){
+    this.ref.set({p2: p2Ref});
+    this._p2 = p2Ref;
+  }
+  _name = "";
+  get name(){return this._name;}
+  set name(n){
+    this.ref.set({name: n});
+    this._name = n;
+  }
+
+  constructor(channelRef){
+    const data = channelRef.data();
+    this._p1 = data['p1'];
+    this._p2 = data['p2'];
+    this._name = data['name'];
+    this.ref = channelRef.ref;
+    this.id = this.ref.id;
+  }
+
 }
 
 export class ProjectBase {
@@ -48,6 +88,7 @@ export class ProjectBase {
     this.cols = documentRef.ref;
     const data = documentRef.data();
     this.name = data['name'];
+    this.channel = data['channel'];
     this.clientsRef = data['client'];
     this.clientRef = data['client'][0];
     this.designersRef = data['designer'];

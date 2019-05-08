@@ -60,6 +60,9 @@ class SignInFormBase extends Component {
       .then(result => {
         if (result) {
           console.log("we logged in");
+          //this.props.firebase.doGetChannelsByUser(this.props.firebase.user.id).then(res => console.log(res));
+          //console.log(this.props.firebase.user);
+          this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.PROJECT);
         } else {

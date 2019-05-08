@@ -7,7 +7,6 @@ import AccountInfoView from './View/View';
 import AccountInfoEdit from './Edit/Edit';
 //IMPORT CONTAINERS
 
-
 class AccountInfoPage extends Component {
     constructor(props) {
         super(props);
@@ -17,7 +16,6 @@ class AccountInfoPage extends Component {
             name: '',
         };
     }
-
     componentWillMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getUserState();

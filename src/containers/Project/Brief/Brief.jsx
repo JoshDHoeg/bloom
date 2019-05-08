@@ -80,25 +80,47 @@ class BriefPage extends Component {
       this.setState({editId: id});
   }
 
-  editGoalSubmit = (goal) =>{
-    console.log(goal);
-    this.setState(state => {
-        const goals = state.brief.goals.map(goalCurrent => {
-            if(goalCurrent.id === goal.id){
-                // console.log(goal.content);
-                return goal;
-            }else{
-                // console.log(goalCurrent.content);
-                return goalCurrent;
-            }
-        });
-        console.log(goals);
-        return {
-            goals: goals,
-            editId: ''
-        };
-    });
-  }
+  // editGoalSubmit = (goal) =>{
+  //   console.log(goal);
+  //   this.setState(state => {
+  //       const goals = state.brief.goals.map(goalCurrent => {
+  //           if(goalCurrent.id === goal.id){
+  //               //console.log(goal.content);
+  //               return goal;
+  //           }else{
+  //               // console.log(goalCurrent.content);
+  //               return goalCurrent;
+  //           }
+  //       });
+  //       console.log(goals);
+  //       return {
+  //           goals: goals,
+  //           editId: 'bugger'
+  //       };
+  //   });
+  //   console.log(this.state);
+  // }
+    editGoalSubmit = (goal) =>{
+        console.log(goal);
+        //this.setState(state => {
+            const goals = this.state.brief.goals.map(goalCurrent => {
+                if(goalCurrent.id === goal.id){
+                    //console.log(goal.content);
+                    return goal;
+                }else{
+                    // console.log(goalCurrent.content);
+                    return goalCurrent;
+                }
+            });
+            console.log(goals);
+            this.setState({goals: goals, editId: ''});
+            // return {
+            //     goals: goals,
+            //     editId: 'bugger'
+            // };
+       // });
+        console.log(this.state);
+    }
 
   addGoal = (goal) => {
       console.log(goal);

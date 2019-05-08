@@ -1,6 +1,7 @@
 import FirebaseAuthUser from './authUser';
 import { ProjectData, Project } from '../../constants/database';
 import Firebase from '../firebase';
+import firebase from "firebase";
 
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
@@ -8,76 +9,78 @@ class FirebaseProjects extends FirebaseAuthUser  {
     console.log('projects');
   }
 
-  //creates empty project with default designer
-  doCreateEmptyProject = () => {
-      return this.doGetUser("userAuthID").then( designer => {
-          var proj = this.projectsRef.doc();
-          proj.set({
-              client: [null],
-              designer: [designer.ref],
-              name: "tester"
-          })
-          const b = proj.collection('briefs');
-          const c = proj.collection('concepts');
-          const f = proj.collection('finals');
-          const r = proj.collection('revisions');
-          b.doc('0').set({
-              address: "",
-              budget: "",
-              completed: false,
-              goals: [null],
-              init: false,
-              media: "",
-              narrative: ""
-          });
-          c.doc('0').set({
-              init: false,
-              typeformURL: "",
-              videoID: ""
-          });
-          f.doc('0').set({
-              figmaURL: "",
-              init: false,
-              typeformURL: "",
-              videoID: ""
-          });
-          r.doc('0').set({
-              figmaURL: "",
-              init: false,
-              typeformURL: ""
-          });
-          return proj;
-      })
-  }
-
-  //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
-  doInitNewUser = (email , password) => {
-      return this.doCreateEmptyProject().then( proj => {
-          console.log(proj);
-          return this.doCreateUserWithEmailAndPassword(email, password, proj.id)
-              .then(ref => {
-                      proj.set({
-                          client: [ref]
-                      }, {merge : true});
-                      return ref.id;
-              });
-      });
-  }
-
   get projects() {
     return this.projectsRef.get().then(projs => projs.docs.map(proj => new Project(proj)));
   }
 
+  //creates empty project with default designer and null channel ref...could optionally take client
+  // o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
+  doCreateEmptyProject = () => {
+    return this.doGetUser("hv97h9sMeuN1tFQPolJvNE4scMZ2").then( designer => {
+        var proj = this.projectsRef.doc();
+        proj.set({
+            client: [null],
+            designer: [designer.ref],
+            name: "Project1",
+            channel: null
+        });
+        designer.ref.update({
+            projects: firebase.firestore.FieldValue.arrayUnion(proj)
+        });
+        proj.collection('briefs').doc('0').set({
+            address: "",
+            budget: "",
+            completed: true,
+            goals: [],
+            init: false,
+            media: "",
+            narrative: ""
+        });
+        proj.collection('concepts').doc('0').set({
+            init: false,
+            typeformURL: "",
+            videoID: ""
+        });
+        proj.collection('finals').doc('0').set({
+            figmaURL: "",
+            init: false,
+            typeformURL: "",
+            videoID: ""
+        });
+        proj.collection('revisions').doc('0').set({
+            figmaURL: "",
+            init: false,
+            typeformURL: ""
+        });
+        //return proj;
+        return proj.get().then(data => {
+            return new Project(data);
+        });
+    })
+  }
+
   doGetProject = (id, isUID = false) => { // return Promise<Project>
-    console.log("inside doGetProject");
     if (isUID) {
-        //this.doGetUser(id).then(userData => console.log(userData));
         return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[0].id));
     } else{
       return this.projectsRef.doc(id).get().then(data => {
           return new Project(data);
       });
     }
+  }
+
+  //get array of project objects objects associated with a user
+  doGetProjects = (uid) => {
+      return this.doGetUser(uid).then(userData => {
+          var proms = userData.projects.map(projectRef => {
+              return this.doGetProject(projectRef.id).then(p => {
+                  return p;
+              })
+          })
+          return Promise.all(proms).then(res => {
+              return res;
+          });
+      });
   }
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
@@ -106,7 +109,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
     return docRef;
   }
 
-  doUpdateProject = async (name = 'Test Project', clientUid = 'userAuthID', designerUid = 'l9d1ECyWoJb4tpqCAz2SnXIyHH52', pid = null, returnProject = true) => {
+  //clientUid = 'userAuthID', designerUid = 'l9d1ECyWoJb4tpqCAz2SnXIyHH52',
+  doUpdateProject = async (name = 'Test Project', clientUid = 'Admin', designerUid = 'o0Ds4w9vFmV1l8Z3BehEVYH4wHl2', pid = null, returnProject = true) => {
     const newName = name === 'Test Project' ? `Test Project ${await this.cheekyProjectNaming()}` : name;
     const projectRef = await this._doGetProjectTemplate(newName, clientUid, designerUid)
       .then(project => {

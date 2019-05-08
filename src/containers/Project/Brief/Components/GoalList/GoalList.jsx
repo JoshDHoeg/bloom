@@ -8,7 +8,8 @@ import EditGoal from './EditGoal.jsx';
 const GoalList = (props) => (
     <div>
         {props.edit ? (
-        <GoalListEdit goals={props.goals} deleteGoal={props.deleteGoal} addGoal={props.addGoal} editGoalSubmit={props.editGoalSubmit} editId={props.editId} editGoal={props.editGoal} />
+        <GoalListEdit goals={props.goals} deleteGoal={props.deleteGoal} addGoal={props.addGoal}
+                      editGoalSubmit={props.editGoalSubmit} editId={props.editId} editGoal={props.editGoal} />
         ) : (
         <GoalListView goals={props.goals} />
         )}
@@ -23,7 +24,7 @@ const GoalListView = (props) => {
                 {goals.map(goal => (
                     <div key={goal.id} id={`goal${goal.id}`}>{goal.content}</div>
                 ))}
-                
+
             </Container>
     )
 }
@@ -38,6 +39,7 @@ const GoalListEdit = (props) => {
             {goals.map(goal => {
 
                 if(props.editId !== goal.id){
+                    console.log("display1");
                     return(
                         <div key={goal.id} id={goal.id} >
                             <span>{goal.content}</span>
@@ -46,6 +48,7 @@ const GoalListEdit = (props) => {
                         </div>
                     )
                 }else{
+                    console.log("display2");
                     return(
                         <div key={goal.id} id={goal.id} >
                             <EditGoal goal={goal} editGoalSubmit={props.editGoalSubmit} />
