@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import { SuccessPayment } from '../../../components/PaymentStripe/frontend/Checkout.js';
+//import { SuccessPayment } from '../../../components/PaymentStripe/frontend/Checkout.js';
 //IMPORT UTILITIES
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../../utilities/Session';
@@ -40,30 +40,34 @@ class RevisionsPage extends Component {
     this.setState({ mediaURL: event.target.value });
   }
   
-  SuccessPayment  = () => {
- //       this.setState({user:{...this.state.user, isPaid: true}});
+  SuccessPayment(){
+//      this.setState({user:{...this.state.revisions, isPaid: true}});
       this.revision.isPaid = true
-        console.log('database:');
+      console.log('database:');
 
     }
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+    const revision = await project.revision;
     this.revision = await project.revision;
     const client = await project.client;
     const state = await {
         project: project,
         client: client,
         loading: false,
-        figmaURL: this.revision.data.figmaURL,
+        figmaURL: revision.data.figmaURL,
         mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
+        isPaid: this.revision.isPaid,
     }
+
     this.setState(state);
     return state;
 }
 
   render() {
-    console.log(this.props)
+    console.log('props:', this.props)
+    console.log('isPaid:', this.isPaid)
     if(this.state.edit){
         return (
             <RevisionsPageEdit  SuccessPayment={this.SuccessPayment} figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>      

@@ -28,7 +28,7 @@ class RevisionsPageView extends Component {
     
      render() {
         // const Available = this.props.brief.available;
-        console.log(this.props);
+        console.log('props', this.props.isPaid);
         const Available = true;
         if (Available){
             return (

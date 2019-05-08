@@ -4,7 +4,9 @@ import React,{Component} from 'react';
 import Checkout from './Checkout';
 import logo from './../../../Images/TempLogo.JPG';
 
-const Button = (props) => (
+class Button extends Component {
+    render () {
+      return(
       <Checkout //initiate Checkout.js and configure
       label={'Purchase Final Design'}
       name={'Purchase Your Final Design'}
@@ -12,7 +14,10 @@ const Button = (props) => (
       amount={599.00}
       image ={logo}
       billingAddress={true}
-      SuccessPayment = {props.SuccessPayment}
-      />     
-)
+      SuccessPayment = {this.SuccessPayment}
+      />  
+      )
+      }
+ 
+}
 export default (Button)

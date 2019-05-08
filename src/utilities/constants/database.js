@@ -34,7 +34,6 @@ export class User {
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
-    this._isPaid = data['isPaid'];
     this._projects = data['projects']; // DocumentReference[]
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
@@ -292,29 +291,24 @@ export class ProjectData {
   static Revision = {
     colRef: 'revisions',
     type: class Revision extends ProjectDataBase {
+      _isPaid = false;
+      get isPaid() {return this._isPaid; }
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); } 
       constructor(dbQuery, useDefault = false) {
-         /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+ 
+          this._isPaid = this.data["isPaid"];
+
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+
+          this._isPaid = [false];
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          isPaid: this.isPaid
         });
       }
     }

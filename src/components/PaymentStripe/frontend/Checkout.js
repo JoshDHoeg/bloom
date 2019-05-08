@@ -32,6 +32,7 @@ const onToken = (amount, description, SuccessPayment) => token => //Once Stripe 
     .then(SuccessPayment)
     .catch(errorPayment);
 
+
 const Checkout = (props) => //Create User token for checkout
   <StripeCheckout
     label={props.label}
@@ -39,11 +40,13 @@ const Checkout = (props) => //Create User token for checkout
     image={props.image}
     description={props.description}
     amount={fromUSDToCent(props.amount)}
-    token={onToken(props.amount, props.description, props.SuccessPayment)}
+    token={onToken(props.amount, props.description)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
     billingAddress={false}
+    SuccessPayment = {props.SuccessPayment}
   />
+  
 
 
 export default Checkout;
