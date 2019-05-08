@@ -52,7 +52,7 @@ class RevisionsPage extends Component {
   
   SuccessPayment(){
 //      this.setState({user:{...this.state.revisions, isPaid: true}});
-      this.revision.isPaid = true
+      this.project.revision.isPaid = true
       console.log('database:');
 
     }
@@ -82,11 +82,11 @@ class RevisionsPage extends Component {
     console.log('isPaid:', this.isPaid)
     if(this.state.edit){
         return (
-            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
+            <RevisionsPageEdit  SuccessPayment={this.state.SuccessPayment} figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
         );
     }else{
         return (
-            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
+            <RevisionsPageView  SuccessPayment={this.state.SuccessPayment} figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
         );
     }
 

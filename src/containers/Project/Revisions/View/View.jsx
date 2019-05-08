@@ -24,6 +24,7 @@ class RevisionsPageView extends Component {
         this.state = {
             edit: false,
         };
+
     }
     
      render() {
