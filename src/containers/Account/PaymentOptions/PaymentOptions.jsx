@@ -9,43 +9,7 @@ import PaymentPageEdit from './Edit/Edit';
 
 
 class PaymentInfoPage extends Component {
-    //this is an example set-up for when firebase has this information
-    //constructor(props) {
-    //    super(props);
-    //    this.state = { 
-    //        loading: false,
-    //        edit: false,
-    //        card: '',
-    //        exp: '',
-    //        cvc: '',
-    //        billadd: '',
-    //        zip: '',
-    //        city: '',
-    //        state:'',
-    //    };
-   // }
-
-    //componentDidMount() {
-    //    this.setState({ loading: true, edit: this.props.edit });
-    //    this.getUserState();
-    //}
-
-    //getUserState = async () => {
-    //    const user = this.props.firebase.user;
-    //    const state = {
-    //        loading: false,
-    //        card: user.name,
-    //        exp: user.email,
-    //        cvc: user.phone,
-    //        billadd: user.billadd,
-    //        zip: user.zip,
-    //        city: user.city,
-    //        state: user.state,
-    //    }
-    //    this.setState(state);
-    //    return state;
-    //}
-    /*temperary props until firebase is setup*/
+    user;
     constructor(props) { 
         super(props);
         this.state = {
@@ -56,17 +20,39 @@ class PaymentInfoPage extends Component {
                 exp: '02/**',
                 cvc: '****',
             },
-            bill: {
-                add: '700 Mountain Drive',
-                zip: '1234',
-                city: 'Denver',
-                state: 'Colorado',
+            user: {
+                billadd1: '',
+                zip: '',
+                city: '',
+                state: '',
             },
         };
+        this.formSubmit = this.formSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+      }
+
+      formSubmit = () => {
+        this.user.billadd1 = this.state.user.billadd1;
+        this.user.zip = this.state.user.zip;
+        this.user.city = this.state.user.city;
+        this.user.state = this.state.user.state;
+      }
+
+      handleChange(event) {
+          event.preventDefault();
+          console.log(event.target.name);
+          this.setState({
+              user: {
+                  ...this.state.user,
+                  [event.target.name]: event.target.value
+              }
+          });
       }
       componentDidMount(){
           this.setState({ loading: true, edit: this.props.edit});
+          this.getUserState();
       }
+      
     render() {
         if(this.state.edit){
             return(

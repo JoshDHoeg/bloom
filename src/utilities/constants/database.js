@@ -26,6 +26,27 @@ export class User {
   set projects(projs) {
     this.ref.set({ projects: projs });
   }
+  _billadd1 = 'Default Address'
+  get billadd1() { return this._billadd1; }
+  set billadd1(add1) {
+    this.ref.set({ billadd1: add1 })
+  }
+  _zip = 'Default Zip'
+  get zip() { return this._zip; }
+  set zip(zip) {
+    this.ref.set({ zip: zip })
+  }
+  _city = 'Default City'
+  get city() { return this._city }
+  set city(city) {
+    this.ref.set({ city: city })
+  }
+  _state = 'Default State'
+  get state() { return this._state }
+  set state(state) {
+    this.ref.set({ state: state })
+  }
+
   get uid() { return this.id };
 
   constructor(dbQuery) {
@@ -34,6 +55,10 @@ export class User {
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
+    this._billadd1 = data['billadd1'];
+    this._zip = data['zip'];
+    this._city = data['city'];
+    this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
