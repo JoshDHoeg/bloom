@@ -4,9 +4,9 @@ import React from 'react';
 const PaymentInfo = (props) => (
     <div>
         {props.edit ? (
-            <PaymentInfoEdit card={props.payment.card} exp={props.payment.exp} cvc={props.payment.cvc} billadd={props.payment.billadd} zip={props.payment.zip} city={props.payment.city} state={props.payment.state}/>
+            <PaymentInfoEdit card={props.card} exp={props.exp} cvc={props.cvc} />
         ) : (
-                <PaymentInfoView card={props.payment.card} exp={props.payment.exp} cvc={props.payment.cvc} billadd={props.payment.billadd} zip={props.payment.zip} city={props.payment.city} state={props.payment.state}/>
+                <PaymentInfoView card={props.card} exp={props.exp} cvc={props.cvc} />
             )}
     </div>
 );

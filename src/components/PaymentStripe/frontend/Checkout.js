@@ -44,7 +44,7 @@ const Checkout = (props) => //Create User token for checkout
     token={onToken(props.amount, props.description, props.SuccessPayment)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
-    billingAddress={false}
+    billingAddress={true}
     SuccessPayment = {props.SuccessPayment}
   />
   

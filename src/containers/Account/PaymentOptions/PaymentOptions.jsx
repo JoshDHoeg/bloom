@@ -1,80 +1,103 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react'
-// import backgroundTemp from '../../../Images/TempBackground.PNG';
-//IMPORT UTILITIESimport { getMaxListeners } from 'cluster';
+
 import { withAuthorization } from '../../../utilities/Session';
 import PaymentPageView from './View/View';
 import PaymentPageEdit from './Edit/Edit';
+
 //IMPORT CONTAINERS
 
 
 class PaymentInfoPage extends Component {
-    //this is an example set-up for when firebase has this information
-    //constructor(props) {
-    //    super(props);
-    //    this.state = { 
-    //        loading: false,
-    //        edit: false,
-    //        card: '',
-    //        exp: '',
-    //        cvc: '',
-    //        billadd: '',
-    //        zip: '',
-    //        city: '',
-    //        state:'',
-    //    };
-   // }
-
-    //componentDidMount() {
-    //    this.setState({ loading: true, edit: this.props.edit });
-    //    this.getUserState();
-    //}
-
-    //getUserState = async () => {
-    //    const user = this.props.firebase.user;
-    //    const state = {
-    //        loading: false,
-    //        card: user.name,
-    //        exp: user.email,
-    //        cvc: user.phone,
-    //        billadd: user.billadd,
-    //        zip: user.zip,
-    //        city: user.city,
-    //        state: user.state,
-    //    }
-    //    this.setState(state);
-    //    return state;
-    //}
-    /*temperary props until firebase is setup*/
-    constructor(props) { 
+    user; 
+    constructor(props) {
         super(props);
-        this.state = {
+        this.state = { 
             loading: false,
-            edit: true,
-            payment: {
-                card: '5191-****-****-****',
-                exp: '02/**',
-                cvc: '****',
-            },
-            bill: {
-                add: '700 Mountain Drive',
-                zip: '1234',
-                city: 'Denver',
-                state: 'Colorado',
-            },
+            edit: false,
+            card: '444',
+            exp: '444',
+            cvc: '444',
+            user:{
+            billadd1: '',
+            zip: '',
+            city: '',
+            state:'',
+            }
         };
-      }
-      componentDidMount(){
-          this.setState({ loading: true, edit: this.props.edit});
-      }
+    this.formSubmit = this.formSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    }
+
+    formSubmit = () => {
+        this.user.billadd1 = this.state.user.billadd1;
+        this.user.zip = this.state.user.zip;
+        this.user.city = this.state.user.city;
+        this.user.state = this.state.user.state;
+    }
+
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+    }
+
+    handleChange(event) {
+        event.preventDefault();
+//        console.log(event.target.name);
+        this.setState({
+            user: {
+                ...this.state.user,
+                [event.target.name]: event.target.value
+            }
+        });
+    }
+
+    componentDidMount(){
+        this.setState({ loading: true, edit: this.props.edit});
+        this.getUserState();
+  
+    }
+    
+    getUserState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid, true);
+        this.user = await user
+        console.log('user3:', user);
+        const state = await {
+            loading: false,
+            user: {
+                billadd1: this.user.billadd1,
+                zip: this.user.zip,
+                state: this.user.state,
+                city: this.user.city,
+            },
+            card: '444',
+            exp: '444',
+            cvc: '444'
+        }
+        this.setState(state);
+        return state;
+    }
+
+
     render() {
         if(this.state.edit){
             return(
-                <PaymentPageEdit payment={this.state.payment} bill={this.state.bill}/>
+                <PaymentPageEdit 
+                formSubmit={this.formSubmit}
+                handleChange={this.handleChange}
+                card={this.state.card}
+                exp={this.state.exp}
+                cvc={this.state.cvc}
+                user={this.state.user}
+                />
             );
         }else{
             return (
-                <PaymentPageView payment={this.state.payment} bill={this.state.bill}/>
+                <PaymentPageView 
+                card={this.state.card}
+                exp={this.state.exp}
+                cvc={this.state.cvc}
+                user={this.state.user}
+                />
             );
         }
     }

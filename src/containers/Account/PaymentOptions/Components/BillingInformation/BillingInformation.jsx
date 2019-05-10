@@ -4,25 +4,40 @@ import React from 'react';
 const BillingInfo = (props) => (
     <div>
         {props.edit ? (
-            <BillingInfoEdit billadd={props.bill.add} zip={props.bill.zip} city={props.bill.city} state={props.bill.state}/>
+            <BillingInfoEdit 
+            billadd1={props.user.billadd1}  
+            zip={props.user.zip}
+            city={props.user.city}
+            state={props.user.state}
+            handleChange={props.handleChange}
+            />
         ) : (
-                <BillingInfoView billadd={props.bill.add} zip={props.bill.zip} city={props.bill.city} state={props.bill.state}/>
+                <BillingInfoView 
+                billadd1={props.user.billadd1}  
+                zip={props.user.zip}
+                city={props.user.city}
+                state={props.user.state}  
+                user={props.user}
+                />
             )}
     </div>
 );
 
 const BillingInfoView = (props) => {
-    const billadd = props.billadd;
+    const billadd1 = props.billadd1;
+    const user = props.user;
     const zip = props.zip;
     const city = props.city;
     const state = props.state;
+    console.log('user2', user)
+    console.log('billadd1:', billadd1)
     return (
         <table class="ui definition table">
         <tbody>
             <h3>Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
-                <td>{billadd}</td>
+                <td>{billadd1}</td>
             </tr>
             <tr>
                 <td>Zip Code:</td>
@@ -42,7 +57,7 @@ const BillingInfoView = (props) => {
 }
 
 const BillingInfoEdit = (props) => {
-    const billadd = props.billadd;
+    const billadd1 = props.billadd1;
     const zip = props.zip;
     const city = props.city;
     const state = props.state;
@@ -52,19 +67,19 @@ const BillingInfoEdit = (props) => {
             <h3>Edit Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
-                <td id ='BillAddEdit'> <input type='text' id='BillAddEditTxt' View ={billadd} style={{ width: '140px' }} ></input></td>
+                <td id ='BillAddEdit'> <input type='text' id='BillAddEditTxt'  defaultValue={billadd1} style={{ width: '140px' }} ></input> <button onClick={props.handleChange}> edit </button></td>
             </tr>
             <tr>
                 <td>Zip Code:</td>
-                <td id ='ZipEdit'> <input type='text' id='ZipEditTxt' View ={zip} style={{ width: '140px' }} ></input></td>
+                <td id ='ZipEdit'> <input type='text' id='ZipEditTxt'  defaultValue={zip} style={{ width: '140px' }} onChange={props.handleChange}></input></td>
             </tr>
             <tr>
                 <td>City:</td>
-                <td id ='CityEdit'> <input type='text' id='CityEditTxt' View ={city} style={{ width: '140px' }} ></input></td>
+                <td id ='CityEdit'> <input type='text' id='CityEditTxt'  defaultValue={city} style={{ width: '140px' }} onChange={props.handleChange}></input></td>
             </tr>
             <tr>
                 <td>State:</td>
-                <td id ='StateEdit'> <input type='text' id='StateEditTxt' View ={state} style={{ width: '140px' }} ></input></td>
+                <td id ='StateEdit'> <input type='text' id='StateEditTxt'  defaultValue={state} style={{ width: '140px' }} onChange={props.handleChange}></input></td>
             </tr>
         </tbody>
         </table>
