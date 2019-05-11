@@ -26,6 +26,27 @@ export class User {
   set projects(projs) {
     this.ref.set({ projects: projs });
   }
+  _billadd1 = ''
+  get billadd1() { return this._billadd1; }
+  set billadd1(add1) {
+    this.ref.set({ billadd1: add1 }, {merge:true})
+  }
+  _zip = ''
+  get zip() { return this._zip; }
+  set zip(zip) {
+    this.ref.set({ zip: zip }, {merge:true})
+  }
+  _city = ''
+  get city() { return this._city }
+  set city(city) {
+    this.ref.set({ city: city }, {merge:true})
+  }
+  _state = ''
+  get state() { return this._state }
+  set state(state) {
+    this.ref.set({ state: state }, {merge:true})
+  }
+
   get uid() { return this.id };
 
   constructor(dbQuery) {
@@ -34,11 +55,36 @@ export class User {
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
+    this._billadd1 = data['billadd1'];
+    this._zip = data['zip'];
+    this._city = data['city'];
+    this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
   }
+
+  _getAll = (obj) => {
+    const baseVars = { init: this.init }
+    return Object.assign(obj, baseVars);
+  };
+  
+
+  getAll() {
+    return this._getAll({
+      email: this.email,
+      name: this.name,
+      phone: this.phone,
+      billadd1: this.billadd1,
+      zip: this.zip,
+      city: this.city,
+      state: this.state,
+      projects: this.projects
+    });
+  }
 }
+
+
 
 export class ProjectBase {
   get pid() {
