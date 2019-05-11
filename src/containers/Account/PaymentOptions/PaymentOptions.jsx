@@ -1,7 +1,5 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react'
-// import backgroundTemp from '../../../Images/TempBackground.PNG';
-//IMPORT UTILITIESimport { getMaxListeners } from 'cluster';
 import { withAuthorization } from '../../../utilities/Session';
 import PaymentPageView from './View/View';
 import PaymentPageEdit from './Edit/Edit';
@@ -20,47 +18,79 @@ class PaymentInfoPage extends Component {
                 exp: '02/**',
                 cvc: '****',
             },
-            user: {
-                billadd1: '',
-                zip: '',
-                city: '',
-                state: '',
-            },
+            billadd1: '',
+            zip: '',
+            city: '',
+            state: '',
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-      }
+    }
 
-      formSubmit = () => {
+    formSubmit = () => {
+        console.log("submitted", this.state)
         this.user.billadd1 = this.state.user.billadd1;
         this.user.zip = this.state.user.zip;
         this.user.city = this.state.user.city;
         this.user.state = this.state.user.state;
-      }
+        
+    }
 
-      handleChange(event) {
-          event.preventDefault();
-          console.log(event.target.name);
-          this.setState({
-              user: {
-                  ...this.state.user,
-                  [event.target.name]: event.target.value
-              }
-          });
-      }
-      componentDidMount(){
-          this.setState({ loading: true, edit: this.props.edit});
-          this.getUserState();
-      }
-      
+    handleChange(event) {
+        event.preventDefault();
+        console.log('event', event.target.name);
+        this.setState({
+            user: {
+                ...this.state.user,
+                [event.target.name]: event.target.value
+            }
+        });
+    }
+    
+    componentDidMount(){
+        this.setState({ loading: true, edit: this.props.edit});
+        this.getUserState();
+    }
+
+    getUserState = async () => {
+        this.user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        console.log('user3:', this.user);
+        const state = {
+            loading: false,
+            user: this.user,
+            billadd1: this.user.billadd1,
+            zip: this.user.zip,
+            state: this.user.state,
+            city: this.user.city,
+        }
+
+        this.setState(state);
+        return state;
+    }
+
     render() {
+        console.log(this.state);
         if(this.state.edit){
             return(
-                <PaymentPageEdit payment={this.state.payment} bill={this.state.bill}/>
+                <PaymentPageEdit 
+                formSubmit={this.formSubmit}
+                handleChange={this.handleChange}
+                payment={this.state.payment} 
+                billadd1={this.state.billadd1}
+                zip={this.state.zip}
+                state={this.state.state}
+                city={this.state.city}
+                />
             );
         }else{
             return (
-                <PaymentPageView payment={this.state.payment} bill={this.state.bill}/>
+                <PaymentPageView 
+                payment={this.state.payment} 
+                billadd1={this.state.billadd1}
+                zip={this.state.zip}
+                state={this.state.state}
+                city={this.state.city}
+                />
             );
         }
     }
