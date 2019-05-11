@@ -158,6 +158,12 @@ export class Project extends ProjectBase {
       this.designers = d;
     });
   };
+  _status = '';
+  get status() { return this._status; }
+  set status(s) {
+    this.ref.set({ status: s }, { merge: true });
+  }
+
   get brief() { return this.briefs.then(b => b[0]); }
   get concept() { return this.concepts.then(c => c[0]); }
   get draft() { return this.drafts.then(c => c[0]); }
@@ -175,6 +181,7 @@ class ProjectDataBase {
   set init(i) {
     this.ref.set({ init: i }, { merge: true });
   }
+
   constructor(dbQuery, useDefault) {
     if (!useDefault) {
       this.ref = dbQuery.ref;
@@ -295,7 +302,6 @@ export class ProjectData {
       }
     }
   };
-
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
@@ -453,5 +459,5 @@ export class ProjectData {
         });
       }
     }
-  }
+  };
 }

@@ -14,7 +14,8 @@ class ProjCard extends Component {
     constructor(props){
         super(props);
         this.state={
-            brief:{}
+            brief:{},
+            status: ''
         }
     }
 
@@ -25,7 +26,9 @@ class ProjCard extends Component {
 
     async componentDidMount(){
         const brief = await this.props.proj.brief;
-        this.setState({brief:brief});
+        const status = await this.props.proj.status;
+        console.log(this.props.proj);
+        this.setState({brief:brief, status:status});
     }
 
     render(){
@@ -44,7 +47,7 @@ class ProjCard extends Component {
 
                             <Grid.Column width="4">
                                 <Header>
-                                    Rough Draft
+                                    {this.state.status}
                                 </Header>
                             </Grid.Column>
                         </Grid.Row>

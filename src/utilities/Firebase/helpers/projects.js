@@ -15,7 +15,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
           proj.set({
               client: [null],
               designer: [designer.ref],
-              name: "tester"
+              _name: "tester",
+              _status: "brief"
           })
           const b = proj.collection('briefs');
           const c = proj.collection('concepts');
