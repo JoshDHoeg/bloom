@@ -44,6 +44,7 @@ class ProjectList extends Component {
   }
 
   render() {
+    console.log("rendered");
     const { loading } = this.state;
     return (
       <Grid container >
@@ -52,7 +53,6 @@ class ProjectList extends Component {
         </Grid.Row>
         {loading && <div>Loading ...</div>}
         {this.userProjs.map((proj, index) => {
-          console.log(proj);
           return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
         })}
     </Grid>

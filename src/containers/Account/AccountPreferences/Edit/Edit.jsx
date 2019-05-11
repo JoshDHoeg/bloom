@@ -19,16 +19,17 @@ class AccountPreferencesPageEdit extends Component {
 
 
     render() {
-        return ( 
+        return (
              <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px", paddingBottom: "100vh"}}>
+
                 <div className="ui stackable grid container">
-                    <PreferencesBanner edit={this.state.edit} user={this.props.user}/>    
+                    <PreferencesBanner formSubmit={this.props.formSubmit} edit={this.state.edit} user={this.props.user}/>
                     <div className="row">
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F2FED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Taste Profile</h1>
-                             <TasteProfile edit={this.state.edit}/>
-                             <Budget edit={this.state.edit} budget={this.state.budget}/>
-                        </span>  
+                             <TasteProfile prof={this.props.info.profile} handleChangeProf={this.props.handleChangeProf} edit={this.state.edit}/>
+                             <Budget edit={this.state.edit} handleChangeBudget={this.props.handleChangeBudget} budget={this.props.info.budget}/>
+                        </span>
                     </div>
                 </div>
             </div>
