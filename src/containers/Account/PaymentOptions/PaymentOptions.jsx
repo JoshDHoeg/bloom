@@ -13,11 +13,6 @@ class PaymentInfoPage extends Component {
         this.state = {
             loading: false,
             edit: true,
-            payment: {
-                card: '5191-****-****-****',
-                exp: '02/**',
-                cvc: '****',
-            },
             billadd1: '',
             zip: '',
             city: '',
@@ -75,7 +70,6 @@ class PaymentInfoPage extends Component {
                 <PaymentPageEdit 
                 formSubmit={this.formSubmit}
                 handleChange={this.handleChange}
-                payment={this.state.payment} 
                 billadd1={this.state.billadd1}
                 zip={this.state.zip}
                 state={this.state.state}
@@ -84,8 +78,7 @@ class PaymentInfoPage extends Component {
             );
         }else{
             return (
-                <PaymentPageView 
-                payment={this.state.payment} 
+                <PaymentPageView  
                 billadd1={this.state.billadd1}
                 zip={this.state.zip}
                 state={this.state.state}

@@ -29,7 +29,6 @@ const HomePageWithSideBar = (props) => {
                         <div style={{ paddingLeft: "50px", paddingTop: "25px", paddingBottom: "30px" }}>
                             <img className="ui small circular image" src="https://react.semantic-ui.com/images/avatar/large/matthew.png" alt="" style={{ height: "55px", width: "55px" }} />
                         </div>
-
                         <Menu.Item as={Link} to={ROUTES.CLIENT_BRIEF}>
                             <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
                                 <Icon name='clipboard' />
