@@ -1,7 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
-
+import logo from '../../Images/BloomtimeLogo.png'
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
@@ -28,24 +28,23 @@ const NavigationAuth = () => (
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
             <div className="right menu item">
-                <h3>Bloomtime </h3>
+                <img src={logo} />
             </div>
         </div>
     </div>
 );
 
 const NavigationNonAuth = () => (
-    <div className="ui purple inverted  top menu">
-        <div className="ui purple inverted  top menu fixed">
+    <div className="ui purple inverted top menu">
+        <div className="ui purple inverted top menu fixed">
             <div className="item">
                 <Link to={ROUTES.SIGN_IN}>Sign In</Link>
             </div>
             <div className="item">
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
-
             <div className="right menu item">
-                <h3>Bloomtime </h3>
+                <img src={logo} />
             </div>
         </div>
     </div>
