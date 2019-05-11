@@ -9,17 +9,20 @@ export class User {
   _email = '';
   get email() { return this._email; }
   set email(email) {
-    this.ref.set({ email: email });
+    console.log(email);
+    this.ref.set({ email: email }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
   set name(name) {
-    this.ref.set({ name: name });
+    console.log(name);
+    this.ref.set({ name: name }, {merge: true});
   }
   _phone = '';
   get phone() { return this._phone; }
   set phone(phone) {
-    this.ref.set({ phone: phone });
+    console.log(phone);
+    this.ref.set({ phone: phone }, {merge: true});
   }
   _projects = [];
   get projects() { return this._projects; }

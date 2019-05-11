@@ -23,7 +23,8 @@ class AccountPreferencesPage extends Component {
       }
 
       getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, true);
+        const project = await
+            this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         const briefs = await project.briefs;
         const state = await {
             project: project,
