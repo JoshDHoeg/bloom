@@ -20,7 +20,7 @@ class AccountPreferencesPageEdit extends Component {
 
     render() {
         return ( 
-             <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px"}}>
+             <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px", paddingBottom: "100vh"}}>
                 <div className="ui stackable grid container">
                     <PreferencesBanner edit={this.state.edit} user={this.props.user}/>    
                     <div className="row">

@@ -79,7 +79,7 @@ class DraftPage extends Component {
         );
     }else{
         return (
-            <DraftPageView draft={this.state.draft} />      
+            <DraftPageView isDesigner={this.props.firebase.user._isDesigner} draft={this.state.draft} />      
         );
     }
 

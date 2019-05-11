@@ -82,7 +82,7 @@ class RevisionsPage extends Component {
         );
     }else{
         return (
-            <RevisionsPageView revision={this.state.revision} />
+            <RevisionsPageView isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 

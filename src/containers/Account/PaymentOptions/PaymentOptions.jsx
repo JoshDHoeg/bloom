@@ -17,6 +17,7 @@ class PaymentInfoPage extends Component {
             zip: '',
             city: '',
             state: '',
+            username: ''
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -57,6 +58,7 @@ class PaymentInfoPage extends Component {
             zip: this.user.zip,
             state: this.user.state,
             city: this.user.city,
+            name: this.user.name,
         }
 
         this.setState(state);
@@ -74,6 +76,7 @@ class PaymentInfoPage extends Component {
                 zip={this.state.zip}
                 state={this.state.state}
                 city={this.state.city}
+                name={this.state.name}
                 />
             );
         }else{
@@ -83,6 +86,7 @@ class PaymentInfoPage extends Component {
                 zip={this.state.zip}
                 state={this.state.state}
                 city={this.state.city}
+                name={this.state.name}
                 />
             );
         }

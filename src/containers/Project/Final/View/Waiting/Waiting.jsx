@@ -21,6 +21,7 @@ class ConceptPageWaiting extends Component {
     }
     
     render() {
+        if(this.props.isDesigner){
         return (
             <div style={{backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                 <Container width="thin" text>
@@ -29,6 +30,14 @@ class ConceptPageWaiting extends Component {
                 </Container>
             </div>
         );
+        }else{
+            return (
+                <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                   <h1>The Final Design Is not ready yet. You will receive a notification when it is ready.</h1>
+                </div>
+            );
+        }
+
 
     }
 }
