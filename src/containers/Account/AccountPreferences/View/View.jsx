@@ -11,7 +11,6 @@ import Budget from '../Components/Budget/Budget';
 class AccountPreferencesPageView extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             edit: false
         }
@@ -19,16 +18,16 @@ class AccountPreferencesPageView extends Component {
 
 
     render() {
-        return ( 
+        return (
              <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px"}}>
                 <div className="ui stackable grid container">
-                    <PreferencesBanner edit={this.state.edit} user={this.props.user}/>    
+                    <PreferencesBanner edit={this.state.edit} user={this.props.user}/>
                     <div className="row">
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F2FED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
-                             <TasteProfile edit={this.state.edit}/>
-                             <Budget edit={this.state.edit} budget={this.state.budget}/>
-                        </span>  
+                             <TasteProfile prof={this.props.info.profile} edit={this.state.edit}/>
+                             <Budget edit={this.state.edit} budget={this.props.info.budget}/>
+                        </span>
                     </div>
                 </div>
             </div>

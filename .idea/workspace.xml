@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="64ea32f9-014f-4b98-82fc-496bec3acab1" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" afterPath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx" />
       <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -22,37 +21,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Account.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/Account.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+              <folding>
+                <element signature="e#208#261#0" expanded="true" />
+                <element signature="e#681#741#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="AccountInfo.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-30">
-              <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+            <state relative-caret-position="41">
+              <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AccountPreferences.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="e#193#256#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="View.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/View/View.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-              <folding>
-                <element signature="e#83#149#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Edit.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-              <folding>
-                <element signature="e#86#153#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -61,30 +59,30 @@
       <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="310">
-              <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
+            <state relative-caret-position="507">
+              <caret line="283" column="7" lean-forward="true" selection-start-line="283" selection-start-column="7" selection-end-line="283" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserInformation.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx">
+      <file leaf-file-name="Edit.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="470">
-              <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
+            <state relative-caret-position="345">
+              <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="73" />
               <folding>
-                <element signature="e#24#50#0" expanded="true" />
+                <element signature="e#86#153#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AccountInfoBanner.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx">
+      <file leaf-file-name="AccountPreferenceBanner.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            <state relative-caret-position="255">
+              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding>
                 <element signature="e#70#133#0" expanded="true" />
               </folding>
@@ -93,37 +91,34 @@
         </entry>
       </file>
       <file leaf-file-name="EditButton.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx">
+        <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="49">
-              <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+            <state relative-caret-position="75">
+              <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Budget.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="364">
+              <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
               <folding>
-                <element signature="e#24#50#0" expanded="true" />
+                <element signature="e#25#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Brief.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx">
+      <file leaf-file-name="TasteProfile.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1185">
-              <caret line="79" column="7" lean-forward="true" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
+            <state relative-caret-position="280">
+              <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
               <folding>
-                <element signature="e#147#210#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Edit.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="39" column="113" lean-forward="false" selection-start-line="39" selection-start-column="79" selection-end-line="39" selection-end-column="113" />
-              <folding>
-                <element signature="e#25#66#0" expanded="true" />
-                <element signature="e#170#236#0" expanded="true" />
+                <element signature="e#25#51#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -207,14 +202,20 @@
         <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" />
         <option value="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" />
         <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/firebaseBase.js" />
-        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" />
         <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" />
-        <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" />
         <option value="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" />
         <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" />
+        <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" />
+        <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" />
+        <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" />
       </list>
     </option>
   </component>
@@ -229,8 +230,8 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-76" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="26" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="737" />
@@ -285,16 +286,7 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="Account" type="462c0819:PsiDirectoryNode" />
-              <item name="AccountInfo" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bloom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Account" type="462c0819:PsiDirectoryNode" />
-              <item name="AccountInfo" type="462c0819:PsiDirectoryNode" />
-              <item name="View" type="462c0819:PsiDirectoryNode" />
+              <item name="AccountPreferences" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -436,10 +428,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173986000" />
+    <option name="totallyTimeSpent" value="181995000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-6" y="23" width="1280" height="737" extended-state="6" />
+    <frame x="26" y="23" width="1280" height="737" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -485,52 +477,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/Users/PasswordForget/PasswordForget.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-664">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Components/DetailList/DetailList.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="2" lean-forward="true" selection-start-line="11" selection-start-column="2" selection-end-line="11" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Components/Narrative/Narrative.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="14" lean-forward="false" selection-start-line="1" selection-start-column="14" selection-end-line="1" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Components/TasteProfile/TasteProfile.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="16" lean-forward="false" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/View/Waiting/Waiting.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="329">
-          <caret line="25" column="78" lean-forward="false" selection-start-line="25" selection-start-column="78" selection-end-line="25" selection-end-column="78" />
-          <folding>
-            <element signature="e#268#338#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -623,13 +569,6 @@
         <state relative-caret-position="138">
           <caret line="49" column="33" lean-forward="false" selection-start-line="49" selection-start-column="33" selection-end-line="49" selection-end-column="33" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/ProjectCard.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -767,14 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="271">
-          <caret line="26" column="110" lean-forward="false" selection-start-line="26" selection-start-column="110" selection-end-line="26" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-170">
@@ -801,16 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Account/Account.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-535">
-          <caret line="14" column="7" lean-forward="false" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
-          <folding>
-            <element signature="e#681#741#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="106">
@@ -827,7 +748,7 @@
         <state relative-caret-position="1185">
           <caret line="79" column="7" lean-forward="true" selection-start-line="79" selection-start-column="7" selection-end-line="79" selection-end-column="7" />
           <folding>
-            <element signature="e#147#210#0" expanded="true" />
+            <element signature="e#147#210#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -845,35 +766,7 @@
         <state relative-caret-position="49">
           <caret line="7" column="6" lean-forward="false" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
           <folding>
-            <element signature="e#24#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="310">
-          <caret line="26" column="17" lean-forward="true" selection-start-line="26" selection-start-column="17" selection-end-line="26" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="9" column="7" lean-forward="true" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
-          <folding>
-            <element signature="e#285#325#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="470">
-          <caret line="46" column="33" lean-forward="true" selection-start-line="46" selection-start-column="33" selection-end-line="46" selection-end-column="33" />
-          <folding>
-            <element signature="e#24#50#0" expanded="true" />
+            <element signature="e#24#50#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -883,7 +776,7 @@
         <state relative-caret-position="165">
           <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
           <folding>
-            <element signature="e#70#133#0" expanded="true" />
+            <element signature="e#70#133#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -893,17 +786,25 @@
         <state relative-caret-position="165">
           <caret line="11" column="21" lean-forward="false" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
           <folding>
-            <element signature="e#86#153#0" expanded="true" />
+            <element signature="e#86#153#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx">
+    <entry file="file://$PROJECT_DIR$/src/components/ProjectCard.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="318">
+          <caret line="27" column="78" lean-forward="false" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
           <folding>
-            <element signature="e#193#256#0" expanded="true" />
+            <element signature="e#86#153#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -914,6 +815,107 @@
           <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
           <folding>
             <element signature="e#83#149#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/Account.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="e#208#261#0" expanded="true" />
+            <element signature="e#681#741#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="57" column="8" lean-forward="true" selection-start-line="57" selection-start-column="8" selection-end-line="59" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="8" column="25" lean-forward="false" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="40" column="51" lean-forward="false" selection-start-line="40" selection-start-column="51" selection-end-line="40" selection-end-column="51" />
+          <folding>
+            <element signature="e#25#51#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding>
+            <element signature="e#70#133#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="41">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="283" column="7" lean-forward="true" selection-start-line="283" selection-start-column="7" selection-end-line="283" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" column="39" lean-forward="true" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="73" />
+          <folding>
+            <element signature="e#86#153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="e#193#256#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="36" column="41" lean-forward="true" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
+          <folding>
+            <element signature="e#25#51#0" expanded="true" />
           </folding>
         </state>
       </provider>

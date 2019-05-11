@@ -71,7 +71,7 @@ export class User {
     const baseVars = { init: this.init }
     return Object.assign(obj, baseVars);
   };
-  
+
 
   getAll() {
     return this._getAll({
@@ -239,6 +239,7 @@ class ProjectDataBase {
 * * Firebase.clearProjects() removes everything then creates the test project (and calls getAll())
 * * this means, no data errors becuase it removes all projects that don't include the new vars
 */
+
 export class ProjectData {
   static Brief = {
     colRef: 'briefs',
@@ -253,8 +254,17 @@ export class ProjectData {
       get media() { return this._media; };
       set media(m) { this._setter({ media: m }).then(() => this._media = m); }
       _budget = ['', ''];
-      get budget() { return this._budget; };
-      set budget(b) { this._setter({ budget: b }).then(() => this._budget = b) }
+      get budget() {
+        console.log("here3");
+        return this._budget;
+      };
+      set budget(b) {
+          console.log("here4");
+          this._setter({ budget: b }).then(() => this._budget = b)
+      }
+      doSetBudget(b){
+          this._setter({ budget: b }).then(() => this._budget = b);
+      }
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
@@ -262,8 +272,17 @@ export class ProjectData {
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _profile = {};
-      get profile() { return this._profile; };
-      set profile(p) { this._setter({ profile: p }).then(() => this._profile = p); }
+      get profile() {
+        console.log("here");
+        return this._profile; };
+      set profile(p) {
+        console.log("here2");
+        this._setter({ profile: p }).then(() => this._profile = p);
+      }
+      doSetProfile(p){
+          this._setter({ profile: p }).then(() => this._profile = p);
+      }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
