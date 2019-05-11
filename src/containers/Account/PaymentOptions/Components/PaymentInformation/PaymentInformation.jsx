@@ -1,12 +1,19 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
+import {Input} from 'semantic-ui-react';
 
 const PaymentInfo = (props) => (
     <div>
         {props.edit ? (
-            <PaymentInfoEdit card={props.payment.card} exp={props.payment.exp} cvc={props.payment.cvc} billadd={props.payment.billadd} zip={props.payment.zip} city={props.payment.city} state={props.payment.state}/>
+            <PaymentInfoEdit 
+            card={props.payment.card} 
+            exp={props.payment.exp} 
+            cvc={props.payment.cvc} />
         ) : (
-                <PaymentInfoView card={props.payment.card} exp={props.payment.exp} cvc={props.payment.cvc} billadd={props.payment.billadd} zip={props.payment.zip} city={props.payment.city} state={props.payment.state}/>
+                <PaymentInfoView 
+                card={props.payment.card} 
+                exp={props.payment.exp} 
+                cvc={props.payment.cvc} />
             )}
     </div>
 );
@@ -46,15 +53,15 @@ const PaymentInfoEdit = (props) => {
             <h3>Edit Card Information:</h3>
             <tr>
                 <td>Card Number:</td>
-                <td id ='CardEdit'> <input type='text' id='CardEditTxt' View ={card} style={{ width: '140px' }} ></input></td>
+                <td id ='CardEdit'> <Input type='text' id='CardEditTxt' View ={card} style={{ width: '140px' }} ></Input></td>
             </tr>
             <tr>
                 <td>Expiration Date:</td>
-                <td id ='ExpEdit'> <input type='text' id='ExpEditTxt' View ={exp} style={{ width: '140px' }} ></input></td>
+                <td id ='ExpEdit'> <Input type='text' id='ExpEditTxt' View ={exp} style={{ width: '140px' }} ></Input></td>
             </tr>
             <tr>
                 <td>CVC:</td>
-                <td id ='CVCEdit'> <input type='text' id='CVCEditTxt' View ={cvc} style={{ width: '140px' }} ></input></td>
+                <td id ='CVCEdit'> <Input type='text' id='CVCEditTxt' View ={cvc} style={{ width: '140px' }} ></Input></td>
             </tr>
         </tbody>
         </table>
