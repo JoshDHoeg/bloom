@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
-import 'index.scss'
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
