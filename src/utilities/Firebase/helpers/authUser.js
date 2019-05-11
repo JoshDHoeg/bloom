@@ -33,8 +33,26 @@ class FirebaseAuthUser extends FirebaseBase {
   constructor() {
     super();
     this.auth.onAuthStateChanged(user => {
-      if(!user){
-        this.isAuth = false;
+      if (user) {
+        this.doGetUser(user.uid)
+          .then(user => {
+            this.user = user;
+            if (this.user)
+              return user.email;
+            throw new Error('getting user failed');
+          })
+          .then(email => this.auth.fetchSignInMethodsForEmail(email))
+          .then(provider => this._userProvider = provider)
+          .then(() => true)
+          .catch(error => {
+            console.warn(error);
+            return false;
+          }).then(success1 => {
+            // console.log(success1, this._userProvider);
+            return success1;
+          })
+          .then(success => this.isAuth = success);
+        // this.isAuth = true;
       }
     })
   }
@@ -63,7 +81,7 @@ class FirebaseAuthUser extends FirebaseBase {
           });
   }
 
-  doCreateUserWithEmailAndPassword = (email, password, isDesigner = false, name = 'username', phone = '1231231234',  project = 'randomkey', billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City', state = 'Default State') => {
+  doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', isDesigner = false, name = 'username', phone = '1231231234',   billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City', state = 'Default State') => {
     this._isUserReady = false;
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
