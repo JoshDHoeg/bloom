@@ -79,7 +79,7 @@ class FinalPage extends Component {
         );
     }else{
         return (
-            <FinalPageView final={this.state.final} />      
+            <FinalPageView isDesigner={this.props.firebase.user._isDesigner} final={this.state.final} />      
         );
     }
 

@@ -171,7 +171,9 @@ class BriefPage extends Component {
         return (
             <BriefView 
               brief = {this.state.brief} 
-              projectIndex = {this.state.projectIndex}/>
+              projectIndex = {this.state.projectIndex}
+              isDesigner={this.props.firebase.user._isDesigner}
+              />
         );
     }
 

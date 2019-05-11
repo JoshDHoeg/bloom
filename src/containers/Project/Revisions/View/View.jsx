@@ -60,7 +60,7 @@ class RevisionsPageView extends Component {
             );
         }else{
             return (
-                <RevisionsWaiting />
+                <RevisionsWaiting isDesigner={this.props.isDesigner}/>
             );
         }
 

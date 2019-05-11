@@ -17,9 +17,9 @@ class PaymentPageEdit extends Component {
     }
     render() {
         return ( 
-             <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px"}}>
+             <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px", paddingBottom: "100vh"}}>
                 <div className="ui stackable grid container">
-                    <PaymentBanner formSubmit={this.props.formSubmit} edit={this.state.edit} payment={this.props.payment}/>    
+                    <PaymentBanner name={this.props.name} formSubmit={this.props.formSubmit} edit={this.state.edit} payment={this.props.payment}/>    
                     <div className="row">
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#13F2F2", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Payment Information</h1>

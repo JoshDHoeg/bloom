@@ -59,7 +59,7 @@ class FinalPageView extends Component {
             );
         }else{
             return (
-                <FinalWaiting />
+                <FinalWaiting isDesigner={this.props.isDesigner}/>
             );
         }
 

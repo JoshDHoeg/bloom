@@ -59,7 +59,7 @@ class DraftPageView extends Component {
             );
         }else{
             return (
-                <DraftPageWaiting />
+                <DraftPageWaiting isDesigner={this.props.isDesigner}/>
             );
         }
 
