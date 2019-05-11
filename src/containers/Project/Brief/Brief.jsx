@@ -88,13 +88,7 @@ class BriefPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    if(this.props.location.state){
-      this.setState({projectIndex: this.props.location.state.projectIndex});
-      this.getProjectState(this.props.location.state.projectIndex);
-    }else{
-      this.setState({projectIndex: 0});
-      this.getProjectState(0);
-    }
+    this.getProjectState();
   }
 
   deleteGoal = (id) => {
@@ -138,10 +132,8 @@ class BriefPage extends Component {
   }
 
 
-  getProjectState = async (id) => {
-    const index = this.props.firebase.activeProject;
-    console.log(index);
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, index, true);
+  getProjectState = async () => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     console.log(project);
     this.brief = await project.brief;
     console.log(this.brief);
@@ -160,7 +152,6 @@ class BriefPage extends Component {
 }
 
   render() {
-    console.log(this.state.projectIndex);
     if(this.state.edit){
         return (
             <BriefEdit
@@ -174,7 +165,6 @@ class BriefPage extends Component {
               setLive = {this.setLive}
               handleChange = {this.handleChange}
               formSubmit = {this.formSubmit}
-              projectIndex = {this.state.projectIndex}
              />
         );
     }else{

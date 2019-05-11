@@ -19,32 +19,54 @@ class FirebaseProjects extends FirebaseAuthUser  {
           })
           const b = proj.collection('briefs');
           const c = proj.collection('concepts');
+          const d = proj.collection('drafts');
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
           b.doc('0').set({
               address: "",
               budget: "",
               completed: false,
-              goals: [null],
+              goals: ["demo goal", "Demo Goal 2"],
               init: false,
               media: "",
-              narrative: ""
+              narrative: "",
+              profile: {
+                spacing: '',
+                variety: '',
+                edging: '',
+                ground: '',
+                form: ''
+              }
           });
           c.doc('0').set({
               init: false,
-              typeformURL: "",
-              videoID: ""
+              feedback: "",
+              video: "",
+              media:"",
+              completed: false,
+          });
+          d.doc('0').set({
+              init: false,
+              feedback: "",
+              video: "",
+              media:"",
+              figma: "",
+              completed: false,
           });
           f.doc('0').set({
-              figmaURL: "",
-              init: false,
-              typeformURL: "",
-              videoID: ""
-          });
+            init: false,
+            feedback: "",
+            video: "",
+            media:"",
+            figma: "",
+            completed: false,
+        });
           r.doc('0').set({
-              figmaURL: "",
               init: false,
-              typeformURL: ""
+              feedback: "",
+              media:"",
+              figma: "",
+              completed: false,
           });
           return proj;
       })

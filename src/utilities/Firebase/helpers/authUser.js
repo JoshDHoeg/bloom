@@ -39,10 +39,6 @@ class FirebaseAuthUser extends FirebaseBase {
     })
   }
 
-  setActiveProject = index => {
-    this.activeProject = index;
-  }
-
   //most of old onAuthStateChanged logic (from the constructor) was moved to this function. Called by doCreateUser... and doSignInUser...
   setFirebaseVars = id => {
       return this.doGetUser(id)
