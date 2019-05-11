@@ -20,15 +20,16 @@ const withAuthorization = condition => Component => {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
-                // console.log("is user a designer: " + authUser._isDesigner);
-                console.log(authUser);
-                console.log(condition);
-                if (!condition(authUser)) {
+                console.log("is user a designer: " + authUser._isDesigner);
+                // console.log(authUser);
+                // console.log(condition);
+                if (!authUser._isDesigner) {
                   console.log(authUser);
-                  // console.log("not a designer");
+                  console.log("not a designer");
+                  // this.props.history.push(ROUTES.SIGN_IN);
                 }else{
                   this.setState({ authUser });
-                  // console.log("im confused");
+                  console.log("im confused");
                 }
               })
         } else {
