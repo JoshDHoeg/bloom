@@ -25,7 +25,6 @@ class ConceptPageView extends Component {
 
     render() {
         // const Available = this.props.brief.available;
-        const Available = true;
         
         if (this.props.concept.completed){
             return (
@@ -55,7 +54,7 @@ class ConceptPageView extends Component {
             );
         }else{
             return (
-                <ConceptWaiting />
+                <ConceptWaiting isDesigner={this.props.isDesigner}/>
             );
         }
 

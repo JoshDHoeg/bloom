@@ -57,6 +57,7 @@ class ConceptPageEdit extends Component {
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = authUser =>
+  authUser && !!authUser._isDesigner;
 
 export default withAuthorization(condition)(ConceptPageEdit);

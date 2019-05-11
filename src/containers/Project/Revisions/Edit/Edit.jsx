@@ -47,7 +47,6 @@ class RevisionsPageEdit extends Component {
                         </span>
                     </div>
                     <div className="row">
-                        {/*Typeform being a bitch again*/}
                         <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
                             <Input style={{ width: "600px"}} type="text" name="feedback" onChange={this.props.handleChange} value={this.props.revision.feedback}/>
