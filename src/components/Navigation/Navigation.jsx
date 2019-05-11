@@ -28,7 +28,7 @@ const NavigationAuth = () => (
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
             <div className="right menu item">
-                <img src={logo} />
+                <img src={logo} alt="bloomtime-logo"/>
             </div>
         </div>
     </div>
@@ -44,7 +44,7 @@ const NavigationNonAuth = () => (
                 <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
             </div>
             <div className="right menu item">
-                <img src={logo} />
+                <img src={logo} alt="bloomtime-logo"/>
             </div>
         </div>
     </div>

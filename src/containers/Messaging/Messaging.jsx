@@ -1,13 +1,13 @@
 import React from 'react';
 import { withAuthorization } from '../../utilities/Session';
 
-import { Grid ,Sidebar, Segment , Comment, GridColumn } from "semantic-ui-react";
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+import { Grid } from "semantic-ui-react";
+// import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 
-import backgroundTemp from '../../Images/TempBackground.PNG';
-import * as ROUTES from "../../utilities/constants/routes";
+// import backgroundTemp from '../../Images/TempBackground.PNG';
+// import * as ROUTES from "../../utilities/constants/routes";
 import UserPanel from './SidePanel/UserPanel/UserPanel';
-import Messages from './Messages/MessageList/Message/Message';
+// import Messages from './Messages/MessageList/Message/Message';
 
 
 class Messaging extends React.Component {

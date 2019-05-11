@@ -10,8 +10,12 @@ import { withAuthorization } from '../utilities/Session';
 
 
 class ProjCard extends Component {
-    constructor(props) {
+
+    constructor(props){
         super(props);
+        this.state={
+            brief:{}
+        }
     }
 
     onClick = (projectIndex) => {
@@ -19,7 +23,13 @@ class ProjCard extends Component {
         console.log(projectIndex);
     }
 
+    async componentDidMount(){
+        const brief = await this.props.proj.brief;
+        this.setState({brief:brief});
+    }
+
     render(){
+        console.log(this.state)
         return(
         <Grid.Row>
             <Grid.Column>
@@ -28,7 +38,7 @@ class ProjCard extends Component {
                         <Grid.Row>
                             <Grid.Column width="12">
                                 <Header>
-                                    {this.props.proj.name}
+                                    {this.state.brief.address}
                                 </Header>
                             </Grid.Column>
 
@@ -45,15 +55,13 @@ class ProjCard extends Component {
                         <Grid.Row>
                             <Grid.Column width="12">
                                 <Container>
-                                    <p>March 3, 2019</p>
-                                    <p>420 S High St. Denver CO 80222</p>
-                                    <p>$700-1000</p>
+                                    <p>{this.state.brief.budget}</p>
                                 </Container>
                             </Grid.Column>
 
                             <Grid.Column width="4">
                                 <Link onClick={() => this.onClick(this.props.projectIndex)} to={{ pathname: ROUTES.PROJECT, state: {projectIndex: this.props.projectIndex}}} >
-                                    <Button>Project</Button>
+                                    <Button>View Project</Button>
                                 </Link>
                             </Grid.Column>
                         </Grid.Row>
