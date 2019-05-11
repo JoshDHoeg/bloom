@@ -7,7 +7,7 @@ import { withAuthorization } from '../../utilities/Session';
 
 // import { format } from 'path';
 // import {Link} from "react-router-dom";
-import { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
 import ProjCard from "../../components/ProjectCard.jsx"
 import * as ROUTES from "../../utilities/constants/routes";
 

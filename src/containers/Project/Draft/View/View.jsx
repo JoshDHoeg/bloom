@@ -26,7 +26,7 @@ class DraftPageView extends Component {
     }
 
     render() {
-        if (this.props.final.completed){
+        if (this.props.draft.completed){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
                     <div className="ui stackable grid container" >
@@ -41,20 +41,20 @@ class DraftPageView extends Component {
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }}/>
+                                <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }}/>
                             </span>
                         </div>
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
-                                <YoutubeEmbedVideo videoId={this.props.final.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
+                                <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                             </span>
                         </div>
                         <div className="row">
                             {/*Typeform being a bitch again*/}
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                                <ReactTypeformEmbed popup={false} url={this.props.final.feedback} style={{ width: "600px", height: "375px", padding: "30px", paddingTop: "90px" }} />
+                                <ReactTypeformEmbed popup={false} url={this.props.draft.feedback} style={{ width: "600px", height: "375px", padding: "30px", paddingTop: "90px" }} />
                                 <YoutubeEmbedVideo suggestions={false} videoId={""} style={{ width: "600px", padding: "30px", visibility: "hidden" }} />
                             </span>
                         </div>

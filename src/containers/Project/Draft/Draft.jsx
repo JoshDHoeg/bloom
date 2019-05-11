@@ -9,13 +9,13 @@ import DraftPageView from './View/View';
 import DraftPageEdit from './Edit/Edit';
 
 class DraftPage extends Component {
-  final;
+  draft;
   constructor(props) {
     super(props);
     this.state = {
         loading: false,
         edit: false,
-        final: {
+        draft: {
           media:'',
           video: '',
           figma: '',
@@ -34,15 +34,15 @@ class DraftPage extends Component {
   }
 
   formSubmit(){
-    console.log("we updated?");
-    this.final.media = this.state.final.media;
-    this.final.video = this.state.final.video;
-    this.final.figma = this.state.final.figma;
-    this.final.feedback = this.state.final.feedback;
+    console.log("we updated?", this.state);
+    this.draft.media = this.state.draft.media;
+    this.draft.video = this.state.draft.video;
+    this.draft.figma = this.state.draft.figma;
+    this.draft.feedback = this.state.draft.feedback;
   }
 
   completed(){
-    this.final.completed = true;
+    this.draft.completed = true;
     this.formSubmit();
   }
   
@@ -50,22 +50,22 @@ class DraftPage extends Component {
     event.preventDefault();
     console.log(event.target.name);
     this.setState({
-      final: {
-        ...this.state.final,
+      draft: {
+        ...this.state.draft,
         [event.target.name]: event.target.value
       }
     });
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0,  true);
-    this.final = await project.final;
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    this.draft = await project.draft;
     const client = await project.client;
     const state = await {
         client: client,
         loading: false,
-        final: {
-          ...this.final.getAll()
+        draft: {
+          ...this.draft.getAll()
         }
     }
     this.setState(state);
@@ -75,11 +75,11 @@ class DraftPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <DraftPageEdit final={this.state.final} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
+            <DraftPageEdit draft={this.state.draft} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <DraftPageView final={this.state.final} />      
+            <DraftPageView draft={this.state.draft} />      
         );
     }
 
