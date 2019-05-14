@@ -1,6 +1,7 @@
 //BLOOMTIME DESIGN 2019
 
 const stripe = require('../constants/stripe'); //Get stripe API
+app.use(require("body-parser").text());
 
 const postStripeCharge = res => (stripeErr, stripeRes) => { //Charge the stripe token in the back-end
   if (stripeErr) {
@@ -16,7 +17,19 @@ const paymentApi = app => { //Access the back-end
     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
   });
 
-  app.post('/', (req, res) => { //Post the charge
+  app.post('/charge', async (req, res) => { //Post the charge
+    try {
+      let { status } = await stripe.charges.create({
+        amount: 2000,
+        currency: "usd",
+        description: "An example Charge",
+        source: req.body
+      });
+
+      res.json( {status });
+    } catch (err) {
+      res.status(500).end()
+    }
     stripe.charges.create(req.body, postStripeCharge(res));
   });
 
