@@ -1,7 +1,7 @@
 //BLOOMTIME DESIGN 2019
 
 const stripe = require('../constants/stripe'); //Get stripe API
-app.use(require("body-parser").text());
+
 
 const postStripeCharge = res => (stripeErr, stripeRes) => { //Charge the stripe token in the back-end
   if (stripeErr) {

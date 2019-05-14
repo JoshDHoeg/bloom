@@ -5,7 +5,7 @@ import Checkout from './Checkout';
 import logo from './../../../Images/TempLogo.JPG';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 
-class CheckoutForm extends Component {
+class Button extends Component {
   constructor(props) {
     super(props);
     this.state = {complete: false};
@@ -36,4 +36,4 @@ class CheckoutForm extends Component {
   }
 }
 
-export default injectStripe(CheckoutForm);
+export default injectStripe(Button);

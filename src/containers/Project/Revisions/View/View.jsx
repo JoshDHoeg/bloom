@@ -12,7 +12,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
-import Button from '../../../../components/PaymentStripe/frontend/Button'
+import ElementsContainer from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 
 import RevisionsWaiting from './Waiting/Waiting';
@@ -41,7 +41,7 @@ class RevisionsPageView extends Component {
                         </div>
                         <div className='row'>
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <Button SuccessPayment={this.props.SuccessPayment} />
+                                <ElementsContainer SuccessPayment={this.props.SuccessPayment} />
                             </span>
                         </div>
                         <div className="row">
