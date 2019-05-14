@@ -17,10 +17,10 @@ const paymentApi = app => { //Access the back-end
     res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
   });
 
-  app.post('/charge', async (req, res) => { //Post the charge
+  app.post('/', async (req, res) => { //Post the charge
     try {
       let { status } = await stripe.charges.create({
-        amount: 2000,
+        amount: 500,
         currency: "usd",
         description: "An example Charge",
         source: req.body
@@ -30,7 +30,6 @@ const paymentApi = app => { //Access the back-end
     } catch (err) {
       res.status(500).end()
     }
-    stripe.charges.create(req.body, postStripeCharge(res));
   });
 
   return app;
