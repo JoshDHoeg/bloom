@@ -1,27 +1,51 @@
 import React from "react";
-import { Menu, Icon } from "semantic-ui-react";
+import { Menu, Icon,Item } from "semantic-ui-react";
 
 class Channels extends React.Component {
-  state = {
-    channels: []
-  };
-  channels = this.props.channel;
+state = {
+      channels:[],
+    };
   
-  render() {
-    const { channels } = this.state;
-    console.log("This is the test state");
-    console.log(this.props.channel);
+pushValue()
+{
+  if(this.props.channel!=undefined){
+    console.log(this.props.channel)
+    this.state.channels = this.props.channel;
+  }
+ 
+}
+ 
+  displayChannels = channels =>
+    channels.length > 0 &&
+    channels.map(channel => (
+      <Menu.Item
+        fitted='vertically'
+        key={channel.id}
+        onClick={() => console.log(channel)}
+        name={channel.name}
+        style={{ opacity: 0.7 }}
+      >
+        # {channel.name}
+      </Menu.Item>
+    ));
 
+  render() {
+    {this.pushValue()};
+    const { channels } = this.state;
     return (
-      <Menu compact style={{background:'#4c3c4c',marginTop: "50px"}}>
-        <Menu.Item>
+
+
+      <React.Fragment>
+      <Menu.Menu style={{background:'#4c3c4c',marginTop: "50px"}}>
+        <Menu.Item >
           <span>
             <Icon name="exchange" /> CHANNELS
           </span>{" "}
-          {channels.length} <Icon name="add" />
         </Menu.Item>
-        {/* Channels */}
-      </Menu>
+
+        {this.displayChannels(channels)}
+        </Menu.Menu>
+        </React.Fragment>
     );
   }
 }
