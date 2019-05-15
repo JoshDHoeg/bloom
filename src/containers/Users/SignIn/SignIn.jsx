@@ -51,7 +51,6 @@ class SignInFormBase extends Component {
 
     this.state = { ...INITIAL_STATE };
   }
-
   onSubmit = event => {
     const { email, password } = this.state;
 
@@ -61,14 +60,12 @@ class SignInFormBase extends Component {
         if (result) {
           console.log("we logged in");
           //this.props.firebase.doGetChannelsByUser(this.props.firebase.user.id).then(res => console.log(res));
-          //console.log(this.props.firebase.user);
-          this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
+          //this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res => {console.log(res)});
+          //this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.PROJECT);
         } else {
-          console.log("there was a problem")
-          // error
-          // this.setState({ error });
+          console.log("there was a problem");
         }
       });
 

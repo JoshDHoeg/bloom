@@ -3,7 +3,7 @@ import 'firebase/auth';
 import 'firebase/database';
 import 'firebase/firestore';
 //import FirebaseProjects from './helpers/projects';
-import FirebaseChannels from './helpers/channels';
+import FirebaseMessages from './helpers/messages';
 
 
 /**
@@ -63,7 +63,7 @@ import FirebaseChannels from './helpers/channels';
  * ```
  */
 
-class Firebase extends FirebaseChannels {
+class Firebase extends FirebaseMessages {
   setRuleAllowAll = (allowAll = true) =>
     this.db.collection('devSettings').doc('main').set({ allowAll: allowAll }, { merge: true }).then(() => true).catch(() => false);
 

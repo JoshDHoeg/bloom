@@ -59,12 +59,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
     })
   }
 
-  //old one:
-  // doGetProject = (id, isUID = false) => { // return Promise<Project>
-  //   if (isUID) {
-  //       return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[0].id));
-  //
-
   doGetProject = (id, index, isUID = false) => { // return Promise<Project>
     console.log("inside doGetProject");
     if (isUID) {

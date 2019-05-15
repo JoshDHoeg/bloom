@@ -7,9 +7,11 @@ class FirebaseAuthUser extends FirebaseBase {
   _userCred;
   user;
   activeProject = 0;
+  activeChannel = 0;
   _userProvider;
   _isAuthent = new BehaviorSubject(null);
   _isAuth = new BehaviorSubject(null);
+
   get isAuth() {
     return this._isAuth.getValue();
   }

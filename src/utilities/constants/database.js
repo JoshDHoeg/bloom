@@ -53,20 +53,27 @@ export class Channel {
   _p1 = null;
   get p1() { return this._p1; }
   set p1(p1Ref){
-    this.ref.set({p1: p1Ref});
+    this.ref.set({p1: p1Ref}, {merge: true});
     this._p1 = p1Ref;
   }
   _p2 = null;
   get p2() { return this._p2; }
   set p2(p2Ref){
-    this.ref.set({p2: p2Ref});
+    this.ref.set({p2: p2Ref}, {merge: true});
     this._p2 = p2Ref;
   }
   _name = "";
   get name(){return this._name;}
   set name(n){
-    this.ref.set({name: n});
+    this.ref.set({name: n}, {merge: true});
     this._name = n;
+  }
+
+  _messages = [];
+  get messages(){return this._messages;}
+  set messages(mArr){
+      this.ref.set({messages: mArr});
+      this._messages = mArr;
   }
 
   constructor(channelRef){
@@ -74,11 +81,52 @@ export class Channel {
     this._p1 = data['p1'];
     this._p2 = data['p2'];
     this._name = data['name'];
+    this._messages = data['messages'];
     this.ref = channelRef.ref;
     this.id = this.ref.id;
   }
 
 }
+
+
+export class Message {
+    _from = null;
+    get from() { return this._from; }
+    set from(id){
+        this.ref.set({from: id}, {merge: true});
+        this._from = id;
+    }
+    _to = null;
+    get to() { return this._to; }
+    set to(id){
+        this.ref.set({to: id}, {merge: true});
+        this._to = id;
+    }
+    _time = "";
+    get time(){return this._time;}
+    set time(t){
+        this.ref.set({time: t}, {merge: true});
+        this._time = t;
+    }
+    _content = "";
+    get content(){return this._content;}
+    set content(c){
+        this.ref.set({content: c}, {merge: true});
+        this._content = c;
+    }
+
+    constructor(messageRef){
+        const data = messageRef.data();
+        this._from = data['from'];
+        this._to = data['to'];
+        this._time = data['time'];
+        this._content = data['content'];
+        this.ref = messageRef.ref;
+        this.id = this.ref.id;
+    }
+}
+
+
 
 export class ProjectBase {
   get pid() {

@@ -47,7 +47,8 @@ class FirebaseChannels extends FirebaseProjects {
         chan.set({
             name: "Help Channel",
             p1: null,
-            p2: null
+            p2: null,
+            messages: []
         });
         return chan;
     }
