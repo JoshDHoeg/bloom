@@ -2,71 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9e3db4cd-3541-42ad-bb6d-44c77101d51e" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/bloom.iml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/Images/BloomtimeLogo.png" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/AccountInfoBanner.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/EditButton/EditButton.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPaymentBanner/AccountPaymentBanner.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPaymentBanner/AccountPaymentBanner.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPaymentBanner/EditButton/EditButton.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPaymentBanner/EditButton/EditButton.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" afterPath="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/Navigation/Navigation.jsx" afterPath="$PROJECT_DIR$/src/components/Navigation/Navigation.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.jsx" afterPath="$PROJECT_DIR$/src/components/ProjectCard.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/AccountInfo.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountInfo/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountInfo/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/AccountPreferences/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/Components/BillingInformation/BillingInformation.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/Components/BillingInformation/BillingInformation.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/Components/PaymentInformation/PaymentInformation.jsx" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/PaymentOptions.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/PaymentOptions.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/PaymentOptions/View/View.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Messaging/SidePanel/UserPanel/UserPanel.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/SidePanel/UserPanel/UserPanel.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Brief/View/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Brief/View/Waiting/Waiting.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Concept/Concept.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Concept/Concept.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Concept/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Concept/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Concept/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Concept/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Concept/View/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Concept/View/Waiting/Waiting.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Draft/Draft.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Draft/Draft.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Draft/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Draft/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Draft/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Draft/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Draft/View/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Draft/View/Waiting/Waiting.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Final/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Final/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Final/Final.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Final/Final.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Final/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Final/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Final/View/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Final/View/Waiting/Waiting.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Project.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Revisions/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Revisions/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Revisions/Revisions.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Revisions/Revisions.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Revisions/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Revisions/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Revisions/View/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Revisions/View/Waiting/Waiting.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" afterPath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Users/SignIn/SignIn.jsx" afterPath="$PROJECT_DIR$/src/containers/Users/SignIn/SignIn.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Users/SignUp/SignUp.jsx" afterPath="$PROJECT_DIR$/src/containers/Users/SignUp/SignUp.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/index.scss" afterPath="$PROJECT_DIR$/src/index.scss" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/firebaseBase.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/firebaseBase.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" afterPath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/constants/roles.js" afterPath="$PROJECT_DIR$/src/utilities/constants/roles.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,7 +17,7 @@
       <file leaf-file-name="messages.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="150">
               <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
@@ -89,21 +26,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+            <state relative-caret-position="240">
+              <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Messaging.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Messaging.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
+              <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -178,9 +115,9 @@
         <option value="$PROJECT_DIR$/src/containers/Account/AccountInfo/Components/UserInformation/UserInformation.jsx" />
         <option value="$PROJECT_DIR$/src/components/Navigation/Navigation.jsx" />
         <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
-        <option value="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" />
         <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" />
       </list>
     </option>
   </component>
@@ -194,7 +131,7 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="52" />
+    <option name="x" value="-56" />
     <option name="y" value="23" />
     <option name="width" value="1402" />
     <option name="height" value="738" />
@@ -350,15 +287,16 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1557946320811</updated>
-      <workItem from="1557946322215" duration="10627000" />
+      <workItem from="1557946322215" duration="10806000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10627000" />
+    <option name="totallyTimeSpent" value="10806000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="52" y="23" width="1402" height="738" extended-state="0" />
+    <frame x="-56" y="23" width="1402" height="738" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -372,7 +310,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22824536" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22824536" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -624,16 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="74" column="43" lean-forward="false" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#45#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1971">
@@ -650,26 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="11" lean-forward="false" selection-start-line="15" selection-start-column="11" selection-end-line="15" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/decent">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -680,9 +588,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="20" lean-forward="true" selection-start-line="22" selection-start-column="20" selection-end-line="22" selection-end-column="20" />
+        <state relative-caret-position="240">
+          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="74" column="43" lean-forward="false" selection-start-line="74" selection-start-column="43" selection-end-line="74" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="0" lean-forward="false" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="8" lean-forward="false" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
