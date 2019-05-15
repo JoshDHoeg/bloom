@@ -1,22 +1,21 @@
 import React from "react";
 import { Menu,Grid, Header, Icon, Dropdown } from "semantic-ui-react";
 
-
-const UserPanel =() => {
+const UserPanel =(props) => {
+  const username = props.user.name
+  
    return(
-   <Menu size = "large" inverted marginLeft = '-3px' vertical style = {{background:'#4c3c4c',fontSize:'1.2rem'}}>
-   <Grid style={{ background: "#4c3c4c" }}>
+   <Menu.Menu style={{ background: "#4c3c4c" }}>
         <Grid.Column>
           <Grid.Row style={{ padding: "1.2em", margin: 0 }}>
             {/* App Header */}
             <Header inverted floated="left" as="h2">
-              <Icon name="code" />
-              <Header.Content></Header.Content>
+              <img alt="profile-icon" src="https://react.semantic-ui.com/images/avatar/large/matthew.png"style={{ height: "55px", width: "55px" }} />
+              <Header.Content>{username}</Header.Content>
             </Header>
           </Grid.Row>
         </Grid.Column>
-      </Grid>
-   </Menu>
+      </Menu.Menu>
     )
    }
 export default UserPanel;
