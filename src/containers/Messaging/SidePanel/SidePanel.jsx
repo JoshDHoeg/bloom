@@ -21,8 +21,6 @@ componentWillMount(){
 getUserState = async () => {
   const user = this.props.firebase.user;
   const channel = await this.props.firebase.doGetChannelsByUser(user.id);
-  console.log(channel);
-
   //console.log(channel)
   const state = {
       loading: false,
