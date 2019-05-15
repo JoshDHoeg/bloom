@@ -9,23 +9,47 @@ export class User {
   _email = '';
   get email() { return this._email; }
   set email(email) {
-    this.ref.set({ email: email });
+    console.log(email);
+    this.ref.set({ email: email }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
   set name(name) {
-    this.ref.set({ name: name });
+    console.log(name);
+    this.ref.set({ name: name }, {merge: true});
   }
   _phone = '';
   get phone() { return this._phone; }
   set phone(phone) {
-    this.ref.set({ phone: phone });
+    console.log(phone);
+    this.ref.set({ phone: phone }, {merge: true});
   }
   _projects = [];
   get projects() { return this._projects; }
   set projects(projs) {
     this.ref.set({ projects: projs });
   }
+  _billadd1 = ''
+  get billadd1() { return this._billadd1; }
+  set billadd1(add1) {
+    this.ref.set({ billadd1: add1 }, {merge:true})
+  }
+  _zip = ''
+  get zip() { return this._zip; }
+  set zip(zip) {
+    this.ref.set({ zip: zip }, {merge:true})
+  }
+  _city = ''
+  get city() { return this._city }
+  set city(city) {
+    this.ref.set({ city: city }, {merge:true})
+  }
+  _state = ''
+  get state() { return this._state }
+  set state(state) {
+    this.ref.set({ state: state }, {merge:true})
+  }
+
   get uid() { return this.id };
 
   _helpChannel = null;
@@ -42,10 +66,33 @@ export class User {
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
+    this._billadd1 = data['billadd1'];
+    this._zip = data['zip'];
+    this._city = data['city'];
+    this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
     this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
+  }
+
+  _getAll = (obj) => {
+    const baseVars = { init: this.init }
+    return Object.assign(obj, baseVars);
+  };
+
+
+  getAll() {
+    return this._getAll({
+      email: this.email,
+      name: this.name,
+      phone: this.phone,
+      billadd1: this.billadd1,
+      zip: this.zip,
+      city: this.city,
+      state: this.state,
+      projects: this.projects
+    });
   }
 }
 
@@ -92,15 +139,9 @@ export class Channel {
 export class Message {
     _from = null;
     get from() { return this._from; }
-    set from(id){
-        this.ref.set({from: id}, {merge: true});
-        this._from = id;
-    }
-    _to = null;
-    get to() { return this._to; }
-    set to(id){
-        this.ref.set({to: id}, {merge: true});
-        this._to = id;
+    set from(name){
+        this.ref.set({from: name}, {merge: true});
+        this._from = name;
     }
     _time = "";
     get time(){return this._time;}
@@ -114,19 +155,15 @@ export class Message {
         this.ref.set({content: c}, {merge: true});
         this._content = c;
     }
-
-    constructor(messageRef){
-        const data = messageRef.data();
+    constructor(m){
+        const data = m.data();
         this._from = data['from'];
-        this._to = data['to'];
         this._time = data['time'];
         this._content = data['content'];
-        this.ref = messageRef.ref;
+        this.ref = m.ref;
         this.id = this.ref.id;
     }
 }
-
-
 
 export class ProjectBase {
   get pid() {
@@ -201,6 +238,12 @@ export class Project extends ProjectBase {
       this.designers = d;
     });
   };
+  _status = '';
+  get status() { return this._status; }
+  set status(s) {
+    this.ref.set({ status: s }, { merge: true });
+  }
+
   get brief() { return this.briefs.then(b => b[0]); }
   get concept() { return this.concepts.then(c => c[0]); }
   get draft() { return this.drafts.then(c => c[0]); }
@@ -218,6 +261,7 @@ class ProjectDataBase {
   set init(i) {
     this.ref.set({ init: i }, { merge: true });
   }
+
   constructor(dbQuery, useDefault) {
     if (!useDefault) {
       this.ref = dbQuery.ref;
@@ -279,6 +323,7 @@ class ProjectDataBase {
 * * Firebase.clearProjects() removes everything then creates the test project (and calls getAll())
 * * this means, no data errors becuase it removes all projects that don't include the new vars
 */
+
 export class ProjectData {
   static Brief = {
     colRef: 'briefs',
@@ -293,8 +338,17 @@ export class ProjectData {
       get media() { return this._media; };
       set media(m) { this._setter({ media: m }).then(() => this._media = m); }
       _budget = ['', ''];
-      get budget() { return this._budget; };
-      set budget(b) { this._setter({ budget: b }).then(() => this._budget = b) }
+      get budget() {
+        console.log("here3");
+        return this._budget;
+      };
+      set budget(b) {
+          console.log("here4");
+          this._setter({ budget: b }).then(() => this._budget = b)
+      }
+      doSetBudget(b){
+          this._setter({ budget: b }).then(() => this._budget = b);
+      }
       _narrative = '';
       get narrative() { return this._narrative; };
       set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
@@ -302,8 +356,17 @@ export class ProjectData {
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _profile = {};
-      get profile() { return this._profile; };
-      set profile(p) { this._setter({ profile: p }).then(() => this._profile = p); }
+      get profile() {
+        console.log("here");
+        return this._profile; };
+      set profile(p) {
+        console.log("here2");
+        this._setter({ profile: p }).then(() => this._profile = p);
+      }
+      doSetProfile(p){
+          this._setter({ profile: p }).then(() => this._profile = p);
+      }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -338,7 +401,6 @@ export class ProjectData {
       }
     }
   };
-
   static Concept = {
     colRef: 'concepts',
     type: class Concept extends ProjectDataBase {
@@ -384,6 +446,9 @@ export class ProjectData {
       _media = '';
       get media() { return this._media; };
       set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
@@ -397,11 +462,13 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
+          this._figma = this.data['figma'];
           this._video = this.data['video'];
           this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
           this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
@@ -410,6 +477,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           media: this.media,
+          figma: this.figma,
           video: this.video,
           feedback: this.feedback,
           completed: this.completed
@@ -465,31 +533,30 @@ export class ProjectData {
   static Revision = {
     colRef: 'revisions',
     type: class Revision extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+
       constructor(dbQuery, useDefault = false) {
-         /**
-     * ```javascript
-     * _yourVar = yourVarEmptyDefault;
-     * get yourVar() { return this._yourVar; }
-     * set yourVar(v) { this._setter({ yourVar: v }).then(() => this._yourVar = v); } }
-     */
+
         super(dbQuery, useDefault);
         if (!useDefault) {
-          /**
-           * ```javascript
-           * this._yourVar = this.data['yourVar'];
-           * */
+          this._media = this.data['media'];
+          this._completed = false;
         } else {
-          /**
-           * ```javascript
-           * this._yourVar = defaultValueOfYourVar;
-           * */
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._completed = false;
         }
       }
       getAll() {
         return this._getAll({
-          // yourVar: this.yourVar
+          media: this.media,
+          completed: this.completed
         });
       }
     }
-  }
+  };
 }

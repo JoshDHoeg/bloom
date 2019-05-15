@@ -10,11 +10,16 @@ import Messages from './Messages/MessageList/Message/Message';
 import SidePanel from './SidePanel/SidePanel';
 class Messaging extends Component {
     render(){
+        this.props.firebase.doCreateAndAddMessageInChannel("Josh", "hello", this.props.firebase.user.helpChannel);
+            //.then(m => {
+                this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res=>{console.log(res)});
+           
+
      return(
-       
+
       <Grid columns="equal" style={{ background: "#eee",height: '100vh'}}>
       <SidePanel />
-  
+
       <Grid.Column >
         <Messages />
       </Grid.Column>

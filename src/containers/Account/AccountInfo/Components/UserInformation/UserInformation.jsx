@@ -1,18 +1,23 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Input } from 'semantic-ui-react';
 
-const UserInfo = (props) => (
-    <div>
-        {props.edit ? (
-            <UserInfoEdit name={props.user.name} email={props.user.email} phone={props.user.phone}/>
-        ) : (
+const UserInfo = (props) => {
+    //console.log(props);
+    return (
+        <div>
+            {props.edit ? (
+                <UserInfoEdit name={props.user.name} email={props.user.email} phone={props.user.phone}
+                              handleChange={props.handleChange}/>
+            ) : (
                 <UserInfoView name={props.user.name} email={props.user.email} phone={props.user.phone}/>
             )}
-    </div>
-);
+        </div>
+    );
+}
 
 const UserInfoView = (props) => {
-    console.log(props);
+    //console.log(props);
     const name = props.name;
     const email = props.email;
     const phone = props.phone;
@@ -40,6 +45,7 @@ const UserInfoView = (props) => {
 }
 //try value for placeholder
 const UserInfoEdit = (props) => {
+    //console.log(props);
     const name = props.name;
     const email = props.email;
     const phone = props.phone;
@@ -49,17 +55,17 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Name:</td>
                 <td> </td>
-                <td id ='EditNameTxt'> <input type='text' id='NameEditTxt' value ={name} style={{ width: '140px' }} ></input></td> 
+                <td id ='EditNameTxt'> <Input name="name" onChange={props.handleChange} type='text' id='NameEditTxt' value={name} style={{ width: '140px' }} ></Input></td>
             </tr>
-            <tr>
-                <td>Email:</td>
-                <td> </td>
-                <td id ='EditEmailTxt'> <input type='text' id='EmailEditTxt' View={email} style={{ width: '140px' }} ></input></td>
-            </tr>
+            {/*<tr>*/}
+                {/*<td>Email:</td>*/}
+                {/*<td> </td>*/}
+                {/*<td id ='EditEmailTxt'> <Input name="email" onChange={props.handleChange} type='text' id='EmailEditTxt' value={email} style={{ width: '140px' }} ></Input></td>*/}
+            {/*</tr>*/}
             <tr>
                 <td>Phone:</td>
                 <td></td>
-                <td id ='EditPhoneTxt'><input type='text' id='PhoneEditTxt' View={phone} style={{ width: '140px' }} ></input></td>
+                <td id ='EditPhoneTxt'><Input name="phone" onChange={props.handleChange} type='text' id='PhoneEditTxt' value={phone} style={{ width: '140px' }} ></Input></td>
             </tr>
         </tbody>
         </table>

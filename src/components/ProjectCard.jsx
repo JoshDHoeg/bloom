@@ -1,51 +1,84 @@
 import {Link} from "react-router-dom";
-import React from 'react';
+import React, { Component } from 'react';
 import { Segment, Header, Grid, Button, Container } from 'semantic-ui-react'
 import * as ROUTES from "../utilities/constants/routes";
+import { withAuthorization } from '../utilities/Session';
 
 //pic, name, loc, status
 // const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
-const ProjCard = (props)  => (
-    <Grid.Row>
-        <Grid.Column>
-            <Segment attached='top'>
-                <Grid >
-                    <Grid.Row>
-                        <Grid.Column width="12">
-                            <Header>
-                                {props.proj.name}
-                            </Header>
-                        </Grid.Column>
 
-                        <Grid.Column width="4">
-                            <Header>
-                                Rough Draft
-                            </Header>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Segment>
-            <Segment attached>
-                <Grid >
-                    <Grid.Row>
-                        <Grid.Column width="12">
-                            <Container>
-                                <p>March 3, 2019</p>
-                                <p>420 S High St. Denver CO 80222</p>
-                                <p>$700-1000</p>
-                            </Container>
-                        </Grid.Column>
 
-                        <Grid.Column width="4">
-                            <Link to={{ pathname: ROUTES.PROJECT, state: {projectIndex: props.projectIndex}}} >
-                                <Button>Project</Button>
-                            </Link>
-                        </Grid.Column>
-                    </Grid.Row>
-                </Grid>
-            </Segment>
-        </Grid.Column>
-    </Grid.Row>
-);
 
-export default ProjCard;
+class ProjCard extends Component {
+
+    constructor(props){
+        super(props);
+        this.state={
+            brief:{},
+            status: ''
+        }
+    }
+
+    onClick = (projectIndex) => {
+        this.props.firebase.activeProject = projectIndex;
+        console.log(projectIndex);
+    }
+
+    async componentDidMount(){
+        const brief = await this.props.proj.brief;
+        const status = await this.props.proj.status;
+        console.log(this.props.proj);
+        this.setState({brief:brief, status:status});
+    }
+
+    render(){
+        console.log(this.state)
+        return(
+        <Grid.Row>
+            <Grid.Column>
+                <Segment attached='top'>
+                    <Grid >
+                        <Grid.Row>
+                            <Grid.Column width="12">
+                                <Header>
+                                    {this.state.brief.address}
+                                </Header>
+                            </Grid.Column>
+
+                            <Grid.Column width="4">
+                                <Header>
+                                    {this.state.status}
+                                </Header>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
+                <Segment attached>
+                    <Grid >
+                        <Grid.Row>
+                            <Grid.Column width="12">
+                                <Container>
+                                    <p>{this.state.brief.budget}</p>
+                                </Container>
+                            </Grid.Column>
+
+                            <Grid.Column width="4">
+                                <Link onClick={() => this.onClick(this.props.projectIndex)} to={{ pathname: ROUTES.PROJECT, state: {projectIndex: this.props.projectIndex}}} >
+                                    <Button>View Project</Button>
+                                </Link>
+                            </Grid.Column>
+                        </Grid.Row>
+                    </Grid>
+                </Segment>
+            </Grid.Column>
+        </Grid.Row>
+        );
+    }
+    
+}
+
+
+const condition = authUser => !!authUser;
+
+export default withAuthorization(condition)(ProjCard);
+

@@ -33,7 +33,7 @@ class ConceptPage extends Component {
   }
 
   formSubmit(){
-    console.log("we updated?");
+    // console.log(this.state);
     this.concept.media = this.state.concept.media;
     this.concept.video = this.state.concept.video;
     this.concept.feedback = this.state.concept.feedback;
@@ -46,7 +46,7 @@ class ConceptPage extends Component {
   
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
+    // console.log(event.target.name);
     this.setState({
       concept: {
         ...this.state.concept,
@@ -56,10 +56,10 @@ class ConceptPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0,  true);
-    console.log(project);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    // console.log(project);
     this.concept = await project.concept;
-    console.log(this.concept);
+    // console.log(this.concept);
     const client = await project.client;
     const state = await {
         client: client,
@@ -73,14 +73,13 @@ class ConceptPage extends Component {
 }
 
   render() {
-    console.log(this.state.concept);
     if(this.state.edit){
         return (
             <ConceptPageEdit concept={this.state.concept} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <ConceptPageView concept={this.state.concept} />      
+            <ConceptPageView concept={this.state.concept} isDesigner={this.props.firebase.user._isDesigner}/>      
         );
     }
 

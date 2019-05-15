@@ -58,7 +58,7 @@ class FinalPage extends Component {
   }
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.final = await project.final;
     const client = await project.client;
     const state = await {
@@ -79,7 +79,7 @@ class FinalPage extends Component {
         );
     }else{
         return (
-            <FinalPageView final={this.state.final} />      
+            <FinalPageView isDesigner={this.props.firebase.user._isDesigner} final={this.state.final} />      
         );
     }
 

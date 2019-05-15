@@ -67,7 +67,9 @@ class BriefPageView extends Component {
             );
         }else{
             return (
-                <BriefWaiting />
+                <BriefWaiting 
+                isDesigner={this.props.firebase.user._isDesigner}
+                />
             );
         }
 

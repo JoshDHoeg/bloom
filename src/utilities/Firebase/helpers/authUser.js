@@ -34,14 +34,28 @@ class FirebaseAuthUser extends FirebaseBase {
   constructor() {
     super();
     this.auth.onAuthStateChanged(user => {
-      if(!user){
-        this.isAuth = false;
+      if (user) {
+        this.doGetUser(user.uid)
+          .then(user => {
+            this.user = user;
+            if (this.user)
+              return user.email;
+            throw new Error('getting user failed');
+          })
+          .then(email => this.auth.fetchSignInMethodsForEmail(email))
+          .then(provider => this._userProvider = provider)
+          .then(() => true)
+          .catch(error => {
+            console.warn(error);
+            return false;
+          }).then(success1 => {
+            // console.log(success1, this._userProvider);
+            return success1;
+          })
+          .then(success => this.isAuth = success);
+        // this.isAuth = true;
       }
     })
-  }
-
-  setActiveProject = index => {
-    this.activeProject = index;
   }
 
   //most of old onAuthStateChanged logic (from the constructor) was moved to this function. Called by doCreateUser... and doSignInUser...
@@ -69,19 +83,23 @@ class FirebaseAuthUser extends FirebaseBase {
           });
   }
 
-  //start
-  doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null, isDesigner = false, name = 'username',
-                                      phone = '1231231234') => {
-    return this.auth.createUserWithEmailAndPassword(email, password)
-      .catch(error => {
-        console.warn(error);
-        return false;
-      })
+  doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null,
+                                      isDesigner = false, name = 'username', phone = '1231231234',
+                                      billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
+                                      state = 'Default State') => {
+    console.log("here yo");
+    return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
+      console.warn(error);
+      return false;
+    })
       .then(usr => {
+        console.log("here2");
+        console.log(usr);
         if (!usr){
           return false;
         }
-        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, channelRef, [project])
+        console.log("here3");
+        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, channelRef, [project], billadd1, zip, city, state)
             .then(ref  => {
               return this.setFirebaseVars(ref.id).then(res => {
                   return ref;
@@ -141,9 +159,9 @@ class FirebaseAuthUser extends FirebaseBase {
   doPasswordUpdate = password =>
     this.auth.currentUser.updatePassword(password);
 
-
+//modified doSetUser to return the relevant user id after it creates the user object for callbacks
   doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, channelRef = null,
-                     projectUid = ['', ['', false]]) => {
+                     projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '') => {
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p)) {
           return this.doGetProject(p[0], p[1]).then(p => p.uid);
@@ -158,7 +176,11 @@ class FirebaseAuthUser extends FirebaseBase {
       email: email,
       name: name,
       phone: phone,
-      projects: projects
+      projects: projects,
+      billadd1: billadd1,
+      zip: zip,
+      city: city,
+      state: state
     }).then(() => uid ).then( () => {
         this.doGetUser.bind(this, uid, false);
         return this.usersRef.doc(uid);

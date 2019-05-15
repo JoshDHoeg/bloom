@@ -52,13 +52,12 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { name, email, passwordOne, isDesigner } = this.state;
+    const { email, passwordOne, isDesigner } = this.state;
     const roles = [];
 
     if (isDesigner) {
       roles.push(ROLES.DESIGNER);
     }
-    console.log("here");
     this.props.firebase
         .doInitNewUser(email, passwordOne)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
@@ -70,7 +69,7 @@ class SignUpFormBase extends Component {
         this.props.history.push(ROUTES.PROJECT_LIST);
       })
       .catch(error => {
-        console.log({ error });
+        // console.log({ error });
         this.setState({ error });
       });
 

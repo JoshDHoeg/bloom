@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu,Grid, Header, Icon, Dropdown } from "semantic-ui-react";
+import { Menu,Grid, Header, Icon } from "semantic-ui-react";
 
 const UserPanel =(props) => {
   const username = props.user.name

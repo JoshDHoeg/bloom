@@ -7,9 +7,8 @@ import { withAuthorization } from '../../utilities/Session';
 
 // import { format } from 'path';
 // import {Link} from "react-router-dom";
-import { Grid } from 'semantic-ui-react'
+import { Grid } from 'semantic-ui-react';
 import ProjCard from "../../components/ProjectCard.jsx"
-import * as ROUTES from "../../utilities/constants/routes";
 
 class ProjectList extends Component {
   userSub;
@@ -45,9 +44,8 @@ class ProjectList extends Component {
   }
 
   render() {
+    console.log("rendered");
     const { loading } = this.state;
-    //console.log(this.userProjs[0]);
-    let m = 0;
     return (
       <Grid container >
         <Grid.Row>
@@ -55,7 +53,6 @@ class ProjectList extends Component {
         </Grid.Row>
         {loading && <div>Loading ...</div>}
         {this.userProjs.map((proj, index) => {
-          console.log(index);
           return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
         })}
     </Grid>

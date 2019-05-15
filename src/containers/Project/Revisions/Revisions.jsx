@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-
+//import { SuccessPayment } from '../../../components/PaymentStripe/frontend/Checkout.js';
 //IMPORT UTILITIES
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../../utilities/Session';
@@ -9,6 +9,7 @@ import RevisionsPageView from './View/View';
 import RevisionsPageEdit from './Edit/Edit';
 
 class RevisionsPage extends Component {
+  revision;
   constructor(props) {
     super(props);
     this.state = {
@@ -19,11 +20,12 @@ class RevisionsPage extends Component {
         revision: {
           media:'',
           figma: '',
+          feedback: ''
         }
     };
-
-    this.updateFigma = this.updateFigma.bind(this);
-    this.updateMedia = this.updateMedia.bind(this);
+    this.completed = this.completed.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -31,31 +33,44 @@ class RevisionsPage extends Component {
     this.getProjectState();
   }
 
-
-  updateFigma(event){
-    event.preventDefault();
-    this.setState({ figmaURL: event.target.value });
+  formSubmit(){
+    console.log("we updated?");
+    this.revision.media = this.state.revision.media;
+    this.revision.figma = this.state.revision.figma;
+    this.revision.feedback = this.state.revision.feedback;
   }
 
-  updateMedia(event){
-    event.preventDefault();
-    this.setState({ mediaURL: event.target.value });
+  completed(){
+    this.final.completed = true;
+    this.formSubmit();
   }
+  
+  handleChange(event) {
+    event.preventDefault();
+    console.log(event.target.name);
+    this.setState({
+      final: {
+        ...this.state.revision,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+  
 
   getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    console.log(project);
     this.revision = await project.revision;
+    console.log(this.revision);
     const client = await project.client;
     const state = await {
-        project: project,
         client: client,
         loading: false,
         revision: {
           ...this.revision.getAll()
         },
-        figmaURL: this.revision.data.figmaURL,
-        mediaURL: "https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing",
     }
+
     this.setState(state);
     return state;
 }
@@ -63,11 +78,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit  figmaURL={this.state.figmaURL} updateFigma={this.updateFigma}  mediaURL={this.state.mediaURL} updateMedia={this.updateMedia}/>
+            <RevisionsPageEdit revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
         return (
-            <RevisionsPageView  figmaURL={this.state.figmaURL} mediaURL={this.state.mediaURL} />
+            <RevisionsPageView isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 

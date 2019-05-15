@@ -18,7 +18,7 @@ class AccountInfoPageView extends Component {
     render() {
         console.log(this.props.user);
         return (
-            <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px"}}>
+            <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px", paddingBottom: "100vh"}}>
                 <div className="ui stackable grid container">
                     <InfoBanner edit={this.state.edit} user={this.props.user}/>
                     <div className="row">

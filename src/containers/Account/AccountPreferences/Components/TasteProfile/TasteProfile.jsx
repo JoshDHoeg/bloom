@@ -1,109 +1,107 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
+import { Input } from 'semantic-ui-react';
+
 
 const TasteProfile = (props) => (
     <div>
         {props.edit ? (
-        <TasteProfileEdit />
+        <TasteProfileEdit
+            prof={props.prof}
+            handleChangeProf={props.handleChangeProf}
+        />
         ) : (
-        <TasteProfileView />
+        <TasteProfileView
+            prof={props.prof}
+        />
         )}
     </div>
 );
 
-const TasteProfileView = () => {
+const TasteProfileView = (props) => {
     return (
-        <div style={{ textAlign: "center" }}>
-        <div style={{ fontSize: 10 }}>
-            <li style={{ fontSize: 13, listStyle: 'none' }}>
-                <h5>Spacing</h5>
-                <p>Wide &nbsp; | &nbsp; Medium &nbsp; | &nbsp; Full &nbsp; | &nbsp; Lush
-        </p>
-
-                <h5>Spacing</h5>
-                <p>Repetitive &nbsp; | &nbsp; Massings &nbsp; | &nbsp; Groups &nbsp; | &nbsp; Mixed
-        </p>
-
-                <h5>Spacing</h5>
-                <p>V. Straight &nbsp; | &nbsp; Straight &nbsp; | &nbsp; Curious &nbsp; | &nbsp; V. Curved
-        </p>
-            </li>
-            <li style={{ paddingTop: 20, listStyle: 'none' }}>
-                <h5>Ground Cover</h5>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Rocks &amp; Stone</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Mulch</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Spreading</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Mix</label>
-            </li>
-
-            <li style={{ paddingTop: 20, flexWrap: 'wrap', listStyle: 'none' }}>
-                <h5>Plant Form</h5>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Flat &amp; Spreading</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Small</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Medium/Upright</label>
-                <br /> {/*Temp break until styling*/}
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Shrubs &amp; Hedges</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Climbing</label>
-            </li>
+         <div style={{fontSize: 15}}>
+             <table className="ui definition table">
+                 <tbody>
+                     <tr>
+                         <td>Edging:</td>
+                         <td> </td> {/*used for spacing*/}
+                         <td id ='Edging'>{props.prof.edging}</td> {/* should be state, used temp value until one exists */}
+                     </tr>
+                     <tr>
+                         <td>Form:</td>
+                         <td> </td>
+                         <td id ='Form'>{props.prof.form}</td>
+                     </tr>
+                     <tr>
+                         <td>Ground:</td>
+                         <td></td>
+                         <td id ='Ground'>{props.prof.ground}</td>
+                     </tr>
+                     <tr>
+                         <td>Spacing:</td>
+                         <td></td>
+                         <td id ='Spacing'>{props.prof.spacing}</td>
+                     </tr>
+                     <tr>
+                         <td>Variety:</td>
+                         <td></td>
+                         <td id ='Variety'>{props.prof.variety}</td>
+                     </tr>
+                 </tbody>
+             </table>
         </div>
-    </div>
     )
 }
 
-const TasteProfileEdit = () => {
+const TasteProfileEdit = (props) => {
     return (
-        <div style={{ textAlign: "center" }}>
-        <div style={{ fontSize: 10 }}>
-            <li style={{ fontSize: 13, listStyle: 'none' }}>
-                <h5>Spacing</h5>
-                <p>Wide &nbsp; | &nbsp; Medium &nbsp; | &nbsp; Full &nbsp; | &nbsp; Lush
-        </p>
-
-                <h5>Spacing</h5>
-                <p>Repetitive &nbsp; | &nbsp; Massings &nbsp; | &nbsp; Groups &nbsp; | &nbsp; Mixed
-        </p>
-
-                <h5>Spacing</h5>
-                <p>V. Straight &nbsp; | &nbsp; Straight &nbsp; | &nbsp; Curious &nbsp; | &nbsp; V. Curved
-        </p>
-            </li>
-            <li style={{ paddingTop: 20, listStyle: 'none' }}>
-                <h5>Ground Cover</h5>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Rocks &amp; Stone</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Mulch</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Spreading</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Mix</label>
-            </li>
-
-            <li style={{ paddingTop: 20, flexWrap: 'wrap', listStyle: 'none' }}>
-                <h5>Plant Form</h5>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Flat &amp; Spreading</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Small</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Medium/Upright</label>
-                <br /> {/*Temp break until styling*/}
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Shrubs &amp; Hedges</label>
-                <input type="checkbox"></input>
-                <label style={{ paddingRight: "10px" }}> Climbing</label>
-            </li>
+        <div style={{fontSize: 13}}>
+            <table className="ui definition table">
+                <tbody>
+                <tr>
+                    <td>Edging:</td>
+                    <td> </td>
+                    <td id ='EdgingTxt'>
+                        <Input onChange={props.handleChangeProf} name="edging"  type='text' id='EdgingEditTxt' value={props.prof.edging} style={{ width: '140px' }} >
+                        </Input>
+                    </td>
+                </tr>
+                    <tr>
+                    <td>Form:</td>
+                    <td> </td>
+                    <td id ='FormTxt'>
+                        <Input onChange={props.handleChangeProf} name="form" type='text' id='FormEditTxt' value={props.prof.form} style={{ width: '140px' }} >
+                        </Input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Ground:</td>
+                    <td></td>
+                    <td id ='GroundTxt'>
+                        <Input onChange={props.handleChangeProf} name="ground" type='text' id='GroundEditTxt' value={props.prof.ground} style={{ width: '140px' }} >
+                        </Input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Spacing</td>
+                    <td></td>
+                    <td id ='SpacingTxt'>
+                        <Input onChange={props.handleChangeProf} name="spacing" type='text' id='SpacingEditTxt' value={props.prof.spacing} style={{ width: '140px' }} >
+                        </Input>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Variety:</td>
+                    <td></td>
+                    <td id ='VarietyTxt'>
+                        <Input onChange={props.handleChangeProf} name="variety"  type='text' id='VarietyEditTxt' value={props.prof.variety} style={{ width: '140px' }} >
+                        </Input>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
         </div>
-    </div>
     )
 }
 

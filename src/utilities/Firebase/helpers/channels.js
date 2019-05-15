@@ -57,9 +57,12 @@ class FirebaseChannels extends FirebaseProjects {
     doInitNewUser = (email , password) => {
         return this.doGetUser('hv97h9sMeuN1tFQPolJvNE4scMZ2').then( des => {
             return this.doGetUser('Admin').then( admin => {
+                console.log(admin);
                 const chanDefault = this.doCreateEmptyChannel();
                 const chanProj = this.doCreateEmptyChannel();
+                console.log("here");
                 return this.doCreateEmptyProject().then(proj => {
+                    console.log(proj);
                     return this.doCreateUserWithEmailAndPassword(email, password, proj.cols.id, chanDefault)
                         .then(ref => {
                             console.log(ref);
@@ -78,6 +81,8 @@ class FirebaseChannels extends FirebaseProjects {
                                 p1: ref,
                                 p2: admin.ref
                             }, {merge: true});
+
+                            console.log("done");
                             return ref.id;
                     });
                 });

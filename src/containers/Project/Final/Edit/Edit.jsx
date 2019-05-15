@@ -1,7 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Input } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
