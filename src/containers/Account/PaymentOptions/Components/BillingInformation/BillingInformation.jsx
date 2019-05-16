@@ -67,7 +67,7 @@ const BillingInfoEdit = (props) => {
             <h3>Edit Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
-                <td id ='BillAddEdit'> <input type='text' id='BillAddEditTxt'  defaultValue={billadd1} style={{ width: '140px' }} ></input> <button onClick={props.handleChange}> edit </button></td>
+                <td id ='BillAddEdit'> <input type='text' id='BillAddEditTxt'  defaultValue={billadd1} style={{ width: '140px' }} ></input> </td>
             </tr>
             <tr>
                 <td>Zip Code:</td>

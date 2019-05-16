@@ -49,17 +49,17 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Name:</td>
                 <td> </td>
-                <td id ='EditNameTxt'> <input type='text' id='NameEditTxt' value ={name} style={{ width: '140px' }} ></input></td> 
+                <td id ='EditNameTxt'> <input type='text' id='NameEditTxt' defaultValue ={name} style={{ width: '140px' }} ></input></td> 
             </tr>
             <tr>
                 <td>Email:</td>
                 <td> </td>
-                <td id ='EditEmailTxt'> <input type='text' id='EmailEditTxt' View={email} style={{ width: '140px' }} ></input></td>
+                <td id ='EditEmailTxt'> <input type='text' id='EmailEditTxt' defaultValue={email} style={{ width: '140px' }} ></input></td>
             </tr>
             <tr>
                 <td>Phone:</td>
                 <td></td>
-                <td id ='EditPhoneTxt'><input type='text' id='PhoneEditTxt' View={phone} style={{ width: '140px' }} ></input></td>
+                <td id ='EditPhoneTxt'><input type='text' id='PhoneEditTxt' defaultValue={phone} style={{ width: '140px' }} ></input></td>
             </tr>
         </tbody>
         </table>
