@@ -18,12 +18,14 @@ class Button extends Component {
       headers: {"Content-Type": "text/plain"},
       body: token.id
     });
-
     if (response.ok) {
       console.log("working")
       this.setState({complete: true});
+    }else{
+      alert('Payment Error')
     }
   }
+  
 
   render() {
     if (this.state.complete) {
