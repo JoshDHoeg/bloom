@@ -13,6 +13,7 @@ class AccountPreferencesPage extends Component {
     profile;
     budget;
     brief;
+    user;
 
     constructor(props) {
         super(props);
@@ -26,7 +27,11 @@ class AccountPreferencesPage extends Component {
                 spacing: '',
                 variety: ''
             },
-            budget: ''
+            budget: '',
+            user: {
+                username: ''
+
+            }
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChangeProf = this.handleChangeProf.bind(this);
@@ -75,7 +80,8 @@ class AccountPreferencesPage extends Component {
 
     getProjectState = async () => {
         var project = await
-            this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
         console.log(project);
         this.brief = await project.brief;
         this.profile = await this.brief.profile;
@@ -86,7 +92,8 @@ class AccountPreferencesPage extends Component {
             project: project,
             profile: this.profile,
             budget: this.budget,
-            loading: false
+            loading: false,
+            name: this.user.name
         }
         this.setState(state);
         return state;
@@ -100,11 +107,15 @@ class AccountPreferencesPage extends Component {
                      handleChangeBudget={this.handleChangeBudget}
                      handleChangeProf={this.handleChangeProf}
                      info={this.state}
+                     name={this.state.name}
                 />
             );
         }else{
             return (
-                <PreferencesPageView info={this.state}/>
+                <PreferencesPageView 
+                info={this.state}
+                name={this.state.name}
+                />
             );
         }
     }
