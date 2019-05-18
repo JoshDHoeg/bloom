@@ -107,8 +107,7 @@ const HomePageWithSideBar = (props) => {
                                     path={ROUTES.CLIENT_REVISIONS_EDIT} 
                                     render={(props) => <RevisionsPage {...props} edit={true} /> }
                                     />
-                            </div>
-
+                            </div> 
                         </Segment>
                     </Sidebar.Pusher>
                 </div>

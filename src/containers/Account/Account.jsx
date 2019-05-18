@@ -32,12 +32,12 @@ const AccountPageWithSidebar = () => (
                   Account Info
                 </div>
               </Menu.Item>
-              <Menu.Item as={Link} to={ROUTES.ACCOUNT_PREFERENCES}>
+              {/* <Menu.Item as={Link} to={ROUTES.ACCOUNT_PREFERENCES}>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px"}}>
                  <Icon className='cog' />
                  Preferences
                 </div>
-              </Menu.Item>
+              </Menu.Item> */}
               <Menu.Item as= {Link} to={ROUTES.PAYMENT_OPTIONS}>
                 <div style={{ paddingTop: "10px", paddingBottom: "10px"}}>
                   <Icon className='money bill alternate outline' />

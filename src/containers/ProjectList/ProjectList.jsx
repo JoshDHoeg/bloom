@@ -25,7 +25,7 @@ class ProjectList extends Component {
     //assuming that user will always have _objects property...
       console.log(this.props.firebase.user._projects);
     this.projKeyArr = this.props.firebase.user._projects.map(x => x.id);
-    this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => this.userProjs.push(res)));
+    this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => {this.userProjs.push(res);}));
     //extract other relevant projec data here?
   }
 
@@ -44,12 +44,11 @@ class ProjectList extends Component {
   }
 
   render() {
-    console.log("rendered");
     const { loading } = this.state;
     return (
       <Grid container >
         <Grid.Row>
-          <h1>Current Projects</h1>
+          <h1 style={{paddingTop: "64px"}}>Current Projects</h1>
         </Grid.Row>
         {loading && <div>Loading ...</div>}
         {this.userProjs.map((proj, index) => {

@@ -32,7 +32,7 @@ class ProjCard extends Component {
     }
 
     render(){
-        console.log(this.state)
+        // console.log(this.state)
         return(
         <Grid.Row>
             <Grid.Column>
@@ -47,7 +47,7 @@ class ProjCard extends Component {
 
                             <Grid.Column width="4">
                                 <Header>
-                                    {this.state.status}
+                                    In Progress
                                 </Header>
                             </Grid.Column>
                         </Grid.Row>
