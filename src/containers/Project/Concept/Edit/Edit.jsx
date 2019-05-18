@@ -17,9 +17,8 @@ class ConceptPageEdit extends Component {
             edit: true
         }
     }
-
     render() {
-        console.log(this.props);
+        console.log("we are in the concept");
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
