@@ -57,17 +57,18 @@ class RevisionsPageView extends Component {
                             </span>
                         </div>
                         <div>
-                            <ShowApproved
-                            isDesigner={this.props.isDesigner}
-                            Approved = {this.props.Approved}
-                            />
+                        {!this.props.isDesigner && 
+                        <div>
+                            <button type="button" onClick={this.props.Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Approve</button>
+                        </div>
+                        }
                         </div>
                     </div>
                 </div>
             );
         }else{
             return (
-                <RevisionsWaiting approved={this.props.approved} isDesigner={this.props.isDesigner}/>
+                <RevisionsWaiting approved={this.props.final.approved} isDesigner={this.props.isDesigner}/>
             );
         }
 

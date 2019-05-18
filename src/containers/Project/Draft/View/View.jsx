@@ -64,7 +64,7 @@ class DraftPageView extends Component {
             );
         }else{
             return (
-                <DraftPageWaiting approved={this.props.approved} isDesigner={this.props.isDesigner}/>
+                <DraftPageWaiting approved={this.props.concept.approved} isDesigner={this.props.isDesigner}/>
             );
         }
 
