@@ -69,35 +69,23 @@ class DraftPageView extends Component {
                                 <YoutubeEmbedVideo suggestions={false} videoId={""} style={{ width: "600px", padding: "30px", visibility: "hidden" }} />
                             </span>
                         </div>
+                        {!this.props.isDesigner && 
                         <div>
-                        <ShowApproved
-                            isDesigner={this.props.isDesigner}
-                            Approved = {this.props.Approved}
-                        />
+                            <button type="button" onClick={this.props.Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Approve</button>
                         </div>
+                        }
                     </div >
                 </div>
             );
         }else{
             return (
-                <DraftPageWaiting approved={this.props.approved} isDesigner={this.props.isDesigner}/>
+                <DraftPageWaiting approved={this.props.concept.approved} isDesigner={this.props.isDesigner}/>
             );
         }
 
     }
 }
 
-const ShowApproved = (props) => {
-    const isDesigner = props.isDesigner;
-    const Approved = props.Approved;
-    if(!isDesigner){
-        return(
-            <div>
-                <button type="button" onClick={Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Approve</button>
-            </div>
-        );
-}
-}
 
 const condition = authUser => !!authUser;
 
