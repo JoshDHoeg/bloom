@@ -27,7 +27,7 @@ const SignInPage = () => (
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='teal' textAlign='center'>
-          <Image/>Log-in to your account
+          <Image />Log-in to your account
         </Header>
         <SignInForm />
         <Message>
