@@ -7,10 +7,14 @@ const UserInfo = (props) => {
     return (
         <div>
             {props.edit ? (
-                <UserInfoEdit name={props.user.name} email={props.user.email} phone={props.user.phone}
-                              handleChange={props.handleChange}/>
+                <UserInfoEdit 
+                name={props.name} 
+                phone={props.phone}
+                handleChange={props.handleChange}/>
             ) : (
-                <UserInfoView name={props.user.name} email={props.user.email} phone={props.user.phone}/>
+                <UserInfoView 
+                name={props.name} 
+                phone={props.phone}/>
             )}
         </div>
     );
@@ -47,15 +51,15 @@ const UserInfoView = (props) => {
 const UserInfoEdit = (props) => {
     //console.log(props);
     const name = props.name;
-    const email = props.email;
     const phone = props.phone;
+    const handleChange = props.handleChange
     return (
         <table className="ui definition table">
         <tbody>
             <tr>
                 <td>Name:</td>
                 <td> </td>
-                <td id ='EditNameTxt'> <Input name="name" onChange={props.handleChange} type='text' id='NameEditTxt' value={name} style={{ width: '140px' }} ></Input></td>
+                <td id ='EditNameTxt'> <Input name="name" onChange={handleChange} type='text' id='NameEditTxt' defaultValue={name} style={{ width: '140px' }} ></Input></td>
             </tr>
             {/*<tr>*/}
                 {/*<td>Email:</td>*/}
@@ -65,7 +69,7 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Phone:</td>
                 <td></td>
-                <td id ='EditPhoneTxt'><Input name="phone" onChange={props.handleChange} type='text' id='PhoneEditTxt' value={phone} style={{ width: '140px' }} ></Input></td>
+                <td id ='EditPhoneTxt'><Input name="phone" onChange={handleChange} type='text' id='PhoneEditTxt' defaultValue={phone} style={{ width: '140px' }} ></Input></td>
             </tr>
         </tbody>
         </table>

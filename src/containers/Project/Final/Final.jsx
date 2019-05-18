@@ -10,6 +10,7 @@ import FinalPageEdit from './Edit/Edit';
 
 class FinalPage extends Component {
   final;
+  draft;
   constructor(props) {
     super(props);
     this.state = {
@@ -20,12 +21,17 @@ class FinalPage extends Component {
           video: '',
           figma: '',
           feedback: ''
+        },
+        draft: {
+          approved: false
         }
+        
     };
 
     this.formSubmit = this.formSubmit.bind(this);
     this.completed = this.completed.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.Approved = this.Approved.bind(this);
   }
 
   componentDidMount() {
@@ -60,12 +66,16 @@ class FinalPage extends Component {
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.final = await project.final;
+    this.draft = await project.draft;
     const client = await project.client;
     const state = await {
         client: client,
         loading: false,
         final: {
           ...this.final.getAll()
+        },
+        draft: {
+          ...this.draft.getAll()
         }
     }
     this.setState(state);
@@ -79,7 +89,7 @@ class FinalPage extends Component {
         );
     }else{
         return (
-            <FinalPageView isDesigner={this.props.firebase.user._isDesigner} final={this.state.final} />      
+            <FinalPageView Approved={this.Approved} draft={this.state.draft} isDesigner={this.props.firebase.user._isDesigner} final={this.state.final} />      
         );
     }
 

@@ -22,12 +22,20 @@ class RevisionsPageWaiting extends Component {
     
     render() {
         if(this.props.isDesigner){
-            return (
-                <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                    <h1>The Design Concept Is not ready yet. You will recieve a ntification when it is ready.</h1>
-                    <EditButton />
-                </div>
-            );
+            if(!this.props.approved){
+                return (
+                    <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <h1>The Final is not approved yet.</h1>
+                    </div>
+                )
+            }else{
+                return (
+                    <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <h1>The Design Concept Is not ready yet. You will receive a notification when it is ready.</h1>
+                        <EditButton />
+                    </div>
+                );
+            }
         }else{
             return (
                 <div style={{textAlign: "center" , backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>

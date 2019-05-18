@@ -32,7 +32,7 @@ class DraftPageView extends Component {
                         <div className="row" style={{ paddingTop: "40px" }}>
                             <h1>Rough Draft</h1>
                             <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "227px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_DRAFT_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
-                            <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.final.media}  style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                            <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.draft.media}  style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                         </div>
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -54,16 +54,34 @@ class DraftPageView extends Component {
                                 <YoutubeEmbedVideo suggestions={false} videoId={""} style={{ width: "600px", padding: "30px", visibility: "hidden" }} />
                             </span>
                         </div>
+                        <div>
+                        <ShowApproved
+                            isDesigner={this.props.isDesigner}
+                            Approved = {this.props.Approved}
+                        />
+                        </div>
                     </div >
                 </div>
             );
         }else{
             return (
-                <DraftPageWaiting isDesigner={this.props.isDesigner}/>
+                <DraftPageWaiting approved={this.props.approved} isDesigner={this.props.isDesigner}/>
             );
         }
 
     }
+}
+
+const ShowApproved = (props) => {
+    const isDesigner = props.isDesigner;
+    const Approved = props.Approved;
+    if(!isDesigner){
+        return(
+            <div>
+                <button type="button" onClick={Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Approve</button>
+            </div>
+        );
+}
 }
 
 const condition = authUser => !!authUser;

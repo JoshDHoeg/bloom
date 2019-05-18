@@ -10,6 +10,7 @@ import DraftPageEdit from './Edit/Edit';
 
 class DraftPage extends Component {
   draft;
+  concept;
   constructor(props) {
     super(props);
     this.state = {
@@ -19,13 +20,17 @@ class DraftPage extends Component {
           media:'',
           video: '',
           figma: '',
-          feedback: ''
+          feedback: '',
+        },
+        concept: {
+          approved: false
         }
     };
 
     this.formSubmit = this.formSubmit.bind(this);
     this.completed = this.completed.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.Approved = this.Approved.bind(this);
   }
 
   componentDidMount() {
@@ -45,6 +50,11 @@ class DraftPage extends Component {
     this.draft.completed = true;
     this.formSubmit();
   }
+
+  Approved() {
+    this.draft.approved = true;
+    console.log('approved?', this.draft.approved)
+  }
   
   handleChange(event) {
     event.preventDefault();
@@ -60,13 +70,18 @@ class DraftPage extends Component {
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.draft = await project.draft;
+    this.concept = await project.concept;
     const client = await project.client;
     const state = await {
         client: client,
         loading: false,
         draft: {
           ...this.draft.getAll()
+        },
+        concept: {
+          ...this.concept.getAll()
         }
+
     }
     this.setState(state);
     return state;
@@ -78,8 +93,9 @@ class DraftPage extends Component {
             <DraftPageEdit draft={this.state.draft} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      
         );
     }else{
+      console.log('approved', this.state.concept.approved)
         return (
-            <DraftPageView isDesigner={this.props.firebase.user._isDesigner} draft={this.state.draft} />      
+            <DraftPageView concept={this.state.concept} formSubmit={this.formSubmit} Approved={this.Approved} isDesigner={this.props.firebase.user._isDesigner} draft={this.state.draft} />      
         );
     }
 

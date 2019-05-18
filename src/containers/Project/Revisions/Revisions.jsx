@@ -10,6 +10,7 @@ import RevisionsPageEdit from './Edit/Edit';
 
 class RevisionsPage extends Component {
   revision;
+  final;
   constructor(props) {
     super(props);
     this.state = {
@@ -21,11 +22,15 @@ class RevisionsPage extends Component {
           media:'',
           figma: '',
           feedback: ''
+        },
+        final:{
+          approved: false
         }
     };
     this.completed = this.completed.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.formSubmit = this.formSubmit.bind(this);
+    this.Approved = this.Approved.bind(this);
   }
 
   componentDidMount() {
@@ -38,6 +43,11 @@ class RevisionsPage extends Component {
     this.revision.media = this.state.revision.media;
     this.revision.figma = this.state.revision.figma;
     this.revision.feedback = this.state.revision.feedback;
+  }
+
+  Approved() {
+    this.revision.approved = true;
+    console.log('approved?', this.revision.approved)
   }
 
   completed(){
@@ -61,6 +71,7 @@ class RevisionsPage extends Component {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     console.log(project);
     this.revision = await project.revision;
+    this.final = await project.final;
     console.log(this.revision);
     const client = await project.client;
     const state = await {
@@ -69,6 +80,9 @@ class RevisionsPage extends Component {
         revision: {
           ...this.revision.getAll()
         },
+        final: {
+          ...this.final.getAll()
+        }
     }
 
     this.setState(state);
@@ -82,7 +96,7 @@ class RevisionsPage extends Component {
         );
     }else{
         return (
-            <RevisionsPageView isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
+            <RevisionsPageView Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 
