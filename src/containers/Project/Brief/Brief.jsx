@@ -35,7 +35,7 @@ class BriefPage extends Component {
         client: {
             name: '',
             client: false
-        },
+        }
     };
 
     this.formSubmit = this.formSubmit.bind(this);
@@ -169,8 +169,8 @@ class BriefPage extends Component {
         );
     }else{
         return (
-            <BriefView 
-              brief = {this.state.brief} 
+            <BriefView
+              brief = {this.state.brief}
               projectIndex = {this.state.projectIndex}
               isDesigner={this.props.firebase.user._isDesigner}
               />
