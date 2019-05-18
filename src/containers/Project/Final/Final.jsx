@@ -51,6 +51,11 @@ class FinalPage extends Component {
     this.final.completed = true;
     this.formSubmit();
   }
+
+  Approved() {
+    this.final.approved = true;
+    console.log('approved?', this.final.approved)
+  }
   
   handleChange(event) {
     event.preventDefault();
