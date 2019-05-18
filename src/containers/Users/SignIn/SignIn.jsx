@@ -27,7 +27,7 @@ const SignInPage = () => (
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='teal' textAlign='center'>
-          <Image src='/logo.png' /> Log-in to your account
+          <Image/>Log-in to your account
         </Header>
         <SignInForm />
         <Message>
@@ -64,10 +64,9 @@ class SignInFormBase extends Component {
           this.props.history.push(ROUTES.PROJECT);
         } else {
           console.log("there was a problem")
-          // error
           // this.setState({ error });
         }
-      });
+      })
 
     event.preventDefault();
   };
@@ -107,7 +106,7 @@ class SignInFormBase extends Component {
             <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
               Login
             </Button>
-            {error && <p>{error.message}</p>}
+            {/* {error && <p>{error.message}</p>} */}
           </Segment>
         </Form>
 
