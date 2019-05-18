@@ -45,6 +45,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               video: "",
               media:"",
               completed: false,
+              approved: false,
           });
           d.doc('0').set({
               init: false,
@@ -53,6 +54,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               media:"",
               figma: "",
               completed: false,
+              approved: false,
           });
           f.doc('0').set({
             init: false,
@@ -61,6 +63,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
             media:"",
             figma: "",
             completed: false,
+            approved: false,
         });
           r.doc('0').set({
               init: false,
@@ -68,6 +71,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               media:"",
               figma: "",
               completed: false,
+              approved: false,
           });
           return proj;
       })
