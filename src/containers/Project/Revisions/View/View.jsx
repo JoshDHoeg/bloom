@@ -26,6 +26,7 @@ class RevisionsPageView extends Component {
     }
 
     render() {
+        console.log('completed?', this.props.revision.completed)
         if (this.props.revision.completed){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
@@ -55,17 +56,37 @@ class RevisionsPageView extends Component {
                                 <YoutubeEmbedVideo suggestions={false} videoId={""} style={{ width: "600px", padding: "30px", visibility: "hidden" }} />
                             </span>
                         </div>
+                        <div>
+                            <ShowApproved
+                            isDesigner={this.props.isDesigner}
+                            Approved = {this.props.Approved}
+                            />
+                        </div>
                     </div>
                 </div>
             );
         }else{
             return (
-                <RevisionsWaiting isDesigner={this.props.isDesigner}/>
+                <RevisionsWaiting approved={this.props.approved} isDesigner={this.props.isDesigner}/>
             );
         }
 
     }
 }
+
+
+const ShowApproved = (props) => {
+    const isDesigner = props.isDesigner;
+    const Approved = props.Approved;
+    if(!isDesigner){
+        return(
+            <div>
+                <button type="button" onClick={Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Edit</button>
+            </div>
+        );
+    }
+}
+
 
 const condition = authUser => !!authUser;
 
