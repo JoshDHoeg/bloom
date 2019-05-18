@@ -30,8 +30,23 @@ class BriefPageWaiting extends Component {
         );
         }else{
             return (
-                <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                   <h1>The Brief Is not ready yet. You will receive a notification when it is ready.</h1>
+                <div style={{textAlign: "center" , backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                    <div className="ui stackable grid container">
+                        <div className="row">
+                             <span style={{ width: "600px" }}>
+                                <h1>Your Project Design Brief is Not Ready Yet...</h1>
+                                <h2>But its on its way!!!! Your design brief is gonna summarize your project goals, and expectations</h2>
+                                <ul>
+                                    <li>Goals</li>
+                                    <li>Taste Profile</li>
+                                    <li>Narrative</li>
+                                    <li>Budget</li>
+                                    <li>Photos</li>
+                                </ul>
+                                <h2>We will reach out to you as soon as the design brief is ready to go!</h2>
+                            </span>
+                        </div>
+                    </div>
                 </div>
             );
         }

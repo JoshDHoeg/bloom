@@ -143,13 +143,13 @@ class SignUpFormBase extends Component {
             value={passwordTwo}
             onChange={this.onChange}
           />
-          <Form.Checkbox
+          {/* <Form.Checkbox
             label="Designer?"
             name="isDesigner"
             toggle
             checked={isDesigner}
             onChange={this.onChangeCheckbox}
-          />
+          /> */}
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
             Login
           </Button>
