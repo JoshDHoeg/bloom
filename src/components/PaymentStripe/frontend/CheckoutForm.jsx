@@ -2,8 +2,7 @@
 
 import React,{Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
-
-
+import PAYMENT_SERVER_URL from './constants/server';
 class Button extends Component {
   constructor(props) {
     super(props);
@@ -13,7 +12,8 @@ class Button extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    let response = await fetch("/", {
+    console.log(token)
+    let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
       headers: {"Content-Type": "text/plain"},
       body: token.id
@@ -23,9 +23,10 @@ class Button extends Component {
       this.setState({complete: true});
     }else{
       alert('Payment Error')
+      console.log(response)
     }
   }
-  
+
 
   render() {
     if (this.state.complete) {

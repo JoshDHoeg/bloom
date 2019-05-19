@@ -1,8 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {Elements, StripeProvider} from 'react-stripe-elements';
-import Button from '../../../../components/PaymentStripe/frontend/Button';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";

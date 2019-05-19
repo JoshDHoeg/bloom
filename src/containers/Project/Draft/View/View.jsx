@@ -14,7 +14,6 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-import Button from '../../../../components/PaymentStripe/frontend/Button'
 import DraftPageWaiting from './Waiting/Waiting';
 
 class DraftPageView extends Component {
@@ -36,7 +35,6 @@ class DraftPageView extends Component {
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.final.media}  style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
                         </div>
                         <div className="row" style={{ paddingTop: "5px" }}>
-                            <Button/>
                         </div>
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>

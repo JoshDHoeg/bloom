@@ -13,7 +13,7 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-import Button from '../../../../components/PaymentStripe/frontend/Button'
+import Button from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import FinalWaiting from './Waiting/Waiting';
 
 
@@ -37,6 +37,7 @@ class FinalPageView extends Component {
                             <h1>Rough Draft</h1>
                             <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "227px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_FINAL_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.mediaURL}  style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                            <Button/>
                         </div>
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>

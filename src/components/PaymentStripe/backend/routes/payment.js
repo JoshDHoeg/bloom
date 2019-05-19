@@ -20,9 +20,9 @@ const paymentApi = app => { //Access the back-end
   app.post('/', async (req, res) => { //Post the charge
     try{
       let { status } = await stripe.charges.create({
-        amount: 500,
+        amount: 59900,
         currency: "usd",
-        description: "An example Charge",
+        description: "Charge",
         source: req.body
       });
 
