@@ -15,8 +15,8 @@ class ElementsContainer extends Component {
     return (
       <div>
       <StripeProvider apiKey = 'pk_test_7XARlGU7KhB75ysMvpSxfDvG00mtqr7j4s'>
-        <div className="example">
-          <h1>Purchase Final Design</h1>
+        <div className="payment-form" style={{ marginTop: '10px', marginBottom: '10px', marginLeft: '14px', marginRight: '235px', textAlign: 'left'}}>
+          <h2 style={{ fontSize: '22px', color:'#FA907F', fontFamily:'sans-serif'}} >Purchase Final Design</h2>
           <Elements>
              <Form /> 
           </Elements>

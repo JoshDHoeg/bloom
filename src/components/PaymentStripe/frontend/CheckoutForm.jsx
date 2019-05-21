@@ -1,9 +1,9 @@
 //BLOOMTIME DESIGN 2019
-
+import { Button } from 'semantic-ui-react'
 import React,{Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import PAYMENT_SERVER_URL from './constants/server';
-class Button extends Component {
+class PaymentButton extends Component {
   constructor(props) {
     super(props);
     this.state = {complete: false};
@@ -34,13 +34,16 @@ class Button extends Component {
     } else {
     return (
       <div className="checkoutFormButton">
-        <p>Would you like to complete the purchase?</p>
+        <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Would you like to purchase your final design?</h3>
         <CardElement />
-        <button onClick={this.submit}>Send</button>
+        <Button animated='fade' onClick={this.submit} style={{marginTop:'15px', marginBottom: '5px'}}>
+          <Button.Content visible>Purchase</Button.Content>
+          <Button.Content hidden>$599.99</Button.Content>
+        </Button>
       </div>
     );
   }
 }
 }
 
-export default injectStripe(Button);
+export default injectStripe(PaymentButton);
