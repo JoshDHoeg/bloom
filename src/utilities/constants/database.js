@@ -1,81 +1,259 @@
+import Firebase from '../Firebase';
+
 export class User {
-  _client = false;
-  get client() { return this._client; }
-  set client(isClient) {
-    this.ref.set({ client: isClient });
+  _isDesigner = false;
+  get isDesigner() { return this._isDesigner; }
+  set isDesigner(designer) {
+    this.ref.set({ isDesigner: designer });
   }
   _email = '';
   get email() { return this._email; }
   set email(email) {
-    this.ref.set({ email: email });
+    console.log(email);
+    this.ref.set({ email: email }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
   set name(name) {
-    this.ref.set({ name: name });
+    console.log(name);
+    this.ref.set({ name: name }, {merge: true});
   }
   _phone = '';
   get phone() { return this._phone; }
   set phone(phone) {
-    this.ref.set({ phone: phone });
+    console.log(phone);
+    this.ref.set({ phone: phone }, {merge: true});
   }
   _projects = [];
   get projects() { return this._projects; }
   set projects(projs) {
     this.ref.set({ projects: projs });
   }
+  _billadd1 = ''
+  get billadd1() { return this._billadd1; }
+  set billadd1(add1) {
+    this.ref.set({ billadd1: add1 }, {merge:true})
+  }
+  _zip = ''
+  get zip() { return this._zip; }
+  set zip(zip) {
+    this.ref.set({ zip: zip }, {merge:true})
+  }
+  _city = ''
+  get city() { return this._city }
+  set city(city) {
+    this.ref.set({ city: city }, {merge:true})
+  }
+  _state = ''
+  get state() { return this._state }
+  set state(state) {
+    this.ref.set({ state: state }, {merge:true})
+  }
+
+  get uid() { return this.id };
+
+  _helpChannel = null;
+  get helpChannel(){return this._helpChannel; }
+  set helpChannel(chanRef){
+    this.ref.set({ helpChannel: chanRef});
+    this._helpChannel = chanRef;
+  }
+
+
   constructor(dbQuery) {
     const data = dbQuery.data();
-    this._client = data['client'];
+    this._isDesigner = data['isDesigner'];
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
+    this._billadd1 = data['billadd1'];
+    this._zip = data['zip'];
+    this._city = data['city'];
+    this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
+    this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
   }
+
+  _getAll = (obj) => {
+    const baseVars = { init: this.init }
+    return Object.assign(obj, baseVars);
+  };
+
+
+  getAll() {
+    return this._getAll({
+      email: this.email,
+      name: this.name,
+      phone: this.phone,
+      billadd1: this.billadd1,
+      zip: this.zip,
+      city: this.city,
+      state: this.state,
+      projects: this.projects
+    });
+  }
 }
 
-export class Project {
-  name = '';  // the only nonPromise type
+export class Channel {
+  _p1 = null;
+  get p1() { return this._p1; }
+  set p1(p1Ref){
+    this.ref.set({p1: p1Ref}, {merge: true});
+    this._p1 = p1Ref;
+  }
+  _p2 = null;
+  get p2() { return this._p2; }
+  set p2(p2Ref){
+    this.ref.set({p2: p2Ref}, {merge: true});
+    this._p2 = p2Ref;
+  }
+  _name = "";
+  get name(){return this._name;}
+  set name(n){
+    this.ref.set({name: n}, {merge: true});
+    this._name = n;
+  }
+
+  _messages = [];
+  get messages(){return this._messages;}
+  set messages(mArr){
+      this.ref.set({messages: mArr});
+      this._messages = mArr;
+  }
+
+  constructor(channelRef){
+    const data = channelRef.data();
+    this._p1 = data['p1'];
+    this._p2 = data['p2'];
+    this._name = data['name'];
+    this._messages = data['messages'];
+    this.ref = channelRef.ref;
+    this.id = this.ref.id;
+  }
+
+}
+
+
+export class Message {
+    _from = null;
+    get from() { return this._from; }
+    set from(name){
+        this.ref.set({from: name}, {merge: true});
+        this._from = name;
+    }
+    _time = "";
+    get time(){return this._time;}
+    set time(t){
+        this.ref.set({time: t}, {merge: true});
+        this._time = t;
+    }
+    _content = "";
+    get content(){return this._content;}
+    set content(c){
+        this.ref.set({content: c}, {merge: true});
+        this._content = c;
+    }
+    constructor(m){
+        const data = m.data();
+        this._from = data['from'];
+        this._time = data['time'];
+        this._content = data['content'];
+        this.ref = m.ref;
+        this.id = this.ref.id;
+    }
+}
+
+export class ProjectBase {
+  get pid() {
+    return this.cols;
+  }
   constructor(documentRef) {
     this.cols = documentRef.ref;
     const data = documentRef.data();
     this.name = data['name'];
-    this.clientRef = data['client'];
-    this.designerRef = data['designer'];
+    this.channel = data['channel'];
+    this.clientsRef = data['client'];
+    this.clientRef = data['client'][0];
+    this.designersRef = data['designer'];
+    this.designerRef = data['designer'][0];
+    if (Firebase.preventBreakingChanges) {
+      this.clientRef = data['client'];
+      this.designerRef = data['designer'];
+    }
   }
+
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
-    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.finals, this.revisions]);
+    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.drafts, this.finals, this.revisions]);
     return data.reduce((d, item, i) => {
       d[Array.isArray(item) ? item[0].constructor.name : item.constructor.name] = item;
       return d;
     }, { name: this.name });
   }
-  get client() { return this.clientRef.get().then(userSnap => new User(userSnap)); }
-  set client(userClass) { this.cols.set({ client: userClass.ref }, { merge: true }); }
-  get designer() { return this.designerRef.get().then(userSnap => new User(userSnap)); }
-  set designer(userClass) { this.cols.set({ designer: userClass.ref }, { merge: true }); }
-
-  get briefs() { return this.getDatabasePromise(ProjectData.Brief); }
-  // set brief(briefClass) {
-  //   this.setDatabasePromise(ProjectData.Brief, briefClass)
-  // }
-  get concepts() { return this.getDatabasePromise(ProjectData.Concept); }
-  get finals() { return this.getDatabasePromise(ProjectData.Final); }
-  get revisions() { return this.getDatabasePromise(ProjectData.Revision); }
-  getDatabasePromise = projectData =>
-    this.cols.collection(projectData.colRef).get().then(colSnap => {
-      return colSnap.docs.map(doc => new projectData.type(doc));
+  _getDatabasePromise = (projectData, isRef = false) => {
+    const ref = isRef ? projectData : projectData.colRef
+    return this.cols.collection(ref).get().then(colSnap => {
+      return colSnap.docs.map(doc => new projectData.type(doc, Firebase.useDefaultProjectValues));
     });
-  // TODO: for setting by class (could be useful in the future)
-  // setDatabasePromise = (projectData, newData) =>
-  //   this.cols.collection(projectData.colRef).set(
-  //     newData._getAll(), { merge: true });
+  }
+  _getUser = (userRef) => {
+    console.log(userRef);
+    userRef.get().then(res => console.log(res));
+    userRef.get().then(userSnap => new User(userSnap));
+  }
+
+  get clients() {
+    return Promise.all(this.clientsRef.map(c => this._getUser));
+  }
+  set clients(userClass) { this.cols.set({ client: userClass.map(u => u.ref) }, { merge: true }); }
+
+  get designers() {
+    return Promise.all(this.designersRef.map(d => this._getUser));
+  }
+  set designers(userClass) { this.cols.set({ designer: userClass.ref }, { merge: true }); }
+
+  get briefs() { return this._getDatabasePromise(ProjectData.Brief); }
+  get concepts() { return this._getDatabasePromise(ProjectData.Concept); }
+  get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
+  get finals() { return this._getDatabasePromise(ProjectData.Final); }
+  get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
+}
+
+export class Project extends ProjectBase {
+  name = '';  // the only nonPromise type
+
+  get client() { console.log("here"); return this._getUser(this.clientRef) };
+  set client(userClass) {
+    this.designers.then(d => {
+      d[0] = userClass;
+      this.designers = d;
+    });
+   };
+  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
+  set designer(userClass) {
+    this.designers.then(d => {
+      d[0] = userClass;
+      this.designers = d;
+    });
+  };
+  _status = '';
+  get status() { return this._status; }
+  set status(s) {
+    this.ref.set({ status: s }, { merge: true });
+  }
+
+  get brief() { return this.briefs.then(b => b[0]); }
+  get concept() { return this.concepts.then(c => c[0]); }
+  get draft() { return this.drafts.then(c => c[0]); }
+  get final() { return this.finals.then(f => f[0]); }
+  get revision() { return this.revisions.then(r => r[0]); }
 }
 
 class ProjectDataBase {
+  ref = null;
+  data = null;
   _init = false;
   get init() {
     return this._init;
@@ -83,58 +261,302 @@ class ProjectDataBase {
   set init(i) {
     this.ref.set({ init: i }, { merge: true });
   }
-  constructor(dbQuery) {
-    this.ref = dbQuery.ref;
-    this.data = dbQuery.data();
-    this._init = this.data['init'];
+
+  constructor(dbQuery, useDefault) {
+    if (!useDefault) {
+      this.ref = dbQuery.ref;
+      this.data = dbQuery.data();
+      this._init = this.data['init'];
+    }
   }
-  _getAll = () => { return { init: this.init } };
+  _getAll = (obj) => {
+    const baseVars = { init: this.init }
+    return Object.assign(obj, baseVars);
+  };
+  _setter(setObj) {
+    return this.ref.set(setObj, { merge: true }).catch(error => {
+      console.error(error);
+    });
+  }
 }
+
+/**
+ * # To add testing vars (without changing the database)
+ * 1. Set useDefaults to true in Firebase
+ * 2. Create empty value:
+ * `_address = '';`
+ * 3. create getter
+ * `get address() { return this._address; };`
+ * 4. add your default value to constructor (the defaults are the `else` section)
+ * `this._address =  'Western Side of House'`
+ * 5. getAll(), _setter(), and data[] will affect the database
+ */
+
+/**
+ * # To add new fields to the database
+ * (Pls go ahead and create whenever you want: I created the clearProjects method so there's always reset button)
+ *
+ * copy my examples from below, I have left empty examples in the unused Classes
+ * ...here's my best explination, you should be able to see where it all came from below
+ * 1. Create empty value:
+ * `_address = '';`
+ * 2. create getter and setter
+ * `get address() { return this._address; };`
+ * `set address(l) { this._setter({ address: l }).then(() => this._address = l); }`
+ * 3. add your default value to constructor
+ * `this._address =  'Western Side of House'`
+ * 4. add the database call to the constructor
+ * `this._address = this.data['address'];`
+ * 5. add the field to the getAll
+ * `address: this.address`
+ * 6. call `this.props.firebase.clearProjects();` anywhere and it will reset the database to include your updates
+ * 7. if there's a problem, just remove or comment what was changed and call another clearProjects.
+ */
+
+/**
+* # Here's how this works
+* `this._setter()` will update the database
+* * this is why we use the getters and setters
+* `this.data['dataName']` will get the variable from the database
+* * no need to call to the database more than once
+* `getAll()` will be called when creating a new Project
+* * Firebase.clearProjects() removes everything then creates the test project (and calls getAll())
+* * this means, no data errors becuase it removes all projects that don't include the new vars
+*/
 
 export class ProjectData {
   static Brief = {
     colRef: 'briefs',
     type: class Brief extends ProjectDataBase {
-      _goals = ['fake1', 'fake2', 'fake3'];
-      get goals() {
-        return this._goals;
-      };
-      set goals(g) {
-        this._goals = g;
-      }
-      _location = 'Western Side of House';
-      get location() {
-        return this._location;
-      };
-      set location(l) {
-        this._location = l;
-      }
-      _budget = ['$500', '$1000'];
+      _goals = [];
+      get goals() { return this._goals; };
+      set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _budget = ['', ''];
       get budget() {
+        console.log("here3");
         return this._budget;
       };
       set budget(b) {
-        this._budget = b;
+          console.log("here4");
+          this._setter({ budget: b }).then(() => this._budget = b)
       }
-      _narrative = 'It\'s gonna look pretty:)';
-      get narrative() {
-        return this._narrative;
-      };
-      set narrative(n) {
-        this._narrative = n;
+      doSetBudget(b){
+          this._setter({ budget: b }).then(() => this._budget = b);
+      }
+      _narrative = '';
+      get narrative() { return this._narrative; };
+      set narrative(n) { this._setter({ narrative: n }).then(() => this._narrative = n); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      _profile = {};
+      get profile() {
+        console.log("here");
+        return this._profile; };
+      set profile(p) {
+        console.log("here2");
+        this._setter({ profile: p }).then(() => this._profile = p);
+      }
+      doSetProfile(p){
+          this._setter({ profile: p }).then(() => this._profile = p);
+      }
+
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._goals = this.data['goals'];
+          this._address = this.data['address'];
+          this._media = this.data['media'];
+          this._budget = this.data['budget'];
+          this._narrative = this.data['narrative'];
+          this._completed = this.data['completed'];
+          this._profile = this.data['profile'];
+        } else {
+          this._goals = [{id: 1, content: "buy some milk"}, {id: 2, content: "play mario cart"}];
+          this._address = 'Western Side of House';
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._budget = '$1000';
+          this._narrative = 'It\'s gonna look pretty:)';
+          this._completed = false;
+          this._profile = { spacing: "full", variety: "mixed", edges: "curved", ground: "mulch", form: "climbing" };
+        }
+      }
+
+      getAll() {
+        return this._getAll({
+          goals: this.goals,
+          address: this.address,
+          media: this.media,
+          budget: this.budget,
+          narrative: this.narrative,
+          completed: this.completed,
+          profile: this.profile
+        });
       }
     }
   };
   static Concept = {
     colRef: 'concepts',
-    type: class Concept extends ProjectDataBase { }
+    type: class Concept extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._media = this.data['media'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
+        } else {
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
+        }
+      }
+      getAll() {
+        return this._getAll({
+          media: this.media,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
+        });
+      }
+    }
+  };
+  static Draft = {
+    colRef: 'drafts',
+    type: class Draft extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
+        } else {
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
+        }
+      }
+      getAll() {
+        return this._getAll({
+          media: this.media,
+          figma: this.figma,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
+        });
+      }
+    }
   };
   static Final = {
     colRef: 'finals',
-    type: class Final extends ProjectDataBase { }
+    type: class Final extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
+      _video = '';
+      get video() { return this._video; };
+      set video(v) { this._setter({ video: v }).then(() => this._video = v); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._media = this.data['media'];
+          this._figma = this.data['figma'];
+          this._video = this.data['video'];
+          this._feedback = this.data['feedback'];
+          this._completed = this.data['completed'];
+        } else {
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._video = '7i1w4N29C9I';
+          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._completed = false;
+        }
+      }
+      getAll() {
+        return this._getAll({
+          media: this.media,
+          figma: this.figma,
+          video: this.video,
+          feedback: this.feedback,
+          completed: this.completed
+        });
+      }
+    }
   };
   static Revision = {
     colRef: 'revisions',
-    type: class Revision extends ProjectDataBase { }
-  }
+    type: class Revision extends ProjectDataBase {
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+
+      constructor(dbQuery, useDefault = false) {
+
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._media = this.data['media'];
+          this._completed = false;
+        } else {
+          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
+          this._completed = false;
+        }
+      }
+      getAll() {
+        return this._getAll({
+          media: this.media,
+          completed: this.completed
+        });
+      }
+    }
+  };
 }

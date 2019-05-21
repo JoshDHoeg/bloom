@@ -5,6 +5,7 @@ import React from 'react';
 import AuthUserContext from './context';
 import { withFirebase } from '../Firebase';
 
+//is it the correct user
 const withAuthentication = Component => {
   class WithAuthentication extends React.Component {
     constructor(props) {
@@ -22,6 +23,10 @@ const withAuthentication = Component => {
             : this.setState({ authUser: null });
         }
       );
+    }
+
+    componentWillUnmount() {
+      this.listener();
     }
 
     render() {
