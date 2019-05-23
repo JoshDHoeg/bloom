@@ -11,22 +11,25 @@ class FirebaseMessages extends channels {
 
     doCreateAndAddMessageInChannel(sentFrom, content, channelRef){
         const messageRef = this.messagesRef.doc();
-        messageRef.set({
+        return messageRef.set({
             from: sentFrom, //string
-            time: firebase.firestore.FieldValue.serverTimestamp(),
+            time: firebase.firestore.Timestamp.now(),
             content: content,
         })
-        channelRef.set({
-            messages: firebase.firestore.FieldValue.arrayUnion(messageRef)
-        }, {merge: true})
-
-        return messageRef.get().then(data => {
-            return new Message(data);
+        .then(() => {
+            channelRef.set({
+                messages: firebase.firestore.FieldValue.arrayUnion(messageRef)
+            }, {merge: true})
         })
+        .then( () => {
+            return messageRef.get().then(data => {
+                return new Message(data);
+            })
+        });
     }
 
-    async doGetMessagesByChannel(channelRef) {
-        const c = await this.doGetChannel(channelRef.id);
+    async doGetMessagesByChannel(channelId) {
+        const c = await this.doGetChannel(channelId);
         var temp = [];
         for(var i=0; i<c.messages.length; i++){
             temp.push(this.doGetMessage(c.messages[i]));

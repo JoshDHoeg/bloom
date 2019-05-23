@@ -83,8 +83,8 @@ class FirebaseAuthUser extends FirebaseBase {
           });
   }
 
-  doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null,
-                                      isDesigner = false, name = 'username', phone = '1231231234',
+  doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null, name = 'username',
+                                      isDesigner = false, phone = '1231231234',
                                       billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
                                       state = 'Default State') => {
     console.log("here yo");

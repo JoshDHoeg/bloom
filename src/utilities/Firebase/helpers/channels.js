@@ -54,16 +54,13 @@ class FirebaseChannels extends FirebaseProjects {
     }
 
     //hv97h9sMeuN1tFQPolJvNE4scMZ2 is default designer id
-    doInitNewUser = (email , password) => {
+    doInitNewUser = (email , password , name) => {
         return this.doGetUser('hv97h9sMeuN1tFQPolJvNE4scMZ2').then( des => {
             return this.doGetUser('Admin').then( admin => {
-                console.log(admin);
                 const chanDefault = this.doCreateEmptyChannel();
                 const chanProj = this.doCreateEmptyChannel();
-                console.log("here");
                 return this.doCreateEmptyProject().then(proj => {
-                    console.log(proj);
-                    return this.doCreateUserWithEmailAndPassword(email, password, proj.cols.id, chanDefault)
+                    return this.doCreateUserWithEmailAndPassword(email, password, proj.cols.id, chanDefault, name)
                         .then(ref => {
                             console.log(ref);
                             proj.cols.set({
@@ -72,7 +69,7 @@ class FirebaseChannels extends FirebaseProjects {
                             }, {merge: true});
 
                             chanProj.set({
-                                name: proj.name,
+                                name: name + "'s Project 1",
                                 p1: ref,
                                 p2: des.ref
                             }, {merge:true});
@@ -82,7 +79,6 @@ class FirebaseChannels extends FirebaseProjects {
                                 p2: admin.ref
                             }, {merge: true});
 
-                            console.log("done");
                             return ref.id;
                     });
                 });

@@ -1,23 +1,25 @@
-import React from "react";
-import { Segment, Comment } from "semantic-ui-react";
+import React from 'react';
+import { Comment } from "semantic-ui-react";
+import moment from 'moment';
+import '../../../Messaging.css'
 
-import MessagesHeader from "../../Header/Header";
-import MessageForm from "../../Form/Form";
-
-class Messages extends React.Component {
-  render() {
-    return (
-      <React.Fragment>
-        <MessagesHeader />
-
-        <Segment >
-        <Comment.Group className="messages">{/* Messages */}</Comment.Group>
-        </Segment>
-
-        <MessageForm />
-      </React.Fragment>
-    );
-  }
+const timeFromNow = timestamp => {
+    var m = moment.unix(timestamp.seconds);
+    return m.fromNow();
 }
 
-export default Messages;
+class Message extends React.Component {
+    render(){
+        return (
+            <Comment className="messages">
+                <Comment.Content >
+                    <Comment.Author as="a"> {this.props.message.from} </Comment.Author>
+                    <Comment.Metadata> {timeFromNow(this.props.message.time)} </Comment.Metadata>
+                    <Comment.Text> {this.props.message.content} </Comment.Text>
+                </Comment.Content>
+            </Comment>
+        );
+    }
+}
+
+export default Message;
