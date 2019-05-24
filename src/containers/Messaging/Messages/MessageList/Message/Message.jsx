@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment } from "semantic-ui-react";
+import { Comment, Segment } from "semantic-ui-react";
 import moment from 'moment';
 import '../../../Messaging.css'
 
@@ -11,8 +11,8 @@ const timeFromNow = timestamp => {
 class Message extends React.Component {
     render(){
         return (
-            <Comment className="messages">
-                <Comment.Content >
+               <Comment>
+                <Comment.Content collapsed>
                     <Comment.Author as="a"> {this.props.message.from} </Comment.Author>
                     <Comment.Metadata> {timeFromNow(this.props.message.time)} </Comment.Metadata>
                     <Comment.Text> {this.props.message.content} </Comment.Text>

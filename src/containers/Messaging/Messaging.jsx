@@ -3,7 +3,7 @@ import { withAuthorization } from '../../utilities/Session';
 
 import { Grid ,Sidebar, Segment , Comment, GridColumn,Menu } from "semantic-ui-react";
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-
+import '../Messaging/Messaging.css'
 import backgroundTemp from '../../Images/TempBackground.PNG';
 import * as ROUTES from "../../utilities/constants/routes";
 import Messages from './Messages/Messages';
@@ -54,7 +54,7 @@ class Messaging extends Component {
                         channels={this.state.channels}
                         setCurrentChannel={this.setCurrentChannel}
                     />
-                    <Grid.Column >
+                    <Grid.Column>
                         <Messages
                             messages={this.state.messages}
                             firebase={this.props.firebase}
