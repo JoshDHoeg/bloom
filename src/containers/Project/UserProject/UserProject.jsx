@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Step } from 'semantic-ui-react'
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Grid, Container, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-
+import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import { withAuthorization } from '../../../../../utilities/Session';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,7 +16,7 @@ class Completed extends React.Component{
 
         return (
             <div>
-
+                <Container><ProjectStatus /></Container>
                 <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                     <Container fluid style={{marginRight: "0px", marginLeft: "0px", borderRight: "0px", borderLeft: "0px", }}>
                         {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}

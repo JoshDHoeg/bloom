@@ -6,6 +6,7 @@ import { Grid, Container, Header } from 'semantic-ui-react';
 import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
+import ProjectStatus from '../../../../components/ProjectStatus/ProjectStatus';
 import Waiting from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import Completed from './Completed/Completed';
