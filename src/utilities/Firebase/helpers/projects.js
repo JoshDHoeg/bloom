@@ -1,6 +1,7 @@
 import FirebaseAuthUser from './authUser';
 import { ProjectData, Project } from '../../constants/database';
 import Firebase from '../firebase';
+import firebase from "firebase";
 
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
@@ -10,8 +11,10 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
 
   //creates empty project with default designer
+// o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
   doCreateEmptyProject = () => {
       return this.doGetUser("userAuthID").then( designer => {
+          console.log(designer);
           var proj = this.projectsRef.doc();
           proj.set({
               client: [null],
@@ -80,7 +83,10 @@ class FirebaseProjects extends FirebaseAuthUser  {
               init: false,
               stage: "concept"
           });
-          return proj;
+          return proj.get().then(data => {
+              return new Project(data);
+          })
+
       })
   }
 
@@ -128,7 +134,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
               });
       });
   }
-
   get projects() {
     return this.projectsRef.get().then(projs => projs.docs.map(proj => new Project(proj)));
   }
@@ -143,6 +148,20 @@ class FirebaseProjects extends FirebaseAuthUser  {
       });
   }
 }
+
+  //get array of project objects objects associated with a user
+  doGetProjects = (uid) => {
+      return this.doGetUser(uid).then(userData => {
+          var proms = userData.projects.map(projectRef => {
+              return this.doGetProject(projectRef.id).then(p => {
+                  return p;
+              })
+          })
+          return Promise.all(proms).then(res => {
+              return res;
+          });
+      });
+  }
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
     let cuids = Array.isArray(clientUid) ? clientUid : [clientUid];
@@ -170,7 +189,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
     return docRef;
   }
 
-  doUpdateProject = async (name = 'Test Project', clientUid = 'userAuthID', designerUid = 'l9d1ECyWoJb4tpqCAz2SnXIyHH52', pid = null, returnProject = true) => {
+  //clientUid = 'userAuthID', designerUid = 'l9d1ECyWoJb4tpqCAz2SnXIyHH52',
+  doUpdateProject = async (name = 'Test Project', clientUid = 'Admin', designerUid = 'o0Ds4w9vFmV1l8Z3BehEVYH4wHl2', pid = null, returnProject = true) => {
     const newName = name === 'Test Project' ? `Test Project ${await this.cheekyProjectNaming()}` : name;
     const projectRef = await this._doGetProjectTemplate(newName, clientUid, designerUid)
       .then(project => {

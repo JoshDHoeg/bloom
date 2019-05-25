@@ -47,8 +47,8 @@ class FirebaseBase {
     this.db = app.firestore();
     this.usersRef = this.db.collection('users');
     this.projectsRef = this.db.collection('projects');
-    this.messagesRef = this.db.collection('messages');
     this.channelsRef = this.db.collection('channels');
+    this.messagesRef = this.db.collection('messages');
   }
 
   // For all class objects like User and Project, console.log them to see vars.

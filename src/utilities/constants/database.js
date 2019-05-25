@@ -53,6 +53,14 @@ export class User {
 
   get uid() { return this.id };
 
+  _helpChannel = null;
+  get helpChannel(){return this._helpChannel; }
+  set helpChannel(chanRef){
+    this.ref.set({ helpChannel: chanRef});
+    this._helpChannel = chanRef;
+  }
+
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -64,6 +72,7 @@ export class User {
     this._city = data['city'];
     this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
+    this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
     this._billadd1 = data['billadd1'];
@@ -92,7 +101,74 @@ export class User {
   }
 }
 
+export class Channel {
+  _p1 = null;
+  get p1() { return this._p1; }
+  set p1(p1Ref){
+    this.ref.set({p1: p1Ref}, {merge: true});
+    this._p1 = p1Ref;
+  }
+  _p2 = null;
+  get p2() { return this._p2; }
+  set p2(p2Ref){
+    this.ref.set({p2: p2Ref}, {merge: true});
+    this._p2 = p2Ref;
+  }
+  _name = "";
+  get name(){return this._name;}
+  set name(n){
+    this.ref.set({name: n}, {merge: true});
+    this._name = n;
+  }
 
+  _messages = [];
+  get messages(){return this._messages;}
+  set messages(mArr){
+      this.ref.set({messages: mArr});
+      this._messages = mArr;
+  }
+
+  constructor(channelRef){
+    const data = channelRef.data();
+    this._p1 = data['p1'];
+    this._p2 = data['p2'];
+    this._name = data['name'];
+    this._messages = data['messages'];
+    this.ref = channelRef.ref;
+    this.id = this.ref.id;
+  }
+
+}
+
+
+export class Message {
+    _from = null;
+    get from() { return this._from; }
+    set from(name){
+        this.ref.set({from: name}, {merge: true});
+        this._from = name;
+    }
+    _time = "";
+    get time(){return this._time;}
+    set time(t){
+        this.ref.set({time: t}, {merge: true});
+        this._time = t;
+    }
+    _content = "";
+    get content(){return this._content;}
+    set content(c){
+        this.ref.set({content: c}, {merge: true});
+        this._content = c;
+    }
+    constructor(m){
+        const data = m.data();
+        this._from = data['from'];
+        this._time = data['time'];
+        this._content = data['content'];
+        this.ref = m.ref;
+        this.id = this.ref.id;
+    }
+}
 
 export class ProjectBase {
   get pid() {
@@ -102,6 +178,7 @@ export class ProjectBase {
     this.cols = documentRef.ref;
     const data = documentRef.data();
     this.name = data['name'];
+    this.channel = data['channel'];
     this.clientsRef = data['client'];
     this.clientRef = data['client'][0];
     this.designersRef = data['designer'];

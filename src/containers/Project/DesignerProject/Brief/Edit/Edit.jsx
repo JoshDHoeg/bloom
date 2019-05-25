@@ -31,6 +31,7 @@ class BriefPageEdit extends Component {
                 <div className="ui stackable grid container">
                     <div className="row" style={{ paddingTop: "40px" }}>
                         <h1>Design Brief</h1>
+
                         <button className='button-edit' onClick={this.props.setLive} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
                         <button onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
                     </div>
