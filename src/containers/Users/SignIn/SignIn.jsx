@@ -65,6 +65,7 @@ class SignInFormBase extends Component {
         }
       })
       .catch(error => {
+        console.log("fuck");
         this.setState({ error });
       });
 
