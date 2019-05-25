@@ -18,6 +18,7 @@ class PaymentPageView extends Component {
 
 
     render() {
+        console.log('user',this.props.user)
         return ( 
              <div style = {{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingleft: "14px", paddingBottom: "100vh"}}>
                 <div className="ui stackable grid container">

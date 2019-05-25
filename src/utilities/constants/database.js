@@ -1,5 +1,6 @@
 import Firebase from '../Firebase';
 
+
 export class User {
   _isDesigner = false;
   get isDesigner() { return this._isDesigner; }
@@ -52,6 +53,14 @@ export class User {
 
   get uid() { return this.id };
 
+  _helpChannel = null;
+  get helpChannel(){return this._helpChannel; }
+  set helpChannel(chanRef){
+    this.ref.set({ helpChannel: chanRef});
+    this._helpChannel = chanRef;
+  }
+
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -63,8 +72,13 @@ export class User {
     this._city = data['city'];
     this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
+    this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
+    this._billadd1 = data['billadd1'];
+    this._zip = data['zip'];
+    this._city = data['city'];
+    this._state = data['state'];
   }
 
   _getAll = (obj) => {
@@ -87,7 +101,74 @@ export class User {
   }
 }
 
+export class Channel {
+  _p1 = null;
+  get p1() { return this._p1; }
+  set p1(p1Ref){
+    this.ref.set({p1: p1Ref}, {merge: true});
+    this._p1 = p1Ref;
+  }
+  _p2 = null;
+  get p2() { return this._p2; }
+  set p2(p2Ref){
+    this.ref.set({p2: p2Ref}, {merge: true});
+    this._p2 = p2Ref;
+  }
+  _name = "";
+  get name(){return this._name;}
+  set name(n){
+    this.ref.set({name: n}, {merge: true});
+    this._name = n;
+  }
 
+  _messages = [];
+  get messages(){return this._messages;}
+  set messages(mArr){
+      this.ref.set({messages: mArr});
+      this._messages = mArr;
+  }
+
+  constructor(channelRef){
+    const data = channelRef.data();
+    this._p1 = data['p1'];
+    this._p2 = data['p2'];
+    this._name = data['name'];
+    this._messages = data['messages'];
+    this.ref = channelRef.ref;
+    this.id = this.ref.id;
+  }
+
+}
+
+
+export class Message {
+    _from = null;
+    get from() { return this._from; }
+    set from(name){
+        this.ref.set({from: name}, {merge: true});
+        this._from = name;
+    }
+    _time = "";
+    get time(){return this._time;}
+    set time(t){
+        this.ref.set({time: t}, {merge: true});
+        this._time = t;
+    }
+    _content = "";
+    get content(){return this._content;}
+    set content(c){
+        this.ref.set({content: c}, {merge: true});
+        this._content = c;
+    }
+    constructor(m){
+        const data = m.data();
+        this._from = data['from'];
+        this._time = data['time'];
+        this._content = data['content'];
+        this.ref = m.ref;
+        this.id = this.ref.id;
+    }
+}
 
 export class ProjectBase {
   get pid() {
@@ -97,6 +178,7 @@ export class ProjectBase {
     this.cols = documentRef.ref;
     const data = documentRef.data();
     this.name = data['name'];
+    this.channel = data['channel'];
     this.clientsRef = data['client'];
     this.clientRef = data['client'][0];
     this.designersRef = data['designer'];
@@ -106,6 +188,7 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
+
 
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
@@ -172,6 +255,7 @@ export class Project extends ProjectBase {
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
+  get stage() {return this.stage.then(s => s[0]); }
 }
 
 class ProjectDataBase {
@@ -197,7 +281,7 @@ class ProjectDataBase {
     return Object.assign(obj, baseVars);
   };
   _setter(setObj) {
-    return this.ref.set(setObj, { merge: true }).catch(error => {
+      return this.ref.set(setObj, { merge: true }).catch(error => {
       console.error(error);
     });
   }
@@ -207,11 +291,11 @@ class ProjectDataBase {
  * # To add testing vars (without changing the database)
  * 1. Set useDefaults to true in Firebase
  * 2. Create empty value:
- * `_address = '';`
+ * `_location = '';`
  * 3. create getter
- * `get address() { return this._address; };`
+ * `get location() { return this._location; };`
  * 4. add your default value to constructor (the defaults are the `else` section)
- * `this._address =  'Western Side of House'`
+ * `this._location =  'Western Side of House'`
  * 5. getAll(), _setter(), and data[] will affect the database
  */
 
@@ -222,16 +306,16 @@ class ProjectDataBase {
  * copy my examples from below, I have left empty examples in the unused Classes
  * ...here's my best explination, you should be able to see where it all came from below
  * 1. Create empty value:
- * `_address = '';`
+ * `_location = '';`
  * 2. create getter and setter
- * `get address() { return this._address; };`
- * `set address(l) { this._setter({ address: l }).then(() => this._address = l); }`
+ * `get location() { return this._location; };`
+ * `set location(l) { this._setter({ location: l }).then(() => this._location = l); }`
  * 3. add your default value to constructor
- * `this._address =  'Western Side of House'`
+ * `this._location =  'Western Side of House'`
  * 4. add the database call to the constructor
- * `this._address = this.data['address'];`
+ * `this._location = this.data['location'];`
  * 5. add the field to the getAll
- * `address: this.address`
+ * `location: this.location`
  * 6. call `this.props.firebase.clearProjects();` anywhere and it will reset the database to include your updates
  * 7. if there's a problem, just remove or comment what was changed and call another clearProjects.
  */
@@ -254,12 +338,9 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _address = '';
-      get address() { return this._address; };
-      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
-      _media = '';
-      get media() { return this._media; };
-      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+      _location = '';
+      get location() { return this._location; };
+      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
       _budget = ['', ''];
       get budget() {
         console.log("here3");
@@ -294,17 +375,15 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._address = this.data['address'];
-          this._media = this.data['media'];
+          this._location = this.data['location'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
           this._profile = this.data['profile'];
         } else {
-          this._goals = [{id: 1, content: "buy some milk"}, {id: 2, content: "play mario cart"}];
-          this._address = 'Western Side of House';
-          this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
-          this._budget = '$1000';
+          this._goals = ['goal 11', 'goal 2', 'goal 2'];
+          this._location = 'Western Side of House';
+          this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
           this._profile = { spacing: "full", variety: "mixed", edges: "curved", ground: "mulch", form: "climbing" };
@@ -314,8 +393,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           goals: this.goals,
-          address: this.address,
-          media: this.media,
+          location: this.location,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,
@@ -333,38 +411,42 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _step = '';
+      get step() {return this._step; };
+      set step(a) {this._setter({ step: a }).then(() => this._step = a); }
+      _isPaid = false;
+      get isPaid() {return this._isPaid; };
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._isPaid = this.data['isPaid']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
+          this._isPaid = false;
         }
       }
       getAll() {
         return this._getAll({
           media: this.media,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
+          isPaid: this.isPaid
         });
       }
     }
@@ -390,6 +472,10 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -399,13 +485,15 @@ export class ProjectData {
           this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._feedback = '';
           this._completed = false;
           this._isApproved = false;
+          this._feedback = this.data['feedback'];
         }
       }
       getAll() {
@@ -415,7 +503,8 @@ export class ProjectData {
           video: this.video,
           feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
+          feedback: this._feedback
         });
       }
     }
@@ -432,9 +521,6 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
@@ -447,14 +533,12 @@ export class ProjectData {
           this._media = this.data['media'];
           this._figma = this.data['figma'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
         }
@@ -464,9 +548,8 @@ export class ProjectData {
           media: this.media,
           figma: this.figma,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
         });
       }
     }
@@ -480,24 +563,51 @@ export class ProjectData {
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
 
       constructor(dbQuery, useDefault = false) {
-
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
           this._completed = this.data['completed'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
+          this._feedback = '';
         }
       }
       getAll() {
         return this._getAll({
           media: this.media,
-          completed: this.completed
+          completed: this.completed,
+          feedback: this.feedback
         });
       }
     }
   };
+  static Stage = {
+    colRef: 'stage',
+    type: class Stage extends ProjectDataBase {
+      _stage = '';
+      get stage() {return this._stage; };
+      set stage(s) {this._setter({ stage: s }).then(() => this._stage = s); }
+
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._stage = this.data['state'];
+        } else {
+          this._stage = 'concept'
+        }
+      }
+      getAll() {
+        return this._getAll({
+          stage: this.stage,
+        })
+      }
+    }
+  }
 }

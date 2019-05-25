@@ -8,23 +8,23 @@ const prodConfig = {
   messagingSenderId: "1004815344143",
 };
 
-// const devConfig = {
-//   apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
-//   authDomain: "bloomdash-aca9f.firebaseapp.com",
-//   databaseURL: "https://bloomdash-aca9f.firebaseio.com",
-//   projectId: "bloomdash-aca9f",
-//   storageBucket: "bloomdash-aca9f.appspot.com",
-//   messagingSenderId: "327651474050",
-// };
-
 const devConfig = {
-  apiKey: "AIzaSyC-ebwUdI1SzTeXbYF4ZCmroIDjdLQdmKo",
-  authDomain: "bloomprod-112b6.firebaseapp.com",
-  databaseURL: "https://bloomprod-112b6.firebaseio.com",
-  projectId: "bloomprod-112b6",
-  storageBucket: "bloomprod-112b6.appspot.com",
-  messagingSenderId: "1004815344143",
+  apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
+  authDomain: "bloomdash-aca9f.firebaseapp.com",
+  databaseURL: "https://bloomdash-aca9f.firebaseio.com",
+  projectId: "bloomdash-aca9f",
+  storageBucket: "bloomdash-aca9f.appspot.com",
+  messagingSenderId: "327651474050",
 };
+
+// const devConfig = {
+//   apiKey: "AIzaSyC-ebwUdI1SzTeXbYF4ZCmroIDjdLQdmKo",
+//   authDomain: "bloomprod-112b6.firebaseapp.com",
+//   databaseURL: "https://bloomprod-112b6.firebaseio.com",
+//   projectId: "bloomprod-112b6",
+//   storageBucket: "bloomprod-112b6.appspot.com",
+//   messagingSenderId: "1004815344143",
+// };
 
 //jesses test database:
 
@@ -47,8 +47,8 @@ class FirebaseBase {
     this.db = app.firestore();
     this.usersRef = this.db.collection('users');
     this.projectsRef = this.db.collection('projects');
-    this.messagesRef = this.db.collection('messages');
     this.channelsRef = this.db.collection('channels');
+    this.messagesRef = this.db.collection('messages');
   }
 
   // For all class objects like User and Project, console.log them to see vars.

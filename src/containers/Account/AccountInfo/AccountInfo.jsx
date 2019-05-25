@@ -7,7 +7,6 @@ import AccountInfoView from './View/View';
 import AccountInfoEdit from './Edit/Edit';
 //IMPORT CONTAINERS
 
-
 class AccountInfoPage extends Component {
     user;
     constructor(props) {
@@ -21,7 +20,16 @@ class AccountInfoPage extends Component {
         };
     }
 
-    componentDidMount() {
+    handleChange(event) {
+        console.log("handleChange called");
+        event.preventDefault();
+        console.log(event.target.name);
+        this.setState({
+            ...this.state,
+            [event.target.name]: event.target.value
+        });
+    }
+    componentWillMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getUserState();
     }

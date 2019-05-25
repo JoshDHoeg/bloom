@@ -79,11 +79,13 @@ class AccountPreferencesPage extends Component {
     }
 
     getProjectState = async () => {
+        console.log("here");
         var project = await
         this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
         console.log(project);
         this.brief = await project.brief;
+        console.log(this.brief);
         this.profile = await this.brief.profile;
         this.budget = await this.brief.budget;
         console.log(this.profile);

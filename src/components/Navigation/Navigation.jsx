@@ -27,6 +27,9 @@ const NavigationAuth = () => (
             <div className="item">
                 <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
             </div>
+            <div className="item">
+                <Link to={ROUTES.MESSAGING}>Messages</Link>
+            </div>
             <div className="right menu item">
                 <img src={logo} alt="bloomtime-logo"/>
             </div>

@@ -33,11 +33,11 @@ const UserInfoView = (props) => {
                 <td> </td> {/*used for spacing*/}
                 <td id ='NameTxt'>{name}</td> {/* should be state, used temp value until one exists */}
             </tr>
-            {/*<tr>*/}
-                {/*<td>Email:</td>*/}
-                {/*<td> </td>*/}
-                {/*<td id ='EmailTxt'>{email}</td>*/}
-            {/*</tr>*/}
+            <tr>
+                <td>Email:</td>
+                <td> </td>
+                <td id ='EmailTxt'>{email}</td>
+            </tr>
             <tr>
                 <td>Phone:</td>
                 <td></td>

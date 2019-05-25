@@ -22,9 +22,15 @@ export const CLIENT_DRAFT_EDIT = '/project/draft/edit';
 export const CLIENT_FINAL_EDIT = '/project/final/edit';
 export const CLIENT_REVISIONS_EDIT = '/project/revisions/edit';
 
+//New UI ish
+export const CONCEPT = '/project/user_concept';
+export const CONTRACTORS = '/project/user_contractors';
+export const FINAL = '/project/user_final';
+export const REVISION = '/project/user_revision';
+export const DRAFT = '/project/user_draft';
+
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';
-
 export const ACCOUNT_INFO_EDIT = '/account/info/edit';
 export const PAYMENT_OPTIONS = '/account/payment-options';
 export const PAYMENT_OPTIONS_EDIT = '/account/payment-options/edit';
