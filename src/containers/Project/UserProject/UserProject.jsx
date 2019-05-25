@@ -42,7 +42,6 @@ class UserProject extends React.Component {
                                render={(props) => <Draft {...props} edit={false} /> }
                         />
                     </div>
-                    <div> This is the user proj component </div>
                 </Segment>
             </Router>
         )
