@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import Waiting from '../../../../components/Waiting/Waiting';
+import WaitingPage from '../../../../components/Waiting/Waiting';
 import Completed from './Completed/Completed';
 import { withAuthorization } from '../../../../utilities/Session';
 class ContractorPage extends Component {
@@ -23,7 +23,7 @@ class ContractorPage extends Component {
     render(){
         if(this.state.isWaiting){
             return (
-                <Waiting state="contractors"/>
+                <WaitingPage state="contractors"/>
             );
         }else{
             return (

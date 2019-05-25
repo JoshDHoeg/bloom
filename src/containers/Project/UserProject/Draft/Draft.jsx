@@ -49,7 +49,7 @@ class Draft extends Component {
         if(!this.state.draft.completed) {
             return(
                 <div>
-                    <WaitingPage/>
+                    <WaitingPage state="draft"/>
                 </div>
             );
         } else {

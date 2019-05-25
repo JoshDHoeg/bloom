@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import ProjectStatus from '../../../../components/ProjectStatus/ProjectStatus';
-import Waiting from '../../../../components/Waiting/Waiting';
+import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import Completed from './Completed/Completed';
 
@@ -63,7 +63,7 @@ class Concept extends React.Component{
         }
         //change this to waiting component
         if(!this.state.concept.completed){
-            return (<Waiting/>)
+            return (<WaitingPage state="concept"/>)
         }
 
         //backgroundImage: "url(" + backgroundTemp + ")",

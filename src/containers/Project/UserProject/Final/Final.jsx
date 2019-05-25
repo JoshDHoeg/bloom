@@ -2,7 +2,7 @@
 import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
-import Waiting from '../../../../components/Waiting/Waiting';
+import WaitingPage from '../../../../components/Waiting/Waiting';
 import Completed from './Completed/Completed.jsx';
 
 
@@ -53,7 +53,7 @@ class Final extends React.Component {
         else
         {
         return( 
-            <Waiting/>
+            <WaitingPage state="final"/>
             );             
         }
     }

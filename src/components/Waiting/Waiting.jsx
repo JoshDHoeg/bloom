@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 import {withAuthorization} from '../../utilities/Session'
 import logo from '../../Images/TempLogo.JPG';
-import { Segment, Grid } from 'semantic-ui-react'
+import { Container, Grid } from 'semantic-ui-react'
+import ProjectStatus from '../ProjectStatus/ProjectStatus';
 
 class Waiting extends Component {
     constructor(props){
@@ -56,17 +57,22 @@ class Waiting extends Component {
 
     render(){
         return(
-            <Segment>
-                <Grid.Column style={{textAlign: 'center', paddingBottom: '15px'}}>
-                    <div style={{fontSize:'30px', fontWeight:'bold'}}>{this.state.title}</div>
-                </Grid.Column>
-                <Grid.Column style={{textAlign: 'center',paddingBottom: '15px'}}>
-                    <img src={this.state.src}/>
-                </Grid.Column>
-                <Grid.Column style={{textAlign: 'center'}}>
-                    <div style={{fontSize:'16px'}}>{this.state.message}</div>
-                </Grid.Column>
-            </Segment>
+            <Container>
+                <Grid.Row>
+                    <ProjectStatus state={this.props.state}/>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column style={{textAlign: 'center', paddingBottom: '15px'}}>
+                        <div style={{fontSize:'30px', fontWeight:'bold'}}>{this.state.title}</div>
+                    </Grid.Column>
+                    <Grid.Column style={{textAlign: 'center',paddingBottom: '15px'}}>
+                        <img src={this.state.src}/>
+                    </Grid.Column>
+                    <Grid.Column style={{textAlign: 'center'}}>
+                        <div style={{fontSize:'16px'}}>{this.state.message}</div>
+                    </Grid.Column>
+                </Grid.Row>
+            </Container>
         );
     }
 
