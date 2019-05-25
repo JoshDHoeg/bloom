@@ -80,8 +80,8 @@ class Messages extends React.Component {
             return (
                 <React.Fragment>
                     <MessagesHeader handleSearchChange={this.handleSearchChange} currentChannel={this.state.currentChannel}/>
-                    <Segment >
-                        <Comment.Group className="messages">
+                    <Segment  className="messages" >
+                        <Comment.Group>
                             <MessageList searchTerm={this.state.searchTerm} searchResults={this.state.searchResults} messages={this.state.messages}/>
                         </Comment.Group>
                     </Segment>
