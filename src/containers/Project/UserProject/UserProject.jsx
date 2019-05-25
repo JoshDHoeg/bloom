@@ -5,7 +5,6 @@ import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 import * as ROUTES from "../../../utilities/constants/routes";
-import BriefPage from "../DesignerProject/Brief/Brief";
 
 import Concept from './Concept/Concept';
 import Contractors from './Contractors/Contractors';
@@ -21,6 +20,7 @@ class UserProject extends React.Component {
             <Router>
                 <Segment basic>
                     <div>
+                        <Route exact path={ROUTES.PROJECT} component={Concept}/>
                         <Route exact
                                path={ROUTES.CONCEPT}
                                render={(props) => <Concept {...props} edit={false} index={props.location.state} /> }
@@ -42,7 +42,6 @@ class UserProject extends React.Component {
                                render={(props) => <Draft {...props} edit={false} /> }
                         />
                     </div>
-                    <div> This is the user proj component </div>
                 </Segment>
             </Router>
         )
