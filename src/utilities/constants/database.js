@@ -333,9 +333,6 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
@@ -347,13 +344,11 @@ export class ProjectData {
         if (!useDefault) {
           this._media = this.data['media'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
         }
@@ -362,7 +357,6 @@ export class ProjectData {
         return this._getAll({
           media: this.media,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
           approved: this.approved
         });
@@ -403,7 +397,7 @@ export class ProjectData {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._feedback = '';
           this._completed = false;
           this._isApproved = false;
         }
@@ -432,9 +426,6 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
@@ -447,14 +438,12 @@ export class ProjectData {
           this._media = this.data['media'];
           this._figma = this.data['figma'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
         }
@@ -464,7 +453,6 @@ export class ProjectData {
           media: this.media,
           figma: this.figma,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
           approved: this.approved
         });
