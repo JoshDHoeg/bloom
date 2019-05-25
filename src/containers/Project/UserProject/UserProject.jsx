@@ -20,6 +20,7 @@ class UserProject extends React.Component {
             <Router>
                 <Segment basic>
                     <div>
+                        <Route exact path={ROUTES.PROJECT} component={Concept} /> 
                         <Route exact
                                path={ROUTES.CONCEPT}
                                render={(props) => <Concept {...props} edit={false} index={props.location.state} /> }
