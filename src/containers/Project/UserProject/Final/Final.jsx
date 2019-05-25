@@ -3,7 +3,7 @@ import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import Completed from './Completed/Completed.jsx';
+import CompletedPage from './Completed/Completed.jsx';
 
 
 class Final extends React.Component {
@@ -45,16 +45,10 @@ class Final extends React.Component {
 
 
     render(){
-        if(this.state.final.completed)
-        {
-        return(
-            <Completed figma = {this.state.figma}/>);
-        }
-        else
-        {
-        return( 
-            <WaitingPage state="final"/>
-            );             
+        if(!this.state.final.completed){
+            return( <WaitingPage state="final"/>    );             
+        } else {
+            return( <CompletedPage figma = {this.state.figma}/> );
         }
     }
 }

@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import Completed from './Completed/Completed';
+import CompletedPage from './Completed/Completed';
 import { withAuthorization } from '../../../../utilities/Session';
 class ContractorPage extends Component {
     constructor(props){
@@ -27,7 +27,7 @@ class ContractorPage extends Component {
             );
         }else{
             return (
-                <Completed quotes={this.state.quotes}/>
+                <CompletedPage quotes={this.state.quotes}/>
             );
         }
     }

@@ -45,19 +45,11 @@ class Draft extends Component {
     }
 
     render() {
-        console.log('draft', this.state.draft.completed)
-        if(!this.state.draft.completed) {
-            return(
-                <div>
-                    <WaitingPage state="draft"/>
-                </div>
-            );
+        if(!this.state.draft.completed){
+            return( <WaitingPage state="draft"/>    );             
         } else {
-        return(
-            <div>
-                <CompletedPage video = {this.state.video} figma = {this.state.figma} media = {this.state.media}/>
-            </div>
-        );}
+            return( <CompletedPage video = {this.state.video} figma = {this.state.figma} media = {this.state.media}/> );
+        }
     }
 
 }

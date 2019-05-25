@@ -6,10 +6,9 @@ import { Grid, Container, Header } from 'semantic-ui-react';
 import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-import ProjectStatus from '../../../../components/ProjectStatus/ProjectStatus';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
-import Completed from './Completed/Completed';
+import CompletedPage from './Completed/Completed';
 
 class Concept extends React.Component{
     concept;
@@ -69,7 +68,7 @@ class Concept extends React.Component{
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
         if(this.state.concept.completed && !this.state.concept.approved) {
-            return (<Completed/>)
+            return (<CompletedPage/>)
         }
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
             return (<Payment/>)

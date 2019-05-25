@@ -8,8 +8,8 @@ class ProjectStatus extends React.Component {
         super(props);
         this.state={
             state: "concept",
-            revisions: 0,
-            contractors: false
+            revisions: 2,
+            contractors: true
         }
     }
 

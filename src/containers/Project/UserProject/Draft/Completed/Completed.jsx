@@ -8,13 +8,13 @@ import { Link } from 'react-router-dom';
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
-
+import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 import { withAuthorization } from '../../../../../utilities/Session/index';
-import {Container,Header,Button,Grid} from 'semantic-ui-react';
+import { Container, Header, Button, Grid } from 'semantic-ui-react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -56,7 +56,7 @@ class Completed extends Component {
     render() {
         let videoPortion;
 
-        if(this.state.showVideo){
+        if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                     <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
@@ -66,37 +66,38 @@ class Completed extends Component {
         }
         return (
             <Grid>
-            <Container fluid textAlign = "center" text = 'true'>
-                <Link to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
-                    <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
-                </Link>
-                <Header as='h2'>Rough Draft</Header>
-                <Grid.Row>
-                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }}/>
-                            </div>
-                         <Button.Group>
-                         <Button>Media</Button>
-                         <Button onClick={this.videoToggle}>Show Video</Button>
-                         </Button.Group>
-                         </Grid.Row>
-                         <Grid.Row>
-                         {videoPortion}
-                         </Grid.Row>
-                         <Grid.Row>
-                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                <Container><ProjectStatus state="draft" å/></Container>
+                <Container fluid textAlign="center" text='true'>
+                    <Link to="/project/user_concept" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                        <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
+                    </Link>
+                    <Header as='h2'>Rough Draft</Header>
+                    <Grid.Row>
+                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                            <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }} />
+                        </div>
+                        <Button.Group>
+                            <Button>Media</Button>
+                            <Button onClick={this.videoToggle}>Show Video</Button>
+                        </Button.Group>
+                    </Grid.Row>
+                    <Grid.Row>
+                        {videoPortion}
+                    </Grid.Row>
+                    <Grid.Row>
+                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>FeedBack</h1>
 
-                                    <textarea value={this.state.feedback}
-                                    onChange={this.handleChange} style={{padding: "30px", width: "540px"}} />
-                                     </div>
-                 <Button color='blue' onClick = {this.handleSubmit}>Submit</Button>
-                 </Grid.Row>
-                <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
-                    <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
-                </Link>
-            </Container>
+                            <textarea value={this.state.feedback}
+                                onChange={this.handleChange} style={{ padding: "30px", width: "540px" }} />
+                        </div>
+                        <Button color='blue' onClick={this.handleSubmit}>Submit</Button>
+                    </Grid.Row>
+                    <Link to="/project/user_final" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                        <FontAwesomeIcon icon="arrow-right" size="5x" color="black" />
+                    </Link>
+                </Container>
             </Grid>
         );
     }

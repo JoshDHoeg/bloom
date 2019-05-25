@@ -16,7 +16,7 @@ class Completed extends React.Component{
 
         return (
             <div>
-                <Container><ProjectStatus /></Container>
+                <Container><ProjectStatus state="concept"/></Container>
                 <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                     <Container fluid style={{marginRight: "0px", marginLeft: "0px", borderRight: "0px", borderLeft: "0px", }}>
                         {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}

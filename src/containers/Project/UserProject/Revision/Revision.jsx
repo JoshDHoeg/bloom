@@ -3,7 +3,7 @@ import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import Completed from './Completed/Completed';
+import CompletedPage from './Completed/Completed';
 
 
 class Revision extends React.Component{
@@ -43,16 +43,10 @@ class Revision extends React.Component{
         return state;
     }
     render(){
-        if(this.state.revision.completed)
-        {
-        return(
-            <Completed figma = {this.state.figma}/>);
-        }
-        else
-        {
-        return( 
-            <WaitingPage state="revision"/>
-            );             
+        if(!this.state.revision.completed){
+            return( <WaitingPage state="revision"/>    );             
+        } else {
+            return( <CompletedPage figma = {this.state.figma}/> );
         }
     }
 }
