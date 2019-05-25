@@ -111,11 +111,7 @@ class SignInFormBase extends Component {
             <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
               Login
             </Button>
-<<<<<<< HEAD
             {error && <p style={{color:"red"}}>Username or password was invalid</p>}
-=======
-            {/* {error && <p>{error.message}</p>} */}
->>>>>>> fe087367648e5bfefffeaccca8261597d2b89256
           </Segment>
         </Form>
 

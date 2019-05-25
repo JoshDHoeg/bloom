@@ -10,7 +10,9 @@ const UserInfo = (props) => {
                 <UserInfoEdit 
                 name={props.name} 
                 phone={props.phone}
-                handleChange={props.handleChange}/>
+                handleChange={props.handleChange}
+                formSubmit={props.formSubmit}
+                />
             ) : (
                 <UserInfoView 
                 name={props.name} 
@@ -23,7 +25,6 @@ const UserInfo = (props) => {
 const UserInfoView = (props) => {
     //console.log(props);
     const name = props.name;
-    const email = props.email;
     const phone = props.phone;
     return (
         <table className="ui definition table">
@@ -33,11 +34,11 @@ const UserInfoView = (props) => {
                 <td> </td> {/*used for spacing*/}
                 <td id ='NameTxt'>{name}</td> {/* should be state, used temp value until one exists */}
             </tr>
-            <tr>
+            {/* <tr>
                 <td>Email:</td>
                 <td> </td>
                 <td id ='EmailTxt'>{email}</td>
-            </tr>
+            </tr> */}
             <tr>
                 <td>Phone:</td>
                 <td></td>
@@ -59,7 +60,7 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Name:</td>
                 <td> </td>
-                <td id ='EditNameTxt'> <Input name="name" onChange={handleChange} type='text' id='NameEditTxt' defaultValue={name} style={{ width: '140px' }} ></Input></td>
+                <td id ='EditNameTxt'> <Input name="name" onChange={handleChange} type='text'  defaultValue={name} style={{ width: '140px' }} ></Input></td>
             </tr>
             {/*<tr>*/}
                 {/*<td>Email:</td>*/}
@@ -69,7 +70,7 @@ const UserInfoEdit = (props) => {
             <tr>
                 <td>Phone:</td>
                 <td></td>
-                <td id ='EditPhoneTxt'><Input name="phone" onChange={handleChange} type='text' id='PhoneEditTxt' defaultValue={phone} style={{ width: '140px' }} ></Input></td>
+                <td id ='EditPhoneTxt'><Input name="phone" onChange={handleChange} type='text' defaultValue={phone} style={{ width: '140px' }} ></Input></td>
             </tr>
         </tbody>
         </table>
