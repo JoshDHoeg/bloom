@@ -62,11 +62,10 @@ class SignInFormBase extends Component {
           console.log("we logged in");
           this.setState({ ...INITIAL_STATE });
           this.props.history.push(ROUTES.PROJECT);
-        } else {
-          console.log("there was a problem")
-          // error
-          // this.setState({ error });
         }
+      })
+      .catch(error => {
+        this.setState({ error });
       });
 
     event.preventDefault();
@@ -107,7 +106,7 @@ class SignInFormBase extends Component {
             <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
               Login
             </Button>
-            {error && <p>{error.message}</p>}
+            {error && <p style={{color:"red"}}>Username or password was invalid</p>}
           </Segment>
         </Form>
 
