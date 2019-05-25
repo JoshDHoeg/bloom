@@ -53,6 +53,14 @@ export class User {
 
   get uid() { return this.id };
 
+  _helpChannel = null;
+  get helpChannel(){return this._helpChannel; }
+  set helpChannel(chanRef){
+    this.ref.set({ helpChannel: chanRef});
+    this._helpChannel = chanRef;
+  }
+
+
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
@@ -64,6 +72,7 @@ export class User {
     this._city = data['city'];
     this._state = data['state'];
     this._projects = data['projects']; // DocumentReference[]
+    this._helpChannel = data['helpChannel'];
     this.ref = dbQuery.ref;
     this.id = this.ref.id; // string
     this._billadd1 = data['billadd1'];
@@ -92,7 +101,74 @@ export class User {
   }
 }
 
+export class Channel {
+  _p1 = null;
+  get p1() { return this._p1; }
+  set p1(p1Ref){
+    this.ref.set({p1: p1Ref}, {merge: true});
+    this._p1 = p1Ref;
+  }
+  _p2 = null;
+  get p2() { return this._p2; }
+  set p2(p2Ref){
+    this.ref.set({p2: p2Ref}, {merge: true});
+    this._p2 = p2Ref;
+  }
+  _name = "";
+  get name(){return this._name;}
+  set name(n){
+    this.ref.set({name: n}, {merge: true});
+    this._name = n;
+  }
 
+  _messages = [];
+  get messages(){return this._messages;}
+  set messages(mArr){
+      this.ref.set({messages: mArr});
+      this._messages = mArr;
+  }
+
+  constructor(channelRef){
+    const data = channelRef.data();
+    this._p1 = data['p1'];
+    this._p2 = data['p2'];
+    this._name = data['name'];
+    this._messages = data['messages'];
+    this.ref = channelRef.ref;
+    this.id = this.ref.id;
+  }
+
+}
+
+
+export class Message {
+    _from = null;
+    get from() { return this._from; }
+    set from(name){
+        this.ref.set({from: name}, {merge: true});
+        this._from = name;
+    }
+    _time = "";
+    get time(){return this._time;}
+    set time(t){
+        this.ref.set({time: t}, {merge: true});
+        this._time = t;
+    }
+    _content = "";
+    get content(){return this._content;}
+    set content(c){
+        this.ref.set({content: c}, {merge: true});
+        this._content = c;
+    }
+    constructor(m){
+        const data = m.data();
+        this._from = data['from'];
+        this._time = data['time'];
+        this._content = data['content'];
+        this.ref = m.ref;
+        this.id = this.ref.id;
+    }
+}
 
 export class ProjectBase {
   get pid() {
@@ -102,6 +178,7 @@ export class ProjectBase {
     this.cols = documentRef.ref;
     const data = documentRef.data();
     this.name = data['name'];
+    this.channel = data['channel'];
     this.clientsRef = data['client'];
     this.clientRef = data['client'][0];
     this.designersRef = data['designer'];
@@ -111,7 +188,7 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
-  
+
 
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
@@ -178,6 +255,7 @@ export class Project extends ProjectBase {
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
+  get stage() {return this.stage.then(s => s[0]); }
 }
 
 class ProjectDataBase {
@@ -333,38 +411,32 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
-      _cost = false;
-      get cost() {return this._cost; };
-      set cost(t) {this._setter({ cost: t }).then(() => this._cost = t); }
+      _step = '';
+      get step() {return this._step; };
+      set step(a) {this._setter({ step: a }).then(() => this._step = a); }
       _isPaid = false;
       get isPaid() {return this._isPaid; };
       set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
-          this._cost = this.data['cost'];
-          this._isPaid = this.data['isPaid'];
+          this._isPaid = this.data['isPaid']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
-          this._cost = 59900;
           this._isPaid = false;
         }
       }
@@ -372,10 +444,8 @@ export class ProjectData {
         return this._getAll({
           media: this.media,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
           approved: this.approved,
-          cost: this.cost,
           isPaid: this.isPaid
         });
       }
@@ -402,6 +472,10 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -411,13 +485,15 @@ export class ProjectData {
           this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
+          this._feedback = '';
           this._completed = false;
           this._isApproved = false;
+          this._feedback = this.data['feedback'];
         }
       }
       getAll() {
@@ -427,7 +503,8 @@ export class ProjectData {
           video: this.video,
           feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
+          feedback: this._feedback
         });
       }
     }
@@ -444,9 +521,6 @@ export class ProjectData {
       _video = '';
       get video() { return this._video; };
       set video(v) { this._setter({ video: v }).then(() => this._video = v); }
-      _feedback = '';
-      get feedback() { return this._feedback; };
-      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
@@ -459,14 +533,12 @@ export class ProjectData {
           this._media = this.data['media'];
           this._figma = this.data['figma'];
           this._video = this.data['video'];
-          this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
-          this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
         }
@@ -476,9 +548,8 @@ export class ProjectData {
           media: this.media,
           figma: this.figma,
           video: this.video,
-          feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
         });
       }
     }
@@ -492,24 +563,51 @@ export class ProjectData {
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
 
       constructor(dbQuery, useDefault = false) {
-
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
           this._completed = this.data['completed'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
+          this._feedback = '';
         }
       }
       getAll() {
         return this._getAll({
           media: this.media,
-          completed: this.completed
+          completed: this.completed,
+          feedback: this.feedback
         });
       }
     }
   };
+  static Stage = {
+    colRef: 'stage',
+    type: class Stage extends ProjectDataBase {
+      _stage = '';
+      get stage() {return this._stage; };
+      set stage(s) {this._setter({ stage: s }).then(() => this._stage = s); }
+
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._stage = this.data['state'];
+        } else {
+          this._stage = 'concept'
+        }
+      }
+      getAll() {
+        return this._getAll({
+          stage: this.stage,
+        })
+      }
+    }
+  }
 }

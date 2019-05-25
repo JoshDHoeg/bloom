@@ -8,34 +8,40 @@ import PaymentPageEdit from './Edit/Edit';
 
 
 class PaymentInfoPage extends Component {
-    user;
-    constructor(props) { 
+    user; 
+    constructor(props) {
         super(props);
-        this.state = {
+        this.state = { 
             loading: false,
-            edit: true,
+            edit: false,
+            card: '444',
+            exp: '444',
+            cvc: '444',
+            user:{
             billadd1: '',
             zip: '',
             city: '',
-            state: '',
-            username: ''
+            state:'',
+            }
         };
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
     }
 
     formSubmit = () => {
-        console.log("submitted", this.state)
         this.user.billadd1 = this.state.user.billadd1;
         this.user.zip = this.state.user.zip;
         this.user.city = this.state.user.city;
         this.user.state = this.state.user.state;
-        
+    }
+
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
     }
 
     handleChange(event) {
         event.preventDefault();
-        console.log('event', event.target.name);
+//        console.log(event.target.name);
         this.setState({
             user: {
                 ...this.state.user,
@@ -43,25 +49,29 @@ class PaymentInfoPage extends Component {
             }
         });
     }
-    
+
     componentDidMount(){
         this.setState({ loading: true, edit: this.props.edit});
         this.getUserState();
+  
     }
-
+    
     getUserState = async () => {
-        this.user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
-        console.log('user3:', this.user);
-        const state = {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid, true);
+        this.user = await user
+        console.log('user3:', user);
+        const state = await {
             loading: false,
-            user: this.user,
-            billadd1: this.user.billadd1,
-            zip: this.user.zip,
-            state: this.user.state,
-            city: this.user.city,
-            name: this.user.name,
+            user: {
+                billadd1: this.user.billadd1,
+                zip: this.user.zip,
+                state: this.user.state,
+                city: this.user.city,
+            },
+            card: '444',
+            exp: '444',
+            cvc: '444'
         }
-
         this.setState(state);
         return state;
     }
@@ -73,21 +83,19 @@ class PaymentInfoPage extends Component {
                 <PaymentPageEdit 
                 formSubmit={this.formSubmit}
                 handleChange={this.handleChange}
-                billadd1={this.state.billadd1}
-                zip={this.state.zip}
-                state={this.state.state}
-                city={this.state.city}
-                name={this.state.name}
+                card={this.state.card}
+                exp={this.state.exp}
+                cvc={this.state.cvc}
+                user={this.state.user}
                 />
             );
         }else{
             return (
-                <PaymentPageView  
-                billadd1={this.state.billadd1}
-                zip={this.state.zip}
-                state={this.state.state}
-                city={this.state.city}
-                name={this.state.name}
+                <PaymentPageView 
+                card={this.state.card}
+                exp={this.state.exp}
+                cvc={this.state.cvc}
+                user={this.state.user}
                 />
             );
         }

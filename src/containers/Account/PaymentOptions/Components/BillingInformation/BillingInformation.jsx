@@ -28,7 +28,7 @@ const BillingInfoView = (props) => {
     const zip = props.zip;
     const city = props.city;
     const state = props.state;
-    //console.log('user2', user)
+//    console.log('user2', user)
     console.log('billadd1:', billadd1)
     return (
         <table class="ui definition table">
