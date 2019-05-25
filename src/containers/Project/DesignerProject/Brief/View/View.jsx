@@ -64,15 +64,15 @@ class BriefPageView extends Component {
                                 <DetailList edit={this.state.edit} budget={this.props.brief.budget} address={this.props.brief.address}/>
                             </span>
                         </div>
-                        <div className="row">
 
+                        <div className="row">
                             <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
                                 <Narrative edit={this.state.edit}  narrative={this.props.brief.narrative}/>
                             </span>
                         </div>
-                        <div className="row" >
 
+                        <div className="row" >
                             <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
                                 <TasteProfile edit={this.state.edit} brief={this.props.brief}/>
