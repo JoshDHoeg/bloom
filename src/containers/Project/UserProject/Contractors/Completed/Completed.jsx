@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Grid, Divider, Segment, Button, Header} from 'semantic-ui-react';
+import { Grid, Divider, Segment, Button, Header, Container} from 'semantic-ui-react';
 import { withAuthorization } from '../../../../../utilities/Session';
 
 class Completed extends Component {
@@ -11,28 +11,31 @@ class Completed extends Component {
     }
     render(){
         return(
-            <Segment>
-                <Header>Hey we found three quotes for you!</Header>
-                {this.props.quotes.map(quote => 
-                <Segment placeholder>
-                <Grid columns={2} stackable textAlign='center'>
-                  <Divider vertical></Divider>
-            
-                  <Grid.Row verticalAlign='middle'>
-                    <Grid.Column>
-                        <div>{quote.name}</div>
-                        <div>{quote.stars}</div>
+            <div>
+                <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                    <Grid.Column width={3} />
+                    <Grid.Column width={9}>
+                        <Header>Hey we found three quotes for you!</Header>
+                        {this.props.quotes.map(quote => 
+                        <Segment>
+                            <Grid columns={2} stackable textAlign='center'>
+                                <Grid.Row >
+                                    <Grid.Column>
+                                        <Header>{quote.name}</Header>
+                                        <div>{quote.stars}</div>
+                                    </Grid.Column>
+                            
+                                    <Grid.Column>
+                                        <div>{quote.price}</div>
+                                    <Button primary>Contact</Button>
+                                    </Grid.Column>
+                                </Grid.Row>
+                            </Grid>
+                        </Segment>
+                        )}
                     </Grid.Column>
-            
-                    <Grid.Column>
-                        <div>{quote.price}</div>
-                      <Button primary>Contact</Button>
-                    </Grid.Column>
-                  </Grid.Row>
                 </Grid>
-              </Segment>
-                )}
-            </Segment>
+                </div>
         );
     }
 }
