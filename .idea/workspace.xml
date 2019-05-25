@@ -4,11 +4,16 @@
     <list default="true" id="9e3db4cd-3541-42ad-bb6d-44c77101d51e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Approve/Approve.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Approve/Approve.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/Project.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -23,8 +28,8 @@
       <file leaf-file-name="UserProject.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="526">
-              <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+            <state relative-caret-position="-172">
+              <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#185#248#0" expanded="true" />
@@ -33,15 +38,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Concept.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx">
+      <file leaf-file-name="Project.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/Project.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="750">
-              <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#26#0" expanded="true" />
-                <element signature="e#149#215#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="195">
+              <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -49,8 +51,8 @@
       <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="202">
-              <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
+            <state relative-caret-position="569">
+              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="45" selection-end-column="31" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -58,58 +60,51 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Draft.jsx" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Draft.jsx">
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+            <state relative-caret-position="71">
+              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="18" selection-end-column="25" />
               <folding>
-                <element signature="e#0#41#0" expanded="true" />
+                <element signature="e#79#131#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/constants/routes.js">
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="29" column="41" lean-forward="true" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="faArrowRight.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/node_modules/@fortawesome/free-solid-svg-icons/faArrowRight.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="14" lean-forward="false" selection-start-line="4" selection-start-column="14" selection-end-line="4" selection-end-column="14" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Approve.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Approve/Approve.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="15" column="65" lean-forward="false" selection-start-line="15" selection-start-column="65" selection-end-line="15" selection-end-column="65" />
+            <state relative-caret-position="387">
+              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="64" />
               <folding>
-                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#71#140#0" expanded="true" />
+                <element signature="e#311#354#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="View.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx">
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="49" column="37" lean-forward="false" selection-start-line="49" selection-start-column="37" selection-end-line="49" selection-end-column="37" />
+            <state relative-caret-position="451">
+              <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
               <folding>
-                <element signature="e#25#66#0" expanded="true" />
-                <element signature="e#128#203#0" expanded="true" />
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="495">
+              <caret line="57" column="49" lean-forward="false" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+              <folding>
+                <element signature="e#71#140#0" expanded="true" />
+                <element signature="e#319#362#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -163,10 +158,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/containers/Users/SignIn/SignIn.jsx" />
-        <option value="$PROJECT_DIR$/src/components/Navigation/Navigation.jsx" />
-        <option value="$PROJECT_DIR$/src/utilities/Firebase/context.js" />
-        <option value="$PROJECT_DIR$/src/containers/Project/Brief/Components/GoalList/GoalList.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Concept/Concept.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Final/Final.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Revisions/Revisions.jsx" />
@@ -186,7 +177,6 @@
         <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/AccountPreferenceBanner.jsx" />
         <option value="$PROJECT_DIR$/src/components/AccountBanners/AccountPreferencesBanner/EditButton/EditButton.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/Budget/Budget.jsx" />
-        <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/AccountPreferences.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Components/TasteProfile/TasteProfile.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Account/AccountPreferences/Edit/Edit.jsx" />
@@ -199,21 +189,26 @@
         <option value="$PROJECT_DIR$/src/containers/Project/Revisions/View/View.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Brief/Brief.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Brief/View/View.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/DesignerProject.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Revisions/View/Waiting/Waiting.jsx" />
         <option value="$PROJECT_DIR$/src/utilities/constants/routes.js" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Brief.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" />
         <option value="$PROJECT_DIR$/src/components/Waiting/Waiting.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Edit/Edit.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/schedule.js" />
-        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Approve/Approve.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/Waiting/Waiting.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" />
+        <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" />
       </list>
     </option>
   </component>
@@ -261,6 +256,65 @@
               <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
               <item name="bloom" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Contractors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Contractors" type="462c0819:PsiDirectoryNode" />
+              <item name="Completed" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Revision" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
+              <item name="bloom" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Project" type="462c0819:PsiDirectoryNode" />
+              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
+              <item name="Revision" type="462c0819:PsiDirectoryNode" />
+              <item name="Completed" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -406,15 +460,16 @@
       <workItem from="1555485492229" duration="74125000" />
       <workItem from="1556662587221" duration="3087000" />
       <workItem from="1557531692821" duration="12565000" />
-      <workItem from="1558764366842" duration="4971000" />
+      <workItem from="1558764366842" duration="6749000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="208057000" />
+    <option name="totallyTimeSpent" value="209835000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="23" width="1280" height="727" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -429,7 +484,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.290625" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.290625" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24140625" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -459,16 +514,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Concept/View/View.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="50" column="29" lean-forward="true" selection-start-line="50" selection-start-column="29" selection-end-line="50" selection-end-column="29" />
-          <folding>
-            <element signature="e#25#66#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
@@ -571,16 +616,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/Project.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="1" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="1" />
-          <folding>
-            <element signature="e#72#132#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Components/DetailList/DetailList.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -592,6 +627,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -599,6 +637,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#51#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -606,6 +647,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
           <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -613,6 +657,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#24#50#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -620,6 +667,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#51#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -627,6 +677,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding>
+            <element signature="e#25#66#0" expanded="false" />
+            <element signature="e#128#200#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -634,6 +688,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -657,37 +712,6 @@
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Rough/Waiting/Waiting.jsx" />
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Waiting/Waiting.jsx" />
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Waiting/Waiting.jsx" />
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/DesignerProject.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -728,6 +752,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="218">
           <caret line="25" column="4" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="25" selection-end-column="4" />
+          <folding>
+            <element signature="e#25#66#0" expanded="false" />
+            <element signature="e#170#245#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -735,6 +763,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12">
           <caret line="51" column="30" lean-forward="false" selection-start-line="51" selection-start-column="19" selection-end-line="51" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -742,6 +771,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="191">
           <caret line="19" column="4" lean-forward="true" selection-start-line="19" selection-start-column="4" selection-end-line="19" selection-end-column="4" />
+          <folding>
+            <element signature="e#25#66#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -784,6 +816,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Draft/Draft.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="e#147#219#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="347" column="76" lean-forward="false" selection-start-line="347" selection-start-column="76" selection-end-line="347" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -792,21 +844,28 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx">
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/Project.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="50" column="36" lean-forward="false" selection-start-line="50" selection-start-column="36" selection-end-line="50" selection-end-column="36" />
+        <state relative-caret-position="195">
+          <caret line="16" column="32" lean-forward="false" selection-start-line="16" selection-start-column="32" selection-end-line="16" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="45" selection-end-column="31" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#149#215#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="526">
-          <caret line="43" column="26" lean-forward="false" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+        <state relative-caret-position="-172">
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#185#248#0" expanded="true" />
@@ -816,38 +875,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/constants/routes.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="29" column="41" lean-forward="true" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+        <state relative-caret-position="323">
+          <caret line="29" column="41" lean-forward="false" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Draft/Draft.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="e#147#219#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="202">
-          <caret line="29" column="29" lean-forward="true" selection-start-line="29" selection-start-column="29" selection-end-line="29" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Draft.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="570">
+          <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#149#215#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="57" column="49" lean-forward="false" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+          <folding>
+            <element signature="e#71#140#0" expanded="true" />
+            <element signature="e#319#362#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="71">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="18" selection-end-column="25" />
+          <folding>
+            <element signature="e#79#131#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="64" />
+          <folding>
+            <element signature="e#71#140#0" expanded="true" />
+            <element signature="e#311#354#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>

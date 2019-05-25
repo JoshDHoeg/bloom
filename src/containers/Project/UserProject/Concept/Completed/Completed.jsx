@@ -1,20 +1,18 @@
 import React from 'react';
-import { Button , Grid, Container, Header } from 'semantic-ui-react';
+import { Grid, Container, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 import { withAuthorization } from '../../../../../utilities/Session';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-
-import "./index.scss";
-
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
 class Completed extends React.Component{
 
     render(){
+        console.log("here");
 
         return (
             <div>
@@ -43,7 +41,7 @@ class Completed extends React.Component{
                                 frameBorder="20">
                         </iframe>
                         <script src="./schedule.js" type="text/javascript"> </script>
-                        <Link to="/projects/user_draft" style={{position: "absolute", left: "90%", top: "25%"}}>
+                        <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "25%"}}>
                             <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
                         </Link>
                     </Container>
