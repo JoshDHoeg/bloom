@@ -12,10 +12,26 @@ class Final extends React.Component
         super(props);
         this.state = {
             completed: true,
-            figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
+            figma: '',
+        }
         };
-    //Change state in the future 
-      }
+    
+        doSetProject = async () => {
+            this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+            //const completed = await this.project.concept.completed;
+            const approved = await this.project.concept.approved;
+            const figma = await this.project.final.figma;
+            this.setState({
+                //completed: completed,
+                approved: approved,
+                figma: figma
+            });
+        };
+
+        componentWillMount(){
+            this.doSetProject();
+       };
+
 
     render(){
         if(this.state.completed)
