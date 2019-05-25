@@ -345,7 +345,7 @@ export class ProjectData {
       set step(a) {this._setter({ step: a }).then(() => this._step = a); }
       _isPaid = false;
       get isPaid() {return this._isPaid; };
-      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = a); }
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);

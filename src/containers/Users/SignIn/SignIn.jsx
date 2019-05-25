@@ -79,6 +79,8 @@ class SignInFormBase extends Component {
   render() {
     const { email, password, error } = this.state;
 
+    console.log("why the fuck isnth this working");
+
     const isInvalid = password === '' || email === '';
 
     return (
