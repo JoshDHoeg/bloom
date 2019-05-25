@@ -11,7 +11,7 @@ class Final extends React.Component
     constructor(props) {
         super(props);
         this.state = {
-            completed: false,
+            completed: true,
             figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
         };
     //Change state in the future 
