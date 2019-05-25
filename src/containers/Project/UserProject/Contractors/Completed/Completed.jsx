@@ -2,6 +2,14 @@ import React, {Component} from 'react'
 import { Grid, Divider, Segment, Button, Header, Container} from 'semantic-ui-react';
 import { withAuthorization } from '../../../../../utilities/Session';
 
+import { Link } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowRight);
+library.add(faArrowLeft);
+
+
 class Completed extends Component {
     constructor(props){
         super(props);
@@ -13,10 +21,15 @@ class Completed extends Component {
         return(
             <div>
                 <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                    <Container fluid textAlign = 'center' text = 'true'>
+                    <Link to="/project/user_revision" style={{position: "absolute", right: "90%", top: "250px"}}>
+                        <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
+                    </Link>
+
                     <Grid.Column width={3} />
                     <Grid.Column width={9}>
                         <Header>Hey we found three quotes for you!</Header>
-                        {this.props.quotes.map(quote => 
+                        {this.props.quotes.map(quote =>
                         <Segment>
                             <Grid columns={2} stackable textAlign='center'>
                                 <Grid.Row >
@@ -24,7 +37,7 @@ class Completed extends Component {
                                         <Header>{quote.name}</Header>
                                         <div>{quote.stars}</div>
                                     </Grid.Column>
-                            
+
                                     <Grid.Column>
                                         <div>{quote.price}</div>
                                     <Button primary>Contact</Button>
@@ -34,6 +47,7 @@ class Completed extends Component {
                         </Segment>
                         )}
                     </Grid.Column>
+                    </Container>
                 </Grid>
                 </div>
         );

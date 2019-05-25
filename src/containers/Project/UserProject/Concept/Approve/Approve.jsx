@@ -13,7 +13,7 @@ class Approve extends React.Component{
                     <Container>
                         <br/>
                         <br/>
-                        <Header as='h1'>Fill out this form</Header>
+                        <Header as='h1'>Terms of service</Header>
                     </Container>
                 </Grid>
             </div>

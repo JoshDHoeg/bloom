@@ -7,91 +7,71 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import ProjectStatus from '../../../../components/ProjectStatus/ProjectStatus';
-import Payment from '../Concept/Payment/Payment'
+import Waiting from '../../../../components/Waiting/Waiting';
+import Payment from '../Concept/Payment/Payment';
+import Completed from './Completed/Completed';
 
 class Concept extends React.Component{
-
-    project;
-
+    concept;
     constructor(props){
         super(props);
         this.state = {
             loading: true,
             completed: false,
-            approved: false,
-            isPaid: false,
-            video: null,
-            schedule: null
+            concept: {
+                approved: false,
+                isPaid: false,
+                video: null,
+                schedule: null
+            }
         }
-        this.doSetProject = this.doSetProject.bind(this);
+       // this.completed = this.completed.bind(this)
     }
 
-    doSetProject = async () => {
-        this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        const completed = await this.project.concept.completed;
-        const approved = await this.project.concept.approved;
-        const video = await this.project.concept.video;
-        const isPaid = await this.project.concept.isPaid;
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+        if(this.props.location.state){
+          this.setState({projectIndex: this.props.location.state.projectIndex});
+          this.getProjectState(this.props.location.state.projectIndex);
+        } else{
+          this.setState({projectIndex: 0});
+          this.getProjectState(0);
+        }
+      }
+
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
+        const state = await {
+            loading: false,
+            concept: {
+                ...this.concept.getAll()
+            }
+        }
 
-        this.setState({
-            completed: completed,
-            approved: approved,
-            video: video,
-            isPaid: isPaid,
-            schedule: null,
-            loading: false
-        });
-    }
-
-    componentWillMount(){
-         this.doSetProject();
+        this.setState(state);
+        return state;
     }
 
     render(){
+        this.state.concept.completed = true;
+        console.log('Paid?', this.state.concept.isPaid)
         console.log(this.state);
-        this.state.completed= true;
         if(this.state.loading){
             return (<div>Loading...</div>)
         }
         //change this to waiting component
-        if(!this.state.completed){
-            return <div> Waiting </div>
+        if(!this.state.concept.completed){
+            return (<Waiting/>)
         }
 
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
-        if(this.state.completed && !this.state.approved){
-            return (
-                <div>
-                    <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                        <Container>
-                            <ProjectStatus />
-                        </Container>
-                        <Container>
-                            <br/>
-                            <Header as='h1'>Concept Designs</Header>
-                            <Header as='h3'> Watch the video and pick your favorite concept to <br/> keep the project moving </Header>
-                            <br/>
-                            <br/>
-                            <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG"
-                                    align="middle"
-                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                            </iframe>
-                            <br/>
-                            <br/>
-                            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="560" height="315"
-                                    frameBorder="0">
-                            </iframe>
-                            <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"> </script>
-                        </Container>
-                    </Grid>
-                </div>
-            )
+        if(this.state.concept.completed && !this.state.concept.approved) {
+            return (<Completed/>)
         }
-
-        if(this.state.completed && this.state.approved && !this.state.concept.isPaid){
+        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
             return (<Payment/>)
         }
 

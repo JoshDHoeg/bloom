@@ -8,6 +8,12 @@ import * as ROUTES from "../../../../../utilities/constants/routes";
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowRight);
+library.add(faArrowLeft);
+
 class Completed extends React.Component
 {
     constructor(props) {
@@ -25,6 +31,9 @@ class Completed extends React.Component
     render(){
         return(
             <Container textAlign = 'center' text = 'true'>
+            <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
+                <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
+            </Link>
             <Header as='h2'>Final Draft</Header>
             <p>
             Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
@@ -34,7 +43,7 @@ class Completed extends React.Component
                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                 <FigmaEmbed url={this.props.figma} style={{ width: "540px", margin: "30px" }}/>
                  </span>
-                 </Segment>        
+                 </Segment>
           <Button.Group>
           <Button>Download Design</Button>
          <Button onClick= {this.HandleClick} >Ask for Revision</Button>
@@ -46,8 +55,11 @@ class Completed extends React.Component
           <Button color='blue'>Submit</Button>
     </Form>
            </Message>
+            <Link to="/project/user_contractors" style={{position: "absolute", left: "90%", top: "250px"}}>
+                <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
+            </Link>
           </Container>
-          
+
         )
     }
 }
