@@ -6,35 +6,46 @@ import Waiting from '../../../../components/Waiting/Waiting';
 import Completed from './Completed/Completed.jsx';
 
 
-class Final extends React.Component
-{
+class Final extends React.Component {
+    final;
     constructor(props) {
         super(props);
         this.state = {
-            completed: true,
-            figma: '',
+            final: {
+                completed: true,
+                figma: '',
+            }
         }
         };
     
-        doSetProject = async () => {
-            this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-            //const completed = await this.project.concept.completed;
-            const approved = await this.project.concept.approved;
-            const figma = await this.project.final.figma;
-            this.setState({
-                //completed: completed,
-                approved: approved,
-                figma: figma
-            });
-        };
-
-        componentWillMount(){
-            this.doSetProject();
-       };
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+        if(this.props.location.state){
+          this.setState({projectIndex: this.props.location.state.projectIndex});
+          this.getProjectState(this.props.location.state.projectIndex);
+        } else{
+          this.setState({projectIndex: 0});
+          this.getProjectState(0);
+        }
+      }
+    
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.final = await project.final;
+        //const schedule = await this.project.concept.schedule;
+        const state = await {
+            loading: false,
+            final: {
+                ...this.final.getAll()
+            }
+        }
+        this.setState(state);
+        return state;
+    }
 
 
     render(){
-        if(this.state.completed)
+        if(this.state.final.completed)
         {
         return(
             <Completed figma = {this.state.figma}/>);
