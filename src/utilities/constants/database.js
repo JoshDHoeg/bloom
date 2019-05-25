@@ -407,6 +407,9 @@ export class ProjectData {
       _figma = '';
       get figma() { return this._figma; };
       set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); } 
+      _cost = '';
+      get cost() {return this._cost; };
+      set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
       constructor(dbQuery, useDefault = false) {
 
         super(dbQuery, useDefault);
@@ -414,11 +417,13 @@ export class ProjectData {
           this._media = this.data['media'];
           this._figma = this.data['figma'];
           this._isPaid = this.data["isPaid"];
+          this._cost = this.data["cost"];
 
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._isPaid = [false];
+          this._cost = [59999]
         }
       }
       getAll() {
@@ -426,6 +431,7 @@ export class ProjectData {
           isPaid: this.isPaid,
           media: this.media,
           figma: this.figma,
+          cost: this.cost
         });
       }
     }
