@@ -8,6 +8,7 @@ import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 import { withAuthorization } from '../../../../../utilities/Session/index';
+import {Segment,Container,Header,Button,Grid} from 'semantic-ui-react'
 
 class Completed extends Component {
     constructor(props) {
@@ -45,7 +46,6 @@ class Completed extends Component {
 
     render() {
         let videoPortion;
-        let buttonPortion;
         
         if(this.state.showVideo){
             videoPortion = <div className="row">
@@ -54,46 +54,37 @@ class Completed extends Component {
                     <YoutubeEmbedVideo videoId={this.state.tempYoutube} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                 </div>
             </div>;
-
-            buttonPortion = <div className="row">
-                <button style={{ marginLeft:"180px", marginRight:"30px", backgroundColor: "#27AE60", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Link to Media</button>
-                <button onClick={this.videoToggle} style={{ backgroundColor: "#27AE60", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Hide Video</button>
-            </div>;
-        } else {
-            buttonPortion = <div className="row">
-                <button style={{ marginLeft:"180px", marginRight:"30px", backgroundColor: "#27AE60", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Link to Media</button>
-                <button onClick={this.videoToggle} style={{ backgroundColor: "#27AE60", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Show Video</button>
-            </div>;
-        }
-
+        } 
         return (
-                <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
-                    <div className="ui stackable grid container" >
-                        <div className="row" style={{ paddingTop: "40px" }}>
-                            <h1>Rough Draft</h1>
-                        </div>
-                        <div className="row">
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+            <Grid>
+            <Container textAlign = "center" text = 'true'>
+                <Header as='h2'>Rough Draft</Header>
+                <Grid.Row>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                 <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }}/>
-                            </span>
-                        </div>
-                        {buttonPortion}
-                        {videoPortion}
-                        <div className="row">
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", 
-                                paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px", 
-                                width: "600px"}}>Feedback</h1>
-                                <form onSubmit={this.handleSubmit} style={{padding: "30px", width: "600px"}}>
+                            </div>
+                         <Button.Group>
+                         <Button>Media</Button> 
+                         <Button onClick={this.videoToggle}>Show Video</Button>
+                         </Button.Group>
+                         </Grid.Row>
+                         <Grid.Row>
+                         {videoPortion}
+                         </Grid.Row>
+                         <Grid.Row>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>FeedBack</h1>
+                           
                                     <textarea value={this.state.feedback} 
                                     onChange={this.handleChange} style={{padding: "30px", width: "540px"}} />
-                                    <input type="submit" value="Submit" />
-                                </form>
-                            </span>
-                        </div>
-                    </div >
-                </div>
+                                     </div>
+                 <Button color='blue' onClick = {this.handleSubmit}>Submit</Button>
+                 </Grid.Row>
+                           
+                           
+            </Container>
+            </Grid>
         );
     }
 

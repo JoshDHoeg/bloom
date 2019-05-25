@@ -1,10 +1,15 @@
 import React, {Component} from 'react';
-import ElementsContainer from '../../../../../components/PaymentStripe/frontend/'
+import ElementsContainer from '../../../../../components/PaymentStripe/frontend/ElementContainer'
+import { withAuthorization } from '../../../../../utilities/Session';
 
 class PaymentPage extends Component {
-    
+    render(){
+        return(
+            <ElementsContainer/>
+        )
     }
-    const condition = authUser => !!authUser;
+}
+
+const condition = authUser => !!authUser;
     
-    export default injectStripe(PaymentButton);
-    export default  withAuthorization(condition)(injectStripe(PaymentButton));
+export default withAuthorization(condition)(PaymentPage);

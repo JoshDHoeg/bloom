@@ -224,7 +224,7 @@ class FirebaseAuthUser extends FirebaseBase {
   get users() { return this._users.getValue() };
 
   onUser = (unsub = null) => {
-    if (this._userSub) this.offfUser(unsub);
+    if (this._userSub) this.offUser(unsub);
     if (!unsub) {
       this._userSub = this.usersRef.onSnapshot(userQuery =>
         userQuery.forEach(userData => this._users.next([].concat(this.users, new User(userData))))
@@ -233,7 +233,7 @@ class FirebaseAuthUser extends FirebaseBase {
     }
   }
 
-  offfUser = (userSubscription = null) => {
+  offUser = (userSubscription = null) => {
     if (userSubscription) userSubscription.unsubscribe();
     this._userSub();
     this._users.next([]);

@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import Waiting from '../../../../components/Waiting/Waiting';
-
+import Payment from '../Concept/Payment/Payment'
 
 class Concept extends React.Component{
 
@@ -37,7 +37,6 @@ class Concept extends React.Component{
         this.setState({
             completed: completed,
             approved: approved,
-            paid: false,
             video: video,
             isPaid: isPaid,
             schedule: null,
@@ -89,8 +88,8 @@ class Concept extends React.Component{
             )
         }
 
-        if(this.state.completed && this.state.approved && !this.state.isPaid){
-            return (<div> Pay us bruh</div>)
+        if(this.state.completed && this.state.approved && !this.state.concept.isPaid){
+            return (<Payment/>)
         }
 
     }
