@@ -6,7 +6,7 @@ import { Grid, Container, Header } from 'semantic-ui-react';
 import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-import Waiting from '../../../../components/Waiting/Waiting';
+import ProjectStatus from '../../../../components/ProjectStatus/ProjectStatus';
 import Payment from '../Concept/Payment/Payment'
 
 class Concept extends React.Component{
@@ -65,6 +65,9 @@ class Concept extends React.Component{
             return (
                 <div>
                     <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <Container>
+                            <ProjectStatus />
+                        </Container>
                         <Container>
                             <br/>
                             <Header as='h1'>Concept Designs</Header>
