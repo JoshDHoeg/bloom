@@ -1,5 +1,5 @@
 import Firebase from '../Firebase';
-import { throwStatement } from 'babel-types';
+
 
 export class User {
   _isDesigner = false;
@@ -342,6 +342,12 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _cost = false;
+      get cost() {return this._cost; };
+      set cost(t) {this._setter({ cost: t }).then(() => this._cost = t); }
+      _isPaid = false;
+      get isPaid() {return this._isPaid; };
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -350,12 +356,16 @@ export class ProjectData {
           this._feedback = this.data['feedback'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._cost = this.data['cost'];
+          this._isPaid = this.data['isPaid'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
           this._feedback = 'https://demo.typeform.com/to/njdbt5';
           this._completed = false;
           this._isApproved = false;
+          this._cost = 59900;
+          this._isPaid = false;
         }
       }
       getAll() {
@@ -364,7 +374,9 @@ export class ProjectData {
           video: this.video,
           feedback: this.feedback,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
+          cost: this.cost,
+          isPaid: this.isPaid
         });
       }
     }

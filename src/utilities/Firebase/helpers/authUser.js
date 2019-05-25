@@ -233,7 +233,7 @@ class FirebaseAuthUser extends FirebaseBase {
     }
   }
 
-  offfUser = (userSubscription = null) => {
+  offUser = (userSubscription = null) => {
     if (userSubscription) userSubscription.unsubscribe();
     this._userSub();
     this._users.next([]);
