@@ -23,7 +23,7 @@ class AccountInfoPageView extends Component {
                     <InfoBanner 
                     edit={this.state.edit} 
                     user={this.props.user}
-                    name={this.props.name}
+                    name={this.props.user.name}
                     />
                     <div className="row">
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -31,8 +31,8 @@ class AccountInfoPageView extends Component {
                             <UserInformation 
                             edit={this.state.edit} 
                             user={this.props.user}
-                            phone={this.props.phone}
-                            name={this.props.name}
+                            phone={this.props.user.phone}
+                            name={this.props.user.name}
                             />
                         </span>
                     </div>

@@ -14,55 +14,64 @@ class AccountInfoPage extends Component {
         this.state = { 
             loading: false,
             edit: false,
-            username: '',
-            email: '',
-            phone: ''
+            user:{
+                phone: '',
+                name: '',
+            }
         };
+        this.formSubmit = this.formSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+    
+    formSubmit = () => {
+        this.user.name = this.state.user.name;
+        this.user.phone = this.state.user.phone;
     }
 
     handleChange(event) {
-        console.log("handleChange called");
         event.preventDefault();
-        console.log(event.target.name);
+//        console.log(event.target.name);
         this.setState({
-            ...this.state,
-            [event.target.name]: event.target.value
+            user: {
+                ...this.state.user,
+                [event.target.name]: event.target.value
+            }
         });
     }
-    componentWillMount() {
+    
+    componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getUserState();
     }
 
     getUserState = async () => {
-        this.user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
-        const state = {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid, true);
+        this.user = await user
+        console.log('user3:', user);
+        const state = await {
             loading: false,
-            user: this.user,
-            name: this.user.name,
-            email: this.user.email,
-            phone: this.user.phone,
+            user: {
+                phone: this.user.phone,
+                name: this.user.name,
+            },
         }
         this.setState(state);
         return state;
     }
+
     render() {
         if(this.state.edit){
             return(
                 <AccountInfoEdit 
-                name={this.state.name} 
                 user={this.state.user}
-                phone={this.state.phone}
-                email={this.state.email}
+                handleChange={this.handleChange}
+                formSubmit={this.formSubmit}
                 />
             );
         }else{
             return (
                 <AccountInfoView 
-                name={this.state.name} 
                 user={this.state.user}
-                phone={this.state.phone}
-                email={this.state.email}
                 />
             );
         }

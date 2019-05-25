@@ -14,14 +14,11 @@ class PaymentInfoPage extends Component {
         this.state = { 
             loading: false,
             edit: false,
-            card: '444',
-            exp: '444',
-            cvc: '444',
             user:{
-            billadd1: '',
-            zip: '',
-            city: '',
-            state:'',
+                billadd1: '',
+                zip: '',
+                city: '',
+                state:'',
             }
         };
     this.formSubmit = this.formSubmit.bind(this);
@@ -35,9 +32,6 @@ class PaymentInfoPage extends Component {
         this.user.state = this.state.user.state;
     }
 
-    componentDidMount() {
-        this.setState({ loading: true, edit: this.props.edit });
-    }
 
     handleChange(event) {
         event.preventDefault();
@@ -68,9 +62,6 @@ class PaymentInfoPage extends Component {
                 state: this.user.state,
                 city: this.user.city,
             },
-            card: '444',
-            exp: '444',
-            cvc: '444'
         }
         this.setState(state);
         return state;
@@ -83,18 +74,12 @@ class PaymentInfoPage extends Component {
                 <PaymentPageEdit 
                 formSubmit={this.formSubmit}
                 handleChange={this.handleChange}
-                card={this.state.card}
-                exp={this.state.exp}
-                cvc={this.state.cvc}
                 user={this.state.user}
                 />
             );
         }else{
             return (
                 <PaymentPageView 
-                card={this.state.card}
-                exp={this.state.exp}
-                cvc={this.state.cvc}
                 user={this.state.user}
                 />
             );
