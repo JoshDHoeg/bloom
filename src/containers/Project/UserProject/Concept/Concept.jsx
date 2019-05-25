@@ -19,7 +19,7 @@ class Concept extends React.Component{
             loading: true,
             completed: false,
             approved: false,
-            paid: false,
+            isPaid: false,
             video: null,
             schedule: null
         }
@@ -31,6 +31,7 @@ class Concept extends React.Component{
         const completed = await this.project.concept.completed;
         const approved = await this.project.concept.approved;
         const video = await this.project.concept.video;
+        const isPaid = await this.project.concept.isPaid;
         //const schedule = await this.project.concept.schedule;
 
         this.setState({
@@ -38,6 +39,7 @@ class Concept extends React.Component{
             approved: approved,
             paid: false,
             video: video,
+            isPaid: isPaid,
             schedule: null,
             loading: false
         });
@@ -87,7 +89,7 @@ class Concept extends React.Component{
             )
         }
 
-        if(this.state.completed && this.state.approved && !this.state.paid){
+        if(this.state.completed && this.state.approved && !this.state.isPaid){
             return (<div> Pay us bruh</div>)
         }
 
