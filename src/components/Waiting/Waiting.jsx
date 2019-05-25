@@ -17,14 +17,14 @@ class Waiting extends Component {
     }
     
     componentDidMount(){
-        // if(this.props.state === 'concept'){
-        //     this.setState({
-        //         title: 'Concept',
-        //         src: logo,
-        //         message: 'Your Concept is not ready yet. You will receive a notification when it is ready'
-        //     })
-        // }
-        if(this.props.state === 'draft'){
+        if(this.props.state === 'contractors'){
+            this.setState({
+                title: 'Contractors',
+                src: logo,
+                message: 'Your contractors havent gotten us their quotes yet. You will receive a notification when they are ready'
+            })
+        }
+        else if(this.props.state === 'draft'){
             this.setState({
                 title: 'Draft',
                 src: logo,
