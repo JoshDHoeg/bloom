@@ -35,7 +35,13 @@ class RevisionsPage extends Component {
 
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    this.getProjectState();
+    if(this.props.location.state){
+      this.setState({projectIndex: this.props.location.state.projectIndex});
+      this.getProjectState(this.props.location.state.projectIndex);
+    } else{
+      this.setState({projectIndex: 0});
+      this.getProjectState(0);
+    }
   }
 
   formSubmit(){
@@ -77,6 +83,7 @@ class RevisionsPage extends Component {
     const state = await {
         client: client,
         loading: false,
+//        isPaid: this.revision.isPaid,
         revision: {
           ...this.revision.getAll()
         },
@@ -90,6 +97,8 @@ class RevisionsPage extends Component {
 }
 
   render() {
+    console.log('props:', this.props)
+    console.log('isPaid:', this.isPaid)
     if(this.state.edit){
         return (
             <RevisionsPageEdit revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />      

@@ -11,7 +11,7 @@ import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
-
+import ElementsContainer from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import ConceptWaiting from './Waiting/Waiting';
 
 class ConceptPageView extends Component {
@@ -34,6 +34,11 @@ class ConceptPageView extends Component {
                             <h1>20% Concept Design</h1>
                             <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "122px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_CONCEPT_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
                             <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.media} style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
+                        </div>
+                        <div className='row'>
+                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <ElementsContainer/>
+                            </span>
                         </div>
                         <div className="row">
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
