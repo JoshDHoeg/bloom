@@ -172,6 +172,7 @@ export class Project extends ProjectBase {
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
+  get stage() {return this.stage.then(s => s[0]); }
 }
 
 class ProjectDataBase {
@@ -339,6 +340,10 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _step = '';
+      get step() {return this._step; };
+      set step(a) {this._setter({ step: a }).then(() => this._step = a); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -432,6 +437,9 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -440,12 +448,14 @@ export class ProjectData {
           this._video = this.data['video'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;
+          this._feedback = '';
         }
       }
       getAll() {
@@ -454,7 +464,8 @@ export class ProjectData {
           figma: this.figma,
           video: this.video,
           completed: this.completed,
-          approved: this.approved
+          approved: this.approved,
+          feedback: this.feedback
         });
       }
     }
@@ -468,24 +479,51 @@ export class ProjectData {
       _completed = '';
       get completed() { return this._completed; };
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
 
       constructor(dbQuery, useDefault = false) {
-
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._media = this.data['media'];
           this._completed = this.data['completed'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
+          this._feedback = '';
         }
       }
       getAll() {
         return this._getAll({
           media: this.media,
-          completed: this.completed
+          completed: this.completed,
+          feedback: this.feedback
         });
       }
     }
   };
+  static Stage = {
+    colRef: 'stage',
+    type: class Stage extends ProjectDataBase {
+      _stage = '';
+      get stage() {return this._stage; };
+      set stage(s) {this._setter({ stage: s }).then(() => this._stage = s); }
+
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._stage = this.data['state'];
+        } else {
+          this._stage = 'concept'
+        }
+      }
+      getAll() {
+        return this._getAll({
+          stage: this.stage,
+        })
+      }
+    }
+  }
 }
