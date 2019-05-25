@@ -31,7 +31,7 @@ class Completed extends React.Component
         return(
             <Grid>
             <Container fluid textAlign = 'center' text = 'true'>
-            <Link to="/project/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>
+            <Link to="/project/user_draft" style={{position: "absolute", right: "90%", top: "250px"}}>
                 <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
             </Link>
             <Grid.Row>
@@ -61,7 +61,7 @@ class Completed extends React.Component
         </Form>
         </Grid.Row>
            </Message>
-            <Link to="/project/user_revision" style={{position: "absolute", left: "90%", top: "25%"}}>
+            <Link to="/project/user_revision" style={{position: "absolute", left: "90%", top: "250px"}}>
                 <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
             </Link>
           </Container>

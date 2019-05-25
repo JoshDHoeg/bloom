@@ -67,7 +67,7 @@ class Completed extends Component {
         return (
             <Grid>
             <Container fluid textAlign = "center" text = 'true'>
-                <Link to="/project/user_concept" style={{position: "absolute", right: "90%", top: "25%"}}>
+                <Link to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
                     <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
                 </Link>
                 <Header as='h2'>Rough Draft</Header>
@@ -93,7 +93,7 @@ class Completed extends Component {
                                      </div>
                  <Button color='blue' onClick = {this.handleSubmit}>Submit</Button>
                  </Grid.Row>
-                <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "25%"}}>
+                <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
                     <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
                 </Link>
             </Container>

@@ -31,7 +31,7 @@ class Completed extends React.Component
     render(){
         return(
             <Container textAlign = 'center' text = 'true'>
-            <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "25%"}}>
+            <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
                 <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
             </Link>
             <Header as='h2'>Final Draft</Header>
@@ -55,7 +55,7 @@ class Completed extends React.Component
           <Button color='blue'>Submit</Button>
     </Form>
            </Message>
-            <Link to="/project/user_contractors" style={{position: "absolute", left: "90%", top: "25%"}}>
+            <Link to="/project/user_contractors" style={{position: "absolute", left: "90%", top: "250px"}}>
                 <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
             </Link>
           </Container>

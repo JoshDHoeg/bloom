@@ -3,16 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="9e3db4cd-3541-42ad-bb6d-44c77101d51e" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/Project.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/server.js" afterPath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/server.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/components/Waiting/Waiting.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" afterPath="" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" />
       <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" />
       <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -28,11 +26,24 @@
       <file leaf-file-name="UserProject.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-172">
+            <state relative-caret-position="70">
               <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
                 <element signature="e#185#248#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Concept.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="56" column="44" lean-forward="false" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
+              <folding>
+                <element signature="e#0#26#0" expanded="true" />
+                <element signature="e#149#215#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -51,8 +62,8 @@
       <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="569">
-              <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="45" selection-end-column="31" />
+            <state relative-caret-position="424">
+              <caret line="43" column="105" lean-forward="false" selection-start-line="43" selection-start-column="105" selection-end-line="43" selection-end-column="105" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -63,10 +74,11 @@
       <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="71">
-              <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="18" selection-end-column="25" />
+            <state relative-caret-position="399">
+              <caret line="99" column="19" lean-forward="true" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
               <folding>
                 <element signature="e#79#131#0" expanded="true" />
+                <element signature="e#256#299#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -75,8 +87,8 @@
       <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="64" />
+            <state relative-caret-position="333">
+              <caret line="63" column="100" lean-forward="false" selection-start-line="63" selection-start-column="100" selection-end-line="63" selection-end-column="100" />
               <folding>
                 <element signature="e#71#140#0" expanded="true" />
                 <element signature="e#311#354#0" expanded="true" />
@@ -85,11 +97,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="451">
-              <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+            <state relative-caret-position="136">
+              <caret line="24" column="109" lean-forward="false" selection-start-line="24" selection-start-column="109" selection-end-line="24" selection-end-column="109" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -97,11 +109,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Completed.jsx" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="495">
-              <caret line="57" column="49" lean-forward="false" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+            <state relative-caret-position="374">
+              <caret line="52" column="36" lean-forward="true" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
               <folding>
                 <element signature="e#71#140#0" expanded="true" />
                 <element signature="e#319#362#0" expanded="true" />
@@ -201,14 +213,14 @@
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/index.scss" />
         <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
-        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/Project.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" />
-        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
       </list>
     </option>
   </component>
@@ -285,17 +297,7 @@
               <item name="containers" type="462c0819:PsiDirectoryNode" />
               <item name="Project" type="462c0819:PsiDirectoryNode" />
               <item name="UserProject" type="462c0819:PsiDirectoryNode" />
-              <item name="Contractors" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bloom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="containers" type="462c0819:PsiDirectoryNode" />
-              <item name="Project" type="462c0819:PsiDirectoryNode" />
-              <item name="UserProject" type="462c0819:PsiDirectoryNode" />
-              <item name="Contractors" type="462c0819:PsiDirectoryNode" />
-              <item name="Completed" type="462c0819:PsiDirectoryNode" />
+              <item name="Concept" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
@@ -460,12 +462,12 @@
       <workItem from="1555485492229" duration="74125000" />
       <workItem from="1556662587221" duration="3087000" />
       <workItem from="1557531692821" duration="12565000" />
-      <workItem from="1558764366842" duration="6749000" />
+      <workItem from="1558764366842" duration="7208000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="209835000" />
+    <option name="totallyTimeSpent" value="210294000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="46" y="23" width="1280" height="727" extended-state="0" />
@@ -852,27 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="569">
-          <caret line="43" column="24" lean-forward="false" selection-start-line="43" selection-start-column="24" selection-end-line="45" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-172">
-          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-            <element signature="e#185#248#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/utilities/constants/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -891,10 +872,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/UserProject.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="7" lean-forward="true" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+            <element signature="e#185#248#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="65" column="33" lean-forward="false" selection-start-line="65" selection-start-column="33" selection-end-line="65" selection-end-column="33" />
+        <state relative-caret-position="305">
+          <caret line="56" column="44" lean-forward="false" selection-start-line="56" selection-start-column="44" selection-end-line="56" selection-end-column="44" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
             <element signature="e#149#215#0" expanded="true" />
@@ -902,31 +894,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="495">
-          <caret line="57" column="49" lean-forward="false" selection-start-line="57" selection-start-column="49" selection-end-line="57" selection-end-column="49" />
+        <state relative-caret-position="424">
+          <caret line="43" column="105" lean-forward="false" selection-start-line="43" selection-start-column="105" selection-end-line="43" selection-end-column="105" />
           <folding>
-            <element signature="e#71#140#0" expanded="true" />
-            <element signature="e#319#362#0" expanded="true" />
+            <element signature="e#0#26#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="71">
-          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="18" selection-end-column="25" />
+        <state relative-caret-position="399">
+          <caret line="99" column="19" lean-forward="true" selection-start-line="99" selection-start-column="19" selection-end-line="99" selection-end-column="19" />
           <folding>
             <element signature="e#79#131#0" expanded="true" />
+            <element signature="e#256#299#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="32" column="12" lean-forward="false" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="64" />
+        <state relative-caret-position="333">
+          <caret line="63" column="100" lean-forward="false" selection-start-line="63" selection-start-column="100" selection-end-line="63" selection-end-column="100" />
           <folding>
             <element signature="e#71#140#0" expanded="true" />
             <element signature="e#311#354#0" expanded="true" />
@@ -936,10 +928,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="49" column="32" lean-forward="false" selection-start-line="49" selection-start-column="32" selection-end-line="49" selection-end-column="32" />
+        <state relative-caret-position="136">
+          <caret line="24" column="109" lean-forward="false" selection-start-line="24" selection-start-column="109" selection-end-line="24" selection-end-column="109" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="52" column="36" lean-forward="true" selection-start-line="52" selection-start-column="36" selection-end-line="52" selection-end-column="36" />
+          <folding>
+            <element signature="e#71#140#0" expanded="true" />
+            <element signature="e#319#362#0" expanded="true" />
           </folding>
         </state>
       </provider>

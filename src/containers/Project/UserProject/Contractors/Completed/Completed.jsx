@@ -22,7 +22,7 @@ class Completed extends Component {
             <div>
                 <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                     <Container fluid textAlign = 'center' text = 'true'>
-                    <Link to="/project/user_revision" style={{position: "absolute", right: "90%", top: "25%"}}>
+                    <Link to="/project/user_revision" style={{position: "absolute", right: "90%", top: "250px"}}>
                         <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
                     </Link>
 

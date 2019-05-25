@@ -360,7 +360,7 @@ export class ProjectData {
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;
-          this._isPaid = '';
+          this._isPaid = false;
         }
       }
       getAll() {

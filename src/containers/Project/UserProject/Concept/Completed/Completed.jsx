@@ -41,7 +41,7 @@ class Completed extends React.Component{
                                 frameBorder="20">
                         </iframe>
                         <script src="./schedule.js" type="text/javascript"> </script>
-                        <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "25%"}}>
+                        <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
                             <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
                         </Link>
                     </Container>
