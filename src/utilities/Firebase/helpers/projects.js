@@ -48,6 +48,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               media:"",
               completed: false,
               approved: false,
+              isPaid: false
           });
           d.doc('0').set({
               init: false,

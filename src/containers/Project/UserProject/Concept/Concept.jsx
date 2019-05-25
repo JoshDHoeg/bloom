@@ -37,7 +37,6 @@ class Concept extends React.Component{
         this.setState({
             completed: completed,
             approved: approved,
-            paid: false,
             video: video,
             isPaid: isPaid,
             schedule: null,
@@ -89,7 +88,7 @@ class Concept extends React.Component{
             )
         }
 
-        if(this.state.completed && this.state.approved && !this.state.isPaid){
+        if(this.state.completed && this.state.approved && !this.state.concept.isPaid){
             return (<Payment/>)
         }
 
