@@ -56,20 +56,15 @@ class Completed extends Component {
             </div>;
 
             buttonPortion = <div className="row">
-                <button>MEDIA WHAT AM I DOING????</button>
-                <button onClick={this.videoToggle}>Hide Video</button>
+                <button style={{ marginLeft:"180px", marginRight:"30px", backgroundColor: "#27AE60", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Link to Media</button>
+                <button onClick={this.videoToggle} style={{ backgroundColor: "#27AE60", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Hide Video</button>
             </div>;
         } else {
             buttonPortion = <div className="row">
-                <button>MEDIA WHAT AM I DOING????</button>
-                <button onClick={this.videoToggle}>Show Video</button>
+                <button style={{ marginLeft:"180px", marginRight:"30px", backgroundColor: "#27AE60", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Link to Media</button>
+                <button onClick={this.videoToggle} style={{ backgroundColor: "#27AE60", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Show Video</button>
             </div>;
         }
-
-    
-
-
-
 
         return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
