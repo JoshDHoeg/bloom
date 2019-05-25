@@ -36,7 +36,7 @@ class Concept extends React.Component{
 
         this.setState({
             completed: completed,
-            approved: true,
+            approved: approved,
             paid: false,
             video: video,
             isPaid: isPaid,
