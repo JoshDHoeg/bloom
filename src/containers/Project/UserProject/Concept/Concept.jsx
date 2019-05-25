@@ -7,22 +7,21 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import Waiting from '../../../../components/Waiting/Waiting';
-import Completed from './Completed/Completed';
-import Approve from './Approve/Approve';
 
 
 class Concept extends React.Component{
 
     project;
 
-    //approved = schedule for our purposes here
     constructor(props){
         super(props);
         this.state = {
-            completed: false,
-            scheduled: false,
             loading: true,
-            video: null
+            completed: false,
+            approved: false,
+            isPaid: false,
+            video: null,
+            schedule: null
         }
         this.doSetProject = this.doSetProject.bind(this);
     }
@@ -30,13 +29,18 @@ class Concept extends React.Component{
     doSetProject = async () => {
         this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         const completed = await this.project.concept.completed;
-        //const scheduled = await this.project.concept.scheduled;
+        const approved = await this.project.concept.approved;
         const video = await this.project.concept.video;
+        const isPaid = await this.project.concept.isPaid;
+        //const schedule = await this.project.concept.schedule;
 
-        //eventually add scheduled prop to database
         this.setState({
             completed: completed,
+            approved: approved,
+            paid: false,
             video: video,
+            isPaid: isPaid,
+            schedule: null,
             loading: false
         });
     }
@@ -48,22 +52,47 @@ class Concept extends React.Component{
     render(){
         console.log(this.state);
         this.state.completed= true;
-        this.state.scheduled = false;
         if(this.state.loading){
             return (<div>Loading...</div>)
         }
-
+        //change this to waiting component
         if(!this.state.completed){
-            return <Waiting state="concept"/>
+            return <div> Waiting </div>
         }
 
-        if(this.state.completed && !this.state.scheduled){
-            return <Completed/>
+        //backgroundImage: "url(" + backgroundTemp + ")",
+        //the one I'm doing
+        if(this.state.completed && !this.state.approved){
+            return (
+                <div>
+                    <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <Container>
+                            <br/>
+                            <Header as='h1'>Concept Designs</Header>
+                            <Header as='h3'> Watch the video and pick your favorite concept to <br/> keep the project moving </Header>
+                            <br/>
+                            <br/>
+                            <iframe width="560" height="315"
+                                    src="https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG"
+                                    align="middle"
+                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+                            </iframe>
+                            <br/>
+                            <br/>
+                            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="560" height="315"
+                                    frameBorder="0">
+                            </iframe>
+                            <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"> </script>
+                        </Container>
+                    </Grid>
+                </div>
+            )
         }
 
-        if(this.state.completed && this.state.scheduled){
-            return <Approve/>
+        if(this.state.completed && this.state.approved && !this.state.isPaid){
+            return (<div> Pay us bruh</div>)
         }
+
     }
 }
 

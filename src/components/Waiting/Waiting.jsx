@@ -16,28 +16,28 @@ class Waiting extends Component {
     }
     
     componentDidMount(){
-        if(this.state = 'concept'){
+        if(this.props.state == 'concept'){
             this.setState({
                 title: 'Concept',
                 src: logo,
                 message: 'Your Concept is not ready yet. You will receive a notification when it is ready'
             })
         }
-        if(this.state = 'draft'){
+        if(this.props.state == 'draft'){
             this.setState({
                 title: 'Draft',
                 src: logo,
                 message: 'Your Draft is not ready yet. You will receive a notification when it is ready'
             })
         }
-        if(this.state = 'final'){
+        if(this.props.state == 'final'){
             this.setState({
                 title: 'Final',
                 src: logo,
                 message: 'Your Final is not ready yet. You will receive a notification when it is ready'
             })
         }
-        if(this.state = 'revision'){
+        if(this.props.state == 'revision'){
             this.setState({
                 title: 'Revision',
                 src: logo,
