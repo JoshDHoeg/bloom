@@ -345,7 +345,7 @@ export class ProjectData {
       set step(a) {this._setter({ step: a }).then(() => this._step = a); }
       _isPaid = false;
       get isPaid() {return this._isPaid; };
-      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = a); }
+      set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -360,7 +360,7 @@ export class ProjectData {
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;
-          this._isPaid = '';
+          this._isPaid = false;
         }
       }
       getAll() {

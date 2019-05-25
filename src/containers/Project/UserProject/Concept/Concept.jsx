@@ -10,58 +10,62 @@ import Waiting from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment'
 
 class Concept extends React.Component{
-
-    project;
-
+    concept;
     constructor(props){
         super(props);
         this.state = {
             loading: true,
             completed: false,
-            approved: false,
-            isPaid: false,
-            video: null,
-            schedule: null
+            concept: {
+                approved: false,
+                isPaid: false,
+                video: null,
+                schedule: null
+            }
         }
-        this.doSetProject = this.doSetProject.bind(this);
+       // this.completed = this.completed.bind(this)
     }
 
-    doSetProject = async () => {
-        this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        const completed = await this.project.concept.completed;
-        const approved = await this.project.concept.approved;
-        const video = await this.project.concept.video;
-        const isPaid = await this.project.concept.isPaid;
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+        if(this.props.location.state){
+          this.setState({projectIndex: this.props.location.state.projectIndex});
+          this.getProjectState(this.props.location.state.projectIndex);
+        } else{
+          this.setState({projectIndex: 0});
+          this.getProjectState(0);
+        }
+      }
+
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
+        const state = await {
+            loading: false,
+            concept: {
+                ...this.concept.getAll()
+            }
+        }
 
-        this.setState({
-            completed: completed,
-            approved: approved,
-            video: video,
-            isPaid: isPaid,
-            schedule: null,
-            loading: false
-        });
-    }
-
-    componentWillMount(){
-         this.doSetProject();
+        this.setState(state);
+        return state;
     }
 
     render(){
+        console.log('Paid?', this.state.concept.isPaid)
         console.log(this.state);
-        this.state.completed= true;
         if(this.state.loading){
             return (<div>Loading...</div>)
         }
         //change this to waiting component
-        if(!this.state.completed){
-            return <div> Waiting </div>
+        if(!this.state.concept.completed){
+            return (<Waiting/>)
         }
 
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
-        if(this.state.completed && !this.state.approved){
+        if(this.state.concept.completed && !this.state.concept.approved){
             return (
                 <div>
                     <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
@@ -88,7 +92,7 @@ class Concept extends React.Component{
             )
         }
 
-        if(this.state.completed && this.state.approved && !this.state.concept.isPaid){
+        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
             return (<Payment/>)
         }
 
