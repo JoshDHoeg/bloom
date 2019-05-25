@@ -31,6 +31,17 @@ class PaymentButton extends Component {
     }
   }
 
+  handleChange(event) {
+    event.preventDefault();
+    console.log(event.target.name);
+    this.setState({
+      final: {
+        ...this.state.revision,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     console.log(project);
@@ -65,9 +76,11 @@ class PaymentButton extends Component {
     if (response.ok) {
       console.log("working")
       this.setState({complete: true});
+      this.state.concept.isPaid = true
+      console.log(this.concept.isPaid)
+      console.log(response)
     }else{
       alert('Payment Error')
-      console.log(response)
     }
   }
 
