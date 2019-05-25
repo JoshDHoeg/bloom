@@ -8,6 +8,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
     console.log('projects');
   }
 
+
   //creates empty project with default designer
   doCreateEmptyProject = () => {
       return this.doGetUser("userAuthID").then( designer => {
@@ -23,6 +24,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const d = proj.collection('drafts');
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
+          const s = proj.collection('stage')
           b.doc('0').set({
               address: "",
               budget: "",
@@ -46,6 +48,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               media:"",
               completed: false,
               approved: false,
+              isPaid: false
           });
           d.doc('0').set({
               init: false,
@@ -73,9 +76,44 @@ class FirebaseProjects extends FirebaseAuthUser  {
               completed: false,
               approved: false,
           });
+          s.doc('0').set({
+              init: false,
+              stage: "concept"
+          });
           return proj;
       })
   }
+
+  // doCreateRevision = () => {
+  //   doGetProject = (id, index, isUID = false) => {
+  //     if(isUID) {
+  //       return this.doGetUser(id).then(userData = this.doGetProject(userData.projects[index].id));
+  //     } else {
+  //       return this.projectsRef.doc(id).get().then(data => {
+  //         return new Project(data);
+  //       })
+  //     }
+  //   }
+  //   return this.doGetUser("userAuthID").then( designer => {
+  //     var proj = this.projectsRef.doc();
+  //     proj.set({
+  //         client: [null],
+  //         designer: [designer.ref],
+  //         _name: "tester",
+  //         _status: "revisions",
+  //     })
+  //     const r = proj.collection('revisions');
+  //     r.doc('0').set({
+  //       init: false,
+  //       feedback: "",
+  //       media:"",
+  //       figma: "",
+  //       completed: false,
+  //       approved: false,
+  //   });
+  //     return proj;
+  //   }
+  // }
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
@@ -98,14 +136,13 @@ class FirebaseProjects extends FirebaseAuthUser  {
   doGetProject = (id, index, isUID = false) => { // return Promise<Project>
     console.log("inside doGetProject");
     if (isUID) {
-        //this.doGetUser(id).then(userData => console.log(userData));
-        return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
-    } else{
+      return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
+    } else {
       return this.projectsRef.doc(id).get().then(data => {
-          return new Project(data);
+        return new Project(data)
       });
-    }
   }
+}
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
     let cuids = Array.isArray(clientUid) ? clientUid : [clientUid];
@@ -121,12 +158,12 @@ class FirebaseProjects extends FirebaseAuthUser  {
     } else {
         return { name: name, client: clientRefs, designer: designerRefs }
     }
-
+    
   }
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -138,7 +175,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
     const projectRef = await this._doGetProjectTemplate(newName, clientUid, designerUid)
       .then(project => {
         if (pid) {
-          const docRef = this.projectsRef.doc(pid)
+          const docRef = this.projectsRef.doc(pid)          
           return this.projectsRef.doc(pid).set(project).then(() => docRef)
         }
         return this.projectsRef.add(project)
@@ -158,13 +195,13 @@ class FirebaseProjects extends FirebaseAuthUser  {
       return 1 + Math.max.apply(null, projects.map(p => parseInt(+p.name.split(/ /).pop()) || 0));
     return 0;
   }
-
+  
   _deleteAll(collection, deleteSubCollections = false, isProject = false) {
     const listener = collection.onSnapshot(docs => {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Draft, ProjectData.Final, ProjectData.Revision].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();

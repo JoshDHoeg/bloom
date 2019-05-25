@@ -5,26 +5,49 @@ import { withAuthorization } from '../../../../utilities/Session/index';
 
 
 class Draft extends Component {
-    constructor(props) {
-        super(props);
+    project;
 
+    constructor(props){
+        super(props);
         this.state = {
-            waiting: false
+            loading: true,
+            completed: false,
+            approved: false,
+            video: "https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG",
+            media:'',
+            figma: ''
         }
+        this.doSetProject = this.doSetProject.bind(this);
     }
+    doSetProject = async () => {
+        this.project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        const completed = await this.project.concept.completed;
+        const approved = await this.project.concept.approved;
+        const video = await this.project.concept.video;
+        //const schedule = await this.project.concept.schedule;
+
+        this.setState({
+            completed: completed,
+            approved: approved,
+            video: video,
+            loading: false
+        });
+    }
+    componentWillMount(){
+        this.doSetProject();
+   }
 
     render() {
-        if(this.state.waiting) {
+        if(this.state.completed) {
             return(
                 <div>
-                    <waitingPage></waitingPage>
+                    <waitingPage/>
                 </div>
             );
         } else {
         return(
             <div>
-                <h1>test</h1>
-                <CompletedPage/>
+                <CompletedPage video = {this.state.video} figma = {this.state.figma} media = {this.state.media}/>
             </div>
         );}
     }
