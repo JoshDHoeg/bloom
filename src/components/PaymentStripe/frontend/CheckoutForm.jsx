@@ -3,22 +3,68 @@ import { Button } from 'semantic-ui-react'
 import React,{Component} from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import PAYMENT_SERVER_URL from './constants/server';
+import { withAuthorization } from '../../../utilities/Session';
+
 class PaymentButton extends Component {
+  concept;
   constructor(props) {
     super(props);
     this.state={
-      amount: '',
+      loading: false,
+      edit: false,
+      concept: {
+       cost: '',
+      }
     }
-    this.state = {complete: false, amount: 576};
+    this.state = {complete: false};
     this.submit = this.submit.bind(this);
   }
   
-  
+  componentDidMount() {
+    this.setState({ loading: true, edit: this.props.edit });
+    if(this.props.location.state){
+      this.setState({projectIndex: this.props.location.state.projectIndex});
+      this.getProjectState(this.props.location.state.projectIndex);
+    } else{
+      this.setState({projectIndex: 0});
+      this.getProjectState(0);
+    }
+  }
+
+  handleChange(event) {
+    event.preventDefault();
+    console.log(event.target.name);
+    this.setState({
+      final: {
+        ...this.state.revision,
+        [event.target.name]: event.target.value
+      }
+    });
+  }
+
+  getProjectState = async () => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    console.log(project);
+    this.concept = await project.concept;
+    console.log(this.revision);
+    const client = await project.client;
+    const state = await {
+        client: client,
+        loading: false,
+        concept: {
+          ...this.concept.getAll()
+        },
+    }
+    console.log('1',this.state.cost)
+    this.setState(state);
+    return state;
+
+  }
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log('amount', this.state.amount)
-    let amt = this.state.amount;
+    console.log('amount', this.state.concept.cost)
+    let amt = this.state.concept.cost;
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
       headers: {"Content-Type": "application/json"},
@@ -30,9 +76,11 @@ class PaymentButton extends Component {
     if (response.ok) {
       console.log("working")
       this.setState({complete: true});
+      this.state.concept.isPaid = true
+      console.log(this.concept.isPaid)
+      console.log(response)
     }else{
       alert('Payment Error')
-      console.log(response)
     }
   }
 
@@ -54,5 +102,6 @@ class PaymentButton extends Component {
   }
 }
 }
+const condition = authUser => !!authUser;
 
-export default injectStripe(PaymentButton);
+export default  withAuthorization(condition)(injectStripe(PaymentButton));

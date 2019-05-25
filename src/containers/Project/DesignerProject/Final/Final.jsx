@@ -31,7 +31,6 @@ class FinalPage extends Component {
     this.formSubmit = this.formSubmit.bind(this);
     this.completed = this.completed.bind(this);
     this.handleChange = this.handleChange.bind(this);
-    this.Approved = this.Approved.bind(this);
   }
 
   componentDidMount() {

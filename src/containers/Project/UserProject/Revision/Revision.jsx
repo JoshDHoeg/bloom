@@ -12,7 +12,7 @@ class Revision extends React.Component{
         super(props);
         this.state = {
             revision: {
-                completed: true,
+                completed: false,
                 figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
             }
         };

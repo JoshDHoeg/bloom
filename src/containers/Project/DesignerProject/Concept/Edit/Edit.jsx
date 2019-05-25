@@ -17,7 +17,6 @@ class ConceptPageEdit extends Component {
             edit: true
         }
     }
-
     render() {
         console.log("we in the concept");
         return (

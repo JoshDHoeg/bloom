@@ -1,5 +1,5 @@
 import Firebase from '../Firebase';
-import { throwStatement } from 'babel-types';
+
 
 export class User {
   _isDesigner = false;
