@@ -67,6 +67,7 @@ class BriefPage extends Component {
       }
     });
   }
+
   handleChangeProfile(event) {
     event.preventDefault();
     // console.log(this.state);
