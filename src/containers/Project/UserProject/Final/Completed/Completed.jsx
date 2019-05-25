@@ -7,6 +7,11 @@ import * as ROUTES from "../../../../../utilities/constants/routes";
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+library.add(faArrowRight);
+library.add(faArrowLeft);
 
 class Completed extends React.Component
 {
@@ -25,7 +30,10 @@ class Completed extends React.Component
     render(){
         return(
             <Grid>
-            <Container textAlign = 'center' text = 'true'>
+            <Container fluid textAlign = 'center' text = 'true'>
+            <Link to="/project/user_draft" style={{position: "absolute", right: "90%", top: "250px"}}>
+                <FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>
+            </Link>
             <Grid.Row>
             <Header as='h2'>Final Draft</Header>
             </Grid.Row>
@@ -36,8 +44,8 @@ class Completed extends React.Component
             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                 <FigmaEmbed url={this.props.figma} style={{ width: "540px", margin: "30px" }}/>
-                 </div>   
-           </Grid.Row>  
+                 </div>
+           </Grid.Row>
            <Grid.Row>
           <Button.Group>
           <Button>Download Design</Button>
@@ -53,9 +61,12 @@ class Completed extends React.Component
         </Form>
         </Grid.Row>
            </Message>
+            <Link to="/project/user_revision" style={{position: "absolute", left: "90%", top: "250px"}}>
+                <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
+            </Link>
           </Container>
           </Grid>
-          
+
         )
     }
 }

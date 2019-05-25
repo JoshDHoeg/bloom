@@ -7,7 +7,8 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import Waiting from '../../../../components/Waiting/Waiting';
-import Payment from '../Concept/Payment/Payment'
+import Payment from '../Concept/Payment/Payment';
+import Completed from './Completed/Completed';
 
 class Concept extends React.Component{
     concept;
@@ -53,6 +54,7 @@ class Concept extends React.Component{
     }
 
     render(){
+        this.state.concept.completed = true;
         console.log('Paid?', this.state.concept.isPaid)
         console.log(this.state);
         if(this.state.loading){
@@ -65,33 +67,9 @@ class Concept extends React.Component{
 
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
-        if(this.state.concept.completed && !this.state.concept.approved){
-            return (
-                <div>
-                    <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                        <Container>
-                            <br/>
-                            <Header as='h1'>Concept Designs</Header>
-                            <Header as='h3'> Watch the video and pick your favorite concept to <br/> keep the project moving </Header>
-                            <br/>
-                            <br/>
-                            <iframe width="560" height="315"
-                                    src="https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG"
-                                    align="middle"
-                                    frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
-                            </iframe>
-                            <br/>
-                            <br/>
-                            <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="560" height="315"
-                                    frameBorder="0">
-                            </iframe>
-                            <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"> </script>
-                        </Container>
-                    </Grid>
-                </div>
-            )
+        if(this.state.concept.completed && !this.state.concept.approved) {
+            return (<Completed/>)
         }
-
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
             return (<Payment/>)
         }

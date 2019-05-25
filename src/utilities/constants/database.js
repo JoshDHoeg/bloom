@@ -111,7 +111,7 @@ export class ProjectBase {
       this.designerRef = data['designer'];
     }
   }
-  
+
 
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
