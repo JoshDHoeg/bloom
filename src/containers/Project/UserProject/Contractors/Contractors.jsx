@@ -6,7 +6,7 @@ class ContractorPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            isWaiting: false,
+            completed: false,
             quotes: [
                 {name: "landscaper", 
                 price: 2600,
@@ -21,7 +21,7 @@ class ContractorPage extends Component {
         }
     }
     render(){
-        if(this.state.isWaiting){
+        if(!this.state.completed){
             return (
                 <WaitingPage state="contractors"/>
             );

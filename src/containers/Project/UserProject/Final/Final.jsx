@@ -12,7 +12,7 @@ class Final extends React.Component {
         super(props);
         this.state = {
             final: {
-                completed: true,
+                completed: false,
                 figma: '',
             }
         }
