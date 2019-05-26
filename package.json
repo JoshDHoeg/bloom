@@ -44,7 +44,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "proxy": "http://localhost:8080"
+    "proxy": "http://localhost:8080",
+    "heroku-postbuild" : "node ./src/components/paymentstripe/backend/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
