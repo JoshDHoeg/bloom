@@ -13,7 +13,7 @@ class PaymentButton extends Component {
       loading: false,
       edit: false,
       concept: {
-       cost: '',
+      cost: '',
       }
     }
     this.state = {complete: false};
@@ -52,10 +52,10 @@ class PaymentButton extends Component {
         client: client,
         loading: false,
         concept: {
-          ...this.concept.getAll()
+          cost: this.concept.cost
         },
     }
-    console.log('1',this.state.cost)
+    console.log('1',this.concept.cost)
     this.setState(state);
     return state;
 
