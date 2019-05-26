@@ -9,9 +9,16 @@ const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in t
   }
 }
 const paymentApi = app => { //Access the back-end
-  app.get('/', (req, res,) => {
-    res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
-  });
+  if(process.env.NODE_ENV === 'production'){
+    app.get('*', (req,res) => {
+      res.sendFile(path.resolve(_dirname, 'client', 'build', 'index.html'));
+    })
+  }
+  else{
+    app.get('/', (req, res,) => {
+      res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+    });
+  }
   app.post('/', async (req, res) => { //Post the charge
     try{
       let { status } = await stripe.charges.create({
