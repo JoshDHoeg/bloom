@@ -5,6 +5,7 @@ import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus
 import { withAuthorization } from '../../../../../utilities/Session';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowRight)
 library.add(faArrowLeft)
@@ -42,7 +43,7 @@ class Completed extends React.Component{
                         </iframe>
                         <script src="./schedule.js" type="text/javascript"> </script>
                         <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-                            <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
+                            <img src={ArrowRight} />
                         </Link>
                     </Container>
                 </Grid>

@@ -11,6 +11,10 @@ import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
+
+
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -33,10 +37,10 @@ class Completed extends React.Component {
                 <Container><ProjectStatus state="revision"/></Container>
                 <Container textAlign='center' text='true'>
                     <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
+                        <img src={ArrowLeft} />
                     </Link>
-                    <Header as='h2'>Final Draft</Header>
-                    <p>Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!</p>
+                    <Header as='h2'>Revision</Header>
+                    <p>We listened to your feedback and came up with a new version of your design based on what you said, let us know how we did!</p>
                     <Segment placeholder>
                         <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
@@ -55,7 +59,7 @@ class Completed extends React.Component {
                         </Form>
                     </Message>
                     <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-right" size="5x" color="black" />
+                        <img src={ArrowRight} />
                     </Link>
                 </Container>
             </div>

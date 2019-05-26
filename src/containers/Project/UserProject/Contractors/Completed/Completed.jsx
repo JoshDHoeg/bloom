@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -24,8 +25,8 @@ class Completed extends Component {
                 <Grid style={{ textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
 
                     <Container fluid textAlign='center' text='true'>
-                        <Link to="/project/user_revision" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                            <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
+                        <Link to="/project/user_revision" style={{position: "absolute", left: "90%", top: "250px"}}>
+                            <img src={ArrowLeft} />
                         </Link>
 
                         <Grid.Column width={3} />
