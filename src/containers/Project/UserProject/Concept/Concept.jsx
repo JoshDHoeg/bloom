@@ -54,7 +54,6 @@ class Concept extends React.Component{
     }
 
     render(){
-        this.state.concept.completed = true;
         console.log('Paid?', this.state.concept.isPaid)
         console.log(this.state);
         if(this.state.loading){
