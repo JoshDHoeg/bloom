@@ -11,6 +11,8 @@ import { Link } from 'react-router-dom';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -33,7 +35,7 @@ class Completed extends React.Component {
                 <Container><ProjectStatus state="final" /></Container>
                 <Container fluid textAlign='center' text='true'>
                     <Link to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
+                        <img src={ArrowLeft} />
                     </Link>
                     <Grid.Row>
                         <Header as='h2'>Final Draft</Header>
@@ -63,7 +65,7 @@ class Completed extends React.Component {
                         </Grid.Row>
                     </Message>
                     <Link to="/project/user_revision" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-right" size="5x" color="black" />
+                        <img src={ArrowRight} />
                     </Link>
                 </Container>
             </Grid>

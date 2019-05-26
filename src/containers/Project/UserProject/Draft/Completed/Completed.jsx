@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
+import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 
 import { Link } from 'react-router-dom';
 
@@ -68,8 +70,8 @@ class Completed extends Component {
             <Grid>
                 <Container><ProjectStatus state="draft" å/></Container>
                 <Container fluid textAlign="center" text='true'>
-                    <Link to="/project/user_concept" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
+                    <Link to="/project/user_concept" style={{position: "absolute", left: "90%", top: "250px"}}>
+                        <img src={ArrowLeft} />
                     </Link>
                     <Header as='h2'>Rough Draft</Header>
                     <Grid.Row>
@@ -94,8 +96,8 @@ class Completed extends Component {
                         </div>
                         <Button color='blue' onClick={this.handleSubmit}>Submit</Button>
                     </Grid.Row>
-                    <Link to="/project/user_final" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <FontAwesomeIcon icon="arrow-right" size="5x" color="black" />
+                    <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
+                        <img src={ArrowRight} />
                     </Link>
                 </Container>
             </Grid>
