@@ -18,6 +18,7 @@ const configureServer = app => { //configure the express server
     extended: true
   }));
   app.use(bodyParser.json());
+  app.use(methodOverride());
 };
 
 module.exports = configureServer;
