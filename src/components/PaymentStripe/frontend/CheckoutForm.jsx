@@ -46,7 +46,6 @@ class PaymentButton extends Component {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.concept = await project.concept;
     const state = await {
-        client: client,
         loading: false,
         concept: {
           ...this.concept.getAll()
