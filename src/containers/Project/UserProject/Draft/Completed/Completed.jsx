@@ -96,7 +96,7 @@ class Completed extends Component {
                         </div>
                         <Button color='blue' onClick={this.handleSubmit}>Submit</Button>
                     </Grid.Row>
-                    <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
+                    <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
                         <img src={ArrowRight} />
                     </Link>
                 </Container>

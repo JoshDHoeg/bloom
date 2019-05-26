@@ -7,6 +7,8 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowLeft from '../../assets/images/icons/ArrowLeft.svg';
+import ArrowRight from '../../assets/images/icons/ArrowRight.svg';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -19,7 +21,8 @@ class Waiting extends Component {
             title: '',
             src: '',
             message: '',
-            link: ''
+            last: '',
+            next: ''
         }
     }
     
@@ -29,7 +32,7 @@ class Waiting extends Component {
                 title: 'Contractors',
                 src: logo,
                 message: 'Your contractors havent gotten us their quotes yet. You will receive a notification when they are ready',
-                link: '/project/user_revision'
+                last: '/project/user_revision',
             })
         }
         else if(this.props.state === 'draft'){
@@ -37,7 +40,8 @@ class Waiting extends Component {
                 title: 'Draft',
                 src: logo,
                 message: 'Your Draft is not ready yet. You will receive a notification when it is ready',
-                link: '/project/user_concept'
+                last: '/project/user_concept',
+                next: '/project/user_final'
             })
         }
         else if(this.props.state === 'final'){
@@ -45,7 +49,8 @@ class Waiting extends Component {
                 title: 'Final',
                 src: logo,
                 message: 'Your Final is not ready yet. You will receive a notification when it is ready',
-                link: '/project/user_draft'
+                last: '/project/user_draft',
+                next: '/project/user_revision'
             })
         }
         else if(this.props.state === 'revision'){
@@ -53,7 +58,8 @@ class Waiting extends Component {
                 title: 'Revision',
                 src: logo,
                 message: 'Your Revision is not ready yet. You will receive a notification when it is ready',
-                link: '/project/user_final'
+                last: '/project/user_final',
+                next: '/project/user_contractors'
             })
         }
         else{
@@ -61,6 +67,7 @@ class Waiting extends Component {
                 title: 'Concept',
                 src: logo,
                 message: 'Your Concept is not ready yet. You will receive a notification when it is ready',
+                next: '/project/user_draft'
             })
         }
     }
@@ -73,9 +80,11 @@ class Waiting extends Component {
                 <Grid.Row>
                     <ProjectStatus state={this.props.state}/>
                 </Grid.Row>
-                <Link to={this.state.link} style={{ position: "absolute", right: "90%", top: "250px" }}>
-                            <FontAwesomeIcon icon="arrow-left" size="5x" color="black" />
-                        </Link>
+                {!this.state.last == '' &&
+                    <Link to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
+                        <img src={ArrowLeft} />
+                    </Link>
+                }
                 <Grid.Row>
                     <Grid.Column style={{textAlign: 'center', paddingBottom: '15px', paddingTop: '15px'}}>
                         <div style={{fontSize:'30px', fontWeight:'bold'}}>{this.state.title}</div>
@@ -87,6 +96,11 @@ class Waiting extends Component {
                         <div style={{fontSize:'16px'}}>{this.state.message}</div>
                     </Grid.Column>
                 </Grid.Row>
+                {!this.state.next == '' && 
+                    <Link to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}>
+                        <img src={ArrowRight} />
+                    </Link>
+                }
             </Container>
         );
     }
