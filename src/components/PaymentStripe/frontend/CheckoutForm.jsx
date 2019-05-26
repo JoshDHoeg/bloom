@@ -44,15 +44,12 @@ class PaymentButton extends Component {
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-    console.log(project);
     this.concept = await project.concept;
-    console.log(this.revision);
-    const client = await project.client;
     const state = await {
         client: client,
         loading: false,
         concept: {
-          cost: this.concept.cost
+          ...this.concept.getAll()
         },
     }
     console.log('1',this.concept.cost)
