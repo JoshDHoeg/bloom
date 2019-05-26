@@ -55,6 +55,8 @@ class Concept extends React.Component{
 
     render(){
         console.log('Paid?', this.state.concept.isPaid)
+        console.log('Approved?', this.state.concept.approved)
+        console.log()
         console.log(this.state);
         if(this.state.loading){
             return (<div>Loading...</div>)
