@@ -51,7 +51,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
               media:"",
               completed: false,
               approved: false,
-              isPaid: false
+              isPaid: false,
+              cost: 59999
           });
           d.doc('0').set({
               init: false,

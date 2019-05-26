@@ -423,6 +423,9 @@ export class ProjectData {
       _isPaid = false;
       get isPaid() {return this._isPaid; };
       set isPaid(p) {this._setter({ isPaid: p }).then(() => this._isPaid = p); }
+      _cost = '';
+      get cost() { return this._cost; };
+      set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -432,12 +435,14 @@ export class ProjectData {
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
           this._isPaid = this.data['isPaid']
+          this._cost = this.data['cost']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;
           this._isPaid = false;
+          this._cost = 59999;
         }
       }
       getAll() {
@@ -446,7 +451,8 @@ export class ProjectData {
           video: this.video,
           completed: this.completed,
           approved: this.approved,
-          isPaid: this.isPaid
+          isPaid: this.isPaid,
+          cost: this.cost,
         });
       }
     }
