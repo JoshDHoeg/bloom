@@ -51,7 +51,7 @@ class PaymentButton extends Component {
           ...this.concept.getAll()
         },
     }
-    console.log('1',this.concept.cost)
+    console.log('1',this.state.concept.cost)
     this.setState(state);
     return state;
 
