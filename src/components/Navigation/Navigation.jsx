@@ -6,7 +6,7 @@ import logo from '../../Images/BloomtimeLogo.png'
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
-
+import SignOutButton from '../../containers/Users/SignOut/SignOut'
 const Navigation = () => (
     <div>
         <AuthUserContext.Consumer>
@@ -29,6 +29,9 @@ const NavigationAuth = () => (
             </div>
             <div className="item">
                 <Link to={ROUTES.MESSAGING}>Messages</Link>
+            </div>
+            <div className="item">
+                <SignOutButton/>
             </div>
             <div className="right menu item">
                 <img src={logo} alt="bloomtime-logo"/>
