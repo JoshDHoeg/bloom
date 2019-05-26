@@ -10,7 +10,6 @@ const EditButton = (props) => {
         props.edit ? (
             <button onClick={props.formSubmit} type="button" style={{
                 backgroundColor: "#4BED2F",
-                marginLeft: "225px",
                 width: "100px",
                 height: "40px",
                 borderRadius: "4px",
@@ -23,7 +22,6 @@ const EditButton = (props) => {
         ) : (
             <button type="button" style={{
                 backgroundColor: "#4BED2F",
-                marginLeft: "225px",
                 width: "100px",
                 height: "40px",
                 borderRadius: "4px",

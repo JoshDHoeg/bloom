@@ -1,37 +1,40 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react'
-import { withAuthorization } from '../../../utilities/Session';
-import PaymentPageView from './View/View';
-import PaymentPageEdit from './Edit/Edit';
-
+// import backgroundTemp from '../../../Images/TempBackground.PNG';
+//IMPORT UTILITIES
+import { withAuthorization } from '../../../../utilities/Session';
+import AccountInfoView from './View/View';
+import AccountInfoEdit from './Edit/Edit';
 //IMPORT CONTAINERS
 
-
-class PaymentInfoPage extends Component {
-    user; 
+class AccountInfoPage extends Component {
+    user;
     constructor(props) {
         super(props);
         this.state = { 
             loading: false,
             edit: false,
             user:{
+                phone: '',
+                name: '',
                 billadd1: '',
-                zip: '',
                 city: '',
-                state:'',
+                state: '',
+                zip: '',
             }
         };
-    this.formSubmit = this.formSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+        this.formSubmit = this.formSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
-
+    
     formSubmit = () => {
+        this.user.name = this.state.user.name;
+        this.user.phone = this.state.user.phone;
         this.user.billadd1 = this.state.user.billadd1;
-        this.user.zip = this.state.user.zip;
         this.user.city = this.state.user.city;
         this.user.state = this.state.user.state;
+        this.user.zip = this.state.user.zip;
     }
-
 
     handleChange(event) {
         event.preventDefault();
@@ -43,13 +46,12 @@ class PaymentInfoPage extends Component {
             }
         });
     }
-
-    componentDidMount(){
-        this.setState({ loading: true, edit: this.props.edit});
-        this.getUserState();
-  
-    }
     
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+        this.getUserState();
+    }
+
     getUserState = async () => {
         const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid, true);
         this.user = await user
@@ -57,10 +59,12 @@ class PaymentInfoPage extends Component {
         const state = await {
             loading: false,
             user: {
+                phone: this.user.phone,
+                name: this.user.name,
                 billadd1: this.user.billadd1,
-                zip: this.user.zip,
-                state: this.user.state,
                 city: this.user.city,
+                state: this.user.state,
+                zip: this.user.zip
             },
         }
         this.setState(state);
@@ -68,24 +72,24 @@ class PaymentInfoPage extends Component {
     }
 
     render() {
-        console.log(this.state);
         if(this.state.edit){
             return(
-                <PaymentPageEdit 
-                formSubmit={this.formSubmit}
-                handleChange={this.handleChange}
+                <AccountInfoEdit 
                 user={this.state.user}
+                handleChange={this.handleChange}
+                formSubmit={this.formSubmit}
                 />
             );
         }else{
             return (
-                <PaymentPageView 
+                <AccountInfoView 
                 user={this.state.user}
                 />
             );
         }
     }
 }
+    
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(PaymentInfoPage);
+export default withAuthorization(condition)(AccountInfoPage);

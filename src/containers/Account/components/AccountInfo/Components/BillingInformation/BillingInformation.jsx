@@ -31,9 +31,9 @@ const BillingInfoView = (props) => {
 //    console.log('user2', user)
     console.log('billadd1:', billadd1)
     return (
+        <div style={{textAlign:'center'}}>
         <table class="ui definition table">
         <tbody>
-            <h3>Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
                 <td>{billadd1}</td>
@@ -52,6 +52,7 @@ const BillingInfoView = (props) => {
             </tr>
         </tbody>
         </table>
+        </div>
     )
 }
 
@@ -64,7 +65,6 @@ const BillingInfoEdit = (props) => {
     return(
         <table class="ui definition table">
         <tbody>
-            <h3>Edit Billing Address:</h3>
             <tr>
                 <td>Street Address:</td>
                 <td id ='BillAdd1Edit'> <Input type='text' name='billadd1' defaultValue={billadd1} onChange={handleChange} style={{ width: '140px' }} ></Input></td>
