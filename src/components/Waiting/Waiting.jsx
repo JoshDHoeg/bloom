@@ -80,7 +80,7 @@ class Waiting extends Component {
                 <Grid.Row>
                     <ProjectStatus state={this.props.state}/>
                 </Grid.Row>
-                {!this.state.last === '' &&
+                {!this.state.last == '' &&
                     <Link to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
                         <img src={ArrowLeft} />
                     </Link>
@@ -96,7 +96,7 @@ class Waiting extends Component {
                         <div style={{fontSize:'16px'}}>{this.state.message}</div>
                     </Grid.Column>
                 </Grid.Row>
-                {!this.state.next === '' && 
+                {!this.state.next == '' && 
                     <Link to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}>
                         <img src={ArrowRight} />
                     </Link>

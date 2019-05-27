@@ -499,7 +499,7 @@ export class ProjectData {
           this._feedback = '';
           this._completed = false;
           this._isApproved = false;
-          this._feedback = this.data['feedback'];
+          this._feedback = 'feedback'
         }
       }
       getAll() {
@@ -533,6 +533,10 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _feedback = '';
+      get feedback() { return this._feedback; };
+      set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
@@ -541,12 +545,14 @@ export class ProjectData {
           this._video = this.data['video'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
+          this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;
+          this._feedback = '';
         }
       }
       getAll() {
@@ -556,10 +562,12 @@ export class ProjectData {
           video: this.video,
           completed: this.completed,
           approved: this.approved,
+          feedback: this.feedback
         });
       }
     }
   };
+
   static Revision = {
     colRef: 'revisions',
     type: class Revision extends ProjectDataBase {

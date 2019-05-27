@@ -45,6 +45,7 @@ class AccountInfoPage extends Component {
                 [event.target.name]: event.target.value
             }
         });
+        console.log(this.state.user.name)
     }
     
     componentDidMount() {

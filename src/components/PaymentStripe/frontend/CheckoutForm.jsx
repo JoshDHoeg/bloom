@@ -13,7 +13,7 @@ class PaymentButton extends Component {
       loading: false,
       edit: false,
       concept: {
-      cost: '',
+        cost: '',
       }
     }
     this.state = {complete: false};
@@ -35,8 +35,8 @@ class PaymentButton extends Component {
     event.preventDefault();
     console.log(event.target.name);
     this.setState({
-      final: {
-        ...this.state.revision,
+      concept: {
+        ...this.state.concept,
         [event.target.name]: event.target.value
       }
     });

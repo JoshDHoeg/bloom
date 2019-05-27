@@ -59,7 +59,7 @@ class Completed extends React.Component {
                     <Message hidden={!this.state.revision}>
                         <Grid.Row>
                             <Form className='attached fluid segment'>
-                                <Form.Input fluid label='Revsion' type='text' />
+                                <Form.Input fluid label='Revisisons' type='text' />
                                 <Button color='blue'>Submit</Button>
                             </Form>
                         </Grid.Row>
