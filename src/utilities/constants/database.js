@@ -494,7 +494,7 @@ export class ProjectData {
           this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
-          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._figma = 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1';
           this._video = '7i1w4N29C9I';
           this._feedback = '';
           this._completed = false;
@@ -546,7 +546,7 @@ export class ProjectData {
           this._feedback = this.data['feedback'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
-          this._figma = 'https://www.figma.com/file/LKQ4FJ4bTnCSjedbRpk931/Sample-File';
+          this._figma = 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1';
           this._video = '7i1w4N29C9I';
           this._completed = false;
           this._isApproved = false;

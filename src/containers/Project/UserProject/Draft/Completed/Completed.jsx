@@ -30,6 +30,7 @@ class Completed extends Component {
             draft: {
                 approved: '',
                 feedback: '',
+                figma: '',
             },
             tempURL: 'www.google.com',
             figmaTempURL: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
@@ -138,7 +139,7 @@ class Completed extends Component {
                         <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.state.draft.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
                         </Segment>
                         <Button.Group>

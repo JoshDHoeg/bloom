@@ -23,7 +23,8 @@ class Completed extends React.Component {
         this.state = {
             final: {
                 feedback: '',
-                approved: ''
+                approved: '',
+                figma: ''
             },
             feedbackState: false,
             loading: false,
@@ -118,7 +119,7 @@ class Completed extends React.Component {
                         <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.props.figma} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.state.final.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
                         </Segment>
                     </Grid.Row>

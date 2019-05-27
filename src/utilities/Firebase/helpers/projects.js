@@ -59,7 +59,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               feedback: "",
               video: "",
               media:"",
-              figma: "",
+              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
               completed: false,
               approved: false,
           });
@@ -68,7 +68,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
             feedback: "",
             video: "",
             media:"",
-            figma: "",
+            figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
             completed: false,
             approved: false,
         });
@@ -76,7 +76,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
               init: false,
               feedback: "",
               media:"",
-              figma: "",
+              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
               completed: false,
               approved: false,
           });
