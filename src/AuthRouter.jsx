@@ -3,7 +3,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 //IMPORT COMPONENTS
-import Navigation from './components/Navigation/Navigation';
+import UserNavigation from './components/Navigation/UserNavigation';
 
 //IMPORT CONTAINERS
 import SignUpPage from './containers/Users/SignUp/SignUp';
@@ -21,7 +21,7 @@ import { withAuthentication } from './utilities/Session';
 const App = () => (
   <Router>
     <div>
-      <Navigation />
+      <UserNavigation />
       <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
       <Route path={ROUTES.SIGN_IN} component={SignInPage} />
       <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
