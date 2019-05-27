@@ -14,7 +14,7 @@ import FigmaEmbed from 'react-figma-embed';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 import { withAuthorization } from '../../../../../utilities/Session/index';
-import { Container, Header, Button, Grid, Message, Form } from 'semantic-ui-react';
+import { Container, Segment, Header, Button, Grid, Message, Form } from 'semantic-ui-react';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
@@ -101,7 +101,7 @@ class Completed extends Component {
 
     render() {
         let videoPortion;
-        console.log("feedback", this.state.draft.feedbackState)
+        console.log("feedback", this.state.draft.approved)
         if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -131,21 +131,25 @@ class Completed extends Component {
                     <Link to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
                         <img src={ArrowLeft} />
                     </Link>
-                    <Header as='h2'>Rough Draft</Header>
-                    <Grid.Row>
-                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                            <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }} />
-                        </div>
+                    <Grid.Row style={{ paddingTop: '20px' }}>
+                    <   Header as='h2'>Rough Draft</Header>
+                    </Grid.Row>
+                    <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+                        <Segment placeholder>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                                <FigmaEmbed url={this.state.figmaTempURL} style={{ width: "540px", margin: "30px" }} />
+                            </div>
+                        </Segment>
                         <Button.Group>
                             <Button>Media</Button>
                             <Button onClick={this.videoToggle}>Show Video</Button>
                         </Button.Group>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row style={{paddingBottom:'20px'}}>
                         {videoPortion}
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row style={{ paddingBottom: '20px'}} >
                         <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
                             <Form.Input  disabled = {this.state.draft.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.draft.feedback} onChange={this.handleChange} type='text'  />
                             <Message 

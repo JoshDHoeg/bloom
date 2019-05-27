@@ -589,7 +589,7 @@ export class ProjectData {
           this._media = this.data['media'];
           this._completed = this.data['completed'];
           this._feedback = this.data['feedback'];
-          this._isApproved = this.data['isApproved'];
+          this._isApproved = this.data['approved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
@@ -602,7 +602,7 @@ export class ProjectData {
           media: this.media,
           completed: this.completed,
           feedback: this.feedback,
-          approved: this.isApproved
+          approved: this.approved
         });
       }
     }

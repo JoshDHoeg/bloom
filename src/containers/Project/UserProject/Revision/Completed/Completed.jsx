@@ -35,10 +35,11 @@ class Completed extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
     }
-
+    
     formSubmit = () => {
         this.revision.feedback = this.state.revision.feedback;
         this.revision.approved = !this.state.revision.approved;
+
     }
 
     handleChange(event) {
@@ -111,13 +112,13 @@ class Completed extends React.Component {
                     <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
                         <img src={ArrowLeft} />
                     </Link>
-                    <Grid.Row>
+                    <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Revision</Header>
                     </Grid.Row>
                     <Grid.Row>
                     <p>We listened to your feedback and came up with a new version of your design based on what you said, let us know how we did!</p>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row style={{ paddingTop: '20px' }}>
                         <Segment placeholder>
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
@@ -125,22 +126,24 @@ class Completed extends React.Component {
                             </span>
                         </Segment>
                     </Grid.Row>
-                    <Grid.Row>
-                        <Button.Group>
+                    <Grid.Row >
+                        <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button>Download Design</Button>
                             <Button onClick={this.HandleClick} >Ask for Revision</Button>
                             <Button ><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
-                    <Grid.Row>
-                        <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                            <Form.Input  disabled = {this.state.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.revision.feedback} onChange={this.handleChange} type='text'  />
-                            <Message 
-                                hidden = {!this.state.revision.approved && !this.state.feedbackState}
-                                header='Feedback Received:' 
-                                content= {this.state.revision.feedback || 'feedback'}/>
-                            {feedbackButton}
-                        </Form>
+                    <Grid.Row style={{ paddingBottom: '20px'}}>
+                        <Message hidden = {!this.state.revisions}>
+                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
+                                <Form.Input  disabled = {this.state.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.revision.feedback} onChange={this.handleChange} type='text'  />
+                                <Message 
+                                    hidden = {!this.state.revision.approved && !this.state.feedbackState}
+                                    header='Feedback Received:' 
+                                    content= {this.state.revision.feedback || 'feedback'}/>
+                                {feedbackButton}
+                            </Form>
+                        </Message>
                     </Grid.Row>
                     <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                         <img src={ArrowRight} />
