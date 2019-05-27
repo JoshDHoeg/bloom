@@ -1,3 +1,4 @@
+// BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
@@ -27,7 +28,8 @@ class Completed extends Component {
         super(props);
         this.state = {
             draft: {
-                feedback: ''
+                approved: '',
+                feedback: '',
             },
             tempURL: 'www.google.com',
             figmaTempURL: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
@@ -36,16 +38,17 @@ class Completed extends Component {
             loading: false,
             feedbackState: false,
         };
-        this.formSubmit = this.formSubmit.bind(this)
+        this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
-        this.videoToggle = this.videoToggle.bind(this)
-        this.feedbackSuccess = this.feedbackSuccess.bind(this)
+        this.videoToggle = this.videoToggle.bind(this);
+        this.handleSuccess = this.handleSuccess.bind(this);
     }
 
     formSubmit = () => {
         this.draft.feedback = this.state.draft.feedback;
+        this.draft.approved = !this.state.draft.approved;
         console.log('trying')
-        console.log(this.state.draft.feedback)
+        console.log(this.state.draft.feedbackState)
     }
 
     handleChange(event) {
@@ -53,10 +56,16 @@ class Completed extends Component {
         this.setState({
             draft: {
                 ...this.state.draft,
-                [event.target.name]: event.target.value
+                [event.target.name]: event.target.value,
             }
         });
         console.log(this.state.draft.feedback)
+    }
+
+    handleSuccess(event) {
+       this.setState({
+           feedbackState: true
+       })
     }
 
     componentDidMount() {
@@ -89,15 +98,10 @@ class Completed extends Component {
         })
     }
     
-    feedbackSuccess (event) {
-        this.setState({
-            feedbackState: true
-        })
-    }
 
     render() {
         let videoPortion;
-        console.log("feedback", this.state.feedbackState)
+        console.log("feedback", this.state.draft.feedbackState)
         if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -107,16 +111,17 @@ class Completed extends Component {
             </div>;
         }
         let feedbackButton;
-        if(!this.state.feedbackState) {
+        if(!this.state.draft.approved) {
             feedbackButton = <Button 
-            onClick={this.feedbackSuccess} 
-            content='Submit' color='blue'>
+            content='Submit'
+            onClick={this.handleSuccess} 
+            color='blue'>
             Submit</Button>
         }else {
             feedbackButton = <Button 
             disabled
-            onClick={this.feedbackSuccess} 
-            content='Submit' color='blue'>
+            content='Submit' 
+            color='blue'>
             Submit</Button>
         }
         return (
@@ -141,18 +146,14 @@ class Completed extends Component {
                         {videoPortion}
                     </Grid.Row>
                     <Grid.Row>
-                    <Message >
-                        <Grid.Row>
-                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input fluid label='Feedback' name ='feedback' value={this.state.draft.feedback} onChange={this.handleChange} type='text'  />
-                                <Message 
-                                    hidden = {!this.state.feedbackState}
-                                    header='Feedback Received' 
-                                    content="Our designers will work hard to make the changes you suggested"/>
-                                {feedbackButton}
-                            </Form>
-                        </Grid.Row>
-                    </Message>
+                        <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
+                            <Form.Input  disabled = {this.state.draft.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.draft.feedback} onChange={this.handleChange} type='text'  />
+                            <Message 
+                                hidden = {!this.state.draft.approved && !this.state.feedbackState}
+                                header='Feedback Received:' 
+                                content= {this.state.draft.feedback || 'feedback'}/>
+                            {feedbackButton}
+                        </Form>
                     </Grid.Row>
                     <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
                         <img src={ArrowRight} />

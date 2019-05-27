@@ -499,7 +499,6 @@ export class ProjectData {
           this._feedback = '';
           this._completed = false;
           this._isApproved = false;
-          this._feedback = 'feedback'
         }
       }
       getAll() {
@@ -510,7 +509,6 @@ export class ProjectData {
           feedback: this.feedback,
           completed: this.completed,
           approved: this.approved,
-          feedback: this._feedback
         });
       }
     }
@@ -562,7 +560,7 @@ export class ProjectData {
           video: this.video,
           completed: this.completed,
           approved: this.approved,
-          feedback: this.feedback
+          feedback: this.feedback,
         });
       }
     }
@@ -580,6 +578,10 @@ export class ProjectData {
       _feedback = '';
       get feedback() { return this._feedback; };
       set feedback(f) { this._setter({ feedback: f }).then(() => this._feedback = f); }
+      _isApproved = false;
+      get approved() {return this._isApproved; };
+      set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -587,17 +589,20 @@ export class ProjectData {
           this._media = this.data['media'];
           this._completed = this.data['completed'];
           this._feedback = this.data['feedback'];
+          this._isApproved = this.data['isApproved'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
           this._feedback = '';
+          this._isApproved = false
         }
       }
       getAll() {
         return this._getAll({
           media: this.media,
           completed: this.completed,
-          feedback: this.feedback
+          feedback: this.feedback,
+          approved: this.isApproved
         });
       }
     }
