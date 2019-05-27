@@ -89,7 +89,7 @@ class Completed extends React.Component {
 
     render() {
         let feedbackButton;
-        if(!this.state.final.approved && !this.state.feedbackState) {
+        if(!this.state.final.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
