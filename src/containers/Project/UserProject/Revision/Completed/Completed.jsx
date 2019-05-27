@@ -40,7 +40,6 @@ class Completed extends React.Component {
     formSubmit = () => {
         this.revision.feedback = this.state.revision.feedback;
         this.revision.approved = !this.state.revision.approved;
-
     }
 
     handleChange(event) {
@@ -99,7 +98,7 @@ class Completed extends React.Component {
             onClick={this.handleSuccess} 
             color='blue'>
             Submit</Button>
-        }else {
+        }else{
             feedbackButton = <Button 
             disabled
             content='Submit' 

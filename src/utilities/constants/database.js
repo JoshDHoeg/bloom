@@ -581,6 +581,9 @@ export class ProjectData {
       _isApproved = false;
       get approved() {return this._isApproved; };
       set approved(a) {this._setter({ approved: a }).then(() => this._isApproved = a); }
+      _figma = '';
+      get figma() { return this._figma; };
+      set figma(g) { this._setter({ figma: g }).then(() => this._figma = g); }
 
 
       constructor(dbQuery, useDefault = false) {
@@ -590,11 +593,13 @@ export class ProjectData {
           this._completed = this.data['completed'];
           this._feedback = this.data['feedback'];
           this._isApproved = this.data['approved'];
+          this._figma = this.data['figma'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._completed = false;
           this._feedback = '';
           this._isApproved = false
+          this._figma = 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1';
         }
       }
       getAll() {
@@ -602,7 +607,8 @@ export class ProjectData {
           media: this.media,
           completed: this.completed,
           feedback: this.feedback,
-          approved: this.approved
+          approved: this.approved,
+          figma: this.figma,
         });
       }
     }
