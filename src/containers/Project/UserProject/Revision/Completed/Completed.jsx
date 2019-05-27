@@ -89,7 +89,7 @@ class Completed extends React.Component {
     }
 
     render() {
-        console.log('approved', this.state.revision.approved)
+        console.log('approved', this.state.revision.figma)
         console.log('state', this.state.feedbackState)
         let feedbackButton;
         if(!this.state.revision.approved) {
