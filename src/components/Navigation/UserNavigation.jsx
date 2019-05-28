@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
-import {Menu, Dropdown, Image} from 'semantic-ui-react'
+import {Menu, Dropdown, Image, Icon} from 'semantic-ui-react'
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
@@ -23,15 +23,18 @@ const UserNavigation = () => (
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
     <Menu >
-        <Dropdown item text='Menu'>
+        <Dropdown className='ui labeled icon' item icon = 'unordered list'>
             <Dropdown.Menu>
                 <DropdownItem>
+                    <Icon name = 'user'/>
                     <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
                 </DropdownItem>
                 <Dropdown.Item>
+                    <Icon name='file alternate'/>
                     <Link to={ROUTES.PROJECT_LIST}>Projects</Link>
                 </Dropdown.Item>
                 <DropdownItem>
+                    <Icon name='comments'/>
                     <Link to={ROUTES.MESSAGING}>Messages</Link>
                 </DropdownItem>
                 <DropdownItem>
