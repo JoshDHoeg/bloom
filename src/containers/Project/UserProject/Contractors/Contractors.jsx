@@ -6,7 +6,7 @@ class ContractorPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            completed: false,
+            completed: true,
             quotes: [
                 {name: "landscaper", 
                 price: 2600,

@@ -53,7 +53,7 @@ class AccountInfoPageEdit extends Component {
                             />
                         </span>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row style={{paddingBottom:'45px'}}>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>
                     </Grid.Row>
                 </Grid>

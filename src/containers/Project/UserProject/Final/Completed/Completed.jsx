@@ -89,7 +89,7 @@ class Completed extends React.Component {
 
     render() {
         let feedbackButton;
-        if(!this.state.final.approved && !this.state.feedbackState) {
+        if(!this.state.final.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
@@ -133,8 +133,9 @@ class Completed extends React.Component {
                     <Grid.Row style={{ paddingBottom: '20px'}}>
                         <Message hidden = {!this.state.revisions}>
                             <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input  enabled = {!this.state.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.final.feedback} onChange={this.handleChange} type='text'  />
+                                <Form.Input  disabled = {this.state.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.final.feedback} onChange={this.handleChange} type='text'  />
                                 <Message 
+                                    success
                                     hidden = {!this.state.final.approved && !this.state.feedbackState}
                                     header='Feedback Received:' 
                                     content= {this.state.final.feedback || 'feedback'}/>

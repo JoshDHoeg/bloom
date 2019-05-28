@@ -154,6 +154,7 @@ class Completed extends Component {
                         <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
                             <Form.Input  disabled = {this.state.draft.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.draft.feedback} onChange={this.handleChange} type='text'  />
                             <Message 
+                                success
                                 hidden = {!this.state.draft.approved && !this.state.feedbackState}
                                 header='Feedback Received:' 
                                 content= {this.state.draft.feedback || 'feedback'}/>
