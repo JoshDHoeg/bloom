@@ -44,11 +44,11 @@
   },
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"node src/components/PaymentStripe/backend/index.js\"",
-    "build": "concurrently \"react-scripts build\" \"node src/components/PaymentStripe/backend/index.js\"",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "proxy": "node src/components/PaymentStripe/backend/index.js",
-    "heroku-postbuild": "cd client/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "node src/components/PaymentStripe/backend/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
