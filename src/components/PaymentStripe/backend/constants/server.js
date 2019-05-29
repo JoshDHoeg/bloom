@@ -6,7 +6,7 @@ const SERVER_PORT = 8080; //set the server port
 
 const SERVER_CONFIGS = { //configure the server
   PRODUCTION: process.env.NODE_ENV === 'production',
-  PORT: process.env.PORT || SERVER_PORT,
+  PORT: process.env.NODE_ENV || SERVER_PORT,
 };
 
 module.exports = SERVER_CONFIGS;
