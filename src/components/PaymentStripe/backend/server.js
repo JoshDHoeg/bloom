@@ -2,6 +2,7 @@
 
 const cors = require('cors'); //use cors
 const bodyParser = require('body-parser'); //use body-parser (must also use this dependency)
+const express = require('express')
 
 const CORS_WHITELIST = require('./constants/frontend'); //use cors whitelist to avoid cors header authorization error (must also use this dependency)
 var forceSsl = function (req, res, next) {
