@@ -64,11 +64,10 @@ class PaymentButton extends Component {
       method: "POST",
       headers: {"Content-Type": "application/json",
       "X-HTTP-Method-Override": "POST" },
-      // body: JSON.stringify({
-      //   amount: amt,
-      //   token: token.id
-      // })
-      body: token.id
+      body: JSON.stringify({
+        amount: amt,
+        token: token.id
+      })
     });
     if (response.ok) {
       console.log("working")
