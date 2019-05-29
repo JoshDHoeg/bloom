@@ -13,14 +13,15 @@
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
     "bootstrap": "^4.3.1",
+    "concurrently": "^4.1.0",
     "cors": "^2.8.5",
     "create-react-class": "^15.6.3",
     "express": "^4.16.4",
     "firebase": "^5.8.1",
     "i": "^0.3.6",
+    "moment": "^2.22.2",
     "node-sass": "^4.11.0",
     "npm": "^6.9.0",
-    "moment": "^2.22.2",
     "pug": "^2.0.3",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
@@ -40,8 +41,8 @@
     "youtube-embed-video": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "concurrently \"react-scripts start\" \"node src/components/PaymentStripe/backend/index.js\"",
+    "build": "concurrently \"react-scripts build\" \"node src/components/PaymentStripe/backend/index.js\"",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "proxy": "node src/components/PaymentStripe/backend/index.js"
