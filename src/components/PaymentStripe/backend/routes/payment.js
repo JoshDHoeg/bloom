@@ -25,7 +25,8 @@ const paymentApi = app => { //Access the back-end
         amount: req.body.amount,
         currency: "usd",
         description: "Charge",
-        source: req.body.token
+        source: body,
+        amount: 599
         });
       res.json( {status } );
   }catch(err) {
