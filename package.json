@@ -40,11 +40,11 @@
     "youtube-embed-video": "^1.1.0"
   },
   "scripts": {
-    "start": "node src/server.js && react-scripts start",
-    "build": "node src/server.js && react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build && node src/components/PaymentStripe/backend/index.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "proxy": "http://bloom-userui.herokuapp.com/payme"
+    "proxy": "node src/components/PaymentStripe/backend/index.js"
   },
   "eslintConfig": {
     "extends": "react-app"
