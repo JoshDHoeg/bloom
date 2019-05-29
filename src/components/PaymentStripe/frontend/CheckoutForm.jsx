@@ -77,6 +77,7 @@ class PaymentButton extends Component {
       console.log(response)
     }else{
       alert('Payment Error')
+      console.log(response)
     }
   }
 

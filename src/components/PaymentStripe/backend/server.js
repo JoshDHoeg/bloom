@@ -24,6 +24,9 @@ const configureServer = app => { //configure the express server
   }));
   app.use(bodyParser.json());
   app.use(forceSsl);
+  if(process.env.NODE_ENV === 'production'){
+    app.use('/static', serveIndex(_dirname + "/public"));
+  }
   // if(process.env.NODE_ENV === 'production'){
   //   app.use(express.static('client/build'));
   // }
