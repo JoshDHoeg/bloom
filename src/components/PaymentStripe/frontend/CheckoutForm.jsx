@@ -62,7 +62,8 @@ class PaymentButton extends Component {
     let amt = this.state.concept.cost;
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json",
+      "X-HTTP-Method-Override": "PUT" },
       body: JSON.stringify({
         amount: amt,
         token: token.id
