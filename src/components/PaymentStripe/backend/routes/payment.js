@@ -12,6 +12,7 @@ const paymentApi = app => { //Access the back-end
   if(process.env.NODE_ENV === 'production'){
     app.get('*', (req,res) => {
       res.sendFile(path.resolve(_dirname, 'client', 'build', 'index.html'));
+      res.send({ message: 'Hello Stripe Checkout Server!', timestamp: new Date().toISOString})
     })
   }
   else{
