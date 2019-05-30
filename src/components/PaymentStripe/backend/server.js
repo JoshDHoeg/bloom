@@ -29,11 +29,6 @@ const configureServer = app => { //configure the express server
   });
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false}))
-  if(process.env.NODE_ENV === 'production'){
-    app.use('/', express.static(path.join(__dirname, "/public")));
-    app.use('/', express.static(path.resolve(__dirname, "./client/build")));
-    app.use(cookieParser);
-  }
   // if(process.env.NODE_ENV === 'production'){
   //   app.use(express.static('client/build'));
   // }
