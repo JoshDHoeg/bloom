@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import Final from '../Final.jsx';
 
-describe('Example test', () => {
+describe('User Final Page', () => {
     it('renders without crashing',() => {
         shallow(<Final/>)
     });
