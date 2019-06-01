@@ -39,6 +39,7 @@ const withAuthorization = condition => Component => {
         }
       });
     }
+
     componentWillUnmount() {
       this.listener();
     }
@@ -46,7 +47,8 @@ const withAuthorization = condition => Component => {
     render() {
       return (
         <AuthUserContext.Consumer>
-          {authUser =>
+          {
+              authUser =>
             condition(authUser) ? <Component {...this.props} /> : null
           }
         </AuthUserContext.Consumer>
