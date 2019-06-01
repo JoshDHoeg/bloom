@@ -9,6 +9,7 @@ import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
+import Approve from './Approve/Approve'
 
 export class Concept extends React.Component{
     concept;
@@ -19,6 +20,7 @@ export class Concept extends React.Component{
             completed: false,
             concept: {
                 approved: false,
+                approveterms: false,
                 isPaid: false,
                 video: null,
                 schedule: null
@@ -71,8 +73,11 @@ export class Concept extends React.Component{
         if(this.state.concept.completed && !this.state.concept.approved) {
             return (<CompletedPage/>)
         }
-        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
+        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && this.state.concept.approveterms){
             return (<Payment/>)
+        }
+        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
+            return (<Approve/>)
         }
 
     }

@@ -19,6 +19,7 @@ library.add(faArrowLeft);
 
 class Completed extends React.Component {
     final;
+    stage;
     constructor(props) {
         super(props);
         this.state = {
@@ -26,6 +27,9 @@ class Completed extends React.Component {
                 feedback: '',
                 approved: '',
                 figma: ''
+            },
+            stage:{
+                stage: ''
             },
             feedbackState: false,
             loading: false,
@@ -38,7 +42,8 @@ class Completed extends React.Component {
 
     formSubmit = () => {
         this.final.feedback = this.state.final.feedback;
-        this.final.approved = !this.state.final.approved;
+        this.final.approved = true;
+        this.stage.stage = 'revision'
 
     }
 
@@ -78,11 +83,15 @@ class Completed extends React.Component {
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final
+        this.stage = await project.stage
         const state = await {
             loading: false,
             final: {
                 ...this.final.getAll()
             },
+            stage: {
+                stage: this.stage.stage
+            }
         }
         this.setState(state)
         return state;

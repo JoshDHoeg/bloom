@@ -1,12 +1,19 @@
 //BLOOMTIME DESIGN 2019
 import { Button } from 'semantic-ui-react'
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom'
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import PAYMENT_SERVER_URL from './constants/server';
 import { withAuthorization } from '../../../utilities/Session';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+library.add(faArrowRight);
+library.add(faArrowLeft);
 
 class PaymentButton extends Component {
   concept;
+  stage;
   constructor(props) {
     super(props);
     this.state={
@@ -14,10 +21,15 @@ class PaymentButton extends Component {
       edit: false,
       concept: {
         cost: '',
-      }
+        isPaid: false,
+      },
+      stage: {
+        stage: ''
+      },
     }
     this.state = {complete: false};
     this.submit = this.submit.bind(this);
+    this.stateChange = this.stateChange.bind(this);
   }
   
   componentDidMount() {
@@ -42,14 +54,23 @@ class PaymentButton extends Component {
     });
   }
 
+  stateChange = () => {
+    this.concept.isPaid = true;
+    this.stage.stage = 'draft';
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.concept = await project.concept;
+    this.stage = await project.stage;
     const state = await {
         loading: false,
         concept: {
           ...this.concept.getAll()
         },
+        stage: {
+          stage: this.stage.stage
+        }
     }
     this.setState(state);
     return state;
@@ -58,7 +79,7 @@ class PaymentButton extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log('amount', this.state.concept.cost)
+    console.log('fuck this', this.state.concept.isPaid)
     let amt = this.state.concept.cost;
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
@@ -72,7 +93,7 @@ class PaymentButton extends Component {
     if (response.ok) {
       console.log("working")
       this.setState({complete: true});
-      this.state.concept.isPaid = true
+      this.stateChange()
       console.log(this.concept.isPaid)
       console.log(response)
     }else{
@@ -83,6 +104,12 @@ class PaymentButton extends Component {
 
 
   render() {
+    let button;
+    console.log("fuck this state of texas", this.state.concept);
+    if(this.state.concept){
+      button = <Link to="/project/user_draft" style={{position: "absolute", right: "90%", top: "250px"}}>
+      <img src={ArrowRight}/></Link>
+    }
     if (this.state.complete) {
       return( <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> );
     } else {
@@ -94,6 +121,7 @@ class PaymentButton extends Component {
           <Button.Content visible>Purchase</Button.Content>
           <Button.Content hidden>$599.99</Button.Content>
         </Button>
+        {button}
       </div>
     );
   }

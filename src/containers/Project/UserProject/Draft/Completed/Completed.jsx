@@ -24,6 +24,7 @@ library.add(faArrowLeft);
 
 class Completed extends Component {
     draft;
+    stage;
     constructor(props) {
         super(props);
         this.state = {
@@ -31,6 +32,9 @@ class Completed extends Component {
                 approved: '',
                 feedback: '',
                 figma: '',
+            },
+            stage: {
+                stage: ''
             },
             tempURL: 'www.google.com',
             figmaTempURL: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
@@ -47,7 +51,8 @@ class Completed extends Component {
 
     formSubmit = () => {
         this.draft.feedback = this.state.draft.feedback;
-        this.draft.approved = !this.state.draft.approved;
+        this.draft.approved = true;
+        this.stage.stage = 'final'
         console.log('trying')
         console.log(this.state.draft.feedbackState)
     }
@@ -83,11 +88,15 @@ class Completed extends Component {
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.draft = await project.draft;
+        this.stage = await project.stage;
         const state = await {
             loading: false,
             draft: {
                 ...this.draft.getAll()
             },
+            stage: {
+                stage: this.stage.stage
+            }
         }
         this.setState(state)
         return state;
