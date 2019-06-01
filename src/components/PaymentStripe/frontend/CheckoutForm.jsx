@@ -73,13 +73,13 @@ class PaymentButton extends Component {
         }
     }
     this.setState(state);
+    console.log(this.state.concept.isPaid)
     return state;
 
   }
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log('fuck this', this.state.concept.isPaid)
     let amt = this.state.concept.cost;
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
@@ -94,24 +94,24 @@ class PaymentButton extends Component {
       console.log("working")
       this.setState({complete: true});
       this.stateChange()
-      console.log(this.concept.isPaid)
       console.log(response)
     }else{
       alert('Payment Error')
       console.log(response)
     }
   }
-
+  
 
   render() {
-    let button;
-    console.log("fuck this state of texas", this.state.concept);
-    if(this.state.concept){
-      button = <Link to="/project/user_draft" style={{position: "absolute", right: "90%", top: "250px"}}>
-      <img src={ArrowRight}/></Link>
-    }
+    
     if (this.state.complete) {
-      return( <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> );
+      return( 
+        <div>
+          <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> 
+            <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+            <img src={ArrowRight}/></Link>
+        </div>
+      );
     } else {
     return (
       <div className="checkoutFormButton">
@@ -121,7 +121,6 @@ class PaymentButton extends Component {
           <Button.Content visible>Purchase</Button.Content>
           <Button.Content hidden>$599.99</Button.Content>
         </Button>
-        {button}
       </div>
     );
   }

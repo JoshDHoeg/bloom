@@ -28,6 +28,7 @@ export const CONTRACTORS = '/project/user_contractors';
 export const FINAL = '/project/user_final';
 export const REVISION = '/project/user_revision';
 export const DRAFT = '/project/user_draft';
+export const PAYMENT = '/project/user_concept/payment';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';

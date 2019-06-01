@@ -12,7 +12,6 @@ import Final from './Final/Final';
 import Revision from './Revision/Revision';
 import Draft from './Draft/Draft';
 
-
 //concept => draft => final => revision => contractors
 class UserProject extends React.Component {
     stage;
@@ -91,6 +90,10 @@ class UserProject extends React.Component {
                         <Route exact
                                path={ROUTES.DRAFT}
                                render={(props) => <Draft {...props} edit={false} /> }
+                        />
+                        <Route exact
+                                path={ROUTES.PAYMENT}
+                                render={(props) => <Concept {...props} edit={false} /> }
                         />
                     </div>
                 </Segment>

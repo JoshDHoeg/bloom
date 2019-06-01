@@ -73,13 +73,15 @@ export class Concept extends React.Component{
         if(this.state.concept.completed && !this.state.concept.approved) {
             return (<CompletedPage/>)
         }
-        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && this.state.concept.approveterms){
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
             return (<Payment/>)
         }
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
             return (<Approve/>)
         }
-
+        if(this.state.concept.completed && this.state.concept.approved) {
+            return (<CompletedPage/>)
+        }
     }
 }
 

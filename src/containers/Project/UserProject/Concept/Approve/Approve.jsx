@@ -1,11 +1,20 @@
+//BLOOMTIME DESIGN 2019
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import {Button} from 'semantic-ui-react'
 import { Grid, Container, Header } from 'semantic-ui-react';
-import * as ROUTES from "../../../../../utilities/constants/routes"
-
-//IMPROT UTILITIES
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+//IMPORT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session';
+library.add(faArrowRight);
+library.add(faArrowLeft);
+
+
+
+
 
 class Approve extends React.Component{
     concept;
@@ -14,13 +23,16 @@ class Approve extends React.Component{
         this.state = {
             concept: {
                 approveterms: false
-            }
+            },
+            complete: false
         }
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick = () => {
         this.concept.approveterms = true;
+        this.state.concept.approveterms = true;
+        this.setState({complete: true})
     }
 
     componentDidMount() {
@@ -52,18 +64,36 @@ class Approve extends React.Component{
 
 
     render(){
-        return (
-            <div>
-                <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                    <Container>
-                        <br/>
-                        <br/>
-                        <Header as='h1'>Terms of service</Header>
-                        <Link to={ROUTES.CONCEPT} onClick={this.handleClick}>Accept Terms of Service</Link>
-                    </Container>
-                </Grid>
-            </div>
-        )
+        console.log(this.state.complete)
+        if(!this.state.complete){
+            return (
+                <div>
+                    <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <Container>
+                            <br/>
+                            <br/>
+                            <Header as='h1'>Terms of service</Header>
+                            <Button onClick={this.handleClick}>Accept Terms of Service</Button>
+                        </Container>
+                    </Grid>
+                </div>
+            )
+        }else if(this.state.complete){
+            return(
+                <div>
+                    <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                        <Container>
+                            <br/>
+                            <br/>
+                            <Header as='h1'>Terms of service</Header>
+                            <Button disabled onClick={this.handleClick}>Thank you!</Button>
+                            <Link to="/project/user_concept/payment" style={{position: "absolute", left: "90%", top: "250px"}}>
+                            <img src={ArrowRight}/></Link>
+                        </Container>
+                    </Grid>
+                </div>
+            )        
+        }
     }
 }
 
