@@ -10,7 +10,7 @@ import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
 
-export class Concept extends React.Component{
+class Concept extends React.Component{
     concept;
     constructor(props){
         super(props);
@@ -24,18 +24,11 @@ export class Concept extends React.Component{
                 schedule: null
             }
         }
-       // this.completed = this.completed.bind(this)
     }
 
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
-        if(this.props.location.state){
-          this.setState({projectIndex: this.props.location.state.projectIndex});
-          this.getProjectState(this.props.location.state.projectIndex);
-        } else{
-          this.setState({projectIndex: 0});
-          this.getProjectState(0);
-        }
+        this.getProjectState();
       }
 
     getProjectState = async () => {
@@ -79,4 +72,7 @@ export class Concept extends React.Component{
 }
 
 const condition = authUser => !!authUser;
-export default withAuthorization(condition)(Concept);
+
+const ConceptAuth = withAuthorization(condition)(Concept);
+
+export{ ConceptAuth , Concept }
