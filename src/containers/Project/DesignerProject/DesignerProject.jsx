@@ -118,6 +118,6 @@ const HomePageWithSideBar = (props) => {
     )
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(HomePageWithSideBar);

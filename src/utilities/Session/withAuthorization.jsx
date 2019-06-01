@@ -23,11 +23,11 @@ const withAuthorization = condition => Component => {
                  console.log('auth', authUser._role);
                  console.log('t/f', condition(authUser._role));
                 if (authUser._role > 0) {
-                  if (!authUser._isDesigner) {
+                  if (!authUser._isDesigner && !authUser._isAdmin) {
                     this.setState({ authUser: {
                       _role: 1 }
                     });
-                  }else{
+                  }else if (authUser._isDesigner) {
                     this.setState({ authUser: {
                       _role: 2 }
                     });

@@ -55,6 +55,11 @@ export class User {
   set role(role) {
     this.ref.set({ role: role }, {merge: true})
   }
+  _isAdmin = ''
+  get isAdmin() { return this._isAdmin }
+  set isAdmin(isAdmin) {
+    this.ref.set({ isAdmin: isAdmin }, {merge: true})
+  }
 
   get uid() { return this.id };
 
@@ -85,6 +90,7 @@ export class User {
     this._city = data['city'];
     this._state = data['state'];
     this._role = data['role'];
+    this._isAdmin = data['isAdmin']
   }
 
   _getAll = (obj) => {
@@ -103,7 +109,8 @@ export class User {
       city: this.city,
       state: this.state,
       projects: this.projects,
-      role: this.role
+      role: this.role,
+      isAdmin: this.isAdmin
     });
   }
 }

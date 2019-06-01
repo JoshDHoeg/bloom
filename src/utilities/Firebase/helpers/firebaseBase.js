@@ -55,7 +55,7 @@ class FirebaseBase {
   // For all classes, pls do not use the _varName. the only varName will update the database
   user; // The current User object
   isAuth; // boolean // user is auth - pls consult me as further inplementation is underway
-  doCreateUserWithEmailAndPassword = (email, password, client, name, phone, project, billadd1, zip, city, state, role) => null; // Promise<User>
+  doCreateUserWithEmailAndPassword = (email, password, client, name, phone, project, billadd1, zip, city, state, role, isAdmin) => null; // Promise<User>
   // only call once email and passowrd are mandatory
   doRemoveUser = () => null; //  Promise<success> // removes current user
   doSignInWithEmailAndPassword = (email, password) => null; // Promise<success>
