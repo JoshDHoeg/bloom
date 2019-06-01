@@ -5,7 +5,7 @@ import React from 'react';
 import { withAuthorization } from '../../utilities/Session';
 import * as ROUTES from "../../utilities/constants/routes";
 import HomePageWithSidebar from './DesignerProject/DesignerProject';
-import UserProject from './UserProject/UserProject';
+import { UserProjectAuth } from './UserProject/UserProject';
 
 
 class ProjectBase extends React.Component {
@@ -15,7 +15,7 @@ class ProjectBase extends React.Component {
         }
         else {
             console.log("here");
-            return <UserProject/>
+            return <UserProjectAuth/>
         }
     }
 }

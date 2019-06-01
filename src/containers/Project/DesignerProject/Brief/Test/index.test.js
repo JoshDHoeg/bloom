@@ -52,7 +52,7 @@ describe('Example test', () => {
     it('checking formSubmit function', () => {
         const formSubmitTest = jest.fn();
 
-        //without firebase version....find works
+        //without firebase version....find works..easy to test
         const BriefPageComponent= mount( <BriefPageEdit formSubmit={formSubmitTest} brief={briefTemp}/> );
         const buttonSubmit = BriefPageComponent.find('button.button-submit');
         buttonSubmit.simulate('click');
@@ -61,16 +61,28 @@ describe('Example test', () => {
 
 
         //with firebase version...find doesn't work, not sure why
-        const tempWitFirebase = (
-                        <FirebaseContext.Provider value={new Firebase()}>
-                            <Router class='dilly'>
-                                <BriefEdit class='dilly' formSubmit={formSubmitTest} brief={briefTemp} />
-                            </Router>
-                        </FirebaseContext.Provider>
-                    );
+        // const tempWitFirebase = (
+        //                 <FirebaseContext.Provider value={new Firebase()}>
+        //                     <Router>
+        //                         <BriefEdit class="yow" formSubmit={formSubmitTest} brief={briefTemp} />
+        //                     </Router>
+        //                 </FirebaseContext.Provider>
+        //             );
+        //
+        // const temp = mount(tempWitFirebase);
 
-        const temp = mount(tempWitFirebase);
-        //console.log(temp.debug());
+
+        const formSubmitTest2 = jest.fn();
+
+        const tester = mount( <BriefPageEdit firebase={new Firebase()} formSubmit={formSubmitTest2} brief={briefTemp}/> );
+        //console.log(tester.debug());
+        const tester2 = tester.find('button.button-submit');
+        tester2.simulate('click');
+        expect(formSubmitTest2).toHaveBeenCalled();
+
+
+
+
     });
 
 

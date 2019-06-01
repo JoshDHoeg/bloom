@@ -1,6 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { BrowserRouter as Router} from 'react-router-dom';
 import { compose } from 'recompose';
 
 //IMPORT UTILITIES
@@ -49,7 +50,7 @@ const withAuthorization = condition => Component => {
         <AuthUserContext.Consumer>
           {
               authUser =>
-            condition(authUser) ? <Component {...this.props} /> : null
+            condition(authUser) ? < Component {...this.props} /> : null
           }
         </AuthUserContext.Consumer>
       );
@@ -57,9 +58,9 @@ const withAuthorization = condition => Component => {
   }
 
   return compose(
-    withRouter,
-    withFirebase,
-  )(WithAuthorization);
+        withRouter,
+        withFirebase,
+        )(WithAuthorization);
 };
 
 export default withAuthorization;

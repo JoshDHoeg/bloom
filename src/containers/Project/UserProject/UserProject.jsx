@@ -20,10 +20,10 @@ class UserProject extends React.Component {
             <Router>
                 <Segment basic>
                     <div>
-                        <Route exact path={ROUTES.PROJECT} component={Concept} /> 
+                        <Route exact path={ROUTES.PROJECT} component={Concept} />
                         <Route exact
                                path={ROUTES.CONCEPT}
-                               render={(props) => <Concept {...props} edit={false} index={props.location.state} /> }
+                               render={(props) => <Concept {...props} edit={false}  /> }
                         />
                         <Route exact
                                path={ROUTES.CONTRACTORS}
@@ -49,4 +49,6 @@ class UserProject extends React.Component {
 }
 
 const condition = authUser => !!authUser;
-export default withAuthorization(condition)(UserProject);
+const UserProjectAuth = withAuthorization(condition)(UserProject);
+
+export { UserProjectAuth , UserProject }
