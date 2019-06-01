@@ -1,14 +1,17 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import { shallow , mount } from 'enzyme';
 import { Link } from 'react-router-dom';
 
 import Brief from '../Brief.jsx';
-import BriefEdit from '../Edit/Edit';
+import { BriefEdit , BriefPageEdit }from '../Edit/Edit';
 import BriefView from '../View/View';
 
 import { BrowserRouter as Router} from 'react-router-dom';
 
 import Firebase, { FirebaseContext } from '../../../../../utilities/Firebase';
+
+import { Component } from 'react';
 
 
 /*
@@ -26,33 +29,48 @@ Want to test the following callbacks:
     ...also have getProjectState
  */
 
+const briefTemp = {
+    goals: [],
+        address: '',
+        budget: '',
+        narrative: '',
+        media: '',
+        profile: {
+        spacing: '',
+            variety: '',
+            edging: '',
+            ground: '',
+            form: ''
+    }
+};
+
 describe('Example test', () => {
     it('renders without crashing', () => {
         shallow(<Brief/>)
     });
 
     it('checking formSubmit function', () => {
+        const formSubmitTest = jest.fn();
 
-        const formSubmit = jest.fn(),
-            props = {
-                formSubmit
-            },
-            comp = (<FirebaseContext.Provider value={new Firebase()}>
-                        <Router>
-                            <BriefEdit {...props}/>
-                        </Router>
-                    </FirebaseContext.Provider>
-            )
+        //without firebase version....find works
+        const BriefPageComponent= mount( <BriefPageEdit formSubmit={formSubmitTest} brief={briefTemp}/> );
+        const buttonSubmit = BriefPageComponent.find('button.button-submit');
+        buttonSubmit.simulate('click');
+        expect(formSubmitTest).toHaveBeenCalled();
 
-        const w = mount(comp);
-        console.log(w.debug());
-        const BriefComponent = w.find(BriefEdit);
-        console.log(BriefComponent.debug());
-        const ButtonSubmitComponent = BriefComponent.find(Link);
-        console.log(ButtonSubmitComponent.debug());
-        ButtonSubmitComponent.simulate('click');
-        expect(formSubmit).tohaveBeenCalled();
 
+
+        //with firebase version...find doesn't work, not sure why
+        const tempWitFirebase = (
+                        <FirebaseContext.Provider value={new Firebase()}>
+                            <Router class='dilly'>
+                                <BriefEdit class='dilly' formSubmit={formSubmitTest} brief={briefTemp} />
+                            </Router>
+                        </FirebaseContext.Provider>
+                    );
+
+        const temp = mount(tempWitFirebase);
+        //console.log(temp.debug());
     });
 
 
