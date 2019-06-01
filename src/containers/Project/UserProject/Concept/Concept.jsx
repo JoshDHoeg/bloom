@@ -10,7 +10,7 @@ import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
 
-class Concept extends React.Component{
+export class Concept extends React.Component{
     concept;
     constructor(props){
         super(props);
