@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Input } from 'semantic-ui-react'
 
 //IMPROT UTILITIES
+import { BrowserRouter as Router} from 'react-router-dom';
 import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
 
@@ -24,14 +25,18 @@ class BriefPageEdit extends Component {
     }
 
     render() {
-        console.log(this.props.projectIndex);
+        console.log(this.props.formSubmit);
         return (
             <div className='top-level' style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container">
                     <div className="row" style={{ paddingTop: "40px" }}>
                         <h1>Design Brief</h1>
-                        <button className='button-edit' onClick={this.props.setLive} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
-                        <button className='button-submit' onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
+                        <Router>
+                            <div>
+                                <button className='button-edit' onClick={this.props.setLive} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
+                                <button className='button-submit' onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
+                            </div>
+                        </Router>
                     </div>
                     <div className="row">
                         <span style={{ width: "600px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -72,4 +77,6 @@ class BriefPageEdit extends Component {
 
 const condition = authUser => !!authUser;
 
-export default withAuthorization(condition)(BriefPageEdit);
+const BriefEdit = withAuthorization(condition)(BriefPageEdit);
+
+export{ BriefEdit , BriefPageEdit }
