@@ -54,7 +54,7 @@ class AccountInfoPage extends Component {
     }
 
     getUserState = async () => {
-        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid, true);
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
         this.user = await user
         console.log('user3:', user);
         const state = await {

@@ -56,13 +56,19 @@ class SignUpFormBase extends Component {
     const roles = [];
 
     if (isDesigner) {
-      roles.push(ROLES.DESIGNER);
+      roles[ROLES.DESIGNER] = ROLES.ADMIN;
     }
     this.props.firebase
-        .doInitNewUser(email, passwordOne, name)
+      .doInitNewUser(email, passwordOne, name)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-          //this.props.firebase.doGetProjects(this.props.firebase.user.id).then( res =>  console.log(res));
+         return this.props.firebase
+         .user(authUser.user.uid)
+         .set({
+           name,
+           email,
+           roles,
+         })
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -143,13 +149,13 @@ class SignUpFormBase extends Component {
             value={passwordTwo}
             onChange={this.onChange}
           />
-          {/* <Form.Checkbox
+          <Form.Checkbox
             label="Designer?"
             name="isDesigner"
             toggle
             checked={isDesigner}
             onChange={this.onChangeCheckbox}
-          /> */}
+          />
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
             Login
           </Button>

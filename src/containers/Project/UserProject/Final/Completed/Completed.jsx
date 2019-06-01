@@ -4,6 +4,7 @@ import React from 'react';
 import { withAuthorization } from '../../../../../utilities/Session';
 import { Container,Segment, Header, Button, Grid, Form, Message } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
+import * as ROLES from "../../../../../utilities/constants/roles"
 //Figma Embed import
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import FigmaEmbed from 'react-figma-embed';
@@ -153,6 +154,6 @@ class Completed extends React.Component {
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = authUser => !!authUser
 
 export default withAuthorization(condition)(Completed);
