@@ -2,7 +2,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
-import {Menu, Dropdown, Image, Icon} from 'semantic-ui-react'
+import {Menu, Dropdown, Image, Icon, Button} from 'semantic-ui-react'
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
@@ -19,23 +19,19 @@ const UserNavigation = () => (
         </AuthUserContext.Consumer>
     </div>
 );
-
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
     <Menu >
         <Dropdown className='ui labeled icon' item icon = 'unordered list'>
             <Dropdown.Menu>
                 <DropdownItem>
-                    <Icon name = 'user'/>
-                    <Link to={ROUTES.ACCOUNT_INFO}>Account</Link>
+                    <Button><Link to={ROUTES.ACCOUNT_INFO}><Icon name = 'user'/>Account</Link></Button>
                 </DropdownItem>
                 <Dropdown.Item>
-                    <Icon name='file alternate'/>
-                    <Link to={ROUTES.PROJECT_LIST}>Projects</Link>
+                <Button> <Link to={ROUTES.PROJECT_LIST}><Icon name='file alternate'/>Projects</Link> </Button>
                 </Dropdown.Item>
                 <DropdownItem>
-                    <Icon name='comments'/>
-                    <Link to={ROUTES.MESSAGING}>Messages</Link>
+                <Button> <Link to={ROUTES.MESSAGING}><Icon name='comments'/>Message</Link></Button>
                 </DropdownItem>
                 <DropdownItem>
                     <SignOutButton/>
