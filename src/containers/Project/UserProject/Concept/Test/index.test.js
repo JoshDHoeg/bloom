@@ -1,10 +1,11 @@
 import React from 'react';
 import { mount, shallow } from 'enzyme';
-// import {MemoryRouter as Router } from 'react-router-dom';
 
 import Concept, {Concept as ConceptOriginal} from '../Concept.jsx';
+import { BrowserRouter as Router} from 'react-router-dom';
 
-// const mountWithRouter = node => mount(<Router>{node}</Router>)
+import Firebase, { FirebaseContext } from '../../../../../utilities/Firebase';
+
 
 describe('Example test', () => {
     // it('renders without crashing',() => {
@@ -12,11 +13,25 @@ describe('Example test', () => {
     // });
 
     it('Loading State initiallized?', () => {
-        const wrapper = shallow(<Concept.WrappedComponent.WrappedComponent />);
+        const wrapper = shallow(
+            <FirebaseContext.Provider value={new Firebase()}>
+                <Router>
+                    <Concept/>
+                </Router>
+            </FirebaseContext.Provider>);
+
+
+
         console.log(wrapper.debug());
-        // const concept = wrapper.find(ConceptOriginal);
-        // console.log(concept);
-        expect('completed' in wrapper.state()).toEqual(false)
+        const router = wrapper.get(1);
+        console.log(router);
+        // const router = wrapper.find("WithAuthorization").dive();
+
+        // console.log(router.debug());
+
+        // const concept = router.dive().dive().dive().dive().dive().dive();
+        // console.log(concept.debug());
+        // expect('completed' in wrapper.state()).toEqual(false)
       });
 
     //   it('render initializes the completed state',() => {
