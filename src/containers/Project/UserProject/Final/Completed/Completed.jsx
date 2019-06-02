@@ -64,7 +64,7 @@ class Completed extends React.Component {
             Submit</Button>
         }
         let RightArrow;
-        if(this.props.stage.stage === 'revision' || 'revision2'){
+        if(this.props.stage.stage === 'revision' || this.props.stage.stage === 'revision2'){
             RightArrow =                     
             <Link to="/project/user_revision/1" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
