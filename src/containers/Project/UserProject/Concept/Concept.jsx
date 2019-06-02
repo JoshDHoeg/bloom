@@ -1,3 +1,4 @@
+//BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Container, Header } from 'semantic-ui-react';
@@ -26,7 +27,7 @@ export class Concept extends React.Component{
                 schedule: null
             }
         }
-       // this.completed = this.completed.bind(this)
+        this.handleClick1 = this.handleClick1.bind(this);
     }
 
     componentDidMount() {
@@ -39,6 +40,12 @@ export class Concept extends React.Component{
           this.getProjectState(0);
         }
       }
+    
+      handleClick1 = () => {
+        this.concept.approveterms = true;
+        this.state.concept.approveterms = true;
+        this.setState({complete: true})
+    }
 
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
@@ -77,7 +84,7 @@ export class Concept extends React.Component{
             return (<Payment/>)
         }
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
-            return (<Approve/>)
+            return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
         }
         if(this.state.concept.completed && this.state.concept.approved) {
             return (<CompletedPage/>)

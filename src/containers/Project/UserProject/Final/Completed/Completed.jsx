@@ -23,38 +23,11 @@ class Completed extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            final: {
-                feedback: '',
-                approved: '',
-                figma: ''
-            },
-            // stage:{
-            //     stage: ''
-            // },
             feedbackState: false,
             loading: false,
             revisions: false,
         }
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
-    }
-
-    formSubmit = () => {
-        this.final.feedback = this.state.final.feedback;
-        this.final.approved = true;
-        this.stage.stage = 'revision'
-
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            final: {
-                ...this.state.final,
-                [event.target.name]: event.target.value,
-            }
-        });
     }
 
     handleSuccess() {
@@ -65,42 +38,19 @@ class Completed extends React.Component {
 
     HandleClick = () => {
         this.setState({
-            revisions: true
+            revisions: !this.state.revisions
         });
     }
 
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
     }
 
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.final = await project.final
-        this.stage = await project.stage
-        const state = await {
-            loading: false,
-            final: {
-                ...this.final.getAll()
-            },
-            // stage: {
-            //     stage: this.stage.stage
-            // }
-        }
-        this.setState(state)
-        return state;
-    }
 
     render() {
         console.log('stage', this.props.stage.stage)
         let feedbackButton;
-        if(!this.state.final.approved) {
+        if(!this.props.final.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
@@ -137,7 +87,7 @@ class Completed extends React.Component {
                         <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.final.figma} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
                         </Segment>
                     </Grid.Row>
@@ -150,13 +100,18 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}}>
                         <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input  disabled = {this.state.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.final.feedback} onChange={this.handleChange} type='text'  />
+                            <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                                <Form.Input  disabled = {this.props.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.final.feedback} onChange={this.props.handleChange} type='text'  />
                                 <Message 
                                     success
-                                    hidden = {!this.state.final.approved && !this.state.feedbackState}
+                                    hidden = {!this.props.final.approved}
                                     header='Feedback Received:' 
-                                    content= {this.state.final.feedback || 'feedback'}/>
+                                    content= {this.props.final.feedback || 'feedback'}/>
+                                <Message 
+                                    success
+                                    hidden = {!this.state.feedbackState}
+                                    header='Feedback Received:' 
+                                    content= {this.props.final.feedback || 'feedback'}/>
                                 {feedbackButton}
                             </Form>
                         </Message>

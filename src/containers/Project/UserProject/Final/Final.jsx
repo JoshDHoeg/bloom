@@ -15,13 +15,34 @@ class Final extends React.Component {
             final: {
                 completed: false,
                 figma: '',
+                feedback: '',
+                approved: false
             },
             stage: {
                 stage: ''
             }
-        }
         };
-    
+        this.formSubmit = this.formSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    formSubmit = () => {
+        this.final.feedback = this.state.final.feedback;
+        this.final.approved = true;
+        this.stage.stage = 'revision'
+
+    }
+
+    handleChange(event) {
+        event.preventDefault();
+        this.setState({
+            final: {
+                ...this.state.final,
+                [event.target.name]: event.target.value,
+            }
+        });
+    }
+
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         if(this.props.location.state){
@@ -56,7 +77,7 @@ class Final extends React.Component {
         if(!this.state.final.completed){
             return( <WaitingPage state="final"/>    );             
         } else {
-            return( <CompletedPage stage={this.state.stage} figma={this.state.figma}/> );
+            return( <CompletedPage stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }
     }
 }

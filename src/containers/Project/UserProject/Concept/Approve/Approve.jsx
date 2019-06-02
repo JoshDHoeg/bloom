@@ -21,51 +21,17 @@ class Approve extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            concept: {
-                approveterms: false
-            },
             complete: false
         }
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick = () => {
-        this.concept.approveterms = true;
-        this.state.concept.approveterms = true;
-        this.setState({complete: true})
     }
 
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
     }
-    
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.concept = await project.concept;
-        //const schedule = await this.project.concept.schedule;
-        const state = await {
-            loading: false,
-            concept: {
-                ...this.concept.getAll()
-            }
-        }
-
-        this.setState(state);
-        return state;
-    }
-
-
 
     render(){
-        console.log(this.state.complete)
-        if(!this.state.complete){
+        console.log(this.props.complete)
+        if(!this.props.complete){
             return (
                 <div>
                     <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
@@ -73,12 +39,12 @@ class Approve extends React.Component{
                             <br/>
                             <br/>
                             <Header as='h1'>Terms of service</Header>
-                            <Button onClick={this.handleClick}>Accept Terms of Service</Button>
+                            <Button onClick={this.props.handleClick1}>Accept Terms of Service</Button>
                         </Container>
                     </Grid>
                 </div>
             )
-        }else if(this.state.complete){
+        }else if(this.props.complete){
             return(
                 <div>
                     <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
@@ -86,7 +52,7 @@ class Approve extends React.Component{
                             <br/>
                             <br/>
                             <Header as='h1'>Terms of service</Header>
-                            <Button disabled onClick={this.handleClick}>Thank you!</Button>
+                            <Button disabled onClick={this.props.handleClick1}>Thank you!</Button>
                             <Link to="/project/user_concept/payment" style={{position: "absolute", left: "90%", top: "250px"}}>
                             <img src={ArrowRight}/></Link>
                         </Container>

@@ -15,13 +15,21 @@ class Revision extends React.Component{
         this.state = {
             revision: {
                 completed: false,
-                figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
+                figma: '',
+                feedback: '',
+                approved: false
             },
             stage: {
                 stage: ''
             }
         };
+        this.formSubmit = this.formSubmit.bind(this);
       }
+
+    formSubmit = () => {
+        this.stage.stage = 'contractors'
+    }
+
     componentDidMount() {
        this.setState({ loading: true, edit: this.props.edit });
         if(this.props.location.state){
@@ -55,7 +63,7 @@ class Revision extends React.Component{
         if(!this.state.revision.completed){
             return( <WaitingPage state="revision"/> );             
         } else {
-            return( <CompletedPage2 stage={this.state.stage}/> );
+            return( <CompletedPage2 formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
         }
     }
 }

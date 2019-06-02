@@ -43,29 +43,8 @@ class Completed extends Component {
             loading: false,
             feedbackState: false,
         };
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.videoToggle = this.videoToggle.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
-    }
-
-    formSubmit = () => {
-        this.draft.feedback = this.state.draft.feedback;
-        this.draft.approved = true;
-        this.stage.stage = 'final'
-        console.log('trying')
-        console.log(this.state.draft.feedbackState)
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            draft: {
-                ...this.state.draft,
-                [event.target.name]: event.target.value,
-            }
-        });
-        console.log(this.state.draft.feedback)
     }
 
     handleSuccess(event) {
@@ -76,30 +55,6 @@ class Completed extends Component {
 
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
-    }
-
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.draft = await project.draft;
-        this.stage = await project.stage;
-        const state = await {
-            loading: false,
-            draft: {
-                ...this.draft.getAll()
-            },
-            stage: {
-                stage: this.stage.stage
-            }
-        }
-        this.setState(state)
-        return state;
     }
 
     videoToggle(event) {
@@ -111,23 +66,23 @@ class Completed extends Component {
 
     render() {
         let videoPortion;
-        console.log("feedback", this.state.draft.approved)
+        console.log("feedback", this.props.draft.approved)
         if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                     <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
-                    <YoutubeEmbedVideo videoId={this.state.tempYoutube} suggestions={false} style={{ width: "600px", padding: "30px" }} />
+                    <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                 </div>
             </div>;
         }
         let feedbackButton;
-        if(!this.state.draft.approved) {
+        if(!this.props.draft.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
             color='blue'>
             Submit</Button>
-        }else {
+        }else{
             feedbackButton = <Button 
             disabled
             content='Submit' 
@@ -148,7 +103,7 @@ class Completed extends Component {
                         <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.draft.figma} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
                         </Segment>
                         <Button.Group>
@@ -160,13 +115,18 @@ class Completed extends Component {
                         {videoPortion}
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}} >
-                        <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                            <Form.Input  disabled = {this.state.draft.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.draft.feedback} onChange={this.handleChange} type='text'  />
+                        <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                            <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
                             <Message 
                                 success
-                                hidden = {!this.state.draft.approved && !this.state.feedbackState}
+                                hidden = {!this.props.draft.approved}
                                 header='Feedback Received:' 
-                                content= {this.state.draft.feedback || 'feedback'}/>
+                                content= {this.props.draft.feedback || 'feedback'}/>
+                            <Message
+                                success
+                                hidden = {!this.state.feedbackState}
+                                header='Feedback Received:' 
+                                content= {this.props.draft.feedback || 'feedback'}/>
                             {feedbackButton}
                         </Form>
                     </Grid.Row>

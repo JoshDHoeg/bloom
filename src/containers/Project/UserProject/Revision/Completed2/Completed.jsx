@@ -19,42 +19,16 @@ library.add(faArrowRight);
 library.add(faArrowLeft);
 
 class Completed extends React.Component {
-    revision;
-    stage;
     constructor(props) {
         super(props);
         this.state = {
-            revision: {
-                feedback: '',
-                approved: '',
-                figma: ''
-            },
-            // stage:{
-            //     stage: ''
-            // },
             feedbackState: false,
             loading: false,
             revisions: false,
         }
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
     }
     
-    formSubmit = () => {
-        this.revision.feedback = this.state.revision.feedback;
-        this.stage.stage = 'contractors'
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            revision: {
-                ...this.state.revision,
-                [event.target.name]: event.target.value,
-            }
-        });
-    }
     
     handleSuccess() {
         this.setState({
@@ -64,53 +38,15 @@ class Completed extends React.Component {
 
     HandleClick = () => {
         this.setState({
-            revisions: true
+            revisions: !this.state.revisions
         });
     }
 
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
-    }
-
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.revision = await project.revision
-        this.stage = await project.stage
-        const state = await {
-            loading: false,
-            revision: {
-                ...this.revision.getAll()
-            },
-            // stage: {
-            //     stage: this.stage.stage
-            // }
-        }
-        this.setState(state)
-        return state;
     }
 
     render() {
-        let feedbackButton;
-        if(!this.state.revision.approved) {
-            feedbackButton = <Button 
-            content='Submit'
-            onClick={this.handleSuccess} 
-            color='blue'>
-            Submit</Button>
-        }else{
-            feedbackButton = <Button 
-            disabled
-            content='Submit' 
-            color='blue'>
-            Submit</Button>
-        }
         let RightArrow;
         if(this.props.stage.stage === 'contractors'){
             RightArrow =                     
@@ -140,14 +76,14 @@ class Completed extends React.Component {
                         <Segment placeholder>
                             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.revision.figma} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.props.revision.figma} style={{ width: "540px", margin: "30px" }} />
                             </span>
                         </Segment>
                     </Grid.Row>
                     <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button>Download Design</Button>
-                            <Button ><Link onClick={this.formSubmit} to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button ><Link onClick={this.props.formSubmit} to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     {RightArrow}

@@ -60,7 +60,7 @@ class ProjectStatus extends React.Component {
                 </Step>
         }if(this.state.stage.stage === "revision2" || this.state.stage.stage === "contractors"){
             Revision2 =  
-                <Step href='/project/user_revision/2' active={this.state.state === "revisions2"}>
+                <Step href='/project/user_revision/2' active={this.props.state === "revisions2"}>
                     <Step.Content>
                         <Step.Title>Revision2</Step.Title>
                     </Step.Content>
