@@ -2,28 +2,29 @@
 import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session';
-import { Container,Segment, Header, Button, Grid, Form, Message } from 'semantic-ui-react'
+import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
-import * as ROLES from "../../../../../utilities/constants/roles"
 //Figma Embed import
-import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
+import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
+
+
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
 class Completed extends React.Component {
-    final;
+    revision;
     stage;
     constructor(props) {
         super(props);
         this.state = {
-            final: {
+            revision: {
                 feedback: '',
                 approved: '',
                 figma: ''
@@ -39,24 +40,22 @@ class Completed extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
     }
-
+    
     formSubmit = () => {
-        this.final.feedback = this.state.final.feedback;
-        this.final.approved = true;
-        this.stage.stage = 'revision'
-
+        this.revision.feedback = this.state.revision.feedback;
+        this.stage.stage = 'contractors'
     }
 
     handleChange(event) {
         event.preventDefault();
         this.setState({
-            final: {
-                ...this.state.final,
+            revision: {
+                ...this.state.revision,
                 [event.target.name]: event.target.value,
             }
         });
     }
-
+    
     handleSuccess() {
         this.setState({
             feedbackState: true
@@ -82,12 +81,12 @@ class Completed extends React.Component {
 
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.final = await project.final
+        this.revision = await project.revision
         this.stage = await project.stage
         const state = await {
             loading: false,
-            final: {
-                ...this.final.getAll()
+            revision: {
+                ...this.revision.getAll()
             },
             // stage: {
             //     stage: this.stage.stage
@@ -98,15 +97,14 @@ class Completed extends React.Component {
     }
 
     render() {
-        console.log('stage', this.props.stage.stage)
         let feedbackButton;
-        if(!this.state.final.approved) {
+        if(!this.state.revision.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
             color='blue'>
             Submit</Button>
-        }else {
+        }else{
             feedbackButton = <Button 
             disabled
             content='Submit' 
@@ -114,52 +112,43 @@ class Completed extends React.Component {
             Submit</Button>
         }
         let RightArrow;
-        if(this.props.stage.stage === 'revision' || 'revision2'){
+        if(this.props.stage.stage === 'contractors'){
             RightArrow =                     
-            <Link to="/project/user_revision/1" style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
+            </Link>
+        }
+        let LeftArrow;
+        if(this.props.stage.stage === 'contractors' || this.props.stage.stage === 'revision2'){
+            LeftArrow =
+            <Link to="/project/user_revision/1" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                <img src={ArrowLeft} />
             </Link>
         }
         return (
             <Grid>
-                <Container><ProjectStatus state="final" /></Container>
-                <Container fluid textAlign='center' text='true'>
-                    <Link to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <img src={ArrowLeft} />
-                    </Link>
+                <Container><ProjectStatus state="revision2"/></Container>
+                <Container textAlign='center' text='true'>
+                    {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>
-                        <Header as='h2'>Final Draft</Header>
-                    </Grid.Row>
-                    <p>
-                        Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
-                    </p>
-                    <Grid.Row style={{ paddingTop: '20px' }}>
-                        <Segment placeholder>
-                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.final.figma} style={{ width: "540px", margin: "30px" }} />
-                            </div>
-                        </Segment>
+                        <Header as='h2'>Revision 2</Header>
                     </Grid.Row>
                     <Grid.Row>
+                    <p>We listened to your feedback and came up with a new version of your design based on what you said, let us know how we did!</p>
+                    </Grid.Row>
+                    <Grid.Row style={{ paddingTop: '20px' }}>
+                        <Segment placeholder>
+                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                                <FigmaEmbed url={this.state.revision.figma} style={{ width: "540px", margin: "30px" }} />
+                            </span>
+                        </Segment>
+                    </Grid.Row>
+                    <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button>Download Design</Button>
-                            <Button onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button ><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button ><Link onClick={this.formSubmit} to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '20px'}}>
-                        <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input  disabled = {this.state.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.final.feedback} onChange={this.handleChange} type='text'  />
-                                <Message 
-                                    success
-                                    hidden = {!this.state.final.approved && !this.state.feedbackState}
-                                    header='Feedback Received:' 
-                                    content= {this.state.final.feedback || 'feedback'}/>
-                                {feedbackButton}
-                            </Form>
-                        </Message>
                     </Grid.Row>
                     {RightArrow}
                 </Container>
@@ -169,6 +158,6 @@ class Completed extends React.Component {
     }
 }
 
-const condition = role => role > 0
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(Completed);

@@ -3,27 +3,27 @@ import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import CompletedPage from './Completed/Completed.jsx';
+import CompletedPage2 from './Completed2/Completed';
+import * as ROUTES from "../../../../utilities/constants/routes";
 
 
-class Final extends React.Component {
-    final;
+class Revision extends React.Component{
+    revision;
     stage;
     constructor(props) {
         super(props);
         this.state = {
-            final: {
+            revision: {
                 completed: false,
-                figma: '',
+                figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
             },
             stage: {
                 stage: ''
             }
-        }
         };
-    
+      }
     componentDidMount() {
-        this.setState({ loading: true, edit: this.props.edit });
+       this.setState({ loading: true, edit: this.props.edit });
         if(this.props.location.state){
           this.setState({projectIndex: this.props.location.state.projectIndex});
           this.getProjectState(this.props.location.state.projectIndex);
@@ -32,35 +32,34 @@ class Final extends React.Component {
           this.getProjectState(0);
         }
       }
-    
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.final = await project.final;
-        this.stage = await project.stage
+        this.revision = await project.revision;
+        this.stage = await project.stage;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
-            final: {
-                ...this.final.getAll()
+            revision: {
+                ...this.revision.getAll()
             },
             stage: {
                 stage: this.stage.stage
             }
         }
+
         this.setState(state);
         return state;
     }
-
-
     render(){
-        if(!this.state.final.completed){
-            return( <WaitingPage state="final"/>    );             
+        if(!this.state.revision.completed){
+            return( <WaitingPage state="revision"/> );             
         } else {
-            return( <CompletedPage stage={this.state.stage} figma={this.state.figma}/> );
+            return( <CompletedPage2 stage={this.state.stage}/> );
         }
     }
 }
 
-const condition = role => role > 0
+const condition = role => role > 0;
 
-export default withAuthorization(condition)(Final);
+export default withAuthorization(condition)(Revision);

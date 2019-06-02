@@ -2,7 +2,7 @@
 import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session';
-import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn } from 'semantic-ui-react'
+import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn, GridRow } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
@@ -20,6 +20,7 @@ library.add(faArrowLeft);
 
 class Completed extends React.Component {
     revision;
+    // stage;
     constructor(props) {
         super(props);
         this.state = {
@@ -28,6 +29,9 @@ class Completed extends React.Component {
                 approved: '',
                 figma: ''
             },
+            // stage:{
+            //     stage: ''
+            // },
             feedbackState: false,
             loading: false,
             revisions: false,
@@ -39,7 +43,8 @@ class Completed extends React.Component {
     
     formSubmit = () => {
         this.revision.feedback = this.state.revision.feedback;
-        this.revision.approved = !this.state.revision.approved;
+        this.revision.approved = true;
+        this.stage.stage = 'revision2'
     }
 
     handleChange(event) {
@@ -78,11 +83,15 @@ class Completed extends React.Component {
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.revision = await project.revision
+        this.stage = await project.stage
         const state = await {
             loading: false,
             revision: {
                 ...this.revision.getAll()
             },
+            // stage: {
+            //     stage: this.stage.stage
+            // }
         }
         this.setState(state)
         return state;
@@ -103,13 +112,22 @@ class Completed extends React.Component {
             color='blue'>
             Submit</Button>
         }
+        let RightArrow;
+        if(this.props.stage.stage === 'revision2' || this.props.stage.stage === 'contractors'){
+            RightArrow =                     
+            <Link to="/project/user_revision/2" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                <img src={ArrowRight} />
+            </Link>
+        }
         return (
             <Grid>
-                <Container><ProjectStatus state="revision"/></Container>
+                <Container><ProjectStatus state="revision2"/></Container>
                 <Container textAlign='center' text='true'>
-                    <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <img src={ArrowLeft} />
-                    </Link>
+                    <GridRow>
+                        <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                            <img src={ArrowLeft} />
+                        </Link>
+                    </GridRow>
                     <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Revision</Header>
                     </Grid.Row>
@@ -144,9 +162,7 @@ class Completed extends React.Component {
                             </Form>
                         </Message>
                     </Grid.Row>
-                    <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <img src={ArrowRight} />
-                    </Link>
+                    {RightArrow}
                 </Container>
             </Grid>
 

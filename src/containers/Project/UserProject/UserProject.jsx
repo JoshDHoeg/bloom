@@ -10,6 +10,7 @@ import Concept from './Concept/Concept';
 import Contractors from './Contractors/Contractors';
 import Final from './Final/Final';
 import Revision from './Revision/Revision';
+import Revision2 from './Revision/Revision2';
 import Draft from './Draft/Draft';
 
 //concept => draft => final => revision => contractors
@@ -62,6 +63,8 @@ class UserProject extends React.Component {
                 this.state.component = Final
         }else if(this.state.stage.stage === 'revision'){
                 this.state.component = Revision
+        }else if(this.state.stage.stage === 'revision2'){
+            this.state.component = Revision2
         }else if(this.state.stage.stage === 'contractors'){
                 this.state.component = Contractors
         }
@@ -86,6 +89,10 @@ class UserProject extends React.Component {
                         <Route exact
                                path={ROUTES.REVISION}
                                render={(props) => <Revision {...props} edit={false} /> }
+                        />
+                        <Route exact
+                               path={ROUTES.REVISION2}
+                               render={(props) => <Revision2 {...props} edit={false} /> }
                         />
                         <Route exact
                                path={ROUTES.DRAFT}

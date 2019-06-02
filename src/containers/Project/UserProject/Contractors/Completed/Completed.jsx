@@ -25,7 +25,7 @@ class Completed extends Component {
                 <Grid style={{ textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
 
                     <Container fluid textAlign='center' text='true'>
-                        <Link to="/project/user_revision" style={{position: "absolute", right: "90%", top: "250px"}}>
+                        <Link to="/project/user_revision/2" style={{position: "absolute", right: "90%", top: "250px"}}>
                             <img src={ArrowLeft} />
                         </Link>
 
