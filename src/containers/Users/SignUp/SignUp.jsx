@@ -54,21 +54,20 @@ class SignUpFormBase extends Component {
   onSubmit = event => {
     const { name, email, passwordOne, isDesigner } = this.state;
     const roles = [];
-
     if (isDesigner) {
-      roles[ROLES.DESIGNER] = ROLES.ADMIN;
+      roles.push(ROLES.DESIGNER)
     }
     this.props.firebase
       .doInitNewUser(email, passwordOne, name)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
          return this.props.firebase
-         .user(authUser.user.uid)
-         .set({
-           name,
-           email,
-           roles,
-         })
+        //  .user(authUser.user.uid)
+        //  .set({
+        //    name,
+        //    email,
+        //    roles,
+        //  })
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });

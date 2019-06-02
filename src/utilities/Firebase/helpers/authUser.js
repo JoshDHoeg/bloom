@@ -79,7 +79,7 @@ class FirebaseAuthUser extends FirebaseBase {
             return success1;
           })
           .then(success => this.isAuth = success);
-        // this.isAuth = true;
+           this.isAuth = true;
       }
     })
   }
