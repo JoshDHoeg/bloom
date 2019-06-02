@@ -4,6 +4,7 @@ import React from 'react';
 import { withAuthorization } from '../../../../../utilities/Session';
 import { Container,Segment, Header, Button, Grid, Form, Message } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
+import * as ROLES from "../../../../../utilities/constants/roles"
 //Figma Embed import
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import FigmaEmbed from 'react-figma-embed';
@@ -18,37 +19,15 @@ library.add(faArrowLeft);
 
 class Completed extends React.Component {
     final;
+    stage;
     constructor(props) {
         super(props);
         this.state = {
-            final: {
-                feedback: '',
-                approved: '',
-                figma: ''
-            },
             feedbackState: false,
             loading: false,
             revisions: false,
         }
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
-    }
-
-    formSubmit = () => {
-        this.final.feedback = this.state.final.feedback;
-        this.final.approved = !this.state.final.approved;
-
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            final: {
-                ...this.state.final,
-                [event.target.name]: event.target.value,
-            }
-        });
     }
 
     handleSuccess() {
@@ -59,37 +38,19 @@ class Completed extends React.Component {
 
     HandleClick = () => {
         this.setState({
-            revisions: true
+            revisions: !this.state.revisions
         });
     }
 
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
     }
 
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.final = await project.final
-        const state = await {
-            loading: false,
-            final: {
-                ...this.final.getAll()
-            },
-        }
-        this.setState(state)
-        return state;
-    }
 
     render() {
+        console.log('stage', this.props.stage.stage)
         let feedbackButton;
-        if(!this.state.final.approved) {
+        if(!this.props.final.approved) {
             feedbackButton = <Button 
             content='Submit'
             onClick={this.handleSuccess} 
@@ -101,6 +62,13 @@ class Completed extends React.Component {
             content='Submit' 
             color='blue'>
             Submit</Button>
+        }
+        let RightArrow;
+        if(this.props.stage.stage === 'revision' || 'revision2'){
+            RightArrow =                     
+            <Link to="/project/user_revision/1" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                <img src={ArrowRight} />
+            </Link>
         }
         return (
             <Grid>
@@ -119,7 +87,7 @@ class Completed extends React.Component {
                         <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.final.figma} style={{ width: "540px", margin: "30px" }} />
+                                <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
                         </Segment>
                     </Grid.Row>
@@ -132,20 +100,23 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}}>
                         <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input  disabled = {this.state.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.final.feedback} onChange={this.handleChange} type='text'  />
+                            <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                                <Form.Input  disabled = {this.props.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.final.feedback} onChange={this.props.handleChange} type='text'  />
                                 <Message 
                                     success
-                                    hidden = {!this.state.final.approved && !this.state.feedbackState}
+                                    hidden = {!this.props.final.approved}
                                     header='Feedback Received:' 
-                                    content= {this.state.final.feedback || 'feedback'}/>
+                                    content= {this.props.final.feedback || 'feedback'}/>
+                                <Message 
+                                    success
+                                    hidden = {!this.state.feedbackState}
+                                    header='Feedback Received:' 
+                                    content= {this.props.final.feedback || 'feedback'}/>
                                 {feedbackButton}
                             </Form>
                         </Message>
                     </Grid.Row>
-                    <Link to="/project/user_revision" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <img src={ArrowRight} />
-                    </Link>
+                    {RightArrow}
                 </Container>
             </Grid>
 
@@ -153,6 +124,6 @@ class Completed extends React.Component {
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0
 
 export default withAuthorization(condition)(Completed);

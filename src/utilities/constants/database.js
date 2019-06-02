@@ -50,6 +50,16 @@ export class User {
   set state(state) {
     this.ref.set({ state: state }, {merge:true})
   }
+  _role = ''
+  get role() { return this._role }
+  set role(role) {
+    this.ref.set({ role: role }, {merge: true})
+  }
+  _isAdmin = ''
+  get isAdmin() { return this._isAdmin }
+  set isAdmin(isAdmin) {
+    this.ref.set({ isAdmin: isAdmin }, {merge: true})
+  }
 
   get uid() { return this.id };
 
@@ -79,6 +89,8 @@ export class User {
     this._zip = data['zip'];
     this._city = data['city'];
     this._state = data['state'];
+    this._role = data['role'];
+    this._isAdmin = data['isAdmin']
   }
 
   _getAll = (obj) => {
@@ -96,7 +108,9 @@ export class User {
       zip: this.zip,
       city: this.city,
       state: this.state,
-      projects: this.projects
+      projects: this.projects,
+      role: this.role,
+      isAdmin: this.isAdmin
     });
   }
 }
@@ -225,6 +239,7 @@ export class ProjectBase {
   get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
   get finals() { return this._getDatabasePromise(ProjectData.Final); }
   get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
+  get stages() { return this._getDatabasePromise(ProjectData.Stage); }
 }
 
 export class Project extends ProjectBase {
@@ -255,7 +270,7 @@ export class Project extends ProjectBase {
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
   get revision() { return this.revisions.then(r => r[0]); }
-  get stage() {return this.stage.then(s => s[0]); }
+  get stage() {return this.stages.then(s => s[0]); }
 }
 
 class ProjectDataBase {
@@ -426,6 +441,9 @@ export class ProjectData {
       _cost = '';
       get cost() { return this._cost; };
       set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
+      _ApproveTerms = false;
+      get approveterms() {return this._ApproveTerms; };
+      set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -436,6 +454,7 @@ export class ProjectData {
           this._isApproved = this.data['approved'];
           this._isPaid = this.data['isPaid']
           this._cost = this.data['cost']
+          this._ApproveTerms = this.data['approveterms']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -443,6 +462,7 @@ export class ProjectData {
           this._isApproved = false;
           this._isPaid = false;
           this._cost = 59999;
+          this._ApproveTerms = false
         }
       }
       getAll() {
@@ -453,6 +473,7 @@ export class ProjectData {
           approved: this.approved,
           isPaid: this.isPaid,
           cost: this.cost,
+          approveterms: this.approveterms,
         });
       }
     }
@@ -617,13 +638,13 @@ export class ProjectData {
     colRef: 'stage',
     type: class Stage extends ProjectDataBase {
       _stage = '';
-      get stage() {return this._stage; };
-      set stage(s) {this._setter({ stage: s }).then(() => this._stage = s); }
+      get stage() { return this._stage; };
+      set stage(s) { this._setter({ stage: s }).then(() => this._stage = s); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          this._stage = this.data['state'];
+          this._stage = this.data['stage'];
         } else {
           this._stage = 'concept'
         }

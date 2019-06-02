@@ -52,7 +52,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
               completed: false,
               approved: false,
               isPaid: false,
-              cost: 59999
+              cost: 59999,
+              approveterms: false
           });
           d.doc('0').set({
               init: false,
@@ -183,7 +184,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -222,7 +223,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();

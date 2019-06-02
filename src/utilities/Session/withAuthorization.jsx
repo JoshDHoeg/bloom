@@ -10,27 +10,29 @@ import * as ROUTES from '../constants/routes';
 
 //is it the right user
 const withAuthorization = condition => Component => {
-
   class WithAuthorization extends React.Component {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
-
+          console.log('bullshit', authUser)
         if (authUser) {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
-                // console.log("is user a designer: " + authUser._isDesigner);
-                // console.log(authUser);
-                // console.log(condition);
-
-                if (!authUser._isDesigner) {
-                  // console.log(authUser);
-                  // console.log("not a designer");
-                  // this.props.history.push(ROUTES.SIGN_IN);
-                }else{
-                  this.setState({ authUser });
-                  // console.log("im confused");
+                 console.log("is user a designer: " + authUser._isDesigner);
+                 console.log('auth', authUser._role);
+                 console.log('t/f', condition(authUser._role));
+                if (authUser._role > 0) {
+                  if (!authUser._isDesigner && !authUser._isAdmin) {
+                    this.setState({ authUser: {
+                      _role: 1 }
+                    });
+                  }else if (authUser._isDesigner) {
+                    this.setState({ authUser: {
+                      _role: 2 }
+                    });
+                    console.log("im confused");
+                  }
                 }
               })
         } else {
@@ -39,6 +41,7 @@ const withAuthorization = condition => Component => {
         }
       });
     }
+    
     componentWillUnmount() {
       this.listener();
     }
@@ -47,7 +50,7 @@ const withAuthorization = condition => Component => {
       return (
         <AuthUserContext.Consumer>
           {authUser =>
-            condition(authUser) ? <Component {...this.props} /> : null
+            condition(authUser) ? <Component {...this.props} /> : <h1>This is not the page your looking for</h1>
           }
         </AuthUserContext.Consumer>
       );

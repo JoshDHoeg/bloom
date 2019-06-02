@@ -26,8 +26,10 @@ export const CLIENT_REVISIONS_EDIT = '/project/revisions/edit';
 export const CONCEPT = '/project/user_concept';
 export const CONTRACTORS = '/project/user_contractors';
 export const FINAL = '/project/user_final';
-export const REVISION = '/project/user_revision';
+export const REVISION = '/project/user_revision/1';
+export const REVISION2 = '/project/user_revision/2';
 export const DRAFT = '/project/user_draft';
+export const PAYMENT = '/project/user_concept/payment';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';

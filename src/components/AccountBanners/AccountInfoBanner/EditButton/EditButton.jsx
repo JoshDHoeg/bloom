@@ -36,7 +36,6 @@ const EditButton = (props) => {
 }
 
 
-const condition = authUser =>
-    (authUser || authUser._isDesigner);
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(EditButton);

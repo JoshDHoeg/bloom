@@ -38,19 +38,17 @@ class FirebaseAuthUser extends FirebaseBase {
           .once('value')
           .then(snapshot => {
             const dbUser = snapshot.val();
-
             // default empty roles
             if (!dbUser.roles) {
               dbUser.roles = {};
             }
-
             // merge auth and db user
             authUser = {
               uid: authUser.uid,
               email: authUser.email,
+              role: authUser.role,
               ...dbUser,
             };
-
             next(authUser);
           });
       } else {
@@ -112,9 +110,9 @@ class FirebaseAuthUser extends FirebaseBase {
   }
 
   doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null, name = 'username',
-                                      isDesigner = false, phone = '1231231234',
+                                      isDesigner = false, isAdmin = false, phone = '1231231234',
                                       billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
-                                      state = 'Default State') => {
+                                      state = 'Default State', role = 1) => {
     console.log("here yo");
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
@@ -127,7 +125,7 @@ class FirebaseAuthUser extends FirebaseBase {
           return false;
         }
         console.log("here3");
-        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, channelRef, [project], billadd1, zip, city, state)
+        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, isAdmin, channelRef, [project], billadd1, zip, city, state, role)
             .then(ref  => {
               return this.setFirebaseVars(ref.id).then(res => {
                   return ref;
@@ -188,8 +186,8 @@ class FirebaseAuthUser extends FirebaseBase {
     this.auth.currentUser.updatePassword(password);
 
 //modified doSetUser to return the relevant user id after it creates the user object for callbacks
-  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, channelRef = null,
-                     projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '') => {
+  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, isAdmin = false, channelRef = null,
+                     projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '', role = '') => {
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p)) {
           return this.doGetProject(p[0], p[1]).then(p => p.uid);
@@ -197,7 +195,6 @@ class FirebaseAuthUser extends FirebaseBase {
       return this.doGetProject(p).then(p => p.pid);
     }));
     console.log(projects);
-
     return this.usersRef.doc(uid).set({
       helpChannel: channelRef,
       isDesigner: isDesigner,
@@ -208,7 +205,9 @@ class FirebaseAuthUser extends FirebaseBase {
       billadd1: billadd1,
       zip: zip,
       city: city,
-      state: state
+      state: state,
+      role: role,
+      isAdmin: isAdmin,
     }).then(() => uid ).then( () => {
         this.doGetUser.bind(this, uid, false);
         return this.usersRef.doc(uid);

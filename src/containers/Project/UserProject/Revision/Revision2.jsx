@@ -3,8 +3,8 @@ import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import CompletedPage1 from './Completed1/Completed';
-
+import CompletedPage2 from './Completed2/Completed';
+import * as ROUTES from "../../../../utilities/constants/routes";
 
 
 class Revision extends React.Component{
@@ -15,33 +15,21 @@ class Revision extends React.Component{
         this.state = {
             revision: {
                 completed: false,
-                figma: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
+                figma: '',
                 feedback: '',
-                approved: false,
+                approved: false
             },
             stage: {
                 stage: ''
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
       }
 
     formSubmit = () => {
-        this.revision.feedback = this.state.revision.feedback;
-        this.revision.approved = true;
-        this.stage.stage = 'revision2'
+        this.stage.stage = 'contractors'
     }
 
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            revision: {
-                ...this.state.revision,
-                [event.target.name]: event.target.value,
-            }
-        });
-    }
     componentDidMount() {
        this.setState({ loading: true, edit: this.props.edit });
         if(this.props.location.state){
@@ -75,7 +63,7 @@ class Revision extends React.Component{
         if(!this.state.revision.completed){
             return( <WaitingPage state="revision"/> );             
         } else {
-            return( <CompletedPage1 handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
+            return( <CompletedPage2 formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
         }
     }
 }

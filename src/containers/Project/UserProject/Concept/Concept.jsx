@@ -1,3 +1,4 @@
+//BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Container, Header } from 'semantic-ui-react';
@@ -9,8 +10,9 @@ import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
+import Approve from './Approve/Approve'
 
-class Concept extends React.Component{
+export class Concept extends React.Component{
     concept;
     constructor(props){
         super(props);
@@ -19,12 +21,13 @@ class Concept extends React.Component{
             completed: false,
             concept: {
                 approved: false,
+                approveterms: false,
                 isPaid: false,
                 video: null,
                 schedule: null
             }
         }
-       // this.completed = this.completed.bind(this)
+        this.handleClick1 = this.handleClick1.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +40,12 @@ class Concept extends React.Component{
           this.getProjectState(0);
         }
       }
+    
+      handleClick1 = () => {
+        this.concept.approveterms = true;
+        this.state.concept.approveterms = true;
+        this.setState({complete: true})
+    }
 
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
@@ -71,12 +80,17 @@ class Concept extends React.Component{
         if(this.state.concept.completed && !this.state.concept.approved) {
             return (<CompletedPage/>)
         }
-        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid){
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
             return (<Payment/>)
         }
-
+        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
+            return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
+        }
+        if(this.state.concept.completed && this.state.concept.approved) {
+            return (<CompletedPage/>)
+        }
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 export default withAuthorization(condition)(Concept);
