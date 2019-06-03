@@ -13,7 +13,7 @@ const app = express();
 configureServer(app);
 configureRoutes(app);
 
-app.listen(SERVER_CONFIGS.PORT, error => {
+app.listen(SERVER_CONFIGS.PORT, '0.0.0.0', error => {
   if (error) throw error;
   console.log('Server running on port: ' + SERVER_CONFIGS.PORT);
 });
