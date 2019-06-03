@@ -51,7 +51,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "proxy": "node src/components/PaymentStripe/backend/index.js"
+    "proxy": "http://bloom-userui.herokuapp.com"
   },
   "eslintConfig": {
     "extends": "react-app"

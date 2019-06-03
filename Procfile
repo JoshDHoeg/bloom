@@ -1,1 +1,1 @@
-web: node src/components/PaymentStripe/backend/index.js
+web: node index.js
