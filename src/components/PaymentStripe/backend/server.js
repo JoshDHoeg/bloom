@@ -2,8 +2,8 @@
 // const cookieParser = require('cookie-parser');
 const cors = require('cors'); //use cors
 const bodyParser = require('body-parser'); //use body-parser (must also use this dependency)
-// const express = require('express');
-// const path = require('path');
+const express = require('express');
+const path = require('path');
 
 const CORS_WHITELIST = require('./constants/frontend'); //use cors whitelist to avoid cors header authorization error (must also use this dependency)
 
@@ -29,9 +29,12 @@ const configureServer = app => { //configure the express server
   });
   app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ extended: false}))
-  // if(process.env.NODE_ENV === 'production'){
-  //   app.use(express.static('client/build'));
-  // }
+  if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(path.join(__dirname, 'public')));
+  }
+  app.get('*',(req, res) => {
+    res.sendFile(path.resolve(__dirname, 'src', 'build', 'index.html'))
+  })
 };
 
 module.exports = configureServer;
