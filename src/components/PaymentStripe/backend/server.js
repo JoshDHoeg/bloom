@@ -17,7 +17,7 @@ const corsOptions = {
 const configureServer = app => { //configure the express server
   app.use(cors(corsOptions));
   app.use(bodyParser.urlencoded({
-    extended: true
+    extended: false
   }));
   app.use(function(req, res, next) {
     res.setHeader("Access-Control-Allow-Origin", "*")
@@ -32,7 +32,7 @@ const configureServer = app => { //configure the express server
   if(process.env.NODE_ENV === 'production'){
     app.use(express.static(path.join(__dirname, 'public')));
   }
-  app.get('*',(req, res) => {
+  app.get('/payment-resting-api',(req, res) => {
     res.json(path.resolve(__dirname, 'src', 'build', 'index.html'))
   })
 };
