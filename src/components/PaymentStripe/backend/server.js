@@ -16,25 +16,7 @@ const corsOptions = {
 
 const configureServer = app => { //configure the express server
   app.use(cors(corsOptions));
-  app.use(bodyParser.urlencoded({
-    extended: false
-  }));
-  app.use(function(req, res, next) {
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow_Headers, Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Allow-Methods", "GET, HEAD, OPTION, POST, PUT");
-
-    next()
-  });
   app.use(bodyParser.json());
-  app.use(bodyParser.urlencoded({ extended: false}))
-  if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname, 'public')));
-  }
-  app.get('/payment-resting-api',(req, res) => {
-    res.json(path.resolve(__dirname, 'src', 'build', 'index.html'))
-  })
 };
 
 module.exports = configureServer;
