@@ -33,7 +33,7 @@ const configureServer = app => { //configure the express server
     app.use(express.static(path.join(__dirname, 'public')));
   }
   app.get('*',(req, res) => {
-    res.sendFile(path.resolve(__dirname, 'src', 'build', 'index.html'))
+    res.json(path.resolve(__dirname, 'src', 'build', 'index.html'))
   })
 };
 
