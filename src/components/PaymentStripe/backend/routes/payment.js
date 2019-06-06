@@ -22,6 +22,7 @@ const paymentApi = app => { //Access the back-end
         source: req.body.token
         });
       res.json( {status } );
+      console.log('What the fuck');
   }catch(err) {
     console.log(err)
     res.status(500).end();
