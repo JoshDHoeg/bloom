@@ -22,7 +22,6 @@ const paymentApi = app => { //Access the back-end
         source: req.body.token
         });
       res.json( {status } );
-      res.sendFile(path.resolve(__dirname + '../public', 'index.html'))
   }catch(err) {
     console.log(err)
     res.status(500).end();
