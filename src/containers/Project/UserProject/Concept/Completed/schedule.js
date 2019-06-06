@@ -124,7 +124,7 @@ function() {
                 t(n(e) + a, true)
             }
         } catch (e) {
-            return
+            return //try to implement hook here
         }
     }
 

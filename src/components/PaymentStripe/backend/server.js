@@ -7,6 +7,13 @@ const path = require('path');
 
 const CORS_WHITELIST = require('./constants/frontend'); //use cors whitelist to avoid cors header authorization error (must also use this dependency)
 
+var allowCrossDomain = function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'example.com');
+  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.header('Access-Control-Allow-Headers', 'Content-Type');
+
+  next();
+}
 const corsOptions = {
   origin: (origin, callback) =>
     (CORS_WHITELIST.indexOf(origin) !== -1)
@@ -17,6 +24,10 @@ const corsOptions = {
 const configureServer = app => { //configure the express server
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
+  if(process.env.NODE_ENV === 'production'){
+    app.use(express.static(__dirname + '/public'));
+  }
+  app.use(allowCrossDomain)
 };
 
 module.exports = configureServer;
