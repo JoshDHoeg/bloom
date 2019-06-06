@@ -11,6 +11,7 @@ const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in t
 const paymentApi = app => { //Access the back-end
     app.get('/', (req, res,) => {
       res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
+
     });
   app.post('/', async (req, res) => { //Post the charge
     try{
@@ -21,6 +22,7 @@ const paymentApi = app => { //Access the back-end
         source: req.body.token
         });
       res.json( {status } );
+      res.sendFile(path.resolve(__dirname + '../public', 'index.html'))
   }catch(err) {
     console.log(err)
     res.status(500).end();

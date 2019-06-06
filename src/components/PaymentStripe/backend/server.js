@@ -25,7 +25,7 @@ const configureServer = app => { //configure the express server
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
   if(process.env.NODE_ENV === 'production'){
-    app.use(express.static(__dirname + '/public'));
+    app.use(express.static(path.join(__dirname + '../public')));
   }
   app.use(allowCrossDomain)
 };
