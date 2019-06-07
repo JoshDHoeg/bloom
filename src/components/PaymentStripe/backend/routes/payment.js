@@ -14,7 +14,7 @@ const paymentApi = app => { //Access the back-end
       response.sendFile(path.join(__dirname+'build/index.html'));
     });
   }else{
-    app.get('/', (req, res,) => {
+    app.get('/charge', (req, res,) => {
       res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
 
     });
