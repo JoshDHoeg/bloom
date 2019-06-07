@@ -11,7 +11,7 @@ const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in t
 const paymentApi = app => { //Access the back-end
   if (process.env.NODE_ENV === 'production') {
     app.get('*', (request, response) => {
-      response.sendFile(path.join(__dirname, 'build', 'index.html'));
+      response.sendFile(path.join(__dirname+'build/index.html'));
     });
   }else{
     app.get('/', (req, res,) => {
@@ -20,7 +20,7 @@ const paymentApi = app => { //Access the back-end
     });
   }
 
-  app.post('/', async (req, res) => { //Post the charge
+  app.post('/charge', async (req, res) => { //Post the charge
     try{
       let { status } = await stripe.charges.create({
         amount: req.body.amount,

@@ -15,6 +15,7 @@ var allowCrossDomain = function(req, res, next) {
 
   next();
 }
+
 const corsOptions = {
   origin: (origin, callback) =>
     (CORS_WHITELIST.indexOf(origin) !== -1)
@@ -29,6 +30,7 @@ const configureServer = app => { //configure the express server
   app.use(allowCrossDomain)
   app.use(cors(corsOptions));
   app.use(bodyParser.json());
+  app.use('/charge', express.json())
 };
 
 module.exports = configureServer;
