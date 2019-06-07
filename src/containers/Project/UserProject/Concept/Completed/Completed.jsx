@@ -14,7 +14,6 @@ class Completed extends React.Component{
 
     render(){
         console.log("here");
-
         return (
             <div>
                 <Container><ProjectStatus state="concept"/></Container>

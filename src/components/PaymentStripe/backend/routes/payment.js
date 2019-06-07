@@ -1,5 +1,6 @@
 //BLOOMTIME DESIGN 2019
 const stripe = require('../constants/stripe'); //Get stripe API
+const axios = require('axios')
 
 const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in the back-end
   if (stripeErr) {
@@ -21,7 +22,7 @@ const paymentApi = app => { //Access the back-end
         description: "Charge",
         source: req.body.token
         });
-      res.json( {status } );
+      res.json( { status } );
       console.log('What the fuck');
   }catch(err) {
     console.log(err)

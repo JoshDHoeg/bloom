@@ -3,7 +3,7 @@
 const FRONTEND_DEV_URLS = [ 'http://localhost:3000' ]; //set the development url
 
 const FRONTEND_PROD_URLS = [ 
-  'https://bloom-userui.herokuapp.com/project',
+  'https://www.bloom-userui.herokuapp.com/project',
   'https://bloom-userui.herokuapp.com/project']; //set the production urls
 
 module.exports = process.env.NODE_ENV === 'production' //export constant urls
