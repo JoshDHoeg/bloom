@@ -23,6 +23,9 @@ const corsOptions = {
 };
 
 const configureServer = app => { //configure the express server
+  if (process.env.NODE_ENV === 'production') {
+    app.use(express.static('bloom/build'));
+  }
   app.use(allowCrossDomain)
   app.use(cors(corsOptions));
   app.use(bodyParser.json());

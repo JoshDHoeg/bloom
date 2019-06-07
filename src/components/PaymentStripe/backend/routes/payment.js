@@ -1,6 +1,5 @@
 //BLOOMTIME DESIGN 2019
 const stripe = require('../constants/stripe'); //Get stripe API
-const axios = require('axios')
 
 const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in the back-end
   if (stripeErr) {
@@ -10,10 +9,17 @@ const charge = res => (stripeErr, stripeRes) => { //Charge the stripe token in t
   }
 }
 const paymentApi = app => { //Access the back-end
+  if (process.env.NODE_ENV === 'production') {
+    app.get('*', (request, response) => {
+      response.sendFile(path.join(__dirname, 'bloom/build', 'index.html'));
+    });
+  }else{
     app.get('/', (req, res,) => {
       res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
 
     });
+  }
+  
   app.post('/', async (req, res) => { //Post the charge
     try{
       let { status } = await stripe.charges.create({
