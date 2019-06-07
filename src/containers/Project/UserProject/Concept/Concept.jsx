@@ -32,13 +32,7 @@ export class Concept extends React.Component{
 
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
-        if(this.props.location.state){
-          this.setState({projectIndex: this.props.location.state.projectIndex});
-          this.getProjectState(this.props.location.state.projectIndex);
-        } else{
-          this.setState({projectIndex: 0});
-          this.getProjectState(0);
-        }
+        this.getProjectState();
       }
     
       handleClick1 = () => {

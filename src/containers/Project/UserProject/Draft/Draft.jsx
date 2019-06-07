@@ -48,13 +48,7 @@ class Draft extends Component {
 
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
-        if(this.props.location.state){
-          this.setState({projectIndex: this.props.location.state.projectIndex});
-          this.getProjectState(this.props.location.state.projectIndex);
-        } else{
-          this.setState({projectIndex: 0});
-          this.getProjectState(0);
-        }
+        this.getProjectState();
     }
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
