@@ -9,6 +9,7 @@ import CompletedPage from './Completed/Completed.jsx';
 class Final extends React.Component {
     final;
     stage;
+    revisions;
     constructor(props) {
         super(props);
         this.state = {
@@ -24,13 +25,14 @@ class Final extends React.Component {
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.addRevision = this.addRevision.bind(this);
     }
 
     formSubmit = () => {
         this.final.feedback = this.state.final.feedback;
         this.final.approved = true;
-        this.stage.stage = 'revision'
-
+        this.stage.stage = 'revision';
+        this.addRevision();
     }
 
     handleChange(event) {
@@ -49,11 +51,14 @@ class Final extends React.Component {
       }
     
     getProjectState = async () => {
-        const revisionadd = this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        console.log('does this work', revisionadd);
+        console.log("before the call------------------------------------------------");
+        // const revisionadd = await this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        // console.log('does this work', revisionadd);
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final;
-        this.stage = await project.stage
+        this.stage = await project.stage;
+        this.revisions = await project.revision;
+        console.log(this.revisions);
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
@@ -62,14 +67,32 @@ class Final extends React.Component {
             },
             stage: {
                 stage: this.stage.stage
-            }
+            },
         }
         this.setState(state);
         return state;
     }
 
+    addRevision(){
+        // var newRevision = {
+        //     init: false,
+        //     feedback: "feedback",
+        //     media:"",
+        //     figma: "",
+        //     completed: false,
+        //     approved: false,
+        // }
+        // this.revisions.push(newRevision);
+        // var revisions = this.revisions.collection('revisions');
+        // console.log(this.revisions[3] );
+
+        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, this.props.firebase.activeProject, true);
+        // console.log('does this work', revisionadd);
+    }
+
 
     render(){
+        console.log(this.revisions);
         if(!this.state.final.completed){
             return( <WaitingPage state="final"/>    );             
         } else {

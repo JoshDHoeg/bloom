@@ -81,6 +81,14 @@ class FirebaseProjects extends FirebaseAuthUser  {
               completed: false,
               approved: false,
           });
+          r.doc('1').set({
+            init: false,
+            feedback: "",
+            media:"",
+            figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
+            completed: false,
+            approved: false,
+        });
           s.doc('0').set({
               init: false,
               stage: "concept",
@@ -93,20 +101,68 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  doCreateRevision = (id, index, isUID = false) => {
-    var proj = this.projectsRef.doc(id);
-    console.log("fuck me hard please");
-    const r = proj.collection('revisions');
-    r.doc('1').set({
-      init: false,
-      feedback: "feedback",
-      media:"",
-      figma: "",
-      completed: false,
-      approved: false,
+  // doCreateRevision = async (id, index, isUID = false) => {
+  //   console.log("fuck me hard please");
+  //   this.doGetProject(id, index, isUID).then(proj => {
+  //     console.log(proj);
+  //     // const r = proj.collection('revisions');
+  //     // r.doc('1').set({
+  //     //   init: false,
+  //     //   feedback: "feedback",
+  //     //   media:"",
+  //     //   figma: "",
+  //     //   completed: false,
+  //     //   approved: false,
+  //     // });
+  //     return proj;
+  //   })
+  // }
+
+
+
+  // doCreateRevision = (id, index, isUID = false) => {
+  //   console.log("fuck me hard please");
+  //   this.doGetUser(id).then(userData =>
+  //     this.projectsRef.doc(userData.projects[index].id).get().then(proj => {
+  //       console.log(proj);
+  //       console.log("fuck me hardder now--------===========================000000000000000000000000000000");
+  //       const r = proj.collection('revisions');
+  //       r.doc('1').set({
+  //         init: false,
+  //         feedback: "feedback",
+  //         media:"",
+  //         figma: "",
+  //         completed: false,
+  //         approved: false,
+  //       });
+  //       return proj;
+  //     })
+  //   )
+  // }
+
+  // doCreateRevision = (pid) => {
+  //   var proj = this.projectsRef.doc(pid);
+  //   const r = proj.collection('revisions')
+  //   console.log("please add a revision to the project in the database", proj);
+  //   console.log("here are the revisions", r);
+  // }
+
+  doCreateRevision = (id, customerFeedback, index, isUID = false) => {
+    if (isUID) {
+      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback));
+    } else {
+      return this.projectsRef.doc(id).collection('revisions').add({
+        init: false,
+        feedback: customerFeedback,
+        media:"",
+        figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
+        completed: false,
+        approved: false,
     });
-    return proj;
   }
+  }
+
+
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
@@ -126,11 +182,11 @@ class FirebaseProjects extends FirebaseAuthUser  {
   }
 
   doGetProject = (id, index, isUID = false) => { // return Promise<Project>
-    console.log("inside doGetProject");
     if (isUID) {
       return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
     } else {
       return this.projectsRef.doc(id).get().then(data => {
+        console.log(data);
         return new Project(data)
       });
   }
