@@ -127,8 +127,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
       return this.doCreateEmptyProject().then( proj => {
-          console.log(proj);
-          this.doCreateRevision();
+          console.log(proj)
           return this.doCreateUserWithEmailAndPassword(email, password, proj.id)
               .then(ref => {
                       proj.set({
