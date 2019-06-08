@@ -93,7 +93,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  doCreateRevision = (id, feedback) => {
+  doCreateRevision = (id, feedback, isUID = false) => {
     this.doGetProject = (id, index, isUID = false) => {
       if (isUID) {
         return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
@@ -114,7 +114,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       const r = proj.collection('revisions');
       r.doc('1').set({
         init: false,
-        feedback: "",
+        feedback: feedback,
         media:"",
         figma: "",
         completed: false,
@@ -127,7 +127,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
       return this.doCreateEmptyProject().then( proj => {
-          console.log(proj)
+          console.log(proj);
           return this.doCreateUserWithEmailAndPassword(email, password, proj.id)
               .then(ref => {
                       proj.set({
