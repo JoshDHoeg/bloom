@@ -1,7 +1,7 @@
 import FirebaseAuthUser from './authUser';
 import { ProjectData, Project } from '../../constants/database';
 import Firebase from '../firebase';
-import firebase from "firebase";
+
 
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
@@ -83,7 +83,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
           });
           s.doc('0').set({
               init: false,
-              stage: "concept"
+              stage: "concept",
+              rcount: 0,
           });
           return proj.get().then(data => {
               return new Project(data);
@@ -92,41 +93,42 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  // doCreateRevision = () => {
-  //   doGetProject = (id, index, isUID = false) => {
-  //     if(isUID) {
-  //       return this.doGetUser(id).then(userData = this.doGetProject(userData.projects[index].id));
-  //     } else {
-  //       return this.projectsRef.doc(id).get().then(data => {
-  //         return new Project(data);
-  //       })
-  //     }
-  //   }
-  //   return this.doGetUser("userAuthID").then( designer => {
-  //     var proj = this.projectsRef.doc();
-  //     proj.set({
-  //         client: [null],
-  //         designer: [designer.ref],
-  //         _name: "tester",
-  //         _status: "revisions",
-  //     })
-  //     const r = proj.collection('revisions');
-  //     r.doc('0').set({
-  //       init: false,
-  //       feedback: "",
-  //       media:"",
-  //       figma: "",
-  //       completed: false,
-  //       approved: false,
-  //   });
-  //     return proj;
-  //   }
-  // }
+  doCreateRevision = (id, feedback) => {
+    this.doGetProject = (id, index, isUID = false) => {
+      if (isUID) {
+        return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
+      } else {
+        return this.projectsRef.doc(id).get().then(data => {
+          return new Project(data)
+        });
+      }
+    }
+    return this.doGetUser("userAuthID").then( designer => {
+      var proj = this.projectsRef.doc();
+      proj.set({
+          client: [null],
+          designer: [designer.ref],
+          _name: "tester",
+          _status: "revisions",
+      })
+      const r = proj.collection('revisions');
+      r.doc('1').set({
+        init: false,
+        feedback: "",
+        media:"",
+        figma: "",
+        completed: false,
+        approved: false,
+      })
+      return proj;
+    })
+  }
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
       return this.doCreateEmptyProject().then( proj => {
           console.log(proj);
+          this.doCreateRevision();
           return this.doCreateUserWithEmailAndPassword(email, password, proj.id)
               .then(ref => {
                       proj.set({
@@ -164,6 +166,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           });
       });
   }
+  
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
     let cuids = Array.isArray(clientUid) ? clientUid : [clientUid];

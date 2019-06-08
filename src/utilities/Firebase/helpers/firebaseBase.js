@@ -77,6 +77,7 @@ class FirebaseBase {
   // * optimal usage example: this.props.firebase.doGetProject(this.props.firebase.user.uid, true)
   // calling with isUID = true will find a user's project
   // User can have multiple projects -- isUID will return the first project
+  doCreateRevision = (pid, feedback) => null;
   doUpdateProject = (name, clientUid, designerUid, projectId = null, returnProject = true) => null; // Promise<Project>
   // Will update a project
   // if no projectId is given: will create new project
