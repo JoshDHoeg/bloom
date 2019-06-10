@@ -93,20 +93,12 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  doCreateRevision = (id, feedback, isUID = false) => {
-    this.doGetProject = (id, index, isUID = false) => {
-      if (isUID) {
-        return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
-      } else {
-        return this.projectsRef.doc(id).get().then(data => {
-          return new Project(data)
-        });
-      }
-    }
+  doCreateRevision = (id, index, feedback, isUID = false) => {
+    this.doGetProject(id, index, isUID)
     return this.doGetUser("userAuthID").then( designer => {
-      var proj = this.projectsRef.doc();
+      var proj = this.projectsRef.doc(id);
       proj.set({
-          client: [null],
+          client: [isUID],
           designer: [designer.ref],
           _name: "tester",
           _status: "revisions",
