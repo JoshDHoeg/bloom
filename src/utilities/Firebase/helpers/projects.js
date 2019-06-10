@@ -100,7 +100,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
       })
   }
-
   // doCreateRevision = async (id, index, isUID = false) => {
   //   console.log("fuck me hard please");
   //   this.doGetProject(id, index, isUID).then(proj => {
@@ -158,8 +157,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
         figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
         completed: false,
         approved: false,
-    });
-  }
+      });
+    }
   }
 
 

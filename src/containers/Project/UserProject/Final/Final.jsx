@@ -49,11 +49,15 @@ class Final extends React.Component {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
       }
-    
     getProjectState = async () => {
+<<<<<<< HEAD
         console.log("before the call------------------------------------------------");
         // const revisionadd = await this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         // console.log('does this work', revisionadd);
+=======
+        const revisionadd = await this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.props.firebase.activeProject, true)
+        console.log('hello', revisionadd)
+>>>>>>> 44c2459916a54738d126bb10efa2bb5b78274a76
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final;
         this.stage = await project.stage;

@@ -10,16 +10,16 @@ const stripe = require('../constants/stripe'); //Get stripe API
 // }
 
 const paymentApi = app => { //Access the back-end
-  if (process.env.NODE_ENV === 'production') {
-    app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname+'build/index.html'));
-    });
-  }else{
+  // if (process.env.NODE_ENV === 'production') {
+  //   app.get('*', (req, res) => {
+  //     res.sendFile(path.join(__dirname+'build/index.html'));
+  //   });
+  // }else{
     app.get('/', (req, res,) => {
       res.send({ message: 'Hello Stripe checkout server!', timestamp: new Date().toISOString() })
 
     });
-  }
+  //}
 
   app.post('/', async (req, res) => { //Post the charge
     try{
