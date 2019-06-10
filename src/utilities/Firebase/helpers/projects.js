@@ -93,6 +93,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
+<<<<<<< HEAD
   doCreateRevision = (id, index, feedback, isUID = false) => {
     this.doGetProject(id, index, isUID)
     return this.doGetUser("userAuthID").then( designer => {
@@ -114,6 +115,21 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
       return proj;
     })
+=======
+  doCreateRevision = (id, index, isUID = false) => {
+    var proj = this.projectsRef.doc(id);
+    console.log("fuck me hard please");
+    const r = proj.collection('revisions');
+    r.doc('1').set({
+      init: false,
+      feedback: "feedback",
+      media:"",
+      figma: "",
+      completed: false,
+      approved: false,
+    });
+    return proj;
+>>>>>>> ef693e7e6f02c56f46627c2be1c39a42395cfa40
   }
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
