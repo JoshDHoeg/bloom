@@ -10,9 +10,9 @@ const configureServer = require('./src/components/PaymentStripe/backend/server')
 const configureRoutes = require('./src/components/PaymentStripe/backend/routes');
 
 const app = express();
-configureRoutes(app);
 configureServer(app);
-//configureRoutes(app);
+configureRoutes(app);
+
 
 app.listen(SERVER_CONFIGS.PORT, error => {
   if (error) throw error;
