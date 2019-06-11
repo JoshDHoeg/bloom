@@ -1,2 +1,24 @@
 /spec
-*.test.js
+
+// containers
+
+/src/contianers/Account/Test
+/src/contianers/Designer/Test
+/src/contianers/Project/Test
+/src/contianers/Project/UserProject/Test
+/src/contianers/Project/DesignerProject/Test
+/src/contianers/Project/UserProject/Concept/Test
+/src/contianers/Project/UserProject/Contractors/Test
+/src/contianers/Project/UserProject/Draft/Test
+/src/contianers/Project/UserProject/Final/Test
+/src/contianers/Project/UserProject/Revision/Test
+/src/contianers/Project/DesignerProject/Concept/Test
+/src/contianers/Project/DesignerProject/Brief/Test
+/src/contianers/Project/DesignerProject/Draft/Test
+/src/contianers/Project/DesignerProject/Final/Test
+/src/contianers/Project/DesignerProject/Revisisons/Test
+
+// components
+
+/src/components/Navigation/Test
+/src/components/AccountBanners/Test
