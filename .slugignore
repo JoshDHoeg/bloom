@@ -1,3 +1,2 @@
 /spec
-src/assets
-src/images
+*.test.js
