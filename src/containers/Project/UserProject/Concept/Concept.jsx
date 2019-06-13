@@ -72,7 +72,7 @@ export class Concept extends React.Component{
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
         if(this.state.concept.completed && !this.state.concept.approved) {
-            return (<CompletedPage/>)
+            return (<CompletedPage concept={this.state.concept} />)
         }
         if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
             return (<Payment/>)
@@ -81,7 +81,7 @@ export class Concept extends React.Component{
             return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
         }
         if(this.state.concept.completed && this.state.concept.approved) {
-            return (<CompletedPage/>)
+            return (<CompletedPage concept={this.state.concept}/>)
         }
     }
 }

@@ -81,14 +81,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
               completed: false,
               approved: false,
           });
-          r.doc('1').set({
-            init: false,
-            feedback: "",
-            media:"",
-            figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
-            completed: false,
-            approved: false,
-        });
           s.doc('0').set({
               init: false,
               stage: "concept",
