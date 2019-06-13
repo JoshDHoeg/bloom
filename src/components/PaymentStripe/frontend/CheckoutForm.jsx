@@ -8,6 +8,7 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
+import axios from 'axios';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -84,7 +85,9 @@ class PaymentButton extends Component {
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
       headers: {"Content-Type": "application/json",
-      "X-HTTP-Method-Override": "POST" },
+      'Access-Control-Allow-Origin': 'https://bloom-userui.herokuapp.com',
+      'Access-Control-Allow-Methods': 'GET, HEAD, OPTION, POST, PUT'
+     },
       body: JSON.stringify({
         amount: amt,
         token: token.id

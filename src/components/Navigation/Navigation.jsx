@@ -1,9 +1,6 @@
 //BLOOMTIME DESIGN 2019
 
 import React, {Component} from 'react';
-import DesignerNavigation from './DesignerNavigation';
-import UserNavigation from './UserNavigation';
-import { withAuthorization } from '../../utilities/Session';
 import { Link } from 'react-router-dom';
 import NavigationToggle from './NavigationToggle/NavigationToggle'
 import logo from '../../Images/BloomtimeLogo.png'

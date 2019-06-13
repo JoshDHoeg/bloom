@@ -212,6 +212,7 @@ export class ProjectBase {
       return d;
     }, { name: this.name });
   }
+
   _getDatabasePromise = (projectData, isRef = false) => {
     const ref = isRef ? projectData : projectData.colRef
     return this.cols.collection(ref).get().then(colSnap => {
@@ -640,18 +641,24 @@ export class ProjectData {
       _stage = '';
       get stage() { return this._stage; };
       set stage(s) { this._setter({ stage: s }).then(() => this._stage = s); }
+      _rcount = 0;
+      get rcount() { return this._rcount; };
+      set rcount(c) { return this._rcount; };
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._stage = this.data['stage'];
+          this._rcount = this.data['rcount'];
         } else {
-          this._stage = 'concept'
+          this._stage = 'concept';
+          this._rcount = 0;
         }
       }
       getAll() {
         return this._getAll({
           stage: this.stage,
+          rcount: this.rcount
         })
       }
     }

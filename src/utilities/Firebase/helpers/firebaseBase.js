@@ -70,13 +70,12 @@ class FirebaseBase {
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
   setActiveProject = (index) => null;
-
-
   projects; // Promise<Project[]> // this is a single call for all projects
   doGetProject = (pid, index, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
   // * optimal usage example: this.props.firebase.doGetProject(this.props.firebase.user.uid, true)
   // calling with isUID = true will find a user's project
   // User can have multiple projects -- isUID will return the first project
+  doCreateRevision = (pid, feedback, index, isUID = false) => null;
   doUpdateProject = (name, clientUid, designerUid, projectId = null, returnProject = true) => null; // Promise<Project>
   // Will update a project
   // if no projectId is given: will create new project

@@ -4,14 +4,15 @@
 
 const express = require('express'); //start express back-end server
 
-const SERVER_CONFIGS = require('./constants/server');
+const SERVER_CONFIGS = require('./src/components/PaymentStripe/backend/constants/server');
 
-const configureServer = require('./server');
-const configureRoutes = require('./routes');
+const configureServer = require('./src/components/PaymentStripe/backend/server');
+const configureRoutes = require('./src/components/PaymentStripe/backend/routes');
 
 const app = express();
 configureServer(app);
 configureRoutes(app);
+
 
 app.listen(SERVER_CONFIGS.PORT, error => {
   if (error) throw error;
