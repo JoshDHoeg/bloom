@@ -85,7 +85,7 @@ class Final extends React.Component {
         // var revisions = this.revisions.collection('revisions');
         // console.log(this.revisions[3] );
 
-        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, this.props.firebase.activeProject, true);
+        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, "1", this.props.firebase.activeProject, true);
         // console.log('does this work', revisionadd);
     }
 
