@@ -66,6 +66,10 @@ class Revision extends React.Component{
         return state;
     }
     render(){
+        console.log('hell0', this.props.location.pathname)
+        let string = this.props.location.pathname
+        var array = string.split("/")
+        console.log('location =', array[3])
         if(!this.state.revision.completed){
             return( <WaitingPage state="revision"/> );             
         } else {
