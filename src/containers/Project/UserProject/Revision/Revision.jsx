@@ -49,9 +49,7 @@ class Revision extends React.Component{
 
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        console.log('wtf', this.project)
         this.revision = await project.revision;
-        console.log('wtf2', project.concept)
         this.stage = await project.stage;
         //const schedule = await this.project.concept.schedule;
         const state = await {
@@ -65,11 +63,9 @@ class Revision extends React.Component{
         }
 
         this.setState(state);
-        console.log('here', this.state.revision)
         return state;
     }
     render(){
-        console.log('here2', this.state.revision)
         if(!this.state.revision.completed){
             return( <WaitingPage state="revision"/> );             
         } else {

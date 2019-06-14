@@ -43,7 +43,6 @@ class AdminPage extends Component {
 
   render() {
     const { users, loading } = this.state;
-    console.log(this.userProjs[0]);
 
     return (
         <Sidebar.Pushable as={Segment}>

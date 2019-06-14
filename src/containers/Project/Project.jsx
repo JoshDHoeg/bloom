@@ -14,7 +14,6 @@ class ProjectBase extends React.Component {
             return <HomePageWithSidebar/>
         }
         else {
-            console.log("here");
             return <UserProject/>
         }
     }

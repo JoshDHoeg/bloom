@@ -30,7 +30,6 @@ class Approve extends React.Component{
     }
 
     render(){
-        console.log(this.props.complete)
         if(!this.props.complete){
             return (
                 <div>

@@ -74,7 +74,6 @@ class Waiting extends Component {
 
 
     render(){
-        console.log(this.state.link)
         return(
             <Container>
                 <Grid.Row>

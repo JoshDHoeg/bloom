@@ -14,14 +14,10 @@ const withAuthorization = condition => Component => {
     componentDidMount() {
       this.listener = this.props.firebase.auth.onAuthStateChanged(
         authUser => {
-          console.log('bullshit', authUser)
         if (authUser) {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
-                 console.log("is user a designer: " + authUser._isDesigner);
-                 console.log('auth', authUser._role);
-                 console.log('t/f', condition(authUser._role));
                 if (authUser._role > 0) {
                   if (!authUser._isDesigner && !authUser._isAdmin) {
                     this.setState({ authUser: {
@@ -31,12 +27,10 @@ const withAuthorization = condition => Component => {
                     this.setState({ authUser: {
                       _role: 2 }
                     });
-                    console.log("im confused");
                   }
                 }
               })
         } else {
-            console.log("not a user");
             this.props.history.push(ROUTES.SIGN_IN);
         }
       });

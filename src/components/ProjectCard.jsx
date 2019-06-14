@@ -21,18 +21,15 @@ class ProjCard extends Component {
 
     onClick = (projectIndex) => {
         this.props.firebase.activeProject = projectIndex;
-        console.log(projectIndex);
     }
 
     async componentDidMount(){
         const brief = await this.props.proj.brief;
         const status = await this.props.proj.status;
-        console.log(this.props.proj);
         this.setState({brief:brief, status:status});
     }
 
     render(){
-        // console.log(this.state)
         return(
         <Grid.Row>
             <Grid.Column>

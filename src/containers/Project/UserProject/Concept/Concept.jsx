@@ -11,6 +11,8 @@ import WaitingPage from '../../../../components/Waiting/Waiting';
 import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
 import Approve from './Approve/Approve'
+import Loading from '../../../../components/Loading/Loading'
+
 
 export class Concept extends React.Component{
     concept;
@@ -57,12 +59,8 @@ export class Concept extends React.Component{
     }
 
     render(){
-        console.log('Paid?', this.state.concept.isPaid)
-        console.log('Approved?', this.state.concept.approved)
-        console.log()
-        console.log(this.state);
         if(this.state.loading){
-            return (<div>Loading...</div>)
+            return <Loading/>
         }
         //change this to waiting component
         if(!this.state.concept.completed){

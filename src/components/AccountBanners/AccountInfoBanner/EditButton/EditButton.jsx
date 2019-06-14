@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import * as ROUTES from "../../../../utilities/constants/routes";
 
 const EditButton = (props) => {
-    //console.log(props);
     return (
         props.edit ? (
             <button onClick={props.formSubmit} type="button" style={{

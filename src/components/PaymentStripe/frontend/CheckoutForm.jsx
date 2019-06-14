@@ -8,7 +8,7 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import axios from 'axios';
+//import axios from 'axios';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -46,7 +46,6 @@ class PaymentButton extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
     this.setState({
       concept: {
         ...this.state.concept,
@@ -74,7 +73,6 @@ class PaymentButton extends Component {
         }
     }
     this.setState(state);
-    console.log(this.state.concept.isPaid)
     return state;
 
   }
@@ -94,19 +92,14 @@ class PaymentButton extends Component {
       })
     });
     if (response.ok) {
-      console.log("working")
       this.setState({complete: true});
       this.stateChange()
-      console.log(response)
     }else{
       alert('Payment Error')
-      console.log(response)
     }
   }
   
-
-  render() {
-    
+  render() { 
     if (this.state.complete) {
       return( 
         <div>

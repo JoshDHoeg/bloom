@@ -15,7 +15,6 @@ import AccountInfoPage from './components/AccountInfo/AccountInfo'
 
 class Account extends Component {
   render(){
-      console.log('here')
       return(
           <Router>
               <Segment basic>

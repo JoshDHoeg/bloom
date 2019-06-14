@@ -11,13 +11,11 @@ import EditButton from '../../../../../components/AccountBanners/AccountInfoBann
 class AccountInfoPageView extends Component {
     constructor(props) {
         super(props);
-        console.log(props.user);
         this.state = {
             edit: false
         }
     }
     render() {
-        console.log(this.props.user);
         return (
             <Container>
                 <Grid textAlign='center'>

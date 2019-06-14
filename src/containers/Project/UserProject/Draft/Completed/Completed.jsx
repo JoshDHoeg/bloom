@@ -66,7 +66,6 @@ class Completed extends Component {
 
     render() {
         let videoPortion;
-        console.log("feedback", this.props.draft.approved)
         if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>

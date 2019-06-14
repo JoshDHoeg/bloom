@@ -3,7 +3,6 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 
 const UserInfo = (props) => {
-    //console.log(props);
     return (
         <div>
             {props.edit ? (
@@ -23,7 +22,6 @@ const UserInfo = (props) => {
 }
 
 const UserInfoView = (props) => {
-    //console.log(props);
     const name = props.name;
     const phone = props.phone;
     return (
@@ -50,7 +48,6 @@ const UserInfoView = (props) => {
 }
 //try value for placeholder
 const UserInfoEdit = (props) => {
-    //console.log(props);
     const name = props.name;
     const phone = props.phone;
     const handleChange = props.handleChange

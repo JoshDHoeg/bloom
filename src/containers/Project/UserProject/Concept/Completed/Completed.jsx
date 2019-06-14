@@ -11,9 +11,7 @@ library.add(faArrowRight)
 library.add(faArrowLeft)
 
 class Completed extends React.Component{
-
     render(){
-        console.log("here");
         return (
             <div>
                 <Container><ProjectStatus state="concept"/></Container>
@@ -38,7 +36,7 @@ class Completed extends React.Component{
                         <br/>
                         <br/>
                         <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17809121" width="100%" height="800" frameBorder="0"></iframe>
-<script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+                        <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                         <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
                             <img src={ArrowRight} />
                         </Link>

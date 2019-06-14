@@ -39,7 +39,6 @@ class DraftPage extends Component {
   }
 
   formSubmit(){
-    console.log("we updated?", this.state);
     this.draft.media = this.state.draft.media;
     this.draft.video = this.state.draft.video;
     this.draft.figma = this.state.draft.figma;
@@ -53,12 +52,10 @@ class DraftPage extends Component {
 
   Approved() {
     this.draft.approved = true;
-    console.log('approved?', this.draft.approved)
   }
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
     this.setState({
       draft: {
         ...this.state.draft,
@@ -93,7 +90,6 @@ class DraftPage extends Component {
             <DraftPageEdit draft={this.state.draft} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />
         );
     }else{
-      console.log('approved', this.state.concept.approved)
         return (
             <DraftPageView concept={this.state.concept} formSubmit={this.formSubmit} Approved={this.Approved} isDesigner={this.props.firebase.user._isDesigner} draft={this.state.draft} />
         );

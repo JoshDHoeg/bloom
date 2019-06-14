@@ -75,7 +75,6 @@ class ProjectStatus extends React.Component {
             </Step>
         }
         
-        console.log(this.props.state);
         const count = (this.state.contractors) ? 4 + this.state.revisions : 3 + this.state.revisions;
         return(
             <Step.Group widths={count}>

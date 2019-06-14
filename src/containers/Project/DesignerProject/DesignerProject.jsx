@@ -18,7 +18,6 @@ import RevisionsPage from './Revisions/Revisions';
 
 
 const HomePageWithSideBar = (props) => {
-    console.log(props);
     return(
         <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
             <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>

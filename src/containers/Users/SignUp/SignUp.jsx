@@ -74,7 +74,6 @@ class SignUpFormBase extends Component {
         this.props.history.push(ROUTES.PROJECT_LIST);
       })
       .catch(error => {
-        // console.log({ error });
         this.setState({ error });
       });
 

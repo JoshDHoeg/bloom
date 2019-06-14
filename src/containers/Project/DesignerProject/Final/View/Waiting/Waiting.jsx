@@ -34,7 +34,6 @@ class ConceptPageWaiting extends Component {
                 </div>
             )
             }else{
-                console.log("it is approved");
                 return (
                     <div style={{backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                         <Container width="thin" text>

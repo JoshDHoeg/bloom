@@ -39,7 +39,6 @@ class FinalPage extends Component {
   }
 
   formSubmit(){
-    console.log("we updated?");
     this.final.media = this.state.final.media;
     this.final.video = this.state.final.video;
     this.final.figma = this.state.final.figma;
@@ -53,12 +52,10 @@ class FinalPage extends Component {
 
   Approved() {
     this.final.approved = true;
-    console.log('approved?', this.final.approved)
   }
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
     this.setState({
       final: {
         ...this.state.final,

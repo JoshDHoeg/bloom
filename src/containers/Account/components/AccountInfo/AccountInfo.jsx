@@ -38,14 +38,12 @@ class AccountInfoPage extends Component {
 
     handleChange(event) {
         event.preventDefault();
-//        console.log(event.target.name);
         this.setState({
             user: {
                 ...this.state.user,
                 [event.target.name]: event.target.value
             }
         });
-        console.log(this.state.user.name)
     }
     
     componentDidMount() {
@@ -56,7 +54,6 @@ class AccountInfoPage extends Component {
     getUserState = async () => {
         const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
         this.user = await user
-        console.log('user3:', user);
         const state = await {
             loading: false,
             user: {

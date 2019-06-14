@@ -32,7 +32,6 @@ class Draft extends Component {
         this.draft.feedback = this.state.draft.feedback;
         this.draft.approved = true;
         this.stage.stage = 'final'
-        console.log('trying')
     }
 
     handleChange(event) {
@@ -43,7 +42,6 @@ class Draft extends Component {
                 [event.target.name]: event.target.value,
             }
         });
-        //console.log(this.state.draft.feedback)
     }
 
     componentDidMount() {

@@ -58,7 +58,6 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(result => {
         if (result) {
-          console.log("we logged in");
           //this.props.firebase.doGetChannelsByUser(this.props.firebase.user.id).then(res => console.log(res));
           //this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res => {console.log(res)});
           this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
@@ -67,7 +66,6 @@ class SignInFormBase extends Component {
         }
       })
       .catch(error => {
-        console.log("fuck");
         this.setState({ error });
       });
 
@@ -80,9 +78,6 @@ class SignInFormBase extends Component {
 
   render() {
     const { email, password, error } = this.state;
-
-    console.log("why the fuck isnth this working");
-
     const isInvalid = password === '' || email === '';
 
     return (

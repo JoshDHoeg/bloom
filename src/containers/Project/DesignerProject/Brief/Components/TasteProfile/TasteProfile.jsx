@@ -30,7 +30,6 @@ const TasteProfileView = (props) => {
 }
 
 const TasteProfileEdit = (props) => {
-    console.log(props);
     return (
         <Container>
             <label id="SpacingEdit">Spacing</label>

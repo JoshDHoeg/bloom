@@ -41,7 +41,6 @@ class UserProject extends React.Component {
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.stage = await project.stage;
-        console.log(this.stage)
         const state = await {
             loading: false,
             stage: {
@@ -54,7 +53,6 @@ class UserProject extends React.Component {
     }
 
     render(){
-        console.log('?', this.state.stage.stage)
         if(this.state.stage.stage === "concept"){
                 this.state.component = Concept
         }else if(this.state.stage.stage === "draft"){
@@ -68,7 +66,6 @@ class UserProject extends React.Component {
         }else if(this.state.stage.stage === 'contractors'){
                 this.state.component = Contractors
         }
-        console.log(this.state.component)
         return(
             <Router>
                 <Segment basic>

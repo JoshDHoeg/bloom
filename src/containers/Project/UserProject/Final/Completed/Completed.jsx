@@ -48,7 +48,6 @@ class Completed extends React.Component {
 
 
     render() {
-        console.log('stage', this.props.stage.stage)
         let feedbackButton;
         if(!this.props.final.approved) {
             feedbackButton = <Button 

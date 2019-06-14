@@ -10,19 +10,16 @@ export class User {
   _email = '';
   get email() { return this._email; }
   set email(email) {
-    console.log(email);
     this.ref.set({ email: email }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
   set name(name) {
-    console.log(name);
     this.ref.set({ name: name }, {merge: true});
   }
   _phone = '';
   get phone() { return this._phone; }
   set phone(phone) {
-    console.log(phone);
     this.ref.set({ phone: phone }, {merge: true});
   }
   _projects = [];
@@ -220,7 +217,6 @@ export class ProjectBase {
     });
   }
   _getUser = (userRef) => {
-    console.log(userRef);
     userRef.get().then(res => console.log(res));
     userRef.get().then(userSnap => new User(userSnap));
   }
@@ -246,14 +242,14 @@ export class ProjectBase {
 export class Project extends ProjectBase {
   name = '';  // the only nonPromise type
 
-  get client() { console.log("here"); return this._getUser(this.clientRef) };
+  get client() { return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
+  get designer() { return this._getUser(this.designerRef) };
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -359,11 +355,9 @@ export class ProjectData {
       set location(l) { this._setter({ location: l }).then(() => this._location = l); }
       _budget = ['', ''];
       get budget() {
-        console.log("here3");
         return this._budget;
       };
       set budget(b) {
-          console.log("here4");
           this._setter({ budget: b }).then(() => this._budget = b)
       }
       doSetBudget(b){
@@ -377,10 +371,8 @@ export class ProjectData {
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _profile = {};
       get profile() {
-        console.log("here");
         return this._profile; };
       set profile(p) {
-        console.log("here2");
         this._setter({ profile: p }).then(() => this._profile = p);
       }
       doSetProfile(p){
