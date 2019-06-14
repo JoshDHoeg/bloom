@@ -29,12 +29,21 @@ class Final extends React.Component {
         this.addRevision = this.addRevision.bind(this);
     }
 
+    
     formSubmit = () => {
+        let number = this.state.stage.rcount
+        console.log('number', number)
+        let result = Number(number)
+        console.log('result', result)
+        result = result+1;
+        let result2 = String(result);
+        console.log('result2', result2)
         this.final.feedback = this.state.final.feedback;
         this.final.approved = true;
         this.stage.stage = 'revision';
         this.addRevision();
-        this.stage.rcount = '1';
+        this.stage.rcount = result2;
+        console.log(this.stage.rcount)
     }
 
     handleChange(event) {
@@ -51,7 +60,7 @@ class Final extends React.Component {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
       }
-      
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final;
@@ -89,6 +98,7 @@ class Final extends React.Component {
 
 
     render(){
+        console.log(this.stage)
         console.log('does this work',this.props.location.pathname);
         if(!this.state.final.completed){
             return( <WaitingPage state="final"/>    );             

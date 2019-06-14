@@ -66,7 +66,7 @@ class Revision extends React.Component{
         return state;
     }
     render(){
-        console.log('hell0', this.props.location.pathname)
+        console.log('hello', this.props.location.pathname)
         let string = this.props.location.pathname
         var array = string.split("/")
         console.log('location =', array[3])

@@ -1,4 +1,5 @@
 import Firebase from '../Firebase';
+import { throws } from 'assert';
 
 
 export class User {
@@ -635,7 +636,7 @@ export class ProjectData {
       set stage(s) { this._setter({ stage: s }).then(() => this._stage = s); }
       _rcount = 0;
       get rcount() { return this._rcount; };
-      set rcount(c) { return this._rcount; };
+      set rcount(c) { this._setter({ rcount: c }).then(() => this._rcount = c); };
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
