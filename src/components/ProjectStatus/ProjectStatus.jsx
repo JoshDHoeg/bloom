@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 class ProjectStatus extends React.Component {
     stage
+    revisions = [];
     constructor(props){
         super(props);
         this.state={
@@ -35,6 +36,7 @@ class ProjectStatus extends React.Component {
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.stage = await project.stage;
+        this.revisions = await project.revisions;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
@@ -48,11 +50,22 @@ class ProjectStatus extends React.Component {
 
 
     render(){
-        let Revision1;
+        let Revisions;
         let Revision2;
         let Contractors;
+        console.log(this.revisions);
+        // if(this.revisions){
+        //     this.revisions.map((item, i) => {
+        //         Revisions.push(<Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >
+        //             <Step.Content>
+        //                 <Step.Title>Revision</Step.Title>
+        //             </Step.Content>
+        //         </Step>);
+        //     })
+        // }
+
         if(this.state.stage.stage === "revision" || this.state.stage.stage === "revision2" || this.state.stage.stage === "contractors"){
-            Revision1 =  
+            Revision2 =  
                 <Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >
                     <Step.Content>
                         <Step.Title>Revision</Step.Title>
@@ -96,11 +109,13 @@ class ProjectStatus extends React.Component {
                 </Step.Content>
                 </Step>
 
-                {Revision1}
-
-                {Revision2}
-
-                {Contractors}
+                {this.revisions.map((item, i) => 
+                    <Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >
+                        <Step.Content>
+                            <Step.Title>Revision</Step.Title>
+                        </Step.Content>
+                    </Step>)
+                }
 
           </Step.Group>
         )
