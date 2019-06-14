@@ -15,7 +15,7 @@ import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignInPage = () => (
-  <div className='login-form' style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat'}}>
+  <div className='login-form'>
     <style>{`
     body > div,
     body > div > div,
@@ -27,7 +27,7 @@ const SignInPage = () => (
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
         <Header as='h2' color='teal' textAlign='center'>
-          <Image />Log-in to your account
+          Log-in
         </Header>
         <SignInForm />
         <Message>
