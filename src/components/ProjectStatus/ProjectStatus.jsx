@@ -64,21 +64,6 @@ class ProjectStatus extends React.Component {
         //     })
         // }
 
-        if(this.state.stage.stage === "revision" || this.state.stage.stage === "revision2" || this.state.stage.stage === "contractors"){
-            Revision2 =  
-                <Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >
-                    <Step.Content>
-                        <Step.Title>Revision</Step.Title>
-                    </Step.Content>
-                </Step>
-        }if(this.state.stage.stage === "revision2" || this.state.stage.stage === "contractors"){
-            Revision2 =  
-                <Step href='/project/user_revision/2' active={this.props.state === "revisions2"}>
-                    <Step.Content>
-                        <Step.Title>Revision2</Step.Title>
-                    </Step.Content>
-                </Step>
-        }
         if(this.state.stage.stage === "contractors"){
             Contractors =  
             <Step href='/project/user_contractors' active={this.state.state === "contractors"}>
@@ -109,12 +94,14 @@ class ProjectStatus extends React.Component {
                 </Step.Content>
                 </Step>
 
-                {this.revisions.map((item, i) => 
-                    <Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >
+                {this.revisions.map((item, i) => {
+                    console.log(item, " : " , i);
+                    var link = '/project/user_revision/' + i
+                    return(<Step href={link} active={this.state.state === 'revisions'} >
                         <Step.Content>
-                            <Step.Title>Revision</Step.Title>
+                            <Step.Title>Revision {i+1} </Step.Title>
                         </Step.Content>
-                    </Step>)
+                    </Step>);})
                 }
 
           </Step.Group>
