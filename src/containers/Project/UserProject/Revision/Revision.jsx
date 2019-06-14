@@ -21,8 +21,10 @@ class Revision extends React.Component{
                 approved: false,
             },
             stage: {
-                stage: ''
-            }
+                stage: '',
+                rcount: ''
+            },
+            currentRevision: ''
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -59,7 +61,8 @@ class Revision extends React.Component{
             loading: false,
             revision: this.revisions[currentRevision].data,
             stage: {
-                stage: this.stage.stage
+                stage: this.stage.stage,
+                rcount: this.stage.rcount
             }
         }
 

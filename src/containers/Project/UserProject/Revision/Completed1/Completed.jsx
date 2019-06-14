@@ -60,10 +60,14 @@ class Completed extends React.Component {
             color='blue'>
             Submit</Button>
         }
+        console.log('current Revision', this.props.currentRevision)
+        console.log('rcount', this.props.stage.rcount)
+        console.log('props', this.props)
         let RightArrow;
         if(this.props.currentRevision < this.props.stage.rcount){
+            let link = "/project/user_revision/"+ (this.props.currentRevision + 1);
             RightArrow =                     
-            <Link to="/project/user_revision/"{...this.props.currentRevision + 1} style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link to={link} style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
         }else if(this.props.stage.stage === 'contractors') {
@@ -72,15 +76,23 @@ class Completed extends React.Component {
                 <img src={ArrowRight} />
             </Link>
         }
+        let LeftArrow;
+        if(this.props.currentRevision > 0){
+            LeftArrow =
+            <Link to="/project/user_revision/"{...this.props.currentRevision -1} style={{ position: "absolute", right: "90%", top: "250px"}}>
+                <img src={ArrowLeft} />
+            </Link>
+        }else{
+            LeftArrow =
+            <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px"}}>
+                <img src={ArrowLeft} />
+            </Link>
+        }
         return (
             <Grid>
                 <Container><ProjectStatus state="revision2"/></Container>
                 <Container textAlign='center' text='true'>
-                    <GridRow>
-                        <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                            <img src={ArrowLeft} />
-                        </Link>
-                    </GridRow>
+                    {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Revision</Header>
                     </Grid.Row>
