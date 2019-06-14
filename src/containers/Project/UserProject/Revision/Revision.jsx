@@ -13,6 +13,7 @@ class Revision extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
+            count: 0,
             revision: {
                 completed: false,
                 figma: '',
@@ -69,7 +70,7 @@ class Revision extends React.Component{
         if(!this.state.revision.completed){
             return( <WaitingPage state="revision"/> );             
         } else {
-            return( <CompletedPage1 handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
+            return( <CompletedPage1 currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
         }
     }
 }
