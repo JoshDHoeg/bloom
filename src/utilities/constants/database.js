@@ -267,7 +267,7 @@ export class Project extends ProjectBase {
   get concept() { return this.concepts.then(c => c[0]); }
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
-  get revision() { return this.revisions.then(r => r[0]); }
+  get revision() { return this.revisions }
   get stage() {return this.stages.then(s => s[0]); }
 }
 

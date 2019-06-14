@@ -84,51 +84,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
       })
   }
-  // doCreateRevision = async (id, index, isUID = false) => {
-  //   console.log("fuck me hard please");
-  //   this.doGetProject(id, index, isUID).then(proj => {
-  //     console.log(proj);
-  //     // const r = proj.collection('revisions');
-  //     // r.doc('1').set({
-  //     //   init: false,
-  //     //   feedback: "feedback",
-  //     //   media:"",
-  //     //   figma: "",
-  //     //   completed: false,
-  //     //   approved: false,
-  //     // });
-  //     return proj;
-  //   })
-  // }
-
-
-
-  // doCreateRevision = (id, index, isUID = false) => {
-  //   console.log("fuck me hard please");
-  //   this.doGetUser(id).then(userData =>
-  //     this.projectsRef.doc(userData.projects[index].id).get().then(proj => {
-  //       console.log(proj);
-  //       console.log("fuck me hardder now--------===========================000000000000000000000000000000");
-  //       const r = proj.collection('revisions');
-  //       r.doc('1').set({
-  //         init: false,
-  //         feedback: "feedback",
-  //         media:"",
-  //         figma: "",
-  //         completed: false,
-  //         approved: false,
-  //       });
-  //       return proj;
-  //     })
-  //   )
-  // }
-
-  // doCreateRevision = (pid) => {
-  //   var proj = this.projectsRef.doc(pid);
-  //   const r = proj.collection('revisions')
-  //   console.log("please add a revision to the project in the database", proj);
-  //   console.log("here are the revisions", r);
-  // }
 
   doCreateRevision = (id, customerFeedback, revisionCount, index, isUID = false) => {
     if (isUID) {
