@@ -35,7 +35,7 @@ class Completed extends React.Component{
                         <br/>
                         <br/>
                         <br/>
-                        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17809121" width="100%" height="800" frameBorder="0"></iframe>
+                        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="60%" height="500" frameBorder="0"></iframe>
                         <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                         <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
                             <img src={ArrowRight} />

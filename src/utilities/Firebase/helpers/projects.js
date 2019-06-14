@@ -76,7 +76,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           s.doc('0').set({
               init: false,
               stage: "concept",
-              rcount: 0,
+              rcount: '0',
           });
           return proj.get().then(data => {
               return new Project(data);
