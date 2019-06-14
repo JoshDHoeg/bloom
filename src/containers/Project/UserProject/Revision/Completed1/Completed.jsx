@@ -64,7 +64,7 @@ class Completed extends React.Component {
         console.log('current Revision', this.props.currentRevision)
         console.log('rcount', this.props.stage.rcount)
         let RightArrow;
-        if(this.props.currentRevision < this.props.stage.rcount){
+        if(this.props.currentRevision < (this.props.stage.rcount-2)){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision + 1);
             RightArrow =                     
