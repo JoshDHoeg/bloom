@@ -17,8 +17,30 @@ class ContractorPage extends Component {
                 {name: "landscaper", 
                 price: 2600,
                 stars: 5}
-            ]
+            ],
+            stage:{
+                rcount: ''
+            }
         }
+    }
+    componentDidMount() {
+        this.setState({ loading: true, edit: this.props.edit });
+        this.getProjectState();
+    }
+
+    getProjectState = async () => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    this.stage = await project.stage;
+    const state = await {
+        loading: false,
+        stage: {
+            rcount: this.stage.rcount,
+            stage: this.stage.stage
+        },
+    }
+
+    this.setState(state);
+    return state;
     }
     render(){
         if(!this.state.completed){
@@ -27,7 +49,7 @@ class ContractorPage extends Component {
             );
         }else{
             return (
-                <CompletedPage quotes={this.state.quotes}/>
+                <CompletedPage stage={this.state.stage} quotes={this.state.quotes}/>
             );
         }
     }

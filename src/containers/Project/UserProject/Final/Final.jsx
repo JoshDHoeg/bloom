@@ -27,6 +27,7 @@ class Final extends React.Component {
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addRevision = this.addRevision.bind(this);
+
     }
 
     
@@ -61,6 +62,7 @@ class Final extends React.Component {
         this.getProjectState();
       }
 
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final;
@@ -82,17 +84,6 @@ class Final extends React.Component {
     }
 
     addRevision(){
-        // var newRevision = {
-        //     init: false,
-        //     feedback: "feedback",
-        //     media:"",
-        //     figma: "",
-        //     completed: false,
-        //     approved: false,
-        // }
-        // this.revisions.push(newRevision);
-        // var revisions = this.revisions.collection('revisions');
-
         this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, this.state.stage.rcount, this.props.firebase.activeProject, true);
     }
 
@@ -101,9 +92,9 @@ class Final extends React.Component {
         console.log(this.stage)
         console.log('does this work',this.props.location.pathname);
         if(!this.state.final.completed){
-            return( <WaitingPage state="final"/>    );             
+            return( <WaitingPage stage={this.state.stage} state="final"/>    );             
         } else {
-            return( <CompletedPage stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
+            return( <CompletedPage contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }
     }
 }

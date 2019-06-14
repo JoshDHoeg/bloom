@@ -45,9 +45,11 @@ class Completed extends React.Component {
     componentDidMount() {
         this.setState({ loading: true })
     }
+    
 
 
     render() {
+        console.log('count?', this.props.stage.rcount)
         let feedbackButton;
         if(!this.props.final.approved) {
             feedbackButton = <Button 
@@ -68,7 +70,7 @@ class Completed extends React.Component {
             <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
-        }else if(this.props.state.state === 'contractors'){
+        }else if(this.props.stage.stage === 'contractors'){
             RightArrow =
             <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
@@ -99,7 +101,7 @@ class Completed extends React.Component {
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button>Download Design</Button>
                             <Button onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button ><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button ><Link  to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}}>

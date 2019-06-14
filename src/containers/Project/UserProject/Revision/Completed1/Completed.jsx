@@ -41,6 +41,7 @@ class Completed extends React.Component {
         });
     }
 
+
     componentDidMount() {
         this.setState({ loading: true })
     }
@@ -62,12 +63,12 @@ class Completed extends React.Component {
         }
         console.log('current Revision', this.props.currentRevision)
         console.log('rcount', this.props.stage.rcount)
-        console.log('props', this.props)
         let RightArrow;
         if(this.props.currentRevision < this.props.stage.rcount){
-            let link = "/project/user_revision/"+ (this.props.currentRevision + 1);
+            let revision = Number(this.props.currentRevision)
+            let link = "/project/user_revision/"+(revision + 1);
             RightArrow =                     
-            <Link to={link} style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link to={link} style={{ position: "absolute", left: "90%", top: "250px" }} onClick={this.props.handleStateChange}>
                 <img src={ArrowRight} />
             </Link>
         }else if(this.props.stage.stage === 'contractors') {
@@ -77,9 +78,13 @@ class Completed extends React.Component {
             </Link>
         }
         let LeftArrow;
-        if(this.props.currentRevision > 0){
+        let revision = Number(this.props.currentRevision)
+        console.log('wtf', revision)
+        if(revision > 0){
+            let revision = Number(this.props.currentRevision)
+            let link = "/project/user_revision/"+(revision-1)
             LeftArrow =
-            <Link to="/project/user_revision/"{...this.props.currentRevision -1} style={{ position: "absolute", right: "90%", top: "250px"}}>
+            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
                 <img src={ArrowLeft} />
             </Link>
         }else{

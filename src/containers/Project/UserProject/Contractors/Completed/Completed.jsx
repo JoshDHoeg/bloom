@@ -19,16 +19,27 @@ class Completed extends Component {
         }
     }
     render() {
+        let LeftArrow
+        if(this.props.stage.rcount > 0){
+            let revision = Number(this.props.stage.rcount)
+            let link = "/project/user_revision/"+(revision-1);
+            LeftArrow =
+            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
+                <img src={ArrowLeft} />
+            </Link>
+        }else{
+            LeftArrow =
+            <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
+                <img src={ArrowLeft} />
+            </Link>
+        }
         return (
             <div>
                 <Container><ProjectStatus state="contractors" /></Container>
                 <Grid style={{ textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
 
                     <Container fluid textAlign='center' text='true'>
-                        <Link to="/project/user_revision/2" style={{position: "absolute", right: "90%", top: "250px"}}>
-                            <img src={ArrowLeft} />
-                        </Link>
-
+                       {LeftArrow}
                         <Grid.Column width={3} />
                         <Grid.Column width={9}>
                             <Header style={{paddingTop:'20px'}}>Hey we found three quotes for you!</Header>

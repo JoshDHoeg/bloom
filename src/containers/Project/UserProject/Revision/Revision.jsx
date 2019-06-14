@@ -28,12 +28,25 @@ class Revision extends React.Component{
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleStateChange = this.handleStateChange.bind(this);
       }
 
     formSubmit = () => {
-        this.revision.feedback = this.state.revision.feedback;
-        this.revision.approved = true;
-        this.stage.stage = 'revision2'
+        this.addRevision();
+        this.setState({
+            revision:{
+                feedback: this.state.feedback,
+                approved: true
+            }
+        })
+        let number = this.state.stage.rcount
+        console.log('number', number)
+        let result = Number(number)
+        console.log('result', result)
+        result = result+1;
+        let result2 = String(result);
+        console.log('result2', result2)
+        this.stage.rcount = result2;
     }
 
     handleChange(event) {
@@ -45,6 +58,16 @@ class Revision extends React.Component{
             }
         });
     }
+
+    handleStateChange = () => {
+        console.log('working')
+        this.setState({
+            revision: [],
+            stage: []
+        })
+        this.componentDidMount()
+    }
+
     componentDidMount() {
        this.setState({ loading: true, edit: this.props.edit });
        this.getProjectState();
@@ -63,17 +86,23 @@ class Revision extends React.Component{
             stage: {
                 stage: this.stage.stage,
                 rcount: this.stage.rcount
-            }
+            },
+            currentRevision: currentRevision
         }
 
         this.setState(state);
         return state;
     }
+    addRevision(){
+        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.revision.feedback, this.state.stage.rcount, this.props.firebase.activeProject, true);
+    }
+
     render(){
+        console.log('revision', this.state.revision)
         if(!this.state.revision.completed){
-            return( <WaitingPage state="revision"/> );             
+            return( <WaitingPage handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {
-            return( <CompletedPage1 currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
+            return( <CompletedPage1 handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
         }
     }
 }
