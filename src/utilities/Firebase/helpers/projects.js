@@ -73,14 +73,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
             completed: false,
             approved: false,
         });
-          r.doc('0').set({
-              init: false,
-              feedback: "",
-              media:"",
-              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
-              completed: false,
-              approved: false,
-          });
           s.doc('0').set({
               init: false,
               stage: "concept",
@@ -138,11 +130,11 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //   console.log("here are the revisions", r);
   // }
 
-  doCreateRevision = (id, customerFeedback, index, isUID = false) => {
+  doCreateRevision = (id, customerFeedback, revisionCount, index,  isUID = false) => {
     if (isUID) {
-      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback));
+      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback, revisionCount));
     } else {
-      return this.projectsRef.doc(id).collection('revisions').add({
+      return this.projectsRef.doc(id).collection('revisions').doc(revisionCount).set({
         init: false,
         feedback: customerFeedback,
         media:"",
