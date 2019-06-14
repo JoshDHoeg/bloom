@@ -130,11 +130,11 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //   console.log("here are the revisions", r);
   // }
 
-  doCreateRevision = (id, customerFeedback, revisionCount, index,  isUID = false) => {
+  doCreateRevision = (id, customerFeedback, index, isUID = false) => {
     if (isUID) {
-      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback, revisionCount));
+      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback));
     } else {
-      return this.projectsRef.doc(id).collection('revisions').doc(revisionCount).set({
+      return this.projectsRef.doc(id).collection('revisions').add({
         init: false,
         feedback: customerFeedback,
         media:"",
