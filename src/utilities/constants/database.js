@@ -644,7 +644,7 @@ export class ProjectData {
           this._rcount = this.data['rcount'];
         } else {
           this._stage = 'concept';
-          this._rcount = 0;
+          this._rcount = '0';
         }
       }
       getAll() {
