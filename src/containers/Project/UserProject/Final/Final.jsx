@@ -34,6 +34,7 @@ class Final extends React.Component {
         this.final.approved = true;
         this.stage.stage = 'revision';
         this.addRevision();
+        this.stage.rcount = this.state.stage.rcount + 1;
     }
 
     handleChange(event) {
