@@ -34,7 +34,7 @@ class Final extends React.Component {
         this.final.approved = true;
         this.stage.stage = 'revision';
         this.addRevision();
-        this.stage.rcount = this.state.stage.rcount + 1;
+        this.stage.rcount = (this.state.stage.rcount + 1);
     }
 
     handleChange(event) {
@@ -64,7 +64,7 @@ class Final extends React.Component {
             },
             stage: {
                 stage: this.stage.stage,
-                rcount: this.state.rcount
+                rcount: this.stage.rcount
             },
         }
         this.setState(state);
@@ -83,12 +83,12 @@ class Final extends React.Component {
         // this.revisions.push(newRevision);
         // var revisions = this.revisions.collection('revisions');
 
-        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, this.state.stage.rcount, this.props.firebase.activeProject, true);
-        // console.log('does this work', revisionadd);
+        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.final.feedback, '2', this.props.firebase.activeProject, true);
     }
 
 
     render(){
+        console.log('does this work', this.state.stage.rcount);
         if(!this.state.final.completed){
             return( <WaitingPage state="final"/>    );             
         } else {
