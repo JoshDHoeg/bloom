@@ -95,9 +95,9 @@ class ProjectStatus extends React.Component {
                 </Step>
 
                 {this.revisions.map((item, i) => {
-                    console.log(item, " : " , i);
+                    let number = Number(this.props.currentRevision)
                     var link = '/project/user_revision/' + i
-                    return(<Step href={link} active={this.state.state === 'revision'} >
+                    return(<Step href={link} active={i === number} >
                         <Step.Content>
                             <Step.Title>Revision {i+1} </Step.Title>
                         </Step.Content>

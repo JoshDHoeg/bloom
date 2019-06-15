@@ -64,7 +64,7 @@ class Completed extends React.Component {
         console.log('current Revision', this.props.currentRevision)
         console.log('rcount', this.props.stage.rcount)
         let RightArrow;
-        if(this.props.currentRevision < (this.props.stage.rcount-2)){
+        if(this.props.currentRevision < (this.props.stage.rcount-1)){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision + 1);
             RightArrow =                     
@@ -95,7 +95,7 @@ class Completed extends React.Component {
         }
         return (
             <Grid>
-                <Container><ProjectStatus state="revision2"/></Container>
+                <Container><ProjectStatus state={'revision'} currentRevision={this.props.currentRevision} /></Container>
                 <Container textAlign='center' text='true'>
                     {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>

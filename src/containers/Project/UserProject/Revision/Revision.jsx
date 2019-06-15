@@ -98,7 +98,7 @@ class Revision extends React.Component{
     }
 
     render(){
-        console.log('revision', this.state.revision)
+        console.log('revision', this.state.currentRevisions)
         if(!this.state.revision.completed){
             return( <WaitingPage handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {

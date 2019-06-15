@@ -112,7 +112,7 @@ class Waiting extends Component {
             <Container>
                 {LeftArrow}
                 <Grid.Row>
-                    <ProjectStatus state={this.props.state}/>
+                    <ProjectStatus state={this.props.state} currentRevision={this.props.currentRevision}/>
                 </Grid.Row>
                 <Grid.Row>
                     <Grid.Column style={{textAlign: 'center', paddingBottom: '15px', paddingTop: '15px'}}>
