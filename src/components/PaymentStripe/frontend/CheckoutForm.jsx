@@ -122,6 +122,7 @@ class PaymentButton extends Component {
   }
 }
 }
+
 const condition = role => role > 0;
 
 export default  withAuthorization(condition)(injectStripe(PaymentButton));
