@@ -6,6 +6,7 @@ import { Container,Segment, Header, Button, Grid, Form, Message } from 'semantic
 import * as ROUTES from "../../../../../utilities/constants/routes";
 import * as ROLES from "../../../../../utilities/constants/roles"
 //Figma Embed import
+import { Redirect } from 'react-router'
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
@@ -46,17 +47,21 @@ class Completed extends React.Component {
         this.setState({ loading: true })
     }
     
+    handleNav = () => {
+        this.props.formSubmit()
+        this.props.handleStateChange()
+    }
 
 
     render() {
         console.log('count?', this.props.stage.rcount)
         let feedbackButton;
         if(!this.props.final.approved) {
-            feedbackButton = <Button 
+            feedbackButton = 
+            <Button 
             content='Submit'
-            onClick={this.handleSuccess} 
+            onClick={this.handleSuccess}
             color='blue'>
-            <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}> </Link>
             Submit</Button>
         }else {
             feedbackButton = <Button 
@@ -107,7 +112,7 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}}>
                         <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                            <Form success className='attached fluid segment' onSubmit={this.handleNav}>
                                 <Form.Input  disabled = {this.props.final.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.final.feedback} onChange={this.props.handleChange} type='text'  />
                                 <Message 
                                     success

@@ -44,6 +44,15 @@ class Draft extends Component {
         });
     }
 
+    handleStateChange = () => {
+        console.log('working')
+        this.setState({
+            draft: [],
+            stage: []
+        })
+        this.componentDidMount()
+    }
+
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
@@ -70,7 +79,7 @@ class Draft extends Component {
         if(!this.state.draft.completed){
             return( <WaitingPage state="draft"/>    );             
         } else {
-            return( <CompletedPage handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
+            return( <CompletedPage handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }
     }
 

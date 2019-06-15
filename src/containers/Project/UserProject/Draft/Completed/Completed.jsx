@@ -62,6 +62,11 @@ class Completed extends Component {
             showVideo: !this.state.showVideo
         })
     }
+
+    handleNav = () => {
+        this.props.formSubmit()
+        this.props.handleStateChange()
+    }
     
 
     render() {
@@ -114,7 +119,7 @@ class Completed extends Component {
                         {videoPortion}
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '20px'}} >
-                        <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                        <Form success className='attached fluid segment' onSubmit={this.handleNav}>
                             <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
                             <Message 
                                 success

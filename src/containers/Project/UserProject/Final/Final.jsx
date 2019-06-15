@@ -57,6 +57,15 @@ class Final extends React.Component {
         });
     }
 
+    handleStateChange = () => {
+        console.log('working')
+        this.setState({
+            final: [],
+            stage: []
+        })
+        this.componentDidMount()
+    }
+
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
@@ -94,7 +103,7 @@ class Final extends React.Component {
         if(!this.state.final.completed){
             return( <WaitingPage stage={this.state.stage} state="final"/>    );             
         } else {
-            return( <CompletedPage contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
+            return( <CompletedPage handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }
     }
 }
