@@ -56,6 +56,7 @@ class Completed extends React.Component {
             content='Submit'
             onClick={this.handleSuccess} 
             color='blue'>
+            <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}> </Link>
             Submit</Button>
         }else {
             feedbackButton = <Button 
