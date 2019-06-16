@@ -29,6 +29,8 @@ class Revision extends React.Component{
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleStateChange = this.handleStateChange.bind(this);
+        this.mediaLink = this.mediaLink.bind(this);
+        this.contractorState = this.contractorState.bind(this)
       }
 
     formSubmit = () => {
@@ -68,10 +70,19 @@ class Revision extends React.Component{
         this.componentDidMount()
     }
 
+    mediaLink() {
+        window.location.replace(this.state.revision.media)
+    }
+
     componentDidMount() {
        this.setState({ loading: true, edit: this.props.edit });
        this.getProjectState();
       }
+
+    contractorState() {
+        this.stage.stage = 'contractors'
+        console.log('stage',this.state.stage.stage)
+    }
 
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
@@ -102,7 +113,7 @@ class Revision extends React.Component{
         if(!this.state.revision.completed){
             return( <WaitingPage handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {
-            return( <CompletedPage1 handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
+            return( <CompletedPage1 contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
         }
     }
 }

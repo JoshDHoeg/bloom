@@ -110,7 +110,7 @@ class Completed extends Component {
                             </div>
                         </Segment>
                         <Button.Group>
-                            <Button className='media-button'>Media</Button>
+                            <Button onClick={this.props.mediaLink}>Media</Button>
                             <Button onClick={this.videoToggle}>Show Video</Button>
                         </Button.Group>
                     </Grid.Row>

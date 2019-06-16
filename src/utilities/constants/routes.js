@@ -30,6 +30,7 @@ export const REVISION = '/project/user_revision/:id';
 export const REVISION2 = '/project/user_revision/2';
 export const DRAFT = '/project/user_draft';
 export const PAYMENT = '/project/user_concept/payment';
+export const MEDIA = '/project/user_draft/media';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';

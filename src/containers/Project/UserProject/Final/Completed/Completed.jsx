@@ -105,7 +105,7 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button>Download Design</Button>
+                            <Button onClick={this.props.mediaLink}>Download Design</Button>
                             <Button onClick={this.HandleClick} >Ask for Revision</Button>
                             <Button ><Link  to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>

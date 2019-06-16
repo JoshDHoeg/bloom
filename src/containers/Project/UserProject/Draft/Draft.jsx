@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed.jsx';
 import { withAuthorization } from '../../../../utilities/Session/index';
+import { Route } from 'react-router-dom';
 import './draft.sass'
 class Draft extends Component {
     draft;
@@ -25,6 +26,7 @@ class Draft extends Component {
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.mediaLink = this.mediaLink.bind(this);
     }
 
     formSubmit = () => {
@@ -41,6 +43,9 @@ class Draft extends Component {
                 [event.target.name]: event.target.value,
             }
         });
+    }
+    mediaLink() {
+        window.location.replace(this.state.draft.media)
     }
 
     handleStateChange = () => {
@@ -75,10 +80,11 @@ class Draft extends Component {
     }
 
     render() {
+        console.log('hell0', this.state.draft.media)
         if(!this.state.draft.completed){
             return( <WaitingPage state="draft"/>    );             
         } else {
-            return( <CompletedPage handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
+            return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }
     }
 

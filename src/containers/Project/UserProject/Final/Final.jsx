@@ -27,7 +27,7 @@ class Final extends React.Component {
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addRevision = this.addRevision.bind(this);
-
+        this.mediaLink = this.mediaLink.bind(this)
     }
 
     
@@ -55,6 +55,10 @@ class Final extends React.Component {
                 [event.target.name]: event.target.value,
             }
         });
+    }
+
+    mediaLink() {
+        window.location.replace(this.state.final.media)
     }
 
     handleStateChange = () => {
@@ -103,7 +107,7 @@ class Final extends React.Component {
         if(!this.state.final.completed){
             return( <WaitingPage stage={this.state.stage} state="final"/>    );             
         } else {
-            return( <CompletedPage handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
+            return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }
     }
 }
