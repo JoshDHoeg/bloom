@@ -100,7 +100,7 @@ class PaymentButton extends Component {
     }
   }
   
-  render() { 
+  render() { s
     if (this.state.complete) {
       return( 
         <div>
