@@ -17,7 +17,7 @@ class Completed extends React.Component{
             <div className="ConceptCompleted">
                 <Container><ProjectStatus state="concept"/></Container>
                 <Grid className="ConceptGrid">
-                    <Container fluid style={{marginRight: "0px", marginLeft: "0px", borderRight: "0px", borderLeft: "0px", }}>
+                    <Container fluid textAlign='center' text='true'>
                         {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
                             {/*<FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>*/}
                         {/*</Link>*/}
@@ -38,7 +38,7 @@ class Completed extends React.Component{
                         <br/>
                         <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="60%" height="500" frameBorder="0"></iframe>
                         <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
-                        <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+                        <Link to="/project/user_draft" className="ConceptLink">
                             <img src={ArrowRight} />
                         </Link>
                     </Container>

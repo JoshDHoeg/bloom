@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Container,Segment, Header, Button, Grid } from 'semantic-ui-react'
+import { Container,Segment, Header, Button, Grid, GridColumn } from 'semantic-ui-react'
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -107,9 +107,11 @@ class Form extends Component {
     if (this.state.complete) {
       return( 
         <Grid>
-          <Header as='h2' style={{ fontSize:'15px'}}>Purchase Complete!</Header>
-            <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-            <img src={ArrowRight}/></Link>
+          <Grid.Row style={{paddingTop: '25px', paddingBottom: '25px'}}>
+            <Header as='h2' style={{ fontSize:'15px'}}>Purchase Complete!</Header>
+              <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+              <img src={ArrowRight}/></Link>
+          </Grid.Row>
         </Grid>
       );
     } else {
