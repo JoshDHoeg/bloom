@@ -23,7 +23,6 @@ class ProjectList extends Component {
     };
 
     //assuming that user will always have _objects property...
-    console.log(this.props.firebase);
     this.projKeyArr = this.props.firebase.user._projects.map(x => x.id);
     this.projKeyArr.forEach(p => this.props.firebase.doGetProject(p).then(res => {this.userProjs.push(res);}));
     //extract other relevant projec data here?

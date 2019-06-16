@@ -26,7 +26,6 @@ class RevisionsPageEdit extends Component {
     }
 
     render() {
-console.log(this.props)
         return (
             <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
                 <div className="ui stackable grid container" >
@@ -60,6 +59,6 @@ console.log(this.props)
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(RevisionsPageEdit);

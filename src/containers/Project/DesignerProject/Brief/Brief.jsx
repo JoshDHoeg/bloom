@@ -59,7 +59,6 @@ class BriefPage extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    // console.log(event.target.name);
     this.setState({
       brief: {
         ...this.state.brief,
@@ -70,7 +69,6 @@ class BriefPage extends Component {
 
   handleChangeProfile(event) {
     event.preventDefault();
-    // console.log(this.state);
     this.setState({
       brief: {
         ...this.state.brief,
@@ -97,27 +95,21 @@ class BriefPage extends Component {
         return goal.id !== id;
     })
     this.setState({brief:{...this.state.brief, goals: Goals}});
-    // console.log(Goals);
   }
 
   editGoal(id){
-    // console.log("edit goal");
       this.setState({editId: id});
   }
 
   editGoalSubmit = (goal) =>{
-    // console.log(goal);
     this.setState(state => {
         const Goals = state.brief.goals.map(goalCurrent => {
             if(goalCurrent.id === goal.id){
-                // console.log(goal.content);
                 return goal;
             }else{
-                // console.log(goalCurrent.content);
                 return goalCurrent;
             }
         });
-        console.log(Goals);
         return {
             brief:{...this.state.brief, goals: Goals},
             editId: ''
@@ -126,7 +118,6 @@ class BriefPage extends Component {
   }
 
   addGoal = (goal) => {
-      // console.log(goal);
       goal.id= Math.random();
       let Goals = [...this.state.brief.goals, goal];
       this.setState({brief:{...this.state.brief, goals: Goals}});
@@ -134,12 +125,8 @@ class BriefPage extends Component {
 
 
   getProjectState = async (id) => {
-    //const index = this.props.firebase.activeProject;
-    //console.log(index);
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
-    console.log(project);
     this.brief = await project.brief;
-    console.log(this.brief);
     const client = await project.client;
     const profile = await project.brief.profile;
     const state = await {
@@ -149,7 +136,6 @@ class BriefPage extends Component {
           ...this.brief.getAll()
         }
     }
-    console.log(profile);
     this.setState(state);
     return state;
 }
@@ -184,6 +170,6 @@ class BriefPage extends Component {
 }
 
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(BriefPage);

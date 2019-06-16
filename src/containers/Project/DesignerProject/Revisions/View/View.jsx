@@ -26,7 +26,6 @@ class RevisionsPageView extends Component {
     }
 
     render() {
-        console.log('completed?', this.props.revision.completed)
         if (this.props.revision.completed){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
@@ -103,6 +102,6 @@ const ShowApproved = (props) => {
 }
 
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(RevisionsPageView);

@@ -39,7 +39,6 @@ class RevisionsPage extends Component {
   }
 
   formSubmit(){
-    console.log("we updated?");
     this.revision.media = this.state.revision.media;
     this.revision.figma = this.state.revision.figma;
     this.revision.feedback = this.state.revision.feedback;
@@ -47,7 +46,6 @@ class RevisionsPage extends Component {
 
   Approved() {
     this.revision.approved = true;
-    console.log('approved?', this.revision.approved)
   }
 
   completed(){
@@ -57,7 +55,6 @@ class RevisionsPage extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
     this.setState({
       final: {
         ...this.state.revision,
@@ -69,10 +66,8 @@ class RevisionsPage extends Component {
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-    console.log(project);
     this.revision = await project.revision;
     this.final = await project.final;
-    console.log(this.revision);
     const client = await project.client;
     const state = await {
         client: client,
@@ -103,6 +98,5 @@ class RevisionsPage extends Component {
   }
 }
 
-const condition = authUser => !!authUser;
-
+const condition = role => role > 0
 export default withAuthorization(condition)(RevisionsPage);

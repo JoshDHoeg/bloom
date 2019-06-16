@@ -55,14 +55,14 @@ class FirebaseBase {
   // For all classes, pls do not use the _varName. the only varName will update the database
   user; // The current User object
   isAuth; // boolean // user is auth - pls consult me as further inplementation is underway
-  doCreateUserWithEmailAndPassword = (email, password, client, name, phone, project, billadd1, zip, city, state) => null; // Promise<User>
+  doCreateUserWithEmailAndPassword = (email, password, client, name, phone, project, billadd1, zip, city, state, role, isAdmin) => null; // Promise<User>
   // only call once email and passowrd are mandatory
   doRemoveUser = () => null; //  Promise<success> // removes current user
   doSignInWithEmailAndPassword = (email, password) => null; // Promise<success>
   doSignOut = () => null; // Promise<success>
   doPasswordReset = (email) => null; // Pomise<success>
   doPasswordUpdate = (password) => null; // Promise<success>
-  doSetUser = (uid, name, email, phone, client, projectUid, billadd1, zip, city, state) => null; // Promise<User> // update a user using the uid
+  doSetUser = (uid, name, email, phone, client, projectUid, billadd1, zip, city, state, role) => null; // Promise<User> // update a user using the uid
   // ALL parameters are mandatory
   doGetUser = (uid) => null; // User // get user using the uid
   onUser = (unsub = null) => null // Subscription<User[]> // call to listen for users
@@ -70,13 +70,12 @@ class FirebaseBase {
   offfUser = (userSubscription = null) => null; // void // use the onUser variable from above as the userSubscription
   // call this in the componentWillUnmount to prevent dataleak
   setActiveProject = (index) => null;
-
-
   projects; // Promise<Project[]> // this is a single call for all projects
   doGetProject = (pid, index, isUID = false) => null; // Promise<Project> // calling with pid will get project by id
   // * optimal usage example: this.props.firebase.doGetProject(this.props.firebase.user.uid, true)
   // calling with isUID = true will find a user's project
   // User can have multiple projects -- isUID will return the first project
+  doCreateRevision = (pid, feedback, revisionCount, index, isUID = false) => null;
   doUpdateProject = (name, clientUid, designerUid, projectId = null, returnProject = true) => null; // Promise<Project>
   // Will update a project
   // if no projectId is given: will create new project

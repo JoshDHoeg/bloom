@@ -1,23 +1,36 @@
 //BLOOMTIME DESIGN 2019
 import { Button } from 'semantic-ui-react'
 import React,{Component} from 'react';
+import {Link} from 'react-router-dom'
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import PAYMENT_SERVER_URL from './constants/server';
 import { withAuthorization } from '../../../utilities/Session';
+import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
+import { library } from '@fortawesome/fontawesome-svg-core';
+//import axios from 'axios';
+library.add(faArrowRight);
+library.add(faArrowLeft);
 
 class PaymentButton extends Component {
   concept;
+  stage;
   constructor(props) {
     super(props);
     this.state={
       loading: false,
       edit: false,
       concept: {
-       cost: '',
-      }
+        cost: '',
+        isPaid: false,
+      },
+      stage: {
+        stage: ''
+      },
     }
     this.state = {complete: false};
     this.submit = this.submit.bind(this);
+    this.stateChange = this.stateChange.bind(this);
   }
   
   componentDidMount() {
@@ -33,29 +46,32 @@ class PaymentButton extends Component {
 
   handleChange(event) {
     event.preventDefault();
-    console.log(event.target.name);
     this.setState({
-      final: {
-        ...this.state.revision,
+      concept: {
+        ...this.state.concept,
         [event.target.name]: event.target.value
       }
     });
   }
 
+  stateChange = () => {
+    this.concept.isPaid = true;
+    this.stage.stage = 'draft';
+  }
+
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-    console.log(project);
     this.concept = await project.concept;
-    console.log(this.revision);
-    const client = await project.client;
+    this.stage = await project.stage;
     const state = await {
-        client: client,
         loading: false,
         concept: {
           ...this.concept.getAll()
         },
+        stage: {
+          stage: this.stage.stage
+        }
     }
-    console.log('1',this.state.cost)
     this.setState(state);
     return state;
 
@@ -63,31 +79,33 @@ class PaymentButton extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    console.log('amount', this.state.concept.cost)
     let amt = this.state.concept.cost;
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
-      headers: {"Content-Type": "application/json"},
+      headers: {"Content-Type": "application/json",
+     },
       body: JSON.stringify({
         amount: amt,
         token: token.id
       })
     });
     if (response.ok) {
-      console.log("working")
       this.setState({complete: true});
-      this.state.concept.isPaid = true
-      console.log(this.concept.isPaid)
-      console.log(response)
+      this.stateChange()
     }else{
       alert('Payment Error')
     }
   }
-
-
-  render() {
+  
+  render() { 
     if (this.state.complete) {
-      return( <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> );
+      return( 
+        <div>
+          <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> 
+            <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+            <img src={ArrowRight}/></Link>
+        </div>
+      );
     } else {
     return (
       <div className="checkoutFormButton">
@@ -102,6 +120,7 @@ class PaymentButton extends Component {
   }
 }
 }
-const condition = authUser => !!authUser;
+
+const condition = role => role > 0;
 
 export default  withAuthorization(condition)(injectStripe(PaymentButton));

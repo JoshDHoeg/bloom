@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import { withAuthorization } from '../../utilities/Session';
-
+import * as ROLES from '../../utilities/constants/roles'
 import { Grid ,Sidebar, Segment , Comment, GridColumn,Menu } from "semantic-ui-react";
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import '../Messaging/Messaging.css'
@@ -8,6 +8,7 @@ import backgroundTemp from '../../Images/TempBackground.PNG';
 import * as ROUTES from "../../utilities/constants/routes";
 import Messages from './Messages/Messages';
 import SidePanel from './SidePanel/SidePanel';
+import { auth } from 'firebase';
 class Messaging extends Component {
 
     constructor(props){
@@ -67,6 +68,7 @@ class Messaging extends Component {
     }
 }
 
-const condition = authUser => !!authUser;
+
+const condition = role => role > 0
 
 export default withAuthorization(condition)(Messaging);

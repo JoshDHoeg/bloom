@@ -62,7 +62,6 @@ class FirebaseChannels extends FirebaseProjects {
                 return this.doCreateEmptyProject().then(proj => {
                     return this.doCreateUserWithEmailAndPassword(email, password, proj.cols.id, chanDefault, name)
                         .then(ref => {
-                            console.log("fuck");
                             proj.cols.set({
                                 client: [ref],
                                 channel: chanProj,
