@@ -27,7 +27,7 @@ class Completed extends React.Component{
                         <br/>
                         <br/>
                         <iframe width="560" height="275"
-                                src="https://www.youtube.com/embed/videoseries?list=PLx0sYbCqOb8TBPRdmBHs5Iftvv9TPboYG"
+                                src={this.props.concept.video}
                                 align="middle"
                                 frameBorder="20" allow="autoplay; encrypted-media" allowFullScreen
                         >
