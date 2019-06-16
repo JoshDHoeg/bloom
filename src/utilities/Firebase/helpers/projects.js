@@ -28,6 +28,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
           const s = proj.collection('stage')
+          const l = proj.collection('contractors')
           b.doc('0').set({
             address: "",
             budget: "",
