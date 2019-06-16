@@ -1,5 +1,6 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
+import './concept.scss';
 import { Link } from 'react-router-dom';
 import { Grid, Container, Header } from 'semantic-ui-react';
 
@@ -12,6 +13,7 @@ import Payment from '../Concept/Payment/Payment';
 import CompletedPage from './Completed/Completed';
 import Approve from './Approve/Approve'
 import Loading from '../../../../components/Loading/Loading'
+
 
 
 export class Concept extends React.Component{

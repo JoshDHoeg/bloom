@@ -1,4 +1,5 @@
 import React from 'react';
+import './completed.scss';
 import { Grid, Container, Header } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
@@ -13,9 +14,9 @@ library.add(faArrowLeft)
 class Completed extends React.Component{
     render(){
         return (
-            <div>
+            <div className="ConceptCompleted">
                 <Container><ProjectStatus state="concept"/></Container>
-                <Grid style={{textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
+                <Grid className="ConceptGrid">
                     <Container fluid style={{marginRight: "0px", marginLeft: "0px", borderRight: "0px", borderLeft: "0px", }}>
                         {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
                             {/*<FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>*/}
