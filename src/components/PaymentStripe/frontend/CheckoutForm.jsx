@@ -83,7 +83,10 @@ class PaymentButton extends Component {
     let response = await fetch(PAYMENT_SERVER_URL, {
       method: "POST",
       headers: {"Content-Type": "application/json",
-     },
+      'Access-Control-Allow-Origin':  'https://app.bloomtimedesign.co',
+      'Access-Control-Allow-Origin':  'https://bloom-userui.herokuapp.com',
+      'Access-Control-Allow-Origin':  'https://bloom-prod.herokuapp.com'
+    },
       body: JSON.stringify({
         amount: amt,
         token: token.id
