@@ -8,16 +8,36 @@ import logo from '../../Images/BloomtimeLogo.png'
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
+import Loading from '../Loading/Loading'
 
-const Navigation = () => (
-    <div>
-        <AuthUserContext.Consumer>
-            {   authUser =>
-                authUser ? <NavigationAuth /> : <NavigationNonAuth />
-            }
-        </AuthUserContext.Consumer>
-    </div>
-);
+class Navigation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ loading: false })
+    }
+
+    render(){
+        if(this.state.loading){
+            return <Loading/>
+        }else if(!this.state.loading){
+            return(
+                <div>
+                <AuthUserContext.Consumer>
+                    {   authUser =>
+                        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+                    }
+                </AuthUserContext.Consumer>
+                </div> 
+            )
+        }
+    }
+}
 
 
 class NavigationAuth extends Component {

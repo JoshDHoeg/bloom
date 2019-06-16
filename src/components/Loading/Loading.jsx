@@ -1,18 +1,26 @@
 import Spinner from 'react-spinner-material';
 import React, {Component} from 'react'
-import { withAuthorization } from '../../utilities/Session';
+import { Dimmer, Loader, Image, Segment } from 'semantic-ui-react'
 
 class Loading extends Component {
 render(){
     return (
-        <div style={{marginTop: '20px', alignContent: 'center'}}>
-            <Spinner size={120} spinnerColor={'#333'} spinnerWidth={2} visible={true} />
-        </div>
+        <Segment marginBottom='300px'>
+                <Dimmer active>
+                    <Loader size='large' >Loading</Loader>
+                </Dimmer>
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+                <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
+        </Segment>
     )
 }
 
 }
 
-const condition = role => role > 0;
 
-export default withAuthorization(condition)(Loading);
+
+export default (Loading)

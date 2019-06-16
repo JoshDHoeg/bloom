@@ -1,5 +1,5 @@
 // BLOOMTIME DESIGN 2019
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
 import {Menu, Dropdown, Image, Icon, Button} from 'semantic-ui-react'
@@ -9,16 +9,37 @@ import * as ROUTES from '../../utilities/constants/routes';
 import { AuthUserContext } from '../../utilities/Session';
 import SignOutButton from '../../containers/Users/SignOut/SignOut'
 import { DropdownItem } from 'semantic-ui-react';
+import Loading from '../Loading/Loading'
 
-const UserNavigation = () => (
-    <div>
-        <AuthUserContext.Consumer>
-            {   authUser =>
-                authUser ? <NavigationAuth /> : <NavigationNonAuth />
-            }
-        </AuthUserContext.Consumer>
-    </div>
-);
+class UserNavigation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ loading: false })
+    }
+
+    render(){
+        if(this.state.loading){
+            return <Loading/>
+        }else if(!this.state.loading){
+            return(
+                <div>
+                <AuthUserContext.Consumer>
+                    {   authUser =>
+                        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+                    }
+                </AuthUserContext.Consumer>
+                </div> 
+            )
+        }
+    }
+}
+
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
     <Menu >
