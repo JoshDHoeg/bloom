@@ -73,7 +73,7 @@ export class Concept extends React.Component{
             return (<CompletedPage concept={this.state.concept} />)
         }
         if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
-            return (<Payment/>)
+            return (<Payment concept={this.state.concept}/>)
         }
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
             return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)

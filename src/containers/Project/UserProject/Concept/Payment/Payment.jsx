@@ -5,7 +5,7 @@ import { withAuthorization } from '../../../../../utilities/Session';
 class PaymentPage extends Component {
     render(){
         return(
-            <ElementsContainer/>
+            <ElementsContainer concept={this.props.concept}/>
         )
     }
 }

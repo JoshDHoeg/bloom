@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import Form from './CheckoutForm';
 import { withAuthorization } from '../../../utilities/Session';
-
+import { Grid, Container, Segment, Header } from 'semantic-ui-react'
 const stripe = require('./constants/stripeKey'); 
 
 class ElementsContainer extends Component {
@@ -13,16 +13,22 @@ class ElementsContainer extends Component {
 
   render() {
     return (
-      <div>
-      <StripeProvider apiKey = 'pk_test_7XARlGU7KhB75ysMvpSxfDvG00mtqr7j4s' >
-        <div className="payment-form" style={{ marginTop: '10px', marginBottom: '10px', marginLeft: '14px', marginRight: '271px', textAlign: 'left'}}>
-          <h2 style={{ fontSize: '22px', color:'#FA907F', fontFamily:'sans-serif'}} >Purchase Design</h2>
-          <Elements>
-             <Form /> 
-          </Elements>
-        </div>
-      </StripeProvider>
-      </div>
+      <Grid>
+        <Container  textAlign='center' text='true'>
+            <Grid.Row style={{ paddingTop: '20px' }}>
+              <Header as='h2'>Purchase Design</Header>
+            </Grid.Row>
+            <Grid.Row style={{ paddingTop: '20px' }}>
+              <Segment textAlign='left'>
+                <StripeProvider apiKey = 'pk_test_7XARlGU7KhB75ysMvpSxfDvG00mtqr7j4s' >
+                  <Elements>
+                      <Form concept={this.props.concept}/> 
+                  </Elements>
+                </StripeProvider>
+              </Segment>
+            </Grid.Row>
+          </Container>
+      </Grid>
     );
   }
 }
