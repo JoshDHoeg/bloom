@@ -28,42 +28,41 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
           const s = proj.collection('stage')
-          const a = proj.collection('contractors')
           b.doc('0').set({
-              address: "",
-              budget: "",
-              completed: false,
-              goals: ["demo goal", "Demo Goal 2"],
-              init: false,
-              media: "",
-              narrative: "",
-              profile: {
-                spacing: '',
-                variety: '',
-                edging: '',
-                ground: '',
-                form: ''
-              }
+            address: "",
+            budget: "",
+            completed: false,
+            goals: ["demo goal", "Demo Goal 2"],
+            init: false,
+            media: "",
+            narrative: "",
+            profile: {
+              spacing: '',
+              variety: '',
+              edging: '',
+              ground: '',
+              form: ''
+            }
           });
           c.doc('0').set({
-              init: false,
-              feedback: "",
-              video: "",
-              media:"",
-              completed: false,
-              approved: false,
-              isPaid: false,
-              cost: 59999,
-              approveterms: false
+            init: false,
+            feedback: "",
+            video: "",
+            media:"",
+            completed: false,
+            approved: false,
+            isPaid: false,
+            cost: 59999,
+            approveterms: false
           });
           d.doc('0').set({
-              init: false,
-              feedback: "",
-              video: "",
-              media:"",
-              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
-              completed: false,
-              approved: false,
+            init: false,
+            feedback: "",
+            video: "",
+            media:"",
+            figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
+            completed: false,
+            approved: false,
           });
           f.doc('0').set({
             init: false,
@@ -75,26 +74,25 @@ class FirebaseProjects extends FirebaseAuthUser  {
             approved: false,
           });
           s.doc('0').set({
-              init: false,
-              stage: "concept",
-              rcount: '0',
+            init: false,
+            stage: "concept",
+            rcount: '0',
           });
-          a.doc('0').set({
-              init: false,
-              contractor1: 'Landscaper1',
-              price1: 0,
-              stars1: 5,
-              number1: '000-000-0000',
-              contractor2: 'Landscaper2',
-              price2: 0,
-              stars2: 5,
-              number2: '000-000-0000',
-              contractor3: 'Landscaper3',
-              price3: 0,
-              stars3: 5,
-              number3: '000-000-0000' 
+          l.doc('0').set({
+            init: false,
+            contractor1: 'Landscaper 1',
+            price1: 0,
+            stars1: 5,
+            number1: '000-000-0000',
+            contractor2:'Landscaper 2',
+            price2: 0,
+            stars2: 5,
+            number2: '000-000-0000',
+            contractor3: 'Landscaper 3',
+            price3: 0,
+            stars3: 5,
+            number3: '000-000-0000'
           })
-
           return proj.get().then(data => {
               return new Project(data);
           })
