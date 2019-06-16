@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed.jsx';
 import { withAuthorization } from '../../../../utilities/Session/index';
-
-
+import './draft.sass'
 class Draft extends Component {
     draft;
     stage;

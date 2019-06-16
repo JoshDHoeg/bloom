@@ -5,9 +5,8 @@ import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
-
 import { Link } from 'react-router-dom';
-
+import '../draft.sass'
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
@@ -111,7 +110,7 @@ class Completed extends Component {
                             </div>
                         </Segment>
                         <Button.Group>
-                            <Button>Media</Button>
+                            <Button className='media-button'>Media</Button>
                             <Button onClick={this.videoToggle}>Show Video</Button>
                         </Button.Group>
                     </Grid.Row>
