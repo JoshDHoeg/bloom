@@ -103,6 +103,8 @@ class ProjectStatus extends React.Component {
                         </Step.Content>
                     </Step>);})
                 }
+                
+                {Contractors}
 
           </Step.Group>
         )
