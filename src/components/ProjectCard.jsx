@@ -10,13 +10,17 @@ import { withAuthorization } from '../utilities/Session';
 
 
 class ProjCard extends Component {
-
+    stage;
     constructor(props){
         super(props);
         this.state={
             brief:{},
-            status: ''
+            status: '',
+            stage:{
+                stage: ''
+            }
         }
+
     }
 
     onClick = (projectIndex) => {
@@ -27,9 +31,37 @@ class ProjCard extends Component {
         const brief = await this.props.proj.brief;
         const status = await this.props.proj.status;
         this.setState({brief:brief, status:status});
+        this.getProjectState();
     }
 
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.stage = await project.stage;
+        //const schedule = await this.project.concept.schedule;
+        const state = await {
+            loading: false,
+            stage: {
+                stage: this.stage.stage
+            }
+        }
+        this.setState(state);
+        return state;
+    }
+
+
     render(){
+        let ProjectButton
+        if(this.state.stage.stage === 'revision'){
+            ProjectButton = 
+            <Link to="/project/user_revision/0" >
+                <Button>View Project</Button>
+            </Link>
+        }else{
+            ProjectButton =
+            <Link onClick={() => this.onClick(this.props.projectIndex)} to={{ pathname: ROUTES.PROJECT, state: {projectIndex: this.props.projectIndex}}} >
+                <Button>View Project</Button>
+            </Link>
+        }
         return(
         <Grid.Row>
             <Grid.Column>
@@ -60,9 +92,7 @@ class ProjCard extends Component {
                             </Grid.Column>
 
                             <Grid.Column width="4">
-                                <Link onClick={() => this.onClick(this.props.projectIndex)} to={{ pathname: ROUTES.PROJECT, state: {projectIndex: this.props.projectIndex}}} >
-                                    <Button>View Project</Button>
-                                </Link>
+                                {ProjectButton}
                             </Grid.Column>
                         </Grid.Row>
                     </Grid>

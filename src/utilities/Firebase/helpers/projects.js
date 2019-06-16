@@ -28,6 +28,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
           const s = proj.collection('stage')
+          const a = proj.collection('contractors')
           b.doc('0').set({
               address: "",
               budget: "",
@@ -72,12 +73,28 @@ class FirebaseProjects extends FirebaseAuthUser  {
             figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
             completed: false,
             approved: false,
-        });
+          });
           s.doc('0').set({
               init: false,
               stage: "concept",
               rcount: '0',
           });
+          a.doc('0').set({
+              init: false,
+              contractor1: 'Landscaper1',
+              price1: 0,
+              stars1: 5,
+              number1: '000-000-0000',
+              contractor2: 'Landscaper2',
+              price2: 0,
+              stars2: 5,
+              number2: '000-000-0000',
+              contractor3: 'Landscaper3',
+              price3: 0,
+              stars3: 5,
+              number3: '000-000-0000' 
+          })
+
           return proj.get().then(data => {
               return new Project(data);
           })
@@ -164,7 +181,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage, ProjectData.Contractor].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -203,7 +220,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage, ProjectData.Contractor].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();
