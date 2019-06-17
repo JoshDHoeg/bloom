@@ -69,7 +69,9 @@ const NavigationAuth = ({firebase}) => (
             </Dropdown.Menu>
         </Dropdown>
         <Menu.Item className='right menu item'>
-            <Image src={logo} alt="bloomtime-logo" size='mini'/>
+            <NavLink to='/'>
+                <Image src={logo} alt="bloomtime-logo" size='mini'/>
+            </NavLink>
         </Menu.Item>
     </Menu>
 );
