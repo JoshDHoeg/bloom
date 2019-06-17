@@ -1,6 +1,6 @@
 import React from 'react';
 import './completed.scss';
-import { Grid, Container, Header, GridColumn, Embed } from 'semantic-ui-react';
+import { Grid, Container, Header, Embed } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import { withAuthorization } from '../../../../../utilities/Session';

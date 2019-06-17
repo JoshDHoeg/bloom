@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
 import {Menu, Dropdown, Image, Icon, Button} from 'semantic-ui-react'
 //IMPORT UTILITIES
@@ -10,6 +10,7 @@ import { AuthUserContext } from '../../utilities/Session';
 import SignOutButton from '../../containers/Users/SignOut/SignOut'
 import { DropdownItem } from 'semantic-ui-react';
 import Loading from '../Loading/Loading'
+import { withFirebase } from '../../utilities/Firebase';
 
 class UserNavigation extends Component {
     constructor(props) {
@@ -40,23 +41,31 @@ class UserNavigation extends Component {
     }
 }
 
-const NavigationAuth = () => (
+const NavigationAuth = ({firebase}) => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
     <Menu >
         <Dropdown className='ui labeled icon' item icon = 'unordered list'>
             <Dropdown.Menu>
-                <DropdownItem>
-                    <Button><Link to={ROUTES.ACCOUNT_INFO}><Icon name = 'user'/>Account</Link></Button>
-                </DropdownItem>
-                <Dropdown.Item>
-                <Button> <Link to={ROUTES.PROJECT_LIST}><Icon name='file alternate'/>Projects</Link> </Button>
-                </Dropdown.Item>
-                <DropdownItem>
-                <Button> <Link to={ROUTES.MESSAGING}><Icon name='comments'/>Message</Link></Button>
-                </DropdownItem>
-                <DropdownItem>
-                    <SignOutButton/>
-                </DropdownItem>
+                <NavLink color='teal' to='/account/info'>
+                    <DropdownItem className='title' >
+                        <Button><Icon name = 'user'/>Account</Button>
+                    </DropdownItem>
+                </NavLink>
+                <NavLink color='teal' to='/'>
+                    <DropdownItem className='title' >
+                        <Button><Icon name = 'user'/>Projects</Button>
+                    </DropdownItem>
+                </NavLink>
+                <NavLink color='teal' to='/messaging'>
+                    <DropdownItem className='title' >
+                        <Button><Icon name = 'user'/>Messages</Button>
+                    </DropdownItem>
+                </NavLink>
+                <NavLink color='teal' to='/signin'>
+                    <DropdownItem className='title' >
+                        <SignOutButton/>
+                    </DropdownItem>
+                </NavLink>
             </Dropdown.Menu>
         </Dropdown>
         <Menu.Item className='right menu item'>
@@ -81,4 +90,4 @@ const NavigationNonAuth = () => (
     </div>
 )
 
-export default UserNavigation;
+export default withFirebase(UserNavigation);
