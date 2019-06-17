@@ -154,6 +154,7 @@ class SignUpFormBase extends Component {
             checked={isDesigner}
             onChange={this.onChangeCheckbox}
           /> */}
+          
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
             Login
           </Button>
