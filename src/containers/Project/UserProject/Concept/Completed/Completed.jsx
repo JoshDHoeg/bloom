@@ -14,6 +14,9 @@ library.add(faArrowLeft)
 
 class Completed extends React.Component{
     render(){
+        console.log(this.props.concept.video)
+        let video
+        video = this.props.concept.video;
         return (
             <Grid >
             <Container><ProjectStatus state="concept"/></Container>
@@ -28,10 +31,9 @@ class Completed extends React.Component{
                     <Header as='h3'> Watch the video and pick your favorite concept to <br/> keep the project moving </Header>
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'20px'}}>
-                <Embed width="560" height="275"
-                            src={this.props.concept.video}
-                            align="middle"
-                            frameBorder="20" allow="autoplay; encrypted-media" allowFullScreen
+                <Embed
+                    id={this.props.concept.video}
+                    source='youtube'
                     />
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'100px'}}>
