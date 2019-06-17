@@ -77,19 +77,17 @@ const NavigationAuth = ({firebase}) => (
 );
 
 const NavigationNonAuth = () => (
-    <div className="ui purple inverted top menu">
-        <div className="ui purple inverted top menu fixed">
-            <div className="item">
-                <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-            </div>
-            <div className="item">
-                <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-            </div>
-            <div className="right menu item">
-                <img src={logo} alt="bloomtime-logo"/>
-            </div>
-        </div>
-    </div>
+    <Menu>
+        <Menu.Item>
+            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+        </Menu.Item>
+        <Menu.Item>
+            <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+        </Menu.Item>
+        <Menu.Item className="right menu item">
+             <img src={logo} alt="bloomtime-logo"/>
+        </Menu.Item >
+    </Menu>
 )
 
 export default withFirebase(UserNavigation);
