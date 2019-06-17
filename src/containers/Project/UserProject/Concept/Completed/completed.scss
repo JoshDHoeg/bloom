@@ -1,14 +1,12 @@
 .ConceptCompleted .ConceptGrid{
-    text-align: center;
-    background-repeat: repeat;
-    margin-left: -14px; 
-    padding-left: 14px;
-    padding-bottom: 100vh;
+    padding-Top: '20px';
+    padding-Left: 50%;
+    padding-right: 50%;
 }
 
-.ConceptCompleted .ConceptLink{
+.ConceptCompleted .ConceptGrid .ConceptLink{
     position: "absolute",;
-    left: "90%", ;
+    //padding-left: "90%", ;
     top: "250px";
 
 }
