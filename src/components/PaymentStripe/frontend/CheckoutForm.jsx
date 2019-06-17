@@ -108,7 +108,7 @@ class Form extends Component {
       return( 
         <Grid>
           <Grid.Row style={{paddingTop: '25px', paddingBottom: '25px'}}>
-            <Header as='h2' style={{ fontSize:'15px'}}>Purchase Complete!</Header>
+            <Header as='h2' style={{ paddingRight:'10px', fontSize:'15px'}}>Purchase Complete!</Header>
               <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
               <img src={ArrowRight}/></Link>
           </Grid.Row>
