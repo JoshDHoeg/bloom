@@ -1,6 +1,6 @@
 //BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import {Container, Grid } from 'semantic-ui-react'
+import {Container, Grid, Segment } from 'semantic-ui-react'
 //IMPORT UTILITIES
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 import { withAuthorization } from '../../../../../utilities/Session';
@@ -29,6 +29,7 @@ class AccountInfoPageEdit extends Component {
                         />
                     </Grid.Row>
                     <Grid.Row>
+                        <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#4BED2F", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit User Information</h1>
                             <UserInformation
@@ -39,8 +40,10 @@ class AccountInfoPageEdit extends Component {
                                 handleChange={this.props.handleChange}
                                 />                           
                         </span>
+                        </Segment>
                     </Grid.Row>
                     <Grid.Row>
+                        <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#4BED2F", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Address Information</h1>
                             <BillingInformation 
@@ -52,6 +55,7 @@ class AccountInfoPageEdit extends Component {
                             handleChange={this.props.handleChange}                           
                             />
                         </span>
+                        </Segment>
                     </Grid.Row>
                     <Grid.Row style={{paddingBottom:'45px'}}>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>

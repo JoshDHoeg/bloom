@@ -3,33 +3,32 @@ import React from 'react';
 import { withAuthorization } from '../../../../utilities/Session';
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../../../utilities/constants/routes";
+import { Button } from 'semantic-ui-react';
+
 
 const EditButton = (props) => {
+    if(props.edit) {
+
+    }
     return (
         props.edit ? (
-            <button onClick={props.formSubmit} type="button" style={{
-                backgroundColor: "#4BED2F",
-                width: "100px",
-                height: "40px",
-                borderRadius: "4px",
-                boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)"
-            }}>
                 <Link to={ROUTES.ACCOUNT_INFO} style={{textDecoration: 'none', color: "white"}}>
+                <Button onClick={props.formSubmit} style={{
+                    width: "100px",
+                    height: "40px",
+                }}>
                     Done
-                </Link>
-            </button>
+                </Button>
+            </Link>
         ) : (
-            <button type="button" style={{
-                backgroundColor: "#4BED2F",
-                width: "100px",
-                height: "40px",
-                borderRadius: "4px",
-                boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)"
-            }}>
-                <Link to={ROUTES.ACCOUNT_INFO_EDIT} style={{textDecoration: 'none', color: "white"}}>
-                    Edit
-                </Link>
-            </button>
+            <Link to={ROUTES.ACCOUNT_INFO_EDIT} style={{textDecoration: 'none', color: "white"}}>
+                <Button  style={{
+                    width: "100px",
+                    height: "40px",
+                }}>
+                        Edit
+                </Button>`
+            </Link>
         )
     );
 }

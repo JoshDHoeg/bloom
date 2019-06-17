@@ -1,6 +1,6 @@
 //BLOOMTIME DESIGN 2019
 import React, {Component} from 'react';
-import {Container, Grid } from 'semantic-ui-react'
+import {Container, Grid, Segment } from 'semantic-ui-react'
 //IMPORT UTILITES
 import { withAuthorization } from '../../../../../utilities/Session';
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
@@ -26,6 +26,7 @@ class AccountInfoPageView extends Component {
                         />
                     </Grid.Row>
                     <Grid.Row>
+                        <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#4BED2F", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>User Information</h1>
                             <UserInformation 
@@ -35,8 +36,10 @@ class AccountInfoPageView extends Component {
                             name={this.props.user.name}
                             />
                         </span>
+                        </Segment>
                     </Grid.Row>
                     <Grid.Row>
+                        <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#4BED2F", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Address Information</h1>
                             <BillingInformation 
@@ -47,6 +50,7 @@ class AccountInfoPageView extends Component {
                             city={this.props.user.city}                            
                             />
                         </span>
+                        </Segment>
                     </Grid.Row>
                     <Grid.Row>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>
