@@ -440,6 +440,9 @@ export class ProjectData {
       _ApproveTerms = false;
       get approveterms() {return this._ApproveTerms; };
       set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
+      _terms = ''
+      get terms() {return this._terms; }
+      set terms(s) {this._setter({ terms: s }).then(() => this._terms = s); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -451,6 +454,7 @@ export class ProjectData {
           this._isPaid = this.data['isPaid']
           this._cost = this.data['cost']
           this._ApproveTerms = this.data['approveterms']
+          this._terms = this.data['terms']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -459,6 +463,7 @@ export class ProjectData {
           this._isPaid = false;
           this._cost = 59999;
           this._ApproveTerms = false
+          this._terms = ''
         }
       }
       getAll() {
@@ -470,10 +475,12 @@ export class ProjectData {
           isPaid: this.isPaid,
           cost: this.cost,
           approveterms: this.approveterms,
+          terms: this._terms
         });
       }
     }
   };
+  
   static Draft = {
     colRef: 'drafts',
     type: class Draft extends ProjectDataBase {

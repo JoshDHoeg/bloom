@@ -31,6 +31,8 @@
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-figma-embed": "^1.0.0",
+    "react-google-docs-viewer": "^1.0.1",
+    "react-iframe": "^1.8.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
