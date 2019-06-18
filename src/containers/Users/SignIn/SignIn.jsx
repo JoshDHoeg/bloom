@@ -103,6 +103,7 @@ class SignInFormBase extends Component {
               value={password}
               onChange={this.onChange}
             />
+
             <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
               Login
             </Button>
@@ -127,3 +128,4 @@ const SignInForm = compose(
 export default SignInPage;
 
 export { SignInForm, SignInLink };
+

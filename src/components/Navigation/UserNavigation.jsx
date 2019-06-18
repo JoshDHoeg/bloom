@@ -51,14 +51,14 @@ const NavigationAuth = ({firebase}) => (
                         <Button><Icon name = 'user'/>Account</Button>
                     </DropdownItem>
                 </NavLink>
-                <NavLink color='teal' to='/'>
+                <NavLink color='teal' to={ROUTES.PROJECT}>
                     <DropdownItem className='title' >
-                        <Button><Icon name = 'user'/>Projects</Button>
+                        <Button><Icon name = 'file alternate'/>Projects</Button>
                     </DropdownItem>
                 </NavLink>
                 <NavLink color='teal' to='/messaging'>
                     <DropdownItem className='title' >
-                        <Button><Icon name = 'user'/>Messages</Button>
+                        <Button><Icon name = 'comments'/>Messages</Button>
                     </DropdownItem>
                 </NavLink>
                 <NavLink color='teal' to='/signin'>
