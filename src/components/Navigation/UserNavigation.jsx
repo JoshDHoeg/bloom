@@ -24,6 +24,10 @@ class UserNavigation extends Component {
         this.setState({ loading: false })
     }
 
+    handleNav = () => {
+        this.props.context.push(ROUTES.PROJECT)
+    }
+
     render(){
         if(this.state.loading){
             return <Loading/>
@@ -32,7 +36,7 @@ class UserNavigation extends Component {
                 <div>
                 <AuthUserContext.Consumer>
                     {   authUser =>
-                        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+                        authUser ? <NavigationAuth handleNav={this.handleNav}/> : <NavigationNonAuth />
                     }
                 </AuthUserContext.Consumer>
                 </div> 
@@ -41,40 +45,45 @@ class UserNavigation extends Component {
     }
 }
 
-const NavigationAuth = ({firebase}) => (
-    //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
-    <Menu >
-        <Dropdown className='ui labeled icon' item icon = 'unordered list'>
-            <Dropdown.Menu>
-                <NavLink color='teal' to='/account/info'>
-                    <DropdownItem className='title' >
-                        <Button><Icon name = 'user'/>Account</Button>
-                    </DropdownItem>
+class NavigationAuth extends Component {
+
+    render(){
+        return (
+            <Menu >
+            <Dropdown className='ui labeled icon' item icon = 'unordered list'>
+                <Dropdown.Menu>
+                    <NavLink color='teal' to='/account/info'>
+                        <DropdownItem className='title' >
+                            <Button><Icon name = 'user'/>Account</Button>
+                        </DropdownItem>
+                    </NavLink>
+                    <NavLink color='teal' to={ROUTES.PROJECT}>
+                        <DropdownItem className='title' >
+                            <Button onClick={this.props.handleNav}><Icon name = 'file alternate'/>Projects</Button>
+                        </DropdownItem>
+                    </NavLink>
+                    <NavLink color='teal' to='/messaging'>
+                        <DropdownItem className='title' >
+                            <Button><Icon name = 'comments'/>Messages</Button>
+                        </DropdownItem>
+                    </NavLink>
+                    <NavLink color='teal' to='/signin'>
+                        <DropdownItem className='title' >
+                            <SignOutButton/>
+                        </DropdownItem>
+                    </NavLink>
+                </Dropdown.Menu>
+            </Dropdown>
+            <Menu.Item className='right menu item'>
+                <NavLink to='/'>
+                    <Image src={logo} alt="bloomtime-logo" size='mini'/>
                 </NavLink>
-                <NavLink color='teal' to={ROUTES.PROJECT}>
-                    <DropdownItem className='title' >
-                        <Button><Icon name = 'file alternate'/>Projects</Button>
-                    </DropdownItem>
-                </NavLink>
-                <NavLink color='teal' to='/messaging'>
-                    <DropdownItem className='title' >
-                        <Button><Icon name = 'comments'/>Messages</Button>
-                    </DropdownItem>
-                </NavLink>
-                <NavLink color='teal' to='/signin'>
-                    <DropdownItem className='title' >
-                        <SignOutButton/>
-                    </DropdownItem>
-                </NavLink>
-            </Dropdown.Menu>
-        </Dropdown>
-        <Menu.Item className='right menu item'>
-            <NavLink to='/'>
-                <Image src={logo} alt="bloomtime-logo" size='mini'/>
-            </NavLink>
-        </Menu.Item>
-    </Menu>
-);
+            </Menu.Item>
+        </Menu>
+        )
+    }
+}
+
 
 const NavigationNonAuth = () => (
     <Menu>
