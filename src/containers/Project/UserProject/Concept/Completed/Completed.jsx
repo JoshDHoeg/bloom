@@ -8,7 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
-import { GroupedObservable } from 'rxjs';
+import ChatBot from '../../../../../components/ChatBot/Chat'
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
@@ -19,6 +19,7 @@ class Completed extends React.Component{
         video = this.props.concept.video;
         return (
             <Grid >
+                <ChatBot/>
             <Container><ProjectStatus state="concept"/></Container>
                 <Container fluid textAlign='center' text='true'>
                     {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
@@ -43,6 +44,9 @@ class Completed extends React.Component{
                 <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
                     <img src={ArrowRight} />
                 </Link>
+                <Grid.Row>
+                    
+                </Grid.Row>
                 </Container>
             </Grid>
         )
