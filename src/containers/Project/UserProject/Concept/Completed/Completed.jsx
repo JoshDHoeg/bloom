@@ -8,6 +8,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ReactToolTip from 'react-tooltip'
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
@@ -39,7 +40,9 @@ class Completed extends React.Component{
                 <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777&appointmentType=10368032" width="90%" height="500" frameBorder="0"></iframe>
                 <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                 </Grid.Row>
-                <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+                <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+                    {/* <p data-tip="go to drafts"> </p> */}
+                    <ReactToolTip />
                     <img src={ArrowRight} />
                 </Link>
                 </Container>

@@ -119,7 +119,7 @@ class Completed extends React.Component {
                             <Button onClick={this.props.contractorState}><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '20px'}}>
+                    <Grid.Row style={{ paddingBottom: '50px'}}>
                         <Message hidden = {!this.state.revisions}>
                             <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
                                 <Form.Input  disabled = {this.props.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.revision.feedback} onChange={this.props.handleChange} type='text'  />

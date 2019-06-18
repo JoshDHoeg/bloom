@@ -17,6 +17,7 @@ import { Container, Segment, Header, Button, Grid, Message, Form } from 'semanti
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import ReactToolTip from 'react-tooltip'
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -81,6 +82,7 @@ class Completed extends Component {
         let feedbackButton;
         if(!this.props.draft.approved) {
             feedbackButton = <Button 
+            data-tip='Submit your design feedback'
             content='Submit'
             onClick={this.handleSuccess} 
             color='blue'>
@@ -94,9 +96,9 @@ class Completed extends Component {
         }
         return (
             <Grid>
-                <Container><ProjectStatus state="draft" å/></Container>
+                <Container><ProjectStatus state="draft"/></Container>
                 <Container fluid textAlign="center" text='true'>
-                    <Link to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
+                    <Link data-tip='go to concept design' to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
                         <img src={ArrowLeft} />
                     </Link>
                     <Grid.Row style={{ paddingTop: '20px' }}>
@@ -110,8 +112,8 @@ class Completed extends Component {
                             </div>
                         </Segment>
                         <Button.Group>
-                            <Button onClick={this.props.mediaLink}>Media</Button>
-                            <Button onClick={this.videoToggle}>Show Video</Button>
+                            <Button data-tip='Click here to check out you design media on google docs' onClick={this.props.mediaLink}> <ReactToolTip/> Media</Button>
+                            <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> <ReactToolTip/> Show Video</Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{paddingBottom:'20px'}}>
@@ -133,8 +135,8 @@ class Completed extends Component {
                             {feedbackButton}
                         </Form>
                     </Grid.Row>
-                    <Link to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
-                        <img src={ArrowRight} />
+                    <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
+                        <img src={ArrowRight}/>
                     </Link>
                 </Container>
             </Grid>
