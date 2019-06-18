@@ -13,7 +13,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //creates empty project with default designer
 // o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
   doCreateEmptyProject = () => {
-      return this.doGetUser("userAuthID").then( designer => {
+      return this.doGetUser("Dkka3WOkG1cxLx6YiR5PBhvxO0o2").then( designer => {
           console.log(designer);
           var proj = this.projectsRef.doc();
           proj.set({
