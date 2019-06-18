@@ -105,13 +105,11 @@ class Completed extends Component {
                     <   Header as='h2'>Rough Draft</Header>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                        <Segment placeholder>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                 <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
                             </div>
-                        </Segment>
-                        <Button.Group>
+                        <Button.Group style={{paddingTop:'20px'}}>
                             <Button data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
                             <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
                         </Button.Group>
@@ -119,7 +117,7 @@ class Completed extends Component {
                     <Grid.Row style={{paddingBottom:'20px'}}>
                         {videoPortion}
                     </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '20px'}} >
+                    <Grid.Row style={{ paddingBottom: '50px'}} >
                         <Form success className='attached fluid segment' onSubmit={this.handleNav}>
                             <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
                             <Message 
