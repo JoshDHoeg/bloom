@@ -7,6 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
+import ReactToolTip from 'react-tooltip';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -100,7 +101,7 @@ class Completed extends Component {
                                 <Header style={{ fontSize:'15px'}}>Cost: ${this.props.contractor.price1}</Header>
                             </Grid.Row>
                             <Grid.Row>
-                                <Button data-tip='Click here to see contact info' onClick={this.numberToggle1}>Contact</Button>
+                                <Button data-tip='Click here to see contact info' onClick={this.numberToggle1}> <ReactToolTip />Contact</Button>
                             </Grid.Row>
                             <Grid.Row>
                                 {contactPortion1}
