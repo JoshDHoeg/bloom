@@ -1,5 +1,5 @@
 import app from 'firebase/app';
-const devConfig = {
+const prodConfig = {
   apiKey: "AIzaSyC-ebwUdI1SzTeXbYF4ZCmroIDjdLQdmKo",
   authDomain: "bloomprod-112b6.firebaseapp.com",
   databaseURL: "https://bloomprod-112b6.firebaseio.com",
@@ -8,7 +8,7 @@ const devConfig = {
   messagingSenderId: "1004815344143",
 };
 
-const prodConfig = {
+const devConfig = {
   apiKey: "AIzaSyB2yzJhaQ1zy8bkIOVP6gbhNxBvV7Bhd7M",
   authDomain: "bloomdash-aca9f.firebaseapp.com",
   databaseURL: "https://bloomdash-aca9f.firebaseio.com",
