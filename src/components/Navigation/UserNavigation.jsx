@@ -24,10 +24,6 @@ class UserNavigation extends Component {
         this.setState({ loading: false })
     }
 
-    handleNav = () => {
-        this.props.context.push(ROUTES.PROJECT)
-    }
-
     render(){
         if(this.state.loading){
             return <Loading/>
@@ -59,14 +55,14 @@ class NavigationAuth extends Component {
                     </NavLink>
                     <NavLink color='teal' to={ROUTES.PROJECT}>
                         <DropdownItem className='title' >
-                            <Button onClick={this.props.handleNav}><Icon name = 'file alternate'/>Projects</Button>
+                            <Button><Icon name = 'file alternate'/>Projects</Button>
                         </DropdownItem>
                     </NavLink>
-                    <NavLink color='teal' to='/messaging'>
+                    {/* <NavLink color='teal' to='/messaging'>
                         <DropdownItem className='title' >
                             <Button><Icon name = 'comments'/>Messages</Button>
                         </DropdownItem>
-                    </NavLink>
+                    </NavLink> */}
                     <NavLink color='teal' to='/signin'>
                         <DropdownItem className='title' >
                             <SignOutButton/>

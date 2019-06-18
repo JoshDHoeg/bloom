@@ -74,12 +74,13 @@ class Completed extends React.Component {
         let RightArrow;
         if(this.props.stage.rcount > 0){
             RightArrow =                     
-            <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link data-tip='go to revision' to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
+                <ReactToolTip />
             </Link>
         }else if(this.props.stage.stage === 'contractors'){
             RightArrow =
-            <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link data-tip='go to contractors page' to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
         }
@@ -106,7 +107,7 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button onClick={this.props.mediaLink}>Download Design</Button>
+                            <Button data-tip='download your design' onClick={this.props.mediaLink}>Download Design</Button>
                             <Button onClick={this.HandleClick} >Ask for Revision</Button>
                             <Button ><Link  to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
