@@ -45,12 +45,12 @@ class Completed extends Component {
             let revision = Number(this.props.stage.rcount)
             let link = "/project/user_revision/"+(revision-1);
             LeftArrow =
-            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
+            <Link data-tip='go to revision' to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
                 <img src={ArrowLeft} />
             </Link>
         }else{
             LeftArrow =
-            <Link to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
+            <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", right: "90%", top: "250px"}}>
                 <img src={ArrowLeft} />
             </Link>
         }
@@ -100,7 +100,7 @@ class Completed extends Component {
                                 <Header style={{ fontSize:'15px'}}>Cost: ${this.props.contractor.price1}</Header>
                             </Grid.Row>
                             <Grid.Row>
-                                <Button onClick={this.numberToggle1}>Contact</Button>
+                                <Button data-tip='Click here to see contact info' onClick={this.numberToggle1}>Contact</Button>
                             </Grid.Row>
                             <Grid.Row>
                                 {contactPortion1}
@@ -121,7 +121,7 @@ class Completed extends Component {
                                 <Header style={{ fontSize:'15px'}}>Cost: ${this.props.contractor.price2}</Header>
                             </Grid.Row>
                             <Grid.Row>
-                                <Button onClick={this.numberToggle2}>Contact</Button>
+                                <Button data-tip='Click here to see contact info' onClick={this.numberToggle2}>Contact</Button>
                             </Grid.Row>
                             <Grid.Row>
                                 {contactPortion2}
@@ -142,7 +142,7 @@ class Completed extends Component {
                                 <Header style={{ fontSize:'15px'}}>Cost: ${this.props.contractor.price3}</Header>
                             </Grid.Row>
                             <Grid.Row>
-                                <Button onClick={this.numberToggle3}>Contact</Button>
+                                <Button data-tip='Click here to see contact info' onClick={this.numberToggle3}>Contact</Button>
                             </Grid.Row>
                             <Grid.Row>
                                 {contactPortion3}

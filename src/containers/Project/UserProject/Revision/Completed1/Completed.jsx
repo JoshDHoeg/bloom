@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
+import ReactToolTip from 'react-tooltip';
 
 
 library.add(faArrowRight);
@@ -50,6 +51,7 @@ class Completed extends React.Component {
         let feedbackButton;
         if(!this.props.revision.approved) {
             feedbackButton = <Button 
+            data-tip='Submit your revision feedback'
             content='Submit'
             onClick={this.handleSuccess} 
             color='blue'>
@@ -68,12 +70,13 @@ class Completed extends React.Component {
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision + 1);
             RightArrow =                     
-            <Link to={link} style={{ position: "absolute", left: "90%", top: "250px" }} onClick={this.props.handleStateChange}>
+            <Link data-tip='go to next revision' to={link} style={{ position: "absolute", left: "90%", top: "250px" }} onClick={this.props.handleStateChange}>
                 <img src={ArrowRight} />
+                <ReactToolTip/>
             </Link>
         }else if(this.props.stage.stage === 'contractors') {
             RightArrow =                     
-            <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link data-tip='go to contractor page' to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
         }
@@ -84,12 +87,12 @@ class Completed extends React.Component {
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)
             LeftArrow =
-            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
+            <Link data-tip='go to last revision' to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
                 <img src={ArrowLeft} />
             </Link>
         }else{
             LeftArrow =
-            <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px"}}>
+            <Link data-tip='go to final design' to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px"}}>
                 <img src={ArrowLeft} />
             </Link>
         }
@@ -114,9 +117,9 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button onClick={this.props.mediaLink}>Download Design</Button>
-                            <Button onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button onClick={this.props.contractorState}><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
+                            <Button data-tip='Ask for a revision and leave feedback' onClick={this.HandleClick} >Ask for Revision</Button>
+                            <Button data-tip='Get quotes from contractors' onClick={this.props.contractorState}><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>

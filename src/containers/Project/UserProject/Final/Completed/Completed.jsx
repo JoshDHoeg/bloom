@@ -15,7 +15,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
-import ReactToolTip from 'react-tooltip'
+import ReactToolTip from 'react-tooltip';
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -60,6 +60,7 @@ class Completed extends React.Component {
         if(!this.props.final.approved) {
             feedbackButton = 
             <Button 
+            data-tip='Submit your design feedback'
             content='Submit'
             onClick={this.handleSuccess}
             color='blue'>
@@ -87,7 +88,7 @@ class Completed extends React.Component {
             <Grid>
                 <Container><ProjectStatus state="final" /></Container>
                 <Container fluid textAlign='center' text='true'>
-                    <Link data-tip='got to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                    <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
                         <img src={ArrowLeft} />
                         <ReactToolTip />
                     </Link>
@@ -107,9 +108,9 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row>
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button data-tip='download your design' onClick={this.props.mediaLink}>Download Design</Button>
-                            <Button data-tip='ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button ><Link  to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
+                            <Button data-tip='Ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
+                            <Button ><Link data-tip='Click here to get quotes from landscapers' to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>
