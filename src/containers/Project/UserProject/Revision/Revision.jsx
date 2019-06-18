@@ -71,7 +71,9 @@ class Revision extends React.Component{
     }
 
     mediaLink() {
-        window.location.replace(this.state.revision.media)
+        window.open(
+            this.state.draft.media,
+            '_blank')
     }
 
     componentDidMount() {

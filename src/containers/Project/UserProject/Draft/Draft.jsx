@@ -44,8 +44,11 @@ class Draft extends Component {
             }
         });
     }
+    
     mediaLink() {
-        window.location.replace(this.state.draft.media)
+        window.open(
+            this.state.draft.media,
+            '_blank')
     }
 
     handleStateChange = () => {

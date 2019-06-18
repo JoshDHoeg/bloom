@@ -58,7 +58,9 @@ class Final extends React.Component {
     }
 
     mediaLink() {
-        window.location.replace(this.state.final.media)
+        window.open(
+            this.state.draft.media,
+            '_blank')
     }
 
     handleStateChange = () => {

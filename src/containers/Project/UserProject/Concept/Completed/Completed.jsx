@@ -41,7 +41,6 @@ class Completed extends React.Component{
                 <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                 </Grid.Row>
                 <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-                    {/* <p data-tip="go to drafts"> </p> */}
                     <ReactToolTip />
                     <img src={ArrowRight} />
                 </Link>

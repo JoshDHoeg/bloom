@@ -113,7 +113,7 @@ class Completed extends Component {
                         </Segment>
                         <Button.Group>
                             <Button data-tip='Click here to check out you design media on google docs' onClick={this.props.mediaLink}> <ReactToolTip/> Media</Button>
-                            <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> <ReactToolTip/> Show Video</Button>
+                            <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{paddingBottom:'20px'}}>
