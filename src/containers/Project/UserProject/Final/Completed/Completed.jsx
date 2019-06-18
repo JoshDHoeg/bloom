@@ -76,7 +76,6 @@ class Completed extends React.Component {
             RightArrow =                     
             <Link data-tip='go to revision' to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
-                <ReactToolTip />
             </Link>
         }else if(this.props.stage.stage === 'contractors'){
             RightArrow =
@@ -88,8 +87,9 @@ class Completed extends React.Component {
             <Grid>
                 <Container><ProjectStatus state="final" /></Container>
                 <Container fluid textAlign='center' text='true'>
-                    <Link to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                    <Link data-tip='got to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
                         <img src={ArrowLeft} />
+                        <ReactToolTip />
                     </Link>
                     <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Final Draft</Header>
@@ -108,7 +108,7 @@ class Completed extends React.Component {
                     <Grid.Row>
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button data-tip='download your design' onClick={this.props.mediaLink}>Download Design</Button>
-                            <Button onClick={this.HandleClick} >Ask for Revision</Button>
+                            <Button data-tip='ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
                             <Button ><Link  to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>

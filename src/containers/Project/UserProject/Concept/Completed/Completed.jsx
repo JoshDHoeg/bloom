@@ -2,6 +2,7 @@ import React from 'react';
 import './completed.scss';
 import { Grid, Container, Header, Embed } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import YoutubeEmbedVideo from "youtube-embed-video";
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import { withAuthorization } from '../../../../../utilities/Session';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -31,10 +32,7 @@ class Completed extends React.Component{
                     <Header as='h3'> Watch the video and pick your favorite concept to <br/> keep the project moving </Header>
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'20px'}}>
-                <Embed
-                    id={this.props.concept.video}
-                    source='youtube'
-                    />
+                <YoutubeEmbedVideo videoId={this.props.concept.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'100px'}}>
                 <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777&appointmentType=10368032" width="90%" height="500" frameBorder="0"></iframe>
