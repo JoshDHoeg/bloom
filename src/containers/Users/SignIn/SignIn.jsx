@@ -26,8 +26,8 @@ const SignInPage = () => (
 
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-          Log-in
+        <Header as='h2' color='black' textAlign='center'>
+          Log in to Bloomtime Design
         </Header>
         <SignInForm />
         <Message>
@@ -104,7 +104,7 @@ class SignInFormBase extends Component {
               onChange={this.onChange}
             />
 
-            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
               Login
             </Button>
             {error && <p style={{color:"red"}}>Username or password was invalid</p>}
