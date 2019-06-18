@@ -6,19 +6,27 @@ import './loading.scss'
 class Loading extends Component {
 render(){
     return (
-            <div id="position" class="sunflower">
-                <div class="head">
-                    <div id="eye-1" class="eye"></div>
-                    <div id="eye-2" class="eye"></div>
-                    <div class="mouth"></div>
-                </div>
-                <div class="petals"></div>
-                <div class="trunk">
-                    <div class="left-branch"></div>
-                    <div class="right-branch"></div>
-                </div>
-                <div class="vase"></div>
-            </div>
+        <div class="frame">
+        <div class="flower" onclick="void(0);">
+            <div class="leaf leaf-0"></div>
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+            <div class="leaf leaf-4"></div>
+            <div class="leaf leaf-5"></div>
+            <div class="leaf leaf-6"></div>
+            <div class="leaf leaf-7"></div>
+            <div class="leaf leaf-8"></div>
+            <div class="leaf leaf-9"></div>
+            <div class="leaf leaf-10"></div>
+            <div class="leaf leaf-11"></div>
+            <div class="leaf leaf-12"></div>
+            <div class="leaf leaf-13"></div>
+            <div class="leaf leaf-14"></div>
+            <div class="leaf leaf-15"></div>
+            <div class="dot"></div>
+        </div>
+        </div>
     )
 }
 
