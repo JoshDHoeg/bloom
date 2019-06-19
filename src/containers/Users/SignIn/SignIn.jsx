@@ -62,7 +62,7 @@ class SignInFormBase extends Component {
           //this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res => {console.log(res)});
           this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
           this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.PROJECT);
+          this.props.history.push(ROUTES.PROJECT_LIST);
         }
       })
       .catch(error => {
