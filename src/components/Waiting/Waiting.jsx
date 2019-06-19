@@ -45,7 +45,7 @@ class Waiting extends Component {
                 src: logo,
                 message: 'Your Draft is not ready yet. You will receive a notification when it is ready',
                 last: '/project/user_concept',
-                next: '/project/user_final'
+                next: '/project/user_final',
             })
         }
         else if(this.props.state === 'final'){

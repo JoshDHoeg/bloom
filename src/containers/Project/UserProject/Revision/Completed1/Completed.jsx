@@ -28,12 +28,18 @@ class Completed extends React.Component {
             revisions: false,
         }
         this.handleSuccess = this.handleSuccess.bind(this);
+        this.handleNav = this.handleNav.bind(this);
     }
     
     handleSuccess() {
         this.setState({
-            feedbackState: true
+            feedbackState: true,
         })
+    }
+
+    handleNav = () => {
+        this.props.formSubmit()
+        this.props.handleStateChange()
     }
 
     HandleClick = () => {
@@ -48,6 +54,7 @@ class Completed extends React.Component {
     }
 
     render() {
+        console.log('its fucked here', this.props.revision.approved)
         let feedbackButton;
         if(!this.props.revision.approved) {
             feedbackButton = <Button 
@@ -82,7 +89,7 @@ class Completed extends React.Component {
         }
         let LeftArrow;
         let revision = Number(this.props.currentRevision)
-        console.log('wtf', revision)
+        console.log('wtf10', this.props.revision.approved)
         if(revision > 0){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)
@@ -108,12 +115,10 @@ class Completed extends React.Component {
                     <p>We listened to your feedback and came up with a new version of your design based on what you said, let us know how we did!</p>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px' }}>
-                        <Segment placeholder>
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                 <FigmaEmbed url={this.props.revision.figma} style={{ width: "540px", margin: "30px" }} />
-                            </span>
-                        </Segment>
+                            </div>
                     </Grid.Row>
                     <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
@@ -124,7 +129,7 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>
                         <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.props.formSubmit}>
+                            <Form success onSubmit={this.handleNav} className='attached fluid' onSubmit={this.props.formSubmit}>
                                 <Form.Input  disabled = {this.props.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.revision.feedback} onChange={this.props.handleChange} type='text'  />
                                 <Message 
                                     success

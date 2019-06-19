@@ -6,7 +6,6 @@ import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage1 from './Completed1/Completed';
 
 
-
 class Revision extends React.Component{
     revision;
     stage;
@@ -14,6 +13,7 @@ class Revision extends React.Component{
         super(props);
         this.state = {
             count: 0,
+            loading: false,
             revision: {
                 completed: false,
                 figma: '',
@@ -31,16 +31,12 @@ class Revision extends React.Component{
         this.handleStateChange = this.handleStateChange.bind(this);
         this.mediaLink = this.mediaLink.bind(this);
         this.contractorState = this.contractorState.bind(this)
+        this.addRevision = this.addRevision.bind(this)
       }
 
     formSubmit = () => {
-        this.addRevision();
-        this.setState({
-            revision:{
-                feedback: this.state.feedback,
-                approved: true
-            }
-        })
+        this.revisions[this.state.currentRevision].approved = true
+        console.log('why', this.revisions)
         let number = this.state.stage.rcount
         console.log('number', number)
         let result = Number(number)
@@ -49,6 +45,7 @@ class Revision extends React.Component{
         let result2 = String(result);
         console.log('result2', result2)
         this.stage.rcount = result2;
+        this.addRevision();
     }
 
     handleChange(event) {
@@ -103,6 +100,7 @@ class Revision extends React.Component{
             currentRevision: currentRevision
         }
 
+        console.log('approved?', this.state.revision.approved)
         this.setState(state);
         return state;
     }

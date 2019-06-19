@@ -59,7 +59,7 @@ class Final extends React.Component {
 
     mediaLink() {
         window.open(
-            this.state.draft.media,
+            this.state.final.media,
             '_blank')
     }
 
