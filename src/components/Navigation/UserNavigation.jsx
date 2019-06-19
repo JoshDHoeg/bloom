@@ -71,7 +71,7 @@ class NavigationAuth extends Component {
                 </Dropdown.Menu>
             </Dropdown>
             <Menu.Item className='right menu item'>
-                <NavLink to='/'>
+                <NavLink to='/project/'>
                     <Image src={logo} alt="bloomtime-logo" size='mini'/>
                 </NavLink>
             </Menu.Item>
