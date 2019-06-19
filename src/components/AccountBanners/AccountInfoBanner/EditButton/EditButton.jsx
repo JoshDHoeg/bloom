@@ -33,7 +33,8 @@ const EditButton = (props) => {
                     height: "40px",
                 }}>
                         Edit
-                </Button>`
+                <ReactToolTip />
+                </Button>
             </Link>
         )
     );

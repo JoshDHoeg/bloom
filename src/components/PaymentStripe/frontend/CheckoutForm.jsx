@@ -83,7 +83,7 @@ class Form extends Component {
       method: "POST",
       headers: {"Content-Type": "application/json",
       'Access-Control-Allow-Origin':  'https://app.bloomtimedesign.co',
-      // 'Access-Control-Allow-Origin':  'https://bloom-userui.herokuapp.com',
+      //'Access-Control-Allow-Origin':  'http://localhost:3000',
       // 'Access-Control-Allow-Origin':  'https://bloom-prod.herokuapp.com'
     },
       body: JSON.stringify({
