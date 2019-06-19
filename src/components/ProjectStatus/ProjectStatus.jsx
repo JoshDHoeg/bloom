@@ -2,7 +2,11 @@ import React from 'react';
 import {withAuthorization} from '../../utilities/Session';
 import { Step, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+<<<<<<< HEAD
 import "./ProjectStatus.scss";
+=======
+import './projectStatus.scss'
+>>>>>>> 248add07fb2b87840fb575df2882f750a3bb4b28
 
 class ProjectStatus extends React.Component {
     stage

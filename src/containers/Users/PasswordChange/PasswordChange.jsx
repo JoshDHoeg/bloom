@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-
+import {Form, Input, Button} from 'semantic-ui-react'
 //IMPORT UTILITIES
 import { withFirebase } from '../../../utilities/Firebase';
 
@@ -43,27 +43,29 @@ class PasswordChangeForm extends Component {
       passwordOne !== passwordTwo || passwordOne === '';
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <input
+      <Form onSubmit={this.onSubmit}>
+        <Input
+          style={{paddingLeft:'10px'}}
           name="passwordOne"
           value={passwordOne}
           onChange={this.onChange}
           type="password"
           placeholder="New Password"
         />
-        <input
+        <Input
+          style={{paddingLeft:'10px', paddingRight:'10px'}}
           name="passwordTwo"
           value={passwordTwo}
           onChange={this.onChange}
           type="password"
           placeholder="Confirm New Password"
         />
-        <button disabled={isInvalid} type="submit">
+        <Button disabled={isInvalid} type="submit">
           Reset My Password
-        </button>
+        </Button>
 
         {error && <p>{error.message}</p>}
-      </form>
+      </Form>
     );
   }
 }

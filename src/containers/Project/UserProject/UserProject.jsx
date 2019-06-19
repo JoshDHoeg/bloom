@@ -58,10 +58,12 @@ class UserProject extends React.Component {
                 this.state.component = Draft
         }else if(this.state.stage.stage === 'final'){
                 this.state.component = Final
-        }else if(this.state.stage.stage === 'revision'){
-                this.state.component = Revision
+        // }else if(this.state.stage.stage === 'revision'){
+        //         this.state.component = Revision
         }else if(this.state.stage.stage === 'contractors'){
                 this.state.component = Contractors
+        }else{
+            this.state.component = Final
         }
         return(
             <Router>
