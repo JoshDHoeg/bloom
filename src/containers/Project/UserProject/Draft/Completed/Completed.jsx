@@ -74,7 +74,7 @@ class Completed extends Component {
         if (this.state.showVideo) {
             videoPortion = <div className="row">
                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                    <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
+                    <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
                     <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                 </div>
             </div>;
@@ -105,11 +105,13 @@ class Completed extends Component {
                     <   Header as='h2'>Rough Draft</Header>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
-                            </div>
-                        <Button.Group style={{paddingTop:'20px'}}>
+                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                            <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
+                        </div>
+                    </Grid.Row>
+                    <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+                        <Button.Group>
                             <Button data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
                             <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
                         </Button.Group>
@@ -118,20 +120,23 @@ class Completed extends Component {
                         {videoPortion}
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}} >
-                        <Form success className='attached fluid segment' onSubmit={this.handleNav}>
-                            <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
-                            <Message 
-                                success
-                                hidden = {!this.props.draft.approved}
-                                header='Feedback Received:' 
-                                content= {this.props.draft.feedback || 'feedback'}/>
-                            <Message
-                                success
-                                hidden = {!this.state.feedbackState}
-                                header='Feedback Received:' 
-                                content= {this.props.draft.feedback || 'feedback'}/>
-                            {feedbackButton}
-                        </Form>
+                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                            <Form success className='attached fluid' onSubmit={this.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}}>
+                                <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
+                                <Message 
+                                    success
+                                    hidden = {!this.props.draft.approved}
+                                    header='Feedback Received:' 
+                                    content= {this.props.draft.feedback || 'feedback'}/>
+                                <Message
+                                    success
+                                    hidden = {!this.state.feedbackState}
+                                    header='Feedback Received:' 
+                                    content= {this.props.draft.feedback || 'feedback'}/>
+                                {feedbackButton}
+                            </Form>
+                        </div>
                     </Grid.Row>
                     <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
                         <img src={ArrowRight}/>
