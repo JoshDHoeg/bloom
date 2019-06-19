@@ -54,6 +54,27 @@ class Completed extends React.Component {
     }
 
     render() {
+        let Feedback;
+        if(this.state.revisions){
+            Feedback = 
+            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                <Form success onSubmit={this.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}} className='attached fluid'>
+                    <Form.Input  disabled = {this.props.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.revision.feedback} onChange={this.props.handleChange} type='text'  />
+                    <Message 
+                        success
+                        hidden = {!this.props.revision.approved}
+                        header='Feedback Received:' 
+                        content= {this.props.revision.feedback || 'feedback'}/>
+                    <Message 
+                        success
+                        hidden = {!this.state.feedbackState}
+                        header='Feedback Received:' 
+                        content= {this.props.revision.feedback || 'feedback'}/>
+                    {feedbackButton}
+                </Form>
+            </div>
+        }
         console.log('its fucked here', this.props.revision.approved)
         let feedbackButton;
         if(!this.props.revision.approved) {
@@ -128,22 +149,7 @@ class Completed extends React.Component {
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>
-                        <Message hidden = {!this.state.revisions}>
-                            <Form success onSubmit={this.handleNav} className='attached fluid' onSubmit={this.props.formSubmit}>
-                                <Form.Input  disabled = {this.props.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.revision.feedback} onChange={this.props.handleChange} type='text'  />
-                                <Message 
-                                    success
-                                    hidden = {!this.props.revision.approved}
-                                    header='Feedback Received:' 
-                                    content= {this.props.revision.feedback || 'feedback'}/>
-                                <Message 
-                                    success
-                                    hidden = {!this.state.feedbackState}
-                                    header='Feedback Received:' 
-                                    content= {this.props.revision.feedback || 'feedback'}/>
-                                {feedbackButton}
-                            </Form>
-                        </Message>
+                        {Feedback}
                     </Grid.Row>
                     {RightArrow}
                 </Container>
