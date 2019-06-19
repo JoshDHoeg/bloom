@@ -2,6 +2,7 @@ import React from 'react';
 import {withAuthorization} from '../../utilities/Session';
 import { Step, Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import './projectStatus.scss'
 
 class ProjectStatus extends React.Component {
     stage
@@ -89,7 +90,7 @@ class ProjectStatus extends React.Component {
                 </Step>
             
                 <Step href='/project/user_final' active={this.state.state === 'final'}>
-                <Step.Content>
+                <Step.Content color='red'>
                     <Step.Title>Final Draft</Step.Title>
                 </Step.Content>
                 </Step>

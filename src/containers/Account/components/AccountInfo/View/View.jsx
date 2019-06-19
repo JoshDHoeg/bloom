@@ -8,6 +8,8 @@ import InfoBanner from '../../../../../components/AccountBanners/AccountInfoBann
 import UserInformation from '../Components/UserInformation/UserInformation';
 import BillingInformation from '../Components/BillingInformation/BillingInformation';
 import EditButton from '../../../../../components/AccountBanners/AccountInfoBanner/EditButton/EditButton'
+import ChangePass from '../../../../Users/PasswordChange/PasswordChange'
+
 class AccountInfoPageView extends Component {
     constructor(props) {
         super(props);
@@ -52,8 +54,13 @@ class AccountInfoPageView extends Component {
                         </span>
                         </Segment>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row style={{paddingBottom:'25px'}}>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>
+                    </Grid.Row>
+                    <Grid.Row style={{paddingBottom:'50px'}}>
+                        <Segment>
+                            <ChangePass/>
+                        </Segment>
                     </Grid.Row>
                 </Grid>
             </Container>
