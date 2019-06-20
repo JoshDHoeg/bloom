@@ -11,6 +11,9 @@ import Contractors from './Contractors/Contractors';
 import Final from './Final/Final';
 import Revision from './Revision/Revision';
 import Draft from './Draft/Draft';
+import HouseVisit from './HouseVisit/HouseVisit'
+import Payment from './Payment/Payment'
+import PopMessage from '../../Messaging/PopMessage';
 
 //concept => draft => final => revision => contractors
 class UserProject extends React.Component {
@@ -62,8 +65,11 @@ class UserProject extends React.Component {
         //         this.state.component = Revision
         }else if(this.state.stage.stage === 'contractors'){
                 this.state.component = Contractors
+        }else{
+            this.state.component = Final
         }
         return(
+            <div>
             <Router>
                 <Segment basic>
                     <div>
@@ -90,11 +96,18 @@ class UserProject extends React.Component {
                         />
                         <Route exact
                                 path={ROUTES.PAYMENT}
-                                render={(props) => <Concept {...props} edit={false} /> }
+                                render={(props) => <Payment {...props} edit={false} /> }
+                        />
+                        <Route exact
+                                path={ROUTES.HOUSE}
+                                render={(props) => <HouseVisit {...props} edit={false} /> }
                         />
                     </div>
                 </Segment>
             </Router>
+            <PopMessage/>
+            </div>
+           
         )
     }
 }

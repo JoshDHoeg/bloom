@@ -13,7 +13,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //creates empty project with default designer
 // o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
   doCreateEmptyProject = () => {
-      return this.doGetUser("userAuthID").then( designer => {
+      return this.doGetUser("Dkka3WOkG1cxLx6YiR5PBhvxO0o2").then( designer => {
           console.log(designer);
           var proj = this.projectsRef.doc();
           proj.set({
@@ -30,8 +30,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const s = proj.collection('stage')
           const l = proj.collection('contractors')
           b.doc('0').set({
-            address: "",
-            budget: "",
+            address: "3100 Flower Lane",
+            budget: 599,
             completed: false,
             goals: ["demo goal", "Demo Goal 2"],
             init: false,
@@ -54,7 +54,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
             approved: false,
             isPaid: false,
             cost: 59999,
-            approveterms: false
+            approveterms: false,
+            terms: ""
           });
           d.doc('0').set({
             init: false,

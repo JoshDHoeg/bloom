@@ -353,9 +353,9 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _location = '';
-      get location() { return this._location; };
-      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
       _budget = ['', ''];
       get budget() {
         return this._budget;
@@ -386,14 +386,14 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._location = this.data['location'];
+          this._address = this.data['address'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
           this._profile = this.data['profile'];
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
-          this._location = 'Western Side of House';
+          this._address = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
@@ -404,7 +404,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           goals: this.goals,
-          location: this.location,
+          address: this.address,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,
@@ -440,6 +440,9 @@ export class ProjectData {
       _ApproveTerms = false;
       get approveterms() {return this._ApproveTerms; };
       set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
+      _terms = ''
+      get terms() {return this._terms; }
+      set terms(s) {this._setter({ terms: s }).then(() => this._terms = s); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -451,6 +454,7 @@ export class ProjectData {
           this._isPaid = this.data['isPaid']
           this._cost = this.data['cost']
           this._ApproveTerms = this.data['approveterms']
+          this._terms = this.data['terms']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -459,6 +463,7 @@ export class ProjectData {
           this._isPaid = false;
           this._cost = 59999;
           this._ApproveTerms = false
+          this._terms = ''
         }
       }
       getAll() {
@@ -470,10 +475,12 @@ export class ProjectData {
           isPaid: this.isPaid,
           cost: this.cost,
           approveterms: this.approveterms,
+          terms: this._terms
         });
       }
     }
   };
+  
   static Draft = {
     colRef: 'drafts',
     type: class Draft extends ProjectDataBase {

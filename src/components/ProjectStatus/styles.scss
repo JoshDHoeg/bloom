@@ -1,0 +1,55 @@
+.concept .ui.steps .step.active, 
+.concept .ui.steps .step.active:after, 
+.concept .ui.steps .step.active:hover, 
+.concept .ui.steps .step.active:hover:after{
+    background: #AAD5F7;
+}
+
+.concept .ui.steps .step.active .title{
+    color: #ffffff;
+}
+
+
+.draft .ui.steps .step.active, 
+.draft .ui.steps .step.active:after, 
+.draft .ui.steps .step.active:hover, 
+.draft .ui.steps .step.active:hover:after{
+    background: #FA907F;
+}
+
+.draft .ui.steps .step.active .title{
+    color: #ffffff;
+}
+
+.final .ui.steps .step.active, 
+.final .ui.steps .step.active:after, 
+.final .ui.steps .step.active:hover, 
+.final .ui.steps .step.active:hover:after{
+    background: #84DB95;
+}
+
+.final .ui.steps .step.active .title{
+    color: #ffffff;
+}
+
+.revision .ui.steps .step.active, 
+.revision .ui.steps .step.active:after, 
+.revision .ui.steps .step.active:hover, 
+.revision .ui.steps .step.active:hover:after{
+    background: #F5BDF9;
+}
+
+.revision .ui.steps .step.active .title{
+    color: #ffffff;
+}
+
+.contractors .ui.steps .step.active, 
+.contractors .ui.steps .step.active:after, 
+.contractors .ui.steps .step.active:hover, 
+.contractors .ui.steps .step.active:hover:after{
+    background: #FFCE6C;
+}
+
+.contractors .ui.steps .step.active .title{
+    color: #ffffff;
+}

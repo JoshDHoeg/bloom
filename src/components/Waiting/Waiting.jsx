@@ -9,7 +9,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../assets/images/icons/ArrowRight.svg';
-import Contractors from '../../containers/Project/UserProject/Contractors/Contractors';
+import ReactToolTip from 'react-tooltip'
+
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -39,15 +40,18 @@ class Waiting extends Component {
         else if(this.props.state === 'draft'){
             this.setState({
                 title: 'Draft',
+                titleNext: 'final',
+                titleLast: 'concept design',
                 src: logo,
                 message: 'Your Draft is not ready yet. You will receive a notification when it is ready',
                 last: '/project/user_concept',
-                next: '/project/user_final'
+                next: '/project/user_final',
             })
         }
         else if(this.props.state === 'final'){
             this.setState({
                 title: 'Final',
+                titleLast: 'rough draft',
                 src: logo,
                 message: 'Your Final is not ready yet. You will receive a notification when it is ready',
                 last: '/project/user_draft',
@@ -66,6 +70,7 @@ class Waiting extends Component {
         else{
             this.setState({
                 title: 'Concept',
+                titleNext: 'rough draft',
                 src: logo,
                 message: 'Your Concept is not ready yet. You will receive a notification when it is ready',
                 next: '/project/user_draft'
@@ -73,10 +78,14 @@ class Waiting extends Component {
         }
     }
     render(){
+        console.log(this.state.titleNext)
+        let Next
+        Next = 'go to '+(this.state.titleNext)
         let RightArrow;
         if(this.props.state !== 'final' && this.props.state !=='revision' && this.props.state !== 'contractors'){
             RightArrow =
-            <Link to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link data-tip={Next} to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}>
+                <ReactToolTip />
                 <img src={ArrowRight} />
             </Link>
         }else if(this.props.state === 'final' && this.props.stage.stage === 'revisions'){
@@ -86,13 +95,16 @@ class Waiting extends Component {
             </Link>
     }
         let LeftArrow;
+        let Last;
+        Last = 'go to '+(this.state.titleLast)
         let revision = Number(this.props.currentRevision)
         console.log(this.props.state)
         if(this.props.state === 'revision' && revision !== 0){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)
             LeftArrow =
-            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
+            <Link data-tip='go to revision'{...revision-1} to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
+                <ReactToolTip />
                 <img src={ArrowLeft} />
             </Link>
         }else if(this.props.state === 'contractors'){
@@ -104,8 +116,9 @@ class Waiting extends Component {
             </Link>
         }else if(this.props.state !== 'concept'){
             LeftArrow =
-            <Link to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
+            <Link data-tip={Last} to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
                 <img src={ArrowLeft} />
+                <ReactToolTip/>
             </Link>
         }
         return(
