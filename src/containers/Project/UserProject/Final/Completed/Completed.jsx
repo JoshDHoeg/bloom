@@ -79,11 +79,13 @@ class Completed extends React.Component {
             RightArrow =                     
             <Link data-tip='go to revision' to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
+                <ReactToolTip />
             </Link>
         }else if(this.props.stage.stage === 'contractors'){
             RightArrow =
             <Link data-tip='go to contractors page' to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
+                <ReactToolTip />
             </Link>
         }
         return (

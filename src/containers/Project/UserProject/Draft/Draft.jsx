@@ -93,10 +93,6 @@ class Draft extends Component {
     }
 
     render() {
-        if(this.state.draft.completed === true){
-            this.stage.stage = 'draft'
-        }
-        console.log('hell0', this.state.draft.media)
         if(!this.state.draft.completed){
             return( <WaitingPage stage={this.state.stage} state="draft"/>    );             
         } else {
