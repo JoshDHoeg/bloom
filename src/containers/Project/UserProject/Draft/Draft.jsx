@@ -6,6 +6,7 @@ import { withAuthorization } from '../../../../utilities/Session/index';
 import { Route } from 'react-router-dom';
 import './draft.sass'
 class Draft extends Component {
+    concept;
     draft;
     stage;
     constructor(props){
@@ -22,6 +23,11 @@ class Draft extends Component {
                 media:'',
                 figma: '',
                 feedback: ''
+            },
+            concept: {
+                approved: false,
+                approveterms: false,
+                isPaid: false,
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
@@ -68,6 +74,7 @@ class Draft extends Component {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.draft = await project.draft;
         this.stage = await project.stage;
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
@@ -76,6 +83,9 @@ class Draft extends Component {
             },
             stage: {
                 stage: this.stage.stage
+            },
+            concept: {
+                ...this.concept.getAll()
             }
         }
         this.setState(state);
@@ -87,7 +97,7 @@ class Draft extends Component {
         if(!this.state.draft.completed){
             return( <WaitingPage state="draft"/>    );             
         } else {
-            return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
+            return( <CompletedPage concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }
     }
 

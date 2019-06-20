@@ -4,11 +4,13 @@ import React from 'react';
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed.jsx';
+import Payment from '../Payment/Payment'
 
 
 class Final extends React.Component {
     final;
     stage;
+    concept;
     revisions;
     constructor(props) {
         super(props);
@@ -22,6 +24,11 @@ class Final extends React.Component {
             stage: {
                 stage: '',
                 rcount: ''
+            },
+            concept: {
+                approved: false,
+                approveterms: false,
+                isPaid: false,
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
@@ -82,7 +89,7 @@ class Final extends React.Component {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.final = await project.final;
         this.stage = await project.stage;
-        this.revisions = await project.revision;
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
@@ -93,6 +100,9 @@ class Final extends React.Component {
                 stage: this.stage.stage,
                 rcount: this.stage.rcount
             },
+            concept:{
+                ...this.concept.getAll()
+            }
         }
         this.setState(state);
         return state;
@@ -108,7 +118,9 @@ class Final extends React.Component {
         console.log('does this work',this.props.location.pathname);
         if(!this.state.final.completed){
             return( <WaitingPage stage={this.state.stage} state="final"/>    );             
-        } else {
+        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.props.stage.stage === 'draft'){
+            return(<Payment/>)
+        }else{
             return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }
     }

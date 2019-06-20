@@ -9,15 +9,15 @@ import { withAuthorization } from '../../../../utilities/Session';
 import * as ROUTES from "../../../../utilities/constants/routes";
 import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import Payment from '../Concept/Payment/Payment';
+import Payment from '../Payment/Payment';
 import CompletedPage from './Completed/Completed';
 import Approve from './Approve/Approve'
 import Loading from '../../../../components/Loading/Loading'
 
 
-
 export class Concept extends React.Component{
     concept;
+    stage;
     constructor(props){
         super(props);
         this.state = {
@@ -29,6 +29,9 @@ export class Concept extends React.Component{
                 isPaid: false,
                 video: null,
                 schedule: null
+            },
+            stage:{
+                stage:''
             }
         }
         this.handleClick1 = this.handleClick1.bind(this);
@@ -48,11 +51,15 @@ export class Concept extends React.Component{
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.concept = await project.concept;
+        this.stage = await project.stage;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
             concept: {
                 ...this.concept.getAll()
+            },
+            stage:{
+                stage: this.stage.stage
             }
         }
 
@@ -61,6 +68,7 @@ export class Concept extends React.Component{
     }
 
     render(){
+        console.log('stage1', this.state.stage)
         // if(this.state.loading){
         //     return <Loading/>
         // }
@@ -72,16 +80,13 @@ export class Concept extends React.Component{
         //backgroundImage: "url(" + backgroundTemp + ")",
         //the one I'm doing
         if(this.state.concept.completed && !this.state.concept.approved) {
-            return (<CompletedPage concept={this.state.concept} />)
-        }
-        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
-            return (<Payment concept={this.state.concept}/>)
+            return (<CompletedPage stage={this.state.stage} concept={this.state.concept} />)
         }
         if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
             return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
         }
-        if(this.state.concept.completed && this.state.concept.approved) {
-            return (<CompletedPage concept={this.state.concept}/>)
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms) {
+            return (<CompletedPage stage={this.state.stage} concept={this.state.concept}/>)
         }
     }
 }

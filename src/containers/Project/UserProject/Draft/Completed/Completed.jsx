@@ -23,26 +23,9 @@ library.add(faArrowLeft);
 
 
 class Completed extends Component {
-    draft;
-    stage;
     constructor(props) {
         super(props);
         this.state = {
-            draft: {
-                approved: '',
-                feedback: '',
-                figma: '',
-                video: '',
-            },
-            stage: {
-                stage: ''
-            },
-            tempURL: 'www.google.com',
-            figmaTempURL: 'https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1',
-            tempYoutube: 'LwZI1isnvPQ',
-            showVideo: false,
-            loading: false,
-            feedbackState: false,
         };
         this.videoToggle = this.videoToggle.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
@@ -97,13 +80,23 @@ class Completed extends Component {
             color='blue'>
             Submit</Button>
         }
+        let LeftArrow
+        if(this.props.concept.completed && this.props.concept.approved && this.props.concept.approveterms && !this.props.concept.isPaid && this.props.stage.stage === 'concept'){
+            LeftArrow =
+            <Link data-tip='go to payment' to="/project/user_payment" style={{position: "absolute", right: "90%", top: "250px"}}>
+            <img src={ArrowLeft} />
+            </Link>
+        }else{
+            LeftArrow =
+            <Link data-tip='go to concept design' to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
+            <img src={ArrowLeft} />
+            </Link>
+        }
         return (
             <Grid>
                 <Container><ProjectStatus state="draft"/></Container>
                 <Container fluid textAlign="center" text='true'>
-                    <Link data-tip='go to concept design' to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
-                        <img src={ArrowLeft} />
-                    </Link>
+                    {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>
                     <   Header as='h2'>Rough Draft</Header>
                     </Grid.Row>

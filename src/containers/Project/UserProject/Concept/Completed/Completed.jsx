@@ -9,15 +9,30 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import PaymentPage from '../../Payment/Payment'
 import ReactToolTip from 'react-tooltip'
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
 class Completed extends React.Component{
     render(){
-        console.log(this.props.concept.video)
+        console.log('stage2', this.props.stage)
         let video
         video = this.props.concept.video;
+        let RightArrow
+        if(this.props.concept.completed && this.props.concept.approved && this.props.concept.approveterms && !this.props.concept.isPaid && this.props.stage.stage === 'concept') {
+            RightArrow =
+            <Link data-tip='go to payment' to="/project/user_payment" style={{position: "absolute", left: "90%", top: "250px"}}>
+            <ReactToolTip />
+            <img src={ArrowRight} />
+            </Link>
+        }else{
+            RightArrow =
+            <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+            <ReactToolTip />
+            <img src={ArrowRight} />
+            </Link>
+        }
         return (
             <Grid >
             <Container><ProjectStatus state="concept"/></Container>
@@ -38,10 +53,7 @@ class Completed extends React.Component{
                 <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777&appointmentType=10368032" width="90%" height="500" frameBorder="0"></iframe>
                 <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                 </Grid.Row>
-                <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-                    <ReactToolTip />
-                    <img src={ArrowRight} />
-                </Link>
+                {RightArrow}
                 </Container>
             </Grid>
         )

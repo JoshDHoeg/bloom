@@ -28,9 +28,10 @@ export const CONTRACTORS = '/project/user_contractors';
 export const FINAL = '/project/user_final';
 export const REVISION = '/project/user_revision/:id';
 export const DRAFT = '/project/user_draft';
-export const PAYMENT = '/project/user_concept/payment';
+export const PAYMENT = '/project/user_payment';
 export const APPROVE = '/project/user_concept/approve';
 export const MEDIA = '/project/user_draft/media';
+export const HOUSE = '/house_visit';
 
 //account subpaths
 export const ACCOUNT_INFO = '/account/info';
@@ -40,5 +41,6 @@ export const PAYMENT_OPTIONS_EDIT = '/account/payment-options/edit';
 export const ACCOUNT_PREFERENCES = '/account/preferences';
 export const ACCOUNT_PREFERENCES_EDIT = '/account/preferences/edit';
 export const CHANGE_PASS = '/account/change-pass';
+
 //messaging
 export const MESSAGING = "/messaging";
