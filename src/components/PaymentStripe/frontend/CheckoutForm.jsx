@@ -79,7 +79,7 @@ class Form extends Component {
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
     let amt = this.state.concept.cost;
-    let response = await fetch(PAYMENT_SERVER_URL, {
+    let response = await fetch('https://bloom-expressapi.herokuapp.com/payment', {
       method: "POST",
       headers: {"Content-Type": "application/json",
       'Access-Control-Allow-Origin':  'https://app.bloomtimedesign.co',
