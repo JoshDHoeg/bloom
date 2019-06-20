@@ -45,7 +45,7 @@ export class Concept extends React.Component{
       handleClick1 = () => {
         this.concept.approveterms = true;
         this.state.concept.approveterms = true;
-        //this.stage.stage = 'draft'
+        this.stage.stage = 'draft'
         this.setState({complete: true})
     }
 
