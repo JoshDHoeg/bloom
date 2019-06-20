@@ -3,7 +3,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import Form from './CheckoutForm';
 import { withAuthorization } from '../../../utilities/Session';
 import { Link } from 'react-router-dom';
-import { Grid, Container, Segment, Header } from 'semantic-ui-react'
+import { Grid, Container, Segment, Header, Item } from 'semantic-ui-react'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import ArrowLeft from '../../../assets/images/icons/ArrowLeft.svg';
@@ -43,7 +43,11 @@ class ElementsContainer extends Component {
         {LeftArrow}
         <Container  textAlign='center' text='true'>
             <Grid.Row style={{ paddingTop: '20px' }}>
-              <Header as='h2'>Purchase Design</Header>
+              <Header as='h1'>Purchase Design</Header>
+            </Grid.Row>
+            <Grid.Row style={{ paddingTop: '20px' }}>
+              <Header as='h3'>Payment is due before delivery of your Final Designs</Header>
+              <Item>If you don't want to complete payment now, you can find this page again in the menu in the upper right side of the site</Item>
             </Grid.Row>
             <Grid.Row style={{ paddingTop: '20px' }}>
               <Segment textAlign='left'>

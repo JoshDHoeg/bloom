@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import ElementsContainer from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import { withAuthorization } from '../../../../utilities/Session';
+import { Grid } from 'semantic-ui-react';
 
 class PaymentPage extends Component {
     concept;
@@ -51,7 +52,10 @@ class PaymentPage extends Component {
     render(){
         console.log('stage3', this.props.stage)
         return(
-            <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
+            <Grid.Row>
+                <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
+            </Grid.Row>
+
         )
     }
 }
