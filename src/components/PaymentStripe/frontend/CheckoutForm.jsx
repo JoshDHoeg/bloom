@@ -55,7 +55,6 @@ class Form extends Component {
 
   stateChange = () => {
     this.concept.isPaid = true;
-    this.stage.stage = 'draft';
   }
 
   getProjectState = async () => {

@@ -114,12 +114,11 @@ class Final extends React.Component {
 
 
     render(){
-        console.log(this.stage)
-        console.log('does this work',this.props.location.pathname);
-        if(!this.state.final.completed){
+        console.log(this.state.stage)
+        if(!this.state.final.completed && this.state.concept.isPaid){
             return( <WaitingPage stage={this.state.stage} state="final"/>    );             
-        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.props.stage.stage === 'draft'){
-            return(<Payment/>)
+        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.state.stage.stage === 'final'){
+            return(<Payment stage={this.state.stage}/>)
         }else{
             return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }

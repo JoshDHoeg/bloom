@@ -49,7 +49,7 @@ class Approve extends React.Component{
                                 display="initial"
                                 position="relative"/>
                             </div>
-                            <Button style={{backgroundColor:'#84DB95'}}onClick={this.props.handleClick1}>I AGREE</Button>
+                            <Button style={{backgroundColor:'#84DB95'}} onClick={this.props.handleClick1}>I AGREE</Button>
                         </Container>
                     </Grid>
                 </div>

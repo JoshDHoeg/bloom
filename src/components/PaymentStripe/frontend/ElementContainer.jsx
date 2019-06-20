@@ -21,7 +21,7 @@ class ElementsContainer extends Component {
   render() {
     let RightArrow
     let LeftArrow
-    if(this.props.stage.stage === 'concept'){
+    if(this.props.stage.stage === 'concept' || this.props.stage.stage === 'draft'){
       RightArrow =
         <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
           <ReactToolTip/>
@@ -31,7 +31,7 @@ class ElementsContainer extends Component {
         <Link data-tip='go to concept design' to="/project/user_concept" style={{position: "absolute", right: "90%", top: "250px"}}>
         <img src={ArrowLeft}/>
         </Link>
-    }if(this.props.stage.stage === 'draft'){
+    }if(this.props.stage.stage === 'final'){
       LeftArrow =
         <Link data-tip='go to rough draft' to="/project/user_draft" style={{position: "absolute", right: "90%", top: "250px"}}>
           <ReactToolTip/>

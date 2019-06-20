@@ -93,9 +93,12 @@ class Draft extends Component {
     }
 
     render() {
+        if(this.state.draft.completed === true){
+            this.stage.stage = 'draft'
+        }
         console.log('hell0', this.state.draft.media)
         if(!this.state.draft.completed){
-            return( <WaitingPage state="draft"/>    );             
+            return( <WaitingPage stage={this.state.stage} state="draft"/>    );             
         } else {
             return( <CompletedPage concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }

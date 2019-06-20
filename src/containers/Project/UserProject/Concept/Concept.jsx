@@ -45,6 +45,7 @@ export class Concept extends React.Component{
       handleClick1 = () => {
         this.concept.approveterms = true;
         this.state.concept.approveterms = true;
+        //this.stage.stage = 'draft'
         this.setState({complete: true})
     }
 
@@ -74,7 +75,7 @@ export class Concept extends React.Component{
         // }
         //change this to waiting component
         if(!this.state.concept.completed){
-            return (<WaitingPage state="concept"/>)
+            return (<WaitingPage stage={this.state.stage} state="concept"/>)
         }
 
         //backgroundImage: "url(" + backgroundTemp + ")",

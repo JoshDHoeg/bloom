@@ -13,16 +13,18 @@ import Loading from '../Loading/Loading'
 import { withFirebase } from '../../utilities/Firebase';
 
 class UserNavigation extends Component {
+    concept;
     constructor(props) {
         super(props);
         this.state = {
-            loading: true
+            loading: true,
         }
     }
 
     componentDidMount() {
         this.setState({ loading: false })
     }
+
 
     render(){
         if(this.state.loading){
@@ -63,6 +65,11 @@ class NavigationAuth extends Component {
                             <Button><Icon name = 'comments'/>Messages</Button>
                         </DropdownItem>
                     </NavLink> */}
+                    <NavLink color='teal' to='/project/user_payment'>
+                        <DropdownItem className='title' >
+                            <Button><Icon name = 'credit card'/>Pay Now</Button>
+                        </DropdownItem>
+                    </NavLink>
                     <NavLink color='teal' to='/signin'>
                         <DropdownItem className='title' >
                             <SignOutButton/>
