@@ -65,7 +65,7 @@ class NavigationAuth extends Component {
                             <Button><Icon name = 'comments'/>Messages</Button>
                         </DropdownItem>
                     </NavLink> */}
-                    <NavLink color='teal' to='/project/user_payment'>
+                    <NavLink color='teal' to='/user_payment'>
                         <DropdownItem className='title' >
                             <Button><Icon name = 'credit card'/>Pay Now</Button>
                         </DropdownItem>

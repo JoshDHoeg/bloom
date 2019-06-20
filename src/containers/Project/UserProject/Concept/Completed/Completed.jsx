@@ -22,7 +22,7 @@ class Completed extends React.Component{
         let RightArrow
         if(this.props.concept.completed && this.props.concept.approved && this.props.concept.approveterms && !this.props.concept.isPaid && (this.props.stage.stage === 'draft' || this.props.stage.stage === 'concept')) {
             RightArrow =
-            <Link data-tip='go to payment' to="/project/user_payment" style={{position: "absolute", left: "90%", top: "250px"}}>
+            <Link data-tip='go to payment' to="/user_payment" style={{position: "absolute", left: "90%", top: "250px"}}>
             <ReactToolTip />
             <img src={ArrowRight} />
             </Link>
@@ -41,7 +41,7 @@ class Completed extends React.Component{
                     {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
                         {/*<FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>*/}
                     {/*</Link>*/}
-                <Grid.Row  style={{paddingBottom:'20px'}}>
+                <Grid.Row  style={{paddingBottom:'20px', paddingTop: '20px'}}>
                     <Header as='h1'>Concept Designs</Header>
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'20px'}}>

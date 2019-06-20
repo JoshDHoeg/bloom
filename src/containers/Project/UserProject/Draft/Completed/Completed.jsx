@@ -83,7 +83,7 @@ class Completed extends Component {
         let LeftArrow
         if(this.props.concept.completed && this.props.concept.approved && this.props.concept.approveterms && !this.props.concept.isPaid && (this.props.stage.stage === 'draft' || this.props.stage.stage === 'concept')){
             LeftArrow =
-            <Link data-tip='go to payment' to="/project/user_payment" style={{position: "absolute", right: "90%", top: "250px"}}>
+            <Link data-tip='go to payment' to="/user_payment" style={{position: "absolute", right: "90%", top: "250px"}}>
             <img src={ArrowLeft} />
             </Link>
         }else{
