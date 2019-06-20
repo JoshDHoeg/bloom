@@ -353,9 +353,9 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _location = '';
-      get location() { return this._location; };
-      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
       _budget = ['', ''];
       get budget() {
         return this._budget;
@@ -386,14 +386,14 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._location = this.data['location'];
+          this._address = this.data['address'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
           this._profile = this.data['profile'];
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
-          this._location = 'Western Side of House';
+          this._address = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
@@ -404,7 +404,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           goals: this.goals,
-          location: this.location,
+          address: this.address,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,

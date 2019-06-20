@@ -81,12 +81,14 @@ class Completed extends React.Component {
             feedbackButton = <Button 
             data-tip='Submit your revision feedback'
             content='Submit'
+            style={{backgroundColor:'#84DB95'}}
             onClick={this.handleSuccess} 
             color='blue'>
             Submit</Button>
         }else{
             feedbackButton = <Button 
             disabled
+            style={{backgroundColor:'#84DB95'}}
             content='Submit' 
             color='blue'>
             Submit</Button>
@@ -143,9 +145,9 @@ class Completed extends React.Component {
                     </Grid.Row>
                     <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
-                            <Button data-tip='Ask for a revision and leave feedback' onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button data-tip='Get quotes from contractors' onClick={this.props.contractorState}><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
+                            <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Ask for a revision and leave feedback' onClick={this.HandleClick} >Ask for Revision</Button>
+                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Get quotes from contractors' onClick={this.props.contractorState}><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>

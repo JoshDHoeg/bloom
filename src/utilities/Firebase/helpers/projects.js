@@ -30,8 +30,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const s = proj.collection('stage')
           const l = proj.collection('contractors')
           b.doc('0').set({
-            address: "",
-            budget: "",
+            address: "3100 Flower Lane",
+            budget: 599,
             completed: false,
             goals: ["demo goal", "Demo Goal 2"],
             init: false,

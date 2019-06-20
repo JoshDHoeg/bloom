@@ -23,14 +23,14 @@ class AccountInfoPageEdit extends Component {
     render() {
         return (
             <Container>
-                <Grid textAlign='center'>
+                <Grid columns='two' textAlign='center'>
                     <Grid.Row>
                         <InfoBanner
                         user={this.props.user}
                         name={this.props.user.name}
                         />
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Column>
                         <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit User Information</h1>
@@ -43,8 +43,8 @@ class AccountInfoPageEdit extends Component {
                                 />                           
                         </span>
                         </Segment>
-                    </Grid.Row>
-                    <Grid.Row>
+                    </Grid.Column>
+                    <Grid.Column>
                         <Segment>
                         <span style={{ backGroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Address Information</h1>
@@ -58,7 +58,7 @@ class AccountInfoPageEdit extends Component {
                             />
                         </span>
                         </Segment>
-                    </Grid.Row>
+                    </Grid.Column>
                     <Grid.Row style={{paddingBottom:'25px'}}>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>
                     </Grid.Row>

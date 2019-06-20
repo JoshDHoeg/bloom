@@ -32,6 +32,7 @@ class Completed extends Component {
                 approved: '',
                 feedback: '',
                 figma: '',
+                video: '',
             },
             stage: {
                 stage: ''
@@ -82,6 +83,7 @@ class Completed extends Component {
         let feedbackButton;
         if(!this.props.draft.approved) {
             feedbackButton = <Button 
+            style={{backgroundColor:'#84DB95'}}
             data-tip='Submit your design feedback'
             content='Submit'
             onClick={this.handleSuccess} 
@@ -90,6 +92,7 @@ class Completed extends Component {
         }else{
             feedbackButton = <Button 
             disabled
+            style={{backgroundColor:'#84DB95'}}
             content='Submit' 
             color='blue'>
             Submit</Button>
@@ -112,8 +115,8 @@ class Completed extends Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <Button.Group>
-                            <Button data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
-                            <Button data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
+                            <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
+                            <Button style={{backgroundColor:'#FFCE6C'}} data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{paddingBottom:'20px'}}>

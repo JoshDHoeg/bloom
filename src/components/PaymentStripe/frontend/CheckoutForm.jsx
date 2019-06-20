@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Container,Segment, Header, Button, Grid, GridColumn } from 'semantic-ui-react'
+import { Container,Segment, Header, Button, Grid } from 'semantic-ui-react'
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -108,7 +108,7 @@ class Form extends Component {
       return( 
         <Grid>
           <Grid.Row style={{paddingTop: '25px', paddingBottom: '25px'}}>
-            <Header as='h2' style={{ paddingRight:'10px', fontSize:'15px'}}>Purchase Complete!</Header>
+            <Header as='h2' style={{ paddingLeft:'10px', paddingRight:'10px', fontSize:'15px'}}>Purchase Complete!</Header>
               <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
               <img src={ArrowRight}/></Link>
           </Grid.Row>
@@ -126,7 +126,7 @@ class Form extends Component {
            <CardElement />
           </Segment>
         </Grid.Row>
-          <Button animated='fade' onClick={this.submit} style={{marginTop:'15px', marginBottom: '15px'}}>
+          <Button animated='fade' onClick={this.submit} style={{backgroundColor:'#84DB95',marginTop:'15px', marginBottom: '15px'}}>
             <Button.Content visible>Purchase</Button.Content>
             <Button.Content hidden>${amount2}</Button.Content>
           </Button>

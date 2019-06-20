@@ -19,6 +19,7 @@ const EditButton = (props) => {
                 style={{
                     width: "100px",
                     height: "40px",
+                    backgroundColor:'#84DB95'
                 }}>
                     Done
                 <ReactToolTip />
@@ -31,6 +32,7 @@ const EditButton = (props) => {
                 style={{
                     width: "100px",
                     height: "40px",
+                    backgroundColor:'#FFCE6C'
                 }}>
                         Edit
                 <ReactToolTip />
