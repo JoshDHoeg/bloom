@@ -34,13 +34,14 @@ class Completed extends React.Component{
             </Link>
         }
         return (
+            <div className='Completed'>
             <Grid >
             <Container><ProjectStatus state="concept"/></Container>
                 <Container fluid textAlign='center' text='true'>
                     {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
                         {/*<FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>*/}
                     {/*</Link>*/}
-                <Grid.Row  style={{paddingBottom:'20px', paddingTop: '20px'}}>
+                <Grid.Row  style={{paddingBottom:'20px'}}>
                     <Header as='h1'>Concept Designs</Header>
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'20px'}}>
@@ -56,6 +57,7 @@ class Completed extends React.Component{
                 {RightArrow}
                 </Container>
             </Grid>
+            </div>
         )
     }
 }
