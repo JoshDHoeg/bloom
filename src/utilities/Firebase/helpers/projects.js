@@ -124,7 +124,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
       return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
     } else {
       return this.projectsRef.doc(id).get().then(data => {
-        console.log(data);
         return new Project(data)
       });
   }
@@ -143,7 +142,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           });
       });
   }
-  
+
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
     let cuids = Array.isArray(clientUid) ? clientUid : [clientUid];
@@ -159,7 +158,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
     } else {
         return { name: name, client: clientRefs, designer: designerRefs }
     }
-    
+
   }
 
   _doUpdateProjectData = async (docRef, returnProject) => {
@@ -177,7 +176,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
     const projectRef = await this._doGetProjectTemplate(newName, clientUid, designerUid)
       .then(project => {
         if (pid) {
-          const docRef = this.projectsRef.doc(pid)          
+          const docRef = this.projectsRef.doc(pid)
           return this.projectsRef.doc(pid).set(project).then(() => docRef)
         }
         return this.projectsRef.add(project)
@@ -197,7 +196,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       return 1 + Math.max.apply(null, projects.map(p => parseInt(+p.name.split(/ /).pop()) || 0));
     return 0;
   }
-  
+
   _deleteAll(collection, deleteSubCollections = false, isProject = false) {
     const listener = collection.onSnapshot(docs => {
       docs.forEach(d => {

@@ -48,7 +48,8 @@ class FirebaseChannels extends FirebaseProjects {
             name: "Help Channel",
             p1: null,
             p2: null,
-            messages: []
+            messages: [],
+            lastVisited: [firebase.firestore.Timestamp.now(), firebase.firestore.Timestamp.now()]
         });
         return chan;
     }

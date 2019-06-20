@@ -3,7 +3,7 @@ import {Elements, StripeProvider} from 'react-stripe-elements';
 import Form from './CheckoutForm';
 import { withAuthorization } from '../../../utilities/Session';
 
-const stripe = require('./constants/stripeKey'); 
+const stripe = require('./constants/stripeKey');
 
 class ElementsContainer extends Component {
 
@@ -18,7 +18,7 @@ class ElementsContainer extends Component {
         <div className="payment-form" style={{ marginTop: '10px', marginBottom: '10px', marginLeft: '14px', marginRight: '271px', textAlign: 'left'}}>
           <h2 style={{ fontSize: '22px', color:'#FA907F', fontFamily:'sans-serif'}} >Purchase Design</h2>
           <Elements>
-             <Form /> 
+             <Form />
           </Elements>
         </div>
       </StripeProvider>

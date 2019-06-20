@@ -136,8 +136,16 @@ export class Channel {
   _messages = [];
   get messages(){return this._messages;}
   set messages(mArr){
-      this.ref.set({messages: mArr});
+      this.ref.set({messages: mArr}, {merge: true});
       this._messages = mArr;
+  }
+  //arr of length 2 representing time p1 & p2 last visited channel, respectively (for notifications0
+  _lastVisited = [];
+  get lastVisited(){return this._lastVisited;}
+  set lastVisited(tArr){
+    this.ref.set({lastVisited: tArr}, {merge: true});
+    this._lastVisited = tArr;
+
   }
 
   constructor(channelRef){
@@ -146,6 +154,7 @@ export class Channel {
     this._p2 = data['p2'];
     this._name = data['name'];
     this._messages = data['messages'];
+    this._lastVisited = data['lastVisited'];
     this.ref = channelRef.ref;
     this.id = this.ref.id;
   }
