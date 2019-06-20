@@ -20,7 +20,7 @@ class ElementsContainer extends Component {
             </Grid.Row>
             <Grid.Row style={{ paddingTop: '20px' }}>
               <Segment textAlign='left'>
-                <StripeProvider apiKey = 'pk_test_7XARlGU7KhB75ysMvpSxfDvG00mtqr7j4s' >
+                <StripeProvider apiKey = 'pk_live_wke7a6txnW6Zf4KrMKXaqKtA00z106DivU' >
                   <Elements>
                       <Form concept={this.props.concept}/> 
                   </Elements>
