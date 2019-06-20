@@ -11,6 +11,7 @@ class FirebaseChannels extends FirebaseProjects {
     //get a specific channel from firebase by id
     doGetChannel = (channelId) => {
         return this.channelsRef.doc(channelId).get().then(data => {
+            console.log("This is the data revcieved from channel;",data)
             return new Channel(data);
         })
     }

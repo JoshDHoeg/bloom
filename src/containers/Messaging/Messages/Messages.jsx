@@ -1,14 +1,16 @@
 import React from "react";
-import { Segment, Comment } from "semantic-ui-react";
+import { Segment, Comment,Button,Icon } from "semantic-ui-react";
 
 import MessagesHeader from "./Header/Header";
 import MessageForm from "./Form/Form";
 import MessageList from "./MessageList/MessageList";
 
+
 class Messages extends React.Component {
     constructor(props){
         super(props);
         console.log("constructor called" , props);
+        console.log("")
         this.state = {
             loading: false,
             currentChannel: this.props.currentChannel, //this will change ...help Channel id: b6....
@@ -16,7 +18,8 @@ class Messages extends React.Component {
             messages: this.props.messages,
             searchTerm: "",
             searchLoading: false,
-            searchResults: []
+            searchResults: [],
+            channels: this.props.channels
         };
         this.addMessage = this.addMessage.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this)
@@ -30,6 +33,7 @@ class Messages extends React.Component {
             loading: false,
         });
     }
+
 
     addMessage = async (from, content, channelRef) => {
         const m = await this.props.firebase.doCreateAndAddMessageInChannel(from, content, channelRef);
@@ -61,9 +65,9 @@ class Messages extends React.Component {
         });
     }
 
-    // componentWillMount() {
-    //     this.getMessagesOfCurrentChannel();
-    // }
+    componentWillMount() {
+      this.getMessagesOfCurrentChannel();
+    }
 
     componentDidUpdate(prevProps){
         if(this.props.currentChannel.id !== prevProps.currentChannel.id){
@@ -74,12 +78,17 @@ class Messages extends React.Component {
             }, () => this.getMessagesOfCurrentChannel());
         }
     }
-
+   
     render() {
         if(!this.state.loading){
             return (
                 <React.Fragment>
-                    <MessagesHeader handleSearchChange={this.handleSearchChange} currentChannel={this.state.currentChannel}/>
+                    <MessagesHeader 
+                    handleSearchChange={this.handleSearchChange} 
+                    currentChannel={this.props.currentChannel} 
+                    channels={this.state.channels}
+                    setCurrentChannel={this.props.setCurrentChannel}
+                    />
                     <Segment  className="messages" >
                         <Comment.Group>
                             <MessageList searchTerm={this.state.searchTerm} searchResults={this.state.searchResults} messages={this.state.messages}/>

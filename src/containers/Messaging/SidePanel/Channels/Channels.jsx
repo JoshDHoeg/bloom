@@ -1,11 +1,11 @@
 import React from "react";
-import { Menu, Icon,Item } from "semantic-ui-react";
+import { Menu, Icon,Item,Dropdown } from "semantic-ui-react";
 
 class Channels extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      channels: []
+      channels: [],
     }
   }
 
@@ -14,7 +14,6 @@ class Channels extends React.Component {
           channels: this.props.channels
       });
   }
-
   //can also display channels w/ below function (if not checking loading status in parent component). Think this is worse tho
 
   // componentDidUpdate(prevProps){
@@ -69,15 +68,15 @@ class Channels extends React.Component {
 
     return (
       <React.Fragment>
-      <Menu.Menu style={{background:'#4c3c4c',marginTop: "50px"}}>
-        <Menu.Item >
-          <span>
-            <Icon name="exchange" /> CHANNELS
-          </span>{" "}
-        </Menu.Item>
-
-        {this.displayChannels(channels)}
-        </Menu.Menu>
+    <Dropdown
+    button
+    className='icon'
+    floating
+    labeled
+    options={this.displayChannels(channels)}
+    text='Select Channel'
+  />
+       
         </React.Fragment>
     );
   }

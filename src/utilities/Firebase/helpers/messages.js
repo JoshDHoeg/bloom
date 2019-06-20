@@ -30,6 +30,7 @@ class FirebaseMessages extends channels {
 
     async doGetMessagesByChannel(channelId) {
         const c = await this.doGetChannel(channelId);
+        console.log("Message recieved")
         var temp = [];
         for(var i=0; i<c.messages.length; i++){
             temp.push(this.doGetMessage(c.messages[i]));
