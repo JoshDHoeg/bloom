@@ -5,12 +5,10 @@ import {Link} from "react-router-dom";
 import * as ROUTES from "../../../../utilities/constants/routes";
 
 const EditButton = (props) => {
-    //console.log(props);
     return (
         props.edit ? (
             <button onClick={props.formSubmit} type="button" style={{
                 backgroundColor: "#4BED2F",
-                marginLeft: "225px",
                 width: "100px",
                 height: "40px",
                 borderRadius: "4px",
@@ -23,7 +21,6 @@ const EditButton = (props) => {
         ) : (
             <button type="button" style={{
                 backgroundColor: "#4BED2F",
-                marginLeft: "225px",
                 width: "100px",
                 height: "40px",
                 borderRadius: "4px",
@@ -38,7 +35,6 @@ const EditButton = (props) => {
 }
 
 
-const condition = authUser =>
-    (authUser || authUser._isDesigner);
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(EditButton);

@@ -18,7 +18,6 @@ const GoalList = (props) => (
 
 const GoalListView = (props) => {
     const goals = props.goals;
-    //console.log(goals);
     return (
             <Container id="goals">
                 {goals.map(goal => (
@@ -33,13 +32,11 @@ const GoalListView = (props) => {
 
 const GoalListEdit = (props) => {
     const goals = props.goals;
-    console.log(goals);
     return (
         <Container id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
             {goals.map(goal => {
 
                 if(props.editId !== goal.id){
-                    console.log("display1");
                     return(
                         <div key={goal.id} id={goal.id} >
                             <span>{goal.content}</span>
@@ -48,7 +45,6 @@ const GoalListEdit = (props) => {
                         </div>
                     )
                 }else{
-                    console.log("display2");
                     return(
                         <div key={goal.id} id={goal.id} >
                             <EditGoal goal={goal} editGoalSubmit={props.editGoalSubmit} />

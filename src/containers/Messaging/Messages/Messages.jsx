@@ -9,8 +9,6 @@ import MessageList from "./MessageList/MessageList";
 class Messages extends React.Component {
     constructor(props){
         super(props);
-        console.log("constructor called" , props);
-        console.log("")
         this.state = {
             loading: false,
             currentChannel: this.props.currentChannel, //this will change ...help Channel id: b6....
@@ -26,7 +24,6 @@ class Messages extends React.Component {
     }
 
     getMessagesOfCurrentChannel = async () => {
-        console.log("getting messages of" , this.state.currentChannel.name);
         const m = await this.props.firebase.doGetMessagesByChannel(this.state.currentChannel.id);
         this.setState({
             messages: m,

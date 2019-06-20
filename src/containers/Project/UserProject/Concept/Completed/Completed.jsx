@@ -5,15 +5,13 @@ import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus
 import { withAuthorization } from '../../../../../utilities/Session';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
 class Completed extends React.Component{
-
     render(){
-        console.log("here");
-
         return (
             <div>
                 <Container><ProjectStatus state="concept"/></Container>
@@ -37,12 +35,10 @@ class Completed extends React.Component{
                         <br/>
                         <br/>
                         <br/>
-                        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="560" height="450"
-                                frameBorder="20">
-                        </iframe>
-                        <script src="./schedule.js" type="text/javascript"> </script>
+                        <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777" width="60%" height="500" frameBorder="0"></iframe>
+                        <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
                         <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-                            <FontAwesomeIcon icon="arrow-right" size="5x" color="black"/>
+                            <img src={ArrowRight} />
                         </Link>
                     </Container>
                 </Grid>
@@ -51,5 +47,5 @@ class Completed extends React.Component{
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 export default withAuthorization(condition)(Completed);

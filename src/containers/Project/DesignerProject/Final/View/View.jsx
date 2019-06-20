@@ -1,7 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-//IMPROT UTILITIES
+//IMPORT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
 
@@ -87,6 +87,6 @@ class FinalPageView extends Component {
 }
 
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(FinalPageView);
