@@ -102,7 +102,7 @@ class Waiting extends Component {
             <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
-    }
+        }
         let LeftArrow;
         let Last;
         Last = 'go to '+(this.state.titleLast)
@@ -123,6 +123,9 @@ class Waiting extends Component {
             <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
                 <img src={ArrowLeft} />
             </Link>
+        }else if(this.props.state === 'payment'){
+            LeftArrow=null
+        
         }else if(this.props.state !== 'concept'){
             LeftArrow =
             <Link data-tip={Last} to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
