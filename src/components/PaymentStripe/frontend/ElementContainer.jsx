@@ -11,7 +11,8 @@ import { faArrowRight , faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ReactToolTip from 'react-tooltip'
 library.add(faArrowRight)
 library.add(faArrowLeft)
-const stripe = require('./constants/stripeKey'); 
+const stripe = require('./constants/stripeKey');
+
 
 class ElementsContainer extends Component {
   constructor(props){
@@ -53,7 +54,7 @@ class ElementsContainer extends Component {
               <Segment textAlign='left'>
                 <StripeProvider apiKey = 'pk_live_wke7a6txnW6Zf4KrMKXaqKtA00z106DivU' >
                   <Elements>
-                      <Form stage={this.props.stage} concept={this.props.concept}/> 
+                      <Form stage={this.props.stage} concept={this.props.concept}/>
                   </Elements>
                 </StripeProvider>
               </Segment>
@@ -61,6 +62,7 @@ class ElementsContainer extends Component {
           </Container>
           {RightArrow}
       </Grid>
+
     );
   }
 }

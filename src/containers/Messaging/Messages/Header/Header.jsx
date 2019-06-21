@@ -7,13 +7,12 @@ class MessagesHeader extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      currentChannel: this.props.currentChannel, 
-      channels: this.props.channels,
+      channels: this.props.channels
     }
   }
 
   render() {
-      const { handleSearchChange } = this.props;
+      //const { handleSearchChange } = this.props;
     return (
       <Segment clearing fluid>
         {/* Channel Title */}
@@ -23,10 +22,11 @@ class MessagesHeader extends React.Component {
           </span>
         </Header>
         <Channels
+                newMessageCounts={this.props.newMessageCounts}
                 channels={this.state.channels}
-                currentChannel={this.state.currentChannel}
+                currentChannel={this.props.currentChannel}
                 setCurrentChannel={this.props.setCurrentChannel}
-            />
+        />
       </Segment>
     );
   }
@@ -35,7 +35,7 @@ const condition = authUser => !!authUser;
 
 export default withAuthorization(condition)(MessagesHeader);
 
-/* 
+/*
 <Header floated="right">
 <Input
   onChange={handleSearchChange}

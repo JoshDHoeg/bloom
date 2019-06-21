@@ -20,20 +20,21 @@ import * as ROUTES from './utilities/constants/routes';
 import { withAuthentication } from './utilities/Session';
 
 const App = () => (
-  <Router>
-    <div>
-      <Navigation />
-      <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
-      <Route path={ROUTES.SIGN_IN} component={SignInPage} />
-      <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
-      <Route path={ROUTES.ACCOUNT} component={AccountPage} />
-      <Route path={ROUTES.PROJECT} component={ProjectPage} />
-      <Route path={ROUTES.MESSAGING} component={Messaging} />
-      <Route path={ROUTES.PROJECT_LIST} exact component={ProjectListPage} />
-      <Route path={ROUTES.HOUSE} exact component = {House} />
-      <Route path={ROUTES.PAYMENT} exact component = {Payment} />
-    </div>
-  </Router>
+  
+    <Router>
+      <div>
+        <Navigation />
+        <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
+        <Route path={ROUTES.SIGN_IN} component={SignInPage} />
+        <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
+        <Route path={ROUTES.ACCOUNT} component={AccountPage} />
+        <Route path={ROUTES.PROJECT} component={ProjectPage} />
+        <Route path={ROUTES.MESSAGING} component={Messaging} />
+        <Route path={ROUTES.PROJECT_LIST} exact component={ProjectListPage} />
+        <Route path={ROUTES.HOUSE} exact component = {House} />
+        <Route path={ROUTES.PAYMENT} exact component = {Payment} />
+      </div>
+    </Router>
 );
 
 export default withAuthentication(App);

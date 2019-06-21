@@ -2,14 +2,608 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf67c32d-4d5e-4914-8a69-8006b52e961d" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/components/Wysiwig/wysiwig.jsx" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/styles.scss" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed/Completed.jsx" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" afterPath="$PROJECT_DIR$/package-lock.json" />
       <change beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Edit/Edit.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Edit/Edit.jsx" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Test/index.test.js" afterPath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Test/index.test.js" />
-      <change beforePath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Final/Test/index.test.js" afterPath="$PROJECT_DIR$/src/containers/Project/DesignerProject/Final/Test/index.test.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/context.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/context.js" />
-      <change beforePath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" afterPath="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/accordion.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/accordion.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/accordion.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/ad.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/api.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/api.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/breadcrumb.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/button.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/card.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/checkbox.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/checkbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/checkbox.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/comment.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/container.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dimmer.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dimmer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dimmer.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/divider.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dropdown.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dropdown.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/dropdown.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/embed.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/embed.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/embed.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/feed.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/flag.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/form.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/form.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/form.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/grid.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/header.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/icon.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/image.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/input.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/item.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/label.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/list.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/loader.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/menu.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/message.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/modal.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/modal.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/modal.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/nag.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/nag.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/nag.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/placeholder.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/popup.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/popup.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/popup.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/progress.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/progress.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/progress.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/rail.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/rating.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/rating.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/rating.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/reset.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/reveal.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/search.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/search.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/search.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/segment.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/shape.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/shape.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/shape.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sidebar.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sidebar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sidebar.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/site.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/site.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/site.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/statistic.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/step.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sticky.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sticky.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/sticky.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/tab.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/tab.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/tab.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/table.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/transition.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/transition.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/transition.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/visibility.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/components/visibility.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/semantic.css" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/semantic.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/semantic.min.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/basic/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/basic/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/basic/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/basic/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/brand-icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/brand-icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/brand-icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/brand-icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/brand-icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/outline-icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/outline-icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/outline-icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/outline-icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/fonts/outline-icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/default/assets/images/flags.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/github/assets/fonts/octicons-local.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/github/assets/fonts/octicons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/github/assets/fonts/octicons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/github/assets/fonts/octicons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/material/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/material/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/material/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/material/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/dist/themes/material/assets/fonts/icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/behaviors/api.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/behaviors/form.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/behaviors/visibility.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/breadcrumb.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/form.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/grid.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/menu.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/message.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/collections/table.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/button.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/container.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/divider.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/flag.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/header.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/icon.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/image.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/input.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/label.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/list.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/loader.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/placeholder.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/rail.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/reveal.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/segment.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/elements/step.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/globals/reset.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/globals/site.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/globals/site.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/accordion.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/accordion.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/checkbox.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/checkbox.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/dimmer.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/dimmer.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/dropdown.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/dropdown.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/embed.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/embed.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/modal.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/modal.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/nag.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/nag.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/popup.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/popup.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/progress.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/progress.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/rating.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/rating.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/search.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/search.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/shape.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/shape.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/sidebar.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/sidebar.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/sticky.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/sticky.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/tab.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/tab.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/transition.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/modules/transition.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/ad.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/card.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/comment.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/feed.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/item.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/definitions/views/statistic.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/semantic.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/breadcrumb.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/breadcrumb.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/form.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/form.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/grid.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/grid.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/menu.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/menu.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/message.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/message.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/table.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/collections/table.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/container.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/container.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/divider.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/divider.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/flag.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/flag.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/icon.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/icon.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/image.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/image.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/input.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/input.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/label.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/label.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/list.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/list.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/loader.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/loader.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/rail.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/rail.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/reveal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/reveal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/segment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/segment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/step.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/elements/step.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/globals/reset.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/globals/reset.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/globals/site.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/accordion.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/accordion.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/chatroom.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/chatroom.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/checkbox.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/checkbox.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/dimmer.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/dimmer.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/dropdown.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/dropdown.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/embed.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/embed.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/modal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/modal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/nag.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/nag.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/popup.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/popup.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/progress.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/progress.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/rating.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/rating.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/search.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/search.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/shape.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/shape.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/sidebar.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/sidebar.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/sticky.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/sticky.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/tab.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/tab.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/transition.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/modules/transition.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/ad.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/ad.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/card.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/card.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/comment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/comment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/feed.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/feed.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/item.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/item.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/statistic.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/site/views/statistic.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/theme.config" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/theme.less" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/amazon/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/amazon/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/amazon/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/collections/table.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/collections/table.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/icon.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/icon.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/step.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/elements/step.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/globals/reset.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/globals/reset.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/modules/progress.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/modules/progress.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/views/card.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/basic/views/card.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/bookish/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/bookish/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/bootstrap3/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/bootstrap3/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/collections/form.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/collections/form.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/collections/menu.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/collections/menu.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/modules/accordion.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/modules/accordion.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/views/comment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/chubby/views/comment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/collections/table.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/collections/table.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/modules/progress.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/modules/progress.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/views/card.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/classic/views/card.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/colored/modules/checkbox.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/colored/modules/checkbox.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/brand-icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/brand-icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/brand-icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/brand-icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/brand-icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/outline-icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/outline-icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/outline-icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/outline-icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/fonts/outline-icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/assets/images/flags.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/breadcrumb.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/breadcrumb.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/form.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/form.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/grid.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/grid.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/menu.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/menu.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/message.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/message.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/table.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/collections/table.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/container.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/container.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/divider.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/divider.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/flag.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/flag.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/icon.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/icon.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/image.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/image.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/input.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/input.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/label.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/label.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/list.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/list.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/loader.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/loader.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/placeholder.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/placeholder.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/rail.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/rail.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/reveal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/reveal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/segment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/segment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/step.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/elements/step.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/globals/reset.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/globals/reset.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/globals/site.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/accordion.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/accordion.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/chatroom.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/chatroom.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/checkbox.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/checkbox.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/dimmer.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/dimmer.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/dropdown.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/dropdown.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/embed.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/embed.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/modal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/modal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/nag.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/nag.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/popup.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/popup.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/progress.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/progress.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/rating.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/rating.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/search.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/search.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/shape.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/shape.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/sidebar.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/sidebar.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/sticky.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/sticky.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/tab.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/tab.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/transition.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/modules/transition.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/ad.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/ad.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/card.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/card.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/comment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/comment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/feed.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/feed.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/item.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/item.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/statistic.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/default/views/statistic.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/duo/elements/loader.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/duo/elements/loader.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/fixed-width/collections/grid.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/fixed-width/collections/grid.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/fixed-width/modules/modal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/fixed-width/modules/modal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/flat/collections/form.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/flat/collections/form.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/flat/globals/site.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/flat/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/assets/fonts/octicons-local.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/assets/fonts/octicons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/assets/fonts/octicons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/assets/fonts/octicons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/breadcrumb.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/form.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/form.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/grid.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/menu.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/menu.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/message.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/message.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/collections/table.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/icon.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/icon.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/image.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/input.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/input.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/label.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/label.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/segment.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/segment.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/step.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/elements/step.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/modules/dropdown.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/modules/dropdown.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/github/modules/popup.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/gmail/collections/message.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/gmail/collections/message.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/instagram/views/card.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/instagram/views/card.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/assets/fonts/icons.eot" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/assets/fonts/icons.svg" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/assets/fonts/icons.ttf" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/assets/fonts/icons.woff" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/assets/fonts/icons.woff2" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/collections/menu.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/collections/menu.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/header.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/header.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/icon.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/elements/icon.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/globals/site.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/modules/dropdown.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/modules/dropdown.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/modules/modal.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/material/modules/modal.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/pulsar/elements/loader.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/pulsar/elements/loader.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/raised/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/raised/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/resetcss/globals/reset.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/resetcss/globals/reset.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/round/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/round/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/rtl/globals/site.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/rtl/globals/site.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/striped/modules/progress.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/striped/modules/progress.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/timeline/views/feed.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/timeline/views/feed.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/twitter/elements/button.overrides" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/src/themes/twitter/elements/button.variables" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/components/create.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/components/init.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/components/update.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/distributions/create.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/distributions/init.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/distributions/update.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/publish.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/register.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/admin/release.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/build.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/build/assets.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/build/css.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/build/javascript.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/check-install.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/clean.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/collections/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/collections/admin.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/collections/build.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/collections/internal.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/collections/rtl.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/github.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/oauth.example.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/release.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/README.md" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/bower.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/component-package.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/composer.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/css-package.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/less-package.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/admin/templates/package.json" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/defaults.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/docs.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/npm/gulpfile.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/project/config.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/project/install.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/project/release.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/tasks.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/config/user.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/docs/build.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/docs/metadata.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/docs/serve.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/install.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/rtl/build.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/rtl/watch.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/version.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/semantic\/tasks/watch.js" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/AuthRouter.jsx" afterPath="$PROJECT_DIR$/src/AuthRouter.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/NavigationToggle/NavigationToggle.jsx" afterPath="$PROJECT_DIR$/src/components/Navigation/NavigationToggle/NavigationToggle.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Navigation/UserNavigation.jsx" afterPath="$PROJECT_DIR$/src/components/Navigation/UserNavigation.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/CheckoutForm.jsx" afterPath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/CheckoutForm.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/ElementContainer.jsx" afterPath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/ElementContainer.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/server.js" afterPath="$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/server.js" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectCard.jsx" afterPath="$PROJECT_DIR$/src/components/ProjectCard.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/ProjectStatus/ProjectStatus.jsx" afterPath="$PROJECT_DIR$/src/components/ProjectStatus/ProjectStatus.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/components/Waiting/Waiting.jsx" afterPath="$PROJECT_DIR$/src/components/Waiting/Waiting.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Account/Account.jsx" afterPath="$PROJECT_DIR$/src/containers/Account/Account.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Messaging/Messages/Header/Header.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/Messages/Header/Header.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Messaging/PopMessage.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/PopMessage.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Messaging/SidePanel/Channels/Channels.jsx" afterPath="$PROJECT_DIR$/src/containers/Messaging/SidePanel/Channels/Channels.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/completed.scss" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Completed/completed.scss" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Concept/Concept.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Contractors/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Draft.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Draft/Draft.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Completed/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Final.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Final/Final.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Payment/Payment.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Payment/Payment.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed1/Completed.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Completed1/Completed.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Revision.jsx" afterPath="$PROJECT_DIR$/src/containers/Project/UserProject/Revision/Revision.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" afterPath="$PROJECT_DIR$/src/containers/ProjectList/ProjectList.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/containers/Users/SignUp/SignUp.jsx" afterPath="$PROJECT_DIR$/src/containers/Users/SignUp/SignUp.jsx" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" afterPath="$PROJECT_DIR$/src/index.js" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js" afterPath="$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js" />
+      <change beforePath="$PROJECT_DIR$/src/utilities/constants/database.js" afterPath="$PROJECT_DIR$/src/utilities/constants/database.js" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -20,36 +614,35 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Brief.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Brief.jsx">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Account.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Account/Account.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+            <state relative-caret-position="15">
+              <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
               <folding>
-                <element signature="e#147#219#0" expanded="true" />
+                <element signature="e#25#64#0" expanded="true" />
+                <element signature="e#574#634#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="setupTests.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/setupTests.js">
+      <file leaf-file-name="PopMessage.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Messaging/PopMessage.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#67#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="60">
+              <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.test.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Test/index.test.js">
+      <file leaf-file-name="Messages.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/Messages.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+            <state relative-caret-position="135">
+              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -57,36 +650,44 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Edit.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Edit/Edit.jsx">
+      <file leaf-file-name="messages.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+            <state relative-caret-position="368">
+              <caret line="63" column="19" lean-forward="false" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ElementContainer.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/ElementContainer.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="366">
+              <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="database.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
               <folding>
-                <element signature="e#170#245#0" expanded="true" />
+                <element signature="e#0#35#0" expanded="true" />
+                <marker date="1561148409601" expanded="true" signature="26462:26472" ph="{...}" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="withAuthorization.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx">
+      <file leaf-file-name="firebaseBase.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/firebaseBase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="566">
-              <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-              <folding>
-                <element signature="e#25#51#0" expanded="true" />
-                <element signature="e#156#196#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="context.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/context.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
+            <state relative-caret-position="57">
+              <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -95,47 +696,33 @@
       <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="65" />
+            <state relative-caret-position="285">
+              <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="19" />
               <folding>
                 <element signature="e#25#51#0" expanded="true" />
-                <element signature="e#196#218#0" expanded="true" />
+                <element signature="e#246#268#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthRouter.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/AuthRouter.jsx">
+      <file leaf-file-name="Channels.jsx" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/containers/Messaging/SidePanel/Channels/Channels.jsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="214">
-              <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+            <state relative-caret-position="264">
+              <caret line="77" column="12" lean-forward="true" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
               <folding>
-                <element signature="e#25#51#0" expanded="true" />
-                <element signature="e#230#288#0" expanded="true" />
-                <element signature="e#689#744#0" expanded="true" />
+                <element signature="e#0#26#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="withAuthentication.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/utilities/Session/withAuthentication.js">
+      <file leaf-file-name="firebase.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/firebase.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-86">
-              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-              <folding>
-                <element signature="e#72#112#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="View.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/View/View.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1290">
-              <caret line="96" column="15" lean-forward="false" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
+            <state relative-caret-position="15">
+              <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -153,6 +740,17 @@
       <find>env</find>
       <find>Link</find>
       <find>button</find>
+      <find>timestam</find>
+      <find>message</find>
+      <find>...</find>
+      <find>doGetMessagesByChannel</find>
+      <find>getMessagesOfCurrentChannel</find>
+      <find>doGetMessages</find>
+      <find>find</find>
+      <find>consol</find>
+      <find>console.</find>
+      <find>console.log</find>
+      <find>console</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -174,6 +772,18 @@
         <option value="$PROJECT_DIR$/src/utilities/Firebase/context.js" />
         <option value="$PROJECT_DIR$/src/utilities/Session/withAuthorization.jsx" />
         <option value="$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Test/index.test.js" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/SidePanel/UserPanel/UserPanel.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/SidePanel/SidePanel.jsx" />
+        <option value="$PROJECT_DIR$/src/utilities/constants/database.js" />
+        <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/Messages/Form/Form.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/Messages/Messages.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/Messages/Header/Header.jsx" />
+        <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx" />
+        <option value="$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js" />
+        <option value="$PROJECT_DIR$/src/components/PaymentStripe/frontend/ElementContainer.jsx" />
+        <option value="$PROJECT_DIR$/src/containers/Messaging/SidePanel/Channels/Channels.jsx" />
       </list>
     </option>
   </component>
@@ -186,11 +796,10 @@
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="54" />
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1280" />
-    <option name="height" value="731" />
+    <option name="height" value="733" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -219,27 +828,14 @@
               <item name="bloom" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bloom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="bloom" type="b2602c69:ProjectViewProjectNode" />
-              <item name="bloom" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="utilities" type="462c0819:PsiDirectoryNode" />
-              <item name="Session" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scratches" />
-      <pane id="Scope" />
-      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="AndroidView" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -358,42 +954,43 @@
       <option name="presentableId" value="Default" />
       <updated>1559347752359</updated>
       <workItem from="1559347753811" duration="11819000" />
+      <workItem from="1561045280358" duration="26963000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11819000" />
+    <option name="totallyTimeSpent" value="81494000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="54" y="23" width="1280" height="731" extended-state="0" />
+    <frame x="10" y="23" width="1280" height="733" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2536349" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,61 +1004,18 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/components/Navigation/Navigation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/Navigation/Test/index.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/Test/index.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/AccountBanners/AccountInfoBanner/Test/index.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Designer/Test/index.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/Users/Test/index.test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Users/Test/index.test.js" />
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Final/Test/index.test.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#26#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -469,7 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -477,15 +1030,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="960">
-          <caret line="64" column="9" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="64" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -538,7 +1082,7 @@
         <state relative-caret-position="345">
           <caret line="23" column="26" lean-forward="false" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
           <folding>
-            <element signature="e#25#51#0" expanded="true" />
+            <element signature="e#25#51#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -548,16 +1092,6 @@
         <state relative-caret-position="1290">
           <caret line="96" column="15" lean-forward="false" selection-start-line="96" selection-start-column="15" selection-end-line="96" selection-end-column="15" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-          <folding>
-            <element signature="e#25#83#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -573,15 +1107,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/firebase.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -589,50 +1114,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-86">
           <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-          <folding>
-            <element signature="e#72#112#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Brief.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="39" column="0" lean-forward="false" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+        <state relative-caret-position="-1765">
+          <caret line="20" column="7" lean-forward="false" selection-start-line="20" selection-start-column="7" selection-end-line="33" selection-end-column="9" />
           <folding>
-            <element signature="e#147#219#0" expanded="true" />
+            <element signature="e#147#219#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AuthRouter.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="17" column="7" lean-forward="true" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
+        <state relative-caret-position="236">
+          <caret line="17" column="7" lean-forward="false" selection-start-line="17" selection-start-column="7" selection-end-line="17" selection-end-column="7" />
           <folding>
-            <element signature="e#25#51#0" expanded="true" />
-            <element signature="e#230#288#0" expanded="true" />
-            <element signature="e#689#744#0" expanded="true" />
+            <element signature="e#25#51#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="65" />
-          <folding>
-            <element signature="e#25#51#0" expanded="true" />
-            <element signature="e#196#218#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/context.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="38" lean-forward="false" selection-start-line="7" selection-start-column="38" selection-end-line="7" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -640,9 +1141,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#67#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -651,26 +1149,294 @@
         <state relative-caret-position="566">
           <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
           <folding>
-            <element signature="e#25#51#0" expanded="true" />
-            <element signature="e#156#196#0" expanded="true" />
+            <element signature="e#25#51#0" expanded="false" />
+            <element signature="e#136#190#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Edit/Edit.jsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="40" />
+        <state relative-caret-position="61">
+          <caret line="25" column="14" lean-forward="false" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
           <folding>
-            <element signature="e#170#245#0" expanded="true" />
+            <element signature="e#25#66#0" expanded="false" />
+            <marker date="1560562661276" expanded="true" signature="177:179" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/Project/DesignerProject/Brief/Test/index.test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="53" column="46" lean-forward="true" selection-start-line="53" selection-start-column="46" selection-end-line="53" selection-end-column="46" />
+        <state relative-caret-position="-464">
+          <caret line="14" column="37" lean-forward="false" selection-start-line="14" selection-start-column="37" selection-end-line="14" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Project/UserProject/Test/index.test.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/AddressSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/CardSection.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/CheckoutForm.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#24#62#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/constants/stripeKey.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#83#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/context.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="34" lean-forward="true" selection-start-line="7" selection-start-column="34" selection-end-line="7" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/SidePanel/UserPanel/UserPanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="25" lean-forward="false" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messaging.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/authUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-134">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#39#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/MessageList/Message/Message.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="4" lean-forward="false" selection-start-line="5" selection-start-column="4" selection-end-line="5" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#26#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/MessageList/MessageList.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/projects.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="138" column="75" lean-forward="false" selection-start-line="138" selection-start-column="75" selection-end-line="138" selection-end-column="75" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/SidePanel/SidePanel.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="133">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="393">
+          <caret line="46" column="36" lean-forward="false" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/Form/Form.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="23" lean-forward="false" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/Header/Header.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-67">
+          <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messaging.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="173">
+          <caret line="119" column="13" lean-forward="false" selection-start-line="119" selection-start-column="13" selection-end-line="119" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/channels.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="45" column="12" lean-forward="false" selection-start-line="45" selection-start-column="12" selection-end-line="45" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Account/Account.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" lean-forward="false" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding>
+            <element signature="e#25#64#0" expanded="true" />
+            <element signature="e#574#634#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/PopMessage.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="43" lean-forward="false" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/Messages/Messages.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/messages.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="63" column="19" lean-forward="false" selection-start-line="63" selection-start-column="19" selection-end-line="63" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/PaymentStripe/frontend/ElementContainer.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="366">
+          <caret line="62" column="22" lean-forward="false" selection-start-line="62" selection-start-column="22" selection-end-line="62" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/firebase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="7" lean-forward="true" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/constants/database.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="7" lean-forward="true" selection-start-line="0" selection-start-column="7" selection-end-line="0" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <marker date="1561148409601" expanded="true" signature="26462:26472" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/utilities/Firebase/helpers/firebaseBase.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="20" column="30" lean-forward="true" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="2" lean-forward="true" selection-start-line="19" selection-start-column="2" selection-end-line="19" selection-end-column="19" />
+          <folding>
+            <element signature="e#25#51#0" expanded="true" />
+            <element signature="e#246#268#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/Messaging/SidePanel/Channels/Channels.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="77" column="12" lean-forward="true" selection-start-line="77" selection-start-column="12" selection-end-line="77" selection-end-column="12" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>
