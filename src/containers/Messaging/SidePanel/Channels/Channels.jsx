@@ -74,7 +74,7 @@ class Channels extends React.Component {
     floating
     labeled
     options={this.displayChannels(channels)}
-    text='Select Channel'
+    text="Select Channel"
   />
        
         </React.Fragment>
