@@ -37,6 +37,15 @@ class Waiting extends Component {
                 last: '/project/user_revision',
             })
         }
+        else if(this.props.state === 'payment'){
+            this.setState({
+                title: 'Payment',
+                titleNext: 'concept',
+                src: logo,
+                message: 'Your payment it not necessary at this time!',
+                next: '/project/user_concept'
+            })
+        }
         else if(this.props.state === 'draft'){
             this.setState({
                 title: 'Draft',

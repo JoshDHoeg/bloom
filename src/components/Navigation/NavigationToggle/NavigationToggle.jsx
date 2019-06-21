@@ -5,19 +5,49 @@ import { withAuthorization } from '../../../utilities/Session';
 import Loading from '../../Loading/Loading'
 class NavigationToggle extends Component {
     user;
+    concept;
+    stage;
     constructor(props){
         super(props);
         this.state={
             loading: true,
             user:{
                 isDesigner: false
+            },
+            concept:{
+                approved: '',
+                completed: false,
+                approveTerms: false,
+            },
+            stage:{
+                stage: ''
             }
         }
     }
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getUserState();
+        this.getProjectState();
     }
+    getProjectState = async () => {
+        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+        this.stage = await project.stage;
+        this.concept = await project.concept;
+        //const schedule = await this.project.concept.schedule;
+        const state = await {
+            loading: false,
+            stage: {
+                stage: this.stage.stage,
+                rcount: this.stage.rcount
+            },
+            concept:{
+                ...this.concept.getAll()
+            }
+        }
+        this.setState(state);
+        return state;
+    }
+
     getUserState = async () => {
         const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
         this.user = await user
@@ -42,7 +72,7 @@ class NavigationToggle extends Component {
         }else{
             return(
                 <div>
-                    <UserNavigation/>
+                    <UserNavigation concept={this.state.concept} stage={this.state.stage}/>
                 </div>
             )
         }
@@ -51,3 +81,5 @@ class NavigationToggle extends Component {
 const condition = role => role > 0;
 
 export default withAuthorization(condition)(NavigationToggle)
+
+

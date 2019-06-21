@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ElementsContainer from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import { withAuthorization } from '../../../../utilities/Session';
 import { Grid } from 'semantic-ui-react';
+import WaitingPage from '../../../../components/Waiting/Waiting';
 
 class PaymentPage extends Component {
     concept;
@@ -51,12 +52,17 @@ class PaymentPage extends Component {
 
     render(){
         console.log('stageA', this.state.stage)
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
         return(
             <Grid.Row>
                 <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
             </Grid.Row>
-
         )
+        }else{
+            return(
+            <WaitingPage stage={this.state.stage} state = 'payment'/>
+            )
+        }
     }
 }
 
