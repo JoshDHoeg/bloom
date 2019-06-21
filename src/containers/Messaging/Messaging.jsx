@@ -56,7 +56,7 @@ class Messaging extends Component {
         }else {
             return(
                 <div className = "MessagePop">
-                <Grid columns="equal" style={{ background: "#eee",height: '50vh',stretched:true}} >
+                <Grid columns="equal" style={{ background: "#eee",height: '50vh',width:'40vh',stretched:true}} >
                     <Grid.Column>
                         <Messages
                             messages={this.state.messages}
