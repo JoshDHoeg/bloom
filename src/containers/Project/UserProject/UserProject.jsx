@@ -13,6 +13,7 @@ import Revision from './Revision/Revision';
 import Draft from './Draft/Draft';
 import HouseVisit from './HouseVisit/HouseVisit'
 import Payment from './Payment/Payment'
+import PopMessage from '../../Messaging/PopMessage';
 
 //concept => draft => final => revision => contractors
 class UserProject extends React.Component {
@@ -68,6 +69,7 @@ class UserProject extends React.Component {
             this.state.component = Final
         }
         return(
+            <div>
             <Router>
                 <Segment basic>
                     <div>
@@ -103,6 +105,9 @@ class UserProject extends React.Component {
                     </div>
                 </Segment>
             </Router>
+            <PopMessage/>
+            </div>
+           
         )
     }
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Comment, Segment } from "semantic-ui-react";
 import moment from 'moment';
-import '../../../Messaging.css'
+import '../../../Messaging.scss'
 
 const timeFromNow = timestamp => {
     var m = moment.unix(timestamp.seconds);
