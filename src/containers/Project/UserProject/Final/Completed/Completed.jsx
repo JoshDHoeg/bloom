@@ -4,9 +4,8 @@ import React from 'react';
 import { withAuthorization } from '../../../../../utilities/Session';
 import { Container,Segment, Header, Button, Grid, Form, Message } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
-import * as ROLES from "../../../../../utilities/constants/roles"
 //Figma Embed import
-import { Redirect } from 'react-router'
+import Editor from '../../../../../components/Wysiwig/wysiwig'
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
@@ -55,7 +54,6 @@ class Completed extends React.Component {
 
 
     render() {
-        console.log('count?', this.props.stage.rcount)
         let feedbackButton;
         if(!this.props.final.approved) {
             feedbackButton = 
@@ -133,6 +131,7 @@ class Completed extends React.Component {
                                 {feedbackButton}
                             </Form>
                         </div>
+                        <Editor/>
                     </Grid.Row>
                     {RightArrow}
                 </Container>

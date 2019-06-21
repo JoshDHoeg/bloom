@@ -1,6 +1,6 @@
 {
   "name": "bloom",
-  "version": "0.3.0",
+  "version": "1.1.0",
   "private": true,
   "engines": {
     "node": "10.4.1",
@@ -19,6 +19,7 @@
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "create-react-class": "^15.6.3",
+    "draft-js": "^0.10.5",
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
     "enzyme-to-json": "^3.3.5",
@@ -32,8 +33,10 @@
     "npm": "^6.9.0",
     "react": "next",
     "react-dom": "next",
+    "react-draft-wysiwyg": "^1.13.2",
     "react-figma-embed": "^1.0.0",
     "react-google-docs-viewer": "^1.0.1",
+    "react-https-redirect": "^1.1.0",
     "react-iframe": "^1.8.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",

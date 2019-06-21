@@ -69,7 +69,6 @@ export class Concept extends React.Component{
     }
 
     render(){
-        console.log('stage1', this.state.stage)
         // if(this.state.loading){
         //     return <Loading/>
         // }

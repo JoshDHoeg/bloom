@@ -54,7 +54,7 @@ class ElementsContainer extends Component {
               <Segment textAlign='left'>
                 <StripeProvider apiKey = 'pk_live_wke7a6txnW6Zf4KrMKXaqKtA00z106DivU' >
                   <Elements>
-                      <Form concept={this.props.concept}/>
+                      <Form stage={this.props.stage} concept={this.props.concept}/>
                   </Elements>
                 </StripeProvider>
               </Segment>

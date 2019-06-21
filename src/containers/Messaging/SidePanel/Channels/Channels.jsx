@@ -31,7 +31,7 @@ class Channels extends React.Component {
                     key={channel.id}
                     onClick={() => {this.props.setCurrentChannel(channel, index)}}
                     name={channel.name}
-                    style={{opacity: 0.95, backgroundColor: '#4d94ff'}}
+                    style={{opacity: 0.95}}
                 >
                     # {channel.name}
                 </Menu.Item>

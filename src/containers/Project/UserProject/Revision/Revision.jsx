@@ -36,14 +36,10 @@ class Revision extends React.Component{
 
     formSubmit = () => {
         this.revisions[this.state.currentRevision].approved = true
-        console.log('why', this.revisions)
         let number = this.state.stage.rcount
-        console.log('number', number)
         let result = Number(number)
-        console.log('result', result)
         result = result+1;
         let result2 = String(result);
-        console.log('result2', result2)
         this.stage.rcount = result2;
         this.addRevision();
     }
@@ -59,7 +55,6 @@ class Revision extends React.Component{
     }
 
     handleStateChange = () => {
-        console.log('working')
         this.setState({
             revision: [],
             stage: []
@@ -80,7 +75,6 @@ class Revision extends React.Component{
 
     contractorState() {
         this.stage.stage = 'contractors'
-        console.log('stage',this.state.stage.stage)
     }
 
     getProjectState = async () => {
@@ -100,7 +94,6 @@ class Revision extends React.Component{
             currentRevision: currentRevision
         }
 
-        console.log('approved?', this.state.revision.approved)
         this.setState(state);
         return state;
     }
@@ -109,7 +102,6 @@ class Revision extends React.Component{
     }
 
     render(){
-        console.log('revision', this.state.currentRevisions)
         if(!this.state.revision.completed){
             return( <WaitingPage handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {

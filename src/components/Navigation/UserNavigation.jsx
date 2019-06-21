@@ -60,11 +60,6 @@ class NavigationAuth extends Component {
                             <Button><Icon name = 'file alternate'/>Projects</Button>
                         </DropdownItem>
                     </NavLink>
-                    {/* <NavLink color='teal' to='/messaging'>
-                        <DropdownItem className='title' >
-                            <Button><Icon name = 'comments'/>Messages</Button>
-                        </DropdownItem>
-                    </NavLink> */}
                     <NavLink color='teal' to='/user_payment'>
                         <DropdownItem className='title' >
                             <Button><Icon name = 'credit card'/>Pay Now</Button>

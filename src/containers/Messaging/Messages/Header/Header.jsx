@@ -18,7 +18,7 @@ class MessagesHeader extends React.Component {
         {/* Channel Title */}
         <Header fluid="true" as="h2" floated="left" style={{ marginBottom: 0 }}>
           <span>
-              {this.props.currentChannel.name}
+              #{this.props.currentChannel.name}
           </span>
         </Header>
         <Channels

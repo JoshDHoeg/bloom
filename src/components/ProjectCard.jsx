@@ -57,7 +57,6 @@ class ProjCard extends Component {
 
 
     render(){
-        console.log('address', this.state.brief)
         let ProjectButton
         if(this.state.stage.stage === 'revision'){
             ProjectButton = 

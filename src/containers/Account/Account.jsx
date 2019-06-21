@@ -15,7 +15,6 @@ import * as ROUTES from "../../utilities/constants/routes";
 import backgroundTemp from '../../Images/TempBackground.PNG';
 
 function Account() {
-
     return (
     <div>
       <Router>
