@@ -29,8 +29,9 @@ class FirebaseMessages extends channels {
     }
 
     updateChannelLastSeenTime(channel, uid, ts){
+
         this.doGetChannel(channel.id).then( c => {
-            c.p1 === uid ? channel.lastVisited = [ts, c.lastVisited[1]] : channel.lastVisited = [c.lastVisited[0], ts]
+            c.p1.id === uid ? channel.lastVisited = [ts, c.lastVisited[1]] : channel.lastVisited = [c.lastVisited[0], ts]
         });
     }
     //ordering: project 1, project 2, ..., helpChannel
@@ -44,12 +45,13 @@ class FirebaseMessages extends channels {
         }
         return res;
     }
+
     async doGetNewMessageCounts(channels, uid) {
         let res = [];
         for(let i=0; i<channels.length; i++) {
             const m = await this.doGetMessagesByChannel(channels[i].id);
             var lastCheckedTime;
-            channels[i].p1 === uid ? lastCheckedTime = channels[i].lastVisited[0] : lastCheckedTime = channels[i].lastVisited[1];
+            channels[i].p1.id === uid ? lastCheckedTime = channels[i].lastVisited[0] : lastCheckedTime = channels[i].lastVisited[1];
             let count=0;
             for(let j=0; j<m.length; j++){
                 if(m[j].time.toMillis() > lastCheckedTime.toMillis()){

@@ -20,6 +20,7 @@ class MessageForm extends React.Component {
     }
 
     handleSubmit(event) {
+        console.log("handle Submit called")
         this.props.addMessage(this.props.name, this.state.message, this.props.currentChannel.ref);
         this.setState({
             message: ""
@@ -49,7 +50,7 @@ class MessageForm extends React.Component {
               <Button.Group icon widths="2">
               <Button
                 onClick={this.handleSubmit}
-                color="orange"
+                color="blue"
                 content="Reply"
                 labelPosition="left"
                 icon="edit"

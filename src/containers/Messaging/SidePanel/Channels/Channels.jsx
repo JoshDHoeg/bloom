@@ -1,5 +1,6 @@
 import React from "react";
-import { Menu, Icon} from "semantic-ui-react";
+
+import { Menu, Icon,Item,Dropdown } from "semantic-ui-react";
 
 class Channels extends React.Component {
   constructor(props){
@@ -47,6 +48,7 @@ class Channels extends React.Component {
               >
                   # {channel.name}
                   {this.displayNotifications(this.props.newMessageCounts[index])}
+
               </Menu.Item>
           )
         }
@@ -66,22 +68,24 @@ class Channels extends React.Component {
 
     return (
       <React.Fragment>
-      <Menu.Menu style={{background:'#4c3c4c',marginTop: "50px"}}>
-        <Menu.Item >
-          <span>
-            <Icon name="exchange" /> CHANNELS
-          </span>{" "}
-        </Menu.Item>
-        {this.displayChannels(channels)}
-        </Menu.Menu>
-        </React.Fragment>
+            <Dropdown
+            button
+            className='icon'
+            floating
+            labeled
+            options={this.displayChannels(channels)}
+            text='Select Channel'
+          />
+      </React.Fragment>
     );
   }
 }
 
-const Notification = props => (
-    props.count !== 0 &&
+const Notification = props => {
+    console.log(props);
+    return (props.count !== 0 &&
         <div class="ui red circular label"> {props.count}</div>
-)
+    )
+}
 
 export default Channels;

@@ -3,7 +3,7 @@ import { withAuthorization } from '../../utilities/Session';
 import * as ROLES from '../../utilities/constants/roles'
 import { Grid ,Sidebar, Segment , Comment, GridColumn,Menu } from "semantic-ui-react";
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
-import '../Messaging/Messaging.css'
+import '../Messaging/Messaging.scss'
 import backgroundTemp from '../../Images/TempBackground.PNG';
 import * as ROUTES from "../../utilities/constants/routes";
 import Messages from './Messages/Messages';
@@ -11,6 +11,7 @@ import SidePanel from './SidePanel/SidePanel';
 import { Channel , Message } from '../../utilities/constants/database';
 import { auth } from 'firebase';
 import firebase from "firebase";
+import Loading from '../../components/Loading/Loading';
 class Messaging extends Component {
 
     constructor(props){
@@ -65,8 +66,9 @@ class Messaging extends Component {
     }
 
     addMessage(from, content, channelRef){
-        this.props.firebase.doCreateAndAddMessageInChannel(from, content, channelRef);
-        this.props.firebase.updateChannelLastSeenTime(this.state.currentChannel, this.props.firebase.user.id, firebase.firestore.Timestamp.now());
+        this.props.firebase.doCreateAndAddMessageInChannel(from, content, channelRef).then( () => {
+            this.props.firebase.updateChannelLastSeenTime(this.state.currentChannel, this.props.firebase.user.id, firebase.firestore.Timestamp.now());
+        })
     }
 
     //gets called the first time no matter what
@@ -83,19 +85,24 @@ class Messaging extends Component {
                         this.props.firebase.doGetMessageById(c.messages[c.messages.length - 1].id).then(m => {
                             if (this.state.messages[i].length === 0) {
                                 temp[i] = m;
+                                this.setState({
+                                    messages: temp,
+                                });
                                 shouldAdd = true;
                             }
                             if (m.id !== this.state.messages[i][this.state.messages[i].length - 1].id) {
                                 temp[i] = [...this.state.messages[i], m];
+                                this.setState({
+                                    messages: temp,
+                                });
                                 shouldAdd = true;
                             }
                             if (shouldAdd && c.id !== this.state.currentChannel.id){
                                 temp2[i]++;
+                                this.setState({
+                                    newMessageCounts: temp2
+                                });
                             }
-                            this.setState({
-                                messages: temp,
-                                newMessageCounts: temp2
-                            });
                         });
                     }
                     this.setState({
@@ -112,26 +119,29 @@ class Messaging extends Component {
 
     render(){
         if(this.state.loading){
-            return ( <div> Loading </div>)
+            return (
+                <Grid columns="equal" style={{ background: "#eee",height: '50vh',width:'40vh',stretched:true}} >
+                     <Loading />
+                     </Grid>
+                     )
         }else {
             return(
-                <Grid columns="equal" style={{ marginTop:'15px', background: "#eee", height: '100vh'}}>
-                    <SidePanel
-                        newMessageCounts={this.state.newMessageCounts}
-                        currentChannel={this.state.currentChannel}
-                        channels={this.state.channels}
-                        setCurrentChannel={this.setCurrentChannel}
-                    />
+                <div className = "MessagePop">
+                <Grid columns="equal" style={{ background: "#eee",height: '50vh',stretched:true}} >
                     <Grid.Column>
                         <Messages
+                            newMessageCounts={this.state.newMessageCounts}
                             loading={this.state.isSwitchingChannels}
                             messages={this.state.messages[this.state.currChanIndex]}
                             firebase={this.props.firebase}
                             currentChannel={this.state.currentChannel}
                             addMessage={this.addMessage}
+                            channels={this.state.channels}
+                            setCurrentChannel={this.setCurrentChannel}
                         />
                     </Grid.Column>
                 </Grid>
+                </div>
             )
         }
     }
