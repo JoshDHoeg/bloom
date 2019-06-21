@@ -110,7 +110,7 @@ class FirebaseAuthUser extends FirebaseBase {
   }
 
   doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null, name = 'username',
-                                      isDesigner = false, isAdmin = false, phone = '1231231234',
+                                      isDesigner = false,isEmaillist = true, isAdmin = false, phone = '1231231234',
                                       billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
                                       state = 'Default State', role = 1) => {
     console.log("here yo");
@@ -125,7 +125,7 @@ class FirebaseAuthUser extends FirebaseBase {
           return false;
         }
         console.log("here3");
-        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, isAdmin, channelRef, [project], billadd1, zip, city, state, role)
+        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner,isEmaillist, isAdmin, channelRef, [project], billadd1, zip, city, state, role)
             .then(ref  => {
               return this.setFirebaseVars(ref.id).then(res => {
                   return ref;
@@ -186,7 +186,7 @@ class FirebaseAuthUser extends FirebaseBase {
     this.auth.currentUser.updatePassword(password);
 
 //modified doSetUser to return the relevant user id after it creates the user object for callbacks
-  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, isAdmin = false, channelRef = null,
+  doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, isEmaillist = true, isAdmin = false, channelRef = null,
                      projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '', role = '') => {
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p)) {
@@ -198,6 +198,7 @@ class FirebaseAuthUser extends FirebaseBase {
     return this.usersRef.doc(uid).set({
       helpChannel: channelRef,
       isDesigner: isDesigner,
+      isEmaillist: isEmaillist, 
       email: email,
       name: name,
       phone: phone,

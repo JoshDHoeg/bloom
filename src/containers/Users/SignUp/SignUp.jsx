@@ -41,8 +41,9 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  isDesigner: false,
+  isEmaillist: true,
   error: null,
+  isDesigner: false
 };
 
 class SignUpFormBase extends Component {
@@ -52,13 +53,13 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { name, email, passwordOne, isDesigner } = this.state;
+    const { name, email, passwordOne, isDesigner, isEmaillist } = this.state;
     const roles = [];
     if (isDesigner) {
       roles.push(ROLES.DESIGNER)
     }
     this.props.firebase
-      .doInitNewUser(email, passwordOne, name)
+      .doInitNewUser(email, passwordOne, name, isDesigner, isEmaillist)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
          return this.props.firebase
@@ -81,7 +82,7 @@ class SignUpFormBase extends Component {
   };
 
   onChangeCheckbox = event => {
-    this.setState({ isDesigner: !this.state.isDesigner })
+    this.setState({ isEmaillist: !this.state.isEmaillist })
   };
 
   onChange = event => {
@@ -95,6 +96,7 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isDesigner,
+      isEmaillist,
       error,
     } = this.state;
 
@@ -148,10 +150,10 @@ class SignUpFormBase extends Component {
             onChange={this.onChange}
           />
           <Form.Checkbox
-            label="Designer?"
-            name="isDesigner"
+            label="Join EmailList"
+            name="Emailist"
             toggle
-            checked={isDesigner}
+            checked={isEmaillist}
             onChange={this.onChangeCheckbox}
           />
           

@@ -10,6 +10,7 @@ import * as ROUTES from "../../utilities/constants/routes";
 // import {Link} from "react-router-dom";
 import { Grid, Container, Header, Item, Button } from 'semantic-ui-react';
 import ProjCard from "../../components/ProjectCard.jsx"
+import PopMessage from "../Messaging/PopMessage"
 
 class ProjectList extends Component {
   userSub;
@@ -67,7 +68,9 @@ class ProjectList extends Component {
               return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
             })}
         </Container>
+        <PopMessage />
       </Grid>
+      
     );
   }
 }
