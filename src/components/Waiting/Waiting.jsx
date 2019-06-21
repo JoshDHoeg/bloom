@@ -37,6 +37,15 @@ class Waiting extends Component {
                 last: '/project/user_revision',
             })
         }
+        else if(this.props.state === 'payment'){
+            this.setState({
+                title: 'Payment',
+                titleNext: 'concept',
+                src: logo,
+                message: 'Your payment it not necessary at this time!',
+                next: '/project/user_concept'
+            })
+        }
         else if(this.props.state === 'draft'){
             this.setState({
                 title: 'Draft',
@@ -78,7 +87,6 @@ class Waiting extends Component {
         }
     }
     render(){
-        console.log(this.state.titleNext)
         let Next
         Next = 'go to '+(this.state.titleNext)
         let RightArrow;
@@ -93,12 +101,11 @@ class Waiting extends Component {
             <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
-    }
+        }
         let LeftArrow;
         let Last;
         Last = 'go to '+(this.state.titleLast)
         let revision = Number(this.props.currentRevision)
-        console.log(this.props.state)
         if(this.props.state === 'revision' && revision !== 0){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)
@@ -114,6 +121,9 @@ class Waiting extends Component {
             <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
                 <img src={ArrowLeft} />
             </Link>
+        }else if(this.props.state === 'payment'){
+            LeftArrow=null
+        
         }else if(this.props.state !== 'concept'){
             LeftArrow =
             <Link data-tip={Last} to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>

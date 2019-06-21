@@ -58,7 +58,6 @@ class Draft extends Component {
     }
 
     handleStateChange = () => {
-        console.log('working')
         this.setState({
             draft: [],
             stage: []

@@ -16,7 +16,6 @@ library.add(faArrowLeft)
 
 class Completed extends React.Component{
     render(){
-        console.log('stage2', this.props.stage)
         let video
         video = this.props.concept.video;
         let RightArrow

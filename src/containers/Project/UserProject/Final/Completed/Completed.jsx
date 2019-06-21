@@ -55,7 +55,6 @@ class Completed extends React.Component {
 
 
     render() {
-        console.log('count?', this.props.stage.rcount)
         let feedbackButton;
         if(!this.props.final.approved) {
             feedbackButton = 

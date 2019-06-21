@@ -93,12 +93,12 @@ class Completed extends Component {
             </Link>
         }
         return (
-            <Grid>
+            <Grid className='Draft'>
                 <Container><ProjectStatus state="draft"/></Container>
                 <Container fluid textAlign="center" text='true'>
                     {LeftArrow}
-                    <Grid.Row style={{ paddingTop: '20px' }}>
-                    <   Header as='h2'>Rough Draft</Header>
+                    <Grid.Row className='Header' style={{ paddingTop: '20px' }}>
+                        <Header as='h2'>Rough Draft</Header>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
