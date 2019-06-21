@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { Container,Segment, Header, Button, Grid } from 'semantic-ui-react'
+import { Container,Segment, Header, Button, Grid, Item } from 'semantic-ui-react'
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
@@ -34,13 +34,6 @@ class Form extends Component {
   
   componentDidMount() {
     this.setState({ loading: true, edit: this.props.edit });
-    if(this.props.location.state){
-      this.setState({projectIndex: this.props.location.state.projectIndex});
-      this.getProjectState(this.props.location.state.projectIndex);
-    } else{
-      this.setState({projectIndex: 0});
-      this.getProjectState(0);
-    }
   }
 
   handleChange(event) {
@@ -57,29 +50,11 @@ class Form extends Component {
     this.concept.isPaid = true;
   }
 
-  getProjectState = async () => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-    this.concept = await project.concept;
-    this.stage = await project.stage;
-    const state = await {
-        loading: false,
-        concept: {
-          ...this.concept.getAll(),
-        },
-        stage: {
-          stage: this.stage.stage
-        }
-    }
-    this.setState(state);
-    return state;
-
-  }
-
-  async submit(ev) { //api post method for payment
-    let {token} = await this.props.stripe.createToken({name: "Name"}); //creating token from stripe
-    let amt = this.state.concept.cost; //setting the amount state
-    let response = await fetch('https://bloom-expressapi.herokuapp.com/payment', { //fetching from backend url
-      method: "POST", 
+  async submit(ev) {
+    let {token} = await this.props.stripe.createToken({name: "Name"});
+    let amt = this.props.concept.cost;
+    let response = await fetch('https://bloom-expressapi.herokuapp.com/payment', {
+      method: "POST",
       headers: {"Content-Type": "application/json",
       'Access-Control-Allow-Origin':  'https://app.bloomtimedesign.co',
       //'Access-Control-Allow-Origin':  'http://localhost:3000',
@@ -105,13 +80,16 @@ class Form extends Component {
     amount2 = parseFloat(Math.round(amount) / 100).toFixed(2);
     if (this.state.complete) {
       return( 
+        <Container>
         <Grid>
           <Grid.Row style={{paddingTop: '25px', paddingBottom: '25px'}}>
-            <Header as='h2' style={{ paddingLeft:'10px', paddingRight:'10px', fontSize:'15px'}}>Purchase Complete!</Header>
-              <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-              <img src={ArrowRight}/></Link>
+            <Header as='h2' style={{ paddingLeft:'15px', paddingRight:'10px', fontSize:'20px'}}>Thank You For Your Purchase!</Header>
+          </Grid.Row>
+          <Grid.Row>
+            <Item style={{ paddingLeft:'15px', paddingRight:'10px', fontSize:'10px'}}>Our designers will be working hard to deliver your design</Item>
           </Grid.Row>
         </Grid>
+        </Container>
       );
     } else {
     return (
@@ -129,6 +107,9 @@ class Form extends Component {
             <Button.Content visible>Purchase</Button.Content>
             <Button.Content hidden>${amount2}</Button.Content>
           </Button>
+        <Grid.Row>
+          <Item style={{fontSize:'10px', paddingBottom:'10px'}}>Secure Method Using Stripe Payments</Item>
+        </Grid.Row>
         </Container>
       </Grid>
     );

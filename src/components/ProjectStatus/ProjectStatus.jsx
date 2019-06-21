@@ -54,7 +54,6 @@ class ProjectStatus extends React.Component {
         let Revisions;
         let Revision2;
         let Contractors;
-        console.log(this.revisions);
         // if(this.revisions){
         //     this.revisions.map((item, i) => {
         //         Revisions.push(<Step href='/project/user_revision/1' active={this.state.state === 'revisions'} >

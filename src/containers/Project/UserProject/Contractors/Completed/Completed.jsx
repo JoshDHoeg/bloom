@@ -77,7 +77,6 @@ class Completed extends Component {
                 Phone Number: {this.props.contractor.number3}
             </div>;
         }
-        console.log(this.props.contractor.number1)
         return (
             <div>
                 <Container><ProjectStatus state="contractors" /></Container>

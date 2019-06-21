@@ -29,6 +29,7 @@ class Final extends React.Component {
                 approved: false,
                 approveterms: false,
                 isPaid: false,
+                cost: ''
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
@@ -40,18 +41,14 @@ class Final extends React.Component {
     
     formSubmit = () => {
         let number = this.state.stage.rcount
-        console.log('number', number)
         let result = Number(number)
-        console.log('result', result)
         result = result+1;
         let result2 = String(result);
-        console.log('result2', result2)
         this.final.feedback = this.state.final.feedback;
         this.final.approved = true;
         this.stage.stage = 'revision';
         this.addRevision();
         this.stage.rcount = result2;
-        console.log(this.stage.rcount)
     }
 
     handleChange(event) {
@@ -71,7 +68,6 @@ class Final extends React.Component {
     }
 
     handleStateChange = () => {
-        console.log('working')
         this.setState({
             final: [],
             stage: []
@@ -114,11 +110,10 @@ class Final extends React.Component {
 
 
     render(){
-        console.log(this.state.stage)
-        if(!this.state.final.completed && this.state.concept.isPaid){
-            return( <WaitingPage stage={this.state.stage} state="final"/>    );             
-        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.state.stage.stage === 'final'){
-            return(<Payment stage={this.state.stage}/>)
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.state.stage.stage === 'final'){
+            return(<Payment/>)             
+        }else if(!this.state.final.completed){
+            return(<WaitingPage stage={this.state.stage} state="final"/>)
         }else{
             return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }

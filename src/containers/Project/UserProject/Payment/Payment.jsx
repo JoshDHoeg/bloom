@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import ElementsContainer from '../../../../components/PaymentStripe/frontend/ElementContainer'
 import { withAuthorization } from '../../../../utilities/Session';
 import { Grid } from 'semantic-ui-react';
+import WaitingPage from '../../../../components/Waiting/Waiting';
 
 class PaymentPage extends Component {
     concept;
@@ -29,34 +30,38 @@ class PaymentPage extends Component {
         this.getProjectState();
       }
 
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.concept = await project.concept;
         this.stage = await project.stage;
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
-            concept: {
-                ...this.concept.getAll()
+            stage: {
+                stage: this.stage.stage,
+                rcount: this.stage.rcount
             },
-            stage:{
-                stage: this.stage.stage
+            concept:{
+                ...this.concept.getAll()
             }
         }
         this.setState(state);
         return state;
     }
 
-    
-
     render(){
-        console.log('stage3', this.props.stage)
+        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
         return(
             <Grid.Row>
                 <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
             </Grid.Row>
-
         )
+        }else{
+            return(
+            <WaitingPage stage={this.state.stage} state = 'payment'/>
+            )
+        }
     }
 }
 
