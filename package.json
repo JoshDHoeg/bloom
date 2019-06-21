@@ -36,6 +36,7 @@
     "react-draft-wysiwyg": "^1.13.2",
     "react-figma-embed": "^1.0.0",
     "react-google-docs-viewer": "^1.0.1",
+    "react-https-redirect": "^1.1.0",
     "react-iframe": "^1.8.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
