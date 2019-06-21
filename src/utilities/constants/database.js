@@ -15,9 +15,10 @@ export class User {
   }
   //This is the email list
   _isEmaillist = true;
-  get _isEmaillist() { return this._isEmaillist; }
-  set isEmaillist(emailist) {
-    this.ref.set({ isEmaillist: emailist }, {merge: true});
+  get isEmaillist() { return this._isEmaillist; }
+  set isEmaillist(isEmaillist) {
+    this.ref.set({ isEmaillist: isEmaillist }, {merge: true});
+    console.log('here?', isEmaillist)
   }
   _name = '';
   get name() { return this._name; }
@@ -109,7 +110,7 @@ export class User {
       email: this.email,
       name: this.name,
       phone: this.phone,
-      isEmaillist:this._isEmaillist,
+      isEmaillist: this.isEmaillist,
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,

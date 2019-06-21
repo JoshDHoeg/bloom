@@ -41,9 +41,9 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  isEmaillist: true,
   error: null,
-  isDesigner: false
+  isDesigner: false,
+  isEmaillist: true,
 };
 
 class SignUpFormBase extends Component {

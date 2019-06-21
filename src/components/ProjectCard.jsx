@@ -61,7 +61,7 @@ class ProjCard extends Component {
         if(this.state.stage.stage === 'revision'){
             ProjectButton = 
             <Link to="/project/user_revision/0" >
-                <Button>View Project</Button>
+                <Button style={{backgroundColor:'#84DB95'}}>View Project</Button>
             </Link>
         }else{
             ProjectButton =

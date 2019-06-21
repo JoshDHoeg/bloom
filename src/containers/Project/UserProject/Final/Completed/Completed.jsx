@@ -113,6 +113,9 @@ class Completed extends React.Component {
                             <Button style={{backgroundColor:'#84DB95'}}><Link data-tip='Click here to get quotes from landscapers' to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
+                    <Grid.Row>
+                        <Editor onChange={this.props.handleChange}/>
+                    </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}} hidden = {!this.state.revisions}>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
@@ -131,7 +134,6 @@ class Completed extends React.Component {
                                 {feedbackButton}
                             </Form>
                         </div>
-                        <Editor/>
                     </Grid.Row>
                     {RightArrow}
                 </Container>
