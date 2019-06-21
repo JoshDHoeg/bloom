@@ -15,7 +15,7 @@ import { withFirebase } from '../../../utilities/Firebase';
 import * as ROUTES from '../../../utilities/constants/routes';
 
 const SignInPage = () => (
-  <div className='login-form' style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat'}}>
+  <div className='login-form'>
     <style>{`
     body > div,
     body > div > div,
@@ -26,8 +26,8 @@ const SignInPage = () => (
 
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-          <Image />Log-in to your account
+        <Header as='h2' color='black' textAlign='center'>
+          Log in to Bloomtime Design
         </Header>
         <SignInForm />
         <Message>
@@ -58,16 +58,14 @@ class SignInFormBase extends Component {
       .doSignInWithEmailAndPassword(email, password)
       .then(result => {
         if (result) {
-          console.log("we logged in");
           //this.props.firebase.doGetChannelsByUser(this.props.firebase.user.id).then(res => console.log(res));
           //this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res => {console.log(res)});
           this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
           this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.PROJECT);
+          this.props.history.push(ROUTES.PROJECT_LIST);
         }
       })
       .catch(error => {
-        console.log("fuck");
         this.setState({ error });
       });
 
@@ -80,9 +78,6 @@ class SignInFormBase extends Component {
 
   render() {
     const { email, password, error } = this.state;
-
-    console.log("why the fuck isnth this working");
-
     const isInvalid = password === '' || email === '';
 
     return (
@@ -108,7 +103,8 @@ class SignInFormBase extends Component {
               value={password}
               onChange={this.onChange}
             />
-            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+
+            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
               Login
             </Button>
             {error && <p style={{color:"red"}}>Username or password was invalid</p>}
@@ -132,3 +128,4 @@ const SignInForm = compose(
 export default SignInPage;
 
 export { SignInForm, SignInLink };
+

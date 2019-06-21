@@ -20,7 +20,6 @@ class NewGoal extends React.Component{
         this.setState({
             content: ''
         });
-        console.log("reset");
     }
 
     render(){

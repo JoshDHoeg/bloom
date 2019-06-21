@@ -1,7 +1,7 @@
 import FirebaseAuthUser from './authUser';
 import { ProjectData, Project } from '../../constants/database';
 import Firebase from '../firebase';
-import firebase from "firebase";
+
 
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
@@ -13,7 +13,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //creates empty project with default designer
 // o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
   doCreateEmptyProject = () => {
-      return this.doGetUser("userAuthID").then( designer => {
+      return this.doGetUser("Dkka3WOkG1cxLx6YiR5PBhvxO0o2").then( designer => {
           console.log(designer);
           var proj = this.projectsRef.doc();
           proj.set({
@@ -28,40 +28,43 @@ class FirebaseProjects extends FirebaseAuthUser  {
           const f = proj.collection('finals');
           const r = proj.collection('revisions');
           const s = proj.collection('stage')
+          const l = proj.collection('contractors')
           b.doc('0').set({
-              address: "",
-              budget: "",
-              completed: false,
-              goals: ["demo goal", "Demo Goal 2"],
-              init: false,
-              media: "",
-              narrative: "",
-              profile: {
-                spacing: '',
-                variety: '',
-                edging: '',
-                ground: '',
-                form: ''
-              }
+            address: "3100 Flower Lane",
+            budget: 599,
+            completed: false,
+            goals: ["demo goal", "Demo Goal 2"],
+            init: false,
+            media: "",
+            narrative: "",
+            profile: {
+              spacing: '',
+              variety: '',
+              edging: '',
+              ground: '',
+              form: ''
+            }
           });
           c.doc('0').set({
-              init: false,
-              feedback: "",
-              video: "",
-              media:"",
-              completed: false,
-              approved: false,
-              isPaid: false,
-              cost: 59999
+            init: false,
+            feedback: "",
+            video: "",
+            media:"",
+            completed: false,
+            approved: false,
+            isPaid: false,
+            cost: 59999,
+            approveterms: false,
+            terms: ""
           });
           d.doc('0').set({
-              init: false,
-              feedback: "",
-              video: "",
-              media:"",
-              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
-              completed: false,
-              approved: false,
+            init: false,
+            feedback: "",
+            video: "",
+            media:"",
+            figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
+            completed: false,
+            approved: false,
           });
           f.doc('0').set({
             init: false,
@@ -71,19 +74,27 @@ class FirebaseProjects extends FirebaseAuthUser  {
             figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
             completed: false,
             approved: false,
-        });
-          r.doc('0').set({
-              init: false,
-              feedback: "",
-              media:"",
-              figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
-              completed: false,
-              approved: false,
           });
           s.doc('0').set({
-              init: false,
-              stage: "concept"
+            init: false,
+            stage: "concept",
+            rcount: '0',
           });
+          l.doc('0').set({
+            init: false,
+            contractor1: 'Landscaper 1',
+            price1: 0,
+            stars1: 5,
+            number1: '000-000-0000',
+            contractor2:'Landscaper 2',
+            price2: 0,
+            stars2: 5,
+            number2: '000-000-0000',
+            contractor3: 'Landscaper 3',
+            price3: 0,
+            stars3: 5,
+            number3: '000-000-0000'
+          })
           return proj.get().then(data => {
               return new Project(data);
           })
@@ -91,36 +102,22 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  // doCreateRevision = () => {
-  //   doGetProject = (id, index, isUID = false) => {
-  //     if(isUID) {
-  //       return this.doGetUser(id).then(userData = this.doGetProject(userData.projects[index].id));
-  //     } else {
-  //       return this.projectsRef.doc(id).get().then(data => {
-  //         return new Project(data);
-  //       })
-  //     }
-  //   }
-  //   return this.doGetUser("userAuthID").then( designer => {
-  //     var proj = this.projectsRef.doc();
-  //     proj.set({
-  //         client: [null],
-  //         designer: [designer.ref],
-  //         _name: "tester",
-  //         _status: "revisions",
-  //     })
-  //     const r = proj.collection('revisions');
-  //     r.doc('0').set({
-  //       init: false,
-  //       feedback: "",
-  //       media:"",
-  //       figma: "",
-  //       completed: false,
-  //       approved: false,
-  //   });
-  //     return proj;
-  //   }
-  // }
+  doCreateRevision = (id, customerFeedback, revisionCount, index, isUID = false) => {
+    if (isUID) {
+      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback, revisionCount));
+    } else {
+      return this.projectsRef.doc(id).collection('revisions').doc(revisionCount).set({
+        init: false,
+        feedback: customerFeedback,
+        media:"",
+        figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
+        completed: false,
+        approved: false,
+      });
+    }
+  }
+
+
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
   doInitNewUser = (email , password) => {
@@ -140,11 +137,11 @@ class FirebaseProjects extends FirebaseAuthUser  {
   }
 
   doGetProject = (id, index, isUID = false) => { // return Promise<Project>
-    console.log("inside doGetProject");
     if (isUID) {
       return this.doGetUser(id).then(userData => this.doGetProject(userData.projects[index].id));
     } else {
       return this.projectsRef.doc(id).get().then(data => {
+        console.log(data);
         return new Project(data)
       });
   }
@@ -163,6 +160,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
           });
       });
   }
+  
 
   _doGetProjectTemplate = async (name, clientUid, designerUid) => {
     let cuids = Array.isArray(clientUid) ? clientUid : [clientUid];
@@ -183,7 +181,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
   _doUpdateProjectData = async (docRef, returnProject) => {
     await Promise.all(
-      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].map(obj => {
+      [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage, ProjectData.Contractor].map(obj => {
         return docRef.collection(obj.colRef).doc('0').set(new obj.type(null, true).getAll(), { merge: true });
       })
     );
@@ -222,7 +220,7 @@ class FirebaseProjects extends FirebaseAuthUser  {
       docs.forEach(d => {
         if (deleteSubCollections) {
           if (isProject)
-            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision].forEach(col => {
+            [ProjectData.Brief, ProjectData.Concept, ProjectData.Final, ProjectData.Revision, ProjectData.Stage, ProjectData.Contractor].forEach(col => {
               this._deleteAll(d.ref.collection(col.colRef), true);
             });
           d.ref.delete();

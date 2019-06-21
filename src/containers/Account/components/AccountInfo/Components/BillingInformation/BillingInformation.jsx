@@ -23,13 +23,10 @@ const BillingInfo = (props) => (
 );
 
 const BillingInfoView = (props) => {
-    console.log('bill add:', props.billadd1)
     const billadd1 = props.billadd1;
     const zip = props.zip;
     const city = props.city;
     const state = props.state;
-//    console.log('user2', user)
-    console.log('billadd1:', billadd1)
     return (
         <div style={{textAlign:'center'}}>
         <table class="ui definition table">

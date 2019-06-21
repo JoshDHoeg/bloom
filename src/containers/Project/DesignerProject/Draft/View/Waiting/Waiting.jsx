@@ -36,7 +36,6 @@ class DraftPageWaiting extends Component {
                 </div>
                 )
             }else{
-                console.log(this.props.approved);
                 return(
                 <div style={{backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
                     <div className = "ui stackable grid container">

@@ -9,7 +9,6 @@ const AuthButton = () => (
 );
 
 
-const condition = authUser =>
-  authUser && !authUser._isDesigner;
+const condition = role => role > 0
 
 export default withAuthorization(condition)(AuthButton);

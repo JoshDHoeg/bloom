@@ -15,7 +15,6 @@ import AccountInfoPage from './components/AccountInfo/AccountInfo'
 
 class Account extends Component {
   render(){
-      console.log('here')
       return(
           <Router>
               <Segment basic>
@@ -35,7 +34,7 @@ class Account extends Component {
   }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(Account)
 

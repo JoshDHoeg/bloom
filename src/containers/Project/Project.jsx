@@ -14,12 +14,12 @@ class ProjectBase extends React.Component {
             return <HomePageWithSidebar/>
         }
         else {
-            console.log("here");
             return <UserProject/>
         }
     }
 }
 
-const condition = authUser => !!authUser;
+
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(ProjectBase);

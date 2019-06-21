@@ -1,4 +1,5 @@
 import Firebase from '../Firebase';
+import { throws } from 'assert';
 
 
 export class User {
@@ -10,19 +11,16 @@ export class User {
   _email = '';
   get email() { return this._email; }
   set email(email) {
-    console.log(email);
     this.ref.set({ email: email }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
   set name(name) {
-    console.log(name);
     this.ref.set({ name: name }, {merge: true});
   }
   _phone = '';
   get phone() { return this._phone; }
   set phone(phone) {
-    console.log(phone);
     this.ref.set({ phone: phone }, {merge: true});
   }
   _projects = [];
@@ -49,6 +47,16 @@ export class User {
   get state() { return this._state }
   set state(state) {
     this.ref.set({ state: state }, {merge:true})
+  }
+  _role = ''
+  get role() { return this._role }
+  set role(role) {
+    this.ref.set({ role: role }, {merge: true})
+  }
+  _isAdmin = ''
+  get isAdmin() { return this._isAdmin }
+  set isAdmin(isAdmin) {
+    this.ref.set({ isAdmin: isAdmin }, {merge: true})
   }
 
   get uid() { return this.id };
@@ -79,6 +87,8 @@ export class User {
     this._zip = data['zip'];
     this._city = data['city'];
     this._state = data['state'];
+    this._role = data['role'];
+    this._isAdmin = data['isAdmin']
   }
 
   _getAll = (obj) => {
@@ -96,7 +106,9 @@ export class User {
       zip: this.zip,
       city: this.city,
       state: this.state,
-      projects: this.projects
+      projects: this.projects,
+      role: this.role,
+      isAdmin: this.isAdmin
     });
   }
 }
@@ -192,12 +204,13 @@ export class ProjectBase {
 
   getProjectData = async () => { // For testing and ease of use
     // (this is a single promise, but it is more time consuming & unnecessary when we code split final prod)
-    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.drafts, this.finals, this.revisions]);
+    const data = await Promise.all([this.client, this.designer, this.briefs, this.concepts, this.drafts, this.finals, this.revisions, this.contractors, this.stages]);
     return data.reduce((d, item, i) => {
       d[Array.isArray(item) ? item[0].constructor.name : item.constructor.name] = item;
       return d;
     }, { name: this.name });
   }
+
   _getDatabasePromise = (projectData, isRef = false) => {
     const ref = isRef ? projectData : projectData.colRef
     return this.cols.collection(ref).get().then(colSnap => {
@@ -205,7 +218,6 @@ export class ProjectBase {
     });
   }
   _getUser = (userRef) => {
-    console.log(userRef);
     userRef.get().then(res => console.log(res));
     userRef.get().then(userSnap => new User(userSnap));
   }
@@ -225,19 +237,21 @@ export class ProjectBase {
   get drafts() { return this._getDatabasePromise(ProjectData.Draft); }
   get finals() { return this._getDatabasePromise(ProjectData.Final); }
   get revisions() { return this._getDatabasePromise(ProjectData.Revision); }
+  get stages() { return this._getDatabasePromise(ProjectData.Stage); }
+  get contractors() { return this._getDatabasePromise(ProjectData.Contractor)}
 }
 
 export class Project extends ProjectBase {
   name = '';  // the only nonPromise type
 
-  get client() { console.log("here"); return this._getUser(this.clientRef) };
+  get client() { return this._getUser(this.clientRef) };
   set client(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
       this.designers = d;
     });
    };
-  get designer() { console.log("here 2"); return this._getUser(this.designerRef) };
+  get designer() { return this._getUser(this.designerRef) };
   set designer(userClass) {
     this.designers.then(d => {
       d[0] = userClass;
@@ -254,8 +268,9 @@ export class Project extends ProjectBase {
   get concept() { return this.concepts.then(c => c[0]); }
   get draft() { return this.drafts.then(c => c[0]); }
   get final() { return this.finals.then(f => f[0]); }
-  get revision() { return this.revisions.then(r => r[0]); }
-  get stage() {return this.stage.then(s => s[0]); }
+  get revision() { return this.revisions }
+  get stage() { return this.stages.then(s => s[0]); }
+  get contractor() { return this.contractors.then(p => p[0]); }
 }
 
 class ProjectDataBase {
@@ -338,16 +353,14 @@ export class ProjectData {
       _goals = [];
       get goals() { return this._goals; };
       set goals(g) { this._setter({ goals: g }).then(() => this._goals = g); }
-      _location = '';
-      get location() { return this._location; };
-      set location(l) { this._setter({ location: l }).then(() => this._location = l); }
+      _address = '';
+      get address() { return this._address; };
+      set address(l) { this._setter({ address: l }).then(() => this._address = l); }
       _budget = ['', ''];
       get budget() {
-        console.log("here3");
         return this._budget;
       };
       set budget(b) {
-          console.log("here4");
           this._setter({ budget: b }).then(() => this._budget = b)
       }
       doSetBudget(b){
@@ -361,10 +374,8 @@ export class ProjectData {
       set completed(c) { this._setter({ completed: c }).then(() => this._completed = c); }
       _profile = {};
       get profile() {
-        console.log("here");
         return this._profile; };
       set profile(p) {
-        console.log("here2");
         this._setter({ profile: p }).then(() => this._profile = p);
       }
       doSetProfile(p){
@@ -375,14 +386,14 @@ export class ProjectData {
         super(dbQuery, useDefault);
         if (!useDefault) {
           this._goals = this.data['goals'];
-          this._location = this.data['location'];
+          this._address = this.data['address'];
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
           this._profile = this.data['profile'];
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
-          this._location = 'Western Side of House';
+          this._address = 'Western Side of House';
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
@@ -393,7 +404,7 @@ export class ProjectData {
       getAll() {
         return this._getAll({
           goals: this.goals,
-          location: this.location,
+          address: this.address,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,
@@ -426,6 +437,12 @@ export class ProjectData {
       _cost = '';
       get cost() { return this._cost; };
       set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
+      _ApproveTerms = false;
+      get approveterms() {return this._ApproveTerms; };
+      set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
+      _terms = ''
+      get terms() {return this._terms; }
+      set terms(s) {this._setter({ terms: s }).then(() => this._terms = s); }
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
@@ -436,6 +453,8 @@ export class ProjectData {
           this._isApproved = this.data['approved'];
           this._isPaid = this.data['isPaid']
           this._cost = this.data['cost']
+          this._ApproveTerms = this.data['approveterms']
+          this._terms = this.data['terms']
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -443,6 +462,8 @@ export class ProjectData {
           this._isApproved = false;
           this._isPaid = false;
           this._cost = 59999;
+          this._ApproveTerms = false
+          this._terms = ''
         }
       }
       getAll() {
@@ -453,10 +474,13 @@ export class ProjectData {
           approved: this.approved,
           isPaid: this.isPaid,
           cost: this.cost,
+          approveterms: this.approveterms,
+          terms: this._terms
         });
       }
     }
   };
+  
   static Draft = {
     colRef: 'drafts',
     type: class Draft extends ProjectDataBase {
@@ -617,20 +641,114 @@ export class ProjectData {
     colRef: 'stage',
     type: class Stage extends ProjectDataBase {
       _stage = '';
-      get stage() {return this._stage; };
-      set stage(s) {this._setter({ stage: s }).then(() => this._stage = s); }
+      get stage() { return this._stage; };
+      set stage(s) { this._setter({ stage: s }).then(() => this._stage = s); }
+      _rcount = 0;
+      get rcount() { return this._rcount; };
+      set rcount(c) { this._setter({ rcount: c }).then(() => this._rcount = c); };
 
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
-          this._stage = this.data['state'];
+          this._stage = this.data['stage'];
+          this._rcount = this.data['rcount'];
         } else {
-          this._stage = 'concept'
+          this._stage = 'concept';
+          this._rcount = '0';
         }
       }
       getAll() {
         return this._getAll({
           stage: this.stage,
+          rcount: this.rcount
+        })
+      }
+    }
+  }
+  static Contractor = {
+    colRef: 'contractors',
+    type: class Contractor extends ProjectDataBase {
+      _contractor1 = '';
+      get contractor1() { return this._contractor1; }
+      set contractor1(c) { this._setter({ contractor1: c }).then(() => this._contractor1 = c); }
+      _price1 = '';
+      get price1() { return this._price1; }
+      set price1(p) {this._setter({ price1: p}).then(() => this.price1 = p); }
+      _stars1 = '';
+      get stars1() { return this._stars1; }
+      set stars1(s) {this._setter({ stars1: s}).then(() => this._stars1 = s); }
+      _number1 = '';
+      get number1() { return this._number1; }
+      set number1(n) {this._setter({ number1: n}).then(() => this._number1 = n); }
+      _contractor2 = '';
+      get contractor2() { return this._contractor2; }
+      set contractor2(e) { this._setter({ contractor2: e }).then(() => this._contractor2 = e); }
+      _price2 = '';
+      get price2() { return this._price2; }
+      set price2(r) {this._setter({ price2: r}).then(() => this.price2 = r); }
+      _stars2 = '';
+      get stars2() { return this._stars2; }
+      set stars2(i) {this._setter({ stars2: i}).then(() => this._stars2 = i); }
+      _number2 = '';
+      get number2() { return this._number2; }
+      set number2(n) {this._setter({ number2: n}).then(() => this._number2 = n); }
+      _contractor3 = '';
+      get contractor3() { return this._contractor3; }
+      set contractor3(j) { this._setter({ contractor3: j }).then(() => this._contractor3 = j); }
+      _price3 = '';
+      get price3() { return this._price3; }
+      set price3(l) {this._setter({ price3: l}).then(() => this.price3 = l); }
+      _stars3 = '';
+      get stars3() { return this._stars3; }
+      set stars3(f) {this._setter({ stars3: f}).then(() => this._stars3 = f); }
+      _number3 = '';
+      get number3() { return this._number3; }
+      set number3(n) {this._setter({ number3: n}).then(() => this._number3 = n); }
+
+      constructor(dbQuery, useDefault = false) {
+        super(dbQuery, useDefault);
+        if (!useDefault) {
+          this._contractor1 = this.data['contractor1'];
+          this._price1 = this.data['price1'];
+          this._stars1 = this.data['stars1'];
+          this._number1 = this.data['number1']
+          this._contractor2 = this.data['contractor2'];
+          this._price2 = this.data['price2'];
+          this._stars2 = this.data['stars2'];
+          this._number2 = this.data['number2']
+          this._contractor3 = this.data['contractor3'];
+          this._price3 = this.data['price3'];
+          this._stars3 = this.data['stars3'];
+          this._number3 = this.data['number3']
+        } else {
+          this._contractor1 = 'Landscaper1';
+          this._price1 = 0;
+          this._stars1 = 5;
+          this._number1 = '000-000-0000'
+          this._contractor2 = 'Landscaper2';
+          this._price2 = 0;
+          this._stars2 = 5;
+          this._number2 = '000-000-0000'
+          this._contractor3 = 'Landscaper3';
+          this._price3 = 0;
+          this._stars3 = 5;
+          this._number3 = '000-000-0000'
+        }
+      }
+      getAll() {
+        return this._getAll({
+          contractor1: this.contractor1,
+          price1: this.price1,
+          stars1: this.stars1,
+          number1: this.number1,
+          contractor2: this.contractor2,
+          price2: this.price2,
+          stars2: this.stars2,
+          number2: this.number2,
+          contractor3: this.contractor3,
+          price3: this.price3,
+          stars3: this.stars3,
+          number3: this.number3,
         })
       }
     }

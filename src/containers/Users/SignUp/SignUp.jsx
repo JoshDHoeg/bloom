@@ -24,8 +24,8 @@ const SignUpPage = () => (
 
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
-            <Image/> Sign-Up to your account
+          <Header as='h2' color='black' textAlign='center'>
+            Sign up for Bloomtime Design
           </Header>
           <SignUpForm />
           <Message>
@@ -54,22 +54,26 @@ class SignUpFormBase extends Component {
   onSubmit = event => {
     const { name, email, passwordOne, isDesigner } = this.state;
     const roles = [];
-
     if (isDesigner) {
-      roles.push(ROLES.DESIGNER);
+      roles.push(ROLES.DESIGNER)
     }
     this.props.firebase
-        .doInitNewUser(email, passwordOne, name)
+      .doInitNewUser(email, passwordOne, name)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
-          //this.props.firebase.doGetProjects(this.props.firebase.user.id).then( res =>  console.log(res));
+         return this.props.firebase
+        //  .user(authUser.uid)
+        //  .set({
+        //    name,
+        //    email,
+        //    roles,
+        //  })
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
         this.props.history.push(ROUTES.PROJECT_LIST);
       })
       .catch(error => {
-        // console.log({ error });
         this.setState({ error });
       });
 
@@ -143,14 +147,15 @@ class SignUpFormBase extends Component {
             value={passwordTwo}
             onChange={this.onChange}
           />
-          {/* <Form.Checkbox
+          <Form.Checkbox
             label="Designer?"
             name="isDesigner"
             toggle
             checked={isDesigner}
             onChange={this.onChangeCheckbox}
-          /> */}
-          <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+          />
+          
+          <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
             Login
           </Button>
           {error && <p>{error.message}</p>}
