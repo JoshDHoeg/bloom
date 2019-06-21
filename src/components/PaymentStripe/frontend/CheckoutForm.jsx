@@ -1,5 +1,4 @@
 //BLOOMTIME DESIGN 2019
-import { Button } from 'semantic-ui-react'
 import React,{Component} from 'react';
 import {Link} from 'react-router-dom'
 import {CardElement, injectStripe} from 'react-stripe-elements';
@@ -8,11 +7,11 @@ import { withAuthorization } from '../../../utilities/Session';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import { library } from '@fortawesome/fontawesome-svg-core';
-//import axios from 'axios';
+import { Container,Segment, Header, Button, Grid } from 'semantic-ui-react'
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
-class PaymentButton extends Component {
+class Form extends Component {
   concept;
   stage;
   constructor(props) {
@@ -56,7 +55,6 @@ class PaymentButton extends Component {
 
   stateChange = () => {
     this.concept.isPaid = true;
-    this.stage.stage = 'draft';
   }
 
   getProjectState = async () => {
@@ -66,7 +64,7 @@ class PaymentButton extends Component {
     const state = await {
         loading: false,
         concept: {
-          ...this.concept.getAll()
+          ...this.concept.getAll(),
         },
         stage: {
           stage: this.stage.stage
@@ -80,12 +78,13 @@ class PaymentButton extends Component {
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
     let amt = this.state.concept.cost;
-    let response = await fetch(PAYMENT_SERVER_URL, {
+    let response = await fetch('https://bloom-expressapi.herokuapp.com/payment', {
       method: "POST",
       headers: {"Content-Type": "application/json",
-      'Access-Control-Allow-Origin': 'https://bloom-userui.herokuapp.com',
-      'Access-Control-Allow-Methods': 'GET, HEAD, OPTION, POST, PUT'
-     },
+      'Access-Control-Allow-Origin':  'https://app.bloomtimedesign.co',
+      //'Access-Control-Allow-Origin':  'http://localhost:3000',
+      // 'Access-Control-Allow-Origin':  'https://bloom-prod.herokuapp.com'
+    },
       body: JSON.stringify({
         amount: amt,
         token: token.id
@@ -99,29 +98,44 @@ class PaymentButton extends Component {
     }
   }
   
-  render() { 
+  render() {
+    let amount;
+    amount = this.props.concept.cost
+    let amount2;
+    amount2 = parseFloat(Math.round(amount) / 100).toFixed(2);
     if (this.state.complete) {
       return( 
-        <div>
-          <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Purchase Complete</h3> 
-            <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
-            <img src={ArrowRight}/></Link>
-        </div>
+        <Grid>
+          <Grid.Row style={{paddingTop: '25px', paddingBottom: '25px'}}>
+            <Header as='h2' style={{ paddingLeft:'10px', paddingRight:'10px', fontSize:'15px'}}>Purchase Complete!</Header>
+              <Link to="/project/user_draft" style={{position: "absolute", left: "90%", top: "250px"}}>
+              <img src={ArrowRight}/></Link>
+          </Grid.Row>
+        </Grid>
       );
     } else {
     return (
-      <div className="checkoutFormButton">
-        <h3 style={{ fontSize:'16px', color:'#FA907F', fontFamily:'sans-serif'}}>Would you like to purchase your design?</h3>
-        <CardElement />
-        <Button animated='fade' onClick={this.submit} style={{marginTop:'15px', marginBottom: '5px'}}>
-          <Button.Content visible>Purchase</Button.Content>
-          <Button.Content hidden>$599.99</Button.Content>
-        </Button>
-      </div>
+      <Grid>
+        <Container fluid textAlign='left' text='true'>
+        <Grid.Row style={{ paddingTop: '20px' }}>
+          <Header as='h2' style={{ fontSize:'15px'}}>Please purchase your project for ${amount2} to continue</Header>
+        </Grid.Row>
+        <Grid.Row style={{ paddingTop: '20px' }}>
+          <Segment>
+           <CardElement />
+          </Segment>
+        </Grid.Row>
+          <Button animated='fade' onClick={this.submit} style={{backgroundColor:'#84DB95',marginTop:'15px', marginBottom: '15px'}}>
+            <Button.Content visible>Purchase</Button.Content>
+            <Button.Content hidden>${amount2}</Button.Content>
+          </Button>
+        </Container>
+      </Grid>
     );
   }
 }
 }
+
 const condition = role => role > 0;
 
-export default  withAuthorization(condition)(injectStripe(PaymentButton));
+export default  withAuthorization(condition)(injectStripe(Form));

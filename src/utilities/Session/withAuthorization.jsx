@@ -2,6 +2,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
+import Loading from '../../components/Loading/Loading'
 
 //IMPORT UTILITIES
 import AuthUserContext from './context';
@@ -44,7 +45,7 @@ const withAuthorization = condition => Component => {
       return (
         <AuthUserContext.Consumer>
           {authUser =>
-            condition(authUser) ? <Component {...this.props} /> : <h1>This is not the page your looking for</h1>
+            condition(authUser) ? <Component {...this.props} /> : <Loading/>
           }
         </AuthUserContext.Consumer>
       );

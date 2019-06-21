@@ -115,7 +115,7 @@ class Messaging extends Component {
             return ( <div> Loading </div>)
         }else {
             return(
-                <Grid columns="equal" style={{ background: "#eee",height: '100vh'}}>
+                <Grid columns="equal" style={{ marginTop:'15px', background: "#eee", height: '100vh'}}>
                     <SidePanel
                         newMessageCounts={this.state.newMessageCounts}
                         currentChannel={this.state.currentChannel}

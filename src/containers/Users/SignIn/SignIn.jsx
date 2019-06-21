@@ -26,8 +26,8 @@ const SignInPage = () => (
 
     <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as='h2' color='teal' textAlign='center'>
-          Log-in
+        <Header as='h2' color='black' textAlign='center'>
+          Log in to Bloomtime Design
         </Header>
         <SignInForm />
         <Message>
@@ -62,7 +62,7 @@ class SignInFormBase extends Component {
           //this.props.firebase.doGetMessagesByChannel(this.props.firebase.user.helpChannel).then(res => {console.log(res)});
           this.props.firebase.doGetUsersByChannel(this.props.firebase.user.helpChannel.id).then(res => console.log(res));
           this.setState({ ...INITIAL_STATE });
-          this.props.history.push(ROUTES.PROJECT);
+          this.props.history.push(ROUTES.PROJECT_LIST);
         }
       })
       .catch(error => {
@@ -103,7 +103,8 @@ class SignInFormBase extends Component {
               value={password}
               onChange={this.onChange}
             />
-            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+
+            <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
               Login
             </Button>
             {error && <p style={{color:"red"}}>Username or password was invalid</p>}
@@ -127,3 +128,4 @@ const SignInForm = compose(
 export default SignInPage;
 
 export { SignInForm, SignInLink };
+

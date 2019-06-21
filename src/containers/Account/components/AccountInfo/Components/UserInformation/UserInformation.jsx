@@ -1,7 +1,7 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
 import { Input } from 'semantic-ui-react';
-
+import { Grid, Container, Header } from 'semantic-ui-react';
 const UserInfo = (props) => {
     return (
         <div>
@@ -29,7 +29,6 @@ const UserInfoView = (props) => {
         <tbody>
             <tr>
                 <td>Name:</td>
-                <td> </td> {/*used for spacing*/}
                 <td id ='NameTxt'>{name}</td> {/* should be state, used temp value until one exists */}
             </tr>
             {/* <tr>
@@ -39,7 +38,6 @@ const UserInfoView = (props) => {
             </tr> */}
             <tr>
                 <td>Phone:</td>
-                <td></td>
                 <td id ='PhoneTxt'>{phone}</td>
             </tr>
         </tbody>
@@ -56,7 +54,6 @@ const UserInfoEdit = (props) => {
         <tbody>
             <tr>
                 <td>Name:</td>
-                <td> </td>
                 <td id ='EditNameTxt'> <Input name="name" onChange={handleChange} type='text'  defaultValue={name} style={{ width: '140px' }} ></Input></td>
             </tr>
             {/*<tr>*/}
@@ -66,7 +63,6 @@ const UserInfoEdit = (props) => {
             {/*</tr>*/}
             <tr>
                 <td>Phone:</td>
-                <td></td>
                 <td id ='EditPhoneTxt'><Input name="phone" onChange={handleChange} type='text' defaultValue={phone} style={{ width: '140px' }} ></Input></td>
             </tr>
         </tbody>

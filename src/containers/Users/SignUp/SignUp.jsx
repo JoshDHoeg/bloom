@@ -24,8 +24,8 @@ const SignUpPage = () => (
 
       <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
         <Grid.Column style={{ maxWidth: 450 }}>
-          <Header as='h2' color='teal' textAlign='center'>
-            Sign-Up
+          <Header as='h2' color='black' textAlign='center'>
+            Sign up for Bloomtime Design
           </Header>
           <SignUpForm />
           <Message>
@@ -154,7 +154,8 @@ class SignUpFormBase extends Component {
             checked={isDesigner}
             onChange={this.onChangeCheckbox}
           />
-          <Button color='teal' fluid size='large' disabled={isInvalid} type="submit">
+          
+          <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
             Login
           </Button>
           {error && <p>{error.message}</p>}

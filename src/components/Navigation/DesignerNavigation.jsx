@@ -1,5 +1,5 @@
 // BLOOMTIME DESIGN 2019
-import React from 'react';
+import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../Images/BloomtimeLogo.png'
 //IMPORT UTILITIES
@@ -7,15 +7,36 @@ import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
 import SignOutButton from '../../containers/Users/SignOut/SignOut'
-const Navigation = () => (
-    <div>
-        <AuthUserContext.Consumer>
-            {   authUser =>
-                authUser ? <NavigationAuth /> : <NavigationNonAuth />
-            }
-        </AuthUserContext.Consumer>
-    </div>
-);
+import Loading from '../Loading/Loading'
+
+class DesignerNavigation extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            loading: true
+        }
+    }
+
+    componentDidMount() {
+        this.setState({ loading: false })
+    }
+
+    render(){
+        if(this.state.loading){
+            return <Loading/>
+        }else if(!this.state.loading){
+            return(
+                <div>
+                <AuthUserContext.Consumer>
+                    {   authUser =>
+                        authUser ? <NavigationAuth /> : <NavigationNonAuth />
+                    }
+                </AuthUserContext.Consumer>
+                </div> 
+            )
+        }
+    }
+}
 
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
@@ -56,4 +77,4 @@ const NavigationNonAuth = () => (
     </div>
 );
 
-export default Navigation;
+export default DesignerNavigation;
