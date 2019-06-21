@@ -19,7 +19,6 @@ class ElementsContainer extends Component {
   }
 
   render() {
-    console.log('hello', this.props.stage.stage)
     let RightArrow
     let LeftArrow
     if(this.props.stage.stage === 'concept' || this.props.stage.stage === 'draft'){

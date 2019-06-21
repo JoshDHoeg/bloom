@@ -51,7 +51,6 @@ class PaymentPage extends Component {
     }
 
     render(){
-        console.log('stageA', this.state.stage)
         if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
         return(
             <Grid.Row>

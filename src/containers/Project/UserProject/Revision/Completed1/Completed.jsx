@@ -75,7 +75,6 @@ class Completed extends React.Component {
                 </Form>
             </div>
         }
-        console.log('its fucked here', this.props.revision.approved)
         let feedbackButton;
         if(!this.props.revision.approved) {
             feedbackButton = <Button 
@@ -93,8 +92,6 @@ class Completed extends React.Component {
             color='blue'>
             Submit</Button>
         }
-        console.log('current Revision', this.props.currentRevision)
-        console.log('rcount', this.props.stage.rcount)
         let RightArrow;
         if(this.props.currentRevision < (this.props.stage.rcount-1)){
             let revision = Number(this.props.currentRevision)
@@ -112,7 +109,6 @@ class Completed extends React.Component {
         }
         let LeftArrow;
         let revision = Number(this.props.currentRevision)
-        console.log('wtf10', this.props.revision.approved)
         if(revision > 0){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)

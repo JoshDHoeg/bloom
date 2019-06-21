@@ -87,7 +87,6 @@ class Waiting extends Component {
         }
     }
     render(){
-        console.log(this.state.titleNext)
         let Next
         Next = 'go to '+(this.state.titleNext)
         let RightArrow;
@@ -107,7 +106,6 @@ class Waiting extends Component {
         let Last;
         Last = 'go to '+(this.state.titleLast)
         let revision = Number(this.props.currentRevision)
-        console.log(this.props.state)
         if(this.props.state === 'revision' && revision !== 0){
             let revision = Number(this.props.currentRevision)
             let link = "/project/user_revision/"+(revision-1)
