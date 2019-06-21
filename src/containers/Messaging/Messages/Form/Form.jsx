@@ -49,7 +49,7 @@ class MessageForm extends React.Component {
               <Button.Group icon widths="2">
               <Button
                 onClick={this.handleSubmit}
-                color="orange"
+                color="blue"
                 content="Reply"
                 labelPosition="left"
                 icon="edit"
