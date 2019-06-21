@@ -29,6 +29,7 @@ class Final extends React.Component {
                 approved: false,
                 approveterms: false,
                 isPaid: false,
+                cost: ''
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
@@ -118,7 +119,7 @@ class Final extends React.Component {
         if(!this.state.final.completed && this.state.concept.isPaid){
             return( <WaitingPage stage={this.state.stage} state="final"/>    );             
         }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid && this.state.stage.stage === 'final'){
-            return(<Payment stage={this.state.stage}/>)
+            return(<Payment/>)
         }else{
             return( <CompletedPage mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} contractorStage={this.contractorStage} stage={this.state.stage} formSubmit={this.formSubmit} handleChange={this.handleChange} final={this.state.final}/> );
         }

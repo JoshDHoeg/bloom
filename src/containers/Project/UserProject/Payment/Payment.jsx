@@ -29,28 +29,28 @@ class PaymentPage extends Component {
         this.getProjectState();
       }
 
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.concept = await project.concept;
         this.stage = await project.stage;
+        this.concept = await project.concept;
         //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
-            concept: {
-                ...this.concept.getAll()
+            stage: {
+                stage: this.stage.stage,
+                rcount: this.stage.rcount
             },
-            stage:{
-                stage: this.stage.stage
+            concept:{
+                ...this.concept.getAll()
             }
         }
         this.setState(state);
         return state;
     }
 
-    
-
     render(){
-        console.log('stage3', this.props.stage)
+        console.log('stageA', this.state.stage)
         return(
             <Grid.Row>
                 <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
