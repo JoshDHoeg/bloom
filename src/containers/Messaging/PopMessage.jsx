@@ -4,11 +4,12 @@ import { makeStyles } from '@material-ui/core/styles';
 import Fab from '@material-ui/core/Fab';
 import MessageIcon from '@material-ui/icons/Message';
 import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
 import Messaging from './Messaging';
+import Badge from '@material-ui/core/Badge';
 import { withAuthorization } from '../../utilities/Session';
 import * as ROUTES from "../../utilities/constants/routes";
 import backgroundTemp from '../../Images/TempBackground.PNG';
+import { Visibility } from 'semantic-ui-react';
 
 const useStyles = makeStyles(theme => ({
     fab: {
@@ -23,16 +24,24 @@ const useStyles = makeStyles(theme => ({
     },
   }));
 
+
 function PopMessage() 
 {
     const [anchorEl, setAnchorEl] = React.useState(null);
+    const [invisible, setInvisible] = React.useState(false);
 
   function handleClick(event) {
     setAnchorEl(event.currentTarget);
+    handleBadgeVisibility();
   }
 
   function handleClose() {
     setAnchorEl(null);
+  }
+  function handleBadgeVisibility() {
+    if(!invisible){
+    setInvisible(!invisible);}
+    else{}
   }
 
   const open = Boolean(anchorEl);
@@ -40,8 +49,12 @@ function PopMessage()
   return(
     <div> 
     <Fab color="primary" className={useStyles().fab} onClick = {handleClick}>
-     < MessageIcon/>
+    <Badge  badgeContent={4} color="secondary" invisible={invisible} >
+          <MessageIcon />
+    </Badge>
     </Fab>
+    
+    
     <Popover
         id={id}
         open={open}
@@ -58,9 +71,7 @@ function PopMessage()
           horizontal: 'left',
         }}
       >
-      
        <Messaging/>
-
       </Popover>
       </div>
   )

@@ -41,7 +41,7 @@ class Channels extends React.Component {
                     key={channel.id}
                     onClick={() => {this.props.setCurrentChannel(channel)}}
                     name={channel.name}
-                    style={{opacity: 0.95, backgroundColor: '#4d94ff'}}
+                    style={{opacity: 0.95}}
                 >
                     # {channel.name}
                 </Menu.Item>
@@ -74,7 +74,7 @@ class Channels extends React.Component {
     floating
     labeled
     options={this.displayChannels(channels)}
-    text='Select Channel'
+    text="Select Channel"
   />
        
         </React.Fragment>

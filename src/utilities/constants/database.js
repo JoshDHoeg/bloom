@@ -6,12 +6,18 @@ export class User {
   _isDesigner = false;
   get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
-    this.ref.set({ isDesigner: designer });
+    this.ref.set({ isDesigner: designer }, {merge: true});
   }
   _email = '';
   get email() { return this._email; }
   set email(email) {
     this.ref.set({ email: email }, {merge: true});
+  }
+  //This is the email list
+  _isEmaillist = true;
+  get _isEmaillist() { return this._isEmaillist; }
+  set isEmaillist(emailist) {
+    this.ref.set({ isEmaillist: emailist }, {merge: true});
   }
   _name = '';
   get name() { return this._name; }
@@ -72,6 +78,7 @@ export class User {
   constructor(dbQuery) {
     const data = dbQuery.data();
     this._isDesigner = data['isDesigner'];
+    this._isEmaillist = data['isEmaillist']
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
@@ -102,6 +109,7 @@ export class User {
       email: this.email,
       name: this.name,
       phone: this.phone,
+      isEmaillist:this._isEmaillist,
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,
