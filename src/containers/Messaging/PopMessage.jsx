@@ -40,7 +40,7 @@ function PopMessage()
   return(
     <div> 
     <Fab color="primary" className={useStyles().fab} onClick = {handleClick}>
-     <MessageIcon />
+     < MessageIcon/>
     </Fab>
     <Popover
         id={id}

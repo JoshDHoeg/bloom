@@ -2,7 +2,6 @@
 import React, {Component} from 'react';
 import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
 import { Icon, Menu, Segment, Sidebar,Button} from 'semantic-ui-react';
-
 import AccountInfoPage from './components/AccountInfo/AccountInfo'
 import PopMessage from '../Messaging/PopMessage';
 //IMPORT CONTAINERS

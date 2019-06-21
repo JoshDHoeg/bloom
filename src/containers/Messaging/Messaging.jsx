@@ -9,6 +9,7 @@ import * as ROUTES from "../../utilities/constants/routes";
 import Messages from './Messages/Messages';
 import SidePanel from './SidePanel/SidePanel';
 import { auth } from 'firebase';
+import Loading from '../../components/Loading/Loading';
 class Messaging extends Component {
 
     constructor(props){
@@ -47,7 +48,11 @@ class Messaging extends Component {
 
     render(){
         if(this.state.loading){
-            return ( <div> Loading </div>)
+            return (
+                <Grid columns="equal" style={{ background: "#eee",height: '50vh',width:'40vh',stretched:true}} >
+                     <Loading />
+                     </Grid>
+                     )
         }else {
             return(
                 <div className = "MessagePop">

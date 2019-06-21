@@ -34,7 +34,7 @@ class Completed extends React.Component{
             </Link>
         }
         return (
-            <div className='Completed'>
+            <div className='completed'>
             <Grid >
             <Container><ProjectStatus state="concept"/></Container>
                 <Container fluid textAlign='center' text='true'>
