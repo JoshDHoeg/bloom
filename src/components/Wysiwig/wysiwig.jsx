@@ -45,14 +45,14 @@ class Editors extends Component {
 
        if(this.state.state === 'final'){ 
         this.state.final.feedback = markup;
-        this.final.feedback = this.state.final.feedback
+        this.final.feedback = this.state.final.feedback;
        }else if(this.state.state === 'draft'){
         this.state.draft.feedback = markup;
-        this.draft.feedback = this.state.draft.feedback
+        this.draft.feedback = this.state.draft.feedback;
        }else {
            this.state.revision.feedback = markup;
+           this.revision.feedback = this.state.revision.feedback;
        }
-       console.log('changing?', this.state.draft.feedbacke)
     };
 
     componentDidMount() {
@@ -92,17 +92,14 @@ class Editors extends Component {
     }
 
     render() {
-        console.log('feeddback2', this.props.feedback)
-        console.log('state',this.state.state)
         let feedback
         if(this.state.state === 'final'){
             feedback = parse(this.state.final.feedback);
         }else if(this.state.state === 'draft'){
             feedback = parse(this.state.draft.feedback);
         }else if(this.state.state === 'revision'){
-            feedback = parse(this.state.revision.feedback)
+            feedback = parse(this.state.revision.feedback);
         }
-        console.log('feedback1', feedback)
         if(!this.props.approved){
         const { editorState } = this.state;
             return (

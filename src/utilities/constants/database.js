@@ -14,11 +14,11 @@ export class User {
     this.ref.set({ email: email }, {merge: true});
   }
   //This is the email list
-  _isEmaillist = true;
-  get isEmaillist() { return this._isEmaillist; }
-  set isEmaillist(isEmaillist) {
-    this.ref.set({ isEmaillist: isEmaillist }, {merge: true});
-    console.log('here?', isEmaillist)
+  _Emaillist = true;
+  get Emaillist() { return this._Emaillist; }
+  set Emaillist(Emaillist) {
+    this.ref.set({ Emaillist: Emaillist }, {merge: true});
+    console.log('here?', Emaillist)
   }
   _name = '';
   get name() { return this._name; }

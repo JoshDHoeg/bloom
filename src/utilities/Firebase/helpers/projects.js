@@ -13,7 +13,11 @@ class FirebaseProjects extends FirebaseAuthUser  {
   //creates empty project with default designer
 // o0Ds4w9vFmV1l8Z3BehEVYH4wHl2 is our default designer!!
   doCreateEmptyProject = () => {
-      return this.doGetUser("Dkka3WOkG1cxLx6YiR5PBhvxO0o2").then( designer => {
+        const DESIGNER = process.env.NODE_ENV === 'production' //Setting the stripe font-end api keys
+      ? 'o0Ds4w9vFmV1l8Z3BehEVYH4wHl2'
+      : 'oV5VqI6E5zU7XPbC2Y129E9Otbz2';
+      
+      return this.doGetUser(DESIGNER).then( designer => {
           console.log(designer);
           var proj = this.projectsRef.doc();
           proj.set({
@@ -102,13 +106,13 @@ class FirebaseProjects extends FirebaseAuthUser  {
       })
   }
 
-  doCreateRevision = (id, customerFeedback, revisionCount, index, isUID = false) => {
+  doCreateRevision = (id, revisionCount, index, isUID = false) => {
     if (isUID) {
-      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, customerFeedback, revisionCount));
+      return this.doGetUser(id).then(userData => this.doCreateRevision(userData.projects[index].id, revisionCount));
     } else {
       return this.projectsRef.doc(id).collection('revisions').doc(revisionCount).set({
         init: false,
-        feedback: customerFeedback,
+        feedback: '',
         media:"",
         figma: "https://www.figma.com/file/ggEHJtusFHITsrjRhvjtJZY5/Bloomtime-Platform-v2?node-id=0%3A1",
         completed: false,

@@ -41,9 +41,9 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
-  error: null,
-  isDesigner: false,
   isEmaillist: true,
+  error: null,
+  isDesigner: false
 };
 
 class SignUpFormBase extends Component {
@@ -158,7 +158,7 @@ class SignUpFormBase extends Component {
           />
           
           <Button color='teal' fluid size='large' disabled={isInvalid} type="submit" style={{backgroundColor: "#F5BDF9"}}>
-            Login
+            Sign Up
           </Button>
           {error && <p>{error.message}</p>}
         </Segment>

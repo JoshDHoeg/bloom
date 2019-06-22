@@ -98,7 +98,7 @@ class Revision extends React.Component{
         return state;
     }
     addRevision(){
-        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.revision.feedback, this.state.stage.rcount, this.props.firebase.activeProject, true);
+        this.props.firebase.doCreateRevision(this.props.firebase.user.uid, this.state.stage.rcount, this.props.firebase.activeProject, true);
     }
 
     render(){

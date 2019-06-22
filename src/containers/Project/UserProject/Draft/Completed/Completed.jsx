@@ -49,13 +49,12 @@ class Completed extends Component {
     }
 
     handleNav = () => {
-        this.props.formSubmit()
-        this.props.handleStateChange()
+        this.props.formSubmit();
+        this.props.handleStateChange();
     }
     
 
     render() {
-        console.log('feeddback2', this.props.draft.feedback)
         let videoPortion;
         if (this.state.showVideo) {
             videoPortion = <div className="row">
