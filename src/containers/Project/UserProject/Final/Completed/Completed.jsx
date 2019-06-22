@@ -26,7 +26,7 @@ class Completed extends React.Component {
         this.state = {
             feedbackState: false,
             loading: false,
-            revisions: false,
+            Show: false,
         }
         this.handleSuccess = this.handleSuccess.bind(this);
     }
@@ -39,7 +39,7 @@ class Completed extends React.Component {
 
     HandleClick = () => {
         this.setState({
-            revisions: !this.state.revisions
+            Show: !this.state.Show
         });
     }
 
@@ -60,14 +60,14 @@ class Completed extends React.Component {
             <Button 
             data-tip='Submit your design feedback'
             content='Submit'
-            style={{backgroundColor:'#84DB95'}}
+            style={{backgroundColor:'#84DB95', paddingTop:'15px'}}
             onClick={this.handleSuccess}
             color='blue'>
             Submit</Button>
         }else {
             feedbackButton = <Button 
             disabled
-            style={{backgroundColor:'#84DB95'}}
+            style={{backgroundColor:'#84DB95', paddingTop:'15px'}}
             content='Submit' 
             color='blue'>
             Submit</Button>
@@ -85,6 +85,19 @@ class Completed extends React.Component {
                 <img src={ArrowRight} />
                 <ReactToolTip />
             </Link>
+        }
+        let Show
+        if(this.state.Show){
+            Show =
+            <Editor 
+                state='final' 
+                Show={this.state.Show} 
+                approved={this.props.final.approved} 
+                feedback={this.props.final.feedback} 
+                feedbackButton={feedbackButton} 
+                handleChange={this.props.handleChange} 
+                feedbackState={this.state.feedbackState} 
+                handleNav={this.handleNav} /> 
         }
         return (
             <Grid>
@@ -113,32 +126,12 @@ class Completed extends React.Component {
                             <Button style={{backgroundColor:'#84DB95'}}><Link data-tip='Click here to get quotes from landscapers' to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
-                    <Grid.Row>
-                        <Editor onChange={this.props.handleChange}/>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '50px'}} hidden = {!this.state.revisions}>
-                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                            <Form success className='attached fluid' onSubmit={this.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}}>
-                                <Form.Input  disabled = {this.props.final.approved && !this.props.feedbackState} fluid name ='feedback' placeholder={this.props.final.feedback} onChange={this.props.handleChange} type='text'  />
-                                <Message 
-                                    success
-                                    hidden = {!this.props.final.approved}
-                                    header='Feedback Received:' 
-                                    content= {this.props.final.feedback || 'feedback'}/>
-                                <Message
-                                    success
-                                    hidden = {!this.state.feedbackState}
-                                    header='Feedback Received:' 
-                                    content= {this.props.final.feedback || 'feedback'}/>
-                                {feedbackButton}
-                            </Form>
-                        </div>
+                    <Grid.Row style={{ paddingBottom: '50px'}}>
+                        {Show}
                     </Grid.Row>
                     {RightArrow}
                 </Container>
             </Grid>
-
         )
     }
 }

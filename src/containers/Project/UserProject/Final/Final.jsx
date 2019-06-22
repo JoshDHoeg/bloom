@@ -44,7 +44,6 @@ class Final extends React.Component {
         let result = Number(number)
         result = result+1;
         let result2 = String(result);
-        this.final.feedback = this.state.final.feedback;
         this.final.approved = true;
         this.stage.stage = 'revision';
         this.addRevision();

@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import '../draft.sass'
 
 //Figma Embed import
+import Editor from '../../../../../components/Wysiwig/wysiwig'
 import FigmaEmbed from 'react-figma-embed';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
@@ -31,7 +32,7 @@ class Completed extends Component {
         this.handleSuccess = this.handleSuccess.bind(this);
     }
 
-    handleSuccess(event) {
+    handleSuccess() {
        this.setState({
            feedbackState: true
        })
@@ -54,6 +55,7 @@ class Completed extends Component {
     
 
     render() {
+        console.log('feeddback2', this.props.draft.feedback)
         let videoPortion;
         if (this.state.showVideo) {
             videoPortion = <div className="row">
@@ -116,23 +118,14 @@ class Completed extends Component {
                         {videoPortion}
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}} >
-                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                            <Form success className='attached fluid' onSubmit={this.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}}>
-                                <Form.Input  disabled = {this.props.draft.approved && !this.props.feedbackState} fluid name ='feedback' placeholder={this.props.draft.feedback} onChange={this.props.handleChange} type='text'  />
-                                <Message 
-                                    success
-                                    hidden = {!this.props.draft.approved}
-                                    header='Feedback Received:' 
-                                    content= {this.props.draft.feedback || 'feedback'}/>
-                                <Message
-                                    success
-                                    hidden = {!this.state.feedbackState}
-                                    header='Feedback Received:' 
-                                    content= {this.props.draft.feedback || 'feedback'}/>
-                                {feedbackButton}
-                            </Form>
-                        </div>
+                        <Editor 
+                        state='draft' 
+                        approved={this.props.draft.approved} 
+                        feedback={this.props.draft.feedback} 
+                        feedbackButton={feedbackButton} 
+                        handleChange={this.props.handleChange} 
+                        feedbackState={this.state.feedbackState} 
+                        handleNav={this.handleNav} /> 
                     </Grid.Row>
                     <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
                         <img src={ArrowRight}/>

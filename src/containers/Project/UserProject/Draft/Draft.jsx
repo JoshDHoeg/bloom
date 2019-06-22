@@ -36,7 +36,6 @@ class Draft extends Component {
     }
 
     formSubmit = () => {
-        this.draft.feedback = this.state.draft.feedback;
         this.draft.approved = true;
         this.stage.stage = 'final'
     }

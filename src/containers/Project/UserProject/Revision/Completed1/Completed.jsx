@@ -5,6 +5,7 @@ import { withAuthorization } from '../../../../../utilities/Session';
 import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn, GridRow } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
 //Figma Embed import
+import Editor from '../../../../../components/Wysiwig/wysiwig'
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
@@ -25,7 +26,7 @@ class Completed extends React.Component {
         this.state = {
             feedbackState: false,
             loading: false,
-            revisions: false,
+            Show: false,
         }
         this.handleSuccess = this.handleSuccess.bind(this);
         this.handleNav = this.handleNav.bind(this);
@@ -44,7 +45,7 @@ class Completed extends React.Component {
 
     HandleClick = () => {
         this.setState({
-            revisions: !this.state.revisions
+            Show: !this.state.Show
         });
     }
 
@@ -54,27 +55,6 @@ class Completed extends React.Component {
     }
 
     render() {
-        let Feedback;
-        if(this.state.revisions){
-            Feedback = 
-            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                <Form success onSubmit={this.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}} className='attached fluid'>
-                    <Form.Input  disabled = {this.props.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.props.revision.feedback} onChange={this.props.handleChange} type='text'  />
-                    <Message 
-                        success
-                        hidden = {!this.props.revision.approved}
-                        header='Feedback Received:' 
-                        content= {this.props.revision.feedback || 'feedback'}/>
-                    <Message 
-                        success
-                        hidden = {!this.state.feedbackState}
-                        header='Feedback Received:' 
-                        content= {this.props.revision.feedback || 'feedback'}/>
-                    {feedbackButton}
-                </Form>
-            </div>
-        }
         let feedbackButton;
         if(!this.props.revision.approved) {
             feedbackButton = <Button 
@@ -91,6 +71,19 @@ class Completed extends React.Component {
             content='Submit' 
             color='blue'>
             Submit</Button>
+        }
+        let Feedback;
+        if(this.state.Show){
+            Feedback = 
+            <Editor 
+                state='final' 
+                Show={this.state.Show} 
+                approved={this.props.revision.approved} 
+                feedback={this.props.revision.feedback} 
+                feedbackButton={feedbackButton} 
+                handleChange={this.props.handleChange} 
+                feedbackState={this.state.feedbackState} 
+                handleNav={this.handleNav} /> 
         }
         let RightArrow;
         if(this.props.currentRevision < (this.props.stage.rcount-1)){
@@ -124,7 +117,7 @@ class Completed extends React.Component {
         }
         return (
             <Grid>
-                <Container><ProjectStatus state={'revision'} currentRevision={this.props.currentRevision} /></Container>
+                <Container><ProjectStatus state='revision' currentRevision={this.props.currentRevision} /></Container>
                 <Container textAlign='center' text='true'>
                     {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>
