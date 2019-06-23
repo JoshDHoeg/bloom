@@ -52,7 +52,6 @@ class AdminPage extends Component {
                     Clients
                 </Menu.Item>
             </Sidebar>
-
                 <Sidebar.Pusher>
                     <Segment basic>
                         <div>

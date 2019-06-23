@@ -7,8 +7,6 @@ import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 import { withAuthorization } from '../../../utilities/Session';
 import * as ROUTES from "../../../utilities/constants/routes";
 
-import backgroundTemp from '../../../Images/TempBackground.PNG';
-
 //IMPORT CONTAINERS
 import BriefPage from './Brief/Brief';
 import ConceptPage from './Concept/Concept';
@@ -19,7 +17,7 @@ import RevisionsPage from './Revisions/Revisions';
 
 const HomePageWithSideBar = (props) => {
     return(
-        <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat' }}>
+        <div style={{paddingTop:'8px' }}>
             <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>
                 <Router>
                     <div>

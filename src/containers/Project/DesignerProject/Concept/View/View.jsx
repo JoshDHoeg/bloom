@@ -25,7 +25,7 @@ class ConceptPageView extends Component {
 
     render() {
         // const Available = this.props.brief.available;
-
+        console.log('video', this.props.concept.video)
         if (this.props.concept.completed){
             return (
                 <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px" }}>
