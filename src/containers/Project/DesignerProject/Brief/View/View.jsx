@@ -49,23 +49,23 @@ class BriefPageView extends Component {
                         </Grid>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
+                                <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Narrative</h1>
                                 <Narrative edit={this.state.edit}  narrative={this.props.brief.narrative}/>
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
+                                <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Taste Profile</h1>
                                 <TasteProfile edit={this.state.edit} brief={this.props.brief}/>
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                            <Button style={{backgroundColor:'#FA907F'}}><Link to={{
-                                        pathname: ROUTES.CLIENT_BRIEF_EDIT,
+                            <Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT,
                                         state: {projectIndex: this.props.projectIndex}}}          
-                                        style={{textDecoration: 'none', color: "white"}}>Edit</Link>
-                            </Button>
-                            <Button style={{backgroundColor:'#84DB95'}}><a target="_blank" rel="noopener noreferrer" href={this.props.media} style={{ textDecoration: 'none', color: "white" }}>Media</a></Button>
+                                        style={{textDecoration: 'none', color: "white"}}>
+                                        <Button style={{backgroundColor:'#FFCE6C'}}>Edit</Button>
+                            </Link>
+                            <a target="_blank" rel="noopener noreferrer" href={this.props.media} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
                 </Grid>

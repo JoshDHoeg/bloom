@@ -42,13 +42,13 @@ class DraftPageView extends Component {
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video</h1>
+                                <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video</h1>
                                 <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                                <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
                                 <Item>Feedback:</Item>
                                 <Message 
                                 style={{paddingLeft:'10px', paddingRight: '10px'}}
@@ -67,8 +67,8 @@ class DraftPageView extends Component {
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                            <Link to={ROUTES.CLIENT_DRAFT_EDIT} style={{ textDecoration: 'none', color: "white" }} ><Button style={{backgroundColor:'#AAD5F7'}}>Edit</Button></Link>
-                            <a target="_blank" rel="noopener noreferrer" href={this.props.draft.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}}>Media</Button></a>
+                            <Link to={ROUTES.CLIENT_DRAFT_EDIT} style={{ textDecoration: 'none', color: "white" }} ><Button style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                            <a target="_blank" rel="noopener noreferrer" href={this.props.draft.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
                 </Grid>

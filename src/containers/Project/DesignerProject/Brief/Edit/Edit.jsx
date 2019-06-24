@@ -41,13 +41,13 @@ class BriefPageEdit extends Component {
                         <Grid.Row>
                             <Grid.Column>
                                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                    <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Goals</h1>
+                                    <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Goals</h1>
                                     <GoalList edit={this.state.edit} goals={this.props.brief.goals} editGoal={this.props.editGoal} editId={this.props.editId}  deleteGoal={this.props.deleteGoal} addGoal={this.props.addGoal} editGoalSubmit={this.props.editGoalSubmit}/>
                                 </div>
                             </Grid.Column>
                             <Grid.Column >
                                 <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                    <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Details</h1>
+                                    <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Details</h1>
                                     <DetailList edit={this.state.edit} address={this.props.brief.address} budget={this.props.brief.budget} handleChange={this.props.handleChange} />
                                 </div>  
                             </Grid.Column>
@@ -55,19 +55,19 @@ class BriefPageEdit extends Component {
                     </Grid>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Narrative</h1>
+                            <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Narrative</h1>
                             <Narrative edit={this.state.edit} brief={this.props.brief} narrative={this.props.brief.narrative} handleChange={this.props.handleChange}/>
                         </div>  
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Taste Profile</h1>
+                            <h1 style={{ backgroundColor: "#FA907F", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Taste Profile</h1>
                             <TasteProfile edit={this.state.edit} brief={this.props.brief} handleChangeProfile={this.props.handleChangeProfile}/>
                         </div>  
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                        <Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FA907F'}} onClick={this.props.setLive}>Set Live</Button></Link>
                         <Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button onClick={this.props.formSubmit} style={{backgroundColor:'#84DB95'}}>Save</Button></Link>
+                        <Link to={{ pathname: ROUTES.CLIENT_BRIEF, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FFCE6C'}} onClick={this.props.setLive}>Set Live</Button></Link>
                     </Grid.Row>
                 </Container>
             </Grid>

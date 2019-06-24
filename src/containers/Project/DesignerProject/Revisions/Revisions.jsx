@@ -93,7 +93,7 @@ class RevisionsPage extends Component {
         );
     }else{
         return (
-            <RevisionsPageView Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
+            <RevisionsPageView final={this.state.final} Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 

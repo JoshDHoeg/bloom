@@ -44,7 +44,7 @@ class RevisionsPageView extends Component {
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                                <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
                                 <Item>Feedback:</Item>
                                 <Message 
                                 style={{paddingLeft:'10px', paddingRight: '10px'}}
@@ -63,15 +63,15 @@ class RevisionsPageView extends Component {
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                            <Link to={ROUTES.CLIENT_REVISIONS_EDIT} style={{ textDecoration: 'none', color: "white" }} ><Button style={{backgroundColor:'#AAD5F7'}}>Edit</Button></Link>
-                            <a target="_blank" rel="noopener noreferrer" href={this.props.revision.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}}>Media</Button></a>
+                            <Link to={ROUTES.CLIENT_REVISIONS_EDIT} style={{ textDecoration: 'none', color: "white" }} ><Button style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                            <a target="_blank" rel="noopener noreferrer" href={this.props.revision.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
                 </Grid>
             );
         }else{
             return (
-                <RevisionsWaiting approved={this.props.final.approved} isDesigner={this.props.isDesigner}/>
+                <RevisionsWaiting final={this.props.final} isDesigner={this.props.isDesigner}/>
             );
         }
 

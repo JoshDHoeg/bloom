@@ -42,20 +42,20 @@ class DraftPageEdit extends Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Video Explanation Link</h1>
+                            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Video Explanation Link</h1>
                             <Input style={{ width: "600px"}} type="text" name="video" onChange={this.props.handleChange} value={this.props.draft.video}/>
                             <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
                         </div>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                         <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h1>
+                            <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h1>
                             <Input style={{ width: "600px"}} type="text" name="media" onChange={this.props.handleChange} value={this.props.draft.media}/>
                         </div>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                        <Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}} onClick={this.props.completed}>Set Live</Button></Link>
-                        <Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}} onClick={this.props.formSubmit}>Save</Button></Link>
+                        <Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}} onClick={this.props.formSubmit}>Save</Button></Link>
+                        <Link to={ROUTES.CLIENT_DRAFT} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FFCE6C'}} onClick={this.props.completed}>Set Live</Button></Link>
                     </Grid.Row>
                 </Container>
             </Grid>

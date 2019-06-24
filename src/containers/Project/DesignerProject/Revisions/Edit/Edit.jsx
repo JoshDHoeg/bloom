@@ -42,44 +42,18 @@ class RevisionsPageEdit extends Component {
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                     <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h1>
+                            <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h1>
                             <Item>Link:</Item>
                             <Input  style={{ width: "600px"}} name="media" type="text" onChange={this.props.handleChange} value={this.props.revision.media}/>
                     </div>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}} onClick={this.props.completed}>Set Live</Button></Link>
-                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}} onClick={this.props.formSubmit}>Save</Button></Link>
+                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}} onClick={this.props.formSubmit}>Save</Button></Link>
+                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FFCE6C'}} onClick={this.props.completed}>Set Live</Button></Link>
                     </Grid.Row>
                 </Container>
             </Grid>
-            // <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
-            //     <div className="ui stackable grid container" >
-            //         <div className="row" style={{ paddingTop: "40px" }}>
-            //             <h1>Revisions</h1>
-            //             <button onClick={this.props.completed} type="button" style={{ backgroundColor: "#27AE60", marginLeft: "227px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }} >Publish</Link></button>
-            //             <button onClick={this.props.formSubmit} type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20pX", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }} >Save</Link></button>
-            //         </div>
-            //         <div className="row">
-            //             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-            //                 <h2 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Edit Media Link</h2>
-            //                 <Input  style={{ width: "600px"}} name="media" type="text" onChange={this.props.handleChange} value={this.props.revision.media}/>   
-            //             </span>
-            //         </div>
-            //         <div className="row">
-            //             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-            //                 <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-            //                 <Input style={{ width: "600px"}} name="figma" type="text" onChange={this.props.handleChange} value={this.props.revision.figma}/>
-            //             </span>
-            //         </div>
-            //         <div className="row">
-            //             <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-            //                 <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-            //                 <Input style={{ width: "600px"}} type="text" name="feedback" onChange={this.props.handleChange} value={this.props.revision.feedback}/>
-            //             </span>
-            //         </div>
-            //     </div>
-            // </div>
+
         );
 
     }

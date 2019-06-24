@@ -8,7 +8,7 @@ import { withAuthorization } from '../../../../../../utilities/Session/index';
 import YoutubeEmbedVideo from "youtube-embed-video";
 
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
-
+import { Grid, Container, Header, Button } from 'semantic-ui-react';
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../../../../../utilities/constants/routes";
 
@@ -25,10 +25,12 @@ class ConceptPageWaiting extends Component {
     render() {
         if(this.props.isDesigner){
             return (
-                <div style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                   <h1>Ready To Start Working on this Design Concept?</h1>
-                   <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={{ pathname: ROUTES.CLIENT_CONCEPT_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
-                </div>
+                <Grid style={{paddingBottom:'700px'}}>
+                    <Container fluid textAlign='center' text='true'>
+                        <Header as='h1'>Select Edit to Begin Working On The Concept.</Header>
+                        <Link to={{ pathname: ROUTES.CLIENT_CONCEPT_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                    </Container>
+                </Grid>
             );
         }else{
             return (

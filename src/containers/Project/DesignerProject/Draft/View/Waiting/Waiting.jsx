@@ -8,7 +8,7 @@ import { withAuthorization } from '../../../../../../utilities/Session/index';
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
-
+import { Grid, Container, Header, Button } from 'semantic-ui-react';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
 import {Link} from "react-router-dom";
 import * as ROUTES from "../../../../../../utilities/constants/routes";
@@ -27,24 +27,20 @@ class DraftPageWaiting extends Component {
         if(this.props.isDesigner){
             if(!this.props.approved){
                 return(
-                <div style={{backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                    <div className = "ui stackable grid container">
-                        <div className="row">
-                        <h1>The Concept has not been approved yet.</h1>
-                        </div>
-                    </div>
-                </div>
+                <Grid style={{paddingBottom:'700px'}}>
+                    <Container fluid textAlign='center' text='true'>
+                        <Header as='h1'>The Final Concept Has Not Been Approved Yet.</Header>
+                    </Container>
+                </Grid>
                 )
             }else{
                 return(
-                <div style={{backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                    <div className = "ui stackable grid container">
-                        <div className="row">
-                        <h1>The Design Draft Is not ready yet. You will receive a notification when it is ready.</h1>
-                        <button type="button" style={{ backgroundColor: "#27AE60", marginLeft: "220px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><Link to={ROUTES.CLIENT_DRAFT_EDIT} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
-                        </div>
-                    </div>
-                </div>
+                <Grid style={{paddingBottom:'700px'}}>
+                    <Container fluid textAlign='center' text='true'>
+                        <Header as='h1'>Select Edit to Begin Working On The Draft.</Header>
+                        <Link to={{ pathname: ROUTES.CLIENT_DRAFT_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                    </Container>
+                </Grid>
                 );
             }
         }else{
