@@ -22,6 +22,9 @@ class ProjectList extends Component {
     this.state = {
       loading: false,
       users: [],
+      user: {
+        isDesigner: false
+      }
     };
 
     //assuming that user will always have _objects property...
@@ -38,6 +41,24 @@ class ProjectList extends Component {
         loading: false
       });
     });
+
+    this.getUserState();
+  }
+
+  getUserState = async () => {
+    const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user
+        const state = await {
+            loading: false,
+            user: {
+                isDesigner: this.user.isDesigner
+            },
+        }
+        this.setState(state);
+        if(!this.state.user.isDesigner){
+            this.getProjectState();
+        }
+        return state;
   }
 
   componentWillUnmount() {
@@ -46,32 +67,56 @@ class ProjectList extends Component {
 
   render() {
     const { loading } = this.state;
-    return (
-      <Grid >
-        <Container fluid textAlign='center' text='true' style={{paddingBottom:'30px'}}>
-            <Grid.Row style={{ paddingTop: '50px' }}>
-              <Header style={{fontSize:'35px'}}>Welcome!</Header>
-            </Grid.Row>
-            <Grid.Row>
-              <YoutubeEmbedVideo videoId='RIswhklQTMc' suggestions={false} style={{ width: "600px", padding: "30px" }} />
-            </Grid.Row>
-            <Grid.Row>
-              <Item>Book a house visit to get started on a new project</Item>
-              <Link to='/house_visit'>
-                <Button size='huge' style={{backgroundColor:'#84DB95'}}>Start Your Project</Button>
-              </Link>
-            </Grid.Row>
-        </Container>
-        <Container>
-            {loading && <div>Loading ...</div>}
-            {this.userProjs.map((proj, index) => {
-              return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
-            })}
-        </Container>
-        <PopMessage />
-      </Grid>
-      
-    );
+    if(!this.state.user.isDesigner) {
+      return (
+        <Grid >
+          <Container fluid textAlign='center' text='true' style={{paddingBottom:'30px'}}>
+              <Grid.Row style={{ paddingTop: '50px' }}>
+                <Header style={{fontSize:'35px'}}>Welcome!</Header>
+              </Grid.Row>
+              <Grid.Row>
+                <YoutubeEmbedVideo videoId='RIswhklQTMc' suggestions={false} style={{ width: "600px", padding: "30px" }} />
+              </Grid.Row>
+              <Grid.Row>
+                <Item>Book a house visit to get started on a new project</Item>
+                <Link to='/house_visit'>
+                  <Button size='huge' style={{backgroundColor:'#84DB95'}}>Start Your Project</Button>
+                </Link>
+              </Grid.Row>
+          </Container>
+          <Container>
+              {loading && <div>Loading ...</div>}
+              {this.userProjs.map((proj, index) => {
+                return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
+              })}
+          </Container>
+          <PopMessage />
+        </Grid>
+      );
+    }else{
+        return(
+          <Grid>
+            <Container fluid textAlign='center' text='true' style={{paddingBottom:'30px'}}>
+              <Grid.Row style={{ paddingTop:'50px'}}>
+                <Header style={{fontSize:'35px'}}>Welcome!</Header>
+              </Grid.Row>
+              <Grid.Row>
+                <Item style={{paddingTop:'15px', fontSize:'20px'}}>Select a project to edit and view any of your active projects</Item>
+                <Item style={{paddingTop:'10px', fontSize:'18px'}}>You may save entries by simply selecting the 
+                  'Save' button. Once everything is ready, select 
+                  'Publish to make the project viewable to the client</Item>
+              </Grid.Row>
+            </Container>
+            <Container>
+              {loading && <div>Loading ...</div>}
+              {this.userProjs.map((proj, index) => {
+                return (<ProjCard proj={proj} key={proj.name} projectIndex={index} />);
+              })}
+            </Container>
+            <PopMessage />
+          </Grid>
+        )
+    }
   }
 }
 
