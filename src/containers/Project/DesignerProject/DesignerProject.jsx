@@ -57,7 +57,6 @@ const HomePageWithSideBar = (props) => {
                                 </div>
                             </Menu.Item>
                         </Sidebar>
-
                         <Sidebar.Pusher>
                             <Segment basic>
 

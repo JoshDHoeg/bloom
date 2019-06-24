@@ -22,17 +22,16 @@ class BriefPageView extends Component {
             edit: false
         }
     }
-
     render() {
         const Available = this.props.brief.completed;
         if (Available){
             return (
                 <Grid>
                     <Container fluid textAlign='center' text='true'>
-                        <Grid.Row>
-                            <Header>Design Brief</Header>
+                        <Grid.Row style={{paddingTop:'25px'}}>
+                            <Header style={{fontSize:'25px'}}>Design Brief</Header>
                         </Grid.Row>
-                        <Grid columns={2}>
+                        <Grid style={{paddingTop:'50px'}} columns={2}>
                             <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                                 <Grid.Column>
                                     <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
@@ -60,7 +59,7 @@ class BriefPageView extends Component {
                                 <TasteProfile edit={this.state.edit} brief={this.props.brief}/>
                             </div>
                         </Grid.Row>
-                        <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+                        <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
                             <Button style={{backgroundColor:'#FA907F'}}><Link to={{
                                         pathname: ROUTES.CLIENT_BRIEF_EDIT,
                                         state: {projectIndex: this.props.projectIndex}}}          

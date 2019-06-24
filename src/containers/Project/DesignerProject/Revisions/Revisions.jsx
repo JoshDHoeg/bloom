@@ -39,9 +39,9 @@ class RevisionsPage extends Component {
   }
 
   formSubmit(){
-    this.revision.media = this.state.revision.media;
-    this.revision.figma = this.state.revision.figma;
-    this.revision.feedback = this.state.revision.feedback;
+    this.revisions[this.state.currentRevision].media =this.state.revision.media;
+    this.revisions[this.state.currentRevision].figma =this.state.revision.figma;
+    this.revisions[this.state.currentRevision].feedback =this.state.revision.feedback;
   }
 
   Approved() {
@@ -56,7 +56,7 @@ class RevisionsPage extends Component {
   handleChange(event) {
     event.preventDefault();
     this.setState({
-      final: {
+      revision: {
         ...this.state.revision,
         [event.target.name]: event.target.value
       }
@@ -66,18 +66,20 @@ class RevisionsPage extends Component {
 
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-    this.revision = await project.revision;
+    this.revisions = await project.revisions;
+    let string = this.props.location.pathname;
+    var array = string.split("/");
+    var currentRevision = array[3]
     this.final = await project.final;
     const client = await project.client;
     const state = await {
         client: client,
+        revision: this.revisions[currentRevision].data,
         loading: false,
-        revision: {
-          ...this.revision.getAll()
-        },
         final: {
           ...this.final.getAll()
-        }
+        },
+        currentRevision: currentRevision
     }
 
     this.setState(state);

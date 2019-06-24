@@ -13,8 +13,9 @@ import { ReactTypeformEmbed } from 'react-typeform-embed';
 import FigmaEmbed from 'react-figma-embed';
 
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
-
+import parse from 'html-react-parser'
 import RevisionsWaiting from './Waiting/Waiting';
+import { Grid, Container, Header, Message, Item, Button } from 'semantic-ui-react'
 
 class RevisionsPageView extends Component {
     constructor(props) {
@@ -26,58 +27,47 @@ class RevisionsPageView extends Component {
     }
 
     render() {
+        let feedback
+        feedback = parse(this.props.revision.feedback);
         if (this.props.revision.completed){
             return (
-                <div style={{ backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat',  marginLeft: "-14px", paddingLeft: "14px" }}>
-                    <div className="ui stackable grid container" >
-                    <div className="row" style={{ paddingTop: "40px" }}>
-                            <h1>Revisions</h1>
-                        {this.props.isDesigner &&
-                            <button type="button" style={{
-                                backgroundColor: "#27AE60",
-                                marginLeft: "260px",
-                                width: "100px",
-                                height: "40px",
-                                borderRadius: "4px",
-                                border: "#56CCF2",
-                                boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)"
-                            }}><Link to={ROUTES.CLIENT_REVISIONS_EDIT}
-                                     style={{textDecoration: 'none', color: "white"}}>
-                                Edit
-                                </Link>
-                            </button>
-                        }
-                            <button type="button" style={{ backgroundColor: "#56CCF2", marginLeft: "20px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}><a target="_blank" rel="noopener noreferrer" href={this.props.mediaURL} style={{ textDecoration: 'none', color: "white" }}>Media</a></button>
-                        </div>
-                        <div className="row">
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                <Grid>
+                    <Container fluid textAlign="center" text='true'>
+                        <Grid.Row style={{ paddingTop: '20px' }}>
+                            <Header as='h1'>Revision</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{ paddingTop: '50px', paddingBottom: '20px'}}>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Design</h1>
                                 <FigmaEmbed url={this.props.revision.figma} style={{ width: "540px", margin: "30px" }}/>
-                            </span>
-                        </div>
-                        <div className="row">
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#2F80ED", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
-                                <YoutubeEmbedVideo videoId={this.props.revision.video} suggestions={false} style={{ width: "600px", padding: "30px" }} />
-                            </span>
-                        </div>
-                        <div className="row">
-                            {/*Typeform being a bitch again*/}
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#F2994A", color: "white", textAlign: "center", fontSize: "15px", paddingTop: "10px", paddingBottom: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                                <ReactTypeformEmbed popup={false} url={this.props.revision.feedback} style={{ width: "600px", height: "375px", padding: "30px", paddingTop: "90px" }} />
-                                <YoutubeEmbedVideo suggestions={false} videoId={""} style={{ width: "600px", padding: "30px", visibility: "hidden" }} />
-                            </span>
-                        </div>
-                        <div>
-                        {!this.props.isDesigner && 
-                        <div>
-                            <button type="button" onClick={this.props.Approved} style={{ backgroundColor: "#27AE60", marginLeft: "260px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}>Approve</button>
-                        </div>
-                        }
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                        </Grid.Row>
+                        <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+                            <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
+                                <Item>Feedback:</Item>
+                                <Message 
+                                style={{paddingLeft:'10px', paddingRight: '10px'}}
+                                content={feedback} 
+                                hidden={!this.props.revision.approved}
+                                success
+                                header="User Feedback Received!"
+                                />
+                                <Message
+                                    style={{paddingLeft:'10px', paddingRight: '10px'}}
+                                    content="Your customers feedback will be here once it is provided"
+                                    hidden={this.props.revision.approved}
+                                    success
+                                    header="Waiting on feedback"
+                                    />
+                            </div>
+                        </Grid.Row>
+                        <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
+                            <Link to={ROUTES.CLIENT_REVISIONS_EDIT} style={{ textDecoration: 'none', color: "white" }} ><Button style={{backgroundColor:'#AAD5F7'}}>Edit</Button></Link>
+                            <a target="_blank" rel="noopener noreferrer" href={this.props.revision.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#AAD5F7'}}>Media</Button></a>
+                        </Grid.Row>
+                    </Container>
+                </Grid>
             );
         }else{
             return (
