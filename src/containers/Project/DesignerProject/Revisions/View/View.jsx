@@ -92,6 +92,6 @@ const ShowApproved = (props) => {
 }
 
 
-const condition = role => role > 0;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(RevisionsPageView);

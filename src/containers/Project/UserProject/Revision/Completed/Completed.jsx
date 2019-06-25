@@ -156,6 +156,6 @@ class Completed extends React.Component {
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 0 && role !== 2;
 
 export default withAuthorization(condition)(Completed);

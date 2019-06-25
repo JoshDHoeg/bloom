@@ -36,6 +36,7 @@ function Account() {
     
 
     );}
-     const condition = role => role > 0;
+    
+const condition = role => role > 0;
 export default withAuthorization(condition)(Account)
 

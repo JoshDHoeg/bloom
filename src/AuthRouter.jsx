@@ -15,6 +15,7 @@ import ProjectListPage from './containers/ProjectList/ProjectList';
 import Messaging from './containers/Messaging/Messaging';
 import House from './containers/Project/UserProject/HouseVisit/HouseVisit'
 import Payment from './containers/Project/UserProject/Payment/Payment'
+import Denied from './components/DenyAccess/accessDenied'
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes';
 import { withAuthentication } from './utilities/Session';
@@ -33,6 +34,7 @@ const App = () => (
         <Route path={ROUTES.PROJECT_LIST} exact component={ProjectListPage} />
         <Route path={ROUTES.HOUSE} exact component = {House} />
         <Route path={ROUTES.PAYMENT} exact component = {Payment} />
+        <Route path={ROUTES.DENIED} exact component ={Denied} />
       </div>
     </Router>
 );

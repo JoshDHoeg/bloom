@@ -3,6 +3,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';
 import Loading from '../../components/Loading/Loading'
+import Denied from '../../components/DenyAccess/accessDenied'
 import firebase from 'firebase'
 //IMPORT UTILITIES
 import AuthUserContext from './context';
@@ -30,7 +31,7 @@ const withAuthorization = condition => Component => {
                 console.log('here5', authUser._role)
                 console.log(condition(authUser._role))
                 if(!condition(authUser._role)){
-                  this.props.history.push(ROUTES.SIGN_IN);
+                  this.props.history.push(ROUTES.DENIED);
                 }
               })
         } else {
@@ -49,7 +50,7 @@ const withAuthorization = condition => Component => {
         <AuthUserContext.Consumer>
           {authUser => { 
              console.log(authUser);
-             return condition(authUser._role) ? <Component {...this.props} /> : <Loading/> ;
+             return condition(authUser._role) ? <Component {...this.props} /> : null;
           }}
         </AuthUserContext.Consumer>
       );

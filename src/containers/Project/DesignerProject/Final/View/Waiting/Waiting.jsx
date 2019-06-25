@@ -85,6 +85,6 @@ class ConceptPageWaiting extends Component {
     }
 }
 
-const condition = authUser => !!authUser;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(ConceptPageWaiting);

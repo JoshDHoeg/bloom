@@ -9,7 +9,7 @@ export const PROJECT_LIST = '/';
 //main containers
 export const PROJECT = '/project';
 export const ACCOUNT = '/account';
-
+export const DENIED = '/access-denied'
 //project subpaths
 export const CLIENT_BRIEF = '/project/brief';
 export const CLIENT_CONCEPT = '/project/concept';

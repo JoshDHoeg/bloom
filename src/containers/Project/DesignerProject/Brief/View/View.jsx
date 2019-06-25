@@ -81,6 +81,6 @@ class BriefPageView extends Component {
     }
 }
 
-const condition = authUser => authUser > 1
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(BriefPageView);

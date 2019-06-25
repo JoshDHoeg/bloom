@@ -63,6 +63,6 @@ class ContractorPage extends Component {
         }
     }
 }
-const condition = role => role > 0;
+const condition = role => role > 0 && role !== 2;
 
 export default withAuthorization(condition)(ContractorPage)

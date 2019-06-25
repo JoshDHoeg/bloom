@@ -171,6 +171,6 @@ class BriefPage extends Component {
 }
 
 
-const condition = role => role > 2;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(BriefPage);

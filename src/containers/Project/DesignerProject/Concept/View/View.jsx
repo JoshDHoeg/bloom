@@ -62,6 +62,6 @@ class ConceptPageView extends Component {
     }
 }
 
-const condition = role => role
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(ConceptPageView);
