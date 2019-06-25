@@ -87,7 +87,7 @@ class Editors extends Component {
             revision: this.revisions[currentRevision].data,
             currentRevision: currentRevision
         }
-        if(this.state.state === 'draft'){
+        if(this.state.state === 'revision'){
             const state = await {
                 loading: false,
                 final: {
