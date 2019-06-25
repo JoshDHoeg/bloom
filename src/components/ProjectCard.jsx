@@ -47,14 +47,11 @@ class ProjCard extends Component {
                 isDesigner: this.user.isDesigner
             },
         }
-        this.setState(state);
-        if(!this.state.user.isDesigner){
-            this.getProjectState1();
-        }
         return state;
     }
 
     getProjectState1 = async () => {
+        if(!this.state.user.isDesigner){
         const project = await this.props.firebase.doGetProjects(this.props.firebase.user.uid);
         this.stage = await project.stage;
         this.brief = await project.brief;
@@ -70,6 +67,7 @@ class ProjCard extends Component {
         }
         this.setState(state);
         return state;
+    }
     }
 
     render(){
