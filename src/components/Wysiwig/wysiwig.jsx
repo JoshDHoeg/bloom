@@ -76,19 +76,19 @@ class Editors extends Component {
         }else{
             var currentRevision = '0';
         }
-        console.log(this.state.state)
-        const state = await {
-            loading: false,
-            final: {
-                ...this.final.getAll()
-            },
-            draft: {
-                ...this.draft.getAll()
-            },
-            revision: this.revisions[currentRevision].data,
-            currentRevision: currentRevision
-        }
-        if(this.state.state === 'revision'){
+        if(this.state.state === 'final' || this.state.state === 'draft'){
+            const state = await {
+                loading: false,
+                final: {
+                    ...this.final.getAll()
+                },
+                draft: {
+                    ...this.draft.getAll()
+                },
+            }
+            this.setState(state);
+            return state;
+        }else{
             const state = await {
                 loading: false,
                 final: {
@@ -101,19 +101,8 @@ class Editors extends Component {
                 currentRevision: currentRevision
             }
             this.setState(state);
-        }else{
-            const state = await {
-                loading: false,
-                final: {
-                    ...this.final.getAll()
-                },
-                draft: {
-                    ...this.draft.getAll()
-                },
-            }
-            this.setState(state);
+            return state;
         }
-        return state;
     }
 
     render() {
