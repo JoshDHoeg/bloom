@@ -76,6 +76,7 @@ class Editors extends Component {
         }else{
             var currentRevision = '0';
         }
+        console.log(this.state.state)
         const state = await {
             loading: false,
             final: {
