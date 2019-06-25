@@ -11,20 +11,22 @@ const withAuthentication = Component => {
     constructor(props) {
       super(props);
       this.state = {
-        authUser: null
+        authUser: "fuck"
       };
     }
 
     componentDidMount() {
-      this.listener = this.props.firebase.isAuthenticated.subscribe(
+      console.log("fuck the fucking outside world ");
+      this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
+          console.log("fuck the fucking world");
           authUser
             ? this.setState({ authUser })
             : this.setState({ authUser: null });
         }
       );
     }
-
+    
     componentWillUnmount() {
       this.listener();
     }

@@ -65,7 +65,7 @@ class BriefPageView extends Component {
                                         style={{textDecoration: 'none', color: "white"}}>
                                         <Button style={{backgroundColor:'#FFCE6C'}}>Edit</Button>
                             </Link>
-                            <a target="_blank" rel="noopener noreferrer" href={this.props.media} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
+                            <a target="_blank" rel="noopener noreferrer" href={this.props.brief.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
                 </Grid>
@@ -81,6 +81,6 @@ class BriefPageView extends Component {
     }
 }
 
-const condition = role => role > 0;
+const condition = authUser => authUser > 1
 
 export default withAuthorization(condition)(BriefPageView);

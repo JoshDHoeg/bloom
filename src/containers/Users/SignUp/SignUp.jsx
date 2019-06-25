@@ -57,6 +57,8 @@ class SignUpFormBase extends Component {
     const roles = [];
     if (isDesigner) {
       roles.push(ROLES.DESIGNER)
+    }else {
+      roles.push(ROLES.HOMEOWNER)
     }
     this.props.firebase
       .doInitNewUser(email, passwordOne, name, isDesigner, isEmaillist)

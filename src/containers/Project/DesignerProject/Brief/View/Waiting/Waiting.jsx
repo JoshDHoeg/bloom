@@ -6,7 +6,7 @@ import { Grid, Container, Header, Button } from 'semantic-ui-react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../../utilities/constants/routes";
-
+import logo from '../../../../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
 
 class BriefPageWaiting extends Component {
@@ -21,10 +21,17 @@ class BriefPageWaiting extends Component {
     render() {
         if(this.props.isDesigner) {
             return (
-                <Grid>
+                <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>Select Edit to Begin Working On The Brief.</Header>
-                        <Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>Select Edit to Begin Working On The Brief.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        </Grid.Row>
                     </Container>
                 </Grid>
         );

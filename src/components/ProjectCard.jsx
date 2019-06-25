@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
 import React, { Component } from 'react';
 import { Segment, Header, Grid, Button, Container, Item } from 'semantic-ui-react'
+import * as ROLES from "../utilities/constants/roles";
 import * as ROUTES from "../utilities/constants/routes";
 import { withAuthorization } from '../utilities/Session';
 
@@ -136,7 +137,7 @@ class ProjCard extends Component {
 }
 
 
-const condition = role => role > 0;
+const condition = authUser => authUser 
 
 export default withAuthorization(condition)(ProjCard);
 

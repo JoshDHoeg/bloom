@@ -6,7 +6,7 @@ import React, { Component } from 'react';
 import { withAuthorization } from '../../../../../../utilities/Session/index';
 // import * as ROUTES from "../../../utilities/constants/routes";
 import YoutubeEmbedVideo from "youtube-embed-video";
-
+import logo from '../../../../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
 import { Grid, Container, Header, Button } from 'semantic-ui-react';
 import {Link} from "react-router-dom";
@@ -27,8 +27,15 @@ class ConceptPageWaiting extends Component {
             return (
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>Select Edit to Begin Working On The Concept.</Header>
-                        <Link to={{ pathname: ROUTES.CLIENT_CONCEPT_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>Select Edit to Begin Working On The Concept.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Link to={{ pathname: ROUTES.CLIENT_CONCEPT_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        </Grid.Row>
                     </Container>
                 </Grid>
             );

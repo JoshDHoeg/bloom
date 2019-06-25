@@ -6,13 +6,14 @@ import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
 import * as ROUTES from "../../../utilities/constants/routes";
-
+import * as ROLES from "../../../utilities/constants/roles";
 //IMPORT CONTAINERS
 import BriefPage from './Brief/Brief';
 import ConceptPage from './Concept/Concept';
 import DraftPage from './Draft/Draft';
 import FinalPage from './Final/Final';
 import RevisionsPage from './Revisions/Revisions';
+import { auth } from 'firebase';
 
 
 const HomePageWithSideBar = (props) => {
@@ -108,12 +109,12 @@ const HomePageWithSideBar = (props) => {
                         </Sidebar.Pusher>
                     </div>
                 </Router>
-
             </Sidebar.Pushable>
         </div>
     )
 }
 
-const condition = role => role > 0;
+
+const condition = authUser => authUser > 0;
 
 export default withAuthorization(condition)(HomePageWithSideBar);

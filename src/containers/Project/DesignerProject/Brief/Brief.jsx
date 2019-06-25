@@ -53,7 +53,7 @@ class BriefPage extends Component {
     this.brief.goals = this.state.brief.goals;
     this.brief.address = this.state.brief.address;
     this.brief.budget = this.state.brief.budget;
-    this.brief.narrative = this.state.brief.narrative;
+    //this.brief.narrative = this.state.brief.narrative;
     this.brief.profile = this.state.brief.profile;
   }
 
@@ -141,6 +141,7 @@ class BriefPage extends Component {
 }
 
   render() {
+    console.log('media1', this.props.firebase.user.role)
     if(this.state.edit){
         return (
             <BriefEdit
@@ -170,6 +171,6 @@ class BriefPage extends Component {
 }
 
 
-const condition = role => role > 0;
+const condition = role => role > 2;
 
 export default withAuthorization(condition)(BriefPage);

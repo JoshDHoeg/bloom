@@ -2,6 +2,7 @@ import { BehaviorSubject } from 'rxjs';
 import { User } from '../../constants/database';
 import FirebaseBase from './firebaseBase';
 import Firebase from '..';
+//import { withFirebase } from '../Firebase';
 
 class FirebaseAuthUser extends FirebaseBase {
   _userCred;
@@ -32,12 +33,13 @@ class FirebaseAuthUser extends FirebaseBase {
   }
 
   onAuthUserListener = (next, fallback) =>
-    this.auth.onAuthStateChanged(authUser => {
-      if (authUser) {
-        this.user(authUser.uid)
-          .once('value')
-          .then(snapshot => {
-            const dbUser = snapshot.val();
+  this.auth.onAuthStateChanged(authUser => {
+    if(authUser){
+      // this.user(authUser.uid)
+      //   .get()
+      this.doGetUser(authUser.uid)
+        .then(authUser => {
+          const dbUser = authUser
             // default empty roles
             if (!dbUser.roles) {
               dbUser.roles = {};

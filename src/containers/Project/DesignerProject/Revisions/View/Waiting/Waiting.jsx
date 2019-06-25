@@ -5,7 +5,7 @@ import { Grid, Container, Header, Button } from 'semantic-ui-react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session';
 import * as ROUTES from "../../../../../../utilities/constants/routes";
-
+import logo from '../../../../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
 
 // import EditButton from '../../../../../../components/ProjectBanner/EditButton/EditButton';
@@ -26,7 +26,12 @@ class RevisionsPageWaiting extends Component {
                 return (
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>The Final Draft Has Not Been Approved Yet.</Header>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>The Final Draft Has Not Been Approved Yet.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
                     </Container>
                 </Grid>
                 )
@@ -34,8 +39,15 @@ class RevisionsPageWaiting extends Component {
                 return (
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>Select Edit to Begin Working On The Revision.</Header>
-                        <Link to={{ pathname: ROUTES.CLIENT_REVISIONS_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>Select Edit to Begin Working On The Revision.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo} />
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Link to={{ pathname: ROUTES.CLIENT_REVISIONS_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        </Grid.Row>
                     </Container>
                 </Grid>
                 );

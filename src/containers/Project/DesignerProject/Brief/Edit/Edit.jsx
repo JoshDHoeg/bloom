@@ -25,6 +25,7 @@ class BriefPageEdit extends Component {
     }
 
     render() {
+        console.log('media', this.props.brief.media)
         return (
             <Grid>
                 <Container fluid textAlign='center' text='true'>

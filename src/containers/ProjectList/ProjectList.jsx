@@ -15,6 +15,8 @@ import PopMessage from "../Messaging/PopMessage"
 class ProjectList extends Component {
   userSub;
   draft;
+  stage;
+  brief;
   projKeyArr;
   userProjs = [];
   constructor(props) {
@@ -24,7 +26,14 @@ class ProjectList extends Component {
       users: [],
       user: {
         isDesigner: false
+      },
+      brief: {
+        budget: ''
+      },
+      stage: {
+        stage: ''
       }
+
     };
 
     //assuming that user will always have _objects property...
@@ -60,6 +69,26 @@ class ProjectList extends Component {
         }
         return state;
   }
+
+  getProjectState = async () => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    this.brief = await project.brief;
+    this.stage = await project.stage;
+    const state = await {
+        loading: false,
+        brief:{
+          ...this.brief.getAll()
+        },
+        stage: {
+            stage: this.stage.stage,
+            rcount: this.stage.rcount
+        },
+
+    }
+
+    this.setState(state);
+    return state;
+}
 
   componentWillUnmount() {
     this.props.firebase.onUser(this.userSub);

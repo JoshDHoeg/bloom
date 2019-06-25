@@ -374,6 +374,10 @@ export class ProjectData {
       _address = '';
       get address() { return this._address; };
       set address(l) { this._setter({ address: l }).then(() => this._address = l); }
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+
       _budget = ['', ''];
       get budget() {
         return this._budget;
@@ -405,6 +409,7 @@ export class ProjectData {
         if (!useDefault) {
           this._goals = this.data['goals'];
           this._address = this.data['address'];
+          this._media = this.data['media']
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
@@ -412,6 +417,7 @@ export class ProjectData {
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._address = 'Western Side of House';
+          this._media = 'www.googledrive.com'
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
@@ -423,6 +429,7 @@ export class ProjectData {
         return this._getAll({
           goals: this.goals,
           address: this.address,
+          media: this.media,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,

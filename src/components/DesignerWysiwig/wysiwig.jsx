@@ -18,10 +18,15 @@ class DesignerEditor extends Component {
         }
         }
         this.onEditorStateChange = this.onEditorStateChange.bind(this)
+        this.formSubmit = this.formSubmit.bind(this)
     }
 
     componentDidMount() {
         this.getProjectState();
+    }
+
+    formSubmit() {
+        this.brief.narrative = this.state.brief.narrative;
     }
 
     getProjectState = async () => {
@@ -47,19 +52,22 @@ class DesignerEditor extends Component {
         editorState,
         contentState: editorState.getCurrentContent(),
         });
-        this.state.brief.narrative = markup
+        this.state.brief.narrative = markup;
+        this.brief.narrative = this.state.brief.narrative;
     };
 
     render() {
         const { editorState } = this.state;
             return (
-                <Editor
-                editorState={editorState}
-                toolbarClassName = "toolbarClassName"
-                wrapperClassName="wrapperClassName"
-                editorClassName="editorClassName"
-                onEditorStateChange={this.onEditorStateChange}
+                <Form onSubmit={this.formSubmit}>
+                    <Editor
+                    editorState={editorState}
+                    toolbarClassName = "toolbarClassName"
+                    wrapperClassName="wrapperClassName"
+                    editorClassName="editorClassName"
+                    onEditorStateChange={this.onEditorStateChange}
                 />
+                </Form>
             )
     }
 

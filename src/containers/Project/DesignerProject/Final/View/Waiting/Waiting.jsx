@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 import { Grid, Container, Header, Button } from 'semantic-ui-react';
+import logo from '../../../../../../Images/TempLogo.JPG';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session/index';
 // import * as ROUTES from "../../../utilities/constants/routes";
@@ -28,7 +29,12 @@ class ConceptPageWaiting extends Component {
                 return(
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>The Draft Has Not Been Approved Yet.</Header>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>The Draft Has Not Been Approved Yet.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
                     </Container>
                 </Grid>
             )
@@ -36,8 +42,15 @@ class ConceptPageWaiting extends Component {
                 return (
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
-                        <Header as='h1'>Select Edit to Begin Working On The Final.</Header>
-                        <Link to={{ pathname: ROUTES.CLIENT_FINAL_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>Select Edit to Begin Working On The Final.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Link to={{ pathname: ROUTES.CLIENT_FINAL_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        </Grid.Row>
                     </Container>
                 </Grid>
                 )

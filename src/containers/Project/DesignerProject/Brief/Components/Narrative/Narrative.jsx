@@ -1,5 +1,6 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
+import parse from 'html-react-parser'
 import { Form, TextArea, Message, Container } from 'semantic-ui-react';
 import Editor from '../../../../../../components/DesignerWysiwig/wysiwig'
 const Narrative = (props) => (
@@ -14,9 +15,10 @@ const Narrative = (props) => (
 
 const NarrativeView = (props) => {
     const narrative = props.narrative;
+    const Narrative = parse(narrative)
     return (
         <Container style={{paddingBottom:'6px'}}>
-            <Message content={{narrative}}/>
+            <Message content={Narrative}/>
         </Container>
     )
 }
@@ -24,7 +26,7 @@ const NarrativeView = (props) => {
 const NarrativeEdit = (props) => {
     return (
         <Form style={{paddingBottom: '15px'}}>
-            <Editor formSubmit={props.formSubmit} name="narrative" narrative={props.narrative} />
+            <Editor name="narrative" narrative={props.narrative} />
         </Form>
     )
 }
