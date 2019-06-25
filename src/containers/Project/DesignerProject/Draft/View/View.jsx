@@ -49,21 +49,25 @@ class DraftPageView extends Component {
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <div style={{ paddingBottom:'6px', backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                                 <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
-                                <Item>Feedback:</Item>
-                                <Message 
-                                style={{paddingLeft:'10px', paddingRight: '10px'}}
-                                content={feedback} 
-                                hidden={!this.props.draft.approved}
-                                success
-                                header="User Feedback Received!"
-                                />
-                                <Message
+                                <Grid.Row>
+                                    <Item>Feedback:</Item>
+                                </Grid.Row>
+                                <Grid.Row style={{paddingTop:'10px', paddingLeft:'6px', paddingRight:'6px'}}>
+                                    <Message 
                                     style={{paddingLeft:'10px', paddingRight: '10px'}}
-                                    content="Your customers feedback will be here once it is provided"
-                                    hidden={this.props.draft.approved}
+                                    content={feedback} 
+                                    hidden={!this.props.draft.approved}
                                     success
-                                    header="Waiting on feedback"
+                                    header="User Feedback Received!"
                                     />
+                                    <Message
+                                        style={{paddingLeft:'10px', paddingRight: '10px'}}
+                                        content="Your customers feedback will be here once it is provided"
+                                        hidden={this.props.draft.approved}
+                                        success
+                                        header="Waiting on feedback"
+                                        />
+                                </Grid.Row>
                             </div>
                         </Grid.Row>
                         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>

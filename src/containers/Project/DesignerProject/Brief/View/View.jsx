@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
-import {Grid, Container, Button, Header,} from 'semantic-ui-react'
+import {Grid, Container, Button, Header, Segment, Sidebar, GridColumn} from 'semantic-ui-react'
 // import backgroundTemp from '../../../../../Images/TempBackground.PNG';
-
+import SidebarNav from '../../../../../components/SideBar/Sidebar'
 import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
@@ -27,6 +27,11 @@ class BriefPageView extends Component {
         if (Available){
             return (
                 <Grid>
+                    <Grid.Row style={{paddingTop:'-25px'}}>
+                    <Segment><SidebarNav/></Segment>
+                    </Grid.Row>
+                    {/* </Grid.Column> */}
+                    {/* <Grid.Column style={{display:'block', margin:'auto', width:700}}> */}
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingTop:'25px'}}>
                             <Header style={{fontSize:'25px'}}>Design Brief</Header>
@@ -68,6 +73,7 @@ class BriefPageView extends Component {
                             <a target="_blank" rel="noopener noreferrer" href={this.props.brief.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
+                    {/* </Grid.Column> */}
                 </Grid>
             );
         }else{

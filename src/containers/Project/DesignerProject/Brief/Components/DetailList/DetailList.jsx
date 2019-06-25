@@ -15,7 +15,7 @@ const DetailList = (props) => (
 const DetailListView = (props) => {
     return (
         <Container>
-            <Form style={{paddingBottom:'6px'}}>
+            <Form style={{paddingLeft:'6px', paddingRight: '6px', paddingBottom:'6px'}}>
                 <Item>Address:</Item>
                 <Message
                     content={props.address}

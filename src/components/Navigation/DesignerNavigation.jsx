@@ -8,7 +8,7 @@ import * as ROUTES from '../../utilities/constants/routes';
 import { AuthUserContext } from '../../utilities/Session';
 import SignOutButton from '../../containers/Users/SignOut/SignOut'
 import Loading from '../Loading/Loading'
-import { Dropdown, Menu, Button, Image, Icon, DropdownItem } from 'semantic-ui-react';
+import { Dropdown, Menu, Button, Image, Icon, DropdownItem, Sticky } from 'semantic-ui-react';
 
 class DesignerNavigation extends Component {
     constructor(props) {
@@ -41,32 +41,34 @@ class DesignerNavigation extends Component {
 
 const NavigationAuth = () => (
     //Not sure why, but changing the class twice stops the overlap ¯\_(ツ)_/¯
-    <Menu>
-        <Dropdown className='ui labeled icon' item icon = 'unordered list'>
-            <Dropdown.Menu>
-                <NavLink color='teal' to='/account/info'>
-                    <DropdownItem>
-                        <Button><Icon name='user'/>Account</Button>
-                    </DropdownItem>
+    <Sticky>
+        <Menu >
+            <Dropdown className='ui labeled icon' item icon = 'unordered list'>
+                <Dropdown.Menu>
+                    <NavLink color='teal' to='/account/info'>
+                        <DropdownItem>
+                            <Button><Icon name='user'/>Account</Button>
+                        </DropdownItem>
+                    </NavLink>
+                    <NavLink color='teal' to={ROUTES.PROJECT_LIST}>
+                        <DropdownItem>
+                            <Button><Icon name='file alternate'/>Projects</Button>
+                        </DropdownItem>
+                    </NavLink>
+                    <NavLink color='teal' to='/signin'>
+                        <DropdownItem className='title' >
+                            <SignOutButton/>
+                        </DropdownItem>
+                    </NavLink>
+                </Dropdown.Menu>
+            </Dropdown>
+            <Menu.Item className='right menu item'>
+                <NavLink to='/project/'>
+                    <Image src={logo} alt="bloomtime-logo" size='mini'/>
                 </NavLink>
-                <NavLink color='teal' to={ROUTES.PROJECT_LIST}>
-                    <DropdownItem>
-                        <Button><Icon name='file alternate'/>Projects</Button>
-                    </DropdownItem>
-                </NavLink>
-                <NavLink color='teal' to='/signin'>
-                    <DropdownItem className='title' >
-                        <SignOutButton/>
-                    </DropdownItem>
-                </NavLink>
-            </Dropdown.Menu>
-        </Dropdown>
-        <Menu.Item className='right menu item'>
-            <NavLink to='/project/'>
-                <Image src={logo} alt="bloomtime-logo" size='mini'/>
-            </NavLink>
-        </Menu.Item>
-    </Menu>
+            </Menu.Item>
+        </Menu>
+    </Sticky>
 );
 
 const NavigationNonAuth = () => (

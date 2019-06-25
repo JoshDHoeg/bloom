@@ -19,7 +19,7 @@ const TasteProfileView = (props) => {
             <div>
                 <Container fluid textAlign='center' text='true'>
                     <Grid columns={2}>
-                        <Grid.Row>
+                        <Grid.Row style={{paddingLeft:'6px', paddingRight: '6px'}}>
                             <Grid.Column>
                                 <Item>Spacing: </Item>
                                 <Message 
@@ -31,7 +31,7 @@ const TasteProfileView = (props) => {
                                 content={props.brief.profile.variety}/>
                             </Grid.Column>
                         </Grid.Row>
-                        <Grid.Row>
+                        <Grid.Row style={{paddingLeft:'6px', paddingRight: '6px'}}>
                             <Grid.Column>
                                 <Item>Edging: </Item>
                                 <Message 
@@ -49,7 +49,7 @@ const TasteProfileView = (props) => {
         <div>
         <Container fluid textAlign='center' text='true'>
                 <Grid columns={1}>
-                    <Grid.Row>
+                    <Grid.Row style={{paddingLeft:'6px', paddingRight: '6px'}}>
                         <Grid.Column>
                             <Item>Plant Form: </Item>
                             <Message 
@@ -79,7 +79,7 @@ const TasteProfileEdit = (props) => {
                             <Input name="variety" value={props.brief.profile.variety} onChange={props.handleChangeProfile}/>
                         </Grid.Column>
                     </Grid.Row>
-                    <Grid.Row>
+                    <Grid.Row >
                         <Grid.Column>
                             <Item>Edging: </Item>
                             <Input name="edging" value={props.brief.profile.edging} onChange={props.handleChangeProfile}/>

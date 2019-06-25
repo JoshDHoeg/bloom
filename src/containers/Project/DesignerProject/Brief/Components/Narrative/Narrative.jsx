@@ -17,7 +17,7 @@ const NarrativeView = (props) => {
     const narrative = props.narrative;
     const Narrative = parse(narrative)
     return (
-        <Container style={{paddingBottom:'6px'}}>
+        <Container style={{paddingLeft:'6px', paddingRight: '6px', paddingBottom:'6px'}}>
             <Message content={Narrative}/>
         </Container>
     )

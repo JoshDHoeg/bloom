@@ -19,13 +19,12 @@ const GoalList = (props) => (
 const GoalListView = (props) => {
     const goals = props.goals;
     return (
-            <Container id="goals">
+            <Container id="goals" style={{paddingLeft:'6px', paddingRight: '6px'}}>
                 {goals.map(goal => (
                     <div style={{paddingBottom:'6px'}} key={goal.id} id={`goal${goal.id}`}>
                     <Message content={goal.content}/>
                     </div>
                 ))}
-
             </Container>
     )
 }
