@@ -1,7 +1,7 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 
 //IMPROT UTILITIES
 import { Input, Grid, Header, Item, Button, Container } from 'semantic-ui-react'
@@ -28,6 +28,8 @@ class ConceptPageEdit extends Component {
 
     render() {
         return (
+            <div>
+                 <SidebarNav/>
             <Grid>
                 <Container fluid textAlign="center" text='true'>
                     <Grid.Row  style={{ paddingTop: '20px' }}>
@@ -53,6 +55,7 @@ class ConceptPageEdit extends Component {
                     </Grid.Row>
                 </Container>
             </Grid>
+            </div>
         );
 
     }

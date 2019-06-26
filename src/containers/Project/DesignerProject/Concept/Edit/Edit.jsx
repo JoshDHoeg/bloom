@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Input, Grid, Container, Header, Button, Item } from 'semantic-ui-react';
 import YoutubeEmbedVideo from "youtube-embed-video";
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
@@ -19,6 +20,8 @@ class ConceptPageEdit extends Component {
     }
     render() {
         return (
+            <div>
+            <SidebarNav/>
             <Grid>
                 <Container fluid textAlign='center' text='true'>
                     <Grid.Row style={{paddingTop:'25px'}}>
@@ -40,6 +43,7 @@ class ConceptPageEdit extends Component {
                     </Grid.Row>
                 </Container>
             </Grid>
+            </div>
         
         );
 

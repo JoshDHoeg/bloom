@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
 import { Input, Grid, Header, Item, Button, Container } from 'semantic-ui-react'
-
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 
@@ -27,6 +27,8 @@ class RevisionsPageEdit extends Component {
 
     render() {
         return (
+            <div>
+                <SidebarNav handleStateChange={this.props.handleStateChange}/>
             <Grid>
                 <Container fluid textAlign="center" text='true'>
                     <Grid.Row style={{ paddingTop: '20px' }}>
@@ -53,7 +55,7 @@ class RevisionsPageEdit extends Component {
                     </Grid.Row>
                 </Container>
             </Grid>
-
+            </div>
         );
 
     }

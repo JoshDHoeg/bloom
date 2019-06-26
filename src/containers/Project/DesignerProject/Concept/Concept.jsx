@@ -10,6 +10,7 @@ import ConceptPageEdit from './Edit/Edit';
 
 class ConceptPage extends Component {
   concept;
+  brief;
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +21,9 @@ class ConceptPage extends Component {
           video: '',
           feedback: '',
         },
+        brief:{
+          completed:''
+        }
     };
 
   this.handleChange = this.handleChange.bind(this);
@@ -62,6 +66,9 @@ class ConceptPage extends Component {
         loading: false,
         concept: {
           ...this.concept.getAll()
+        },
+        brief:{
+          ...this.brief.getAll()
         }
     }
     this.setState(state);
@@ -75,7 +82,7 @@ class ConceptPage extends Component {
         );
     }else{
         return (
-            <ConceptPageView concept={this.state.concept} isDesigner={this.props.firebase.user._isDesigner}/>      
+            <ConceptPageView brief={this.state.brief} concept={this.state.concept} isDesigner={this.props.firebase.user._isDesigner}/>      
         );
     }
 

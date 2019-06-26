@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../../../../utilities/Session';
 import * as ROUTES from "../../../../../../utilities/constants/routes";
 import logo from '../../../../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
-
+import SidebarNav from '../../../../../../components/SideBar/Sidebar';
 // import EditButton from '../../../../../../components/ProjectBanner/EditButton/EditButton';
 
 
@@ -24,6 +24,8 @@ class RevisionsPageWaiting extends Component {
         if(this.props.isDesigner){
             if(!this.props.final.approved){
                 return (
+                <div>
+                    <SidebarNav handleStateChange={this.props.handleStateChange}/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -34,9 +36,12 @@ class RevisionsPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
                 )
             }else{
                 return (
+                <div>
+                    <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -50,6 +55,7 @@ class RevisionsPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
                 );
             }
         }else{

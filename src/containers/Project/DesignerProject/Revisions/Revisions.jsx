@@ -62,6 +62,13 @@ class RevisionsPage extends Component {
       }
     });
   }
+  
+  handleStateChange = () => {
+    this.setState({
+        stage: []
+    })
+    this.getProjectState();
+  }
 
 
   getProjectState = async () => {
@@ -89,11 +96,11 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />
+            <RevisionsPageEdit handleStateChange={this.handleStateChange} revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />
         );
     }else{
         return (
-            <RevisionsPageView final={this.state.final} Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
+            <RevisionsPageView handleStateChange={this.handleStateChange} Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 

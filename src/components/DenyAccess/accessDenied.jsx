@@ -20,7 +20,7 @@ class accessDenied extends Component {
                 <Container fluid textAlign="center" text='true'>
                     <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h1'>These are not the plants you are looking for</Header>
-                        <Item>(...but seriously your probably on the wrong page)</Item>
+                        <Item>(...but seriously you're probably on the wrong page)</Item>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '50px', paddingBottom: '20px'}}>
                         <img src={image}/>

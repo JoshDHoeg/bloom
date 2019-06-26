@@ -13,7 +13,7 @@ import YoutubeEmbedVideo from "youtube-embed-video";
 
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
-
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 
 class DraftPageEdit extends Component {
@@ -27,6 +27,8 @@ class DraftPageEdit extends Component {
 
     render() {
         return (
+            <div>
+                <SidebarNav/>
             <Grid>
                 <Container fluid textAlign="center" text='true'>
                     <Grid.Row style={{ paddingTop: '20px' }}>
@@ -59,6 +61,7 @@ class DraftPageEdit extends Component {
                     </Grid.Row>
                 </Container>
             </Grid>
+            </div>
         );
 
     }
