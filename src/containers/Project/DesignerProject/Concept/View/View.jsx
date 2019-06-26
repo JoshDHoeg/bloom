@@ -9,6 +9,7 @@ import { Grid, Container, Header, Button, Message} from 'semantic-ui-react'
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 
 import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 
@@ -28,6 +29,8 @@ class ConceptPageView extends Component {
         console.log('video', this.props.concept.video)
         if (this.props.concept.completed){
             return (
+                <div>
+                     <SidebarNav/>
                 <Grid>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingTop:'25px'}}>
@@ -52,10 +55,11 @@ class ConceptPageView extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
             );
         }else{
             return (
-                <ConceptWaiting isDesigner={this.props.isDesigner}/>
+                <ConceptWaiting brief={this.props.brief} isDesigner={this.props.isDesigner}/>
             );
         }
 

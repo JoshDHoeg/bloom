@@ -8,7 +8,7 @@ import * as ROUTES from "../../../../../utilities/constants/routes";
 //Youtube video and typeform imports
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
-
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 
@@ -28,9 +28,12 @@ class RevisionsPageView extends Component {
 
     render() {
         let feedback
+        console.log('feedback', this.props.revision.feedback)
         feedback = parse(this.props.revision.feedback);
         if (this.props.revision.completed){
             return (
+                <div>
+                    <SidebarNav handleStateChange={this.props.handleStateChange}/>
                 <Grid>
                     <Container fluid textAlign="center" text='true'>
                         <Grid.Row style={{ paddingTop: '20px' }}>
@@ -72,10 +75,11 @@ class RevisionsPageView extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
             );
         }else{
             return (
-                <RevisionsWaiting final={this.props.final} isDesigner={this.props.isDesigner}/>
+                <RevisionsWaiting revision={this.props.revision} handleStateChange={this.props.handleStateChange} final={this.props.final} isDesigner={this.props.isDesigner}/>
             );
         }
 

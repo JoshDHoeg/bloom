@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // import { Link } from 'react-router-dom';
 
 //Figma Embed import
+import SidebarNav from '../../../../../../components/SideBar/Sidebar';
 import FigmaEmbed from 'react-figma-embed';
 import { Grid, Container, Header, Button } from 'semantic-ui-react';
 import logo from '../../../../../../Images/TempLogo.JPG';
@@ -27,6 +28,8 @@ class ConceptPageWaiting extends Component {
         if(this.props.isDesigner){
             if(!this.props.approved){
                 return(
+                <div>
+                    <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -37,9 +40,12 @@ class ConceptPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
             )
             }else{
                 return (
+                <div>
+                    <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -53,6 +59,7 @@ class ConceptPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
                 )
             }
         }else{

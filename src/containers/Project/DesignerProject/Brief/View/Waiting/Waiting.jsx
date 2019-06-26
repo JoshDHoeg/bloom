@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Grid, Container, Header, Button } from 'semantic-ui-react';
-
+import SidebarNav from '../../../../../../components/SideBar/Sidebar';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../../utilities/constants/routes";
@@ -21,6 +21,8 @@ class BriefPageWaiting extends Component {
     render() {
         if(this.props.isDesigner) {
             return (
+                <div>
+                    <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -34,6 +36,7 @@ class BriefPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
         );
         }else{
             return (

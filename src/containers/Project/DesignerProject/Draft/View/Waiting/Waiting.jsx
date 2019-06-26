@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session/index';
+import SidebarNav from '../../../../../../components/SideBar/Sidebar';
 // import * as ROUTES from "../../../utilities/constants/routes";
 import logo from '../../../../../../Images/TempLogo.JPG';
 //Figma Embed import
@@ -27,6 +28,8 @@ class DraftPageWaiting extends Component {
         if(this.props.isDesigner){
             if(!this.props.approved){
                 return(
+                <div>
+                     <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -37,9 +40,12 @@ class DraftPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
                 )
             }else{
                 return(
+                <div>
+                    <SidebarNav/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -53,6 +59,7 @@ class DraftPageWaiting extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
                 );
             }
         }else{

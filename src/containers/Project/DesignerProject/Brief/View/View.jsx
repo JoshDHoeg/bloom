@@ -7,7 +7,7 @@ import { withAuthorization } from '../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../utilities/constants/routes";
 import {Grid, Container, Button, Header, Segment, Sidebar, GridColumn} from 'semantic-ui-react'
 // import backgroundTemp from '../../../../../Images/TempBackground.PNG';
-import SidebarNav from '../../../../../components/SideBar/Sidebar'
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
@@ -26,10 +26,9 @@ class BriefPageView extends Component {
         const Available = this.props.brief.completed;
         if (Available){
             return (
+                <div style={{zIndex:1}}>
+                     <SidebarNav/>
                 <Grid>
-                    <Grid.Row style={{paddingTop:'-25px'}}>
-                    <Segment><SidebarNav/></Segment>
-                    </Grid.Row>
                     {/* </Grid.Column> */}
                     {/* <Grid.Column style={{display:'block', margin:'auto', width:700}}> */}
                     <Container fluid textAlign='center' text='true'>
@@ -75,6 +74,7 @@ class BriefPageView extends Component {
                     </Container>
                     {/* </Grid.Column> */}
                 </Grid>
+                </div>
             );
         }else{
             return (

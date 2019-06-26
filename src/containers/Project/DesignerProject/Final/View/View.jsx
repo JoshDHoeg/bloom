@@ -9,6 +9,7 @@ import parse from 'html-react-parser'
 import YoutubeEmbedVideo from "youtube-embed-video";
 import { ReactTypeformEmbed } from 'react-typeform-embed';
 import { Grid, Container, Header, Message, Item, Button } from 'semantic-ui-react'
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 //Figma Embed import
 import FigmaEmbed from 'react-figma-embed';
 import FinalWaiting from './Waiting/Waiting';
@@ -27,6 +28,8 @@ class FinalPageView extends Component {
         feedback = parse(this.props.final.feedback);
         if (this.props.final.completed){
             return (
+                <div>
+                    <SidebarNav/>
                 <Grid>
                     <Container fluid textAlign="center" text='true'>
                         <Grid.Row style={{ paddingTop: '20px' }}>
@@ -68,6 +71,7 @@ class FinalPageView extends Component {
                         </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
             );
         }else{
             return (

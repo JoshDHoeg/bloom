@@ -13,6 +13,7 @@ import GoalList from '../Components/GoalList/GoalList';
 import DetailList from '../Components/DetailList/DetailList';
 import Narrative from '../Components/Narrative/Narrative';
 import TasteProfile from '../Components/TasteProfile/TasteProfile';
+import SidebarNav from '../../../../../components/SideBar/Sidebar';
 
 
 class BriefPageEdit extends Component {
@@ -27,6 +28,8 @@ class BriefPageEdit extends Component {
     render() {
         console.log('media', this.props.brief.media)
         return (
+            <div>
+                <SidebarNav/>
             <Grid>
                 <Container fluid textAlign='center' text='true'>
                     <Grid.Row style={{paddingTop:'25px'}}>
@@ -72,6 +75,7 @@ class BriefPageEdit extends Component {
                     </Grid.Row>
                 </Container>
             </Grid>
+            </div>
         );
 
     }
