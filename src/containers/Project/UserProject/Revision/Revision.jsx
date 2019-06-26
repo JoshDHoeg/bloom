@@ -3,7 +3,8 @@ import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import CompletedPage1 from './Completed1/Completed';
+import CompletedPage from './Completed/Completed';
+import * as ROUTES from '../../../../utilities/constants/routes';
 
 
 class Revision extends React.Component{
@@ -77,6 +78,10 @@ class Revision extends React.Component{
         this.stage.stage = 'contractors'
     }
 
+    handleRedirect = () => {
+        this.props.history.push(ROUTES.CONTRACTORS)
+    }
+
     getProjectState = async () => {
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.revisions = await project.revisions;
@@ -105,7 +110,7 @@ class Revision extends React.Component{
         if(!this.state.revision.completed){
             return( <WaitingPage handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {
-            return( <CompletedPage1 contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage}/> );
+            return( <CompletedPage contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage} handleRedirect={this.handleRedirect} /> );
         }
     }
 }

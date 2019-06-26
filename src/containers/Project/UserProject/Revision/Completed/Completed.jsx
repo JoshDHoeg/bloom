@@ -2,9 +2,10 @@
 import React from 'react';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../utilities/Session';
-import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn } from 'semantic-ui-react'
+import { Container, Header, Button, Icon, Grid, Segment, Form, Message, GridColumn, GridRow } from 'semantic-ui-react'
 import * as ROUTES from "../../../../../utilities/constants/routes";
 //Figma Embed import
+import Editor from '../../../../../components/Wysiwig/wysiwig'
 import FigmaEmbed from 'react-figma-embed';
 import { Link } from 'react-router-dom';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
@@ -13,105 +14,112 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
+import ReactToolTip from 'react-tooltip';
 
 
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
 class Completed extends React.Component {
-    revision;
     constructor(props) {
         super(props);
         this.state = {
-            revision: {
-                feedback: '',
-                approved: '',
-                figma: ''
-            },
             feedbackState: false,
             loading: false,
-            revisions: false,
+            Show: false,
         }
-        this.formSubmit = this.formSubmit.bind(this);
-        this.handleChange = this.handleChange.bind(this);
         this.handleSuccess = this.handleSuccess.bind(this);
-    }
-    
-    formSubmit = () => {
-        this.revision.feedback = this.state.revision.feedback;
-        this.revision.approved = !this.state.revision.approved;
-    }
-
-    handleChange(event) {
-        event.preventDefault();
-        this.setState({
-            revision: {
-                ...this.state.revision,
-                [event.target.name]: event.target.value,
-            }
-        });
+        this.handleNav = this.handleNav.bind(this);
     }
     
     handleSuccess() {
         this.setState({
-            feedbackState: true
+            feedbackState: true,
         })
+    }
+
+    handleNav = () => {
+        this.props.formSubmit()
+        this.props.handleStateChange()
     }
 
     HandleClick = () => {
         this.setState({
-            revisions: true
+            Show: !this.state.Show
         });
     }
 
+
     componentDidMount() {
         this.setState({ loading: true })
-        if(this.props.location.state){
-            this.setState({projectIndex: this.props.location.state.projectIndex});
-            this.getProjectState(this.props.location.state.projectIndex);
-        }else{
-            this.setState({projectIndex: 0});
-            this.getProjectState(0)
-        }
-    }
-
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
-        this.revision = await project.revision
-        const state = await {
-            loading: false,
-            revision: {
-                ...this.revision.getAll()
-            },
-        }
-        this.setState(state)
-        return state;
     }
 
     render() {
-        console.log('approved', this.state.revision.figma)
-        console.log('state', this.state.feedbackState)
         let feedbackButton;
-        if(!this.state.revision.approved) {
+        if(!this.props.revision.approved) {
             feedbackButton = <Button 
+            data-tip='Submit your revision feedback'
             content='Submit'
+            style={{backgroundColor:'#84DB95'}}
             onClick={this.handleSuccess} 
             color='blue'>
             Submit</Button>
         }else{
             feedbackButton = <Button 
             disabled
+            style={{backgroundColor:'#84DB95'}}
             content='Submit' 
             color='blue'>
             Submit</Button>
         }
+        let Feedback;
+        if(this.state.Show){
+            Feedback = 
+            <Editor 
+                state='final' 
+                Show={this.state.Show} 
+                approved={this.props.revision.approved} 
+                feedback={this.props.revision.feedback} 
+                feedbackButton={feedbackButton} 
+                handleChange={this.props.handleChange} 
+                feedbackState={this.state.feedbackState} 
+                handleNav={this.handleNav} /> 
+        }
+        let RightArrow;
+        if(this.props.currentRevision < (this.props.stage.rcount-1)){
+            let revision = Number(this.props.currentRevision)
+            let link = "/project/user_revision/"+(revision + 1);
+            RightArrow =                     
+            <Link data-tip='go to next revision' to={link} style={{ position: "absolute", left: "90%", top: "250px" }} onClick={this.props.handleStateChange}>
+                <img src={ArrowRight} />
+                <ReactToolTip/>
+            </Link>
+        }else if(this.props.stage.stage === 'contractors') {
+            RightArrow =                     
+            <Link data-tip='go to contractor page' to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                <img src={ArrowRight} />
+            </Link>
+        }
+        let LeftArrow;
+        let revision = Number(this.props.currentRevision)
+        if(revision > 0){
+            let revision = Number(this.props.currentRevision)
+            let link = "/project/user_revision/"+(revision-1)
+            LeftArrow =
+            <Link data-tip='go to last revision' to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
+                <img src={ArrowLeft} />
+            </Link>
+        }else{
+            LeftArrow =
+            <Link data-tip='go to final design' to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px"}}>
+                <img src={ArrowLeft} />
+            </Link>
+        }
         return (
             <Grid>
-                <Container><ProjectStatus state="revision"/></Container>
+                <Container><ProjectStatus state='revision' currentRevision={this.props.currentRevision} /></Container>
                 <Container textAlign='center' text='true'>
-                    <Link to="/project/user_final" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                        <img src={ArrowLeft} />
-                    </Link>
+                    {LeftArrow}
                     <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Revision</Header>
                     </Grid.Row>
@@ -119,36 +127,22 @@ class Completed extends React.Component {
                     <p>We listened to your feedback and came up with a new version of your design based on what you said, let us know how we did!</p>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px' }}>
-                        <Segment placeholder>
-                            <span style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                                <h1 style={{ backgroundColor: "#27AE60", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.state.revision.figma} style={{ width: "540px", margin: "30px" }} />
-                            </span>
-                        </Segment>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                                <FigmaEmbed url={this.props.revision.figma} style={{ width: "540px", margin: "30px" }} />
+                            </div>
                     </Grid.Row>
                     <Grid.Row >
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button>Download Design</Button>
-                            <Button onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button ><Link to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
+                            <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Ask for a revision and leave feedback' onClick={this.HandleClick} >Ask for Revision</Button>
+                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Get quotes from contractors' onClick={this.props.contractorState} onClick={this.props.handleRedirect} > Hire Landscaper</Button>
                         </Button.Group>
                     </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '20px'}}>
-                        <Message hidden = {!this.state.revisions}>
-                            <Form success className='attached fluid segment' onSubmit={this.formSubmit}>
-                                <Form.Input  disabled = {this.state.revision.approved && !this.state.feedbackState} fluid label='Feedback' name ='feedback' placeholder={this.state.revision.feedback} onChange={this.handleChange} type='text'  />
-                                <Message 
-                                    success
-                                    hidden = {!this.state.revision.approved && !this.state.feedbackState}
-                                    header='Feedback Received:' 
-                                    content= {this.state.revision.feedback || 'feedback'}/>
-                                {feedbackButton}
-                            </Form>
-                        </Message>
+                    <Grid.Row style={{ paddingBottom: '50px'}}>
+                        {Feedback}
                     </Grid.Row>
-                    <Link to="/project/user_contractors" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <img src={ArrowRight} />
-                    </Link>
+                    {RightArrow}
                 </Container>
             </Grid>
 
