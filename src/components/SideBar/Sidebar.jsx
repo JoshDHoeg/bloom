@@ -75,12 +75,6 @@ class SidebarNav extends Component {
                             Final
                         </div>
                     </Menu.Item>
-                    {/* <Menu.Item as={Link} to={ROUTES.CLIENT_REVISIONS}>
-                        <div style={{ paddingTop: "10px", paddingBottom: "10px" }}>
-                            <Icon name='folder' />
-                            Revisions
-                        </div>
-                    </Menu.Item> */}
                     {this.revisions.map((item, i) => {
                         let number = Number(this.props.currentRevision);
                         var link = '/project/revisions/' + i;

@@ -123,7 +123,7 @@ class Completed extends React.Component {
                         <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
                             <Button style={{backgroundColor:'#84DB95'}} data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
                             <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button style={{backgroundColor:'#84DB95'}}><Link data-tip='Click here to get quotes from landscapers' to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
+                            <Button style={{backgroundColor:'#84DB95'}} ><Link data-tip='Click here to get quotes from landscapers' to={ROUTES.CONTRACTORS} style={{ textDecoration: 'none', color: "black" }}>Hire Landscaper</Link></Button>
                         </Button.Group>
                     </Grid.Row>
                     <Grid.Row style={{ paddingBottom: '50px'}}>
