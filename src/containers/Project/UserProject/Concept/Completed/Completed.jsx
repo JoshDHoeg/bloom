@@ -40,7 +40,7 @@ class Completed extends React.Component{
                     {/*<Link to="/projects/user_draft" style={{position: "absolute", right: "90%", top: "25%"}}>*/}
                         {/*<FontAwesomeIcon icon="arrow-left" size="5x" color="black"/>*/}
                     {/*</Link>*/}
-                <Grid.Row >
+                <Grid.Row style={{paddingTop:'25px'}}>
                     <Header as='h1'>Concept Designs</Header>
                 </Grid.Row>
                 <Grid.Row  style={{paddingBottom:'20px'}}>

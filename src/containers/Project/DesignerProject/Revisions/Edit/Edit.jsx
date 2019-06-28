@@ -26,6 +26,8 @@ class RevisionsPageEdit extends Component {
     }
 
     render() {
+        let link;
+        link = '/project/revisions/'+ this.props.currentRevision;
         return (
             <div>
                 <SidebarNav handleStateChange={this.props.handleStateChange}/>
@@ -50,8 +52,8 @@ class RevisionsPageEdit extends Component {
                     </div>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '50px'}}>
-                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}} onClick={this.props.formSubmit}>Save</Button></Link>
-                        <Link to={ROUTES.CLIENT_REVISIONS} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FFCE6C'}} onClick={this.props.completed}>Set Live</Button></Link>
+                        <Link to={link} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}} onClick={this.props.formSubmit}>Save</Button></Link>
+                        <Link to={link} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#FFCE6C'}} onClick={this.props.completed}>Set Live</Button></Link>
                     </Grid.Row>
                 </Container>
             </Grid>
