@@ -76,7 +76,8 @@ class RevisionsPage extends Component {
     this.revisions = await project.revisions;
     let string = this.props.location.pathname;
     var array = string.split("/");
-    var currentRevision = array[3]
+    var currentRevision = array[3];
+    console.log('current revision', currentRevision);
     this.final = await project.final;
     const client = await project.client;
     const state = await {
@@ -96,7 +97,7 @@ class RevisionsPage extends Component {
   render() {
     if(this.state.edit){
         return (
-            <RevisionsPageEdit handleStateChange={this.handleStateChange} revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />
+            <RevisionsPageEdit currentRevision={this.state.currentRevision} handleStateChange={this.handleStateChange} revision={this.state.revision} completed={this.completed} handleChange={this.handleChange} formSubmit={this.formSubmit} />
         );
     }else{
         return (

@@ -11,6 +11,7 @@ import * as ROUTES from "../../utilities/constants/routes";
 import { Grid, Container, Header, Item, Button } from 'semantic-ui-react';
 import ProjCard from "../../components/ProjectCard.jsx"
 import PopMessage from "../Messaging/PopMessage"
+import PricingTool from '../../components/PricingTool/pricingTool'
 
 class ProjectList extends Component {
   userSub;
@@ -103,10 +104,10 @@ class ProjectList extends Component {
               <Grid.Row style={{ paddingTop: '50px' }}>
                 <Header style={{fontSize:'35px'}}>Welcome!</Header>
               </Grid.Row>
-              <Grid.Row>
+              <Grid.Row  style={{display:'block', margin:'auto'}}>
                 <YoutubeEmbedVideo videoId='RIswhklQTMc' suggestions={false} style={{ width: "600px", padding: "30px" }} />
               </Grid.Row>
-              <Grid.Row>
+              <Grid.Row  style={{paddingRight:'30px'}} textAlign='center'>
                 <Item>Book a house visit to get started on a new project</Item>
                 <Link to='/house_visit'>
                   <Button size='huge' style={{backgroundColor:'#84DB95'}}>Start Your Project</Button>
@@ -126,12 +127,12 @@ class ProjectList extends Component {
         return(
           <Grid>
             <Container fluid textAlign='center' text='true' style={{paddingBottom:'30px'}}>
-              <Grid.Row style={{ paddingTop:'50px'}}>
+              <Grid.Row style={{ paddingTop:'65px'}}>
                 <Header style={{fontSize:'35px'}}>Welcome!</Header>
               </Grid.Row>
               <Grid.Row>
-                <Item style={{paddingTop:'15px', fontSize:'20px'}}>Select a project to edit and view any of your active projects</Item>
-                <Item style={{paddingTop:'10px', fontSize:'18px'}}>You may save entries by simply selecting the 
+                <Item style={{ paddingRight:'30px', paddingTop:'15px', fontSize:'20px'}}>Select a project to edit and view any of your active projects</Item>
+                <Item style={{paddingRight:'30px', paddingTop:'10px', fontSize:'18px'}}>You may save entries by simply selecting the 
                   'Save' button. Once everything is ready, select 
                   'Publish to make the project viewable to the client</Item>
               </Grid.Row>

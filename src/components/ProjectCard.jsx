@@ -87,7 +87,7 @@ class ProjCard extends Component {
             <Grid >
                 <Container>
                     <Grid.Column style={{paddingBottom:'50px'}}>
-                        <Segment.Group style={{display:'block', margin:'auto', width:350,}} raised compact>
+                        <Segment.Group style={{display:'block', margin:'auto', width:350}} raised compact>
                             <Segment attached='top'>
                                 <Grid floated='center' width={2}>
                                     <Container textAlign='center'>
