@@ -1,7 +1,8 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react'
+import { Icon, Menu, Segment, Sidebar } from 'semantic-ui-react';
+// import { Smoothr, SmoothRoutes, Routes/*, Link*/ } from 'smoothr';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
@@ -18,59 +19,61 @@ import { auth } from 'firebase';
 
 const HomePageWithSideBar = (props) => {
     return(
-        <div style={{paddingTop:'8px' }}>
-                <Router>
-                    <div>
-                            <Segment basic>
+              <div style={{paddingTop:'8px' }}>
+                     <Router>
+                     <div>
+                                   <Segment basic>
 
-                                <div>
-                                    <Route exact path={ROUTES.PROJECT} component={BriefPage} />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_BRIEF}
-                                           render={(props) => <BriefPage {...props} edit={false} index={props.location.state} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_CONCEPT}
-                                           render={(props) => <ConceptPage {...props} edit={false} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_DRAFT}
-                                           render={(props) => <DraftPage {...props} edit={false} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_FINAL}
-                                           render={(props) => <FinalPage {...props} edit={false} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_REVISIONS}
-                                           render={(props) => <RevisionsPage {...props} edit={false} /> }
-                                    />
-                                    
-                                    <Route
-                                        path={ROUTES.CLIENT_BRIEF_EDIT}
-                                        render={(props) => <BriefPage {...props} edit={true} index={props.location.state}/> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_CONCEPT_EDIT}
-                                           render={(props) => <ConceptPage {...props} edit={true} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_DRAFT_EDIT}
-                                           render={(props) => <DraftPage {...props} edit={true} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_FINAL_EDIT}
-                                           render={(props) => <FinalPage {...props} edit={true} /> }
-                                    />
-                                    <Route exact
-                                           path={ROUTES.CLIENT_REVISIONS_EDIT}
-                                           render={(props) => <RevisionsPage {...props} edit={true} /> }
-                                    />
-                                </div>
-                            </Segment>
-                    </div>
-                </Router>
-        </div>
+                                   <div>
+                                          <Route exact path={ROUTES.PROJECT} component={BriefPage} 
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_BRIEF}
+                                                 render={(props) => <BriefPage {...props} edit={false} index={props.location.state} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_CONCEPT}
+                                                 render={(props) => <ConceptPage {...props} edit={false} /> }
+                                                 
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_DRAFT}
+                                                 render={(props) => <DraftPage {...props} edit={false} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_FINAL}
+                                                 render={(props) => <FinalPage {...props} edit={false} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_REVISIONS}
+                                                 render={(props) => <RevisionsPage {...props} edit={false} /> }
+                                          />
+                                          
+                                          <Route
+                                          path={ROUTES.CLIENT_BRIEF_EDIT}
+                                          render={(props) => <BriefPage {...props} edit={true} index={props.location.state}/> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_CONCEPT_EDIT}
+                                                 render={(props) => <ConceptPage {...props} edit={true} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_DRAFT_EDIT}
+                                                 render={(props) => <DraftPage {...props} edit={true} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_FINAL_EDIT}
+                                                 render={(props) => <FinalPage {...props} edit={true} /> }
+                                          />
+                                          <Route exact
+                                                 path={ROUTES.CLIENT_REVISIONS_EDIT}
+                                                 render={(props) => <RevisionsPage {...props} edit={true} /> }
+                                          />
+                                   </div>
+                                   </Segment>
+                     </div>
+                     </Router>
+              </div>
     )
 }
 

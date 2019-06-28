@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import { Icon, Menu, Segment, Step } from 'semantic-ui-react'
+// import { Smoothr, SmoothRoutes, Routes/*, Link*/ } from 'smoothr';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../utilities/Session';
@@ -69,6 +70,7 @@ class UserProject extends React.Component {
             this.state.component = Final
         }
         return(
+            
             <div>
             <Router>
                 <Segment basic>
@@ -102,12 +104,12 @@ class UserProject extends React.Component {
                                 path={ROUTES.HOUSE}
                                 render={(props) => <HouseVisit {...props} edit={false} /> }
                         />
+                        
                     </div>
                 </Segment>
             </Router>
             <PopMessage/>
             </div>
-           
         )
     }
 }
