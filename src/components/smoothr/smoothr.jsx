@@ -1,3 +1,6 @@
+// Cannot implement smoothr yet due to version incompatability, this file will be used once we move to new version of react
+
+
 import React from 'react';
 import ReactDOM from 'react-dom';
 

@@ -7,24 +7,25 @@ import Navigation from './components/Navigation/Navigation';
 
 //IMPORT CONTAINERS
 import SignUpPage from './containers/Users/SignUp/SignUp';
-import SignInPage from './containers/Users/SignIn/SignIn';
-import PasswordForgetPage from './containers/Users/PasswordForget/PasswordForget';
-import ProjectPage from './containers/Project/Project';
-import AccountPage from './containers/Account/Account';
-import ProjectListPage from './containers/ProjectList/ProjectList';
-import Messaging from './containers/Messaging/Messaging';
-import House from './containers/Project/UserProject/HouseVisit/HouseVisit'
-import Payment from './containers/Project/UserProject/Payment/Payment'
-import Denied from './components/DenyAccess/accessDenied'
+import SignInPage from './containers/Users/SignIn/SignIn'; //inputs for sign in info, as well as sign in verification
+import PasswordForgetPage from './containers/Users/PasswordForget/PasswordForget'; //password forget form
+import ProjectPage from './containers/Project/Project'; //seems to determine whether to route to designer interface or user project list?
+import AccountPage from './containers/Account/Account'; //holds router to access account page
+import ProjectListPage from './containers/ProjectList/ProjectList'; //project list including if user is designer (in class), budget info, stage of project, etc
+import Messaging from './containers/Messaging/Messaging'; //messaging window, defaults on help channel, different message channels
+import House from './containers/Project/UserProject/HouseVisit/HouseVisit'; //main page information, can route to scheduling house visit or project
+import Payment from './containers/Project/UserProject/Payment/Payment'; //information from payment page, ie status etc
+import Denied from './components/DenyAccess/accessDenied'; // import message if on invalid page
 //IMPORT UTILITIES
-import * as ROUTES from './utilities/constants/routes';
-import { withAuthentication } from './utilities/Session';
+import * as ROUTES from './utilities/constants/routes'; // import full page of routes
+import { withAuthentication } from './utilities/Session'; //imports user authentication?
 
 const App = () => (
   
     <Router>
       <div>
         <Navigation />
+        {/* each route will go to a specific location when called */}
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
@@ -39,4 +40,4 @@ const App = () => (
     </Router>
 );
 
-export default withAuthentication(App);
+export default withAuthentication(App); //checks authentication before rerouting

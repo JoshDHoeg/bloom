@@ -10,15 +10,15 @@ import { faArrowRight, faArrowLeft } from '@fortawesome/free-solid-svg-icons';
 import ArrowLeft from '../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../assets/images/icons/ArrowRight.svg';
 import ReactToolTip from 'react-tooltip'
-
+//arrows for navigation between pages
 library.add(faArrowRight);
 library.add(faArrowLeft);
 
-class Waiting extends Component {
+class Waiting extends Component { //waiting has same class format as component
     constructor(props){
         super(props);
         this.state = {
-            loading: false,
+            loading: false, //sets all necessary attributes, mostly empty to be filled later
             edit: false,
             title: '',
             src: '',
@@ -28,50 +28,50 @@ class Waiting extends Component {
         }
     }
     
-    componentDidMount(){
-        if(this.props.state === 'contractors'){
+    componentDidMount(){ //once component mounts 
+        if(this.props.state === 'contractors'){ //if they are at contractor stage
             this.setState({
-                title: 'Contractors',
+                title: 'Contractors', //sets state title
                 src: logo,
-                message: 'Your contractors havent gotten us their quotes yet. You will receive a notification when they are ready',
+                message: 'Your contractors haven\'t gotten us their quotes yet. You will receive a notification once they are ready!', //informs user that quote still pending
                 last: '/project/user_revision',
             })
         }
-        else if(this.props.state === 'payment'){
+        else if(this.props.state === 'payment'){  //if they are at payment stage
             this.setState({
-                title: 'Payment',
+                title: 'Payment', //sets state title
                 titleNext: 'concept',
                 src: logo,
-                message: 'Your payment it not necessary at this time!',
+                message: 'Your payment it not necessary at this time!', //user does not need to pay yet
                 next: '/project/user_concept'
             })
         }
-        else if(this.props.state === 'draft'){
+        else if(this.props.state === 'draft'){ //if in draft stage
             this.setState({
-                title: 'Draft',
-                titleNext: 'final',
-                titleLast: 'concept design',
+                title: 'Draft', //sets state title
+                titleNext: 'final', //next stage title
+                titleLast: 'concept design', //previous stage title
                 src: logo,
-                message: 'Your Draft is not ready yet. You will receive a notification when it is ready',
-                last: '/project/user_concept',
-                next: '/project/user_final',
+                message: 'Your designer is hard at work making your draft! You will receive a notification once it is ready', //provides pertinent information
+                last: '/project/user_concept', //previous stage
+                next: '/project/user_final', //next stage
             })
         }
-        else if(this.props.state === 'final'){
+        else if(this.props.state === 'final'){ //if in final stage
             this.setState({
-                title: 'Final',
+                title: 'Final', //set title and previous title
                 titleLast: 'rough draft',
                 src: logo,
-                message: 'Your Final is not ready yet. You will receive a notification when it is ready',
+                message: 'Your designer is hard at work making your final draft! You will receive a notification once it is ready',
                 last: '/project/user_draft',
                 next: '/project/user_revision'
             })
         }
-        else if(this.props.state === 'revision'){
+        else if(this.props.state === 'revision'){ //these are all the same thing
             this.setState({
                 title: 'Revision',
                 src: logo,
-                message: 'Your Revision is not ready yet. You will receive a notification when it is ready',
+                message: 'Your designer is working hard to implement all of your feedback! You will receive a notification once your revision is ready',
                 last: '/project/user_final',
                 next: '/project/user_contractors'
             })
@@ -81,51 +81,51 @@ class Waiting extends Component {
                 title: 'Concept',
                 titleNext: 'rough draft',
                 src: logo,
-                message: 'Your Concept is not ready yet. You will receive a notification when it is ready',
+                message: 'Your designer is hard at working making your concept! You will receive a notification once it is ready',
                 next: '/project/user_draft'
             })
         }
     }
     render(){
         let Next
-        Next = 'go to '+(this.state.titleNext)
-        let RightArrow;
-        if(this.props.state !== 'final' && this.props.state !=='revision' && this.props.state !== 'contractors'){
+        Next = 'go to '+(this.state.titleNext) //says to go to whatever stage is next
+        let RightArrow; //right arrow for navigation
+        if(this.props.state !== 'final' && this.props.state !=='revision' && this.props.state !== 'contractors'){ //if not in final, revision, or contractor state
             RightArrow =
-            <Link data-tip={Next} to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}>
+            <Link data-tip={Next} to={this.state.next} style={{ position: "absolute", left: "90%", top: "250px" }}> {/*places right arrow */}
                 <ReactToolTip />
                 <img src={ArrowRight} />
             </Link>
-        }else if(this.props.state === 'final' && this.props.stage.stage === 'revisions'){
-            RightArrow = 
+        }else if(this.props.state === 'final' && this.props.stage.stage === 'revisions'){ //if in revision stage, places arrow
+            RightArrow = //styles right arrow and sets where it links to
             <Link to="/project/user_revision/0" style={{ position: "absolute", left: "90%", top: "250px" }}>
                 <img src={ArrowRight} />
             </Link>
         }
-        let LeftArrow;
+        let LeftArrow; //left arrow for navitagion
         let Last;
-        Last = 'go to '+(this.state.titleLast)
-        let revision = Number(this.props.currentRevision)
-        if(this.props.state === 'revision' && revision !== 0){
-            let revision = Number(this.props.currentRevision)
-            let link = "/project/user_revision/"+(revision-1)
+        Last = 'go to '+(this.state.titleLast) //says to go to previous stage
+        let revision = Number(this.props.currentRevision) //revision is number of current revisions
+        if(this.props.state === 'revision' && revision !== 0){ //if we are in revision state and there have been revisions
+            let revision = Number(this.props.currentRevision) //revision is current number of revisions we are on
+            let link = "/project/user_revision/"+(revision-1) //links to revision value -1
             LeftArrow =
             <Link data-tip='go to revision'{...revision-1} to={link} style={{ position: "absolute", right: "90%", top: "250px"}} onClick={this.props.handleStateChange}>
-                <ReactToolTip />
+                <ReactToolTip /> {/* moves to previous revision */}
                 <img src={ArrowLeft} />
             </Link>
-        }else if(this.props.state === 'contractors'){
+        }else if(this.props.state === 'contractors'){ //if in contractor state
             let revision = Number(this.props.stage.rcount)
-            let link = "/project/user_revision/"+(revision);
+            let link = "/project/user_revision/"+(revision); //links to current revision
             LeftArrow =
-            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}>
+            <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}> {/* positions and styles arrow */}
                 <img src={ArrowLeft} />
             </Link>
-        }else if(this.props.state === 'payment'){
+        }else if(this.props.state === 'payment'){ //if in payment state, no need for left arrow
             LeftArrow=null
         
         }else if(this.props.state !== 'concept'){
-            LeftArrow =
+            LeftArrow = //if in concept state, same as contractors state
             <Link data-tip={Last} to={this.state.last} style={{ position: "absolute", right: "90%", top: "250px" }}>
                 <img src={ArrowLeft} />
                 <ReactToolTip/>
@@ -134,7 +134,7 @@ class Waiting extends Component {
         return(
             <Container>
                 {LeftArrow}
-                <Grid.Row>
+                <Grid.Row> {/*Styling for page, including arrows on either side, revision number */}
                     <ProjectStatus state={this.props.state} currentRevision={this.props.currentRevision}/>
                 </Grid.Row>
                 <Grid.Row>
@@ -154,6 +154,6 @@ class Waiting extends Component {
     }
 
 }
-const condition = role => role > 0;
+const condition = role => role > 0; //returns true if verified user
 
-export default withAuthorization(condition)(Waiting);
+export default withAuthorization(condition)(Waiting); //if condition returns true, exports
