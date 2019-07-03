@@ -82,7 +82,7 @@ class Completed extends Component {
                 <Container><ProjectStatus state="contractors" /></Container>
                 <Container textAlign='center'>
                 <Grid.Row>
-                    <Header style={{ textAlign:'center', paddingTop:'20px'}}>Hey we found three quotes for you!</Header>
+                    <Header style={{ textAlign:'center', paddingTop:'20px'}}>We found three quotes for you!</Header>
                 </Grid.Row>
                 {LeftArrow}
                 <Grid columns='three' style={{ textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh", paddingTop:'35px' }}>
