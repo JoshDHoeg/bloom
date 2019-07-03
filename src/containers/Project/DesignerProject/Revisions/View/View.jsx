@@ -79,7 +79,7 @@ class RevisionsPageView extends Component {
             );
         }else{
             return (
-                <RevisionsWaiting revision={this.props.revision} handleStateChange={this.props.handleStateChange} final={this.props.final} isDesigner={this.props.isDesigner}/>
+                <RevisionsWaiting currentRevision={this.props.currentRevision} revision={this.props.revision} handleStateChange={this.props.handleStateChange} final={this.props.final} isDesigner={this.props.isDesigner}/>
             );
         }
 

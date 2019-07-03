@@ -101,7 +101,7 @@ class RevisionsPage extends Component {
         );
     }else{
         return (
-            <RevisionsPageView handleStateChange={this.handleStateChange} Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
+            <RevisionsPageView currentRevision={this.state.currentRevision} handleStateChange={this.handleStateChange} Approved={this.Approved} final={this.state.final} completed={this.completed} isDesigner={this.props.firebase.user._isDesigner} revision={this.state.revision} />
         );
     }
 

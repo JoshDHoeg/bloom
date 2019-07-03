@@ -45,6 +45,14 @@ class Revision extends React.Component{
         this.addRevision();
     }
 
+    handleStateChange = () => {
+        this.setState({
+            revision: [],
+            stage: []
+        })
+        this.componentDidMount()
+    }
+
     handleChange(event) {
         event.preventDefault();
         this.setState({
@@ -108,9 +116,9 @@ class Revision extends React.Component{
 
     render(){
         if(!this.state.revision.completed){
-            return( <WaitingPage  handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
+            return( <WaitingPage handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {
-            return( <CompletedPage contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage} handleRedirect={this.handleRedirect} /> );
+            return( <CompletedPage handleStateChange={this.handleStateChange} contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage} handleRedirect={this.handleRedirect} /> );
         }
     }
 }

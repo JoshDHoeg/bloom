@@ -21,6 +21,12 @@ class RevisionsPageWaiting extends Component {
     }
 
     render() {
+        console.log(this.props.currentRevision)
+        let link;
+        //let currentRevision = this.props.currentRevision;
+        link = '/project/revisions/'+ this.props.currentRevision + '/edit';
+        console.log('here', link)
+        let link2 = {link}+'/edit'
         if(this.props.isDesigner){
             if(!this.props.final.approved){
                 return (
@@ -41,7 +47,7 @@ class RevisionsPageWaiting extends Component {
             }else{
                 return (
                 <div>
-                    <SidebarNav/>
+                    <SidebarNav  handleStateChange={this.props.handleStateChange}/>
                 <Grid style={{paddingBottom:'700px'}}>
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
@@ -51,7 +57,7 @@ class RevisionsPageWaiting extends Component {
                             <img src={logo} />
                         </Grid.Row>
                         <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
-                            <Link to={{ pathname: ROUTES.CLIENT_REVISIONS_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                            <Link to={{pathname: link, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
                         </Grid.Row>
                     </Container>
                 </Grid>
