@@ -112,7 +112,7 @@ class Completed extends React.Component {
                         <Grid.Row >
                             <Header as='h2'>Final Draft</Header>
                         </Grid.Row>
-                        <p>
+                        <p>git 
                             Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
                         </p>
                         </Container> */}
