@@ -106,8 +106,13 @@ class Completed extends React.Component {
         return (
             // <Container fluid textAlign='center' text='true'>
                 <Grid columns='two' style={{backgroundColor:'#84DB95', position:'absolute', top:0, left:0, right:0, height:'100vh', marginTop:'2px'}}>
-                    <Container><ProjectStatus state="final" /></Container>
                     <Grid.Row>
+                        <Container><ProjectStatus state="final" /></Container>
+                    </Grid.Row>
+                    <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
+                                <img src={ArrowLeft} />
+                                <ReactToolTip />
+                    </Link>
                         {/* <Container style={{textAlign: 'center'}}>
                         <Grid.Row >
                             <Header as='h2'>Final Draft</Header>
@@ -116,18 +121,14 @@ class Completed extends React.Component {
                             Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
                         </p>
                         </Container> */}
-                            <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
-                                <img src={ArrowLeft} />
-                                <ReactToolTip />
-                            </Link>
-                        <Grid.Column style={{position:'relative', paddingLeft:'9%', paddingRight: '10px', width: '50%'}}>
-                                <div style={{ backgroundColor: "#F5F5F5", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
-                                    <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                    <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:'97%', marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
-                                </div>
-                        </Grid.Column>
+                        <Grid.Row style={{ position:'fixed', top:'20%'}}>
+                            <Grid.Column style={{position:'relative', paddingLeft:'9%', paddingRight: '10px', width: '50%'}}>
+                                    <div style={{ backgroundColor: "#F5F5F5", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
+                                        <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                                        <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:'97%', marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
+                                    </div>
+                            </Grid.Column>
                         <Grid.Column style={{position:'relative', paddingRight:'9%', paddingLeft: '10px', width:'50%'}}>
-                            <Grid.Row style={{ paddingLeft: "10px"}}>
                         <Editor 
                             state='final' 
                             Show={this.state.Show} 
@@ -137,14 +138,12 @@ class Completed extends React.Component {
                             handleChange={this.props.handleChange} 
                             feedbackState={this.state.feedbackState} 
                             handleNav={this.handleNav} /> 
-                            </Grid.Row>
                         </Grid.Column>
-
-                        <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                     </Grid.Row>
+                    <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", left: "90%", top: "250px" }}>
                             <img src={ArrowRight} />
                             <ReactToolTip />
-                        </Link>
-                    </Grid.Row>
+                    </Link>
                 </Grid>
             // <Grid columns='two'>
             //     <Container fluid textAlign='center' text='true'>
