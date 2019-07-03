@@ -104,38 +104,85 @@ class Completed extends React.Component {
                 handleNav={this.handleNav} /> 
         }
         return (
-            <Grid>
-                <Container><ProjectStatus state="final" /></Container>
-                <Container fluid textAlign='center' text='true'>
+            // <Container fluid textAlign='center' text='true'>
+                <Grid columns='two'>
+                    <Container><ProjectStatus state="final" /></Container>
                     <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
                         <img src={ArrowLeft} />
                         <ReactToolTip />
                     </Link>
-                    <Grid.Row style={{ paddingTop: '20px' }}>
+                    {/* <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Final Draft</Header>
-                    </Grid.Row>
-                    <p>
-                        Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
-                    </p>
-                    <Grid.Row style={{ paddingTop: '20px' }}>
+                    </Grid.Row> */}
+                    <Grid.Column>
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
                             <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                             <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
                         </div>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>                    
-                        <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
-                            <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
-                            <Button style={{backgroundColor:'#84DB95'}} data-tip='Click here to get quotes from landscapers' onClick={this.handleRedirect} >Hire Landscaper</Button>
-                        </Button.Group>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '50px'}}>
-                        {Show}
-                    </Grid.Row>
-                    {RightArrow}
-                </Container>
-            </Grid>
+                    </Grid.Column>
+                    <Grid.Column>
+                    <Editor 
+                                state='final' 
+                                Show={this.state.Show} 
+                                approved={this.props.final.approved} 
+                                feedback={this.props.final.feedback} 
+                                feedbackButton={feedbackButton} 
+                                handleChange={this.props.handleChange} 
+                                feedbackState={this.state.feedbackState} 
+                                handleNav={this.handleNav} /> 
+
+                    </Grid.Column>
+                </Grid>
+            // </Container>
+            // <Grid columns='two'>
+            //     <Container fluid textAlign='center' text='true'>
+            //     <Container><ProjectStatus state="final" /></Container>
+            //         <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
+            //             <img src={ArrowLeft} />
+            //             <ReactToolTip />
+            //         </Link>
+            //         <Grid.Row style={{ paddingTop: '20px' }}>
+            //             <Header as='h2'>Final Draft</Header>
+            //         </Grid.Row>
+            //         <p>
+            //             Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
+            //         </p>
+            //         <Grid.Row style={{ paddingTop: '20px'}}>
+            //                 <Grid.Column >
+            //                     <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+            //                         <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+            //                         <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
+            //                     </div>
+            //                 </Grid.Column>
+            //                 <Grid.Column>
+            //                 <Editor 
+            //                     state='final' 
+            //                     Show={this.state.Show} 
+            //                     approved={this.props.final.approved} 
+            //                     feedback={this.props.final.feedback} 
+            //                     feedbackButton={feedbackButton} 
+            //                     handleChange={this.props.handleChange} 
+            //                     feedbackState={this.state.feedbackState} 
+            //                     handleNav={this.handleNav} /> 
+            //                 </Grid.Column>
+            //             </Grid.Row>
+            //             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+            //                 <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+            //                 <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
+            //             </div>
+            //         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>                    
+            //             <Button.Group style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+            //                 <Button style={{backgroundColor:'#84DB95'}} data-tip='Download your design' onClick={this.props.mediaLink}>Download Design</Button>
+            //                 <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Ask for a revision and leave design feedback' onClick={this.HandleClick} >Ask for Revision</Button>
+            //                 <Button style={{backgroundColor:'#84DB95'}} data-tip='Click here to get quotes from landscapers' onClick={this.handleRedirect} >Hire Landscaper</Button>
+            //             </Button.Group>
+            //         </Grid.Row>
+            //         <Grid.Row style={{ paddingBottom: '50px'}}>
+            //             {Show}
+            //         </Grid.Row>
+            //         {RightArrow}
+            //     </Container>
+            // </Grid>
         )
     }
 }

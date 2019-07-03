@@ -20,7 +20,7 @@ export const CLIENT_BRIEF_EDIT = '/project/brief/edit';
 export const CLIENT_CONCEPT_EDIT = '/project/concept/edit';
 export const CLIENT_DRAFT_EDIT = '/project/draft/edit';
 export const CLIENT_FINAL_EDIT = '/project/final/edit';
-export const CLIENT_REVISIONS_EDIT = '/project/revisions/0/edit';
+export const CLIENT_REVISIONS_EDIT = '/project/revisions/:id/edit';
 
 //New UI ish
 export const CONCEPT = '/project/user_concept';
