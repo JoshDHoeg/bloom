@@ -94,43 +94,89 @@ class Completed extends Component {
             </Link>
         }
         return (
-            <Grid className='Draft'>
-                <Container><ProjectStatus state="draft"/></Container>
-                <Container fluid textAlign="center" text='true'>
-                    {LeftArrow}
-                    <Grid.Row className='Header' style={{ paddingTop: '20px' }}>
-                        <Header as='h2'>Rough Draft</Header>
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                            <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
+            <Grid columns = 'two' style={{ height: "100vh", backgroundColor: "#84DB95"}}>
+                <Container><ProjectStatus state="draft" /></Container>
+                {LeftArrow}
+                
+                <Grid.Row>
+                <Grid.Column style={{paddingLeft: '135px' }}>
+                    <div style={{backgroundColor: "#FFFFFF", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
+                        <h1 style={{ backgroundColor: '#AAD5F7', color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                        <FigmaEmbed url={this.props.draft.figma} style={{ display: 'block', width: "96%", marginLeft: '10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
+                        <Grid.Row style={{paddingTop: '5px', textAlign: "center"}}>
+                            <Button style={{ backgroundColor:'#AAD5F7'}} data-tip='Click here to download your design' onClick={this.props.mediaLink}>Download Design</Button>
+                        </Grid.Row>
+                    </div>
+                </Grid.Column>
+                
+                <Grid.Column style={{paddingRight: '135px' }}>                    
+                    <Grid.Row>
+                        <div>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#AAD5F7", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Video Explanation</h1>
+                                <YoutubeEmbedVideo videoId={this.props.draft.video} suggestions={false} style={{ width: "100%", padding: "20px" }} />
+                            </div>
                         </div>
                     </Grid.Row>
-                    <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
-                        <Button.Group>
-                            <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
-                            <Button style={{backgroundColor:'#FFCE6C'}} data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
-                        </Button.Group>
+                    <Grid.Row style={{ padding: "10px"}}>
+                    <Editor style={{paddingLeft: '0px'}}
+                        state='draft'
+                        Show={this.state.show}
+                        approved={this.props.draft.approved}
+                        feedback={this.props.draft.feedback}
+                        feedbackButton={feedbackButton}
+                        handleChange={this.props.handleChange}
+                        feedbackState={this.state.feedbackState}
+                        handleNav={this.handleNav} />
                     </Grid.Row>
-                    <Grid.Row style={{paddingBottom:'20px'}}>
-                        {videoPortion}
-                    </Grid.Row>
-                    <Grid.Row style={{ paddingBottom: '50px'}} >
-                        <Editor 
-                        state='draft' 
-                        approved={this.props.draft.approved} 
-                        feedback={this.props.draft.feedback} 
-                        feedbackButton={feedbackButton} 
-                        handleChange={this.props.handleChange} 
-                        feedbackState={this.state.feedbackState} 
-                        handleNav={this.handleNav} /> 
-                    </Grid.Row>
-                    <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
-                        <img src={ArrowRight}/>
-                    </Link>
-                </Container>
+                    
+                </Grid.Column>
+                </Grid.Row>
+                {LeftArrow}
+                <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
+                    <img src={ArrowRight}/>
+                    <ReactToolTip />
+                </Link>
+            
             </Grid>
+
+            // <Grid className='Draft'>
+            //     <Container><ProjectStatus state="draft"/></Container>
+            //     <Container fluid textAlign="center" text='true'>
+            //         {LeftArrow}
+            //         <Grid.Row className='Header' style={{ paddingTop: '20px' }}>
+            //             <Header as='h2'>Rough Draft</Header>
+            //         </Grid.Row>
+            //         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+            //             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+            //                 <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+            //                 <FigmaEmbed url={this.props.draft.figma} style={{ width: "540px", margin: "30px" }} />
+            //             </div>
+            //         </Grid.Row>
+            //         <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+            //             <Button.Group>
+            //                 <Button style={{backgroundColor:'#AAD5F7'}} data-tip='Click here to download your design' onClick={this.props.mediaLink}> <ReactToolTip/>Download Design</Button>
+            //                 <Button style={{backgroundColor:'#FFCE6C'}} data-tip='Click here to see your design video' onClick={this.videoToggle}> Show Video</Button>
+            //             </Button.Group>
+            //         </Grid.Row>
+            //         <Grid.Row style={{paddingBottom:'20px'}}>
+            //             {videoPortion}
+            //         </Grid.Row>
+            //         <Grid.Row style={{ paddingBottom: '50px'}} >
+            //             <Editor 
+            //             state='draft' 
+            //             approved={this.props.draft.approved} 
+            //             feedback={this.props.draft.feedback} 
+            //             feedbackButton={feedbackButton} 
+            //             handleChange={this.props.handleChange} 
+            //             feedbackState={this.state.feedbackState} 
+            //             handleNav={this.handleNav} /> 
+            //         </Grid.Row>
+            //         <Link data-tip='go to final design' to="/project/user_final" style={{position: "absolute", left: "90%", top: "250px"}}>
+            //             <img src={ArrowRight}/>
+            //         </Link>
+            //     </Container>
+            // </Grid>
         );
     }
 
