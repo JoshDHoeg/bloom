@@ -2,7 +2,7 @@
 import React, {Component} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
-import {Menu, Dropdown, Image, Icon, Button} from 'semantic-ui-react'
+import {Menu, Dropdown, Image, Icon, Button, Sticky} from 'semantic-ui-react'
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
@@ -47,54 +47,58 @@ class NavigationAuth extends Component {
 
     render(){
         return (
-            <Menu >
-            <Dropdown className='ui labeled icon' item icon = 'unordered list'>
-                <Dropdown.Menu>
-                    <NavLink color='teal' to='/account/info'>
-                        <DropdownItem className='title' >
-                            <Button><Icon name = 'user'/>Account</Button>
-                        </DropdownItem>
+        <Sticky>
+            <Menu>
+                <Dropdown className='ui labeled icon' item icon = 'unordered list'>
+                    <Dropdown.Menu>
+                        <NavLink color='teal' to='/account/info'>
+                            <DropdownItem className='title' >
+                                <Button><Icon name = 'user'/>Account</Button>
+                            </DropdownItem>
+                        </NavLink>
+                        <NavLink color='teal' to={ROUTES.PROJECT}>
+                            <DropdownItem className='title' >
+                                <Button><Icon name = 'file alternate'/>Projects</Button>
+                            </DropdownItem>
+                        </NavLink>
+                        <NavLink color='teal' to='/user_payment'>
+                            <DropdownItem className='title' >
+                                <Button><Icon name = 'credit card'/>Pay Now</Button>
+                            </DropdownItem>
+                        </NavLink>
+                        <NavLink color='teal' to='/signin'>
+                            <DropdownItem className='title' >
+                                <SignOutButton/>
+                            </DropdownItem>
+                        </NavLink>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Menu.Item className='right menu item'>
+                    <NavLink to='/project/'>
+                        <Image src={logo} alt="bloomtime-logo" size='mini'/>
                     </NavLink>
-                    <NavLink color='teal' to={ROUTES.PROJECT}>
-                        <DropdownItem className='title' >
-                            <Button><Icon name = 'file alternate'/>Projects</Button>
-                        </DropdownItem>
-                    </NavLink>
-                    <NavLink color='teal' to='/user_payment'>
-                        <DropdownItem className='title' >
-                            <Button><Icon name = 'credit card'/>Pay Now</Button>
-                        </DropdownItem>
-                    </NavLink>
-                    <NavLink color='teal' to='/signin'>
-                        <DropdownItem className='title' >
-                            <SignOutButton/>
-                        </DropdownItem>
-                    </NavLink>
-                </Dropdown.Menu>
-            </Dropdown>
-            <Menu.Item className='right menu item'>
-                <NavLink to='/project/'>
-                    <Image src={logo} alt="bloomtime-logo" size='mini'/>
-                </NavLink>
-            </Menu.Item>
-        </Menu>
+                </Menu.Item>
+            </Menu>
+        </Sticky>
         )
     }
 }
 
 
 const NavigationNonAuth = () => (
-    <Menu>
-        <Menu.Item>
-            <Link to={ROUTES.SIGN_IN}>Sign In</Link>
-        </Menu.Item>
-        <Menu.Item>
-            <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
-        </Menu.Item>
-        <Menu.Item className="right menu item">
-             <img src={logo} alt="bloomtime-logo"/>
-        </Menu.Item >
-    </Menu>
+    <Sticky>
+        <Menu>
+            <Menu.Item>
+                <Link to={ROUTES.SIGN_IN}>Sign In</Link>
+            </Menu.Item>
+            <Menu.Item>
+                <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+            </Menu.Item>
+            <Menu.Item className="right menu item">
+                <img src={logo} alt="bloomtime-logo"/>
+            </Menu.Item >
+        </Menu>
+    </Sticky>
 )
 
 export default withFirebase(UserNavigation);

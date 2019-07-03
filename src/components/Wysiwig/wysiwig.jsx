@@ -142,7 +142,7 @@ class Editors extends Component {
                                         hidden = {!this.props.feedbackState}
                                         header='Feedback Received:' 
                                         content= {feedback || 'feedback'}/>
-                                    <Grid.Row style={{paddingTop:'10px', paddingBottom:'10px'}}>
+                                    <Grid.Row style={{paddingTop:'10px', display:'flex', justifyContent:'center'}}>
                                     {this.props.feedbackButton}
                                     </Grid.Row>
                             </Form>

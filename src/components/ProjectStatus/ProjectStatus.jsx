@@ -1,6 +1,6 @@
 import React from 'react';
 import {withAuthorization} from '../../utilities/Session';
-import { Step, Icon } from 'semantic-ui-react';
+import { Step, Icon, Sticky } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import "./styles.scss";
 
@@ -76,37 +76,37 @@ class ProjectStatus extends React.Component {
         const count = (this.state.contractors) ? 4 + this.state.revisions : 3 + this.state.revisions;
         return(
             <div className={this.state.state}>
-                <Step.Group widths={count}>
-                    <Step href='/project/user_concept' active={this.state.state === "concept"}>
-                    <Step.Content>
-                        <Step.Title>Concept Designs</Step.Title>
-                    </Step.Content>
-                    </Step>
-                
-                    <Step href='/project/user_draft' active={this.state.state === 'draft'}>
+                    <Step.Group widths={count}>
+                        <Step href='/project/user_concept' active={this.state.state === "concept"}>
                         <Step.Content>
-                            <Step.Title>Rough Draft</Step.Title>
+                            <Step.Title>Concept Designs</Step.Title>
                         </Step.Content>
-                    </Step>
-                
-                    <Step href='/project/user_final' active={this.state.state === 'final'}>
-                    <Step.Content>
-                        <Step.Title>Final Draft</Step.Title>
-                    </Step.Content>
-                    </Step>
-
-                    {this.revisions.map((item, i) => {
-                        let number = Number(this.props.currentRevision)
-                        var link = '/project/user_revision/' + i
-                        return(<Step href={link} active={i === number} >
-                            <Step.Content>
-                                <Step.Title>Revision {i+1} </Step.Title>
-                            </Step.Content>
-                        </Step>);})
-                    }
+                        </Step>
                     
-                    {Contractors}
-            </Step.Group>
+                        <Step href='/project/user_draft' active={this.state.state === 'draft'}>
+                            <Step.Content>
+                                <Step.Title>Rough Draft</Step.Title>
+                            </Step.Content>
+                        </Step>
+                    
+                        <Step href='/project/user_final' active={this.state.state === 'final'}>
+                        <Step.Content>
+                            <Step.Title>Final Draft</Step.Title>
+                        </Step.Content>
+                        </Step>
+
+                        {this.revisions.map((item, i) => {
+                            let number = Number(this.props.currentRevision)
+                            var link = '/project/user_revision/' + i
+                            return(<Step href={link} active={i === number} >
+                                <Step.Content>
+                                    <Step.Title>Revision {i+1} </Step.Title>
+                                </Step.Content>
+                            </Step>);})
+                        }
+                        
+                        {Contractors}
+                </Step.Group>
           </div>
         )
     }
