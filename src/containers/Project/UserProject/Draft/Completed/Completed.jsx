@@ -94,12 +94,12 @@ class Completed extends Component {
             </Link>
         }
         return (
-            <Grid columns = 'two' style={{ height: "100vh", backgroundColor: "#84DB95"}}>
+            <Grid columns = 'two' style={{ height: "120vh", position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: "#84DB95"}}>
                 <Container><ProjectStatus state="draft" /></Container>
-                {LeftArrow}
+                
                 
                 <Grid.Row>
-                <Grid.Column style={{paddingLeft: '135px' }}>
+                <Grid.Column style={{ position: 'relative', paddingLeft: '9%', width: '50%', paddingRight: '5px' }}>
                     <div style={{backgroundColor: "#FFFFFF", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                         <h1 style={{ backgroundColor: '#AAD5F7', color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                         <FigmaEmbed url={this.props.draft.figma} style={{ display: 'block', width: "96%", marginLeft: '10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
@@ -108,8 +108,8 @@ class Completed extends Component {
                         </Grid.Row>
                     </div>
                 </Grid.Column>
-                
-                <Grid.Column style={{paddingRight: '135px' }}>                    
+            
+                <Grid.Column style={{ position: 'relative', paddingRight: '9%', paddingLeft: '5px', width: '50%' }}>                    
                     <Grid.Row>
                         <div>
                             <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
