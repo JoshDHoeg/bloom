@@ -120,28 +120,30 @@ class Completed extends React.Component {
                                 <img src={ArrowLeft} />
                                 <ReactToolTip />
                             </Link>
-                        <Grid.Column style={{position:'relative', left:'9%', paddingRight: '5px'}}>
+                        <Grid.Column style={{position:'fixed', left:'9%'}}>
                                 <div style={{ backgroundColor: "#F5F5F5", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                                     <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                     <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:'97%', marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
                                 </div>
                         </Grid.Column>
-                        <Grid.Column style={{position:'relative', right:'9%', paddingLeft: '5px', width:'50%'}}>
-                        <Editor 
-                            state='final' 
-                            Show={this.state.Show} 
-                            approved={this.props.final.approved} 
-                            feedback={this.props.final.feedback} 
-                            feedbackButton={feedbackButton} 
-                            handleChange={this.props.handleChange} 
-                            feedbackState={this.state.feedbackState} 
-                            handleNav={this.handleNav} /> 
+                        <Grid.Column style={{position:'fixed', right:'9%'}}>
+                            <Grid.Row paddingLef>
+                            <Editor 
+                                state='final' 
+                                Show={this.state.Show} 
+                                approved={this.props.final.approved} 
+                                feedback={this.props.final.feedback} 
+                                feedbackButton={feedbackButton} 
+                                handleChange={this.props.handleChange} 
+                                feedbackState={this.state.feedbackState} 
+                                handleNav={this.handleNav} /> 
+                            </Grid.Row>
                         </Grid.Column>
 
-                    <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", left: "90%", top: "250px" }}>
-                        <img src={ArrowRight} />
-                        <ReactToolTip />
-                    </Link>
+                        <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                            <img src={ArrowRight} />
+                            <ReactToolTip />
+                        </Link>
                     </Grid.Row>
                 </Grid>
             // <Grid columns='two'>
