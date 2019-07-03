@@ -1,10 +1,10 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 //IMPORT UTILITIES
 // import { withFirebase } from '../../utilities/Firebase';
 import { withAuthorization } from '../../utilities/Session';
-import YoutubeEmbedVideo from "youtube-embed-video";
+import YoutubeEmbedVideo from "youtube-embed-video"; // video to display on page
 import * as ROUTES from "../../utilities/constants/routes";
 // import { format } from 'path';
 // import {Link} from "react-router-dom";
