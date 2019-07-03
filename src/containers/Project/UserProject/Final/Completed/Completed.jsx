@@ -105,6 +105,7 @@ class Completed extends React.Component {
         }
         return (
             // <Container fluid textAlign='center' text='true'>
+            <div style={{backgroundColor:'#84B95', height:'100vh'}}>
                 <Grid columns='two'>
                     <Container><ProjectStatus state="final" /></Container>
                     <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", right: "90%", top: "250px" }}>
@@ -115,7 +116,7 @@ class Completed extends React.Component {
                         <Header as='h2'>Final Draft</Header>
                     </Grid.Row> */}
                     <Grid.Column style={{paddingLeft:'135px'}}>
-                            <div style={{ backgroundColor: "#FFFFFF", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
+                            <div style={{ backgroundColor: "#F5F5F5", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                                 <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                 <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:550, marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
                             </div>
@@ -137,7 +138,7 @@ class Completed extends React.Component {
                         <ReactToolTip />
                     </Link>
                 </Grid>
-            // </Container>
+            </div>
             // <Grid columns='two'>
             //     <Container fluid textAlign='center' text='true'>
             //     <Container><ProjectStatus state="final" /></Container>
