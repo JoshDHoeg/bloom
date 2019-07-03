@@ -55,10 +55,10 @@ class ProjectList extends Component {
               <YoutubeEmbedVideo videoId='RIswhklQTMc' suggestions={false} style={{ width: "600px", padding: "30px" }} />
             </Grid.Row>
             <Grid.Row>
-              <Item>Book a house visit to get started on a new project</Item>
+              {/* <Item>Book a house visit to get started on a new project</Item>
               <Link to='/house_visit'>
                 <Button size='huge' style={{backgroundColor:'#84DB95'}}>Start Your Project</Button>
-              </Link>
+              </Link> */}
             </Grid.Row>
         </Container>
         <Container>
