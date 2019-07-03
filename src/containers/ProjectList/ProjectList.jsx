@@ -107,12 +107,12 @@ class ProjectList extends Component {
               <Grid.Row  style={{display:'block', margin:'auto'}}>
                 <YoutubeEmbedVideo videoId='RIswhklQTMc' suggestions={false} style={{ width: "600px", padding: "30px" }} />
               </Grid.Row>
-              <Grid.Row  style={{paddingRight:'30px'}} textAlign='center'>
+              {/* <Grid.Row  style={{paddingRight:'30px'}} textAlign='center'>
                 <Item>Book a house visit to get started on a new project</Item>
                 <Link to='/house_visit'>
                   <Button size='huge' style={{backgroundColor:'#84DB95'}}>Start Your Project</Button>
                 </Link>
-              </Grid.Row>
+              </Grid.Row> */}
           </Container>
           <Container>
               {loading && <div>Loading ...</div>}

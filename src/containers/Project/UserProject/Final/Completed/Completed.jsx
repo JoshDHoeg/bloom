@@ -114,13 +114,13 @@ class Completed extends React.Component {
                     {/* <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Final Draft</Header>
                     </Grid.Row> */}
-                    <Grid.Column>
-                        <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-                            <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                            <FigmaEmbed url={this.props.final.figma} style={{ width: "540px", margin: "30px" }} />
-                        </div>
+                    <Grid.Column style={{paddingLeft:'50px', paddingRight:'20px'}}>
+                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                                <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
+                                <FigmaEmbed url={this.props.final.figma} style={{ display:'block', marginLeft:'auto', marginRight:'auto', width:'auto', marginTop:'10px'}} />
+                            </div>
                     </Grid.Column>
-                    <Grid.Column>
+                    <Grid.Column style={{paddingLeft:'50px', paddingRight:'20px'}}>
                     <Editor 
                                 state='final' 
                                 Show={this.state.Show} 
