@@ -114,13 +114,13 @@ class Completed extends React.Component {
                     {/* <Grid.Row style={{ paddingTop: '20px' }}>
                         <Header as='h2'>Final Draft</Header>
                     </Grid.Row> */}
-                    <Grid.Column style={{paddingLeft:'50px', paddingRight:'20px'}}>
-                            <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
+                    <Grid.Column style={{paddingLeft:'135px'}}>
+                            <div style={{ backgroundColor: "#FFFFFF", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                                 <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
-                                <FigmaEmbed url={this.props.final.figma} style={{ display:'block', marginLeft:'auto', marginRight:'auto', width:'auto', marginTop:'10px'}} />
+                                <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:550, marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
                             </div>
                     </Grid.Column>
-                    <Grid.Column style={{paddingLeft:'50px', paddingRight:'20px'}}>
+                    <Grid.Column style={{paddingLeft:'10px', paddingRight: '135px'}}>
                     <Editor 
                                 state='final' 
                                 Show={this.state.Show} 
@@ -132,6 +132,10 @@ class Completed extends React.Component {
                                 handleNav={this.handleNav} /> 
 
                     </Grid.Column>
+                    <Link data-tip='go to rough draft' to="/project/user_draft" style={{ position: "absolute", left: "90%", top: "250px" }}>
+                        <img src={ArrowRight} />
+                        <ReactToolTip />
+                    </Link>
                 </Grid>
             // </Container>
             // <Grid columns='two'>
