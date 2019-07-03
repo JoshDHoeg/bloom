@@ -119,11 +119,7 @@ class Editors extends Component {
             return (
                 <Grid>
                     <Grid.Row style={{ paddingBottom: '50px'}} hidden = {!this.state.state} >
-<<<<<<< HEAD
-                        <div style={{ paddingLeft:"20px", backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
-=======
                         <div style={{ backgroundColor: "white", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", borderRadius: "4px" }}>
->>>>>>> 2dd67a87b849a8653a075d612bd0f9aaaa91feee
                         <h1 style={{ backgroundColor: "#F5BDF9", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>Feedback</h1>
                         <Form success className='attached fluid' onSubmit={this.props.handleNav} style={{maxWidth: "80%", display: "block", margin: "auto", paddingBottom: "20px"}}>
                             <div style={{backgroundColor: '#FFEF7', width:'80', margin: 'auto', boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', height:'300px', overflowY: 'scroll', padding:'20px', fontSize: '18px', border: '1px solid grey', borderRadius: '4px'}}>
