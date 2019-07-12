@@ -40,6 +40,7 @@ class Waiting extends Component { //waiting has same class format as component
                 last: '/project/user_revision',
                 color: '5px solid #AAD5F7',
                 top:'.5px',
+                top2: '15%',
                 link: null
             })
         }
@@ -51,7 +52,8 @@ class Waiting extends Component { //waiting has same class format as component
                 message: 'Your payment it not necessary at this time!', //user does not need to pay yet
                 next: '/project/user_concept',
                 color: '5px solid #AAD5F7',
-                top:'60px',
+                top:'20px',
+                top2: '25%',
                 link: null
             })
         }
@@ -66,6 +68,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_final', //next stage
                 color:'5px solid #FA907F',
                 top:'.5px',
+                top2: '15%',
                 link: 'Wo_8Jjp7VWc'
             })
         }
@@ -91,6 +94,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_contractors',
                 color:'5px solid #F5BDF9',
                 top:'.5px',
+                top2:'15%',
                 link: null
             })
         }
@@ -103,6 +107,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_draft',
                 color:'5px solid #AAD5F7',
                 top: '.5px',
+                top2: '15%',
                 link: 'GQUEL6RGYuE'
             })
         }
@@ -172,10 +177,10 @@ class Waiting extends Component { //waiting has same class format as component
         color = this.state.color;
         return(
             <Grid style={{ height: "100vh"}}>
-                <Container style={{marginTop:'10px', paddingRight:'5%', paddingLeft:'10%'}}>
+                <Container style={{marginTop: this.state.top}}>
                     <ProjectStatus state={this.props.state} currentRevision={this.props.currentRevision} />
                 </Container>
-                <Grid.Row style={{ display:'block', position: 'absolute', top:'15%', margin:'auto', paddingLeft:'25%', paddingRight:'25%'}}>
+                <Grid.Row style={{ display:'block', position: 'absolute', top: this.state.top2, margin:'auto', paddingLeft:'25%', paddingRight:'25%'}}>
                     <Segment raised style={{borderBottom: color}}>
                         <Grid.Row style={{textAlign:'center'}}>
                             <Header style={{fontWeight:'bold'}} as='h2'>{this.state.title}</Header>
