@@ -131,7 +131,7 @@ class ElementsContainer extends Component {
         </Grid.Row>
         <Divider/>
         <Grid.Row style={{ paddingTop: '10px', paddingLeft:'15px' }}>
-            <StripeProvider apiKey = {stripe} >
+            <StripeProvider apiKey = 'pk_live_wke7a6txnW6Zf4KrMKXaqKtA00z106DivU' >
               <Elements>
                   <Form amount={this.state.amount} stage={this.props.stage} concept={this.props.concept}/>
               </Elements>
