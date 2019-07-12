@@ -7,8 +7,9 @@ import { withAuthorization } from '../../../../../utilities/Session';
 import InfoBanner from '../../../../../components/AccountBanners/AccountInfoBanner/AccountInfoBanner'
 import UserInformation from '../Components/UserInformation/UserInformation';
 import BillingInformation from '../Components/BillingInformation/BillingInformation';
-import EditButton from '../../../../../components/AccountBanners/AccountInfoBanner/EditButton/EditButton'
-import ChangePass from '../../../../Users/PasswordChange/PasswordChange'
+import EditButton from '../../../../../components/AccountBanners/AccountInfoBanner/EditButton/EditButton';
+import ChangePass from '../../../../Users/PasswordChange/PasswordChange';
+import SignOutButton from '../../../../Users/SignOut/SignOut';
 
 class AccountInfoPageEdit extends Component {
     constructor(props) {
@@ -66,6 +67,9 @@ class AccountInfoPageEdit extends Component {
                         <Segment>
                             <ChangePass/>
                         </Segment>
+                    </Grid.Row>
+                    <Grid.Row style={{paddingBottom:'50px'}}>
+                        <SignOutButton/>
                     </Grid.Row>
                 </Grid>
             </Container>

@@ -9,7 +9,7 @@ import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
 import { AuthUserContext } from '../../utilities/Session';
 import Loading from '../Loading/Loading'
-import {Menu } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 
 class Navigation extends Component {
     constructor(props) {

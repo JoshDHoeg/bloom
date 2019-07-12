@@ -55,7 +55,7 @@ class SignInFormBase extends Component {
     const { email, password } = this.state;
 
     this.props.firebase
-      .doSignInWithEmailAndPassword(email, password)
+      .doSignInWithEmailAndPassword(email, password,)
       .then(result => {
         if (result) {
           //this.props.firebase.doGetChannelsByUser(this.props.firebase.user.id).then(res => console.log(res));

@@ -2,12 +2,14 @@ import React, {Component} from 'react'
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed';
 import { withAuthorization } from '../../../../utilities/Session';
+import Loading from '../../../../components/Loading/Loading';
 class ContractorPage extends Component {
     contractor;
     constructor(props){
         super(props);
         this.state = {
             completed: true,
+            loading: false,
             contractor: {
                 contractor1: '',
                 price1: 0,
@@ -52,7 +54,9 @@ class ContractorPage extends Component {
     return state;
     }
     render(){
-        if(!this.state.completed){
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        }else if(!this.state.completed){
             return (
                 <WaitingPage state="contractors"/>
             );

@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
-import { Icon, Container } from 'semantic-ui-react'
+import { Icon, Container, Message } from 'semantic-ui-react'
 
 import NewGoal from './NewGoal.jsx';
 import EditGoal from './EditGoal.jsx';
@@ -19,11 +19,12 @@ const GoalList = (props) => (
 const GoalListView = (props) => {
     const goals = props.goals;
     return (
-            <Container id="goals">
+            <Container id="goals" style={{paddingLeft:'6px', paddingRight: '6px'}}>
                 {goals.map(goal => (
-                    <div key={goal.id} id={`goal${goal.id}`}>{goal.content}</div>
+                    <div style={{paddingBottom:'6px'}} key={goal.id} id={`goal${goal.id}`}>
+                    <Message content={goal.content}/>
+                    </div>
                 ))}
-
             </Container>
     )
 }
@@ -35,13 +36,12 @@ const GoalListEdit = (props) => {
     return (
         <Container id='GoalsEdit' style={{ listStyleType: 'none', paddingBottom: "15px" }}>
             {goals.map(goal => {
-
                 if(props.editId !== goal.id){
                     return(
                         <div key={goal.id} id={goal.id} >
                             <span>{goal.content}</span>
-                            <button onClick={() => {props.editGoal(goal.id)}}> <Icon fitted name='pencil' /></button>
-                            <button onClick={() => {props.deleteGoal(goal.id)}}> <Icon fitted name='trash alternate outline' /></button>
+                            <button style={{paddingLeft:'10px'}} onClick={() => {props.editGoal(goal.id)}}> <Icon fitted name='pencil' /></button>
+                            <button style={{paddingLeft:'10px'}} onClick={() => {props.deleteGoal(goal.id)}}> <Icon fitted name='trash alternate outline' /></button>
                         </div>
                     )
                 }else{

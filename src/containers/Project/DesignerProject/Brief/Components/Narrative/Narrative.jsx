@@ -1,11 +1,12 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
-import { Form, TextArea } from 'semantic-ui-react';
-
+import parse from 'html-react-parser'
+import { Form, TextArea, Message, Container } from 'semantic-ui-react';
+import Editor from '../../../../../../components/DesignerWysiwig/wysiwig'
 const Narrative = (props) => (
     <div>
         {props.edit ? (
-            <NarrativeEdit narrative={props.narrative} handleChange={props.handleChange}/>
+            <NarrativeEdit formSubmit={props.formSubmit} narrative={props.narrative} handleChange={props.handleChange}/>
         ) : (
                 <NarrativeView narrative={props.narrative} />
             )}
@@ -14,17 +15,18 @@ const Narrative = (props) => (
 
 const NarrativeView = (props) => {
     const narrative = props.narrative;
+    const Narrative = parse(narrative)
     return (
-        <div>
-            <p id="NarrativeTxt">{narrative}</p>
-        </div>
+        <Container style={{paddingLeft:'6px', paddingRight: '6px', paddingBottom:'6px'}}>
+            <Message content={Narrative}/>
+        </Container>
     )
 }
 
 const NarrativeEdit = (props) => {
     return (
-        <Form >
-            <TextArea value={props.narrative} name="narrative" id="EditNarrativeTxt" onChange={props.handleChange} />
+        <Form style={{paddingBottom: '15px'}}>
+            <Editor name="narrative" narrative={props.narrative} />
         </Form>
     )
 }

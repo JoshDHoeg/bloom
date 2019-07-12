@@ -1,12 +1,12 @@
 // BLOOMTIME DESIGN 2019
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { Grid, Container, Header } from 'semantic-ui-react';
-
+import { Grid, Container, Header, Button } from 'semantic-ui-react';
+import SidebarNav from '../../../../../../components/SideBar/Sidebar';
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../../../utilities/Session/index';
 import * as ROUTES from "../../../../../../utilities/constants/routes";
-
+import logo from '../../../../../../Images/TempLogo.JPG';
 import backgroundTemp from '../../../../../../Images/TempBackground.PNG';
 
 class BriefPageWaiting extends Component {
@@ -21,12 +21,22 @@ class BriefPageWaiting extends Component {
     render() {
         if(this.props.isDesigner) {
             return (
-                <Grid style={{textAlign: "center" ,backgroundImage: "url(" + backgroundTemp + ")", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh" }}>
-                    <Container>
-                        <Header as='h1'>The Design Brief Is not ready yet. You will receive a notification when it is ready.</Header>
-                        <button style={{ backgroundColor: "#27AE60", marginLeft: "225px", width: "100px", height: "40px", borderRadius: "4px", border: "#56CCF2", boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.1)" }}type="button" ><Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} >Edit</Link></button>
+                <div>
+                    <SidebarNav/>
+                <Grid style={{paddingBottom:'700px'}}>
+                    <Container fluid textAlign='center' text='true'>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Header as='h1'>Select Edit to Begin Working On The Brief.</Header>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <img src={logo}/>
+                        </Grid.Row>
+                        <Grid.Row style={{paddingBottom: '15px', paddingTop: '15px'}}>
+                            <Link to={{ pathname: ROUTES.CLIENT_BRIEF_EDIT, state: {projectIndex: this.props.projectIndex}}} style={{ textDecoration: 'none', color: "white" }} ><Button size='large' style={{backgroundColor:'#FFCE6C'}}>Edit</Button></Link>
+                        </Grid.Row>
                     </Container>
                 </Grid>
+                </div>
         );
         }else{
             return (
@@ -54,6 +64,6 @@ class BriefPageWaiting extends Component {
     }
 }
 
-const condition = role => role > 0;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(BriefPageWaiting);

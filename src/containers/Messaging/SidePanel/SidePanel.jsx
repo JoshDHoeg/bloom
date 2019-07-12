@@ -41,6 +41,7 @@ class SidePanel extends Component {
         >
             <UserPanel user={this.state}/>
             <Channels
+                newMessageCounts = {this.props.newMessageCounts}
                 channels={this.state.channels}
                 currentChannel={this.props.currentChannel}
                 setCurrentChannel={this.props.setCurrentChannel}

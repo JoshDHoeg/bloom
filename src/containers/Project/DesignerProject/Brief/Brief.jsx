@@ -53,7 +53,7 @@ class BriefPage extends Component {
     this.brief.goals = this.state.brief.goals;
     this.brief.address = this.state.brief.address;
     this.brief.budget = this.state.brief.budget;
-    this.brief.narrative = this.state.brief.narrative;
+    //this.brief.narrative = this.state.brief.narrative;
     this.brief.profile = this.state.brief.profile;
   }
 
@@ -124,8 +124,8 @@ class BriefPage extends Component {
   }
 
 
-  getProjectState = async (id) => {
-    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, 0, true);
+  getProjectState = async () => {
+    const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.brief = await project.brief;
     const client = await project.client;
     const profile = await project.brief.profile;
@@ -141,6 +141,7 @@ class BriefPage extends Component {
 }
 
   render() {
+    console.log('media1', this.props.firebase.user.role)
     if(this.state.edit){
         return (
             <BriefEdit
@@ -170,6 +171,6 @@ class BriefPage extends Component {
 }
 
 
-const condition = role => role > 0;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(BriefPage);

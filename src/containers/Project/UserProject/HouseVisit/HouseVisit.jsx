@@ -70,6 +70,6 @@ class HouseVisit extends Component {
     }
 }
 
-const condition = role => role > 0
+const condition = role => role > 0;
 
 export default withAuthorization(condition)(HouseVisit)

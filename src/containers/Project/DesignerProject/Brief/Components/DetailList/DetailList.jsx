@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
-import { Input, Container } from 'semantic-ui-react';
+import { Input, Container, Form, Item, Message } from 'semantic-ui-react';
 
 const DetailList = (props) => (
     <div>
@@ -15,8 +15,16 @@ const DetailList = (props) => (
 const DetailListView = (props) => {
     return (
         <Container>
-            <div id="AddressDisplay">Located on the {props.address}<br /></div>
-            <div id='BudgetDisplay'>Budget: {props.budget}</div>
+            <Form style={{paddingLeft:'6px', paddingRight: '6px', paddingBottom:'6px'}}>
+                <Item>Address:</Item>
+                <Message
+                    content={props.address}
+                />
+                <Item>Budget:</Item>
+                <Message
+                    content={props.budget}
+                />
+            </Form>
         </Container>
     )
 }
@@ -24,11 +32,12 @@ const DetailListView = (props) => {
 const DetailListEdit = (props) => {
     return (
         <Container>
-            <label id="AddressEdit">Address </label>
-            <Input name="address" value={props.address} onChange={props.handleChange}/>
-            <br></br> {/*Temp break until the gap is styled with css*/}
-            <label id="BudgetEdit">Budget </label>
-            <Input name="budget" value={props.budget} onChange={props.handleChange}/>
+            <Form style={{paddingBottom:'10px'}}>
+                <Item>Address:</Item>
+                <Input value={props.address} onChange={props.handleChange}/>
+                <Item>Budget:</Item>
+                <Input value={props.budget} onChange={props.handleChange}/>
+            </Form>
         </Container>
     )
 }

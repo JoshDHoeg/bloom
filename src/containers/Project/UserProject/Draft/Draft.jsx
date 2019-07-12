@@ -3,16 +3,17 @@ import React, { Component } from 'react';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed.jsx';
 import { withAuthorization } from '../../../../utilities/Session/index';
-import { Route } from 'react-router-dom';
+import Loading from '../../../../components/Loading/Loading';
 import './draft.sass'
 class Draft extends Component {
     concept;
     draft;
     stage;
+    user;
     constructor(props){
         super(props);
         this.state = {
-            loading: true,
+            loading: false,
             stage:{
                 stage: ''
             },
@@ -28,6 +29,9 @@ class Draft extends Component {
                 approved: false,
                 approveterms: false,
                 isPaid: false,
+            },
+            user:{
+                name:''
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
@@ -36,7 +40,6 @@ class Draft extends Component {
     }
 
     formSubmit = () => {
-        this.draft.feedback = this.state.draft.feedback;
         this.draft.approved = true;
         this.stage.stage = 'final'
     }
@@ -70,11 +73,12 @@ class Draft extends Component {
         this.getProjectState();
     }
     getProjectState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid)
+        this.user = await user;
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.draft = await project.draft;
         this.stage = await project.stage;
         this.concept = await project.concept;
-        //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
             draft: {
@@ -85,6 +89,9 @@ class Draft extends Component {
             },
             concept: {
                 ...this.concept.getAll()
+            },
+            user:{
+                name: this.user.name
             }
         }
         this.setState(state);
@@ -92,10 +99,12 @@ class Draft extends Component {
     }
 
     render() {
-        if(!this.state.draft.completed){
-            return( <WaitingPage stage={this.state.stage} state="draft"/>    );             
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        } else if(!this.state.draft.completed){
+            return( <WaitingPage stage={this.state.stage} state="draft"/> );             
         } else {
-            return( <CompletedPage concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
+            return( <CompletedPage user={this.state.user} concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }
     }
 

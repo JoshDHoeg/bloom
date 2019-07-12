@@ -10,6 +10,7 @@ import ConceptPageEdit from './Edit/Edit';
 
 class ConceptPage extends Component {
   concept;
+  brief;
   constructor(props) {
     super(props);
     this.state = {
@@ -20,6 +21,9 @@ class ConceptPage extends Component {
           video: '',
           feedback: '',
         },
+        brief:{
+          completed:''
+        }
     };
 
   this.handleChange = this.handleChange.bind(this);
@@ -56,12 +60,16 @@ class ConceptPage extends Component {
   getProjectState = async () => {
     const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
     this.concept = await project.concept;
+    this.brief = await project.brief;
     const client = await project.client;
     const state = await {
         client: client,
         loading: false,
         concept: {
           ...this.concept.getAll()
+        },
+        brief:{
+          ...this.brief.getAll()
         }
     }
     this.setState(state);
@@ -75,13 +83,13 @@ class ConceptPage extends Component {
         );
     }else{
         return (
-            <ConceptPageView concept={this.state.concept} isDesigner={this.props.firebase.user._isDesigner}/>      
+            <ConceptPageView brief={this.state.brief} concept={this.state.concept} isDesigner={this.props.firebase.user._isDesigner}/>      
         );
     }
 
   }
 }
 
-const condition = role => role > 0;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(ConceptPage);

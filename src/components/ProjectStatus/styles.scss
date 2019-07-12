@@ -7,6 +7,7 @@
 
 .concept .ui.steps .step.active .title{
     color: #ffffff;
+    flex-direction:'none';
 }
 
 
@@ -31,6 +32,36 @@
 .final .ui.steps .step.active .title{
     color: #ffffff;
 }
+
+.final .ui.steps .step {
+    flex-direction: none;
+    background: transparent;
+}
+
+.concept .ui.steps .step {
+    background: transparent;
+    flex-direction: none;
+}
+
+.draft .ui.steps .step {
+    background: transparent;
+    flex-direction: none;
+}
+
+.revision .ui.steps .step {
+    background: transparent;
+    flex-direction: none;
+}
+
+.contractors .ui.steps .step {
+    background: transparent;
+    flex-direction: none;
+}
+
+.payment .ui.steps .step {
+    background: transparent;
+}
+
 
 .revision .ui.steps .step.active, 
 .revision .ui.steps .step.active:after, 

@@ -1,17 +1,14 @@
 import {Link} from "react-router-dom";
 import React, { Component } from 'react';
 import { Segment, Header, Grid, Button, Container, Item } from 'semantic-ui-react'
+import * as ROLES from "../utilities/constants/roles";
 import * as ROUTES from "../utilities/constants/routes";
 import { withAuthorization } from '../utilities/Session';
-
-//pic, name, loc, status
-// const defaultPc = 'https://react.semantic-ui.com/images/avatar/large/molly.png';
-
-
 
 class ProjCard extends Component {
     stage;
     brief;
+    user;
     constructor(props){
         super(props);
         this.state={
@@ -21,6 +18,9 @@ class ProjCard extends Component {
             status: '',
             stage:{
                 stage: ''
+            },
+            user: {
+                isDesigner: false
             }
         }
 
@@ -31,17 +31,31 @@ class ProjCard extends Component {
     }
 
     async componentDidMount(){
-        //const brief = await this.props.proj.brief;
+        this.getUserState();
+        const brief = await this.props.proj.brief;
         const status = await this.props.proj.status;
-        //this.setState({brief:brief, status:status});
-        this.getProjectState();
+        console.log(this.props.proj);
+        this.setState({brief:brief, status:status});
     }
 
-    getProjectState = async () => {
-        const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
+    getUserState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user
+        const state = await {
+            loading: false,
+            user: {
+                isDesigner: this.user.isDesigner
+            },
+        }
+        return state;
+    }
+
+    getProjectState1 = async () => {
+        if(!this.state.user.isDesigner){
+        const project = await this.props.firebase.doGetProjects(this.props.firebase.user.uid);
         this.stage = await project.stage;
         this.brief = await project.brief;
-        //const schedule = await this.project.concept.schedule;
+        console.log(project)
         const state = await {
             loading: false,
             stage: {
@@ -54,14 +68,14 @@ class ProjCard extends Component {
         this.setState(state);
         return state;
     }
-
+    }
 
     render(){
         let ProjectButton
         if(this.state.stage.stage === 'revision'){
             ProjectButton = 
             <Link to="/project/user_revision/0" >
-                <Button>View Project</Button>
+                <Button style={{backgroundColor:'#84DB95'}}>View Project</Button>
             </Link>
         }else{
             ProjectButton =
@@ -70,10 +84,10 @@ class ProjCard extends Component {
             </Link>
         }
         return(
-            <Grid>
+            <Grid >
                 <Container>
                     <Grid.Column style={{paddingBottom:'50px'}}>
-                        <Segment.Group style={{display:'block', margin:'auto', width:350,}} raised compact>
+                        <Segment.Group style={{display:'block', margin:'auto', width:350}} raised compact>
                             <Segment attached='top'>
                                 <Grid floated='center' width={2}>
                                     <Container textAlign='center'>
@@ -121,7 +135,6 @@ class ProjCard extends Component {
 }
 
 
-const condition = role => role > 0;
-
+const condition = role => role > 0
 export default withAuthorization(condition)(ProjCard);
 

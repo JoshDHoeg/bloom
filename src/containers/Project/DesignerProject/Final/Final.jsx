@@ -97,6 +97,6 @@ class FinalPage extends Component {
   }
 }
 
-const condition = role => role > 0;
+const condition = role => role > 1;
 
 export default withAuthorization(condition)(FinalPage);

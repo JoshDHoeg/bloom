@@ -1,41 +1,25 @@
 import React from "react";
-import { Segment, Comment } from "semantic-ui-react";
+import { Segment, Comment,Button,Icon } from "semantic-ui-react";
 
 import MessagesHeader from "./Header/Header";
 import MessageForm from "./Form/Form";
 import MessageList from "./MessageList/MessageList";
 
+
 class Messages extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            loading: false,
-            currentChannel: this.props.currentChannel, //this will change ...help Channel id: b6....
+            loading: this.props.loading,
+            currentChannel: this.props.currentChannel,
             name: this.props.currentChannel.name,
-            messages: this.props.messages,
             searchTerm: "",
             searchLoading: false,
-            searchResults: []
+            searchResults: [],
+            channels: this.props.channels
         };
-        this.addMessage = this.addMessage.bind(this);
+        //this.addMessage = this.addMessage.bind(this);
         this.handleSearchChange = this.handleSearchChange.bind(this)
-    }
-
-    getMessagesOfCurrentChannel = async () => {
-        const m = await this.props.firebase.doGetMessagesByChannel(this.state.currentChannel.id);
-        this.setState({
-            messages: m,
-            loading: false,
-        });
-    }
-
-    addMessage = async (from, content, channelRef) => {
-        const m = await this.props.firebase.doCreateAndAddMessageInChannel(from, content, channelRef);
-        const temp = this.state.messages;
-        temp.push(m);
-        this.setState({
-            messages: temp
-        });
     }
 
     handleSearchChange = event => {
@@ -58,35 +42,26 @@ class Messages extends React.Component {
             searchResults: searchResults
         });
     }
-
-    // componentWillMount() {
-    //     this.getMessagesOfCurrentChannel();
-    // }
-
-    componentDidUpdate(prevProps){
-        if(this.props.currentChannel.id !== prevProps.currentChannel.id){
-            this.setState({
-                currentChannel: this.props.currentChannel,
-                name: this.props.currentChannel.name,
-                loading: true,
-            }, () => this.getMessagesOfCurrentChannel());
-        }
-    }
-
     render() {
+
         if(!this.state.loading){
             return (
                 <React.Fragment>
-                    <MessagesHeader handleSearchChange={this.handleSearchChange} currentChannel={this.state.currentChannel}/>
+                    <MessagesHeader
+                        newMessageCounts={this.props.newMessageCounts}
+                        currentChannel={this.props.currentChannel}
+                        channels={this.state.channels}
+                        setCurrentChannel={this.props.setCurrentChannel}
+                    />
                     <Segment  className="messages" >
                         <Comment.Group>
-                            <MessageList searchTerm={this.state.searchTerm} searchResults={this.state.searchResults} messages={this.state.messages}/>
+                            <MessageList searchTerm={this.state.searchTerm} searchResults={this.state.searchResults} messages={this.props.messages}/>
                         </Comment.Group>
                     </Segment>
                     <MessageForm
-                        currentChannel={this.state.currentChannel}
+                        currentChannel={this.props.currentChannel}
                         name={this.props.firebase.user.name}
-                        addMessage={this.addMessage}
+                        addMessage={this.props.addMessage}
                     />
                 </React.Fragment>
             );

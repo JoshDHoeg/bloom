@@ -3,15 +3,29 @@ import { throws } from 'assert';
 
 
 export class User {
+  
+  _active = false;
+  get active() { return this._active }
+  set active(active) {
+    this.ref.set({ active: active }, {merge: true});
+  }
+
   _isDesigner = false;
   get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
-    this.ref.set({ isDesigner: designer });
+    this.ref.set({ isDesigner: designer }, {merge: true});
   }
   _email = '';
   get email() { return this._email; }
   set email(email) {
     this.ref.set({ email: email }, {merge: true});
+  }
+  //This is the email list
+  _Emaillist = true;
+  get Emaillist() { return this._Emaillist; }
+  set Emaillist(Emaillist) {
+    this.ref.set({ Emaillist: Emaillist }, {merge: true});
+    console.log('here?', Emaillist)
   }
   _name = '';
   get name() { return this._name; }
@@ -71,7 +85,9 @@ export class User {
 
   constructor(dbQuery) {
     const data = dbQuery.data();
+    this._active = data['active']
     this._isDesigner = data['isDesigner'];
+    this._isEmaillist = data['isEmaillist']
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
@@ -99,9 +115,11 @@ export class User {
 
   getAll() {
     return this._getAll({
+      active: this.active,
       email: this.email,
       name: this.name,
       phone: this.phone,
+      isEmaillist: this.isEmaillist,
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,
@@ -136,8 +154,16 @@ export class Channel {
   _messages = [];
   get messages(){return this._messages;}
   set messages(mArr){
-      this.ref.set({messages: mArr});
+      this.ref.set({messages: mArr}, {merge: true});
       this._messages = mArr;
+  }
+  //arr of length 2 representing time p1 & p2 last visited channel, respectively (for notifications0
+  _lastVisited = [];
+  get lastVisited(){return this._lastVisited;}
+  set lastVisited(tArr){
+    this.ref.set({lastVisited: tArr}, {merge: true});
+    this._lastVisited = tArr;
+
   }
 
   constructor(channelRef){
@@ -146,6 +172,7 @@ export class Channel {
     this._p2 = data['p2'];
     this._name = data['name'];
     this._messages = data['messages'];
+    this._lastVisited = data['lastVisited'];
     this.ref = channelRef.ref;
     this.id = this.ref.id;
   }
@@ -356,6 +383,10 @@ export class ProjectData {
       _address = '';
       get address() { return this._address; };
       set address(l) { this._setter({ address: l }).then(() => this._address = l); }
+      _media = '';
+      get media() { return this._media; };
+      set media(m) { this._setter({ media: m }).then(() => this._media = m); }
+
       _budget = ['', ''];
       get budget() {
         return this._budget;
@@ -387,6 +418,7 @@ export class ProjectData {
         if (!useDefault) {
           this._goals = this.data['goals'];
           this._address = this.data['address'];
+          this._media = this.data['media']
           this._budget = this.data['budget'];
           this._narrative = this.data['narrative'];
           this._completed = this.data['completed'];
@@ -394,6 +426,7 @@ export class ProjectData {
         } else {
           this._goals = ['goal 11', 'goal 2', 'goal 2'];
           this._address = 'Western Side of House';
+          this._media = 'www.googledrive.com'
           this._budget = ['$500', '$1000'];
           this._narrative = 'It\'s gonna look pretty:)';
           this._completed = false;
@@ -405,6 +438,7 @@ export class ProjectData {
         return this._getAll({
           goals: this.goals,
           address: this.address,
+          media: this.media,
           budget: this.budget,
           narrative: this.narrative,
           completed: this.completed,
@@ -437,6 +471,12 @@ export class ProjectData {
       _cost = '';
       get cost() { return this._cost; };
       set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
+      _discount = '';
+      get discount() { return this._discount; };
+      set discount(d) {this._discount({ discount: d }).then(() => this._discount = d); }
+      _deposit = '';
+      get deposit() { return this._deposit; };
+      set deposit(j) {this._deposit({ deposit: j }).then(() => this._deposit = j); } 
       _ApproveTerms = false;
       get approveterms() {return this._ApproveTerms; };
       set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
@@ -451,10 +491,12 @@ export class ProjectData {
           this._video = this.data['video'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
-          this._isPaid = this.data['isPaid']
-          this._cost = this.data['cost']
-          this._ApproveTerms = this.data['approveterms']
-          this._terms = this.data['terms']
+          this._isPaid = this.data['isPaid'];
+          this._cost = this.data['cost'];
+          this._discount = this.data['discount'];
+          this._deposit = this.data['deposit'];
+          this._ApproveTerms = this.data['approveterms'];
+          this._terms = this.data['terms'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -462,8 +504,10 @@ export class ProjectData {
           this._isApproved = false;
           this._isPaid = false;
           this._cost = 59999;
-          this._ApproveTerms = false
-          this._terms = ''
+          this._discount = 0;
+          this._deposit = 0;
+          this._ApproveTerms = false;
+          this._terms = '';
         }
       }
       getAll() {
@@ -474,6 +518,8 @@ export class ProjectData {
           approved: this.approved,
           isPaid: this.isPaid,
           cost: this.cost,
+          discount: this.discount,
+          deposit: this.deposit,
           approveterms: this.approveterms,
           terms: this._terms
         });
