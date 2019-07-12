@@ -714,6 +714,9 @@ export class ProjectData {
   static Contractor = {
     colRef: 'contractors',
     type: class Contractor extends ProjectDataBase {
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(k) { this._setter({ completed: k }).then(() => this._completed = k); }
       _contractor1 = '';
       get contractor1() { return this._contractor1; }
       set contractor1(c) { this._setter({ contractor1: c }).then(() => this._contractor1 = c); }
@@ -754,6 +757,7 @@ export class ProjectData {
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
+          this._completed = this.data['completed'];
           this._contractor1 = this.data['contractor1'];
           this._price1 = this.data['price1'];
           this._stars1 = this.data['stars1'];
@@ -767,6 +771,7 @@ export class ProjectData {
           this._stars3 = this.data['stars3'];
           this._number3 = this.data['number3']
         } else {
+          this._completed = false;
           this._contractor1 = 'Landscaper1';
           this._price1 = 0;
           this._stars1 = 5;
@@ -783,6 +788,7 @@ export class ProjectData {
       }
       getAll() {
         return this._getAll({
+          completed: this.completed,
           contractor1: this.contractor1,
           price1: this.price1,
           stars1: this.stars1,

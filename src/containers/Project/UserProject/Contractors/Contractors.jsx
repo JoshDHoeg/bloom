@@ -56,7 +56,7 @@ class ContractorPage extends Component {
     render(){
         if(this.state.loading){
             return (<div style={{marginTop:'30%'}}><Loading/></div>);
-        }else if(!this.state.completed){
+        }else if(!this.state.contractor.completed){
             return (
                 <WaitingPage state="contractors"/>
             );

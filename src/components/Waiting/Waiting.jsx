@@ -40,7 +40,7 @@ class Waiting extends Component { //waiting has same class format as component
                 last: '/project/user_revision',
                 color: '5px solid #AAD5F7',
                 top:'.5px',
-                top2: '15%',
+                top2: '100px',
                 link: null
             })
         }
@@ -68,7 +68,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_final', //next stage
                 color:'5px solid #FA907F',
                 top:'.5px',
-                top2: '15%',
+                top2: '100px',
                 link: 'Wo_8Jjp7VWc'
             })
         }
@@ -82,6 +82,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_revision',
                 color:'5px solid #84DB95',
                 top:'.5px',
+                top2: '100px',
                 link: 'hKIPN0TfKuU'
             })
         }
@@ -94,7 +95,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_contractors',
                 color:'5px solid #F5BDF9',
                 top:'.5px',
-                top2:'15%',
+                top2:'100px',
                 link: null
             })
         }
@@ -107,7 +108,7 @@ class Waiting extends Component { //waiting has same class format as component
                 next: '/project/user_draft',
                 color:'5px solid #AAD5F7',
                 top: '.5px',
-                top2: '15%',
+                top2: '100px',
                 link: 'GQUEL6RGYuE'
             })
         }
@@ -148,8 +149,7 @@ class Waiting extends Component { //waiting has same class format as component
                 <img src={ArrowLeft} />
             </Link>
         }else if(this.props.state === 'contractors'){ //if in contractor state
-            let revision = Number(this.props.stage.rcount)
-            let link = "/project/user_revision/"+(revision); //links to current revision
+            let link = "/project/user_final"; //links to current revision
             LeftArrow =
             <Link to={link} style={{ position: "absolute", right: "90%", top: "250px" }}> {/* positions and styles arrow */}
                 <img src={ArrowLeft} />
@@ -176,7 +176,7 @@ class Waiting extends Component { //waiting has same class format as component
         let color;
         color = this.state.color;
         return(
-            <Grid style={{ height: "100vh"}}>
+            <Grid>
                 <Container style={{marginTop: this.state.top}}>
                     <ProjectStatus state={this.props.state} currentRevision={this.props.currentRevision} />
                 </Container>

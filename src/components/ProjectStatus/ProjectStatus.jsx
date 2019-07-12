@@ -73,7 +73,7 @@ class ProjectStatus extends React.Component {
             </Step>
         }
         return(
-        <Container style={{ paddingRight:'5%', paddingLeft:'10%', maxHeight:'30px', marginTop:'2px'}}>
+        <Container style={{ paddingRight:'1%', paddingLeft:'10%', maxHeight:'30px', marginTop:'2px'}}>
         <div style={{width:'90%'}}>
             <Stepper nonLinear alternativeLabel>
                 <Step active={this.state.state === 'concept'}>
