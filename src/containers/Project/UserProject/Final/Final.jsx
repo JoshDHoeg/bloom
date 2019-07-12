@@ -55,9 +55,7 @@ class Final extends React.Component { //final draft class
         let result2 = String(result); //saves the revision number as a string
         this.state.stage.stage = 'revision'; //ensures project is in revision stage
         this.addRevision(); //creates new revision via firebase(?)
-        console.log('new rcount', result2)
         this.stage.rcount = result2; //updates value of revision count with new total
-        console.log('rcount', this.state.stage.rcount)
         this.handleStateChange();
     }
 

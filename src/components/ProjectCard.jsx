@@ -34,7 +34,6 @@ class ProjCard extends Component {
         this.getUserState();
         const brief = await this.props.proj.brief;
         const status = await this.props.proj.status;
-        console.log(this.props.proj);
         this.setState({brief:brief, status:status});
     }
 
@@ -55,7 +54,6 @@ class ProjCard extends Component {
         const project = await this.props.firebase.doGetProjects(this.props.firebase.user.uid);
         this.stage = await project.stage;
         this.brief = await project.brief;
-        console.log(project)
         const state = await {
             loading: false,
             stage: {

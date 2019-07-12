@@ -45,11 +45,9 @@ class ElementsContainer extends Component {
     const stripe = process.env.REACT_APP_STRIPE_PRIVATE
     let amount2;
     let cost = parseFloat(Math.round(this.props.concept.cost) / 100).toFixed(2);
-    console.log('amount', stripe)
     this.state.amount = cost - (this.props.concept.discount + this.props.concept.deposit);
     let upgrade = (cost - 599.99);
     let Area = upgrade/.4;
-    console.log(this.props.concept.deposit)
     return (
       <Grid columns='two' style={{marginTop:'5%', paddingLeft:'10%', paddingRight:'10%'}}>
         {LeftArrow}

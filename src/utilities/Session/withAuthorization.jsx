@@ -28,8 +28,6 @@ const withAuthorization = condition => Component => {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
-                console.log('here5', authUser._role)
-                console.log(condition(authUser._role))
                 if(!condition(authUser._role)){
                   this.props.history.push(ROUTES.DENIED);
                 }
@@ -37,7 +35,6 @@ const withAuthorization = condition => Component => {
         } else {
             this.props.history.push(ROUTES.SIGN_IN);
         }
-        console.log('here5', authUser)
       });
     }
     
@@ -49,7 +46,6 @@ const withAuthorization = condition => Component => {
       return (
         <AuthUserContext.Consumer>
           {authUser => { 
-             console.log(authUser);
              return condition(authUser._role) ? <Component {...this.props} /> : null;
           }}
         </AuthUserContext.Consumer>

@@ -16,10 +16,8 @@ const withAuthentication = Component => {
     }
 
     componentDidMount() {
-      console.log("fuck the fucking outside world ");
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
-          console.log("fuck the fucking world");
           authUser
             ? this.setState({ authUser })
             : this.setState({ authUser: null });

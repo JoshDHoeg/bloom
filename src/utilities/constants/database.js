@@ -25,7 +25,6 @@ export class User {
   get Emaillist() { return this._Emaillist; }
   set Emaillist(Emaillist) {
     this.ref.set({ Emaillist: Emaillist }, {merge: true});
-    console.log('here?', Emaillist)
   }
   _name = '';
   get name() { return this._name; }

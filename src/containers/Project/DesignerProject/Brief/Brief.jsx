@@ -141,7 +141,6 @@ class BriefPage extends Component {
 }
 
   render() {
-    console.log('media1', this.props.firebase.user.role)
     if(this.state.edit){
         return (
             <BriefEdit

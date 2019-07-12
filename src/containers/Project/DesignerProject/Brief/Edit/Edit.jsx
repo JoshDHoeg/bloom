@@ -26,7 +26,6 @@ class BriefPageEdit extends Component {
     }
 
     render() {
-        console.log('media', this.props.brief.media)
         return (
             <div>
                 <SidebarNav/>

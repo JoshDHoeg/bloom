@@ -75,11 +75,9 @@ class Form extends Component {
   
   render() {
     let amount;
-    console.log('amount', this.props.amount)
     amount = this.props.amount
     let amount2;
     amount2 = amount*100;
-    console.log('amount2',amount2)
     if (this.state.complete) {
       return( 
         <Container>

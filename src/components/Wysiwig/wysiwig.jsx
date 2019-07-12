@@ -108,7 +108,6 @@ class Editors extends Component {
     }
 
     render() {
-        console.log('fuck', this.state.revision.feedback)
         let feedback;
         let color;
         if(this.state.state === 'final'){

@@ -6,7 +6,6 @@ import Firebase from '../firebase';
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
     super();
-    console.log('projects'); //logs to ensure everything is running correctly
   }
 
 
@@ -18,7 +17,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
       : 'oV5VqI6E5zU7XPbC2Y129E9Otbz2';
       
       return this.doGetUser(DESIGNER).then( designer => {
-          console.log(designer); //logs the chosen designer
           var proj = this.projectsRef.doc();
           proj.set({
               client: [null], //no client defined currently

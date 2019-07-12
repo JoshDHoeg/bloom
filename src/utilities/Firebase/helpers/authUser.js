@@ -92,7 +92,6 @@ class FirebaseAuthUser extends FirebaseBase {
       return this.doGetUser(id)
           .then(user => {
               this.user = user;
-              console.log("just set user var");
               if (this.user)
                   return user.email;
               throw new Error('getting user failed');
@@ -116,18 +115,14 @@ class FirebaseAuthUser extends FirebaseBase {
                                       isDesigner = false, isAdmin = false, phone = '1231231234',
                                       billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
                                       state = 'Default State', role = 1, Emaillist = true) => {
-    console.log("here yo");
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
       return false;
     })
       .then(usr => {
-        console.log("here2");
-        console.log(usr);
         if (!usr){
           return false;
         }
-        console.log("here3");
         return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, isAdmin, channelRef, [project], billadd1, zip, city, state, role, Emaillist)
             .then(ref  => {
               return this.setFirebaseVars(ref.id).then(res => {
@@ -197,7 +192,6 @@ class FirebaseAuthUser extends FirebaseBase {
       }
       return this.doGetProject(p).then(p => p.pid);
     }));
-    console.log(projects);
     return this.usersRef.doc(uid).set({
       helpChannel: channelRef,
       isDesigner: isDesigner,

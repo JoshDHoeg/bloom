@@ -77,7 +77,6 @@ class RevisionsPage extends Component {
     let string = this.props.location.pathname;
     var array = string.split("/");
     var currentRevision = array[3];
-    console.log('current revision', currentRevision);
     this.final = await project.final;
     const client = await project.client;
     const state = await {
