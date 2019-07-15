@@ -11,7 +11,7 @@ const withAuthentication = Component => {
     constructor(props) {
       super(props);
       this.state = {
-        authUser: "fuck"
+        authUser: ''
       };
     }
 

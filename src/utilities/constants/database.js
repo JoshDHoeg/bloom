@@ -86,7 +86,7 @@ export class User {
     const data = dbQuery.data();
     this._active = data['active']
     this._isDesigner = data['isDesigner'];
-    this._isEmaillist = data['isEmaillist']
+    this._Emaillist = data['Emaillist']
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
@@ -118,7 +118,7 @@ export class User {
       email: this.email,
       name: this.name,
       phone: this.phone,
-      isEmaillist: this.isEmaillist,
+      Emaillist: this.Emaillist,
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,

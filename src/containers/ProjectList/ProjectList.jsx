@@ -32,7 +32,8 @@ class ProjectList extends Component {
       component:'',
       users: [],
       user: {
-        isDesigner: false
+        isDesigner: false,
+        active: false
       },
       brief: {
         budget: ''
@@ -67,7 +68,8 @@ class ProjectList extends Component {
         const state = await {
             loading: false,
             user: {
-                isDesigner: this.user.isDesigner
+                isDesigner: this.user.isDesigner,
+                active: this.user.active
             },
         }
         this.setState(state);
@@ -129,7 +131,76 @@ class ProjectList extends Component {
       Component = Final //therefore, sets component to Final so process does not move on to contractor prematurely
     }
     const { loading } = this.state;
-    if((this.state.user.active && !this.state.user.isDesigner) || (this.state.user.active === undefined && !this.state.user.isDesigner)) {
+    console.log(this.state.user.active);
+    if(!this.state.user.active){
+      return(
+        <Grid columns='two' style={{position:'absolute', paddingBottom:'50px'}}>
+          <Grid.Row style={{ display:'block', margin:'auto', textAlign:'left', paddingLeft:'10%', marginTop:'25px'}}>
+            <Grid.Column>
+              <Header as='h1'>
+                Welcome to Bloomtime Design!
+              </Header>
+            </Grid.Column>
+            <Grid.Column>
+              <Image src={logo} alt="bloomtime-logo" style={{paddingRight:'10%', paddingLeft:'55%'}}/>
+            </Grid.Column>
+          </Grid.Row>
+          <Grid.Row style={{textAlign:'center', marginTop:'25px', paddingLeft:'10%', paddingRight:'10%'}}>
+            <Grid.Column>
+              <Grid.Row>
+              <Segment raised>
+                  <Grid.Row>
+                    <Header as='h2'>
+                    Introductory Video
+                    </Header>
+                  </Grid.Row>
+                  <Grid.Row>
+                  <YoutubeEmbedVideo videoId='r_KnwwjcDXg' suggestions={false}  style={{ width: "100%", padding: "20px" }} />
+                  </Grid.Row>
+              </Segment>
+              </Grid.Row>
+              <Grid.Row style={{marginTop:'25px'}}>
+                <Segment raised>
+                  <Grid.Row style={{paddingTop:'10px'}}>
+                  <Header as='h2'>
+                    Demo Project
+                  </Header>
+                  </Grid.Row>
+                  <Grid.Row style={{paddingTop:'10px'}}>
+                  <Item>
+                    Check out how we make landscaping easier through our demo project
+                  </Item>
+                  </Grid.Row>
+                  <Grid.Row style={{paddingTop:'10px'}}>
+                  {ProjectButton}
+                  </Grid.Row>
+                </Segment>
+              </Grid.Row>
+            </Grid.Column>
+            <Grid.Column>
+            <Segment raised>
+              <Grid.Row style={{paddingTop:'10px'}}>
+              <Header as='h2'>
+                Schedule a House Visit
+              </Header>
+              </Grid.Row>
+              <Grid.Row style={{paddingTop:'10px'}}>
+              <Item>
+                In order to begin your project we need to discuss the your preferences and take custom measurements of your yard
+              </Item>
+              </Grid.Row>
+              <Grid.Row style={{paddingTop:'10px'}}>
+              <Segment style={{display:'block', margin:'auto', width:'100%', height:'100%'}}>
+                <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777&appointmentType=8853671" width="100%" height="435px" frameBorder="0"></iframe>
+                <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
+              </Segment>
+              </Grid.Row>
+            </Segment>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      );
+    }else if((this.state.user.active && !this.state.user.isDesigner) || (this.state.user.active === undefined && !this.state.user.isDesigner)) {
       return (
         <Grid style={{ height: "150vh", position: 'absolute', top: 70, left: 0, right: 0}}>
           <Component/>
@@ -158,75 +229,7 @@ class ProjectList extends Component {
             <PopMessage />
           </Grid>
         )
-    }else{
-    return(
-      <Grid columns='two' style={{height:'80vh', position:'absolute'}}>
-        <Grid.Row style={{ display:'block', margin:'auto', textAlign:'left', paddingLeft:'10%', marginTop:'25px'}}>
-          <Grid.Column>
-            <Header as='h1'>
-              Welcome to Bloomtime Design!
-            </Header>
-          </Grid.Column>
-          <Grid.Column>
-            <Image src={logo} alt="bloomtime-logo" style={{paddingRight:'10%', paddingLeft:'55%'}}/>
-          </Grid.Column>
-        </Grid.Row>
-        <Grid.Row style={{textAlign:'center', marginTop:'25px', paddingLeft:'10%', paddingRight:'10%'}}>
-          <Grid.Column>
-            <Grid.Row>
-            <div style={{ backgroundColor: "#F5F2D0", border: '1px solid grey', borderRadius: "16px", padding:'10px' }}>
-                <Grid.Row>
-                  <Header as='h2'>
-                  Introductory Video
-                  </Header>
-                </Grid.Row>
-                <Grid.Row>
-                <YoutubeEmbedVideo videoId='r_KnwwjcDXg' suggestions={false}  style={{ width: "100%", padding: "20px" }} />
-                </Grid.Row>
-            </div>
-            </Grid.Row>
-            <Grid.Row style={{marginTop:'25px'}}>
-              <div style={{ backgroundColor: "#F5F2D0", border: '1px solid grey', borderRadius: "16px", padding:'10px', textAlign:'center' }}>
-                <Grid.Row style={{paddingTop:'10px'}}>
-                <Header as='h2'>
-                  Demo Project
-                </Header>
-                </Grid.Row>
-                <Grid.Row style={{paddingTop:'10px'}}>
-                <Item>
-                  Check out how we make landscaping easier through our demo project
-                </Item>
-                </Grid.Row>
-                <Grid.Row style={{paddingTop:'10px'}}>
-                {ProjectButton}
-                </Grid.Row>
-              </div>
-            </Grid.Row>
-          </Grid.Column>
-          <Grid.Column>
-          <div style={{ backgroundColor: "#F5F2D0", border: '1px solid grey', borderRadius: "16px", padding:'10px', textAlign:'center' }}>
-            <Grid.Row style={{paddingTop:'10px'}}>
-            <Header as='h2'>
-              Schedule a House Visit
-            </Header>
-            </Grid.Row>
-            <Grid.Row style={{paddingTop:'10px'}}>
-            <Item>
-              In order to begin your project we need to discuss the your preferences and take custom measurements of your yard
-            </Item>
-            </Grid.Row>
-            <Grid.Row style={{paddingTop:'10px'}}>
-            <Segment style={{display:'block', margin:'auto', width:'100%', height:'100%'}}>
-              <iframe src="https://app.acuityscheduling.com/schedule.php?owner=17045777&appointmentType=8853671" width="100%" height="435px" frameBorder="0"></iframe>
-              <script src="https://embed.acuityscheduling.com/js/embed.js" type="text/javascript"></script>
-            </Segment>
-            </Grid.Row>
-          </div>
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
-    );
-  }
+    }
 }
 }
 
