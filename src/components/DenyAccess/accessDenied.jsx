@@ -14,6 +14,17 @@ class accessDenied extends Component {
         super(props);
     }
 
+
+    componentDidMount = () => {
+        this.send();
+    }
+    
+    
+    send = () => {
+        this.props.history.push(ROUTES.PROJECT_LIST);
+        window.location.reload();
+    }
+
     render() {
         return(
             <Grid>

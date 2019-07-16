@@ -39,6 +39,7 @@ class FirebaseAuthUser extends FirebaseBase {
       //   .get()
       this.doGetUser(authUser.uid)
         .then(authUser => {
+          console.log("here2")
           const dbUser = authUser
             // default empty roles
             // if (!dbUser.roles) {

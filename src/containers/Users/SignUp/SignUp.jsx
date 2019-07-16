@@ -43,7 +43,8 @@ const INITIAL_STATE = {
   passwordTwo: '',
   Emaillist: true,
   error: null,
-  isDesigner: false
+  isDesigner: false,
+  role: 1,
 };
 
 class SignUpFormBase extends Component {
@@ -53,7 +54,7 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
-    const { name, email, passwordOne, isDesigner, Emaillist } = this.state;
+    const { name, email, passwordOne, isDesigner, Emaillist, role, authUser } = this.state;
     const roles = [];
     if (isDesigner) {
       roles.push(ROLES.DESIGNER)
@@ -61,16 +62,16 @@ class SignUpFormBase extends Component {
       roles.push(ROLES.HOMEOWNER)
     }
     this.props.firebase
-      .doInitNewUser(email, passwordOne, name, isDesigner, Emaillist)
+      .doInitNewUser(email, passwordOne, name, isDesigner, Emaillist, role, authUser)
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
          return this.props.firebase
-        //  .user(authUser.uid)
-        //  .set({
-        //    name,
-        //    email,
-        //    roles,
-        //  })
+         .user(authUser.uid)
+         .set({
+           name,
+           email,
+           role,
+         })
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });

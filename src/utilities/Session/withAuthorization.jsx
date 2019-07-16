@@ -28,6 +28,7 @@ const withAuthorization = condition => Component => {
             this.props.firebase
               .doGetUser(authUser.uid)
               .then(authUser => {
+                console.log("here", authUser.uid)
                 if(!condition(authUser._role)){
                   this.props.history.push(ROUTES.DENIED);
                 }
