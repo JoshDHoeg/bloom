@@ -6,7 +6,8 @@ import ArrowLeft from '../../../../../assets/images/icons/ArrowLeft.svg';
 import ArrowRight from '../../../../../assets/images/icons/ArrowRight.svg';
 import { Link } from 'react-router-dom';
 import '../draft.sass'
-
+import introJs from 'intro.js';
+import 'intro.js/introjs.css';
 //Figma Embed import
 import logo from '../../../../../Images/TempLogo.JPG'
 import Editor from '../../../../../components/Wysiwig/wysiwig'
@@ -40,6 +41,10 @@ class Completed extends Component {
 
     componentDidMount() {
         this.setState({ loading: true })
+        if(!this.props.user.tour2){
+            introJs().start();
+            this.props.tour2();
+        }
     }
 
     videoToggle(event) {
@@ -115,7 +120,7 @@ class Completed extends Component {
                 <Grid.Row style={{ padding:'0px'}}>
                     <Grid.Column style={{ position: 'relative', paddingLeft: '9%', width: '50%', paddingRight: '10px' }}>
                         <Segment raised style={{borderBottom:'5px solid #FA907F'}}>
-                            <Grid.Row style={{paddingBottom:'50px'}}>
+                            <Grid.Row data-intro="You can view your design below, use the 'download your design' button to download you design."style={{paddingBottom:'50px'}}>
                                 <Header floated='left' style={{ marginTop:'0px' }} as='h3'>Rough Draft</Header>
                                 <Button floated='right' style={{ backgroundColor:'#FA907F', marginTop:'0px' }} data-tip='Download your design' onClick={this.props.mediaLink}>Download Your Design</Button>
                             </Grid.Row>
@@ -126,7 +131,7 @@ class Completed extends Component {
                     <Grid.Column style={{ position: 'relative', paddingRight: '9%', paddingLeft: '6px', width: '50%' }}>               
                         <Grid.Row style={{paddingBottom:'16px'}}>
                             <Segment raised style={{borderBottom:'5px solid #FA907F'}}>
-                                <Grid.Row style={{textAlign:'center', paddingTop:'10px'}}>
+                                <Grid.Row data-intro="Your designer has also included a video for further explanation, which you can view below." style={{textAlign:'center', paddingTop:'10px'}}>
                                     <Header as='h3'>Rough Draft Video</Header>
                                     <Item>View the video content your designer has prepared for you</Item>
                                 </Grid.Row>
@@ -135,6 +140,7 @@ class Completed extends Component {
                         </Grid.Row> 
                         <Grid.Row style={{ paddingLeft: "12px", paddingRight:'12px' }}>
                         <Editor
+                            data='Once you have had a chance to consider your design, leave feedback here for your designer to implement in your next design'
                             state='draft'
                             Show={this.state.show}
                             approved={this.props.draft.approved}

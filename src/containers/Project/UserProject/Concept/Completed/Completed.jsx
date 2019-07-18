@@ -1,5 +1,7 @@
 import React from 'react';
 import './completed.scss';
+import introJs from 'intro.js';
+import 'intro.js/introjs.css';
 import logo from '../../../../../Images/TempLogo.JPG'
 import { Grid, Container, Header, Segment, Item, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -15,7 +17,14 @@ import Sidebar from '../../../../../components/Navigation/UserNavigation';
 library.add(faArrowRight)
 library.add(faArrowLeft)
 
+
 class Completed extends React.Component{
+    componentDidMount() {
+        if(!this.props.user.tour1){
+        introJs().start();
+        this.props.tour1();
+        }
+    }
     render(){
         let video
         video = this.props.concept.video;
@@ -63,7 +72,7 @@ class Completed extends React.Component{
                 <Grid.Row style={{padding:'0px', paddingBottom:'50px' }}>
                 <Grid.Column style={{ position: 'relative', paddingLeft: '9%', width: '50%', paddingRight: '10px' }}>
                     <Segment raised style={{borderBottom:'5px solid #AAD5F7'}}>
-                        <Grid.Row style={{ paddingTop:'10px', textAlign:'center' }}>
+                        <Grid.Row data-intro='Watch the video below to see the different concept designs your designer has prepared for you' style={{ paddingTop:'10px', textAlign:'center' }}>
                             <Header as='h2'>Concept Design Video</Header>
                             <Item>Watch this video to see the concept designs your designer has prepared for you</Item>
                         </Grid.Row>
@@ -71,8 +80,8 @@ class Completed extends React.Component{
                     </Segment>
                 </Grid.Column>
                 <Grid.Column style={{ position: 'relative', paddingRight: '9%', paddingLeft: '6px', width: '50%' }}>
-                    <Segment raised style={{borderBottom:'5px solid #AAD5F7'}}>
-                        <Grid.Row style={{ paddingTop:'10px', paddingBottom:'10px', textAlign:'center' }}>
+                    <Segment raised  style={{borderBottom:'5px solid #AAD5F7'}}>
+                        <Grid.Row data-intro="After you've viewed your concept designs, take some time to think about what feedback you may have and then schedule a call with your project manager by selecting a date below" style={{ paddingTop:'10px', paddingBottom:'10px', textAlign:'center' }}>
                             <Header as='h2'>Schedule a Feedback Call</Header>
                             <Item>Once you've watched the concept design video, schedule a quick feedback call by selecting a date on the calendar</Item>
                         </Grid.Row>

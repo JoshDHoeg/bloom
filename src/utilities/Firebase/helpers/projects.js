@@ -48,7 +48,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
           });
           c.doc('0').set({ //concepts section
             init: false,
-            active: false,
             feedback: "", //empty feedback
             video: "", //no video or media yet
             media:"",

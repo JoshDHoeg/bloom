@@ -31,17 +31,23 @@ class Draft extends Component {
                 isPaid: false,
             },
             user:{
-                name:''
+                name:'',
+                tour2: false
             }
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.mediaLink = this.mediaLink.bind(this);
+        this.tour2 = this.tour2.bind(this);
     }
 
     formSubmit = () => {
         this.draft.approved = true;
         this.stage.stage = 'final'
+    }
+    
+    tour2() {
+        this.user.tour2 = true;
     }
 
     handleChange(event) {
@@ -72,6 +78,7 @@ class Draft extends Component {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
     }
+
     getProjectState = async () => {
         const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid)
         this.user = await user;
@@ -91,7 +98,8 @@ class Draft extends Component {
                 ...this.concept.getAll()
             },
             user:{
-                name: this.user.name
+                name: this.user.name,
+                tour2: this.user.tour2
             }
         }
         this.setState(state);
@@ -99,12 +107,13 @@ class Draft extends Component {
     }
 
     render() {
+        console.log(this.state.user.tour2)
         if(this.state.loading){
             return (<div style={{marginTop:'30%'}}><Loading/></div>);
         } else if(!this.state.draft.completed){
             return( <WaitingPage stage={this.state.stage} state="draft"/> );             
         } else {
-            return( <CompletedPage user={this.state.user} concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
+            return( <CompletedPage tour2={this.tour2} user={this.state.user} concept={this.state.concept} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} handleChange={this.handleChange} formSubmit={this.formSubmit} draft={this.state.draft} stage={this.state.stage} /> );
         }
     }
 

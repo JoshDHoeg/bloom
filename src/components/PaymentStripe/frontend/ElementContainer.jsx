@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import Form from './CheckoutForm';
+import logo from '../../../Images/TempLogo.JPG';
 import { withAuthorization } from '../../../utilities/Session';
 import { Link } from 'react-router-dom';
-import { Grid, Container, Segment, Header, Item, Divider } from 'semantic-ui-react'
+import { Grid, Container, Segment, Header, Item, Divider, Image } from 'semantic-ui-react'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import ArrowRight from '../../../assets/images/icons/ArrowRight.svg';
 import ArrowLeft from '../../../assets/images/icons/ArrowLeft.svg';
@@ -49,7 +50,7 @@ class ElementsContainer extends Component {
     let upgrade = (cost - 599.99);
     let Area = upgrade/.4;
     return (
-      <Grid columns='two' style={{marginTop:'5%', paddingLeft:'10%', paddingRight:'10%'}}>
+      <Grid columns='two' style={{marginTop:'5%', paddingLeft:'10%', paddingRight:'10%', paddingBottom:'50px'}}>
         {LeftArrow}
         <Grid.Row>
           <Grid.Column>
@@ -64,6 +65,9 @@ class ElementsContainer extends Component {
                 Your balance of ${this.state.amount} is due before we deliver your final designs. You can pay at any time.
               </Item>
             </Container>
+          </Grid.Column>
+          <Grid.Column>
+            <Image floated='right' src={logo} alt='bloomtime-logo'/>
           </Grid.Column>
         </Grid.Row>
         <Divider/>

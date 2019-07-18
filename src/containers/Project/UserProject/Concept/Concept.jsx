@@ -28,19 +28,26 @@ export class Concept extends React.Component{
                 schedule: null
             },
             user:{
-                name:''
+                name:'',
+                tour1: false
             },
             stage:{
                 stage:''
             }
         }
         this.handleClick1 = this.handleClick1.bind(this);
+        this.tour1 = this.tour1.bind(this);
     }
 
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
       }
+
+    tour1() {
+        this.user.tour1 = true;
+    }
+
     
       handleClick1 = () => {
         this.concept.approveterms = true;
@@ -64,7 +71,8 @@ export class Concept extends React.Component{
                 stage: this.stage.stage
             },
             user:{
-                name: this.user.name
+                name: this.user.name,
+                tour1: this.user.tour1
             }
         }
 
@@ -73,16 +81,17 @@ export class Concept extends React.Component{
     }
 
     render(){
+        console.log('api', process.env.API_KEY)
         if(this.state.loading){
             return (<div style={{marginTop:'30%'}}><Loading/></div>);
         }else if(!this.state.concept.completed){
             return (<WaitingPage stage={this.state.stage} state="concept"/>)
         }else if(this.state.concept.completed && !this.state.concept.approved) {
-            return (<CompletedPage user={this.state.user} stage={this.state.stage} concept={this.state.concept} />)
+            return (<CompletedPage tour1={this.tour1} user={this.state.user} stage={this.state.stage} concept={this.state.concept} />)
         }else if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
             return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
         }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms) {
-            return (<CompletedPage user={this.state.user} stage={this.state.stage} concept={this.state.concept}/>)
+            return (<CompletedPage tour1={this.tour1} user={this.state.user} stage={this.state.stage} concept={this.state.concept}/>)
         }
     }
 }

@@ -9,6 +9,17 @@ export class User {
   set active(active) {
     this.ref.set({ active: active }, {merge: true});
   }
+  _tour1 = false;
+  get tour1() { return this._tour1 }
+  set tour1(tour1) {
+    this.ref.set({ tour1: tour1 }, {merge: true});
+  }
+
+  _tour2 = false;
+  get tour2() { return this._tour2 }
+  set tour2(tour2) {
+    this.ref.set({ tour2: tour2 }, {merge: true})
+  }
 
   _isDesigner = false;
   get isDesigner() { return this._isDesigner; }
@@ -84,7 +95,9 @@ export class User {
 
   constructor(dbQuery) {
     const data = dbQuery.data();
-    this._active = data['active']
+    this._active = data['active'];
+    this._tour1 = data['tour1'];
+    this._tour2 = data['tour2'];
     this._isDesigner = data['isDesigner'];
     this._Emaillist = data['Emaillist']
     this._email = data['email'];
@@ -115,6 +128,8 @@ export class User {
   getAll() {
     return this._getAll({
       active: this.active,
+      tour1: this.tour1,
+      tour2: this.tour2,
       email: this.email,
       name: this.name,
       phone: this.phone,

@@ -8,6 +8,8 @@ import YoutubeEmbedVideo from "youtube-embed-video"; // video to display on page
 import * as ROUTES from "../../utilities/constants/routes";
 // import { format } from 'path';
 // import {Link} from "react-router-dom";
+import introJs from "intro.js";
+import 'intro.js/introjs.css';
 import { Grid, Container, Header, Item, Button, Segment, Image } from 'semantic-ui-react';
 import ProjCard from "../../components/ProjectCard.jsx"
 import PopMessage from "../Messaging/PopMessage"
@@ -33,7 +35,8 @@ class ProjectList extends Component {
       users: [],
       user: {
         isDesigner: false,
-        active: false
+        active: false,
+        tour1: false
       },
       brief: {
         budget: ''
@@ -58,7 +61,6 @@ class ProjectList extends Component {
         loading: false
       });
     });
-
     this.getUserState();
   }
 
@@ -69,7 +71,8 @@ class ProjectList extends Component {
             loading: false,
             user: {
                 isDesigner: this.user.isDesigner,
-                active: this.user.active
+                active: this.user.active,
+                tour1: this.user.tour1
             },
         }
         this.setState(state);
@@ -104,6 +107,7 @@ class ProjectList extends Component {
   }
 
   render() {
+    console.log("tour?", this.state.user.tour1)
     let ProjectButton
     if(this.state.stage.stage === 'revision'){
         ProjectButton = 
@@ -131,15 +135,14 @@ class ProjectList extends Component {
       Component = Final //therefore, sets component to Final so process does not move on to contractor prematurely
     }
     const { loading } = this.state;
-    console.log(this.state.user.active);
     if(!this.state.user.active){
       return(
         <Grid columns='two' style={{position:'absolute', paddingBottom:'50px'}}>
           <Grid.Row style={{ display:'block', margin:'auto', textAlign:'left', paddingLeft:'10%', marginTop:'25px'}}>
             <Grid.Column>
-              <Header as='h1'>
-                Welcome to Bloomtime Design!
-              </Header>
+                <Header as='h1'>
+                  Welcome to Bloomtime Design!
+                </Header>
             </Grid.Column>
             <Grid.Column>
               <Image src={logo} alt="bloomtime-logo" style={{paddingRight:'10%', paddingLeft:'55%'}}/>

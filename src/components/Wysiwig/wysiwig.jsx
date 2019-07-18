@@ -6,11 +6,14 @@ import '../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 import { Form, Grid, Message, Header, Item, Segment } from 'semantic-ui-react'
 import draftToHtml, {hashtagConfig, directional, customEntityTransform} from 'draftjs-to-html'
 import parse from 'html-react-parser'
+import introJs from 'intro.js';
+import 'intro.js/introjs.css';
 
 class Editors extends Component {
     final;
     revision;
     draft;
+    user;
     constructor(props) {
         super(props);
         this.state = {
@@ -128,7 +131,7 @@ class Editors extends Component {
                     <Grid.Row hidden = {!this.state.state} >
                         <Segment raised style={{borderBottom: color}}>
                         <Form success className='attached fluid' onSubmit={this.props.handleNav} style={{maxWidth: "97%", display: "block", margin: "auto", paddingBottom: "10px"}}>
-                            <div style={{backgroundColor: '#FFEF7', width:'100', height:'300px', overflowY:'scroll', paddingTop:'10px', fontSize: '18px'}}>
+                            <div data-intro={this.props.data} style={{backgroundColor: '#FFEF7', width:'100', height:'300px', overflowY:'scroll', paddingTop:'10px', fontSize: '18px'}}>
                                 <Header style={{textAlign:'center', paddingTop:'10px'}} as='h3'>Leave Feedback For Your Designer</Header>
                                     <Editor
                                     editorState={editorState}

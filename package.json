@@ -30,6 +30,7 @@
     "heroku": "^7.24.4",
     "html-react-parser": "^0.7.1",
     "i": "^0.3.6",
+    "intro.js": "^2.9.3",
     "jest": "^23.6.0",
     "material-components-web": "^3.0.0",
     "moment": "^2.22.2",
