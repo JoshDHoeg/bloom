@@ -37,6 +37,7 @@ class accessDenied extends Component {
                         <img src={image}/>
                     </Grid.Row>
                     <Grid.Row style={{ paddingTop: '20px', paddingBottom: '20px'}}>
+                        
                     <Link to={ROUTES.PROJECT_LIST} style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Go to Project List</Button></Link>
                     </Grid.Row>
                 </Container>
