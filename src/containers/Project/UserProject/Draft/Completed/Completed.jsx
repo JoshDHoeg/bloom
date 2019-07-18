@@ -94,11 +94,11 @@ class Completed extends Component {
             </Link>
         }
         return (
-            <Grid columns = 'two' style={{ height: "120vh", position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: "#84DB95"}}>
+            <Grid columns = 'two' style={{ height: "120vh", position: 'absolute', top: 0, bottom: 0, left: 0, right: 0, backgroundColor: "#84DB95", margin: '2px' }}>
                 <Grid.Row>
                 <Container><ProjectStatus state="draft" /></Container>
                 </Grid.Row>
-                <Grid.Row style={{ position: 'fixed', top: '20%' }}>
+                <Grid.Row style={{ position: 'absolute', top: '10%' }}>
                 <Grid.Column style={{ position: 'relative', paddingLeft: '9%', width: '50%', paddingRight: '5px' }}>
                     <div style={{backgroundColor: "#FFFFFF", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                         <h1 style={{ backgroundColor: '#AAD5F7', color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>

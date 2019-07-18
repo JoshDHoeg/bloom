@@ -121,14 +121,14 @@ class Completed extends React.Component {
                             Here is a final draft based on the feedback you gave us in the rough draft! Ask for a revision or get started with a landscaper!
                         </p>
                         </Container> */}
-                        <Grid.Row style={{ position:'fixed', top:'20%'}}>
+                        <Grid.Row style={{ position:'absolute', top:'10%'}}>
                             <Grid.Column style={{position:'relative', paddingLeft:'9%', paddingRight: '10px', width: '50%'}}>
                                     <div style={{ backgroundColor: "#F5F5F5", boxShadow: '0px 0px 6px 1px rgba(0,0,0,0.1)', borderRadius: "4px", paddingBottom:'10px' }}>
                                         <h1 style={{ backgroundColor: "#84DB95", color: "white", textAlign: "center", fontSize: "15px", padding: "10px", borderTopLeftRadius: "4px", borderTopRightRadius: "4px" }}>The Design</h1>
                                         <FigmaEmbed url={this.props.final.figma} style={{ display:'block', width:'97%', marginLeft:'10px', marginRight:'10px', border: '1px solid grey', borderRadius: "4px"}} />
                                     </div>
                             </Grid.Column>
-                        <Grid.Column style={{position:'relative', paddingRight:'9%', paddingLeft: '10px', width:'50%'}}>
+                        <Grid.Column style={{position:'relative', paddingRight:'10%', paddingLeft: '10px', width:'50%'}}>
                         <Editor 
                             state='final' 
                             Show={this.state.Show} 
