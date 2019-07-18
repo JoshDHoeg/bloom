@@ -29,8 +29,11 @@ class BriefPageView extends Component {
                 <div style={{zIndex:1}}>
                      <SidebarNav/>
                 <Grid>
+<<<<<<< HEAD
                     {/* </Grid.Column> */}
                     {/* <Grid.Column style={{display:'block', margin:'auto', width:700}}> */}
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
                     <Container fluid textAlign='center' text='true'>
                         <Grid.Row style={{paddingTop:'25px'}}>
                             <Header style={{fontSize:'25px'}}>Design Brief</Header>
@@ -72,7 +75,10 @@ class BriefPageView extends Component {
                             <a target="_blank" rel="noopener noreferrer" href={this.props.brief.media}  style={{ textDecoration: 'none', color: "white" }}><Button style={{backgroundColor:'#84DB95'}}>Media</Button></a>
                         </Grid.Row>
                     </Container>
+<<<<<<< HEAD
                     {/* </Grid.Column> */}
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
                 </Grid>
                 </div>
             );

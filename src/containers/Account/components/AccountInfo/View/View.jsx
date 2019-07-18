@@ -7,8 +7,9 @@ import backgroundTemp from '../../../../../Images/TempBackground.PNG';
 import InfoBanner from '../../../../../components/AccountBanners/AccountInfoBanner/AccountInfoBanner'
 import UserInformation from '../Components/UserInformation/UserInformation';
 import BillingInformation from '../Components/BillingInformation/BillingInformation';
-import EditButton from '../../../../../components/AccountBanners/AccountInfoBanner/EditButton/EditButton'
-import ChangePass from '../../../../Users/PasswordChange/PasswordChange'
+import EditButton from '../../../../../components/AccountBanners/AccountInfoBanner/EditButton/EditButton';
+import ChangePass from '../../../../Users/PasswordChange/PasswordChange';
+import SignOutButton from '../../../../Users/SignOut/SignOut';
 
 class AccountInfoPageView extends Component {
     constructor(props) {
@@ -57,10 +58,13 @@ class AccountInfoPageView extends Component {
                     <Grid.Row style={{paddingBottom:'25px'}}>
                         <EditButton edit={this.state.edit} formSubmit={this.props.formSubmit}/>
                     </Grid.Row>
-                    <Grid.Row style={{paddingBottom:'50px'}}>
+                    <Grid.Row style={{paddingBottom:'25px'}}>
                         <Segment>
                             <ChangePass/>
                         </Segment>
+                    </Grid.Row>
+                    <Grid.Row style={{paddingBottom:'50px'}}>
+                        <SignOutButton/>
                     </Grid.Row>
                 </Grid>
             </Container>

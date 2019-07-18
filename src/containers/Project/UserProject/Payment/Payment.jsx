@@ -3,6 +3,7 @@ import ElementsContainer from '../../../../components/PaymentStripe/frontend/Ele
 import { withAuthorization } from '../../../../utilities/Session';
 import { Grid } from 'semantic-ui-react';
 import WaitingPage from '../../../../components/Waiting/Waiting';
+import Loading from '../../../../components/Loading/Loading';
 
 class PaymentPage extends Component {
     concept;
@@ -10,7 +11,7 @@ class PaymentPage extends Component {
     constructor(props){
         super(props);
         this.state = {
-            loading: true,
+            loading: false,
             completed: false,
             concept: {
                 approved: false,
@@ -21,6 +22,10 @@ class PaymentPage extends Component {
             },
             stage:{
                 stage:''
+            },
+            user:{
+                name:'',
+                billadd1:''
             }
         }
     }
@@ -32,6 +37,8 @@ class PaymentPage extends Component {
 
 
     getProjectState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user;
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.stage = await project.stage;
         this.concept = await project.concept;
@@ -44,6 +51,10 @@ class PaymentPage extends Component {
             },
             concept:{
                 ...this.concept.getAll()
+            },
+            user:{
+                name: this.user.name,
+                billadd1: this.user.billadd1
             }
         }
         this.setState(state);
@@ -51,10 +62,12 @@ class PaymentPage extends Component {
     }
 
     render(){
-        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms && !this.state.concept.isPaid){
         return(
             <Grid.Row>
-                <ElementsContainer stage={this.state.stage} concept={this.state.concept}/>
+                <ElementsContainer user={this.state.user} stage={this.state.stage} concept={this.state.concept}/>
             </Grid.Row>
         )
         }else{

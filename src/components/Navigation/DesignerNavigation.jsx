@@ -2,6 +2,10 @@
 import React, {Component} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../Images/TempLogo.JPG'
+<<<<<<< HEAD
+=======
+import { withFirebase } from '../../utilities/Firebase';
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";
@@ -87,7 +91,11 @@ const NavigationNonAuth = () => (
     </Menu>
 );
 
+<<<<<<< HEAD
 export default DesignerNavigation;
+=======
+export default withFirebase(DesignerNavigation);
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 
 //             <Sidebar.Pushable as={Segment} style={{ marginTop: "-9px", marginLeft: '-3px', minHeight: "290px" }}>
 //                 <Router>

@@ -49,6 +49,7 @@ class NavigationAuth extends Component {
         return (
         <Sticky>
             <Menu>
+<<<<<<< HEAD
                 <Dropdown className='ui labeled icon' item icon = 'unordered list'>
                     <Dropdown.Menu>
                         <NavLink color='teal' to='/account/info'>
@@ -75,6 +76,13 @@ class NavigationAuth extends Component {
                 </Dropdown>
                 <Menu.Item className='right menu item'>
                     <NavLink to='/project/'>
+=======
+                <Menu.Item name='Project' icon='file alternate' href={ROUTES.PROJECT}/>
+                <Menu.Item name='Account' icon='user' href='/account/info'/>
+                <Menu.Item name='Payment' icon='credit card' href='/user_payment'/>
+                <Menu.Item className='right menu item'>
+                    <NavLink to='/'>
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
                         <Image src={logo} alt="bloomtime-logo" size='mini'/>
                     </NavLink>
                 </Menu.Item>

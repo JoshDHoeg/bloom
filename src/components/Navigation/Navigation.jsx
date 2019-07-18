@@ -4,6 +4,7 @@ import React, {Component} from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import NavigationToggle from './NavigationToggle/NavigationToggle'
 import logo from '../../Images/TempLogo.JPG'
+import { withFirebase } from '../../utilities/Firebase';
 //IMPORT UTILITIES
 import * as ROUTES from '../../utilities/constants/routes';
 // import * as ROLES from "../../utilities/constants/roles";

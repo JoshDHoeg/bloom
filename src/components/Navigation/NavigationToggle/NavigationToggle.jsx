@@ -25,7 +25,7 @@ class NavigationToggle extends Component {
         }
     }
     componentDidMount() {
-        this.setState({ loading: true, edit: this.props.edit });
+        this.setState({ loading: false, edit: this.props.edit });
         this.getUserState();
         this.getProjectState();
     }

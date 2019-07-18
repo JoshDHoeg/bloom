@@ -70,6 +70,10 @@ class HouseVisit extends Component {
     }
 }
 
+<<<<<<< HEAD
 const condition = role => role > 0 && role !== 2;
+=======
+const condition = role => role > 0;
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 
 export default withAuthorization(condition)(HouseVisit)

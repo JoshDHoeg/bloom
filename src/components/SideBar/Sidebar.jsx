@@ -43,7 +43,10 @@ class SidebarNav extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         console.log('hello', this.revisions)
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         return(
             <div>
                 <Sidebar as={Menu} icon='labeled' vertical visible width='thin' style={{ top:60, boxShadow: "6px 6px 16px 0px rgba(0,0,0,0.2)", zIndex:1, marginLeft: '-3px', minHeight: "290px" }}>

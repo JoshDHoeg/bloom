@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Divider, Segment, Button, Header, Container, Paragraph } from 'semantic-ui-react';
+import { Grid, Segment, Button, Header, Container, Sticky } from 'semantic-ui-react';
 import { withAuthorization } from '../../../../../utilities/Session';
 import ProjectStatus from '../../../../../components/ProjectStatus/ProjectStatus';
 import { Link } from 'react-router-dom';
@@ -61,24 +61,25 @@ class Completed extends Component {
             contactPortion1 =
             <div className="row">
                 Phone Number: {this.props.contractor.number1}
-            </div>;
-        }
+            </div>
+        };
         let contactPortion2; 
         if(this.state.showNumber2) {
             contactPortion2 =
             <div className="row">
                 Phone Number: {this.props.contractor.number2}
-            </div>;
-        }
+            </div>
+        };
         let contactPortion3; 
         if(this.state.showNumber3) {
             contactPortion3 =
             <div className="row">
                 Phone Number: {this.props.contractor.number3}
-            </div>;
-        }
+            </div>
+        };
         return (
             <div>
+<<<<<<< HEAD
                 <Container><ProjectStatus state="contractors" /></Container>
                 <Container textAlign='center'>
                 <Grid.Row>
@@ -88,6 +89,16 @@ class Completed extends Component {
                 <Grid columns='three' style={{ textAlign: "center", backgroundRepeat: 'repeat', marginLeft: "-14px", paddingLeft: "14px", paddingBottom: "100vh", paddingTop:'35px' }}>
                             <Grid.Column>
                             <Segment raised>
+=======
+                <Grid columns='three' style={{ paddingBottom:'50px' }}>
+                        <ProjectStatus state="contractors" />
+                    <Grid.Row style={{display:'block', margin:'auto', marginTop:'6%', textAlign:'center'}}>
+                            <Header>We found three quotes for you!</Header>
+                    </Grid.Row>
+                    <Grid.Row style={{textAlign:'center', paddingLeft:'20%', paddingRight:'20%'}}>
+                        <Grid.Column>
+                            <Segment raised style={{borderBottom:'5px solid #FFCE6C'}}>
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
                                 <Grid.Row>
                                     <Header style={{ paddingTop:'10px', fontSize:'15px'}}>Name: {this.props.contractor.contractor1}</Header>
                                 </Grid.Row>
@@ -106,7 +117,7 @@ class Completed extends Component {
                             </Segment>
                         </Grid.Column>
                         <Grid.Column>
-                            <Segment raised>
+                            <Segment raised style={{borderBottom:'5px solid #FFCE6C'}}>
                                 <Grid.Row>
                                     <Header style={{paddingTop:'10px', fontSize:'15px'}}>Name: {this.props.contractor.contractor2}</Header>
                                 </Grid.Row>
@@ -125,7 +136,7 @@ class Completed extends Component {
                             </Segment>
                         </Grid.Column>
                         <Grid.Column >
-                            <Segment raised>
+                            <Segment raised style={{borderBottom:'5px solid #FFCE6C'}}>
                                 <Grid.Row>
                                     <Header style={{paddingTop:'10px', fontSize:'15px'}}>Name: {this.props.contractor.contractor3}</Header>
                                 </Grid.Row>
@@ -142,9 +153,10 @@ class Completed extends Component {
                                     {contactPortion3}
                                 </Grid.Row>
                             </Segment>
-                        </Grid.Column>
+                    </Grid.Column>
+                    </Grid.Row>
                 </Grid>
-                </Container>
+                {LeftArrow}
             </div>
         );
     }

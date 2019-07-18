@@ -11,12 +11,19 @@ const withAuthentication = Component => {
     constructor(props) {
       super(props);
       this.state = {
+<<<<<<< HEAD
         authUser: "fuck"
+=======
+        authUser: ''
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       };
     }
 
     componentDidMount() {
+<<<<<<< HEAD
       console.log("fuck the fucking outside world ");
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       this.listener = this.props.firebase.onAuthUserListener(
         authUser => {
           console.log("fuck the fucking world");

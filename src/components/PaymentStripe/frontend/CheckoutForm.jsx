@@ -52,7 +52,7 @@ class Form extends Component {
 
   async submit(ev) {
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    let amt = this.props.concept.cost;
+    let amt = this.props.amount*100;
     let response = await fetch('https://bloom-expressapi.herokuapp.com/payment', {
       method: "POST",
       headers: {"Content-Type": "application/json",
@@ -75,9 +75,9 @@ class Form extends Component {
   
   render() {
     let amount;
-    amount = this.props.concept.cost
+    amount = this.props.amount
     let amount2;
-    amount2 = parseFloat(Math.round(amount) / 100).toFixed(2);
+    amount2 = amount*100;
     if (this.state.complete) {
       return( 
         <Container>
@@ -96,7 +96,7 @@ class Form extends Component {
       <Grid>
         <Container fluid textAlign='left' text='true'>
         <Grid.Row style={{ paddingTop: '20px' }}>
-          <Header as='h2' style={{ fontSize:'15px'}}>Please purchase your project for ${amount2} to continue</Header>
+          <Header as='h2' style={{ fontSize:'15px'}}>Please purchase your project for ${amount} to continue</Header>
         </Grid.Row>
         <Grid.Row style={{ paddingTop: '20px' }}>
           <Segment>
@@ -105,7 +105,7 @@ class Form extends Component {
         </Grid.Row>
           <Button animated='fade' onClick={this.submit} style={{backgroundColor:'#84DB95',marginTop:'15px', marginBottom: '15px'}}>
             <Button.Content visible>Purchase</Button.Content>
-            <Button.Content hidden>${amount2}</Button.Content>
+            <Button.Content hidden>${amount}</Button.Content>
           </Button>
         <Grid.Row>
           <Item style={{fontSize:'10px', paddingBottom:'10px'}}>Secure Method Using Stripe Payments</Item>

@@ -31,7 +31,11 @@ function Account() {
                   </div>
               </Segment>
     </Router>
+<<<<<<< HEAD
     <PopMessage />
+=======
+    {/* <PopMessage /> */}
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     </div>
     
 

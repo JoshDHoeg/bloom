@@ -19,6 +19,10 @@
     "cookie-parser": "^1.4.4",
     "cors": "^2.8.5",
     "create-react-class": "^15.6.3",
+<<<<<<< HEAD
+=======
+    "dotenv": "^8.0.0",
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     "draft-js": "^0.10.5",
     "draftjs-to-html": "^0.8.4",
     "enzyme": "^3.9.0",
@@ -29,6 +33,7 @@
     "heroku": "^7.24.4",
     "html-react-parser": "^0.7.1",
     "i": "^0.3.6",
+    "intro.js": "^2.9.3",
     "jest": "^23.6.0",
     "material-components-web": "^3.0.0",
     "moment": "^2.22.2",

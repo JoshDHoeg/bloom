@@ -1,27 +1,24 @@
 //BLOOMTIME DESIGN 2019
 import React from 'react';
 import './concept.scss';
-import { Link } from 'react-router-dom';
-import { Grid, Container, Header } from 'semantic-ui-react';
 
 //IMPROT UTILITIES
 import { withAuthorization } from '../../../../utilities/Session';
-import * as ROUTES from "../../../../utilities/constants/routes";
-import backgroundTemp from '../../../../Images/TempBackground.PNG';
 import WaitingPage from '../../../../components/Waiting/Waiting';
-import Payment from '../Payment/Payment';
 import CompletedPage from './Completed/Completed';
-import Approve from './Approve/Approve'
-import Loading from '../../../../components/Loading/Loading'
+import Approve from './Approve/Approve';
+import Loading from '../../../../components/Loading/Loading';
+
 
 
 export class Concept extends React.Component{
     concept;
     stage;
+    user;
     constructor(props){
         super(props);
         this.state = {
-            loading: true,
+            loading: false,
             completed: false,
             concept: {
                 approved: false,
@@ -30,17 +27,27 @@ export class Concept extends React.Component{
                 video: null,
                 schedule: null
             },
+            user:{
+                name:'',
+                tour1: false
+            },
             stage:{
                 stage:''
             }
         }
         this.handleClick1 = this.handleClick1.bind(this);
+        this.tour1 = this.tour1.bind(this);
     }
 
     componentDidMount() {
         this.setState({ loading: true, edit: this.props.edit });
         this.getProjectState();
       }
+
+    tour1() {
+        this.user.tour1 = true;
+    }
+
     
       handleClick1 = () => {
         this.concept.approveterms = true;
@@ -50,10 +57,11 @@ export class Concept extends React.Component{
     }
 
     getProjectState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user;
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.concept = await project.concept;
         this.stage = await project.stage;
-        //const schedule = await this.project.concept.schedule;
         const state = await {
             loading: false,
             concept: {
@@ -61,6 +69,10 @@ export class Concept extends React.Component{
             },
             stage:{
                 stage: this.stage.stage
+            },
+            user:{
+                name: this.user.name,
+                tour1: this.user.tour1
             }
         }
 
@@ -69,24 +81,17 @@ export class Concept extends React.Component{
     }
 
     render(){
-        // if(this.state.loading){
-        //     return <Loading/>
-        // }
-        //change this to waiting component
-        if(!this.state.concept.completed){
+        console.log('api', process.env.API_KEY)
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        }else if(!this.state.concept.completed){
             return (<WaitingPage stage={this.state.stage} state="concept"/>)
-        }
-
-        //backgroundImage: "url(" + backgroundTemp + ")",
-        //the one I'm doing
-        if(this.state.concept.completed && !this.state.concept.approved) {
-            return (<CompletedPage stage={this.state.stage} concept={this.state.concept} />)
-        }
-        if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
+        }else if(this.state.concept.completed && !this.state.concept.approved) {
+            return (<CompletedPage tour1={this.tour1} user={this.state.user} stage={this.state.stage} concept={this.state.concept} />)
+        }else if(this.state.concept.completed && this.state.concept.approved && !this.state.concept.isPaid && !this.state.concept.approveterms){
             return (<Approve handleClick1={this.handleClick1} concept={this.state.concept}/>)
-        }
-        if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms) {
-            return (<CompletedPage stage={this.state.stage} concept={this.state.concept}/>)
+        }else if(this.state.concept.completed && this.state.concept.approved && this.state.concept.approveterms) {
+            return (<CompletedPage tour1={this.tour1} user={this.state.user} stage={this.state.stage} concept={this.state.concept}/>)
         }
     }
 }

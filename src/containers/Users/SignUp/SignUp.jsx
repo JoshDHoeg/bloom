@@ -41,9 +41,16 @@ const INITIAL_STATE = {
   email: '',
   passwordOne: '',
   passwordTwo: '',
+<<<<<<< HEAD
   isEmaillist: true,
   error: null,
   isDesigner: false
+=======
+  Emaillist: true,
+  error: null,
+  isDesigner: false,
+  role: 1,
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 };
 
 class SignUpFormBase extends Component {
@@ -53,7 +60,11 @@ class SignUpFormBase extends Component {
   }
 
   onSubmit = event => {
+<<<<<<< HEAD
     const { name, email, passwordOne, isDesigner, isEmaillist } = this.state;
+=======
+    const { name, email, passwordOne, isDesigner, Emaillist, role, authUser } = this.state;
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     const roles = [];
     if (isDesigner) {
       roles.push(ROLES.DESIGNER)
@@ -61,16 +72,20 @@ class SignUpFormBase extends Component {
       roles.push(ROLES.HOMEOWNER)
     }
     this.props.firebase
+<<<<<<< HEAD
       .doInitNewUser(email, passwordOne, name, isDesigner, isEmaillist)
+=======
+      .doInitNewUser(email, passwordOne, name, isDesigner, Emaillist, role, authUser)
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       //.doCreateUserWithEmailAndPassword(email, passwordOne)
       .then(authUser => {
          return this.props.firebase
-        //  .user(authUser.uid)
-        //  .set({
-        //    name,
-        //    email,
-        //    roles,
-        //  })
+         .user(authUser.uid)
+         .set({
+           name,
+           email,
+           role,
+         })
       })
       .then(() => {
         this.setState({ ...INITIAL_STATE });
@@ -84,7 +99,11 @@ class SignUpFormBase extends Component {
   };
 
   onChangeCheckbox = event => {
+<<<<<<< HEAD
     this.setState({ isEmaillist: !this.state.isEmaillist })
+=======
+    this.setState({ Emaillist: !this.state.Emaillist })
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
   };
 
   onChange = event => {
@@ -98,7 +117,11 @@ class SignUpFormBase extends Component {
       passwordOne,
       passwordTwo,
       isDesigner,
+<<<<<<< HEAD
       isEmaillist,
+=======
+      Emaillist,
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       error,
     } = this.state;
 
@@ -155,7 +178,11 @@ class SignUpFormBase extends Component {
             label="Join EmailList"
             name="Emailist"
             toggle
+<<<<<<< HEAD
             checked={isEmaillist}
+=======
+            checked={Emaillist}
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
             onChange={this.onChangeCheckbox}
           />
           

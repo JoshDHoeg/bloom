@@ -26,7 +26,10 @@ class ConceptPageView extends Component {
 
     render() {
         // const Available = this.props.brief.available;
+<<<<<<< HEAD
         console.log('video', this.props.concept.video)
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         if (this.props.concept.completed){
             return (
                 <div>

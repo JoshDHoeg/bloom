@@ -21,11 +21,17 @@ class RevisionsPageWaiting extends Component {
     }
 
     render() {
+<<<<<<< HEAD
         console.log(this.props.currentRevision)
         let link;
         //let currentRevision = this.props.currentRevision;
         link = '/project/revisions/'+ this.props.currentRevision + '/edit';
         console.log('here', link)
+=======
+        let link;
+        //let currentRevision = this.props.currentRevision;
+        link = '/project/revisions/'+ this.props.currentRevision + '/edit';
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         let link2 = {link}+'/edit'
         if(this.props.isDesigner){
             if(!this.props.final.approved){

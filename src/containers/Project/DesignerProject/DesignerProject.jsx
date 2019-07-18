@@ -21,6 +21,7 @@ const HomePageWithSideBar = (props) => {
     return(
               <div style={{paddingTop:'8px' }}>
                      <Router>
+<<<<<<< HEAD
                      <div>
                                    <Segment basic>
 
@@ -72,6 +73,58 @@ const HomePageWithSideBar = (props) => {
                                    </div>
                                    </Segment>
                      </div>
+=======
+                            <div>
+                                   <Segment basic>
+                                          <div>
+                                                 <Route exact path={ROUTES.PROJECT} component={BriefPage} 
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_BRIEF}
+                                                        render={(props) => <BriefPage {...props} edit={false} index={props.location.state} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_CONCEPT}
+                                                        render={(props) => <ConceptPage {...props} edit={false} /> }
+                                                        
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_DRAFT}
+                                                        render={(props) => <DraftPage {...props} edit={false} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_FINAL}
+                                                        render={(props) => <FinalPage {...props} edit={false} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_REVISIONS}
+                                                        render={(props) => <RevisionsPage {...props} edit={false} /> }
+                                                 />
+                                                 
+                                                 <Route
+                                                 path={ROUTES.CLIENT_BRIEF_EDIT}
+                                                 render={(props) => <BriefPage {...props} edit={true} index={props.location.state}/> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_CONCEPT_EDIT}
+                                                        render={(props) => <ConceptPage {...props} edit={true} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_DRAFT_EDIT}
+                                                        render={(props) => <DraftPage {...props} edit={true} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_FINAL_EDIT}
+                                                        render={(props) => <FinalPage {...props} edit={true} /> }
+                                                 />
+                                                 <Route exact
+                                                        path={ROUTES.CLIENT_REVISIONS_EDIT}
+                                                        render={(props) => <RevisionsPage {...props} edit={true} /> }
+                                                 />
+                                          </div>
+                                   </Segment>
+                            </div>
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
                      </Router>
               </div>
     )

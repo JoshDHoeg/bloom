@@ -22,9 +22,7 @@ describe('Example test', () => {
 
 
 
-        console.log(wrapper.debug());
         const router = wrapper.get(1);
-        console.log(router);
         // const router = wrapper.find("WithAuthorization").dive();
 
         // console.log(router.debug());

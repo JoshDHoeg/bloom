@@ -1,6 +1,6 @@
 // BLOOMTIME DESIGN 2019
 import React from 'react';
-
+import {Sticky} from 'semantic-ui-react'
 //IMPROT UTILITIES
 import { withAuthorization } from '../../utilities/Session'; //user authorization check
 import * as ROUTES from "../../utilities/constants/routes"; //routes list

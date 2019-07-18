@@ -82,7 +82,10 @@ class Channels extends React.Component {
 }
 
 const Notification = props => {
+<<<<<<< HEAD
     console.log(props);
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     return (props.count !== 0 &&
         <div class="ui red circular label"> {props.count}</div>
     )

@@ -5,11 +5,16 @@ import { withAuthorization } from '../../../../utilities/Session';
 import WaitingPage from '../../../../components/Waiting/Waiting';
 import CompletedPage from './Completed/Completed';
 import * as ROUTES from '../../../../utilities/constants/routes';
+<<<<<<< HEAD
+=======
+import Loading from '../../../../components/Loading/Loading';
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 
 
 class Revision extends React.Component{
     revision;
     stage;
+    user;
     constructor(props) {
         super(props);
         this.state = {
@@ -25,14 +30,17 @@ class Revision extends React.Component{
                 stage: '',
                 rcount: ''
             },
+            user:{
+                name:''
+            },
             currentRevision: ''
         };
         this.formSubmit = this.formSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleStateChange = this.handleStateChange.bind(this);
         this.mediaLink = this.mediaLink.bind(this);
-        this.contractorState = this.contractorState.bind(this)
-        this.addRevision = this.addRevision.bind(this)
+        this.addRevision = this.addRevision.bind(this);
+        this.handleRedirect = this.handleRedirect.bind(this)
       }
 
     formSubmit = () => {
@@ -74,6 +82,15 @@ class Revision extends React.Component{
     mediaLink() {
         window.open(
             this.state.revision.media,
+<<<<<<< HEAD
+=======
+            '_blank')
+    }
+    
+    blogLink() {
+        window.open(
+            'https://www.bloomtimedesign.co/bloomtime-blog/', //opens needed media link?
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
             '_blank')
     }
 
@@ -82,7 +99,9 @@ class Revision extends React.Component{
        this.getProjectState();
       }
 
-    contractorState() {
+
+    handleRedirect = () => {
+        this.props.history.push(ROUTES.CONTRACTORS)
         this.stage.stage = 'contractors'
     }
 
@@ -91,6 +110,8 @@ class Revision extends React.Component{
     }
 
     getProjectState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user;
         const project = await this.props.firebase.doGetProject(this.props.firebase.user.uid, this.props.firebase.activeProject, true);
         this.revisions = await project.revisions;
         let string = this.props.location.pathname;
@@ -103,6 +124,8 @@ class Revision extends React.Component{
             stage: {
                 stage: this.stage.stage,
                 rcount: this.stage.rcount
+            },user:{
+                name: this.user.name
             },
             currentRevision: currentRevision
         }
@@ -115,10 +138,19 @@ class Revision extends React.Component{
     }
 
     render(){
+<<<<<<< HEAD
         if(!this.state.revision.completed){
             return( <WaitingPage handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
         } else {
             return( <CompletedPage handleStateChange={this.handleStateChange} contractorState={this.contractorState} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage} handleRedirect={this.handleRedirect} /> );
+=======
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        }else if(!this.state.revision.completed){
+            return( <WaitingPage handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} handleStateChange={this.handleStateChange} stage={this.state.stage} currentRevision={this.state.currentRevision} state="revision"/> );             
+        } else {
+            return( <CompletedPage blogLink={this.blogLink}user={this.state.user} handleStateChange={this.handleStateChange} handleRedirect={this.handleRedirect} mediaLink={this.mediaLink} handleStateChange={this.handleStateChange} currentRevision={this.state.currentRevision} count={this.state.count} handleChange={this.handleChange} formSubmit={this.formSubmit} revision={this.state.revision} stage={this.state.stage} handleRedirect={this.handleRedirect} /> );
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         }
     }
 }

@@ -108,11 +108,19 @@ class UserProject extends React.Component {
                     </div>
                 </Segment>
             </Router>
+<<<<<<< HEAD
             <PopMessage/>
+=======
+            {/* <PopMessage/> */}
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
             </div>
         )
     }
 }
 
+<<<<<<< HEAD
 const condition = role => role > 0 && role !== 2; //only returns true if user is both role>0 (verified) and !==2 (designer)
+=======
+const condition = role => role > 0; //only returns true if user is both role>0 (verified) and !==2 (designer)
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 export default withAuthorization(condition)(UserProject); //exports user's project if condition is true

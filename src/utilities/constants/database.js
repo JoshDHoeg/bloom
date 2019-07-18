@@ -3,6 +3,24 @@ import { throws } from 'assert';
 
 
 export class User {
+  
+  _active = false;
+  get active() { return this._active }
+  set active(active) {
+    this.ref.set({ active: active }, {merge: true});
+  }
+  _tour1 = false;
+  get tour1() { return this._tour1 }
+  set tour1(tour1) {
+    this.ref.set({ tour1: tour1 }, {merge: true});
+  }
+
+  _tour2 = false;
+  get tour2() { return this._tour2 }
+  set tour2(tour2) {
+    this.ref.set({ tour2: tour2 }, {merge: true})
+  }
+
   _isDesigner = false;
   get isDesigner() { return this._isDesigner; }
   set isDesigner(designer) {
@@ -18,7 +36,10 @@ export class User {
   get Emaillist() { return this._Emaillist; }
   set Emaillist(Emaillist) {
     this.ref.set({ Emaillist: Emaillist }, {merge: true});
+<<<<<<< HEAD
     console.log('here?', Emaillist)
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
   }
   _name = '';
   get name() { return this._name; }
@@ -78,8 +99,15 @@ export class User {
 
   constructor(dbQuery) {
     const data = dbQuery.data();
+    this._active = data['active'];
+    this._tour1 = data['tour1'];
+    this._tour2 = data['tour2'];
     this._isDesigner = data['isDesigner'];
+<<<<<<< HEAD
     this._isEmaillist = data['isEmaillist']
+=======
+    this._Emaillist = data['Emaillist']
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
@@ -107,10 +135,17 @@ export class User {
 
   getAll() {
     return this._getAll({
+      active: this.active,
+      tour1: this.tour1,
+      tour2: this.tour2,
       email: this.email,
       name: this.name,
       phone: this.phone,
+<<<<<<< HEAD
       isEmaillist: this.isEmaillist,
+=======
+      Emaillist: this.Emaillist,
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,
@@ -462,6 +497,12 @@ export class ProjectData {
       _cost = '';
       get cost() { return this._cost; };
       set cost(c) {this._setter({ cost: c }).then(() => this._cost = c); }
+      _discount = '';
+      get discount() { return this._discount; };
+      set discount(d) {this._discount({ discount: d }).then(() => this._discount = d); }
+      _deposit = '';
+      get deposit() { return this._deposit; };
+      set deposit(j) {this._deposit({ deposit: j }).then(() => this._deposit = j); } 
       _ApproveTerms = false;
       get approveterms() {return this._ApproveTerms; };
       set approveterms(t) {this._setter({ approveterms: t }).then(() => this._ApproveTerms = t); }
@@ -476,10 +517,12 @@ export class ProjectData {
           this._video = this.data['video'];
           this._completed = this.data['completed'];
           this._isApproved = this.data['approved'];
-          this._isPaid = this.data['isPaid']
-          this._cost = this.data['cost']
-          this._ApproveTerms = this.data['approveterms']
-          this._terms = this.data['terms']
+          this._isPaid = this.data['isPaid'];
+          this._cost = this.data['cost'];
+          this._discount = this.data['discount'];
+          this._deposit = this.data['deposit'];
+          this._ApproveTerms = this.data['approveterms'];
+          this._terms = this.data['terms'];
         } else {
           this._media = 'https://drive.google.com/drive/folders/1H-aSlCfzkodqk8W7JWWv_z8L1GifTZR2?usp=sharing';
           this._video = '7i1w4N29C9I';
@@ -487,8 +530,10 @@ export class ProjectData {
           this._isApproved = false;
           this._isPaid = false;
           this._cost = 59999;
-          this._ApproveTerms = false
-          this._terms = ''
+          this._discount = 0;
+          this._deposit = 0;
+          this._ApproveTerms = false;
+          this._terms = '';
         }
       }
       getAll() {
@@ -499,6 +544,8 @@ export class ProjectData {
           approved: this.approved,
           isPaid: this.isPaid,
           cost: this.cost,
+          discount: this.discount,
+          deposit: this.deposit,
           approveterms: this.approveterms,
           terms: this._terms
         });
@@ -693,6 +740,9 @@ export class ProjectData {
   static Contractor = {
     colRef: 'contractors',
     type: class Contractor extends ProjectDataBase {
+      _completed = '';
+      get completed() { return this._completed; };
+      set completed(k) { this._setter({ completed: k }).then(() => this._completed = k); }
       _contractor1 = '';
       get contractor1() { return this._contractor1; }
       set contractor1(c) { this._setter({ contractor1: c }).then(() => this._contractor1 = c); }
@@ -733,6 +783,7 @@ export class ProjectData {
       constructor(dbQuery, useDefault = false) {
         super(dbQuery, useDefault);
         if (!useDefault) {
+          this._completed = this.data['completed'];
           this._contractor1 = this.data['contractor1'];
           this._price1 = this.data['price1'];
           this._stars1 = this.data['stars1'];
@@ -746,6 +797,7 @@ export class ProjectData {
           this._stars3 = this.data['stars3'];
           this._number3 = this.data['number3']
         } else {
+          this._completed = false;
           this._contractor1 = 'Landscaper1';
           this._price1 = 0;
           this._stars1 = 5;
@@ -762,6 +814,7 @@ export class ProjectData {
       }
       getAll() {
         return this._getAll({
+          completed: this.completed,
           contractor1: this.contractor1,
           price1: this.price1,
           stars1: this.stars1,

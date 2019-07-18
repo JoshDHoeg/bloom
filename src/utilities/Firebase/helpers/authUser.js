@@ -39,6 +39,10 @@ class FirebaseAuthUser extends FirebaseBase {
       //   .get()
       this.doGetUser(authUser.uid)
         .then(authUser => {
+<<<<<<< HEAD
+=======
+          console.log("here2")
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
           const dbUser = authUser
             // default empty roles
             // if (!dbUser.roles) {
@@ -49,7 +53,11 @@ class FirebaseAuthUser extends FirebaseBase {
               uid: authUser.uid,
               email: authUser.email,
               role: authUser.role,
+<<<<<<< HEAD
               isEmaillist: authUser.isEmaillist,
+=======
+              Emaillist: authUser.Emaillist,
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
               ...dbUser,
             };
             next(authUser);
@@ -92,7 +100,6 @@ class FirebaseAuthUser extends FirebaseBase {
       return this.doGetUser(id)
           .then(user => {
               this.user = user;
-              console.log("just set user var");
               if (this.user)
                   return user.email;
               throw new Error('getting user failed');
@@ -115,20 +122,26 @@ class FirebaseAuthUser extends FirebaseBase {
   doCreateUserWithEmailAndPassword = (email, password, project = 'randomkey', channelRef = null, name = 'username',
                                       isDesigner = false, isAdmin = false, phone = '1231231234',
                                       billadd1 = 'Default Address', zip = 'Default Zip Code', city = 'Default City',
+<<<<<<< HEAD
                                       state = 'Default State', role = 1, Emaillist = true) => {
     console.log("here yo");
+=======
+                                      state = 'Default State', role = 1, Emaillist = true, active = false, tour1 = false, tour2 = false) => {
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     return this.auth.createUserWithEmailAndPassword(email, password).catch(error => {
       console.warn(error);
       return false;
     })
       .then(usr => {
-        console.log("here2");
-        console.log(usr);
         if (!usr){
           return false;
         }
+<<<<<<< HEAD
         console.log("here3");
         return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, isAdmin, channelRef, [project], billadd1, zip, city, state, role, Emaillist)
+=======
+        return this.doSetUser(usr.user.uid, name, email, phone, isDesigner, isAdmin, channelRef, [project], billadd1, zip, city, state, role, Emaillist, active, tour1, tour2)
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
             .then(ref  => {
               return this.setFirebaseVars(ref.id).then(res => {
                   return ref;
@@ -190,14 +203,17 @@ class FirebaseAuthUser extends FirebaseBase {
 
 //modified doSetUser to return the relevant user id after it creates the user object for callbacks
   doSetUser = async (uid = '', name = '', email = '', phone = '', isDesigner = false, isAdmin = false, channelRef = null,
+<<<<<<< HEAD
                      projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '', role = '', Emaillist = true) => {
+=======
+                     projectUid = ['', ['', false]], billadd1 = '', zip = '', city = '', state = '', role = '', Emaillist = true, active = false, tour1 = false, tour2 = false) => {
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     const projects = await Promise.all(projectUid.map(p => {
       if (Array.isArray(p)) {
           return this.doGetProject(p[0], p[1]).then(p => p.uid);
       }
       return this.doGetProject(p).then(p => p.pid);
     }));
-    console.log(projects);
     return this.usersRef.doc(uid).set({
       helpChannel: channelRef,
       isDesigner: isDesigner,
@@ -212,6 +228,12 @@ class FirebaseAuthUser extends FirebaseBase {
       role: role,
       isAdmin: isAdmin,
       Emaillist: Emaillist, 
+<<<<<<< HEAD
+=======
+      active: active,
+      tour1: tour1,
+      tour2: tour2
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     }).then(() => uid ).then( () => {
         this.doGetUser.bind(this, uid, false);
         return this.usersRef.doc(uid);

@@ -34,6 +34,7 @@ class ProjCard extends Component {
         this.getUserState();
         const brief = await this.props.proj.brief;
         const status = await this.props.proj.status;
+<<<<<<< HEAD
         console.log(this.props.proj);
         this.setState({brief:brief, status:status});
     }
@@ -50,12 +51,32 @@ class ProjCard extends Component {
         return state;
     }
 
+=======
+        this.setState({brief:brief, status:status});
+    }
+
+    getUserState = async () => {
+        const user = await this.props.firebase.doGetUser(this.props.firebase.user.uid);
+        this.user = await user
+        const state = await {
+            loading: false,
+            user: {
+                isDesigner: this.user.isDesigner
+            },
+        }
+        return state;
+    }
+
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     getProjectState1 = async () => {
         if(!this.state.user.isDesigner){
         const project = await this.props.firebase.doGetProjects(this.props.firebase.user.uid);
         this.stage = await project.stage;
         this.brief = await project.brief;
+<<<<<<< HEAD
         console.log(project)
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         const state = await {
             loading: false,
             stage: {
@@ -135,7 +156,11 @@ class ProjCard extends Component {
 }
 
 
+<<<<<<< HEAD
 const condition = authUser => authUser 
 
+=======
+const condition = role => role > 0
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
 export default withAuthorization(condition)(ProjCard);
 

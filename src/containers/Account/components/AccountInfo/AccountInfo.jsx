@@ -6,6 +6,7 @@ import { withAuthorization } from '../../../../utilities/Session';
 import AccountInfoView from './View/View';
 import AccountInfoEdit from './Edit/Edit';
 //IMPORT CONTAINERS
+import Loading from '../../../../components/Loading/Loading'
 
 class AccountInfoPage extends Component {
     user;
@@ -70,7 +71,9 @@ class AccountInfoPage extends Component {
     }
 
     render() {
-        if(this.state.edit){
+        if(this.state.loading){
+            return (<div style={{marginTop:'30%'}}><Loading/></div>);
+        }else if(this.state.edit){
             return(
                 <AccountInfoEdit 
                 user={this.state.user}

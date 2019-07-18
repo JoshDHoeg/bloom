@@ -28,7 +28,10 @@ class RevisionsPageView extends Component {
 
     render() {
         let feedback
+<<<<<<< HEAD
         console.log('feedback', this.props.revision.feedback)
+=======
+>>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
         feedback = parse(this.props.revision.feedback);
         if (this.props.revision.completed){
             return (

@@ -45,11 +45,8 @@ describe('Example test', () => {
             )
 
         const w = mount(comp);
-        console.log(w.debug());
         const BriefComponent = w.find(BriefEdit);
-        console.log(BriefComponent.debug());
         const ButtonSubmitComponent = BriefComponent.find(Link);
-        console.log(ButtonSubmitComponent.debug());
         ButtonSubmitComponent.simulate('click');
         expect(formSubmit).tohaveBeenCalled();
 
