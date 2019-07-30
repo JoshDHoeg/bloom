@@ -6,10 +6,6 @@ import Firebase from '../firebase';
 class FirebaseProjects extends FirebaseAuthUser  {
   constructor() {
     super();
-<<<<<<< HEAD
-    console.log('projects'); //logs to ensure everything is running correctly
-=======
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
   }
 
 
@@ -21,10 +17,6 @@ class FirebaseProjects extends FirebaseAuthUser  {
       : 'oV5VqI6E5zU7XPbC2Y129E9Otbz2';
       
       return this.doGetUser(DESIGNER).then( designer => {
-<<<<<<< HEAD
-          console.log(designer); //logs the chosen designer
-=======
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
           var proj = this.projectsRef.doc();
           proj.set({
               client: [null], //no client defined currently
@@ -63,11 +55,8 @@ class FirebaseProjects extends FirebaseAuthUser  {
             approved: false,
             isPaid: false,
             cost: 59999,
-<<<<<<< HEAD
-=======
             deposit: 0,
             discount: 0,
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
             approveterms: false, //terms not yet approved
             terms: ""
           });
@@ -134,17 +123,10 @@ class FirebaseProjects extends FirebaseAuthUser  {
 
 
   //could maybe have doCreateUser... return a user object so we don't have to call doGetUser again
-<<<<<<< HEAD
-  doInitNewUser = (email , password, isEmaillist) => { //creates a new user file based on email and password of user
-      return this.doCreateEmptyProject().then( proj => { //creates new blank project
-          console.log(proj); //logs to ensure running properly
-          return this.doCreateUserWithEmailAndPassword(email, password, proj.id, isEmaillist) //passes all user info
-=======
   doInitNewUser = (email , password, Emaillist) => { //creates a new user file based on email and password of user
       return this.doCreateEmptyProject().then( proj => { //creates new blank project
           console.log(proj); //logs to ensure running properly
           return this.doCreateUserWithEmailAndPassword(email, password, proj.id, Emaillist) //passes all user info
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
               .then(ref => {
                       proj.set({
                           client: [ref] //client reference number?

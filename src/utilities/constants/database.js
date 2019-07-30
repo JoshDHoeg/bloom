@@ -36,10 +36,7 @@ export class User {
   get Emaillist() { return this._Emaillist; }
   set Emaillist(Emaillist) {
     this.ref.set({ Emaillist: Emaillist }, {merge: true});
-<<<<<<< HEAD
     console.log('here?', Emaillist)
-=======
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
   }
   _name = '';
   get name() { return this._name; }
@@ -103,11 +100,7 @@ export class User {
     this._tour1 = data['tour1'];
     this._tour2 = data['tour2'];
     this._isDesigner = data['isDesigner'];
-<<<<<<< HEAD
     this._isEmaillist = data['isEmaillist']
-=======
-    this._Emaillist = data['Emaillist']
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
     this._email = data['email'];
     this._name = data['name'];
     this._phone = data['phone'];
@@ -141,11 +134,7 @@ export class User {
       email: this.email,
       name: this.name,
       phone: this.phone,
-<<<<<<< HEAD
       isEmaillist: this.isEmaillist,
-=======
-      Emaillist: this.Emaillist,
->>>>>>> 2c9a7fdb3c6d40e041db2efd69cf725d637e7afa
       billadd1: this.billadd1,
       zip: this.zip,
       city: this.city,
