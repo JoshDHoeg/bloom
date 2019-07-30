@@ -16,6 +16,7 @@ import Messaging from './containers/Messaging/Messaging'; //messaging window, de
 import House from './containers/Project/UserProject/HouseVisit/HouseVisit'; //main page information, can route to scheduling house visit or project
 import Payment from './containers/Project/UserProject/Payment/Payment'; //information from payment page, ie status etc
 import Denied from './components/DenyAccess/accessDenied'; // import message if on invalid page
+import pricingTool from './components/PricingTool/pricingTool'
 //IMPORT UTILITIES
 import * as ROUTES from './utilities/constants/routes'; // import full page of routes
 import { withAuthentication } from './utilities/Session'; //imports user authentication?
@@ -26,6 +27,7 @@ const App = () => (
       <div>
         <Navigation />
         {/* each route will go to a specific location when called */}
+        <Route path={ROUTES.PRICING} component={pricingTool} />
         <Route path={ROUTES.SIGN_UP} component={SignUpPage} />
         <Route path={ROUTES.SIGN_IN} component={SignInPage} />
         <Route path={ROUTES.PASSWORD_FORGET} component={PasswordForgetPage}/>
